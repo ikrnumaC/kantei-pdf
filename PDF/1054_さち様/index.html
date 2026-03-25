@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>さち様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before  { background-image: url('強い火.png'); }
+        .aura-wood::before  { background-image: url('強い木.png'); }
+        .aura-earth::before { background-image: url('強い土.png'); }
+        .aura-metal::before { background-image: url('強い金.jpg'); }
+        .aura-water::before { background-image: url('強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+            line-height: 2.2;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #c9a05d;
+            font-weight: 600;
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: #ffffff !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.1;
+            }
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">さち様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>さち様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>さち様</p>
+
+    <p>この度は本鑑定にお進みいただき、心より感謝申し上げます。</p>
+
+    <p>「自分の感覚がおかしいのかな」<br>
+    「50万もかけたのに、本当にこれで良かったのか」<br>
+    「なんか違う、と思いながら進んでいていいのか」</p>
+
+    <p>その想い、痛いほど<strong>伝わってきます</strong>。</p>
+
+    <p>誰もが「いい」と言う環境に入ったのに、<br>
+    自分だけが「違う」と感じている。</p>
+
+    <p>そんな時って、自分の感覚を疑いたくなるものですよね。</p>
+
+    <p>でも、さち様。あなたの感覚は、一ミリも狂っていません。</p>
+
+    <p>まず、さち様が一番気になっていることをお伝えしますね。</p>
+
+    <p>今のあなたの判断は、正しい方向を向いています。</p>
+
+    <p>コンサルのメンターとの違和感、<br>
+    それはあなたの大切なサインです。</p>
+
+    <p>あなたが間違っているのではなく、「ステージが違う」ということ。</p>
+
+    <p>だから、深く関わらず学びだけ盗む。<br>
+    その選択は、あなたの<strong>魂</strong>が選んだ、最も賢い道です。</p>
+
+    <p>「2本柱で進む」という今の方向性も、<br>
+    あなたの本来の力と自然に一致しています。</p>
+
+    <p>フリーランスへの道も、1年半後という目標より、<br>
+    もっと早く現実になる可能性が視えています。</p>
+
+    <p>なぜ今、こんなにも迷いが続いているのか。<br>
+    その原因は、あなたのオーラの中にはっきりと視えています。</p>
+
+    <p>次で、詳しくお伝えしますね。</p>
+
+
+    <h2>🔮 あなたのオーラが語ること</h2>
+
+    <div class="aura-section aura-wood">
+        <p>無料鑑定でもお伝えした通り、<br>
+        あなたのオーラを視ると、深い緑の大木が視えます。</p>
+
+        <p>まっすぐ天に向かって伸びる、力強い木。<br>
+        誰かに揺さぶられても、折れない芯がある。</p>
+
+        <p>そして、さらに深く視ていくと、大切なことが視えてきました。</p>
+
+        <p>あなたのオーラには、<br>
+        今、金の光が少し足りていない状態が視えています。</p>
+
+        <p>金のオーラは、「決める」力の源です。<br>
+        揺るぎない確信、覚悟、行動への踏み出し。<br>
+        それを生み出すエネルギーです。</p>
+
+        <p>だから今のさち様は、正しい感覚を持っているのに、<br>
+        なかなか決断の一歩が踏み出せない。</p>
+
+        <p>意志が弱いわけでも、覚悟が足りないわけでもない。</p>
+
+        <p>ただ、その光が、今は少し足りていないだけなのです。</p>
+
+        <p>逆に言えば、金のオーラさえ整えば、霧は晴れ始めます。</p>
+
+        <p>あなたの<strong>魂</strong>には、人を自然に包み込む力があります。<br>
+        押しつけでなく、相手に寄り添いながら、<br>
+        その人が自分で答えを見つけられるよう、<br>
+        そっと手を添えていける。</p>
+
+        <p>タロット占い師としてあなたが輝ける理由が、ここにあります。</p>
+
+        <p>今のあなたは「内側でじっくり蓄える時期」にいます。<br>
+        外に発信する量が少なくても、焦らないでくださいね。</p>
+
+        <p>今、内側に蓄えているものが、<br>
+        この先の大きな開花につながっています。</p>
+    </div>
+
+
+    <h2>🔮 夢への道筋</h2>
+
+    <p>まず、コンサルとの距離感を、<br>
+    自分の中で少しずつ明確にしていくといいかもしれません。</p>
+
+    <p>「ここまでは学ぶ、ここから先は自分のやり方でいく」<br>
+    というラインを引いていくこと。</p>
+
+    <p>それだけで、今の揺れが少し落ち着いてくるはずです。</p>
+
+    <p>Instagramの発信については、<br>
+    完璧な投稿を目指さなくて<strong>大丈夫です</strong>。</p>
+
+    <p>あなたが自然に感じたこと、気づいたことを、<br>
+    ありのままに言葉にしてみてください。</p>
+
+    <p>テクニックより、あなたの自然体の言葉の方が、<br>
+    共鳴する人の心に深く届きます。<br>
+    あなたの<strong>魂</strong>は、もともとそういう力を持っています。</p>
+
+    <p>コンサルから学ぶべきは、<br>
+    発信の仕組みや集客の基礎だけで十分です。</p>
+
+    <p>メンターの「占い師としての在り方」や「タロットへの考え方」が<br>
+    合わないと感じるなら、スルーでいいんです。</p>
+
+    <p>あなたはすでに、「本当の意味で人に寄り添えるタロット占い師」が<br>
+    どうあるべきか、自分の感覚で知っています。</p>
+
+    <p>その感覚こそが、あなたの最大の武器です。</p>
+
+    <p>ただ、一つだけ知っておいてほしいことがあります。<br>
+    どれだけ正しい方向を向いていても、<br>
+    金のオーラが足りない状態では、<br>
+    「決断する」という一歩を踏み出す力が弱くなってしまいます。</p>
+
+    <p>だから、まずはオーラを整えること。<br>
+    それが、全ての土台になります。</p>
+
+
+    <h2>🔮 運命の転機</h2>
+
+    <p>あなたは今、「内側に蓄え、深めていく時期」の真っ只中にいます。</p>
+
+    <p>今年は火のオーラが二重に重なる年。<br>
+    今まで内側でじっくり温めてきたものが、<br>
+    いよいよ外に出ていく年になっています。</p>
+
+    <p>これからの半年の流れをお伝えしますね。</p>
+
+    <p><strong>3月</strong>は木のオーラが強まる時期。<br>
+    情報収集とインプットに集中しながら、<br>
+    焦らず土台を作っていきましょう。</p>
+
+    <p><strong>4月</strong>になると木と火のオーラが重なり、<br>
+    成長と情熱のエネルギーが高まってきます。<br>
+    5月の本格始動に向けて、<br>
+    力を蓄えておく月です。</p>
+
+    <p>◎<strong>5月（重要月）</strong><br>
+    火のオーラが二重に重なります。<br>
+    「発信したい」「伝えたい」という衝動が一気に強くなる月。</p>
+
+    <p>アイデアが次々と浮かんでくるはずです。<br>
+    この月に浮かんだ言葉や気づきは、全て書き留めておいてくださいね。<br>
+    Instagramへの投稿を増やすのに最高のタイミングです。</p>
+
+    <p><strong>6月</strong>は内省と振り返りの月。<br>
+    5月の発信を見直し、じっくり深める時間として過ごしてみてください。<br>
+    急いで動こうとせず、内側で熟成させる月です。</p>
+
+    <p>★<strong>7月（最重要月）</strong><br>
+    この月が、さち様の<strong>運命</strong>の大きな<strong>転機</strong>となっています。</p>
+
+    <p>さち様のオーラになかった金のオーラが、初めて巡ってきます。<br>
+    ずっとぐらついていた「この道で行く」という確信が、<br>
+    この月に生まれてきます。</p>
+
+    <p>「自分はどんな占い師になりたいか」の答えが、<br>
+    ぼんやりではなくはっきりと視えてくる瞬間が来ます。</p>
+
+    <p>コンサルとの関わり方も、<br>
+    感情に流されず冷静に線引きできるようになります。</p>
+
+    <p>自分だけの発信スタイルが「これだ」と定まる瞬間も、この月です。</p>
+
+    <p>だからこそ、この月の直感を大切にしてくださいね。<br>
+    「これだ」と感じた瞬間は、<br>
+    考えすぎずその日のうちに一歩動いてみてください。</p>
+
+    <p>「まだ準備が足りない」と先延ばしにしてしまうと、<br>
+    せっかくの金のオーラが流れていってしまいます。<br>
+    誰かの意見を聞いて自分の感覚を揺さぶらせるより、<br>
+    この月だけは自分の直感を最優先にしてみてくださいね。</p>
+
+    <p><strong>8月</strong>は、7月の決断を着実に実行に移す月。<br>
+    決めたことを一つずつ形にしていく時期です。</p>
+
+    <p>1年後の<strong>2027年</strong>には、<br>
+    「この人に頼みたい」と思うお客様が<br>
+    自然に集まり始めている姿が視えています。</p>
+
+    <p>さち様だけの発信スタイルが定まり、<br>
+    フリーランスとして独立するための<br>
+    具体的なタイミングが視えてくる頃です。</p>
+
+    <p><strong>7月</strong>が最大のチャンスです。<br>
+    金のオーラが足りないまま7月を迎えると、<br>
+    せっかくの<strong>転機</strong>を素通りしてしまう可能性があります。<br>
+    <strong>7月までに、オーラを整えておくこと。</strong><br>
+    これが、この半年で<strong>最も大切なこと</strong>です。</p>
+
+
+    <h2>🔮 今からできること</h2>
+
+    <p>まず、今日からできることをお伝えしますね。</p>
+
+    <p>金のオーラを補うために、<br>
+    白・シルバー・クリーム色を日常に取り入れてみてください。<br>
+    服でも、小物でも、インテリアでも。<br>
+    シルバーや白いアクセサリーをひとつ身につけるだけでも変わります。<br>
+    シンプルなリングで十分です。</p>
+
+    <p>週に一度、デスク周りを整理して、<br>
+    不要なものを手放す習慣も、金のオーラを育てます。<br>
+    そして、朝の深呼吸。<br>
+    3回、ゆっくり吸って吐く。<br>
+    それだけで、一日の始まりが変わってきます。</p>
+
+    <p>火のオーラには、赤やオレンジのアイテムをひとつ取り入れること。<br>
+    朝15分、日光を浴びること。これだけで十分です。</p>
+
+    <p>そして、毎朝、自分に言い聞かせてほしい言葉があります。</p>
+
+    <div class="magic-word-box">「私の直感は、正しい。」
+「私には、人の心に届く言葉がある。」</div>
+
+    <p>完璧を求めて発信を先延ばしにしなくていいんです。<br>
+    メンターの言葉で自分の感覚を打ち消さなくていい。<br>
+    「まだ私には早い」と、自分の可能性を小さくしなくていい。</p>
+
+    <p>ここまでお伝えした調整法で、少しずつオーラは整い始めます。</p>
+
+    <p>日常の調整だけでは補いきれない部分もあります。<br>
+    色を身につける、断捨離をする。<br>
+    これらは「維持する力」にはなりますが、<br>
+    ゼロから補う力としては、どうしても限界があります。</p>
+
+    <p>もし本気でオーラを整えたいなら、<br>
+    もう一つ、お伝えしたい方法があります。</p>
+
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>7月のチャンスを逃さないために。<br>
+    金のオーラを本格的に整えるために、<br>
+    パワーストーンをお守りとして取り入れる方法があります。</p>
+
+    <p>さち様のオーラに合わせて、三つのプランをご用意しました。</p>
+
+    <div class="important-box">
+        <h3>【3つのプラン】</h3>
+
+        <p><strong>●松（本気でフリーランスへの道を切り拓きたい方向け）</strong><br>
+        金のオーラを本格的に補う石と、火のオーラを育てる石の組み合わせです。<br>
+        決断力と情熱、両方を整えることで、<br>
+        発信もコンサルへの割り切りも、全てがスムーズに動き始めます。</p>
+
+        <p><strong>●竹（心を安定させながら一歩ずつ進みたい方向け）</strong><br>
+        金のオーラを補う石を中心にした組み合わせで、<br>
+        「迷わなくなる」感覚が育ち、自分の直感を信じて動けるようになります。</p>
+
+        <p><strong>●梅（まず揺れる心を落ち着かせたいという方向け）</strong><br>
+        最も必要な石を1つ。「これでいい」という安心感が生まれます。</p>
+
+        <p>多くの方が松プランを選ばれています。<br>
+        7月に向けて今から整え始めることで、<br>
+        最も効果的なタイミングでオーラが整います。</p>
+
+        <p>もし興味がありましたら、「詳細希望」とだけ送っていただければ、<br>
+        さち様専用の石の組み合わせをお伝えしますね。</p>
+    </div>
+
+
+    <h2>最後に</h2>
+
+    <p>さち様には、二つの道があります。</p>
+
+    <p>「なんか違う」という感覚を抱えたまま、<br>
+    誰かの言葉に揺さぶられながら進み続けるか。</p>
+
+    <p>自分の直感を信じ、金のオーラを整えて、<br>
+    自分だけのスタイルでタロット占い師として輝いていくか。</p>
+
+    <p>あなたはすでに、答えを知っています。</p>
+
+    <p>1年後。<br>
+    お客様から「さち様に視てもらって、本当に良かった」という言葉を受け取り、<br>
+    自分の言葉で、自分のスタイルで、人の心に届く鑑定をしている。<br>
+    その未来が、視えています。</p>
+
+    <p>フリーランスになることより、<br>
+    「本当に自分が輝ける場所で、人の役に立てる」こと。<br>
+    それを求め続けてきたさち様の想い、<strong>本物</strong>だと思います。</p>
+
+    <p>その道の先に、私も光を照らしています。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>

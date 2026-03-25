@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>かずみ様専用鑑定書</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('強い火.png'); }
+        .aura-wood::before { background-image: url('強い木.png'); }
+        .aura-earth::before { background-image: url('強い土.png'); }
+        .aura-metal::before { background-image: url('強い金.png'); }
+        .aura-water::before { background-image: url('強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* ===== レーダーチャート ===== */
+        .aura-chart-container {
+            width: 280px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            margin: 20px auto;
+        }
+
+        .aura-chart-title {
+            text-align: center;
+            font-size: 16px;
+            color: #8b6f9c;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .aura-result-box {
+            background: linear-gradient(135deg, #f9f3ff 0%, #fff5fb 100%);
+            border: 2px solid #c9a0dc;
+            border-radius: 15px;
+            padding: 30px 35px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .aura-result-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .aura-result-box > p:last-child {
+            font-size: 17px;
+            line-height: 2.2;
+            margin-bottom: 0;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+
+            .aura-chart-container {
+                width: 240px;
+            }
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: #ffffff !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">かずみ様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>かずみ様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>かずみ様</p>
+
+    <p>この度は本鑑定にお進みいただき、<br>
+    心より感謝申し上げます。</p>
+
+    <p>「しゅうちゃんは本当に私のことを好きなのか」<br>
+    「一緒に住みたいって、本心で言ってくれたのか」<br>
+    「来月のお泊まり、喜んでくれてるのか不安」</p>
+
+    <p>その想い、痛いほど伝わってきます。</p>
+
+    <p>しゅうちゃんは好きと言ってくれてる。<br>
+    一緒に住むことも、OKしてくれた。</p>
+
+    <p>なのに、なぜか不安になる。<br>
+    本当に私でいいの？と確認したくなる。</p>
+
+    <p>嬉しいはずやのに、怖くなる。<br>
+    その気持ち、ほんまによく分かります。</p>
+
+    <p>まず、かずみ様が一番知りたいこと。<br>
+    はっきりお伝えします。</p>
+
+    <p>結論から言います。<br>
+    <strong>しゅうちゃんの「好き」は、本心です。</strong><br>
+    一緒に住みたいという気持ちも、嘘やない。</p>
+
+    <p>しゅうちゃんの魂を視ると、<br>
+    山のようにどっしりとした存在感が視えます。</p>
+
+    <p>一度受け入れた相手には、簡単に心変わりしない。<br>
+    言葉は少ないけど、心の中ではちゃんと決めてる。</p>
+
+    <p>しゅうちゃんが「OK」と言ったのは、<br>
+    あなたに合わせたわけやない。<br>
+    <strong>本気で受け入れたからこそ、出た言葉やったんです。</strong></p>
+
+    <p>じゃあ、なぜこんなに不安になるのか。</p>
+
+    <p>その原因は、あなたのオーラに視えています。<br>
+    次のセクションで、詳しくお伝えしますね。</p>
+
+    <h2>🔮 不安の正体</h2>
+
+    <h3>【あなたのオーラと本質】</h3>
+
+    <div class="aura-section aura-metal">
+        <p>無料鑑定でお伝えした通り、<br>
+        あなたのオーラは金色に輝いています。</p>
+
+        <p>宝石のように繊細で、<br>
+        磨けば磨くほど美しく光る。<br>
+        一度決めたことはやり遂げる、強さを持った魂です。</p>
+
+        <p>そして、あなたのオーラをさらに深く視ると、<br>
+        大切なことが視えてきました。</p>
+    </div>
+
+    <h3>【足りないオーラとその影響】</h3>
+
+    <p><strong>あなたのオーラには、水のオーラがほとんどない状態です。</strong></p>
+
+    <p>これが、今のあなたの状況の根っこにある原因です。</p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">かずみ様の現在のオーラバランス</div>
+        <canvas id="auraChartYou"></canvas>
+    </div>
+
+    <p>水のオーラが足りていないことで、</p>
+
+    <p>・感情を言葉にするのが難しい<br>
+    ・不安を溜め込んで、流せない<br>
+    ・「本当に大丈夫？」と確認したくなる<br>
+    ・相手を信じて待つことができない</p>
+
+    <p>つまり、しゅうちゃんの気持ちが不安になるのは、<br>
+    あなたの愛情が足りないからでも、<br>
+    しゅうちゃんの言葉が足りないからでもない。</p>
+
+    <p><strong>水のオーラが足りていないから。</strong></p>
+
+    <p>不安が流れず、心に溜まってしまうんです。</p>
+
+    <p>逆に言えば、水のオーラさえ整えば、<br>
+    この霧は晴れ始めます。</p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">水のオーラを補った状態</div>
+        <canvas id="auraChartYouFixed"></canvas>
+    </div>
+
+    <div class="aura-result-box">
+        <p class="aura-result-title">水のオーラを補うと…</p>
+        <p>不安が自然と流れて、心が軽くなる。<br>
+        しゅうちゃんを信じて待てるようになる。<br>
+        「大丈夫」と自分に言い聞かせなくても、<br>
+        本当に大丈夫だと感じられるようになる。</p>
+    </div>
+
+    <h3>【あなたの魂の性質】</h3>
+
+    <p>あなたの魂には、責任感と独立心が宿っています。</p>
+
+    <p>自分の道を進みながらも、大切な人には誠実でありたい。<br>
+    筋を通して、きちんと向き合いたい。</p>
+
+    <p>だからこそ、しゅうちゃんの気持ちを確かめたくなる。<br>
+    「本当に私でいいの？」と聞きたくなる。</p>
+
+    <p>それは弱さやない。<br>
+    <strong>本気で好きやから、怖くなってるだけ。</strong></p>
+
+    <p>ただ、確認しすぎると、<br>
+    しゅうちゃんは「信じてもらえていない」と感じてしまう。</p>
+
+    <p>水のオーラが整えば、<br>
+    不安を流せるようになって、<br>
+    確認しなくても信じられるようになります。</p>
+
+    <h3>【しゅうちゃんのオーラと本質】</h3>
+
+    <div class="aura-section aura-earth">
+        <p>しゅうちゃんを霊視した瞬間、<br>
+        どっしりとしたブラウンのオーラが視えました。</p>
+
+        <p>山のように動じない大地。<br>
+        一度受け入れたら、簡単には変わらへん。</p>
+    </div>
+
+    <h3>【彼の魂の性質】</h3>
+
+    <p>しゅうちゃんの魂には、繊細で鋭い感性が宿っています。</p>
+
+    <p>本音を出すのに時間がかかる。<br>
+    傷つけてしまうことを恐れて、言葉を選びすぎる。</p>
+
+    <p>だから、「好き」と言うのにも勇気がいった。<br>
+    「一緒に住もう」と答えるのも、軽い気持ちやなかった。</p>
+
+    <p>しゅうちゃんが言葉少ないのは、<br>
+    どうでもいいからやない。<br>
+    <strong>大切やからこそ、慎重になってるんです。</strong></p>
+
+    <h3>【彼に足りないオーラ】</h3>
+
+    <p>しゅうちゃんにも、足りていないオーラがあります。</p>
+
+    <p><strong>火のオーラがほとんどない。</strong><br>
+    さらに、金のオーラが強すぎる。</p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">しゅうちゃんの現在のオーラバランス</div>
+        <canvas id="auraChartPartner"></canvas>
+    </div>
+
+    <p>火が足りていないことで、感情を表に出せない。<br>
+    金が強すぎることで、理性で感情を抑えてしまう。</p>
+
+    <p>「好き」という気持ちはあるのに、<br>
+    それを言葉にするのが苦手。<br>
+    だから、かずみ様は不安になる。</p>
+
+    <p>でも、心の中ではちゃんと決めてる。<br>
+    <strong>言葉にできないだけで、想いは本物です。</strong></p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">火のオーラを補った状態</div>
+        <canvas id="auraChartPartnerFixed"></canvas>
+    </div>
+
+    <div class="aura-result-box">
+        <p class="aura-result-title">でも、火のオーラが補われると…</p>
+        <p>しゅうちゃんは感情を表に出せるようになる。<br>
+        「好き」という言葉が、自然と出てくる。<br>
+        決断する力が湧いて、<br>
+        かずみ様との未来を具体的に描けるようになる。</p>
+    </div>
+
+    <h3>【今の彼の時期】</h3>
+
+    <p>しゅうちゃんは今、自己表現したい時期に入っています。<br>
+    社会的にも活躍したい、自分を出していきたい時期。</p>
+
+    <p>そして、<strong>2026年は火のオーラが強く巡る年。</strong><br>
+    しゅうちゃんに足りない火が補われる。</p>
+
+    <p>つまり、今年のしゅうちゃんは、<br>
+    いつもより感情を出しやすくなってる。<br>
+    新しい関係を受け入れる準備ができている。</p>
+
+    <p>あなたが変われば、しゅうちゃんも変わり始めます。</p>
+
+    <h2>🔮 しゅうちゃんの心を開く道筋</h2>
+
+    <h3>【彼への具体的なアプローチ】</h3>
+
+    <p>ここからは、しゅうちゃんの心を動かすための<br>
+    具体的な言葉と行動をお伝えします。</p>
+
+    <h3>【接触のタイミング】</h3>
+
+    <p>来月のお泊まりが<strong>5月</strong>なら、<br>
+    それが最高のタイミングです。</p>
+
+    <p>5月は、あなたに水のオーラが巡り、<br>
+    しゅうちゃんに火のオーラが巡る月。</p>
+
+    <p>二人とも、足りないものが補われる。<br>
+    言葉が自然と出てくる月です。</p>
+
+    <h3>【最初の一言】</h3>
+
+    <p>お泊まりの前、LINEを送るなら。</p>
+
+    <div class="magic-word-box">「来月のこと、楽しみにしてるね」</div>
+
+    <p>これだけでいい。<br>
+    プレッシャーをかけず、楽しみにしていると伝えるだけ。</p>
+
+    <p>しゅうちゃんの魂は、急かされると動けなくなる。<br>
+    待ってくれる人には、安心して心を開きます。</p>
+
+    <p>もう一つ。</p>
+
+    <div class="magic-word-box">「最近どう？ 無理してない？」</div>
+
+    <p>しゅうちゃんは自分を責めやすい性質。<br>
+    気遣いの言葉が、心に深く響きます。</p>
+
+    <h3>【会った時の接し方】</h3>
+
+    <p><strong>・笑顔でいること</strong><br>
+    しゅうちゃんには火のオーラが足りない。<br>
+    あなたの笑顔が、彼に温かさを与えます。</p>
+
+    <p><strong>・ゆっくり待つこと</strong><br>
+    感情表現がまだ育っている途中の魂。<br>
+    急かさず待てば、安心して言葉が出てきます。</p>
+
+    <p><strong>・「一緒にいて楽しい」と伝えること</strong><br>
+    しゅうちゃんは「必要とされている」と感じると安定する。<br>
+    あなたが楽しそうにしているだけで、彼は嬉しい。</p>
+
+    <h3>【言ってはいけない言葉】</h3>
+
+    <p><strong>・「本当に私のこと好き？」</strong><br>
+    しゅうちゃんの魂は、疑われると傷つく。<br>
+    信じてもらえない悲しさで、閉じてしまいます。</p>
+
+    <p><strong>・「なんで言ってくれないの？」</strong><br>
+    言葉にするのが苦手な性質。<br>
+    責められると、さらに言葉が出なくなる。</p>
+
+    <p><strong>・「早く決めて」</strong><br>
+    山のような性質は、急かされると動けなくなる。<br>
+    自分のペースを乱されるのが、一番苦手です。</p>
+
+    <h3>【言うと効く言葉】</h3>
+
+    <p><strong>・「しゅうちゃんのペースでいいよ」</strong><br>
+    マイペースを尊重されると、心から安心します。</p>
+
+    <p><strong>・「一緒にいると落ち着く」</strong><br>
+    山のような存在価値を認める言葉。</p>
+
+    <p><strong>・「ありがとう、嬉しい」</strong><br>
+    繊細な魂は、感謝されると自己肯定感が上がる。<br>
+    短い言葉でいい。素直に伝えるだけで響きます。</p>
+
+    <h3>【大切な注意点】</h3>
+
+    <p>ただし、一つだけ知っておいてほしいことがあります。</p>
+
+    <p>これらの言葉や行動は、<br>
+    <strong>あなたのオーラが整った状態で初めて、本来の力を発揮します。</strong></p>
+
+    <p>今のまま、水のオーラが足りない状態で動くと、<br>
+    言葉が上滑りしてしまったり、<br>
+    不安が顔に出てしまう可能性がある。</p>
+
+    <p>だから、まずはオーラを整えること。<br>
+    それが、全ての土台になります。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <h3>【あなたの運命の転換期】</h3>
+
+    <p>あなたは今、<strong>調整と内省の時期</strong>に入っています。<br>
+    自分を見つめ直して、次のステージへ進む準備の時期。</p>
+
+    <p>そして、<strong>2026年は火のオーラが非常に強い年。</strong><br>
+    古い自分を手放して、新しく生まれ変わるタイミング。</p>
+
+    <p>離婚して、新しい人生を始める。<br>
+    この決断は、運命の流れに乗っています。</p>
+
+    <h3>【しゅうちゃんの運命の転換期】</h3>
+
+    <p>しゅうちゃんも同じように、<br>
+    火のオーラが強く巡る時期に入っています。</p>
+
+    <p>彼は今、自分を表現したい、認められたいという時期。<br>
+    普段は言葉にしない気持ちを、出したくなっている。</p>
+
+    <p><strong>二人とも「決断と行動の年」にいる。</strong><br>
+    これは、偶然やない。</p>
+
+    <p>運命が、二人を同じ方向に動かしています。</p>
+
+    <h3>【二人の運命が交わる時】</h3>
+
+    <p>あなたとしゅうちゃん、二人の運命が最も近づく時期。<br>
+    <strong>それが5月です。</strong></p>
+
+    <p>この月、あなたには水と火のオーラが巡り、<br>
+    不安が流れて、言葉がスムーズに出てきます。</p>
+
+    <p>しゅうちゃんには火のオーラが巡り、<br>
+    いつもより感情を表に出しやすくなります。</p>
+
+    <p>来月のお泊まりが5月なら、<br>
+    <strong>二人の距離がぐっと縮まるタイミング。</strong></p>
+
+    <p>しゅうちゃんから、<br>
+    気持ちを伝えてくれるかもしれません。</p>
+
+    <h3>【これから半年の流れ】</h3>
+
+    <p><strong>3月</strong><br>
+    金と木のオーラが巡る月。<br>
+    お泊まり前の心の準備期間です。<br>
+    自分を整える意識を持つことが大切。</p>
+
+    <p>しゅうちゃんは金のオーラが強まり、いつもより冷静モード。<br>
+    連絡が少なくても、心配しないで。<br>
+    彼なりに5月のことを考えてくれています。</p>
+
+    <p><strong>4月</strong><br>
+    水と土のオーラが巡る月。<br>
+    あなたに足りない水のオーラが自然と補われ始めます。<br>
+    不安を流す練習をするのに最適な時期。</p>
+
+    <p>お風呂にゆっくり浸かる、水をたくさん飲む。<br>
+    この月から意識的に水のオーラを取り入れて、<br>
+    5月に向けて心を整えていきましょう。</p>
+
+    <p><strong>5月（最重要）</strong><br>
+    水と火のオーラが巡る特別な月。<br>
+    あなたの不安が流れやすくなり、しゅうちゃんも感情を出しやすくなる。<br>
+    <strong>二人の波長が最も合う時期です。</strong></p>
+
+    <p>お泊まりでは、しゅうちゃんがいつもより言葉を選ばず話してくれる可能性が高い。<br>
+    「ずっと一緒にいたい」という気持ちを、彼なりの言葉で伝えてくれるかもしれません。</p>
+
+    <p>やるべきこと。<br>
+    ・笑顔で、楽しそうにしていること<br>
+    ・「嬉しい」「楽しい」を素直に伝えること<br>
+    ・しゅうちゃんが話し始めたら、最後まで聞くこと</p>
+
+    <p>やってはいけないこと。<br>
+    ・「本当に好き？」と確認しないこと<br>
+    ・将来の話を急かさないこと</p>
+
+    <p><strong>6月</strong><br>
+    木と火のオーラが巡る月。<br>
+    成長と情熱の月。<br>
+    あなたは離婚の手続きが具体的に進み始める時期。<br>
+    新しい生活への準備が本格化します。</p>
+
+    <p>しゅうちゃんも、この月は決断力が増している。<br>
+    5月のお泊まりで縮まった距離を、さらに一歩進めたいと思っている時期です。</p>
+
+    <p>やるべきこと。<br>
+    ・将来の話を、ゆっくり切り出してみること<br>
+    ・「一緒に住んだらどんな感じかな」と、夢を語り合うこと</p>
+
+    <p><strong>7月</strong><br>
+    木と土のオーラが巡る月。<br>
+    安定と成長の月。<br>
+    二人の関係が落ち着いて、穏やかな時間を過ごせる時期。<br>
+    焦らず、今の関係を味わうことが大切です。</p>
+
+    <p>しゅうちゃんの動き。<br>
+    ・言葉は少なくても、行動で愛情を示してくれる時期<br>
+    ・連絡の頻度が自然と増えるかもしれません</p>
+
+    <p><strong>8月</strong><br>
+    火と金のオーラが巡る月。<br>
+    決断と整理の時期です。<br>
+    離婚が成立し、新生活に向けて具体的に動き出す月になりそう。</p>
+
+    <p>しゅうちゃんの動き。<br>
+    ・あなたの状況を静かに見守っている時期<br>
+    ・「大丈夫？」と、彼なりの気遣いを見せてくれるでしょう</p>
+
+    <p><strong>9月</strong><br>
+    火と金のオーラが引き続き巡る月。<br>
+    具体的な計画を立てる時期。<br>
+    一緒に住む場所、生活のスタイルなど、現実的な話を進められます。</p>
+
+    <p>しゅうちゃんの動き。<br>
+    ・現実的な話になると、しゅうちゃんは安心する性質<br>
+    ・具体的な計画が決まると、彼の口数が増えてきます</p>
+
+    <p><strong>10月</strong><br>
+    土のオーラが非常に強い月。<br>
+    しゅうちゃんの本質（土）と同じエネルギーが巡るので、<br>
+    彼が最も落ち着いて、安心できる月。</p>
+
+    <p>一緒に住む準備が整い始める時期。<br>
+    しゅうちゃんから具体的な提案が出てくるかもしれません。<br>
+    「ここに住もうか」「こんな生活がしたい」と、<br>
+    彼なりのビジョンを話してくれるでしょう。</p>
+
+    <h3>【1年後の未来】</h3>
+
+    <p><strong>2027年は、安定と育みの年。</strong><br>
+    しゅうちゃんとの生活が根付いて、<br>
+    穏やかな日常が始まっている。</p>
+
+    <p>その未来が、視えています。</p>
+
+    <h3>【大切なこと】</h3>
+
+    <p><strong>5月が最大のチャンスです。</strong><br>
+    二人の運命が最も近づくこの瞬間を逃さないために、<br>
+    オーラを整えた状態で5月を迎えること。</p>
+
+    <p>水のオーラが足りないまま5月を迎えると、<br>
+    不安が顔に出てしまって、<br>
+    せっかくの転機を素通りしてしまう可能性がある。</p>
+
+    <p>5月までに、オーラを整えておくこと。<br>
+    これが、この半年で最も大切なことです。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <h3>【日常のオーラ調整法】</h3>
+
+    <p>まず、今日からできることをお伝えしますね。</p>
+
+    <p>水のオーラを補う方法。</p>
+
+    <p>・青や黒を身につける（下着や小物でもOK）<br>
+    ・水をたくさん飲む（1日2リットル目標）<br>
+    ・お風呂にゆっくり浸かる（10分以上）<br>
+    ・水辺を歩く（川、海、湖など）</p>
+
+    <h3>【日常の実践】</h3>
+
+    <p>朝、コップ1杯の水を飲みながら、<br>
+    「不安は流れていく」と心の中で唱える。</p>
+
+    <p>夜、お風呂に浸かりながら、<br>
+    「私は大丈夫」と自分に言い聞かせる。</p>
+
+    <h3>【気をつけてほしいこと】</h3>
+
+    <p>・「本当に好き？」と確認しないこと<br>
+    → 確認するほど、しゅうちゃんは閉じてしまう</p>
+
+    <p>・不安をLINEで長文にしないこと<br>
+    → 言葉にするほど、不安は大きくなる</p>
+
+    <p>・自分を責めないこと<br>
+    → 不安になるのは、あなたが悪いんやない</p>
+
+    <h3>【正直にお伝えしたいこと】</h3>
+
+    <p>ここまでお伝えした調整法で、<br>
+    少しずつオーラは整い始めます。</p>
+
+    <p>ただ、正直に言うと、<br>
+    水のオーラがほとんどない状態の場合、<br>
+    日常の調整だけでは補いきれない部分があります。</p>
+
+    <p>水を飲む、青い服を着る。<br>
+    これらは「維持する力」にはなりますが、<br>
+    ゼロから補う力としては、どうしても限界がある。</p>
+
+    <p>もし本気でオーラを整えたいなら、<br>
+    もう一つ、お伝えしたい方法があります。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>ここまでお伝えしてきた通り、<br>
+    かずみ様のオーラには水のオーラが足りていません。</p>
+
+    <p>これが今の不安の根っこにある原因であり、<br>
+    5月のチャンスを掴むために、最も整えるべき部分です。</p>
+
+    <p>水のオーラが整うと、</p>
+
+    <p>・しゅうちゃんの前で、不安な顔をしなくなる<br>
+    ・「本当に好き？」と確認しなくても、信じられるようになる<br>
+    ・お泊まりの時、自然体で笑っていられる<br>
+    ・しゅうちゃんが話し出すのを、穏やかに待てるようになる<br>
+    ・「この人でいい」と、自分の選択を信じられるようになる</p>
+
+    <p>日常の調整法に加えて、<br>
+    本格的にオーラを補うために、<br>
+    パワーストーンをお守りとして取り入れる方法があります。</p>
+
+    <p>かずみ様のオーラに合わせて、<br>
+    三つのプランをご用意しました。</p>
+
+    <div class="important-box">
+        <h3>【3つのプラン】</h3>
+
+        <p><strong>●松</strong>：しゅうちゃんとの未来に本気で向き合いたい方向け<br>
+        水のオーラを本格的に補い、不安を流す力を強化。<br>
+        ・5月のお泊まりで、自然体の笑顔でいられる<br>
+        ・しゅうちゃんの言葉を、穏やかに待てるようになる<br>
+        ・「私は大丈夫」と、心から思えるようになる</p>
+
+        <p><strong>●竹</strong>：心を安定させたい方向け<br>
+        水のオーラを補い、日常の不安を和らげる。<br>
+        ・確認したい気持ちが、少しずつ落ち着く</p>
+
+        <p><strong>●梅</strong>：まずは不安を和らげたい方向け<br>
+        最も必要な石を一つ。<br>
+        ・夜、眠れない不安が和らぐ</p>
+
+        <p>多くの方が松プランを選ばれています。<br>
+        5月に向けて今から整え始めることで、<br>
+        最も効果的なタイミングでオーラが整います。</p>
+
+        <p>もし興味がありましたら、<br>
+        「詳細希望」とだけ送っていただければ、<br>
+        かずみ様専用の石の組み合わせをお伝えしますね。</p>
+    </div>
+
+    <h2>最後に</h2>
+
+    <p>ここまで読んでいただき、ありがとうございます。</p>
+
+    <p>このまま不安を抱えたまま進むか、<br>
+    オーラを整えて、5月を迎えるか。</p>
+
+    <p>どちらを選ぶかは、かずみ様次第です。</p>
+
+    <p>でも、一つだけ伝えたいことがあります。</p>
+
+    <p>しゅうちゃんを好きになったこと。<br>
+    離婚して、新しい人生を始めようとしていること。<br>
+    その想いは、本物です。</p>
+
+    <p>私には視えています。</p>
+
+    <p>水のオーラが整って、<br>
+    本来の輝きを取り戻したかずみ様。</p>
+
+    <p>しゅうちゃんと一緒に暮らし始めて、<br>
+    朝、隣で目が覚めた時。</p>
+
+    <p>しゅうちゃんが、あなたの顔を見て、<br>
+    「おはよう」と、静かに笑っている。</p>
+
+    <p>その未来への道、私が照らしますね。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+<script>
+// チャート共通設定
+const chartOptions = {
+    responsive: true,
+    plugins: {
+        legend: { display: false }
+    },
+    scales: {
+        r: {
+            beginAtZero: true,
+            max: 3,
+            min: 0,
+            ticks: {
+                stepSize: 1,
+                display: false
+            },
+            pointLabels: {
+                font: { size: 14, family: 'Noto Serif JP' },
+                color: '#2d2d2d'
+            },
+            grid: { color: 'rgba(201, 160, 93, 0.3)' },
+            angleLines: { color: 'rgba(201, 160, 93, 0.3)' }
+        }
+    }
+};
+
+// かずみ様の現在のオーラ: 木1, 火2, 土1, 金2, 水0
+new Chart(document.getElementById('auraChartYou'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [{
+            data: [1, 2, 1, 2, 0],
+            backgroundColor: 'rgba(201, 160, 93, 0.3)',
+            borderColor: '#c9a05d',
+            borderWidth: 2,
+            pointBackgroundColor: '#c9a05d',
+            pointBorderColor: '#fff',
+            pointRadius: 5
+        }]
+    },
+    options: chartOptions
+});
+
+// かずみ様：水を補った状態
+// 水を補う → 水2、水の隣接（金2、木1を持ってる）
+new Chart(document.getElementById('auraChartYouFixed'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [
+            {
+                // 補う部分（緑）
+                data: [1, 0, 0, 2, 2],
+                backgroundColor: 'rgba(100, 180, 100, 0.4)',
+                borderColor: '#5a9a5a',
+                borderWidth: 2,
+                pointBackgroundColor: '#5a9a5a',
+                pointBorderColor: '#fff',
+                pointRadius: 6
+            },
+            {
+                // 元のオーラ（ゴールド）
+                data: [1, 2, 1, 2, 0],
+                backgroundColor: 'rgba(201, 160, 93, 0.3)',
+                borderColor: '#c9a05d',
+                borderWidth: 2,
+                pointBackgroundColor: '#c9a05d',
+                pointBorderColor: '#fff',
+                pointRadius: 5
+            }
+        ]
+    },
+    options: chartOptions
+});
+
+// しゅうちゃんの現在のオーラ: 木1, 火0, 土1, 金3, 水1
+new Chart(document.getElementById('auraChartPartner'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [{
+            data: [1, 0, 1, 3, 1],
+            backgroundColor: 'rgba(139, 111, 156, 0.3)',
+            borderColor: '#8b6f9c',
+            borderWidth: 2,
+            pointBackgroundColor: '#8b6f9c',
+            pointBorderColor: '#fff',
+            pointRadius: 5
+        }]
+    },
+    options: chartOptions
+});
+
+// しゅうちゃん：火を補った状態
+// 火を補う → 火2、火の隣接（木1、土1を持ってる）
+new Chart(document.getElementById('auraChartPartnerFixed'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [
+            {
+                // 補う部分（緑）
+                data: [1, 2, 1, 0, 0],
+                backgroundColor: 'rgba(100, 180, 100, 0.4)',
+                borderColor: '#5a9a5a',
+                borderWidth: 2,
+                pointBackgroundColor: '#5a9a5a',
+                pointBorderColor: '#fff',
+                pointRadius: 6
+            },
+            {
+                // 元のオーラ（紫）
+                data: [1, 0, 1, 3, 1],
+                backgroundColor: 'rgba(139, 111, 156, 0.3)',
+                borderColor: '#8b6f9c',
+                borderWidth: 2,
+                pointBackgroundColor: '#8b6f9c',
+                pointBorderColor: '#fff',
+                pointRadius: 5
+            }
+        ]
+    },
+    options: chartOptions
+});
+</script>
+
+</body>
+</html>

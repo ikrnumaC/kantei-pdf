@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ちか様専用鑑定書</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-metal::before {
+            background-image: url('強い金.png');
+        }
+
+        .aura-earth::before {
+            background-image: url('強い土.png');
+        }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+        }
+
+        /* ===== オーラチャート ===== */
+        .aura-chart-compare {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .aura-chart-container {
+            width: 280px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+        }
+
+        .aura-chart-title {
+            text-align: center;
+            font-size: 16px;
+            color: #8b6f9c;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== Before/After比較セクション ===== */
+        .aura-compare-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .aura-compare-arrow {
+            font-size: 40px;
+            color: #5a9a5a;
+            font-weight: bold;
+        }
+
+        .aura-change-list {
+            background: linear-gradient(135deg, #f0fff0 0%, #e8f5e9 100%);
+            border: 2px solid #5a9a5a;
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        .aura-change-list h4 {
+            color: #5a9a5a;
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .aura-change-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .aura-change-item .before {
+            color: #8b6f9c;
+            font-weight: bold;
+        }
+
+        .aura-change-item .after {
+            color: #5a9a5a;
+            font-weight: bold;
+        }
+
+        .aura-change-item .arrow {
+            color: #c9a05d;
+        }
+
+        .aura-effect-box {
+            background: linear-gradient(135deg, #fff9f0 0%, #fff5eb 100%);
+            border-left: 4px solid #5a9a5a;
+            border-radius: 0 10px 10px 0;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .aura-effect-box h4 {
+            color: #5a9a5a;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .aura-effect-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .aura-effect-box li {
+            position: relative;
+            padding-left: 25px;
+            margin: 12px 0;
+            line-height: 1.6;
+        }
+
+        .aura-effect-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #5a9a5a;
+            font-weight: bold;
+        }
+
+        /* ===== オーラ補った結果ボックス ===== */
+        .aura-result-box {
+            background: linear-gradient(135deg, #f9f3ff 0%, #fff5fb 100%);
+            border: 2px solid #c9a0dc;
+            border-radius: 15px;
+            padding: 30px 35px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .aura-result-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .aura-result-box > p:last-child {
+            font-size: 17px;
+            line-height: 2.2;
+            margin-bottom: 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            .aura-compare-section {
+                flex-direction: column;
+            }
+            .aura-compare-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+
+        strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">ちか様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：陽子</div>
+</div>
+
+<div class="container">
+    <h1>ちか様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>ちか様</p>
+
+    <p>この度は本鑑定にお進みいただき、<br>
+    心より感謝申し上げます。</p>
+
+    <p>「このまま枯れてしまうのかな」<br>
+    「以前のようになりたい」<br>
+    「もしかしたら、別方向に歩いていくのかもしれない」</p>
+
+    <p>その想い、<strong>痛いほど伝わってきます</strong>。</p>
+
+    <p>友達のような関係になってしまって、<br>
+    旦那様は「何もなくても大丈夫」と言う。</p>
+
+    <p>その言葉を聞くたびに、<br>
+    胸がぎゅっと締めつけられる感覚があった。</p>
+
+    <p>「私のことはもう、そういう目で見られてないのかな」<br>
+    「このまま、ずっとこのままなのかな」</p>
+
+    <p>そう思ってしまう気持ち、よくわかります。</p>
+
+    <p>まず、ちか様が一番知りたいこと。<br>
+    はっきりお伝えします。</p>
+
+    <p>結論から言います。<br>
+    <strong>旦那様は、あなたへの気持ちを失ったわけやない</strong>。<br>
+    今、心が疲れて動けなくなっとるだけ。</p>
+
+    <p>「何もなくても大丈夫」という言葉。<br>
+    これは「あなたを必要としていない」という意味やない。</p>
+
+    <p>旦那様のオーラを視ると、大地のようにどっしりとした温かさがある。<br>
+    本来は、あなたを包み込む愛情を持っとる人。</p>
+
+    <p>でも今、その大地にひび割れが見える。<br>
+    エネルギーが弱って、自分の世界に閉じこもっとる状態。</p>
+
+    <p>「触れたくない」んやなくて、<strong>「触れる気力がない」</strong>んよ。</p>
+
+    <p>旦那様のエネルギーが回復すれば、また以前のように戻れる。</p>
+
+    <p>なぜこうなったのか。<br>
+    その原因は、あなたのオーラにも視えています。<br>
+    次のセクションで、詳しくお伝えしますね。</p>
+
+    <h2>🔮 二人のオーラが語る真実</h2>
+
+    <h3>【あなたのオーラと本質】</h3>
+
+    <div class="aura-section aura-metal">
+        <p>無料鑑定でもお伝えした通り、<br>
+        あなたのオーラは金色に輝いています。<br>
+        宝石のように繊細で、凛とした美しさがある。</p>
+
+        <p>旦那様が最初にあなたに惹かれた時、<br>
+        この金色の輝きに心を奪われたはず。</p>
+
+        <p>そして、あなたのオーラをさらに深く視ると、<br>
+        大切なことが視えてきました。</p>
+    </div>
+
+    <h3>【足りないオーラとその影響】</h3>
+
+    <div class="aura-chart-container" style="margin: 0 auto;">
+        <div class="aura-chart-title">ちか様のオーラ</div>
+        <canvas id="auraChartYou"></canvas>
+    </div>
+
+    <p>あなたのオーラには、<strong>水のオーラが足りていません</strong>。</p>
+
+    <p>これが、今のあなたの状況の根っこにある原因です。</p>
+
+    <p>水のオーラが欠けていることで、</p>
+
+    <p>・感情が硬直しやすく、素直に気持ちを表現できない<br>
+    ・「こうあるべき」に縛られて、柔らかく接することが難しい<br>
+    ・旦那様に触れてほしい気持ちを、言葉にできない</p>
+
+    <p>つまり、レスになってしまったのは、<br>
+    あなたの気持ちが足りないからでも、<br>
+    努力が足りないからでもない。</p>
+
+    <p>水のオーラが欠けているから。</p>
+
+    <p>本当は「触れてほしい」と思っているのに、<br>
+    その想いを自然に伝えられない。</p>
+
+    <p>完璧にやろうとして、自分を追い込んでしまう。<br>
+    「ちゃんとしなきゃ」が先に出て、本音を出せない。</p>
+
+    <p>逆に言えば、<strong>水のオーラさえ整えば、霧は晴れ始めます</strong>。</p>
+
+    <div class="aura-chart-container" style="margin: 30px auto;">
+        <div class="aura-chart-title">水のオーラを補ったちか様</div>
+        <canvas id="auraChartYouFixed"></canvas>
+    </div>
+
+    <div class="aura-result-box">
+        <p class="aura-result-title">水のオーラを補うと…</p>
+        <p>感情が自然と流れ始めて、<br>
+        素直に気持ちを表現できるようになる。<br>
+        「こうあるべき」から解放されて、<br>
+        旦那様に柔らかく接することができる。<br>
+        そして何より、触れてほしいという気持ちを、<br>
+        言葉にできるようになるんよ。</p>
+    </div>
+
+    <h3>【旦那様のオーラと本質】</h3>
+
+    <div class="aura-section aura-earth">
+        <p>旦那様のオーラはブラウン。<br>
+        山のようにどっしりとした、安定感のある人。</p>
+
+        <p>本来は、あなたを包み込む愛情を持っとる。<br>
+        でも今、そのエネルギーが弱っている。</p>
+
+        <p>旦那様は独自の世界を持つ人。<br>
+        人と違う感性があって、深く考える。<br>
+        ただ、考えすぎて動けなくなることがある。</p>
+    </div>
+
+    <p>さらに、旦那様にも欠けているオーラがある。<br>
+    <strong>木と水、両方が足りていない</strong>。</p>
+
+    <div class="aura-chart-container" style="margin: 20px auto;">
+        <div class="aura-chart-title">旦那様のオーラ</div>
+        <canvas id="auraChartPartner"></canvas>
+    </div>
+
+    <p>「触れてこない」のは、冷めたからやない。<br>
+    頭の中でぐるぐる考えて、結論が出ないまま止まっとる。</p>
+
+    <p>これが旦那様の行動にどう出ているか。</p>
+
+    <p>変化を嫌い、現状から動けない。<br>
+    気持ちを言葉にできず、閉じこもってしまう。<br>
+    「何もなくても大丈夫」と言って、変化を避ける。</p>
+
+    <p>旦那様は今、内にこもる時期に入っとる。<br>
+    蓄える時期。外に出てくる気力がない。</p>
+
+    <p>だから、あなたから求めても、応えられない状態なんよ。</p>
+
+    <div class="aura-chart-container" style="margin: 20px auto;">
+        <div class="aura-chart-title">木と水を補った旦那様</div>
+        <canvas id="auraChartPartnerFixed"></canvas>
+    </div>
+
+    <div class="aura-result-box">
+        <p class="aura-result-title">でも、木と水のオーラを補うと…</p>
+        <p>変化を恐れなくなって、<br>
+        気持ちを言葉にできるようになる。<br>
+        閉じこもっていた心が、<br>
+        あなたに向かって開いていくんよ。</p>
+    </div>
+
+    <h3>【旦那様の目に映る「あなた」】</h3>
+
+    <p>今、旦那様の目にはあなたのオーラに霧がかかって見えている。</p>
+
+    <p>本当のあなたの輝きが、見えにくくなっとる。</p>
+
+    <p>ただ、水のオーラを整えたあなたは、<br>
+    旦那様の目に全く違う印象で映るようになります。</p>
+
+    <p>硬さが取れて、柔らかい雰囲気が出る。<br>
+    言葉が自然と出てきて、会話が増える。</p>
+
+    <p>「最近、ちかが変わった」</p>
+
+    <p>旦那様がそう感じた時、<br>
+    止まっていた彼の心も、動き始めるけん。</p>
+
+    <h2>🔮 旦那様の心を動かす道筋</h2>
+
+    <p>ここからは、旦那様の心を動かすための<br>
+    具体的な言葉と行動をお伝えします。</p>
+
+    <h3>【接触のタイミング】</h3>
+
+    <p>焦らんでいい。<br>
+    今すぐ動く必要はない。</p>
+
+    <p><strong>4月から5月</strong>にかけて、水のオーラが巡ってくる。<br>
+    この時期が、最も自然に気持ちを伝えられるタイミング。</p>
+
+    <p>それまでは、日常の小さな会話を大切にして。</p>
+
+    <h3>【最初の一言】</h3>
+
+    <p>旦那様に響く言葉は、愛情の直接表現やない。<br>
+    <strong>「存在を認める言葉」</strong>が一番効く。</p>
+
+    <div class="magic-word-box">「今日のご飯、何がいい？」
+
+何でもないような一言やけど、
+旦那様は独自の世界を持つ人やけん、
+「自分の意見を聞いてもらえた」と感じると嬉しい。
+
+「前に行った〇〇、また行きたいな」
+
+旦那様は今、新しいことより「以前の良かった記憶」に反応しやすい。
+懐かしい思い出を共有することで、温かい気持ちが戻ってくる。
+
+「最近、一緒にいると落ち着く」
+
+これが、一番効く言葉。
+旦那様は「頼られている」「存在価値がある」と感じると動き出す。
+直接的な愛情表現より、存在を認める言葉が響くんよ。</div>
+
+    <h3>【会った時の接し方】</h3>
+
+    <p><strong>・旦那様のペースに合わせる</strong><br>
+    今、旦那様はエネルギーが弱い状態。急かすと逆効果。<br>
+    ゆっくり、のんびり、一緒にいるだけでいい。</p>
+
+    <p><strong>・旦那様の話を最後まで聞く</strong><br>
+    旦那様は「理解されたい」欲求が強い人。<br>
+    途中で遮ると、殻に閉じこもってしまう。</p>
+
+    <p><strong>・旦那様の小さな行動を褒める</strong><br>
+    「ありがとう」「助かる」<br>
+    この言葉が、旦那様の自己肯定感を回復させる。</p>
+
+    <h3>【言ってはいけない言葉】</h3>
+
+    <p>「なんで触れてくれないの？」<br>
+    これは<strong>絶対に言わんで</strong>。<br>
+    旦那様は「触れる気力がない」状態。<br>
+    責められると罪悪感でさらに動けなくなる。</p>
+
+    <p>「昔はこうだったのに」<br>
+    過去と比較すると、旦那様は傷つく。<br>
+    自分を責め始めてしまう。</p>
+
+    <p>「私のこと好き？」<br>
+    答えを求められると、旦那様は考え込んで黙る。<br>
+    プレッシャーになって、さらに閉じこもる。</p>
+
+    <h3>【言うと効く言葉】</h3>
+
+    <p>「無理しなくていいよ」<br>
+    旦那様は「頑張らなきゃ」と自分を追い込んでいる。<br>
+    許される言葉で、緊張が解ける。</p>
+
+    <p>「あなたがいてくれるだけで安心する」<br>
+    行動を求めず、存在を認める。<br>
+    これが旦那様の心を開く鍵。</p>
+
+    <p>「ゆっくりでいいから」<br>
+    旦那様はマイペースな人。<br>
+    急かされないと、安心して動き出せる。</p>
+
+    <h3>【大切な注意点】</h3>
+
+    <p>ただし、一つだけ知っておいてほしいことがある。</p>
+
+    <p>これらの言葉や行動は、<br>
+    あなたのオーラが整った状態で初めて、本来の力を発揮する。</p>
+
+    <p>準備ができていないまま動くと、<br>
+    言葉が上滑りしてしまったり、<br>
+    タイミングを逃してしまう可能性がある。</p>
+
+    <p>だから、まずはオーラを整えること。<br>
+    それが、全ての土台になります。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <h3>【あなたの運命の転換期】</h3>
+
+    <p>今、あなたは<strong>リセットの時期</strong>に入っとる。<br>
+    古いものを手放して、新しく始める時期。</p>
+
+    <p>さらに、2026年は火のオーラがとても強い年。<br>
+    あなたの中の「変わりたい」という想いに、火がついとる。</p>
+
+    <p>これは、夫婦関係を<strong>「再定義」</strong>するタイミング。<br>
+    今のままか、新しい形で再構築するか。</p>
+
+    <p>変化を受け入れれば、良い方向に進むけん。</p>
+
+    <h3>【旦那様の運命の転換期】</h3>
+
+    <p>そして、旦那様の運命も視ました。</p>
+
+    <p>旦那様は今、静かに力を蓄えている時期。<br>
+    すぐには動けないけど、<strong>確実に準備は進んどる</strong>。</p>
+
+    <p>でも、2026年の火のオーラは、旦那様の心にも届く。<br>
+    静かに、でも確実に、何かが動き始める。</p>
+
+    <h3>【二人の運命が交わる時】</h3>
+
+    <p>あなたと旦那様、二人の運命が最も近づく時期。<br>
+    <strong>それが5月</strong>。</p>
+
+    <p>この月、あなたには水のオーラが巡り、<br>
+    旦那様にも水のオーラが巡る。</p>
+
+    <p>二人とも足りないものが同じだから、<br>
+    この月に水が巡ることで、感情の流れが生まれる。</p>
+
+    <p>普段は言葉にできない気持ちが、<br>
+    自然と口から出てくる時期。</p>
+
+    <p>「最近、一緒にいると落ち着くな」</p>
+
+    <p>そんな一言が、旦那様の心を動かすきっかけになる。</p>
+
+    <h3>【これから半年の流れ】</h3>
+
+    <p><strong>3月（今月）</strong><br>
+    金と木のオーラが巡る。理性的になりやすい時期。<br>
+    完璧主義に注意して、柔らかさを意識して。</p>
+
+    <p><strong>4月</strong><br>
+    水と土のオーラが巡り始める。<br>
+    5月への準備期間。自分の気持ちを見つめ直す時期。<br>
+    旦那様への想いが、明確になってくる。</p>
+
+    <p><strong>★5月（最重要）</strong><br>
+    水と火のオーラが巡る。<br>
+    二人のコミュニケーションが最も取りやすい月。</p>
+
+    <p>やるべきこと<br>
+    ・旦那様と二人で過ごす時間を意識的に作る<br>
+    ・「一緒にいると落ち着く」と伝える<br>
+    ・旦那様の話を、最後まで聞く姿勢を見せる</p>
+
+    <p>やってはいけないこと<br>
+    ・「なんで触れてくれないの？」と問い詰める<br>
+    ・結論を急ぐ、答えを求める</p>
+
+    <p><strong>6月</strong><br>
+    木と火のオーラで、成長と情熱が巡る月。<br>
+    5月に芽生えた温かさが、少しずつ育っていく時期。<br>
+    旦那様との会話が、自然と増え始めるのを感じるはず。<br>
+    焦らず、その流れに身を任せて。</p>
+
+    <p><strong>7月</strong><br>
+    あなたの誕生月。50歳の節目。<br>
+    この特別な日を、旦那様と一緒に過ごしてほしい。<br>
+    特別なことをせんでもいい。<br>
+    ただ、二人で静かに過ごす時間が、<br>
+    「やっぱりこの人といたい」という気持ちを思い出させてくれるけん。</p>
+
+    <p><strong>8月</strong><br>
+    旦那様の誕生月。感謝を伝える絶好の機会。<br>
+    「いつもありがとう」「一緒にいてくれて嬉しい」<br>
+    この言葉が、旦那様の心に深く届く月。<br>
+    <strong>夏の終わり、二人の距離がぐっと近づいているのを感じるはずよ</strong>。</p>
+
+    <h3>【1年後の未来】</h3>
+
+    <p>2027年、夫婦関係は新しい形で安定し始める。<br>
+    お互いを認め合える、穏やかな関係が築けるけん。</p>
+
+    <h3>【大切なこと】</h3>
+
+    <p><strong>5月が最大のチャンス</strong>。<br>
+    あなたと旦那様の運命が最も近づくこの瞬間を逃さないために、<br>
+    オーラを整えた状態で5月を迎えること。</p>
+
+    <p>準備不足のまま5月を迎えると、<br>
+    せっかくの転機を素通りしてしまう可能性がある。</p>
+
+    <p>これが、この半年で<strong>最も大切なこと</strong>です。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <p>まず、今日からできることをお伝えしますね。</p>
+
+    <h3>【水のオーラを補う】</h3>
+
+    <p>・青や黒の服を身につける<br>
+    ・水をこまめに飲む（1日2リットル目安）<br>
+    ・お風呂にゆっくり浸かる（シャワーだけで済まさない）<br>
+    ・水辺を歩く（川、海、噴水のある公園）<br>
+    ・流れを感じる音楽を聴く（川のせせらぎ、波の音）</p>
+
+    <h3>【日常の実践】</h3>
+
+    <p>朝、鏡を見て「今日も大丈夫」と自分に声をかける。<br>
+    夜、お風呂に浸かりながら、気持ちを流す。</p>
+
+    <h3>【気をつけてほしいこと】</h3>
+
+    <p>・完璧を求めすぎない<br>
+    「まあいいか」を意識して。</p>
+
+    <p>・一人で抱え込まない<br>
+    誰かに話すだけで、気持ちは軽くなる。</p>
+
+    <p>・旦那様を変えようとしない<br>
+    変わるのは、あなた。あなたが変われば、旦那様も変わる。</p>
+
+    <h3>【正直にお伝えしたいこと】</h3>
+
+    <p>ここまでお伝えした調整法で、<br>
+    少しずつオーラは整い始めます。</p>
+
+    <p>ただ、正直に言うと、<br>
+    足りないものをゼロから補うには、<br>
+    日常の調整だけでは限界がある部分もあります。</p>
+
+    <p>もし本気でオーラを整えたいなら、<br>
+    もう一つ、お伝えしたい方法があります。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>ここまでお伝えしてきた、<br>
+    欠けているオーラを本格的に補う方法があります。</p>
+
+    <p>5月のチャンスを掴むために、オーラが整うと、</p>
+
+    <p>・旦那様に「触れてほしい」と素直に言えるようになる<br>
+    ・硬さが取れて、旦那様が「最近、ちかが変わった」と感じる<br>
+    ・言葉が自然と出てきて、旦那様との会話が増える<br>
+    ・「こうあるべき」から解放されて、自然体でいられる<br>
+    ・旦那様があなたを「やっぱりちかがいい」と思う瞬間が生まれる</p>
+
+    <p>日常の調整法に加えて、<br>
+    本格的にオーラを補うために、<br>
+    パワーストーンをお守りとして取り入れる方法があります。</p>
+
+    <p>ちか様のオーラに合わせて、<br>
+    三つのプランをご用意しました。</p>
+
+    <div class="important-box">
+        <h3>【3つのプラン】</h3>
+
+        <p><strong>●松プラン</strong><br>
+        夫婦関係を本気で変えたい方向け。<br>
+        欠けたオーラを本格的に補い、コミュニケーションの流れを作る石の組み合わせ。<br>
+        ・旦那様に素直な気持ちを伝えられるようになる<br>
+        ・硬さが取れて、柔らかい雰囲気が出る<br>
+        ・5月の転機を最大限に活かせる状態になる</p>
+
+        <p><strong>●竹プラン</strong><br>
+        まずは自分の心を整えたい方向け。<br>
+        オーラを補う石の組み合わせ。<br>
+        ・感情が自然と流れ始める</p>
+
+        <p><strong>●梅プラン</strong><br>
+        まずは不安を和らげたい方向け。<br>
+        最も必要な石を1つ。<br>
+        ・心が少し軽くなる</p>
+
+        <p>多くの方が松プランを選ばれています。<br>
+        5月に向けて今から整え始めることで、<br>
+        最も効果的なタイミングでオーラが整います。</p>
+
+        <p>もし興味がありましたら、<br>
+        「詳細希望」とだけ送っていただければ、<br>
+        ちか様専用の石の組み合わせをお伝えしますね。</p>
+    </div>
+
+    <h2>最後に</h2>
+
+    <p>ここから先、二つの道があります。</p>
+
+    <p>一つは、今のまま何もせず、時間が過ぎていく道。<br>
+    「このまま枯れてしまうのかな」という不安を抱えたまま。</p>
+
+    <p>もう一つは、オーラを整えて、5月の転機に向かう道。<br>
+    「以前のようになりたい」という想いを、形にする道。</p>
+
+    <p>どちらを選ぶかは、ちか様次第。</p>
+
+    <p>でも、私には視えています。</p>
+
+    <p>5月の夜。<br>
+    旦那様がそっとあなたの手を握る姿が。</p>
+
+    <p>「最近、なんか変わったな」</p>
+
+    <p>そう言って、照れくさそうに笑う旦那様の顔が。</p>
+
+    <p>その時、あなたは思うはず。<br>
+    「ああ、戻ってきたんだ」って。</p>
+
+    <p><strong>その未来は、まだ消えていない</strong>。<br>
+    <strong>絶対に届く場所にある</strong>。</p>
+
+    <p><strong>大丈夫</strong>。<br>
+    焦らんでいいよ。</p>
+
+    <p>ふたりの炎を再び灯す道、私が照らしていくけんね。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        陽子</p>
+    </div>
+
+</div>
+
+<script>
+// チャート共通設定
+const chartOptions = {
+    responsive: true,
+    plugins: {
+        legend: { display: false }
+    },
+    scales: {
+        r: {
+            beginAtZero: true,
+            max: 3,
+            min: 0,
+            ticks: {
+                stepSize: 1,
+                display: false
+            },
+            pointLabels: {
+                font: { size: 14, family: 'Noto Serif JP' },
+                color: '#2d2d2d'
+            },
+            grid: { color: 'rgba(201, 160, 93, 0.3)' },
+            angleLines: { color: 'rgba(201, 160, 93, 0.3)' }
+        }
+    }
+};
+
+// ちか様のオーラ（現状）: 木1 火1 土2 金2 水0
+new Chart(document.getElementById('auraChartYou'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [{
+            data: [1, 1, 2, 2, 0],
+            backgroundColor: 'rgba(201, 160, 93, 0.3)',
+            borderColor: '#c9a05d',
+            borderWidth: 2,
+            pointBackgroundColor: '#c9a05d',
+            pointBorderColor: '#fff',
+            pointRadius: 5
+        }]
+    },
+    options: chartOptions
+});
+
+// ちか様（水を補った姿）- 元のオーラ + 補う部分を重ねる
+new Chart(document.getElementById('auraChartYouFixed'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [
+            {
+                // 元のオーラ（ゴールド）
+                data: [1, 1, 2, 2, 0],
+                backgroundColor: 'rgba(201, 160, 93, 0.3)',
+                borderColor: '#c9a05d',
+                borderWidth: 2,
+                pointBackgroundColor: '#c9a05d',
+                pointBorderColor: '#fff',
+                pointRadius: 5
+            },
+            {
+                // 補う部分（緑）- 水2 金2 木1
+                data: [1, 0, 0, 2, 2],
+                backgroundColor: 'rgba(100, 180, 100, 0.4)',
+                borderColor: '#5a9a5a',
+                borderWidth: 2,
+                pointBackgroundColor: '#5a9a5a',
+                pointBorderColor: '#fff',
+                pointRadius: 6
+            }
+        ]
+    },
+    options: chartOptions
+});
+
+// 旦那様のオーラ（現状）: 木0 火2 土1 金2 水0
+new Chart(document.getElementById('auraChartPartner'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [{
+            data: [0, 2, 1, 2, 0],
+            backgroundColor: 'rgba(139, 111, 156, 0.3)',
+            borderColor: '#8b6f9c',
+            borderWidth: 2,
+            pointBackgroundColor: '#8b6f9c',
+            pointBorderColor: '#fff',
+            pointRadius: 5
+        }]
+    },
+    options: chartOptions
+});
+
+// 旦那様（木と水を補った姿）- 補う部分を先に描画、元のオーラを上に重ねる
+new Chart(document.getElementById('auraChartPartnerFixed'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [
+            {
+                // 補う部分（緑）- 木2、火2（木の隣接）、金2（水の隣接）、水2 ※先に描画
+                data: [2, 2, 0, 2, 2],
+                backgroundColor: 'rgba(100, 180, 100, 0.4)',
+                borderColor: '#5a9a5a',
+                borderWidth: 2,
+                pointBackgroundColor: '#5a9a5a',
+                pointBorderColor: '#fff',
+                pointRadius: 6
+            },
+            {
+                // 元のオーラ（紫）※後に描画（上に来る）
+                data: [0, 2, 1, 2, 0],
+                backgroundColor: 'rgba(139, 111, 156, 0.3)',
+                borderColor: '#8b6f9c',
+                borderWidth: 2,
+                pointBackgroundColor: '#8b6f9c',
+                pointBorderColor: '#fff',
+                pointRadius: 5
+            }
+        ]
+    },
+    options: chartOptions
+});
+</script>
+
+</body>
+</html>

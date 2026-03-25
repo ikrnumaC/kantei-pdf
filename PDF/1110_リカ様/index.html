@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リカ様専用鑑定書</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-wood::before { background-image: url('強い木.png'); }
+        .aura-earth::before { background-image: url('強い土.png'); }
+        .aura-metal::before { background-image: url('強い金.png'); }
+        .aura-water::before { background-image: url('強い水.png'); }
+
+        /* ===== レーダーチャート ===== */
+        .aura-chart-container {
+            width: 280px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            margin: 20px auto;
+        }
+
+        .aura-chart-title {
+            text-align: center;
+            font-size: 16px;
+            color: #8b6f9c;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .aura-result-box {
+            background: linear-gradient(135deg, #f9f3ff 0%, #fff5fb 100%);
+            border: 2px solid #c9a0dc;
+            border-radius: 15px;
+            padding: 30px 35px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .aura-result-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .aura-result-box > p:last-child {
+            font-size: 17px;
+            line-height: 2.2;
+            margin-bottom: 0;
+        }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: #ffffff !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">リカ様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>リカ様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>リカ様</p>
+
+    <p>この度は本鑑定にお進みいただき、<br>
+    心より感謝申し上げます。</p>
+
+    <p>「星の数ほどいるファンの一部にしかなっていないのでは」<br>
+    「読まれていないのかもしれない」<br>
+    「いい年して、アイドルにって……すみません」</p>
+
+    <p>その想い、<strong>痛いほど伝わってきます</strong>。</p>
+
+    <p>有料サイトで毎日コメントを返しながら、<br>
+    「届いているのかな」と不安になる夜。<br>
+    彼の体力を気遣って、タッチ会やサイン会には参加できないと伝えた優しさ。<br>
+    それでも諦められない。<br>
+    一人の男性として、会いたい。</p>
+
+    <p>その想いは、恥ずかしいものではありません。<br>
+    年齢も、立場も、関係ない。<br>
+    人を想う気持ちに、「いい年だから」なんて理由は存在しません。</p>
+
+    <p>そして、お父様の服装と同じコーディネートを見つけた時のこと。<br>
+    お線香の香りがふわっとしたこと。<br>
+    それは決して「考えすぎ」ではありません。<br>
+    <strong>魂レベルでの繋がり</strong>を、あなたは感じ取っているのです。</p>
+
+    <p>さて、リカ様が一番知りたいこと。<br>
+    はっきりお伝えします。</p>
+
+    <p><strong>結論から言います。</strong><br>
+    彼はあなたのことを、星の数ほどいるファンの中で<strong>「心に残る存在」</strong>として認知している可能性があります。</p>
+
+    <p>彼のオーラを視ると、草花のように柔らかく揺れながらも、芯がある魂が視えます。<br>
+    そして彼の魂は、表舞台に立ちながらも「本当の自分を見てほしい」という渇望を抱えています。</p>
+
+    <p>数えきれないファンの中で、<br>
+    彼の体力を気遣ったあなたの言葉。<br>
+    イベントに「参加できない」と正直に伝えたあなたの姿勢。</p>
+
+    <p>それは、他のファンとは決定的に違う<strong>「温かさ」</strong>として、<br>
+    彼の心に残っています。</p>
+
+    <p>つまり、あなたの想いは迷惑どころか、<br>
+    彼の魂が求めているものに近いのです。</p>
+
+    <p>ただし、今のままでは「温かいファン」止まり。<br>
+    距離を縮めるには、あなた自身のオーラを整える必要がある。</p>
+
+    <p>なぜそうなのか。<br>
+    その原因は、あなたのオーラに視えています。</p>
+
+    <h2>🔮 あなたのオーラに視えたもの</h2>
+
+    <div class="aura-section">
+        <p>あなたのオーラは、真っ赤に燃える太陽。<br>
+        本来は、周りを明るく照らし、人を惹きつける強い輝きを持っています。</p>
+
+        <p>でも今、その太陽に霧がかかっています。</p>
+
+        <p>あなたのオーラには、<strong>水のオーラが足りていません</strong>。</p>
+
+        <div class="aura-chart-container">
+            <div class="aura-chart-title">リカ様の現状オーラ</div>
+            <canvas id="auraChartYou"></canvas>
+        </div>
+
+        <p>これが、今の状況の根っこにある原因です。</p>
+
+        <p>水のオーラが足りないことで、<br>
+        ・感情を流すことができず、想いを溜め込んでしまう<br>
+        ・伝えたいことが言葉にならない<br>
+        ・「届いていないかも」という不安が増幅される<br>
+        ・コメントに温かみはあるのに、どこかぎこちなくなる</p>
+
+        <p>つまり、彼にコメントが届いていないように感じるのは、<br>
+        あなたの気持ちが足りないからでも、<br>
+        努力が足りないからでもない。</p>
+
+        <p>水のオーラが足りないから。</p>
+
+        <p>さらに、あなたには<strong>金のオーラが強すぎます</strong>。</p>
+
+        <p>金のオーラは本来、自分を律する力。<br>
+        でも強すぎると、自分を責めてしまう。</p>
+
+        <p>「いい年して」<br>
+        「迷惑かも」<br>
+        「変なファンだと思われていないか」</p>
+
+        <p>その声は、強すぎる金のオーラが生み出しています。</p>
+
+        <p>逆に言えば、水のオーラを補い、金のオーラを鎮めれば、<br>
+        霧は晴れ始めます。</p>
+
+        <div class="aura-chart-container">
+            <div class="aura-chart-title">水のオーラを補った後</div>
+            <canvas id="auraChartYouFixed"></canvas>
+        </div>
+
+        <div class="aura-result-box">
+            <p class="aura-result-title">水のオーラを補うと…</p>
+            <p>感情が自然と流れ始めて、<br>
+            想いを素直に言葉にできるようになる。<br>
+            「届いていないかも」という不安が和らぎ、<br>
+            彼に温かい言葉を届けられる。</p>
+        </div>
+
+        <p>あなたの魂には、人との繋がりを大切にし、チャンスを掴む力があります。<br>
+        臨機応変に対応できる柔軟さも持っています。</p>
+
+        <p>ただ、相手を気遣いすぎて、自分の想いを後回しにしてしまう傾向がある。<br>
+        それが、彼との距離が縮まらない一因になっています。</p>
+
+        <p>そして今、あなたは人生の大きな<strong>転換期</strong>に立っています。<br>
+        46歳から、あなたに足りなかった水のオーラが10年間巡り始めます。<br>
+        これは、感情が流れ、言葉が自然と出てくるようになる時期。</p>
+
+        <p>このタイミングで彼に出会ったことには、意味があります。</p>
+    </div>
+
+    <div class="aura-section aura-wood">
+        <p>彼のオーラも視ました。</p>
+
+        <p>彼のオーラは、優しい緑色。<br>
+        風に揺れる草花のような、しなやかさと芯の強さを併せ持っています。</p>
+
+        <p>彼の魂は、堅実で誠実。<br>
+        表面的な関係より、本当の自分を理解してくれる人を求めています。</p>
+
+        <p>彼には金のオーラが足りていません。<br>
+        決断力が弱く、優柔不断になりやすい面がある。</p>
+
+        <div class="aura-chart-container">
+            <div class="aura-chart-title">彼の現状オーラ</div>
+            <canvas id="auraChartPartner"></canvas>
+        </div>
+
+        <p>そして彼は今、内省の時期。<br>
+        兵役という転機を前に、「アイドルではない自分」と向き合おうとしている。</p>
+
+        <p>つまり、彼を一人の男性として見たいと願うあなたの想いは、<br>
+        「本当の自分を見てほしい」という彼の願いと、重なっているのです。</p>
+
+        <div class="aura-chart-container">
+            <div class="aura-chart-title">金のオーラを補った後</div>
+            <canvas id="auraChartPartnerFixed"></canvas>
+        </div>
+
+        <div class="aura-result-box">
+            <p class="aura-result-title">でも、金のオーラを補うと…</p>
+            <p>決断力が生まれ、<br>
+            「本当の自分を見てくれる人」を<br>
+            見極める力が高まる。<br>
+            あなたの温かさに、気づきやすくなる。</p>
+        </div>
+
+        <p>今、彼の目にはあなたのオーラに霧がかかって見えています。<br>
+        でも、水のオーラを整えたあなたは、<br>
+        彼の目に全く違う印象で映るようになります。</p>
+
+        <p>あなたが変われば、彼も気づき始める。</p>
+    </div>
+
+    <h2>🔮 彼の心を動かす言葉</h2>
+
+    <p>ここからは、彼の心に届く具体的な言葉をお伝えします。</p>
+
+    <p>コメントを送るタイミングは、<strong>4月から5月</strong>にかけてが良いでしょう。<br>
+    水のオーラがあなたに巡り始め、言葉が自然と出てくる時期です。</p>
+
+    <p>送る言葉の例をいくつかお伝えします。</p>
+
+    <div class="magic-word-box">「今日も一日お疲れ様でした。ゆっくり休んでくださいね」</div>
+
+    <p>労いの言葉は、彼の心に染み込みます。</p>
+
+    <div class="magic-word-box">「〇〇の曲、最近ずっと聴いています。あの歌詞の△△という部分が特に好きです」</div>
+
+    <p>彼は深く理解されたい人。<br>
+    具体的に「どこが好きか」を伝えると、他のファンと差がつきます。</p>
+
+    <div class="magic-word-box">「あなたの音楽に出会えて、私の毎日が少し明るくなりました。ありがとう」</div>
+
+    <p>ストレートで正直な言葉が、彼には響きます。</p>
+
+    <p>もしライブやイベントで会える機会があったら。</p>
+
+    <p>穏やかに微笑むこと。<br>
+    彼は繊細なので、圧が強いと引いてしまいます。</p>
+
+    <p>短く、でも心のこもった言葉を伝えること。</p>
+
+    <div class="magic-word-box">「無理しないでくださいね」</div>
+
+    <p>この一言は、彼の心に深く届きます。</p>
+
+    <h3>【言ってはいけない言葉】</h3>
+
+    <p>「いつ会えますか？」<br>
+    これは彼にはプレッシャーになります。</p>
+
+    <p>「私だけを見て」<br>
+    彼の仕事を否定することになってしまいます。</p>
+
+    <p>「なんで返事くれないの？」<br>
+    責められると、彼は閉じてしまいます。</p>
+
+    <p>ただし、一つだけ知っておいてほしいことがあります。</p>
+
+    <p>これらの言葉は、あなたのオーラが整った状態で初めて、本来の力を発揮します。</p>
+
+    <p>今のまま、水のオーラが足りない状態で動くと、<br>
+    言葉が上滑りしてしまったり、<br>
+    タイミングを逃してしまう可能性がある。</p>
+
+    <p>だから、まずはオーラを整えること。<br>
+    それが、全ての土台になります。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <p>2026年は火のオーラが強い年。<br>
+    あなた本来の輝きが最大限に発揮される年です。</p>
+
+    <p>そして、二人の運命が最も近づく時期。<br>
+    それが<strong>6月</strong>です。</p>
+
+    <p>ここからは、3月から8月まで、<br>
+    月ごとの流れと、やるべきこと、気をつけることをお伝えします。</p>
+
+    <h3>【3月】準備の月</h3>
+
+    <p>今月は、金のオーラが強く巡る月。<br>
+    あなたはもともと金のオーラが強いので、<br>
+    この月は特に「自分を責める声」が大きくなりやすい時期です。</p>
+
+    <p><strong>やるべきこと。</strong><br>
+    ・彼の音楽をじっくり聴いて、好きな歌詞やフレーズを見つけておく<br>
+    ・コメントで伝えたい言葉を心の中で整理しておく</p>
+
+    <p><strong>気をつけること。</strong><br>
+    ・自分を責める声に引っ張られない<br>
+    ・焦ってコメントを送りすぎない（今月は準備期間）</p>
+
+    <p>この月は、4月からの転換期に向けて、心を整える時期です。</p>
+
+    <h3>【4月】始まりの月 ◎重要</h3>
+
+    <p>4月。あなたの人生が大きく動き始める月です。</p>
+
+    <p>この月から、水のオーラがあなたに巡り始めます。<br>
+    今まで足りなかった水のオーラが、ようやく補われ始めます。</p>
+
+    <p><strong>やるべきこと。</strong><br>
+    ・「新しい自分」として、コメントを送り始める<br>
+    ・彼への想いを、短くても良いので言葉にして伝える</p>
+
+    <p><strong>気をつけること。</strong><br>
+    ・急に変わろうとしすぎない（焦りは禁物）<br>
+    ・彼からの反応を期待しすぎない（まだ準備段階）</p>
+
+    <p>この月に感じる「何かが変わり始めている」という感覚は、<strong>本物</strong>です。</p>
+
+    <h3>【5月】整える月 ◎重要</h3>
+
+    <p>5月は、水と火の両方のオーラが巡る月。<br>
+    感情の流れと情熱のバランスが整い、6月に向けて準備が完成に近づきます。</p>
+
+    <p><strong>やるべきこと。</strong><br>
+    ・彼への想いを整理しておく（何を伝えたいか、どんな言葉が自分らしいか）<br>
+    ・6月に向けて、韓国旅行やライブのチケットを確認する</p>
+
+    <p><strong>気をつけること。</strong><br>
+    ・6月を前に焦って動きすぎない<br>
+    ・「来月がチャンス」と気負いすぎない（自然体が大切）</p>
+
+    <p>この月は、6月への最終準備です。</p>
+
+    <h3>【6月】運命の交差点 ★最重要</h3>
+
+    <p><strong>6月。</strong><br>
+    あなたと彼の運命が、最も近づく月です。</p>
+
+    <p>この月、あなたには木と火のオーラが巡り、<br>
+    彼にも同じく木と火のオーラが巡ります。</p>
+
+    <p>二人の魂が同じ波長になる、<strong>特別な時期</strong>。<br>
+    このタイミングで送るあなたの言葉は、<br>
+    いつもより深く、彼の心に届きます。</p>
+
+    <p>この月は火のオーラで彼の心が開きやすくなっています。<br>
+    あなたの言葉を受け取る準備ができている時期なのです。</p>
+
+    <p><strong>やるべきこと。</strong><br>
+    ・心のこもったコメントを送る（具体的に、彼のどこが好きかを伝える）<br>
+    ・ライブやイベントがあれば参加を検討する<br>
+    ・もし会える機会があれば、短く心のこもった言葉を伝える</p>
+
+    <p><strong>気をつけること。</strong><br>
+    ・焦って結果を求めない（圧をかけると引いてしまう）<br>
+    ・長文を送りすぎない</p>
+
+    <p>この月を、オーラが整った状態で迎えること。<br>
+    それが、この半年で<strong>最も大切なこと</strong>です。</p>
+
+    <h3>【7月】育てる月</h3>
+
+    <p>7月は、木と土のオーラが巡る月。<br>
+    6月の熱が落ち着き、安定期に入ります。</p>
+
+    <p>この月は、関係を焦らず育てる時期。<br>
+    6月に送った言葉が、静かに彼の心に根を張る時期でもあります。</p>
+
+    <p><strong>やるべきこと。</strong><br>
+    ・コメントを続ける（頻度は無理のない範囲で）<br>
+    ・6月に伝えたことと一貫性のある言葉を選ぶ<br>
+    ・地に足をつけて、日常を大切に過ごす</p>
+
+    <p><strong>気をつけること。</strong><br>
+    ・6月の反応がなかったからといって諦めない<br>
+    ・逆に、反応があったからといって舞い上がりすぎない<br>
+    ・彼の兵役が近づいているので、プレッシャーになる言葉は避ける</p>
+
+    <p>この月は、静かに、でも確実に関係が育っていく時期。<br>
+    焦らず、穏やかに過ごしてください。</p>
+
+    <h3>【8月】想いを届ける月</h3>
+
+    <p>8月は、火と金のオーラが巡る月。<br>
+    あなた本来の火のオーラが輝きやすい時期です。</p>
+
+    <p><strong>やるべきこと。</strong><br>
+    ・コメントに情熱を込めて良い時期。自分らしさを発揮する<br>
+    ・彼の兵役が近い場合、「待っています」という想いを伝える</p>
+
+    <p><strong>気をつけること。</strong><br>
+    ・「兵役中に忘れられるかも」という不安に引っ張られない<br>
+    ・焦って大きなアクションを起こさない</p>
+
+    <p><strong>「待っています」</strong>という言葉は、彼の心に深く残ります。</p>
+
+    <h3>【1年後の未来】</h3>
+
+    <p>オーラを整えたあなたは、彼にとって「数多くのファンの一人」ではなく、<br>
+    <strong>「心に残る存在」</strong>として、より深く認知されているでしょう。</p>
+
+    <p>彼が兵役中、数えきれないファンの中で、<br>
+    「あの人のコメントは温かかった」と思い出す存在。</p>
+
+    <p>それが、1年後のあなたの姿として視えています。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <p>まず、今日からできることをお伝えしますね。</p>
+
+    <h3>【水のオーラを補う方法】</h3>
+
+    <p>・青や黒を身につける（アクセサリー、服、小物）<br>
+    ・水を意識的に飲む<br>
+    ・お風呂にゆっくり浸かる<br>
+    ・水辺を歩く（川、海、噴水のある公園）<br>
+    ・韓国旅行で海辺や川辺を訪れる</p>
+
+    <h3>【金のオーラを鎮める方法】</h3>
+
+    <p>・赤い服を着る<br>
+    ・朝日を浴びる<br>
+    ・温かいものを食べる・飲む<br>
+    ・自分を責めそうになったら「大丈夫」と声に出す</p>
+
+    <h3>【毎日の心がけ】</h3>
+
+    <p>朝、「今日も彼を想う自分を許す」と心の中で唱えてください。<br>
+    夜、おやすみメッセージを送る時、「届いていなくても大丈夫」と自分に言い聞かせてください。</p>
+
+    <h3>【気をつけてほしいこと】</h3>
+
+    <p>・「いい年して」と自分を責めない<br>
+    ・「迷惑かも」と想いを押し込めない<br>
+    ・結果を急がない</p>
+
+    <p>ただ、正直にお伝えしたいことがあります。</p>
+
+    <p>水のオーラが足りていない場合、<br>
+    日常の調整だけでは補いきれない部分があります。</p>
+
+    <p>水を飲む、色を身につける。<br>
+    これらは「維持する力」にはなりますが、<br>
+    ゼロから補う力としては、どうしても限界がある。</p>
+
+    <p>もし本気でオーラを整えたいなら、<br>
+    もう一つ、お伝えしたい方法があります。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>ここまでお伝えしてきた通り、<br>
+    リカ様のオーラには水のオーラが足りていません。</p>
+
+    <p>これが今の状況の根っこにある原因であり、<br>
+    <strong>6月のチャンス</strong>を掴むために、最も整えるべき部分です。</p>
+
+    <p>水のオーラが整うと、<br>
+    ・彼へのコメントに自然な温かみが宿る<br>
+    ・「届いていないかも」という不安が和らぐ<br>
+    ・想いを言葉にする力が高まる<br>
+    ・彼があなたのコメントを読んだ時、心に残りやすくなる<br>
+    ・自分を責める声が静まり、穏やかに待てるようになる</p>
+
+    <p>日常の調整法に加えて、<br>
+    本格的にオーラを補うために、<br>
+    パワーストーンをお守りとして取り入れる方法があります。</p>
+
+    <p>リカ様のオーラに合わせて、<br>
+    三つのプランをご用意しました。</p>
+
+    <div class="important-box">
+        <p><strong>●松プラン</strong>（彼との距離を本気で縮めたい方向け）<br>
+        水のオーラを本格的に補い、金のオーラを鎮める石の組み合わせ。<br>
+        ・コメントに心からの温かみが宿る<br>
+        ・「年齢」「立場」への囚われが薄れる<br>
+        ・彼の心に届く言葉が自然と出てくる</p>
+
+        <p><strong>●竹プラン</strong>（心を安定させたい方向け）<br>
+        水のオーラを補う石の組み合わせ。<br>
+        ・不安が和らぎ、穏やかに待てるようになる</p>
+
+        <p><strong>●梅プラン</strong>（まずは自分を責める声を静めたい方向け）<br>
+        最も必要な石を1つ。<br>
+        ・「いい年して」という声が静まる</p>
+
+        <p>多くの方が松プランを選ばれています。<br>
+        6月に向けて今から整え始めることで、<br>
+        最も効果的なタイミングでオーラが整います。</p>
+
+        <p>もし興味がありましたら、<br>
+        「詳細希望」とだけ送っていただければ、<br>
+        リカ様専用の石の組み合わせをお伝えしますね。</p>
+    </div>
+
+    <h2>最後に</h2>
+
+    <p>このまま、自分を責めながらコメントを送り続けることもできます。<br>
+    でも、オーラを整えて、6月のチャンスを掴む道もあります。</p>
+
+    <p>どちらを選ぶかは、リカ様次第です。</p>
+
+    <p>一つだけ、確かなことがあります。</p>
+
+    <p><strong>あなたの想いは、本物です。</strong><br>
+    年齢も、立場も、関係ない。<br>
+    彼を想う気持ちに、恥じることは何もありません。</p>
+
+    <p>お父様が見せてくれた服のコーディネート。<br>
+    お線香の香り。<br>
+    それは、あなたの想いを応援しているサインかもしれません。</p>
+
+    <p>6月。<br>
+    オーラを整えたあなたが、彼の曲を聴きながら<br>
+    心のこもったコメントを送っている姿が視えます。</p>
+
+    <p>そして彼が、数えきれないコメントの中で、<br>
+    あなたの言葉に目を止める瞬間。</p>
+
+    <p>「この人の言葉は、いつも温かい」</p>
+
+    <p>そう感じている彼の姿が、視えています。</p>
+
+    <p>その未来へ、一歩ずつ。<br>
+    いつでも傍で見守っています。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+<script>
+// チャート共通設定
+const chartOptions = {
+    responsive: true,
+    plugins: {
+        legend: { display: false }
+    },
+    scales: {
+        r: {
+            beginAtZero: true,
+            max: 3,
+            min: 0,
+            ticks: {
+                stepSize: 1,
+                display: false
+            },
+            pointLabels: {
+                font: { size: 14, family: 'Noto Serif JP' },
+                color: '#2d2d2d'
+            },
+            grid: { color: 'rgba(201, 160, 93, 0.3)' },
+            angleLines: { color: 'rgba(201, 160, 93, 0.3)' }
+        }
+    }
+};
+
+// リカ様の現状オーラ [木1, 火1, 土1, 金3, 水0]
+new Chart(document.getElementById('auraChartYou'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [{
+            data: [1, 1, 1, 3, 0],
+            backgroundColor: 'rgba(201, 160, 93, 0.3)',
+            borderColor: '#c9a05d',
+            borderWidth: 2,
+            pointBackgroundColor: '#c9a05d',
+            pointBorderColor: '#fff',
+            pointRadius: 5
+        }]
+    },
+    options: chartOptions
+});
+
+// リカ様：水を補った後
+// 水を補う → 水2、水の隣接（金3, 木1を持ってる）
+new Chart(document.getElementById('auraChartYouFixed'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [
+            {
+                // 補う部分（緑）
+                data: [1, 0, 0, 3, 2],
+                backgroundColor: 'rgba(100, 180, 100, 0.4)',
+                borderColor: '#5a9a5a',
+                borderWidth: 2,
+                pointBackgroundColor: '#5a9a5a',
+                pointBorderColor: '#fff',
+                pointRadius: 6
+            },
+            {
+                // 元のオーラ（ゴールド）
+                data: [1, 1, 1, 3, 0],
+                backgroundColor: 'rgba(201, 160, 93, 0.3)',
+                borderColor: '#c9a05d',
+                borderWidth: 2,
+                pointBackgroundColor: '#c9a05d',
+                pointBorderColor: '#fff',
+                pointRadius: 5
+            }
+        ]
+    },
+    options: chartOptions
+});
+
+// 彼の現状オーラ [木2, 火1, 土2, 金0, 水1]
+new Chart(document.getElementById('auraChartPartner'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [{
+            data: [2, 1, 2, 0, 1],
+            backgroundColor: 'rgba(139, 111, 156, 0.3)',
+            borderColor: '#8b6f9c',
+            borderWidth: 2,
+            pointBackgroundColor: '#8b6f9c',
+            pointBorderColor: '#fff',
+            pointRadius: 5
+        }]
+    },
+    options: chartOptions
+});
+
+// 彼：金を補った後
+// 金を補う → 金2、金の隣接（土2, 水1を持ってる）
+new Chart(document.getElementById('auraChartPartnerFixed'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [
+            {
+                // 補う部分（緑）
+                data: [0, 0, 2, 2, 1],
+                backgroundColor: 'rgba(100, 180, 100, 0.4)',
+                borderColor: '#5a9a5a',
+                borderWidth: 2,
+                pointBackgroundColor: '#5a9a5a',
+                pointBorderColor: '#fff',
+                pointRadius: 6
+            },
+            {
+                // 元のオーラ（紫）
+                data: [2, 1, 2, 0, 1],
+                backgroundColor: 'rgba(139, 111, 156, 0.3)',
+                borderColor: '#8b6f9c',
+                borderWidth: 2,
+                pointBackgroundColor: '#8b6f9c',
+                pointBorderColor: '#fff',
+                pointRadius: 5
+            }
+        ]
+    },
+    options: chartOptions
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>まる様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('強い火.png'); }
+        .aura-wood::before { background-image: url('強い木.png'); }
+        .aura-earth::before { background-image: url('強い土.png'); }
+        .aura-metal::before { background-image: url('強い金.jpg'); }
+        .aura-water::before { background-image: url('強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #c9a05d;
+            font-weight: 600;
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: #ffffff !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.1;
+            }
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">まる様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>まる様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>まる様</p>
+
+    <p>この度は本鑑定にお進みいただき、<br>
+    本当にありがとうございます。</p>
+
+    <p>「なんで返事してくれないんだろう」<br>
+    「SNSにはイイネをくれるのに、なんで…」<br>
+    「バレンタイン、渡せなくて…どうしたらいい」</p>
+
+    <p>その想い、痛いほど伝わってきます。</p>
+
+    <p>お互いに既婚者という、簡単には語れない関係の中で、<br>
+    2年間ずっと想い続けてこられたのですね。<br>
+    その気持ちは、何も恥ずかしいことではありません。</p>
+
+    <p>まず、まる様が一番知りたいこと。<br>
+    はっきりとお伝えしますね。</p>
+
+    <p>彼の気持ちは、今も消えていません。</p>
+
+    <p>既読無視は「冷めたサイン」ではありません。<br>
+    彼は今、自分の人生全体を見直す大きな<strong>転換期</strong>に入っています。<br>
+    まる様への想いと、今守っているものの狭間で、<br>
+    身動きが取れなくなっている——それが、視えるのです。</p>
+
+    <p>「踏み込んだら戻れない」という怖さが、彼を止めています。<br>
+    あなたへの気持ちが強いからこそ、今は動けずにいる。<br>
+    そういうことなのです。</p>
+
+    <p>なぜここまで状況が止まってしまったのか。<br>
+    その根っこにある原因が、あなたのオーラの中にはっきりと視えています。</p>
+
+    <h2>🔮 二人の間に起きていること</h2>
+
+    <h3>【あなたのオーラと本質】</h3>
+
+    <div class="aura-section aura-water">
+        <p>まる様のオーラは、深い青の光。<br>
+        大海のように広く、全てを受け止める力を持つオーラです。<br>
+        一度大切に思った人を手放せない深い愛情と誠実さが、<br>
+        あなたの<strong>魂</strong>の核にあります。</p>
+
+        <p>そして、大切なことが視えてきました。<br>
+        あなたのオーラには、火のオーラが完全に欠けています。<br>
+        さらに、金のオーラも欠けているのです。</p>
+
+        <p>これが今の状況の根っこにある原因です。</p>
+
+        <p>この2つが欠けているとき、<br>
+        人は想いがあっても言葉にならず、<br>
+        チャンスが目の前にあっても足が止まり、<br>
+        「どうすればいいのか」という霧の中を、<br>
+        一人で歩き続けることになります。</p>
+
+        <p>今の状況が動かないのは、<br>
+        あなたの気持ちや努力が足りないからではありません。</p>
+
+        <p>ただ、火と金のオーラが欠けている——それだけのことなのです。<br>
+        逆に言えば、この2つさえ整えば、霧は晴れ始めます。</p>
+
+        <p>また、水のオーラが強すぎるため、<br>
+        SNSのリアクションを一つひとつ細かく読み込んでしまったり、<br>
+        「どうせ無理かも」という不安が膨らみやすくなっています。</p>
+
+        <p>あなたの<strong>魂</strong>には鋭い感性と独特の表現力があって、<br>
+        安心できる場では自然と輝けるのです。</p>
+
+        <p>今は成長のオーラが流れ込む時期ですが、<br>
+        火と金が欠けているため、<br>
+        その輝きがまだ十分に外へ出せていない状態なのです。</p>
+    </div>
+
+    <h3>【彼のオーラと今の状態】</h3>
+
+    <div class="aura-section aura-wood">
+        <p>彼のオーラは、深い緑の光がまっすぐに伸びています。<br>
+        大木のように根を張って、<br>
+        一度惹かれた人を軽く切り捨てられない誠実さと、<br>
+        与えたい・楽しませたいという温かさが彼の<strong>魂</strong>の核にあります。</p>
+
+        <p>彼は今、人生のリセット期にいます。<br>
+        ゼロから自分の方向性を問い直している時期なのです。<br>
+        まる様への想いと守りたい現実の狭間で、<br>
+        本音を内側にしまい込んでいる状態です。</p>
+
+        <p>今、彼の目にはあなたのオーラに霧がかかって見えています。<br>
+        でも、火と金のオーラを整えたあなたは、<br>
+        彼の目に全く違う印象で映るようになります。</p>
+    </div>
+
+    <h2>🔮 彼の心を動かす道筋</h2>
+
+    <p>今すぐ動こうとしなくていいのです。<br>
+    3〜4月は自分を整える期間。<strong>5月</strong>に、最初の一歩を踏み出してください。</p>
+
+    <h3>【最初の一言（5月頃）】</h3>
+
+    <div class="magic-word-box">「先日インフルエンザになってしまって、
+お渡しできなかったんですが…
+気持ちだけでも受け取ってもらえますか☺」
+
+または
+
+「○○さんと話すと、なんか安心するんですよね。
+また飲み会、楽しみにしてます」</div>
+
+    <p>彼の<strong>魂</strong>には「<strong>安定</strong>」と「誠実さ」が根を張っています。<br>
+    だから「一緒にいると安心する」<br>
+    「あなたといると、自分らしくいられる気がする」<br>
+    という言葉は、<br>
+    重さを持たずに彼の<strong>本質</strong>へまっすぐ届くのです。</p>
+
+    <p>反対に、「なんで返事くれないの」<br>
+    「私のことどう思ってるの」という言葉は、<br>
+    今リセット期にいる彼を追い詰め、<br>
+    さらに壁を作る原因になります。</p>
+
+    <p>会った時は、明るく自然に。<br>
+    楽しかった記憶を話題にしてください。</p>
+
+    <p>重さを感じると固まる彼には、<br>
+    軽やかでいることがあなたの最大の魅力になります。</p>
+
+    <p>ただし、これらの言葉と行動は、<br>
+    あなたのオーラが整った状態で初めて本来の力を発揮します。<br>
+    まず、オーラを整えること——それが全ての土台です。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <p>今のあなたには成長のオーラが強く流れ込んでいます。<br>
+    <strong>2026年</strong>は火のオーラが強く巡る年です。<br>
+    眠っていた情熱と行動力が、<br>
+    じわじわと<strong>目覚め</strong>始めています。</p>
+
+    <p>彼も今年、火のオーラの影響を受けて、<br>
+    リセット期にある中で「何かを選ぼう」という<br>
+    エネルギーが動き始めています。</p>
+
+    <p>あなたと彼の<strong>運命</strong>が最も近づく時期<br>
+    ——それが<strong>2026年6月</strong>です。</p>
+
+    <p>この月、あなたには火のオーラが最大限に巡り、<br>
+    彼には「動き出したい」エネルギーが高まります。<br>
+    バレンタインを取り返すなら、このタイミングが一番自然です。</p>
+
+    <h3>【これから半年の流れ】</h3>
+
+    <p><strong>3月・4月</strong>は、静かに自分を整える季節です。<br>
+    水と木のオーラが強まるこの時期は、<br>
+    不安が膨らみやすくなります。</p>
+
+    <p>でも今は、焦って動く時ではありません。<br>
+    ただ、自分の内側に向き合ってください。<br>
+    それだけで十分です。</p>
+
+    <p><strong>5月</strong>になると、火のオーラが初めて巡り始めます。</p>
+
+    <p>長い間眠っていた「前向きな気持ち」が、<br>
+    静かに<strong>目覚め</strong>始める月です。</p>
+
+    <p>彼への軽い連絡を一度入れてみてください。<br>
+    バレンタインの準備も、この月から始めておくといいでしょう。</p>
+
+    <p>そして<strong>6月</strong>——これが、二人の<strong>運命</strong>が最も近づく月です。</p>
+
+    <p>欠けていた火のオーラが最高潮に達し、<br>
+    まる様の本来の情熱・表現力・魅力が、<br>
+    ようやく全開になります。</p>
+
+    <p>彼の深い緑のオーラも、流れ込む火のオーラに燃やされて、<br>
+    「動き出したい」エネルギーが高まっていきます。</p>
+
+    <p>この月、笑顔で彼のそばにいてください。<br>
+    軽い言葉を添えて、バレンタインの代わりのプレゼントを<br>
+    そっと渡してください。</p>
+
+    <p>「一緒にいると安心する」と、<br>
+    自然な流れで伝えられたら、それで十分です。</p>
+
+    <p>重い話や将来の話は、まだしなくていい。<br>
+    返事を急かさなくていい。<br>
+    ただ、あなたが輝いていることが、何より大切なのです。</p>
+
+    <p>7月以降は、6月に動いた後の安定期です。<br>
+    相手の反応を焦らず、ゆっくりと待てる時期が訪れます。</p>
+
+    <p>6月のチャンスを逃さないために、<br>
+    オーラを整えた状態で6月を迎えてください。<br>
+    これが、この半年で<strong>最も大切</strong>なことです。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <p>1. <strong>火のオーラを補う</strong><br>
+    ・赤・オレンジ色の小物やアクセサリーを取り入れる<br>
+    ・毎朝5分、日光を浴びながら深呼吸をする<br>
+    ・キャンドルを灯してゆっくり過ごす時間を作る</p>
+
+    <p>2. <strong>金のオーラを補う</strong><br>
+    ・シルバーや金属のアクセサリーを身につける<br>
+    ・断捨離・部屋の整理整頓をする</p>
+
+    <p>3. <strong>水のオーラを鎮める</strong><br>
+    ・茶色・ベージュ系のアイテムを取り入れる<br>
+    ・SNSのリアクションチェックを1日1回と決める</p>
+
+    <p>朝「今日は自分らしく輝く」と心の中で1回だけ言うこと。<br>
+    夜「今日よかったこと」を1つだけ書くこと。<br>
+    この習慣が、不安な水のオーラをポジティブな方向に変えていきます。</p>
+
+    <h3>【正直にお伝えしたいこと】</h3>
+
+    <p>ここまでお伝えした調整法で、少しずつオーラは整い始めます。</p>
+
+    <p>ただ、正直にお伝えすると、<br>
+    火と金が完全に欠けている場合、<br>
+    日常の調整だけでは補いきれない部分があります。</p>
+
+    <p>赤い服を着る、金属を身につける——<br>
+    これらは「維持する力」にはなりますが、<br>
+    ゼロから補う力としては、どうしても限界があるのです。</p>
+
+    <p>もし本気でオーラを整えたいのであれば、<br>
+    もう一つお伝えしたい方法があります。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>まる様のオーラには火と金が欠けています。<br>
+    これが今の状況の根っこにある原因であり、<br>
+    <strong>6月</strong>のチャンスを掴むために<strong>最も</strong>整えるべき部分です。</p>
+
+    <p>火と金のオーラが整うと、<br>
+    ・職場で彼と2人になった時、自信を持って自然に笑えるようになる<br>
+    ・「バレンタイン、渡せてよかった」と思えるような、軽やかな一歩が踏み出せる<br>
+    ・彼のSNSリアクションに振り回されず、自分のペースを保てるようになる<br>
+    ・本来の魅力が開花して、彼の目に映るあなたが変わっていく<br>
+    ・「待つだけ」から「自分から動ける自分」に変わっていく</p>
+
+    <p>パワーストーンをお守りとして取り入れる方法があります。<br>
+    まる様のオーラに合わせて、三つのプランをご用意しました。</p>
+
+    <div class="important-box">
+        <h3>【プランのご案内】</h3>
+
+        <p><strong>松プラン：目標に本気で向き合いたい方向け</strong><br>
+        火を補うガーネット・カーネリアン＋金を補うクリスタル・ムーンストーン＋水を鎮めるタイガーアイの組み合わせ<br>
+        ・情熱と行動力が湧き、迷いがなくなり自分の気持ちに素直に動ける<br>
+        ・彼の目に映るあなたのオーラが変わっていく</p>
+
+        <p><strong>竹プラン：心を安定させたい方向け</strong><br>
+        火を補うガーネット・カーネリアン＋金を補うクリスタルの組み合わせ<br>
+        ・前向きな気持ちが戻り、一歩踏み出す感覚が生まれる</p>
+
+        <p><strong>梅プラン：まずは不安を和らげたい方向け</strong><br>
+        カーネリアン1点<br>
+        ・心の揺れが和らぎ、自分のペースを取り戻せる</p>
+
+        <p>多くの方が松プランを選ばれています。<br>
+        <strong>6月</strong>に向けて今から整え始めることで、<br>
+        <strong>最も</strong>効果的なタイミングでオーラが整います。</p>
+
+        <p>もし興味がありましたら、「詳細希望」とだけお送りください。<br>
+        まる様専用の石の組み合わせをお伝えします。</p>
+    </div>
+
+    <h2>最後に</h2>
+
+    <p>2年近く、ずっと想い続けてこられたのですね。<br>
+    それだけでも、十分すごいことです。</p>
+
+    <p>今、まる様には二つの道があります。<br>
+    このまま待ち続けるか、<br>
+    オーラを整えて、<strong>6月</strong>に自分から輝くか。</p>
+
+    <p>どちらを選ぶかは、まる様自身が決めること。<br>
+    でも、まる様の想いが<strong>本物の想い</strong>であることは、<br>
+    はっきりと視えています。</p>
+
+    <p>オーラを整えたまる様が、<strong>6月</strong>に彼のそばで自然に笑っている姿。<br>
+    そっと「気持ち、受け取ってください」と伝えた時、<br>
+    彼が「…ありがとう」と静かに、でも温かく受け取る瞬間。</p>
+
+    <p>その未来が、視えています。</p>
+
+    <p>どんな結果になっても、あなたの側に寄り添います。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>
