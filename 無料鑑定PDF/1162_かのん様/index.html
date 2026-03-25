@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>かのん様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", serif;
+            line-height: 2;
+            background: linear-gradient(180deg, #fdfcfa 0%, #f8f6f1 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        .recipient {
+            font-size: 28px;
+            font-weight: 300;
+            color: #8b7355;
+            letter-spacing: 10px;
+        }
+
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        h2 {
+            font-size: 17px;
+            font-weight: 500;
+            color: #8b7355;
+            letter-spacing: 2px;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 22px;
+            font-weight: 300;
+            color: #444;
+        }
+
+        strong {
+            color: #8b7355;
+            font-weight: 500;
+        }
+
+        .highlight {
+            color: #a67c94;
+        }
+
+        .intro {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(139, 115, 85, 0.04);
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        .intro p {
+            font-size: 16px;
+            line-height: 2.3;
+        }
+
+        .aura-visual {
+            margin: 30px -30px;
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+        }
+
+        .aura-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .aura-overlay-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: center;
+            padding: 30px;
+            width: 100%;
+        }
+
+        .aura-overlay-center p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .aura-visual.style-c::after {
+            display: none;
+        }
+        .aura-visual.style-c img {
+            opacity: 0.4;
+        }
+        .aura-visual.style-c .aura-overlay-center p {
+            color: #333;
+            font-weight: 900;
+            -webkit-text-stroke: 0.5px #333;
+        }
+        .aura-visual.style-c .aura-overlay-center strong {
+            color: #333;
+            -webkit-text-stroke: 0.5px #333;
+        }
+
+        .aura-visual.aura-wood .aura-overlay-center strong {
+            color: #1b5e20;
+            -webkit-text-stroke: 0.5px #1b5e20;
+        }
+
+        .aura-visual.aura-water .aura-overlay-center strong {
+            color: #1565c0;
+            -webkit-text-stroke: 0.5px #1565c0;
+        }
+
+        .aura-visual.style-f::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+        }
+        .aura-visual.style-f .aura-overlay-center p {
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.9);
+        }
+        .aura-visual.style-f .aura-overlay-center strong {
+            color: #ffd700;
+        }
+
+        .cta-item {
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        .cta-item:last-child {
+            border-bottom: none;
+        }
+
+        .cta-item .title {
+            font-size: 18px;
+            color: #8b7355;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .cta-item .desc {
+            font-size: inherit;
+            color: #444;
+            font-weight: 300;
+            line-height: 2;
+        }
+
+        .urgent {
+            text-align: center;
+            padding: 50px 20px;
+            margin: 30px -30px;
+            background: #fff;
+            border-top: 1px solid #e5e0d5;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        .urgent-title {
+            font-size: 15px;
+            color: #8b7355;
+            margin-bottom: 25px;
+        }
+
+        .price-old {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .price-new {
+            font-size: 32px;
+            font-weight: 400;
+            color: #8b7355;
+            margin: 10px 0 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #8b7355;
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 45px;
+            border-radius: 2px;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .note {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .vision {
+            text-align: center;
+            padding: 60px 20px;
+            font-style: italic;
+            color: #666;
+        }
+
+        .sign {
+            text-align: right;
+            padding-top: 30px;
+            color: #8b7355;
+            font-size: 17px;
+            letter-spacing: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header class="header">
+        <div class="recipient">かのん様</div>
+    </header>
+
+    <div class="intro">
+        <p>霊視した瞬間、光が見えた。<br>
+        彼の魂が<strong>「まだあなたを想ってる」</strong>って。</p>
+        <p>そして、彼の心を動かす<br>
+        「本来のあなたの魅力」が解放されれば、<br>
+        温かい未来はやってきます。</p>
+    </div>
+
+    <section>
+        <p>かのん様</p>
+
+        <p>大切なお気持ちを、打ち明けてくださって<br>
+        ほんまにありがとうございます。</p>
+
+        <p>お互い気持ちがあるまま、別れた。<br>
+        「良かったら復縁しよう」って言ってくれた。</p>
+
+        <p>なのに、ブロックされた。</p>
+
+        <p>「なんで？」って、<br>
+        頭の中がぐるぐるしてる。</p>
+
+        <p>ほんまは「もう終わりなのかな」って、<br>
+        怖くてたまらへん。</p>
+    </section>
+
+    <section>
+        <h2>🔮 あなたのオーラ</h2>
+
+        <div class="aura-visual style-c aura-wood">
+            <img src="image/weak_wood.png" alt="木のオーラ">
+            <div class="aura-overlay-center">
+                <p>霊視した瞬間、<br>
+                <strong>自由に成長し続ける木のオーラ</strong>が視えた。</p>
+                <p>大木のように力強く、<br>
+                しっかりと根を張った緑。<br>
+                どんな環境でも上へ上へと伸びていく力がある。</p>
+            </div>
+        </div>
+
+        <p>ただ、不安になると自分を責めてしまう。</p>
+
+        <p>「私が何かしたのかな」って、<br>
+        答えのない問いをぐるぐる考えてしまう。</p>
+
+        <p>それは弱さやない。<br>
+        彼のことを本気で想ってるから、<br>
+        <span class="highlight">どうしても考えてしまう</span>。</p>
+
+        <p>今この状況にいるのは、あなたのせいやない。<br>
+        <strong>"ある理由"</strong>でオーラが弱くなってるだけ。</p>
+
+        <p>でも安心してください。<br>
+        ここさえ整えば、<br>
+        本来のあなたの魅力が覚醒して<br>
+        望む未来が近づいてきます。</p>
+    </section>
+
+    <section>
+        <h2>🔮 けんた様のオーラ</h2>
+
+        <div class="aura-visual style-c aura-water">
+            <img src="image/weak_water.png" alt="水のオーラ">
+            <div class="aura-overlay-center">
+                <p>彼を霊視した瞬間、<br>
+                <strong>激しくあふれる水のオーラ</strong>が視えた。</p>
+                <p>大海のように深く、<br>
+                止まらず流れ続ける水。<br>
+                感情の波が大きくて、一度溢れると自分でも止められへん。</p>
+            </div>
+        </div>
+
+        <p>彼の魂には今、<br>
+        内にこもるエネルギーがある。<br>
+        自分の気持ちを整理しようとしてる時期。</p>
+
+        <p>彼がブロックした理由、<br>
+        「復縁しよう」と言ったのに距離を取った理由。<br>
+        その矛盾の答えが視えた。</p>
+
+        <p>これは無料鑑定の範囲では<br>
+        お伝えしきれへん内容やから、<br>
+        本鑑定で丁寧にお伝えしたい。</p>
+
+        <p>ただ一つだけ、ここで言えることがある。</p>
+
+        <p><strong>ブロックされたことと、<br>
+        彼の気持ちがなくなったことは、<br>
+        イコールやない。</strong></p>
+
+        <p>彼は、忘れたくてブロックしたんやない。<br>
+        忘れられへんから、ブロックした。</p>
+
+        <p>そこだけは、はっきり視えてます。</p>
+    </section>
+
+    <section>
+        <h2>🔮 二つの未来</h2>
+
+        <div class="aura-visual style-f">
+            <img src="image/way.png" alt="二つの未来">
+            <div class="aura-overlay-center">
+                <p>このまま不安を抱えて待ち続けると、<br>
+                心が擦り減って、彼への想いまで濁ってしまう。</p>
+                <p>でも、<strong>ここで流れを変えたら。</strong></p>
+                <p>彼の心が動いて、<br>
+                <strong>もう一度あなたに向き合う日が来る。</strong></p>
+                <p>どちらの未来になるかは、<br>
+                <strong>あなたが変えられます。</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>✨ 答えを見つけるための道筋</h2>
+
+        <p>ここまでの鑑定で、今視えた事をお伝えしました。</p>
+
+        <p>でも、一番大事なのはここから。</p>
+
+        <p><strong>「じゃあ、具体的にどうすればいいのか」</strong></p>
+
+        <p>本鑑定では、あなたが実際に動ける<br>
+        <strong>"具体的な道筋"</strong>を視ていきます。</p>
+
+        <div style="margin-top: 35px;">
+            <div class="cta-item">
+                <div class="title">けんた様が今何を考えているのか</div>
+                <div class="desc">ブロックした本当の理由、今あなたをどう想っているのか。彼の心の奥を明らかにします。</div>
+            </div>
+
+            <div class="cta-item">
+                <div class="title">彼が動き出すタイミング</div>
+                <div class="desc">いつ頃、彼の気持ちが落ち着いて、あなたに連絡を取ろうとするのか。運命が動く時期を視ていきます。</div>
+            </div>
+
+            <div class="cta-item">
+                <div class="title">ブロック解除に繋がる道筋</div>
+                <div class="desc">待つべきか、動くべきか。どうすれば彼の心が開くのか。復縁への具体的な道を解き明かします。</div>
+            </div>
+        </div>
+
+        <p style="text-align: center; margin-top: 35px;">このまま分からないまま過ごすか、<br>
+        具体的な道筋を知った上で動くか。<br>
+        <strong>どちらを選ぶかは、あなた次第です。</strong></p>
+    </section>
+
+    <div class="urgent">
+        <div class="urgent-title">運命が動く24時間</div>
+
+        <p>今、あなたの運命は少しだけ前に動いています。</p>
+
+        <p>この鑑定書を読んで、<br>
+        「どうしよう」と考え始めたから。</p>
+
+        <p>でも、この流れはずっと続きません。<br>
+        何もせず元の生活に戻れば<br>
+        運命は動きを止めてしまいます。</p>
+
+        <p><strong>今から24時間。</strong><br>
+        ここで決断すれば、<br>
+        運命は一番スムーズに動きます。</p>
+
+        <div class="price-old">通常 20,000円</div>
+        <div class="price-new">¥9,800</div>
+
+        <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/68f73496c774eb3958b2ea5f" class="btn">本鑑定に進む</a>
+
+        <p class="note">お申し込み後、購入時のお名前をお知らせください。<br>
+        2日以内に、あなただけの鑑定書をお届けします。</p>
+    </div>
+
+    <div class="vision">
+        <p>私には視えてます。</p>
+
+        <p>あなたが答えを出して、<br>
+        本来の力を取り戻したとき。</p>
+
+        <p>自分の人生を、自分で歩いている姿が。</p>
+
+        <p><strong>「あの時、決断してよかった」</strong>って<br>
+        心から思える日が来る。</p>
+
+        <p>その未来への道、私が照らしますね。</p>
+    </div>
+
+    <div class="sign">
+        かな
+    </div>
+
+</div>
+
+</body>
+</html>

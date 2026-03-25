@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>あや様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", serif;
+            line-height: 2;
+            background: linear-gradient(180deg, #fdfcfa 0%, #f8f6f1 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        .recipient {
+            font-size: 28px;
+            font-weight: 300;
+            color: #8b7355;
+            letter-spacing: 10px;
+        }
+
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        h2 {
+            font-size: 17px;
+            font-weight: 500;
+            color: #8b7355;
+            letter-spacing: 2px;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 22px;
+            font-weight: 300;
+            color: #444;
+        }
+
+        strong {
+            color: #8b7355;
+            font-weight: 500;
+        }
+
+        .highlight {
+            color: #a67c94;
+        }
+
+        .intro {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(139, 115, 85, 0.04);
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        .intro p {
+            font-size: 16px;
+            line-height: 2.3;
+        }
+
+        /* オーラ画像 + テキストオーバーレイ */
+        .aura-visual {
+            margin: 30px -30px;
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+        }
+
+        .aura-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 中央オーバーレイ */
+        .aura-overlay-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: center;
+            padding: 30px;
+            width: 100%;
+        }
+
+        .aura-overlay-center p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        /* C案: 黒文字 + 画像の透明度 + 極太 */
+        .aura-visual.style-c::after {
+            display: none;
+        }
+        .aura-visual.style-c img {
+            opacity: 0.4;
+        }
+        .aura-visual.style-c .aura-overlay-center p {
+            color: #333;
+            font-weight: 900;
+            -webkit-text-stroke: 0.5px #333;
+        }
+        .aura-visual.style-c .aura-overlay-center strong {
+            color: #333;
+            -webkit-text-stroke: 0.5px #333;
+        }
+
+        /* 火: 赤 */
+        .aura-visual.aura-fire .aura-overlay-center strong {
+            color: #c62828;
+            -webkit-text-stroke: 0.5px #c62828;
+        }
+        /* 土: 茶色 */
+        .aura-visual.aura-earth .aura-overlay-center strong {
+            color: #5d4037;
+            -webkit-text-stroke: 0.5px #5d4037;
+        }
+
+        /* F案: 暗いオーバーレイ（明るい画像用） */
+        .aura-visual.style-f::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+        }
+        .aura-visual.style-f .aura-overlay-center p {
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.9);
+        }
+        .aura-visual.style-f .aura-overlay-center strong {
+            color: #ffd700;
+        }
+
+        /* 本鑑定 */
+        .cta-item {
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        .cta-item:last-child {
+            border-bottom: none;
+        }
+
+        .cta-item .title {
+            font-size: 18px;
+            color: #8b7355;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .cta-item .desc {
+            font-size: inherit;
+            color: #444;
+            font-weight: 300;
+            line-height: 2;
+        }
+
+        /* 24時間 */
+        .urgent {
+            text-align: center;
+            padding: 50px 20px;
+            margin: 30px -30px;
+            background: #fff;
+            border-top: 1px solid #e5e0d5;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        .urgent-title {
+            font-size: 15px;
+            color: #8b7355;
+            margin-bottom: 25px;
+        }
+
+        .price-old {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .price-new {
+            font-size: 32px;
+            font-weight: 400;
+            color: #8b7355;
+            margin: 10px 0 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #8b7355;
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 45px;
+            border-radius: 2px;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .note {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .vision {
+            text-align: center;
+            padding: 60px 20px;
+            font-style: italic;
+            color: #666;
+        }
+
+        .sign {
+            text-align: right;
+            padding-top: 30px;
+            color: #8b7355;
+            font-size: 17px;
+            letter-spacing: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header class="header">
+        <div class="recipient">あや様</div>
+    </header>
+
+    <div class="intro">
+        <p>霊視した瞬間、光が見えた。<br>
+        あなたの魂が<strong>「まだ本気を出してない」</strong>って。</p>
+        <p>そして、あなたの心を解放する<br>
+        「本来のあなたの力」が目覚めれば、<br>
+        新しい未来はやってきます。</p>
+    </div>
+
+    <section>
+        <p>あや様</p>
+
+        <p>大切なお気持ちを、打ち明けてくださって<br>
+        ほんまにありがとうございます。</p>
+
+        <p>3人の子どもを抱えながら、<br>
+        自分の力で立とうとしてる。</p>
+
+        <p>「私に本当にできるのか」って、<br>
+        誰にも言えないまま抱えてる。</p>
+
+        <p>不安より先に、怖さが来てる。<br>
+        失敗したら、子どもまで巻き込んでしまうかもって。</p>
+    </section>
+
+    <section>
+        <h2>🔮 あなたのオーラ</h2>
+
+        <div class="aura-visual style-c aura-fire">
+            <img src="image/weak_fire.png" alt="火のオーラ">
+            <div class="aura-overlay-center">
+                <p>霊視した瞬間、<br>
+                <strong>静かに揺れる火のオーラ</strong>が視えた。</p>
+                <p>ロウソクのように優しく、<br>
+                芯のある炎が灯ってる。<br>
+                とても美しいオーラを持ってる。</p>
+            </div>
+        </div>
+
+        <p>ただ、自分の感情が先に動いてしまう。</p>
+
+        <p>「これで大丈夫か」と確かめる前に、<br>
+        心が疲れてしまうことがある。</p>
+
+        <p>決断しようとするたびに、<br>
+        不安が先に来て、足が止まってしまう。<br>
+        「本当にこれでいいのか」って<br>
+        ぐるぐると考え続けてしまう。</p>
+
+        <p>それは、冷たさとは全く逆のもの。<br>
+        人の痛みをそのまま感じ取れる、<br>
+        <span class="highlight">あなたの深い共感力です</span>。</p>
+
+        <p>今この状況にいるのは、あなたのせいやない。<br>
+        <strong>"ある理由"</strong>でオーラが弱くなってるだけ。</p>
+
+        <p>でも安心してください。<br>
+        ここさえ整えば、<br>
+        本来のあなたの魅力が覚醒して<br>
+        望む未来が近づいてきます。</p>
+    </section>
+
+    <section>
+        <h2>🔮 あなたの魂が持つ力</h2>
+
+        <p>あなたの魂の奥に、<br>
+        人の心を動かす力が眠ってる。</p>
+
+        <p>言葉に感情を乗せて伝える力がある。<br>
+        相手の気持ちを瞬時に読み取る力がある。<br>
+        それが、あなたの一番の武器です。</p>
+
+        <p>「私には稼ぐ力があるのか」って聞いてくれたけど、<br>
+        <strong>ある。</strong></p>
+
+        <p>ほんまにある。</p>
+
+        <p>コツコツ数字を積み上げるタイプやなくて、<br>
+        人の心を動かして結果を出すタイプ。<br>
+        接客でも、言葉を使う仕事でも、<br>
+        人と関わる場所で力を発揮する魂を持ってる。</p>
+
+        <p>ただ、今はその力がまだ封じられてる。</p>
+
+        <p>封印が解けるタイミングがある。<br>
+        そのタイミングに合わせて動くことで、<br>
+        流れが一気に変わる。</p>
+
+        <p>新しいパートナーの縁も、仕事の縁も、<br>
+        今のあなたには両方視えてる。</p>
+
+        <p>「どの道で動けばいいか」<br>
+        「いつ動けばいいか」<br>
+        そこが一番肝心なところ。<br>
+        まだ誰にも言えてへんその答えを、<br>
+        本鑑定で丁寧に視ていきます。</p>
+
+        <p>道は、ちゃんとある。</p>
+    </section>
+
+    <section>
+        <h2>🔮 二つの未来</h2>
+
+        <div class="aura-visual style-f">
+            <img src="image/way.png" alt="二つの未来">
+            <div class="aura-overlay-center">
+                <p>このまま「どうせ私には無理」という気持ちを<br>
+                抱えたまま動けないと、<br>
+                せっかく灯った炎が消えてしまう。</p>
+                <p>でも、<strong>ここで流れを変えたら。</strong></p>
+                <p>あなたが本来の力を解放したとき、<br>
+                子どもたちの前で、<br>
+                <strong>堂々と自分の足で立っている姿がある。</strong></p>
+                <p>どちらの未来になるかは、<br>
+                <strong>あなたが変えられます。</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>✨ 答えを見つけるための道筋</h2>
+
+        <p>ここまでの鑑定で、今視えた事をお伝えしました。</p>
+
+        <p>でも、一番大事なのはここから。</p>
+
+        <p><strong>「じゃあ、具体的にどうすればいいのか」</strong></p>
+
+        <p>本鑑定では、あなたが実際に動ける<br>
+        <strong>"具体的な道筋"</strong>を視ていきます。</p>
+
+        <div style="margin-top: 35px;">
+            <div class="cta-item">
+                <div class="title">あなたが「人を動かす力」で稼げる仕事の正体</div>
+                <div class="desc">どんな分野で、どんな形で動けばあなたの力が一番活きるのか。魂が向かう道を解き明かします。</div>
+            </div>
+
+            <div class="cta-item">
+                <div class="title">新しいパートナーが現れる時期と、その人の特徴</div>
+                <div class="desc">援助を受けられる縁があるのか。いつ、どんな人と出会うのかを視ていきます。</div>
+            </div>
+
+            <div class="cta-item">
+                <div class="title">3人の子どもを抱えながら動き始める「最初の一手」</div>
+                <div class="desc">焦らず、でも確実に流れを変えるために今すべきことを明らかにします。</div>
+            </div>
+        </div>
+
+        <p style="text-align: center; margin-top: 35px;">このまま分からないまま過ごすか、<br>
+        具体的な道筋を知った上で動くか。<br>
+        <strong>どちらを選ぶかは、あなた次第です。</strong></p>
+    </section>
+
+    <div class="urgent">
+        <div class="urgent-title">運命が動く24時間</div>
+
+        <p>今、あなたの運命は少しだけ前に動いています。</p>
+
+        <p>この鑑定書を読んで、<br>
+        「どうしよう」と考え始めたから。</p>
+
+        <p>でも、この流れはずっと続きません。<br>
+        何もせず元の生活に戻れば<br>
+        運命は動きを止めてしまいます。</p>
+
+        <p><strong>今から24時間。</strong><br>
+        ここで決断すれば、<br>
+        運命は一番スムーズに動きます。</p>
+
+        <div class="price-old">通常 20,000円</div>
+        <div class="price-new">¥9,800</div>
+
+        <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/68f73496c774eb3958b2ea5f" class="btn">本鑑定に進む</a>
+
+        <p class="note">お申し込み後、購入時のお名前をお知らせください。<br>
+        2日以内に、あなただけの鑑定書をお届けします。</p>
+    </div>
+
+    <div class="vision">
+        <p>私には視えてます。</p>
+
+        <p>あなたが本来の力を取り戻して、<br>
+        自分の道を歩き始めたとき。</p>
+
+        <p><strong>「あの時、一歩踏み出してよかった」</strong>って<br>
+        心から笑っている姿が。</p>
+
+        <p>その未来への道、私が照らしますね。</p>
+    </div>
+
+    <div class="sign">
+        かな
+    </div>
+
+</div>
+
+</body>
+</html>
