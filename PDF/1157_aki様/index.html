@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aki様専用鑑定書</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../強い火.png'); }
+        .aura-wood::before { background-image: url('../強い木.png'); }
+        .aura-earth::before { background-image: url('../強い土.png'); }
+        .aura-metal::before { background-image: url('../強い金.png'); }
+        .aura-water::before { background-image: url('../強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #c9a05d;
+            font-weight: 600;
+        }
+
+        /* ===== レーダーチャート ===== */
+        .aura-chart-container {
+            width: 280px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            margin: 30px auto;
+        }
+
+        .aura-chart-title {
+            text-align: center;
+            font-size: 16px;
+            color: #8b6f9c;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== 結果ボックス ===== */
+        .aura-result-box {
+            background: linear-gradient(135deg, #f9f3ff 0%, #fff5fb 100%);
+            border: 2px solid #c9a0dc;
+            border-radius: 15px;
+            padding: 30px 35px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .aura-result-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .aura-result-box > p:last-child {
+            font-size: 17px;
+            line-height: 2.2;
+            margin-bottom: 0;
+        }
+
+        /* ===== リスト装飾 ===== */
+        ul {
+            margin-bottom: 25px;
+            padding-left: 1.5em;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: #ffffff !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">aki様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>aki様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>aki様</p>
+
+    <p>この度は本鑑定にお進みいただき、<br>
+    心より感謝申し上げます。</p>
+
+    <p>「結婚記念日に、なんで元カノと一緒にいたの」<br>
+    「三井さん、なんで急に関わらないでって言うの」<br>
+    「私の居場所って、どこにあるんだろう」</p>
+
+    <p>その想い、痛いほど伝わってきます。</p>
+
+    <p>誰かを責めたいわけやない。<br>
+    ただ、自分がどこに立っていいか分からへん。<br>
+    旦那さんにも、三井さんにも、かすかな感情が残ってる。<br>
+    だからこそ、余計に苦しい。</p>
+
+    <p>まず、aki様が一番知りたいこと。<br>
+    はっきりお伝えします。</p>
+
+    <p><strong>旦那さんの行動も、三井さんの言葉も、<br>
+    あなたのせいやない。</strong></p>
+
+    <p>旦那さんが元カノと山に行った理由。<br>
+    それは「浮気心」とは、ちょっと違うものが視えてる。</p>
+
+    <p>彼は今、自分の居場所を探してる。<br>
+    根っこがふわふわして、どこにも定まっていない。<br>
+    その不安定さが、「どこかに安心を求めたい」という行動になって出てしまった。</p>
+
+    <p>あなたを捨てて元カノを選んだんやない。<br>
+    自分自身が分からなくなって、確かめに行ってしまった。</p>
+
+    <p>三井さんの「関わらないで」も同じ。<br>
+    あなたを嫌いになったわけやない。</p>
+
+    <p>三井さんは今、自分を責めすぎてる。<br>
+    誰かに優しくする余裕がない。<br>
+    だから、一番近くにいたあなたを遠ざけることで、自分を守ろうとした。</p>
+
+    <p>つまり、あなたの居場所がなくなったんやない。<br>
+    周りが今、それぞれの問題で精一杯なだけ。</p>
+
+    <p>なぜこうなったのか。<br>
+    その原因は、あなたのオーラに視えています。</p>
+
+    <h2>🔮 二つの関係の真相</h2>
+
+    <div class="aura-section aura-fire">
+        <p>まず、あなたのオーラから。</p>
+
+        <p>無料鑑定でもお伝えした通り、<br>
+        あなたのオーラは<strong>真っ赤な太陽</strong>。<br>
+        燃え上がるように明るく、周りを照らす力を持ってる。</p>
+
+        <p>でも、さらに深く視ると、<br>
+        大切なことが視えてきました。</p>
+
+        <p>あなたのオーラには、<br>
+        <strong>金のオーラと水のオーラが足りていません。</strong></p>
+    </div>
+
+    <p>これが、今のあなたの状況の根っこにある原因です。</p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">aki様の現在のオーラバランス</div>
+        <canvas id="auraChartYou"></canvas>
+    </div>
+
+    <p><strong>金のオーラが欠けていることで、</strong></p>
+    <ul>
+        <li>自分の気持ちを整理できない</li>
+        <li>NOと言えず、相手に合わせすぎてしまう</li>
+        <li>決断を先延ばしにしてしまう</li>
+    </ul>
+
+    <p><strong>水のオーラが欠けていることで、</strong></p>
+    <ul>
+        <li>感情が硬直して、言葉にできない</li>
+        <li>相手との間に流れが生まれにくい</li>
+        <li>自分の居場所を感じられない</li>
+    </ul>
+
+    <p>つまり、旦那さんとの関係がぎくしゃくしてるのも、<br>
+    三井さんに距離を置かれてしまったのも、<br>
+    あなたの気持ちが足りないからでも、<br>
+    努力が足りないからでもない。</p>
+
+    <p><strong>金と水のオーラが欠けているから。</strong></p>
+
+    <p>逆に言えば、このオーラさえ整えば、<br>
+    霧は晴れ始めます。</p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">金と水のオーラを補うと…</div>
+        <canvas id="auraChartYouFixed"></canvas>
+    </div>
+
+    <div class="aura-result-box">
+        <p class="aura-result-title">金と水のオーラを補うと…</p>
+        <p>感情が自然と流れ始めて、<br>
+        素直に気持ちを表現できるようになる。<br>
+        「こうあるべき」から解放されて、<br>
+        旦那さんに柔らかく接することができる。</p>
+    </div>
+
+    <p>そして、あなたには火のオーラが強すぎる。<br>
+    これも大切なポイントです。</p>
+
+    <p>火が強すぎることで、<br>
+    誰かのために燃えすぎてしまう。<br>
+    気づいたら自分が灰になりかけてることがある。</p>
+
+    <p>旦那さんのことも、三井さんのことも、<br>
+    考えすぎて、感情的になりやすい。</p>
+
+    <p>水のオーラで火を鎮めることができれば、<br>
+    冷静に状況を見れるようになります。</p>
+
+    <hr>
+
+    <div class="aura-section aura-wood">
+        <p>次に、旦那さんのオーラ。</p>
+
+        <p>彼のオーラは<strong>深い緑</strong>。<br>
+        大木のように、どこまでも成長しようとする魂。</p>
+
+        <p>でも、根っこがふわふわしてる。</p>
+
+        <p>彼の魂には、外に刺激を求めやすい性質がある。<br>
+        社交的で器用な反面、八方美人になりやすい。<br>
+        優先順位が分からなくなることがある。</p>
+    </div>
+
+    <p>そして彼は今、揺れやすい時期にいます。<br>
+    本来の性質も繊細で揺れやすい上に、<br>
+    今の時期がさらに内省的な時期に入ってる。</p>
+
+    <p>自分のエネルギーを外に出しすぎて、疲弊してる。<br>
+    だから、元カノという「過去の自分」を確かめに行ってしまった。</p>
+
+    <p><strong>あなたを裏切ったんやない。<br>
+    自分自身を見失ってるだけ。</strong></p>
+
+    <hr>
+
+    <div class="aura-section aura-water">
+        <p>三井さんのオーラも視ました。</p>
+
+        <p>彼女のオーラは<strong>透明</strong>。<br>
+        雨のように優しく、人に染み込んでいく魂。</p>
+
+        <p>ただ今、その水が凍ってる。</p>
+
+        <p>彼には<strong>火のオーラが足りていなくて、<br>
+        金のオーラが強すぎる。</strong></p>
+    </div>
+
+    <p>これが何を意味するか。</p>
+
+    <p>情熱がない。前向きになれない。<br>
+    そして、自分を責めすぎてる。</p>
+
+    <p>「関わらないで」という言葉の裏に、<br>
+    彼自身の問題が視えてる。</p>
+
+    <p>彼は今、空回りして疲れてる。<br>
+    認められたいのに、うまくいかない。<br>
+    その苦しさを、あなたにぶつけてしまった。</p>
+
+    <p><strong>あなたを嫌いになったんやない。<br>
+    自分を守るために、一番近くにいたあなたを遠ざけた。</strong></p>
+
+    <p>今、彼は完全に閉じてる。<br>
+    無理に近づくと、さらに閉じてしまう。</p>
+
+    <h2>🔮 二人への具体的な向き合い方</h2>
+
+    <p>ここからは、旦那さんと三井さん、<br>
+    それぞれへの具体的な接し方をお伝えします。</p>
+
+    <h3>旦那さんへの接し方</h3>
+
+    <p>今すぐ話し合おうとしないでください。<br>
+    4月から6月は火のオーラが強すぎる時期。<br>
+    感情的になりやすく、言葉が上滑りしてしまう。</p>
+
+    <p><strong>動くなら、7月以降。</strong><br>
+    金のオーラが巡り始めて、冷静に話せるようになる。</p>
+
+    <p>連絡するなら、こんな言葉から。</p>
+
+    <div class="magic-word-box">「今日、帰り何時くらいになりそう？」</div>
+
+    <p>日常的な会話から入ること。<br>
+    彼は揺れやすい性質だから、急に深い話をされると逃げてしまう。</p>
+
+    <p>少し様子を見てから、</p>
+
+    <div class="magic-word-box">「この前テレビで山の特集やってた。最近行ってないなって思って」</div>
+
+    <p>元カノのことを責めずに、<br>
+    「一緒に行きたい」という気持ちを間接的に伝える。<br>
+    彼は察する力があるから、これで十分届く。</p>
+
+    <p>会った時は、責めないこと。<br>
+    <strong>「なんで元カノと行ったの？」は絶対NG。</strong><br>
+    追い詰めると、彼は閉じてしまう。</p>
+
+    <p>代わりに、「最近、疲れてない？」と聞いてみて。<br>
+    彼は自分を理解してほしい。心配されると、心が開く。</p>
+
+    <div class="magic-word-box">「あなたのこと、嫌いになったわけじゃないよ」
+「一緒にいて落ち着ける場所を作りたいな」</div>
+
+    <p>この言葉が、彼には一番響く。<br>
+    大木のオーラは、根を張る場所を求めてるから。</p>
+
+    <h3>三井さんへの接し方</h3>
+
+    <p><strong>今は待つ時期。</strong></p>
+
+    <p>彼は完全に閉じてる。<br>
+    無理に接触すると、さらに遠ざかってしまう。</p>
+
+    <p>ヨガ教室で会っても、軽く会釈だけ。<br>
+    追いかけない。理由も聞かない。</p>
+
+    <p>彼はプライドがある。<br>
+    無視されると傷つくけど、追われると逃げる。</p>
+
+    <p><strong>あなたが普通に過ごしてる姿を見せることが、一番の薬。</strong><br>
+    元気でいること。それだけでいい。</p>
+
+    <p>いつか話せる時が来たら、</p>
+
+    <div class="magic-word-box">「元気にしてる？」
+「あなたのペースでいいよ」</div>
+
+    <p>この言葉から始めて。</p>
+
+    <p>彼は急かされると反発する。<br>
+    待ってくれる人を、信頼する。</p>
+
+    <hr>
+
+    <div class="important-box">
+        <p>ただし、一つだけ知っておいてほしいことがあります。</p>
+
+        <p>これらの言葉や行動は、<br>
+        <strong>あなたのオーラが整った状態で初めて、本来の力を発揮します。</strong></p>
+
+        <p>金と水のオーラが欠けた状態で動くと、<br>
+        言葉が上滑りしてしまったり、<br>
+        タイミングを逃してしまう可能性がある。</p>
+
+        <p>だから、まずはオーラを整えること。<br>
+        それが、全ての土台になります。</p>
+    </div>
+
+    <h2>🔮 運命の転機</h2>
+
+    <p>あなたの運命を視ました。</p>
+
+    <p>今、あなたは揺れやすい時期に入っています。<br>
+    水と木のオーラが巡る時期なのに、<br>
+    2026年は火のオーラが強い年。</p>
+
+    <p>あなたの中で、火と水がぶつかり合ってる。<br>
+    だから感情が揺れやすくて、どこに立っていいか分からなくなってる。</p>
+
+    <p>でも、これは悪いことやない。<br>
+    <strong>「自分を見つめ直す時期」に入ってるだけ。</strong></p>
+
+    <p>旦那さんも、今は内省の時期。<br>
+    自信がなくて、消極的になってる。</p>
+
+    <p>二人とも「内に向かう時期」に入ってるから、<br>
+    すれ違いやすい。<br>
+    でも、お互いが自分を見つめ直す時期でもある。</p>
+
+    <p><strong>あなたと旦那さんの運命が最も近づく時期。<br>
+    それが8月です。</strong></p>
+
+    <p>この月、あなたには金のオーラが巡り始め、<br>
+    旦那さんには安定のオーラが巡ります。</p>
+
+    <p>二人とも冷静になれる時期。<br>
+    感情的にならずに、ちゃんと話し合える。</p>
+
+    <p>ただし、このチャンスを掴むには条件があります。<br>
+    <strong>それまでに、あなた自身のオーラを整えておくこと。</strong></p>
+
+    <h3>これから半年の流れ</h3>
+
+    <div class="important-box">
+        <h3>4月：火がさらに強まる月</h3>
+        <p>木と火のオーラが巡り、あなたの火がさらに燃え上がります。<br>
+        感情的になりやすく、言葉がきつくなりがち。</p>
+
+        <p><strong>やるべきこと：</strong></p>
+        <ul>
+            <li>自分を整えることに集中する</li>
+            <li>水をこまめに飲む、青い服を着る</li>
+            <li>感情的になりそうな時は一度その場を離れる</li>
+        </ul>
+
+        <p><strong>やってはいけないこと：</strong></p>
+        <ul>
+            <li>旦那さんに元カノの件を問い詰める</li>
+            <li>三井さんに連絡する</li>
+            <li>大きな決断をする</li>
+        </ul>
+
+        <p>この月は「準備期間」。<br>
+        動くのではなく、自分を整えることに専念してください。</p>
+    </div>
+
+    <div class="important-box">
+        <h3>5月：火が最も強い月</h3>
+        <p>火のオーラが頂点に達します。<br>
+        あなたの中の火が燃え盛り、燃え尽きやすい時期。</p>
+
+        <p><strong>やるべきこと：</strong></p>
+        <ul>
+            <li>意識的に休息を取る</li>
+            <li>お風呂にゆっくり浸かる（水で火を鎮める）</li>
+            <li>海や川など水辺に出かける</li>
+            <li>一人の時間を大切にする</li>
+        </ul>
+
+        <p><strong>やってはいけないこと：</strong></p>
+        <ul>
+            <li>旦那さんと深い話をしようとする</li>
+            <li>自分を追い込む、無理をする</li>
+            <li>SNSで三井さんの動向をチェックする</li>
+        </ul>
+
+        <p>旦那さんも今、自分のエネルギーを外に出しすぎて疲弊している時期。<br>
+        この月はお互いにクールダウンが必要です。</p>
+    </div>
+
+    <div class="important-box">
+        <h3>6月：安定感が出始める月</h3>
+        <p>まだ火は強いですが、土のオーラが入り始めて<br>
+        少しずつ地に足がつく感覚が戻ってきます。</p>
+
+        <p><strong>やるべきこと：</strong></p>
+        <ul>
+            <li>日常を丁寧に過ごす</li>
+            <li>旦那さんとの何気ない会話を大切にする</li>
+            <li>焦らず待つ姿勢を保つ</li>
+        </ul>
+
+        <p><strong>旦那さんとの接し方：</strong><br>
+        まだ深い話はしない。<br>
+        「今日、帰り何時くらいになりそう？」<br>
+        こんな日常的な会話から、少しずつ距離を縮めていく。</p>
+
+        <p>三井さんとは距離を保ったまま。<br>
+        ヨガ教室で会っても、軽く会釈だけ。<br>
+        追いかけない、理由も聞かない。</p>
+    </div>
+
+    <div class="important-box">
+        <h3>7月：金のオーラが巡り始める月</h3>
+        <p>ここから流れが変わります。<br>
+        あなたに足りていない「金」のオーラが巡り始め、<br>
+        少しずつ冷静さが戻ってきます。</p>
+
+        <p><strong>変化のサイン：</strong></p>
+        <ul>
+            <li>感情的になることが減る</li>
+            <li>「今すぐ決めなくていい」と思えるようになる</li>
+            <li>旦那さんの行動を冷静に見れるようになる</li>
+        </ul>
+
+        <p><strong>やるべきこと：</strong></p>
+        <ul>
+            <li>白や銀色の服を着る（金を補う）</li>
+            <li>シルバーのアクセサリーを身につける</li>
+            <li>整理整頓、断捨離をする</li>
+            <li>8月に向けて心の準備をする</li>
+        </ul>
+
+        <p>旦那さんへの連絡は、この月から解禁。<br>
+        ただし、まだ深い話はしない。<br>
+        日常的な会話を重ねて、安心感を与えることが大切。</p>
+    </div>
+
+    <div class="aura-result-box">
+        <p class="aura-result-title">8月：運命の交差点</p>
+        <p>あなたと旦那さんの運命が<br>
+        最も近づく月です。</p>
+    </div>
+
+    <p>この月、あなたには金のオーラが本格的に巡り、<br>
+    旦那さんには安定のオーラが巡ります。</p>
+
+    <p><strong>二人とも冷静になれる時期。</strong><br>
+    感情的にならずに、ちゃんと話し合える。</p>
+
+    <p><strong>この月に起こりうること：</strong></p>
+    <ul>
+        <li>旦那さんとの距離感が変わる</li>
+        <li>彼が家にいる時間が増える</li>
+        <li>穏やかな会話ができるようになる</li>
+        <li>話し合いができる雰囲気が生まれる</li>
+    </ul>
+
+    <p><strong>やるべきこと：</strong></p>
+    <ul>
+        <li>穏やかに日常を過ごす</li>
+        <li>旦那さんの様子を観察する（無理に動かない）</li>
+        <li>彼が話しかけてきたら、責めずに聞く</li>
+        <li>「最近、疲れてない？」と心配する言葉をかける</li>
+    </ul>
+
+    <p><strong>言ってはいけないこと：</strong></p>
+    <ul>
+        <li>「なんで元カノと行ったの？」（問い詰め）</li>
+        <li>「結婚記念日なのに」（罪悪感の刺激）</li>
+        <li>「もう信じられない」（信頼の否定）</li>
+    </ul>
+
+    <p>ただし、このチャンスを掴むには条件があります。<br>
+    <strong>それまでに、あなた自身のオーラを整えておくこと。</strong></p>
+
+    <h3>最重要月：9月</h3>
+
+    <div class="important-box">
+        <p>あなたに足りていない<strong>金のオーラが、最も強く巡る。</strong><br>
+        決断力、冷静さ、自分を律する力が得られる。</p>
+
+        <p>この月、今まで曖昧だったことに決断が下せる。<br>
+        旦那さんとの関係、三井さんとの関係、<br>
+        それぞれに対する自分の答えが見えてくる。</p>
+
+        <p><strong>やるべきこと：</strong></p>
+        <ul>
+            <li>自分の気持ちを整理する時間を取る</li>
+            <li>旦那さんと落ち着いて話す機会を作る</li>
+            <li>三井さんには距離を保ちつつ、自分は自分でいる</li>
+        </ul>
+
+        <p><strong>やってはいけないこと：</strong></p>
+        <ul>
+            <li>感情的に決断を急ぐこと</li>
+            <li>他人の意見に流されること</li>
+        </ul>
+
+        <p>この月は、自分の意志を大切にしてください。</p>
+    </div>
+
+    <p>9月を超えた先に、新しい景色が視えてきます。<br>
+    人間関係が整理されて、本当に大切なものが見えてくる。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <p>まず、今日からできることをお伝えしますね。</p>
+
+    <h3>金のオーラを補う</h3>
+    <ul>
+        <li>白や銀色の服、シルバーのアクセサリーを身につける</li>
+        <li>整理整頓、断捨離をする</li>
+        <li>深呼吸を意識する</li>
+    </ul>
+
+    <h3>水のオーラを補う</h3>
+    <ul>
+        <li>青や黒の服を取り入れる</li>
+        <li>水をこまめに飲む</li>
+        <li>お風呂にゆっくり浸かる</li>
+        <li>海や川など、水辺を歩く</li>
+    </ul>
+
+    <h3>火のオーラを鎮める</h3>
+    <ul>
+        <li>青い服を着る</li>
+        <li>感情的になったら一度離れる</li>
+        <li>「今すぐ決めなくていい」と自分に言い聞かせる</li>
+    </ul>
+
+    <h3>毎日の心がけ</h3>
+    <p>朝起きたら、「私は私の居場所を作れる」と心の中で唱えてみて。<br>
+    夜寝る前に、「今日も私は私でいられた」と思い出してみて。</p>
+
+    <h3>気をつけてほしいこと</h3>
+    <ul>
+        <li>旦那さんを問い詰めない</li>
+        <li>三井さんを追いかけない</li>
+        <li>自分を責めない</li>
+    </ul>
+
+    <p>ここまでお伝えした調整法で、<br>
+    少しずつオーラは整い始めます。</p>
+
+    <p>ただ、正直に言うと、<br>
+    金と水のオーラが足りていない場合、<br>
+    日常の調整だけでは補いきれない部分があります。</p>
+
+    <p>水を飲む、色を身につける。<br>
+    これらは「維持する力」にはなりますが、<br>
+    ゼロから補う力としては、どうしても限界がある。</p>
+
+    <p>もし本気でオーラを整えたいなら、<br>
+    もう一つ、お伝えしたい方法があります。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>ここまでお伝えしてきた通り、<br>
+    aki様のオーラには金と水が欠けています。</p>
+
+    <p>これが今の状況の根っこにある原因であり、<br>
+    8月・9月のチャンスを掴むために、最も整えるべき部分です。</p>
+
+    <p><strong>金と水のオーラが整うと、</strong></p>
+    <ul>
+        <li>旦那さんと向き合う時、感情に振り回されず冷静でいられる</li>
+        <li>「私はこう思う」と自分の意志を伝えられるようになる</li>
+        <li>三井さんとの距離感を、焦らずに保てるようになる</li>
+        <li>「私の居場所は私が作る」と思えるようになる</li>
+        <li>周りに振り回されず、自分の軸ができる</li>
+    </ul>
+
+    <p>日常の調整法に加えて、<br>
+    本格的にオーラを補うために、<br>
+    パワーストーンをお守りとして取り入れる方法があります。</p>
+
+    <p>aki様のオーラに合わせて、<br>
+    三つのプランをご用意しました。</p>
+
+    <div class="important-box">
+        <h3>松プラン</h3>
+        <p>金と水のオーラを本格的に補い、強すぎる火を鎮める組み合わせ。</p>
+        <ul>
+            <li>旦那さんとの話し合いで、冷静に自分の気持ちを伝えられる</li>
+            <li>9月の決断の時、迷わず自分の答えを出せる</li>
+            <li>燃え尽きずに、長く輝き続けられる</li>
+        </ul>
+
+        <h3>竹プラン</h3>
+        <p>金と水のオーラを補う組み合わせ。</p>
+        <ul>
+            <li>感情に流されず、自分を保てるようになる</li>
+        </ul>
+
+        <h3>梅プラン</h3>
+        <p>最も必要な金のオーラを補う石を一つ。</p>
+        <ul>
+            <li>まずは決断する力を取り戻す</li>
+        </ul>
+
+        <p>多くの方が松プランを選ばれています。<br>
+        8月に向けて今から整え始めることで、<br>
+        最も効果的なタイミングでオーラが整います。</p>
+
+        <p>もし興味がありましたら、<br>
+        「詳細希望」とだけ送っていただければ、<br>
+        aki様専用の石の組み合わせをお伝えしますね。</p>
+    </div>
+
+    <h2>最後に</h2>
+
+    <p>このまま「自分の居場所がない」と感じ続けるか。<br>
+    それとも、自分で居場所を作り始めるか。</p>
+
+    <p>aki様の想いは、本物です。<br>
+    旦那さんへのかすかな感情も、<br>
+    三井さんと友達でいたいという気持ちも、<br>
+    全部、本当のあなたの想い。</p>
+
+    <p>ただ、伝え方にズレがあっただけ。<br>
+    オーラに霧がかかっていただけ。</p>
+
+    <p>8月、旦那さんと穏やかに話せてる姿が視えてます。<br>
+    「最近、ちょっと変わったな」と彼が思ってる。<br>
+    あなたのオーラが整って、彼の目に違う印象で映ってる。</p>
+
+    <p>9月、自分の答えがはっきり見えてる姿が視えてます。<br>
+    「私はこうしたい」と迷わず言えてる。<br>
+    周りに振り回されない、自分の軸ができてる。</p>
+
+    <p><strong>その未来への道、私が照らしますね。</strong></p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+<script>
+// チャート共通設定
+const chartOptions = {
+    responsive: true,
+    plugins: {
+        legend: { display: false }
+    },
+    scales: {
+        r: {
+            beginAtZero: true,
+            max: 5,
+            min: 0,
+            ticks: {
+                stepSize: 1,
+                display: false
+            },
+            pointLabels: {
+                font: { size: 14, family: 'Noto Serif JP' },
+                color: '#2d2d2d'
+            },
+            grid: { color: 'rgba(201, 160, 93, 0.3)' },
+            angleLines: { color: 'rgba(201, 160, 93, 0.3)' }
+        }
+    }
+};
+
+// aki様の現状オーラチャート
+// 五行: 木1 火4 土1 金0 水0
+new Chart(document.getElementById('auraChartYou'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [{
+            data: [1, 4, 1, 0, 0],
+            backgroundColor: 'rgba(201, 160, 93, 0.3)',
+            borderColor: '#c9a05d',
+            borderWidth: 2,
+            pointBackgroundColor: '#c9a05d',
+            pointBorderColor: '#fff',
+            pointRadius: 5
+        }]
+    },
+    options: chartOptions
+});
+
+// aki様の補った後のオーラチャート
+// 金と水を補う
+// 金を補う → 金2、金の隣接（土1を持ってる）
+// 水を補う → 水2、水の隣接（木1を持ってる）
+// 緑のデータ: [木1, 火0, 土1, 金2, 水2]
+new Chart(document.getElementById('auraChartYouFixed'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [
+            {
+                // 補う部分（緑）※先に描画
+                data: [1, 0, 1, 2, 2],
+                backgroundColor: 'rgba(100, 180, 100, 0.4)',
+                borderColor: '#5a9a5a',
+                borderWidth: 2,
+                pointBackgroundColor: '#5a9a5a',
+                pointBorderColor: '#fff',
+                pointRadius: 6
+            },
+            {
+                // 元のオーラ（ゴールド）※後に描画（上に来る）
+                data: [1, 4, 1, 0, 0],
+                backgroundColor: 'rgba(201, 160, 93, 0.3)',
+                borderColor: '#c9a05d',
+                borderWidth: 2,
+                pointBackgroundColor: '#c9a05d',
+                pointBorderColor: '#fff',
+                pointRadius: 5
+            }
+        ]
+    },
+    options: chartOptions
+});
+</script>
+
+</body>
+</html>
