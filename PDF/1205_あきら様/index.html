@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>あきら様専用鑑定書</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('強い火.png'); }
+        .aura-wood::before { background-image: url('強い木.png'); }
+        .aura-earth::before { background-image: url('強い土.png'); }
+        .aura-metal::before { background-image: url('強い金.png'); }
+        .aura-water::before { background-image: url('強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* ===== レーダーチャート ===== */
+        .aura-chart-container {
+            width: 280px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            margin: 20px auto;
+        }
+
+        .aura-chart-title {
+            text-align: center;
+            font-size: 16px;
+            color: #8b6f9c;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .aura-result-box {
+            background: linear-gradient(135deg, #f9f3ff 0%, #fff5fb 100%);
+            border: 2px solid #c9a0dc;
+            border-radius: 15px;
+            padding: 30px 35px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .aura-result-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .aura-result-box > p:last-child {
+            font-size: 17px;
+            line-height: 2.2;
+            margin-bottom: 0;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+
+            .aura-chart-container {
+                width: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">あきら様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>あきら様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>あきら様</p>
+
+    <p>この度は本鑑定にお進みいただき、<br>
+    心より感謝申し上げます。</p>
+
+    <p>「彼女は僕のことをどう思ってるんだろう」<br>
+    「モテる人だから、他にいい人がいるんじゃないのか」<br>
+    「一度振られてるから、また傷つくのが怖い」</p>
+
+    <p>その想い、<strong>痛いほど伝わってきます</strong>。</p>
+
+    <p>自分の性自認を伝えた上で告白するということ。<br>
+    それがどれほどの勇気だったか。<br>
+    そして、一度は断られながらも、<br>
+    今も彼女を想い続けているあきら様の心の強さ。</p>
+
+    <p>私には、その全てが視えています。</p>
+
+    <p>まず、あきら様が一番知りたいこと。<br>
+    はっきりお伝えします。</p>
+
+    <p>結論から言います。<br>
+    <strong>彼女があなたを選ぶ可能性は、高いです。</strong></p>
+
+    <p>彼女のオーラを視ると、刀のようにまっすぐな銀色の輝きがある。<br>
+    自分の意志を持っていて、流されない人。<br>
+    モテるからといって、誰でもいいわけやない。</p>
+
+    <p>大切なのは、<strong>月1サシ飲みを「彼女から」提案したこと</strong>。<br>
+    これが全てを物語っています。</p>
+
+    <p>彼女は、流されてあなたと会っているわけやない。<br>
+    自分の意志で、あなたを選んでいる。</p>
+
+    <p>つまり、彼女はあなたに心を開きつつある。<br>
+    あとは、あなたが不安に負けずに自分を出せるかどうか。</p>
+
+    <p>なぜ今、不安に押しつぶされそうになるのか。<br>
+    その原因は、あなたのオーラに視えています。<br>
+    次のセクションで、詳しくお伝えしますね。</p>
+
+    <h2>🔮 あなたのオーラに視えるもの</h2>
+
+    <h3>【あなたのオーラと本質】</h3>
+
+    <div class="aura-section aura-water">
+        <p>あなたのオーラは、透明な雨のような輝きを持っています。<br>
+        優しく、繊細で、相手の心にそっと染み込んでいく力がある。<br>
+        誠実で、責任感が強く、一度決めたことは最後まで貫こうとする人。</p>
+
+        <p>そして、あなたのオーラをさらに深く視ると、<br>
+        大切なことが視えてきました。</p>
+    </div>
+
+    <h3>【足りないオーラとその影響】</h3>
+
+    <p>あなたのオーラには、<strong>木と金のオーラが足りていません</strong>。</p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">あきら様の現在のオーラ</div>
+        <canvas id="auraChartYou"></canvas>
+    </div>
+
+    <p>これが、今のあなたの状況の根っこにある原因です。</p>
+
+    <p>木のオーラが足りないことで、<br>
+    ・新しい一歩を踏み出す勇気が出にくい<br>
+    ・「自分なんかでいいのか」と自信が持てない<br>
+    ・可能性を信じることが難しい</p>
+
+    <p>金のオーラが足りないことで、<br>
+    ・決断ができず、グズグズと迷ってしまう<br>
+    ・「これでいい」と自分を肯定できない<br>
+    ・不安に押されて、行動できなくなる</p>
+
+    <p>つまり、「彼女はモテるから、僕なんかでは」と不安になるのは、<br>
+    あなたの気持ちが足りないからでも、<br>
+    魅力が足りないからでもない。</p>
+
+    <p><strong>木と金のオーラが足りないから。</strong></p>
+
+    <p>逆に言えば、このオーラさえ整えば、<br>
+    霧は晴れ始めます。</p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">木と金を補った後のオーラ</div>
+        <canvas id="auraChartYouFixed"></canvas>
+    </div>
+
+    <div class="aura-result-box">
+        <p class="aura-result-title">木と金のオーラを補うと…</p>
+        <p>「僕なんかでいいのか」という不安が消えて、<br>
+        彼女の前で堂々と自分を出せるようになる。<br>
+        決断できる自分に変わり、<br>
+        彼女に「この人についていきたい」と思わせる。</p>
+    </div>
+
+    <h3>【強すぎるオーラとその影響】</h3>
+
+    <p>そしてもう一つ。<br>
+    あなたには<strong>水のオーラが強すぎる</strong>。</p>
+
+    <p>水のオーラは本来、感受性豊かで繊細な魅力。<br>
+    ただ、強すぎると感情に溺れてしまう。</p>
+
+    <p>「他にいい人がいるんじゃないか」<br>
+    「僕のことなんてどうでもいいんじゃないか」</p>
+
+    <p>この不安が増幅されるのは、水のオーラが暴走しているから。<br>
+    感情の波が大きくなりすぎて、冷静に状況を見られなくなっている。</p>
+
+    <h3>【あなたの魂の性質】</h3>
+
+    <p>あなたの魂には、マイペースで自分のペースを大切にする性質と、<br>
+    誠実で責任感の強い性質が同居しています。</p>
+
+    <p>好意を伝え続けているのは、誠実さの表れ。<br>
+    でも、その一方で不安を一人で抱え込んでしまう。<br>
+    本音を言葉にするのが苦手で、態度で示そうとする。</p>
+
+    <p>これは弱さやない。あなたの優しさです。<br>
+    ただ、彼女にはもう少し、言葉で伝えてもいい。</p>
+
+    <h3>【今のあなたの時期】</h3>
+
+    <p>あなたは今、<strong>成長期</strong>という時期に入っています。<br>
+    新しいことが伸びていく時期。<br>
+    木と火のオーラが巡り、決断して動く力が湧いてくる。</p>
+
+    <p>さらに<strong>2026年</strong>は、火のオーラが非常に強い年。<br>
+    あなたの水のオーラに火が加わることで、<br>
+    不安を吹き飛ばし、前に進む力が生まれます。</p>
+
+    <p>つまり、運命はあなたの背中を押している。<br>
+    あとは、オーラを整えて、その流れに乗るだけ。</p>
+
+    <h3>【彼女のオーラと本質】</h3>
+
+    <div class="aura-section aura-metal">
+        <p>彼女のオーラは、銀色の刀のような輝き。<br>
+        鋭く、まっすぐで、芯が強い。<br>
+        自分の意志を持っていて、流されない人。</p>
+    </div>
+
+    <h3>【彼女の魂の性質】</h3>
+
+    <p>彼女の魂には、非常に強い自立心があります。<br>
+    自分で決める。流されない。<br>
+    欲しいものは自分で勝ち取りにいく。</p>
+
+    <p>だから、モテても、自分が選んだ人しか相手にしない。<br>
+    <strong>月1サシ飲みを「自分から」提案する</strong>のは、まさにこの性質の表れ。<br>
+    一度決めたら、まっすぐ進む人です。</p>
+
+    <p>ただし、心を開くまでに時間がかかる。<br>
+    特に今の彼女は、内省的で冷静に状況を見ている時期。<br>
+    ご主人を亡くされた後、心を整理している段階。</p>
+
+    <h3>【彼女に足りないオーラ】</h3>
+
+    <p>彼女にも、足りないオーラがあります。<br>
+    <strong>火のオーラが足りていない</strong>。</p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">彼女様の現在のオーラ</div>
+        <canvas id="auraChartPartner"></canvas>
+    </div>
+
+    <p>火のオーラは、情熱、前向きさ、新しいことへの勢い。<br>
+    これが足りないことで、<br>
+    亡くなったご主人のことを引きずっている。<br>
+    新しい恋に踏み出す「火」のオーラが足りない。</p>
+
+    <p>「職場恋愛は気まずい」という理由も、<br>
+    本当は火のオーラが少ないから慎重になりすぎているだけ。</p>
+
+    <h3>【今の彼女の時期】</h3>
+
+    <p>彼女は今、<strong>新しいものを受け入れる準備ができている時期</strong>に入っています。<br>
+    守られながら成長する時期。<br>
+    新しい恋を受け入れる土壌ができている。</p>
+
+    <p>さらに<strong>2026年</strong>は、彼女にも火のオーラが強く巡る年。<br>
+    彼女に足りない「前向きさ」が補われる。</p>
+
+    <p>つまり、彼女も変わろうとしている。</p>
+
+    <h3>【彼女の目に映る「あなた」】</h3>
+
+    <p>今、彼女の目にはあなたのオーラに少し霧がかかって見えている。<br>
+    不安が滲み出ているから。</p>
+
+    <p>でも、木と金のオーラを整えたあなたは、<br>
+    彼女の目に全く違う印象で映るようになります。</p>
+
+    <p>自信を持って笑うあなたの姿。<br>
+    不安に振り回されず、どっしりと構えているあなたの姿。<br>
+    彼女はそんなあなたに、安心して心を預けられます。</p>
+
+    <h2>🔮 彼女の心を動かす道筋</h2>
+
+    <h3>【彼女への具体的なアプローチ】</h3>
+
+    <p>ここからは、彼女の心を動かすための<br>
+    具体的な言葉と行動をお伝えします。</p>
+
+    <h3>【接触のタイミング】</h3>
+
+    <p>月1のサシ飲みを大切にしてください。<br>
+    特に<strong>6月</strong>が最も重要。<br>
+    この月に向けて、関係を少しずつ深めていく。</p>
+
+    <h3>【LINEの送り方】</h3>
+
+    <p>彼女は自分で決めたいタイプ。<br>
+    だから、選択肢を与える形で誘うのが効果的。</p>
+
+    <div class="magic-word-box">「今月のサシ飲み、楽しみにしてる。どこ行く？」</div>
+
+    <p>彼女に主導権を渡すことで、彼女は心地よく感じる。</p>
+
+    <p>もう一つ。<br>
+    彼女の話をちゃんと覚えていることを伝える。</p>
+
+    <div class="magic-word-box">「この前話してた〇〇、気になって調べてみた。今度教えて」</div>
+
+    <p>彼女は自分を認めてくれる人に心を開く。<br>
+    「ちゃんと聞いてくれている」と感じると、距離が縮まる。</p>
+
+    <h3>【会った時の接し方】</h3>
+
+    <p>・<strong>彼女の話をしっかり聞く</strong><br>
+    今の彼女は内省的で、話を聞いてもらえると安心する。<br>
+    聞き役に徹する時間を意識的に作る。</p>
+
+    <p>・<strong>自分の意見をはっきり言う</strong><br>
+    彼女は芯の強い人。流されない人を尊敬する。<br>
+    「僕はこう思う」と言い切る姿に、彼女は魅力を感じる。</p>
+
+    <p>・<strong>笑顔でいる、楽しそうにする</strong><br>
+    彼女に足りない「火」を補ってあげる。<br>
+    あきら様といると楽しいと思わせることが大切。</p>
+
+    <h3>【言うと効く言葉】</h3>
+
+    <div class="magic-word-box">「〇〇さんの、そういうところ好きだな」
+「一緒にいると、自分らしくいられる」
+「〇〇さんが決めてくれたら、僕はそれでいい」</div>
+
+    <p>具体的に褒められると、彼女は嬉しい。<br>
+    「綺麗」より「そういうところ」と具体的に。</p>
+
+    <p>彼女は任せてもらえると燃えるタイプ。<br>
+    信頼していることを伝える。</p>
+
+    <h3>【言ってはいけない言葉】</h3>
+
+    <p>・「僕のこと、どう思ってる？」<br>
+    今の彼女は内省的。問い詰められると閉じてしまう。<br>
+    答えを急がせない。</p>
+
+    <p>・「他に好きな人いないよね？」<br>
+    彼女は自分で選んでいる。<br>
+    信頼されていないと感じると、一気に冷める。</p>
+
+    <p>・「早く答え出してほしい」<br>
+    彼女は自分のペースで決めたい人。<br>
+    急かされると逃げたくなる。</p>
+
+    <h3>【大切な注意点】</h3>
+
+    <p>ただし、一つだけ知っておいてほしいことがあります。</p>
+
+    <p>これらの言葉や行動は、<br>
+    あなたのオーラが整った状態で初めて、本来の力を発揮します。</p>
+
+    <p>今のまま、木と金のオーラが足りない状態で動くと、<br>
+    どれだけ正しい言葉を選んでも、<br>
+    不安が滲み出て、言葉が上滑りしてしまう。</p>
+
+    <p>だから、まずはオーラを整えること。<br>
+    それが、全ての土台になります。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <h3>【あなたの運命の転換期】</h3>
+
+    <p>あなたは今、<strong>成長期</strong>という時期に入っています。<br>
+    2022年から2031年までの10年間、<br>
+    木と火のオーラが強く巡る時期。</p>
+
+    <p>さらに<strong>2026年</strong>は、火のオーラが非常に強い年。<br>
+    大運の木と火に、年運の火が重なる。</p>
+
+    <p>あなたの本来の水のオーラに、<br>
+    木と火が加わることで、<br>
+    「決断して、動く」力が湧いてきます。</p>
+
+    <p><strong>2026年は、あなたにとって「動く年」です。</strong></p>
+
+    <h3>【彼女の運命の転換期】</h3>
+
+    <p>そして、彼女の運命も視ました。</p>
+
+    <p>彼女は今、新しいものを受け入れる準備の時期に入っています。<br>
+    2023年から2032年までの10年間、<br>
+    火と土のオーラが巡る時期。</p>
+
+    <p>彼女に足りなかった「火」が巡り始めている。<br>
+    前向きになる力、新しい恋に踏み出す力が、<br>
+    少しずつ湧いてきている。</p>
+
+    <p>さらに<strong>2026年</strong>は、彼女にも火のオーラが強く巡る。<br>
+    彼女も「前に進みたい」と思える年。</p>
+
+    <h3>【二人の運命が交わる時】</h3>
+
+    <p>あなたと彼女、二人の運命が最も近づく時期。<br>
+    <strong>それが6月です。</strong></p>
+
+    <p>この月、あなたには木と火のオーラが巡り、<br>
+    「新しい一歩を踏み出す力」が湧いてきます。</p>
+
+    <p>彼女にも木と火のオーラが巡り、<br>
+    「前に進みたい」という気持ちが高まります。</p>
+
+    <p>お互いに同じ方向を向く、この瞬間。<br>
+    <strong>6月のサシ飲みで、二人の関係が大きく動く可能性があります。</strong></p>
+
+    <h3>【これから半年の流れ】</h3>
+
+    <h3>4月（土台を作る月）</h3>
+
+    <p>水と土のオーラが巡る月。<br>
+    あなたの水のオーラがさらに強まるため、<br>
+    感情が揺れやすく、不安が増幅しやすい時期です。</p>
+
+    <p>この月は<strong>「焦らない」</strong>がテーマ。<br>
+    彼女との関係を急いで進めようとしない。<br>
+    今ある月1サシ飲みの関係を、純粋に楽しむことに集中する。</p>
+
+    <p><strong>やるべきこと：</strong><br>
+    ・4月のサシ飲みでは、彼女の話をたっぷり聞く<br>
+    ・「最近どう？」と彼女の近況を聞いて、聞き役に徹する<br>
+    ・サシ飲みの後、「今日も楽しかった、ありがとう」と短くLINEを送る</p>
+
+    <p><strong>やってはいけないこと：</strong><br>
+    ・不安になって「僕のことどう思ってる？」と聞く<br>
+    ・彼女の反応が薄いと感じても、追いLINEしない<br>
+    ・他の男性の影を探るような質問をしない</p>
+
+    <h3>5月（自分らしさを出す月）</h3>
+
+    <p>水と火のオーラが巡る月。<br>
+    あなたの本質と同じオーラが流れるため、<br>
+    自分らしさが自然と出やすい時期です。</p>
+
+    <p>この月は<strong>「ありのまま」</strong>がテーマ。<br>
+    無理に格好つけなくていい。<br>
+    素の自分で彼女と接することで、彼女も心を開きやすくなる。</p>
+
+    <p><strong>やるべきこと：</strong><br>
+    ・自分の好きなこと、興味があることを彼女に話す<br>
+    ・「僕、実はこういうの好きなんだ」と素を見せる<br>
+    ・彼女の話に対して、自分の意見をはっきり言う</p>
+
+    <h3>★6月（最重要・運命の月）</h3>
+
+    <p>木と火のオーラが強く巡る、<strong>最も大切な月</strong>。</p>
+
+    <p>あなたに足りない「木」が補われ、<br>
+    新しい一歩を踏み出す力が湧いてくる。<br>
+    さらに火のオーラも強く、決断と行動の力が高まる。</p>
+
+    <p>彼女にも足りない火のオーラが巡り、<br>
+    「前に進みたい」という気持ちが高まる月。</p>
+
+    <p><strong>二人の波長が最も合う、運命の月です。</strong></p>
+
+    <p>この月のサシ飲みでは、今までより深い話ができる。<br>
+    彼女から本音が出てくる可能性がある。<br>
+    亡くなったご主人のこと、これからのこと。<br>
+    彼女が心の内を話してくれたら、それは信頼の証。</p>
+
+    <p><strong>やるべきこと：</strong><br>
+    ・5月中に、6月のサシ飲みの約束を取り付けておく<br>
+    ・この月は少し積極的に気持ちを伝える<br>
+    ・「〇〇さんと会う時間が、僕にとって一番大切な時間」と伝える<br>
+    ・彼女が深い話をしてくれたら、しっかり受け止める<br>
+    ・「僕は〇〇さんの味方だから」と言葉にする</p>
+
+    <p><strong>やってはいけないこと：</strong><br>
+    ・「僕たちってどういう関係？」と定義を求める<br>
+    ・「答えを出してほしい」と急かす<br>
+    ・不安を口に出して、彼女を困らせる<br>
+    ・彼女の過去（ご主人のこと）を否定するような発言</p>
+
+    <h3>7月（関係を深める月）</h3>
+
+    <p>木と土のオーラが巡る月。<br>
+    6月から続く木のオーラが、まだあなたを支えてくれる。<br>
+    前向きなエネルギーを保ちながら、関係を深めていく時期。</p>
+
+    <p>この月は<strong>「自然体で続ける」</strong>がテーマ。<br>
+    6月で距離が縮まったなら、その流れを大切に。<br>
+    焦って次のステップに進もうとしない。</p>
+
+    <h3>◎8月（実りの月）</h3>
+
+    <p>火と金のオーラが巡る、もう一つの重要な月。<br>
+    あなたに足りない「金」が補われ、<br>
+    決断のエネルギーが高まる。</p>
+
+    <p>6月に撒いた種が、形になり始める時期。<br>
+    彼女との関係に、何らかの「答え」が見えてくる可能性がある。</p>
+
+    <p>良い方向に進んでいれば、<br>
+    <strong>この月に交際に発展する可能性がある</strong>。</p>
+
+    <h3>9月（安定の月）</h3>
+
+    <p>火と金のオーラが続く月。<br>
+    8月からの流れが続き、関係が安定していく時期。</p>
+
+    <p>この月は<strong>「信頼を深める」</strong>がテーマ。<br>
+    関係が進展していれば、二人の時間を大切に。<br>
+    まだ答えが出ていなくても、焦らない。<br>
+    彼女は自分で決める人。その決断を待つ。</p>
+
+    <h3>【1年後の未来】</h3>
+
+    <p>2027年は、火と土のオーラが巡る年。<br>
+    2026年に動いた結果が、安定していく。<br>
+    二人の関係がより深まり、自然体で一緒にいられるようになる。</p>
+
+    <h3>【大切なこと】</h3>
+
+    <p><strong>6月が最大のチャンスです。</strong><br>
+    あなたと彼女の運命が最も近づくこの瞬間を逃さないために、<br>
+    オーラを整えた状態で6月を迎えること。</p>
+
+    <p>木と金のオーラが足りないまま6月を迎えると、<br>
+    せっかくの転機を素通りしてしまう可能性がある。</p>
+
+    <p><strong>6月までに、オーラを整えておくこと。</strong><br>
+    これが、この半年で最も大切なことです。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <h3>【日常のオーラ調整法】</h3>
+
+    <p>まず、今日からできることをお伝えしますね。</p>
+
+    <p><strong>1. 木のオーラを補う</strong><br>
+    ・緑色を身につける（ネクタイ、小物など）<br>
+    ・観葉植物を部屋に置く、または公園を歩く習慣をつける<br>
+    ・野菜や果物を意識して食べる</p>
+
+    <p><strong>2. 金のオーラを補う</strong><br>
+    ・白や銀色を身につける<br>
+    ・部屋を整理整頓する。迷ったら捨てる<br>
+    ・深呼吸を習慣にする<br>
+    ・金属のアクセサリー（シンプルなもの）を身につける</p>
+
+    <p><strong>3. 水のオーラを鎮める</strong><br>
+    ・茶色やベージュの服を着る<br>
+    ・根菜類（にんじん、ごぼう、大根など）を食べる<br>
+    ・不安になったら、足の裏を意識して地面を踏みしめる</p>
+
+    <h3>【日常の実践】</h3>
+
+    <p>朝、目が覚めたら心の中で唱えてください。<br>
+    <strong>「今日も自分らしくいよう」</strong></p>
+
+    <p>夜、眠る前にも。<br>
+    <strong>「彼女は僕を選んでいる。大丈夫」</strong></p>
+
+    <h3>【気をつけてほしいこと】</h3>
+
+    <p>・<strong>不安になった時に彼女に連絡しない</strong><br>
+    感情が不安定な時に送ったメッセージは、重くなりがち。<br>
+    落ち着いてから連絡する。</p>
+
+    <p>・<strong>彼女の反応を深読みしすぎない</strong><br>
+    返信が遅い、そっけないと感じても、<br>
+    彼女は自分のペースで動く人。気にしすぎない。</p>
+
+    <p>・<strong>他のモテる話を自分から聞かない</strong><br>
+    聞いても不安になるだけ。<br>
+    彼女は流されない人。信じること。</p>
+
+    <h3>【正直にお伝えしたいこと】</h3>
+
+    <p>ここまでお伝えした調整法で、<br>
+    少しずつオーラは整い始めます。</p>
+
+    <p>ただ、正直に言うと、<br>
+    木と金のオーラが足りていない場合、<br>
+    日常の調整だけでは補いきれない部分があります。</p>
+
+    <p>緑色を着る、深呼吸をする。<br>
+    これらは「維持する力」にはなりますが、<br>
+    ゼロから補う力としては、どうしても限界がある。</p>
+
+    <p>もし本気でオーラを整えたいなら、<br>
+    もう一つ、お伝えしたい方法があります。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>ここまでお伝えしてきた通り、<br>
+    あきら様のオーラには<strong>木と金が足りていません</strong>。</p>
+
+    <p>これが今の状況の根っこにある原因であり、<br>
+    <strong>6月のチャンスを掴むために、最も整えるべき部分です。</strong></p>
+
+    <p>木と金のオーラが整うと、<br>
+    ・彼女の前で堂々と自分を出せるようになる<br>
+    ・「僕なんかでいいのか」という不安が消える<br>
+    ・サシ飲みの約束を自信を持って提案できる<br>
+    ・彼女と目が合った時、自然に笑えるようになる<br>
+    ・「彼女は僕を選んでいる」と心から信じられる</p>
+
+    <p>日常の調整法に加えて、<br>
+    本格的にオーラを補うために、<br>
+    パワーストーンをお守りとして取り入れる方法があります。</p>
+
+    <p>あきら様のオーラに合わせて、<br>
+    三つのプランをご用意しました。</p>
+
+    <div class="important-box">
+        <h3>【3つのプラン】</h3>
+
+        <p><strong>●松プラン：6月のチャンスを本気で掴みたい方向け</strong><br>
+        木と金のオーラを本格的に補い、水のオーラを鎮める石の組み合わせ。<br>
+        ・不安に振り回されず、どっしりと構えていられる<br>
+        ・自信を持って気持ちを伝えられる<br>
+        ・彼女の前で自分らしくいられる</p>
+
+        <p><strong>●竹プラン：心を安定させたい方向け</strong><br>
+        木と金のオーラを補う石の組み合わせ。<br>
+        ・「自分なんかでいいのか」という不安が和らぐ</p>
+
+        <p><strong>●梅プラン：まずは不安を和らげたい方向け</strong><br>
+        最も必要な石を1つ。<br>
+        ・感情の波が穏やかになる</p>
+
+        <p>多くの方が松プランを選ばれています。<br>
+        6月に向けて今から整え始めることで、<br>
+        最も効果的なタイミングでオーラが整います。</p>
+
+        <p>もし興味がありましたら、<br>
+        「詳細希望」とだけ送っていただければ、<br>
+        あきら様専用の石の組み合わせをお伝えしますね。</p>
+    </div>
+
+    <h2>最後に</h2>
+
+    <p>あきら様の前には今、二つの道があります。</p>
+
+    <p>一つは、不安を抱えたまま、このまま過ごす道。<br>
+    彼女との月1サシ飲みは続くかもしれない。<br>
+    でも、関係は今のまま止まったまま。</p>
+
+    <p>もう一つは、オーラを整え、自信を持って彼女に向き合う道。<br>
+    <strong>6月という転機を、しっかり掴む道。</strong></p>
+
+    <p>あきら様が彼女を想う気持ちは、<strong>本物</strong>です。<br>
+    自分の性自認を伝えた上で告白した、あの勇気。<br>
+    一度振られても、諦めずに想い続けている、その強さ。</p>
+
+    <p>彼女はそれを、ちゃんと受け取っています。<br>
+    だから、月1サシ飲みを自分から提案した。</p>
+
+    <p>オーラが整ったあきら様が、<br>
+    6月のサシ飲みで自信を持って笑っている。<br>
+    彼女がその笑顔を見て、ふっと表情が緩む。</p>
+
+    <p>「やっぱり、この人といると落ち着くな」</p>
+
+    <p>そう思った彼女が、あきら様の手に自分の手を重ねる。</p>
+
+    <p>その未来が、私には視えています。</p>
+
+    <p>あきら様の恋が実りますよう、<br>
+    心から応援しています。</p>
+
+    <p>いつでもご相談ください。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+<script>
+const chartOptions = {
+    responsive: true,
+    plugins: {
+        legend: { display: false }
+    },
+    scales: {
+        r: {
+            beginAtZero: true,
+            max: 3,
+            min: 0,
+            ticks: {
+                stepSize: 1,
+                display: false
+            },
+            pointLabels: {
+                font: { size: 14, family: 'Noto Serif JP' },
+                color: '#2d2d2d'
+            },
+            grid: { color: 'rgba(201, 160, 93, 0.3)' },
+            angleLines: { color: 'rgba(201, 160, 93, 0.3)' }
+        }
+    }
+};
+
+// あきら様の現在のオーラ: 木0 火2 土1 金0 水3
+new Chart(document.getElementById('auraChartYou'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [{
+            data: [0, 2, 1, 0, 3],
+            backgroundColor: 'rgba(201, 160, 93, 0.3)',
+            borderColor: '#c9a05d',
+            borderWidth: 2,
+            pointBackgroundColor: '#c9a05d',
+            pointBorderColor: '#fff',
+            pointRadius: 5
+        }]
+    },
+    options: chartOptions
+});
+
+// あきら様の補った後のオーラ: 木と金を補う
+// 木を補う → 木2、木の隣接（火2を持ってる）
+// 金を補う → 金2、金の隣接（土1、水3を持ってる）
+// 緑のデータ: [2, 2, 1, 2, 3]
+new Chart(document.getElementById('auraChartYouFixed'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [
+            {
+                // 補う部分（緑）
+                data: [2, 2, 1, 2, 3],
+                backgroundColor: 'rgba(100, 180, 100, 0.4)',
+                borderColor: '#5a9a5a',
+                borderWidth: 2,
+                pointBackgroundColor: '#5a9a5a',
+                pointBorderColor: '#fff',
+                pointRadius: 6
+            },
+            {
+                // 元のオーラ（ゴールド）
+                data: [0, 2, 1, 0, 3],
+                backgroundColor: 'rgba(201, 160, 93, 0.3)',
+                borderColor: '#c9a05d',
+                borderWidth: 2,
+                pointBackgroundColor: '#c9a05d',
+                pointBorderColor: '#fff',
+                pointRadius: 5
+            }
+        ]
+    },
+    options: chartOptions
+});
+
+// 彼女様のオーラ: 木1 火0 土1 金3 水1
+new Chart(document.getElementById('auraChartPartner'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [{
+            data: [1, 0, 1, 3, 1],
+            backgroundColor: 'rgba(139, 111, 156, 0.3)',
+            borderColor: '#8b6f9c',
+            borderWidth: 2,
+            pointBackgroundColor: '#8b6f9c',
+            pointBorderColor: '#fff',
+            pointRadius: 5
+        }]
+    },
+    options: chartOptions
+});
+</script>
+
+</body>
+</html>
