@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ms.Kelly様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", serif;
+            line-height: 2;
+            background: linear-gradient(180deg, #fdfcfa 0%, #f8f6f1 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        .recipient {
+            font-size: 28px;
+            font-weight: 300;
+            color: #8b7355;
+            letter-spacing: 10px;
+        }
+
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        h2 {
+            font-size: 17px;
+            font-weight: 500;
+            color: #8b7355;
+            letter-spacing: 2px;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 22px;
+            font-weight: 300;
+            color: #444;
+        }
+
+        strong {
+            color: #8b7355;
+            font-weight: 500;
+        }
+
+        .highlight {
+            color: #a67c94;
+        }
+
+        .intro {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(139, 115, 85, 0.04);
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        .intro p {
+            font-size: 16px;
+            line-height: 2.3;
+        }
+
+        /* オーラ画像 + テキストオーバーレイ */
+        .aura-visual {
+            margin: 30px -30px;
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+        }
+
+        .aura-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 中央オーバーレイ */
+        .aura-overlay-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: center;
+            padding: 30px;
+            width: 100%;
+        }
+
+        .aura-overlay-center p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        /* C案: 黒文字 + 画像の透明度 + 極太 */
+        .aura-visual.style-c::after {
+            display: none;
+        }
+        .aura-visual.style-c img {
+            opacity: 0.4;
+        }
+        .aura-visual.style-c .aura-overlay-center p {
+            color: #333;
+            font-weight: 900;
+            -webkit-text-stroke: 0.5px #333;
+        }
+        .aura-visual.style-c .aura-overlay-center strong {
+            color: #333;
+            -webkit-text-stroke: 0.5px #333;
+        }
+
+        /* 土: 茶色 */
+        .aura-visual.aura-earth .aura-overlay-center strong {
+            color: #5d4037;
+            -webkit-text-stroke: 0.5px #5d4037;
+        }
+
+        /* F案: 暗いオーバーレイ（明るい画像用） */
+        .aura-visual.style-f::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+        }
+        .aura-visual.style-f .aura-overlay-center p {
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.9);
+        }
+        .aura-visual.style-f .aura-overlay-center strong {
+            color: #ffd700;
+        }
+
+        /* 本鑑定 */
+        .cta-item {
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        .cta-item:last-child {
+            border-bottom: none;
+        }
+
+        .cta-item .title {
+            font-size: 18px;
+            color: #8b7355;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .cta-item .desc {
+            font-size: inherit;
+            color: #444;
+            font-weight: 300;
+            line-height: 2;
+        }
+
+        /* 24時間 */
+        .urgent {
+            text-align: center;
+            padding: 50px 20px;
+            margin: 30px -30px;
+            background: #fff;
+            border-top: 1px solid #e5e0d5;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        .urgent-title {
+            font-size: 15px;
+            color: #8b7355;
+            margin-bottom: 25px;
+        }
+
+        .price-old {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .price-new {
+            font-size: 32px;
+            font-weight: 400;
+            color: #8b7355;
+            margin: 10px 0 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #8b7355;
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 45px;
+            border-radius: 2px;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .note {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .vision {
+            text-align: center;
+            padding: 60px 20px;
+            font-style: italic;
+            color: #666;
+        }
+
+        .sign {
+            text-align: right;
+            padding-top: 30px;
+            color: #8b7355;
+            font-size: 17px;
+            letter-spacing: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header class="header">
+        <div class="recipient">Ms.Kelly様</div>
+    </header>
+
+    <div class="intro">
+        <p>霊視した瞬間、光が見えた。<br>
+        お二人の魂が<strong>「まだ答えは出てない」</strong>って。</p>
+        <p>そして、彼の心を動かす<br>
+        「本来のあなたの魅力」が解放されれば、<br>
+        温かい未来はやってきます。</p>
+    </div>
+
+    <section>
+        <p>Ms.Kelly様</p>
+
+        <p>大切なお気持ちを、打ち明けてくださって<br>
+        ほんまにありがとうございます。</p>
+
+        <p>去年5月から、彼が頭から離れへん。<br>
+        テレパシーや夢が、何度も何度も飛び込んでくる。</p>
+
+        <p>でも現実では、無視される。<br>
+        素っ気ない態度を取られる。</p>
+
+        <p>「本当に想われてるのか」<br>
+        「全部、私の思い込みなのか」<br>
+        誰にも言えずに、苦しんでる。</p>
+
+        <p>このまま答えが出ないまま<br>
+        終わってしまうのが、怖い。</p>
+
+        <p>そんな想い、抱えてはるんやな。</p>
+    </section>
+
+    <section>
+        <h2>🔮 あなたのオーラ</h2>
+
+        <div class="aura-visual style-c aura-earth">
+            <img src="../image/weak_earth.png" alt="土のオーラ">
+            <div class="aura-overlay-center">
+                <p>霊視した瞬間、<br>
+                <strong>柔らかなアンバーのオーラ</strong>が視えた。</p>
+                <p>畑のように豊かな土。<br>
+                優しくて、包容力があって、<br>
+                とても美しいオーラを持ってる。</p>
+            </div>
+        </div>
+
+        <p>ただ、感じたことを信じられへん。</p>
+
+        <p>不安になると、<br>
+        心が固まって動けなくなる。</p>
+
+        <p>それは、弱さではありません。<br>
+        自分を守ってきた、<br>
+        <span class="highlight">慎重さの現れ</span>です。</p>
+
+        <p>今この状況にいるのは、あなたのせいやない。<br>
+        <strong>"ある理由"</strong>でオーラが弱くなってるだけ。</p>
+
+        <p>でも安心してください。<br>
+        オーラさえ整えば、<br>
+        本来のあなたの魅力が覚醒して<br>
+        望む未来が近づいてきます。</p>
+    </section>
+
+    <section>
+        <h2>🔮 彼のオーラ</h2>
+
+        <div class="aura-visual style-c aura-earth">
+            <img src="../image/strong_earth.png" alt="土のオーラ">
+            <div class="aura-overlay-center">
+                <p>彼を霊視した瞬間、<br>
+                <strong>どっしりとしたアンバーのオーラ</strong>が視えた。</p>
+                <p>山のように動じない大地。<br>
+                揺るぎなく、力強い。</p>
+            </div>
+        </div>
+
+        <p>つまり、本質的な性質はKelly様と同じ。</p>
+
+        <p>だから同じ事を考えられる<br>
+        ツインレイと感じる、<br>
+        夢をみてしまう。</p>
+
+        <p>あなたと彼の魂は<br>
+        とても深い、本質的な所でつながっています。</p>
+
+        <p>彼の魂には、<br>
+        圧倒的なエネルギーがある。<br>
+        人を惹きつけるカリスマ性を持ってる。</p>
+
+        <p>あなたが感じているテレパシーや夢、<br>
+        その本当の"意味"は<br>
+        既に私には視えています。</p>
+
+        <p>これは無料鑑定の範囲では<br>
+        お伝えしきれへん内容やから、<br>
+        本鑑定で丁寧にお伝えしたい。</p>
+
+        <p>ただ一つだけ、ここで言えることがある。</p>
+
+        <p>あなたが感じているものは、<br>
+        <strong>全部思い込みやない。</strong><br>
+        彼の魂が、あなたに何かを伝えようとしてる。</p>
+
+        <p>そこだけは、はっきり視えてます。</p>
+    </section>
+
+    <section>
+        <h2>🔮 二つの未来</h2>
+
+        <div class="aura-visual style-f">
+            <img src="../image/way.png" alt="二つの未来">
+            <div class="aura-overlay-center">
+                <p>このまま答えが分からないまま、<br>
+                不安に振り回され続けると、<br>
+                心が壊れてしまう。</p>
+                <p>でも、<strong>ここで流れを変えたら。</strong></p>
+                <p>真実を知って、<br>
+                自分の気持ちに決着をつけられる。</p>
+                <p>どちらの未来になるかは、<br>
+                <strong>あなたが変えられます。</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>✨ 答えを見つけるための道筋</h2>
+
+        <p>ここまでの鑑定で、今視えた事をお伝えしました。</p>
+
+        <p>でも、一番大事なのはここから。</p>
+
+        <p><strong>「じゃあ、具体的にどうすればいいのか」</strong></p>
+
+        <p>本鑑定では、あなたが実際に動ける<br>
+        <strong>"具体的な道筋"</strong>を視ていきます。</p>
+
+        <div style="margin-top: 35px;">
+            <div class="cta-item">
+                <div class="title">彼があなたに送っているテレパシーや夢の本当の意味</div>
+                <div class="desc">あなたが感じている「愛してる」「会いたい」、そして衝撃的な夢の数々。これは全部、彼の魂からのメッセージ。その正体を、霊視で解き明かします。</div>
+            </div>
+
+            <div class="cta-item">
+                <div class="title">彼が無視する理由と、彼の本当の気持ち</div>
+                <div class="desc">イベントで無視される。素っ気ない態度を取られる。でも、夢では追いかけてくる。この矛盾の裏にある、彼の本当の気持ちを明らかにします。</div>
+            </div>
+
+            <div class="cta-item">
+                <div class="title">彼は他の女性と結婚するのか、あなたはどう動けばいいのか</div>
+                <div class="desc">名古屋のファン、元教え子、他の女性との関係はどうなのか。そして、あなたは今、待つべきなのか、動くべきなのか。魂が進むべき道を視ていきます。</div>
+            </div>
+        </div>
+
+        <p style="text-align: center; margin-top: 35px;">このまま分からないまま過ごすか、<br>
+        具体的な道筋を知った上で動くか。<br>
+        <strong>どちらを選ぶかは、あなた次第です。</strong></p>
+    </section>
+
+    <div class="urgent">
+        <div class="urgent-title">運命が動く24時間</div>
+
+        <p>今、あなたの運命は少しだけ前に動いています。</p>
+
+        <p>この鑑定書を読んで、<br>
+        「どうしよう」と考え始めたから。</p>
+
+        <p>でも、この流れはずっと続きません。<br>
+        何もせず元の生活に戻れば<br>
+        運命は動きを止めてしまいます。</p>
+
+        <p><strong>今から24時間。</strong><br>
+        ここで決断すれば、<br>
+        運命は一番スムーズに動きます。</p>
+
+        <div class="price-old">通常 20,000円</div>
+        <div class="price-new">¥9,800</div>
+
+        <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/68f73496c774eb3958b2ea5f" class="btn">本鑑定に進む</a>
+
+        <p class="note">お申し込み後、購入時のお名前をお知らせください。<br>
+        2日以内に、あなただけの鑑定書をお届けします。</p>
+    </div>
+
+    <div class="vision">
+        <p>私には視えてます。</p>
+
+        <p>あなたの濁りが取れて、<br>
+        本来の輝きを取り戻したとき。</p>
+
+        <p>彼が、あなたの目を見つめながら<br>
+        <strong>「ちゃんと話したい」</strong><br>
+        そう言っている場面が。</p>
+
+        <p>その未来への道、私が照らしますね。</p>
+    </div>
+
+    <div class="sign">
+        かな
+    </div>
+
+</div>
+
+</body>
+</html>
