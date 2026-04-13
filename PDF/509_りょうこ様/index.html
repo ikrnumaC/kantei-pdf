@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>りょうこ様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../強い火.png'); }
+        .aura-wood::before { background-image: url('../強い木.png'); }
+        .aura-earth::before { background-image: url('../強い土.png'); }
+        .aura-metal::before { background-image: url('../強い金.jpg'); }
+        .aura-water::before { background-image: url('../強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #c9a05d;
+            font-weight: 600;
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: #ffffff !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">りょうこ様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>りょうこ様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>りょうこ様、大切な想いを打ち明けてくださって、ほんまにありがとうございます。</p>
+
+    <p>娘さんたちのために、ずっと必死で頑張ってきた。<br>
+    進学でお金も必要なのに、身体はもう限界のサインを出してる。</p>
+
+    <p>でも、「辞めたら生活できへんかも」って不安で止まれへん。</p>
+
+    <p>そして、先生のこと。<br>
+    本当は好きやったんちゃうか？<br>
+    ただの患者やなくて、一人の女性として見てほしかった。</p>
+
+    <p>でも連絡先を交換してくれたのに、返ってくるのは距離を置いた返信。<br>
+    「恋愛なんて無理」って、自分に言い聞かせてる。</p>
+
+    <p>この葛藤、痛いほど伝わってきます。</p>
+
+    <p>でもね、あなたは何一つ間違えてへん。<br>
+    頑張りすぎたあなたを、これから一緒に癒していきましょう。</p>
+
+    <p>そして、先生との未来も。<br>
+    まだ終わってへんのです。</p>
+
+    <h2>🔮 疲れた身体の真相</h2>
+
+    <div class="aura-section aura-earth">
+        <p>あなたを視た瞬間、優しい緑色の木のオーラが、パッと広がりました。<br>
+        森みたいに優しくて、芯は強い。<br>
+        でも、今はすごく揺れてる。</p>
+
+        <p>あなたの生まれ持った波動を視ると、<br>
+        火のオーラが全くないんです。</p>
+
+        <p>火は「情熱」「やる気」「生命力」のエネルギー。<br>
+        これがないと、どんなに頑張っても疲れやすい。<br>
+        燃料がないのに、ずっと走り続けてる状態なんです。</p>
+    </div>
+
+    <p>そして今、あなたのエネルギーは「病」の時期。<br>
+    身体が弱りやすく、休息を求めてる時期。</p>
+
+    <p>でもあなたの魂には、責任を重んじる波動と、<br>
+    一人で頑張る波動がある。</p>
+
+    <p>だから、「娘達のために、まだ頑張らなあかん」って、<br>
+    自分を追い詰めてしまうんです。</p>
+
+    <p>あなたは何も悪くない。<br>
+    ただ、火のエネルギーがないから、人より疲れやすいだけ。</p>
+
+    <p>これは弱さやない。<br>
+    あなたの生まれ持った性質なんです。</p>
+
+    <h2>🔮 仕事と生活の道筋</h2>
+
+    <p>「仕事を辞めても、今の生活を維持できますか？」</p>
+
+    <p>この質問、娘達への深い愛が込められてますね。</p>
+
+    <p>正直に視えたことをお伝えします。</p>
+
+    <p>今すぐ辞めるのは、まだ早い。<br>
+    でも、働き方を変える時期が来てます。</p>
+
+    <p>今、あなたは新しい運気の流れに入ったところ（2025年から）。<br>
+    木と金のエネルギーが動き始める時期。</p>
+
+    <p>木のエネルギーは「成長」「変化」。<br>
+    金のエネルギーは「決断」「手放す」。</p>
+
+    <p>この運気は、「今までのやり方を変えて、新しい働き方を選ぶ」というメッセージ。</p>
+
+    <p>具体的には：</p>
+
+    <p><strong>2026年春～夏（3月～8月）</strong><br>
+    - 働き方を見直す時期<br>
+    - フルタイムからパートへ、または在宅ワークへなるかも<br>
+    - 収入よりも、身体を大切にする選択</p>
+
+    <p><strong>2026年秋以降（9月～）</strong><br>
+    - 新しい働き方が軌道に乗り始める<br>
+    - 娘達も協力してくれる<br>
+    - 意外な収入源が見つかる可能性</p>
+
+    <p>完全に辞めるんやなくて、<br>
+    「無理のない範囲で働く」という選択肢を視野に入れる。</p>
+
+    <p>娘達は、お母さんが倒れることの方が怖い。<br>
+    元気なお母さんでいてくれることが、一番の安心なんです。</p>
+
+    <p>視えてます。<br>
+    娘達は、あなたの頑張りをちゃんと見てる。<br>
+    そして、「お母さん、無理せんといてね」って思ってる。</p>
+
+    <p>穏やかな生活は、お母さんが笑顔でいることから始まるんです。</p>
+
+    <h2>🔮 先生の本音と二人の未来</h2>
+
+    <div class="aura-section aura-fire">
+        <p>主治医の先生を視た瞬間、<br>
+        あなたへの特別な想いが視えました。</p>
+
+        <p>彼の中には、温かい火のオーラがある。<br>
+        そして、あなたの木のオーラを温めようとしてる。</p>
+
+        <p>お辞めになっても連絡先を交換してくれた。<br>
+        これは、あなたのことを特別に想ってる証拠。</p>
+    </div>
+
+    <p>「情緒安定のため」って言ったかもしれへんけど、<br>
+    それだけやないんです。</p>
+
+    <p>彼の魂には、責任を重んじる波動がある。<br>
+    医師と患者という立場を、すごく気にしてる。</p>
+
+    <p>だから、距離を置いた返信をしてしまう。<br>
+    「今はまだ、患者さんとして接しなあかん」って。</p>
+
+    <p>でもね、彼の心の奥では、<br>
+    一人の女性としてりょうこ様を見始めてる感情が芽生えてるんです。</p>
+
+    <p>まだ小さいけど、確かにある。</p>
+
+    <p>そして、<strong>2026年7月</strong>。<br>
+    彼の運気が大きく変わる時期なんです。</p>
+
+    <p>今まで責任やルールに縛られてた運気から、<br>
+    新しい可能性を求める運気へ。</p>
+
+    <p>水のエネルギーが流れ込んできて、<br>
+    心が柔らかくなる。</p>
+
+    <p>この時期、彼の中の「りょうこさんに会いたい」という気持ちが、<br>
+    表に出てきやすくなるんです。</p>
+
+    <p>以前のようなホッコリの関係に戻れるか？</p>
+
+    <p>戻れます。<br>
+    それどころか、新しい関係に発展する可能性がある。</p>
+
+    <p>ただし、条件があります。<br>
+    あなたが「依存」から「自立」に変わること。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <h3>【なぜ今が大切なのか】</h3>
+
+    <p>りょうこ様は今、新しい運気の流れに入ったばかり。<br>
+    木と金のエネルギーが動き始めてる。</p>
+
+    <p>この運気は、「変化と決断の時期」。<br>
+    今までの自分から、新しい自分に生まれ変わる時期なんです。</p>
+
+    <p>そして2026年は、火のエネルギーが最も強い年。<br>
+    あなたに足りない火が、宇宙から補われる年。</p>
+
+    <p>だから今年は、疲れた身体が少しずつ回復していく。<br>
+    新しいエネルギーが湧いてくる。</p>
+
+    <h3>【いつ先生の心が動くのか】</h3>
+
+    <p>最も重要なタイミング：</p>
+
+    <p><strong>2026年7月：先生の運気が大きく変わる</strong><br>
+    - 今まで責任に縛られてた心が、柔らかくなる<br>
+    - 水のエネルギーが流れ込み、新しい可能性を求め始める<br>
+    - りょうこ様に会いたい気持ちが表に出やすい</p>
+
+    <p><strong>2026年秋（9月～11月）：関係が深まる時期</strong><br>
+    - 連絡が来る可能性が高い<br>
+    - 食事やお茶に誘われるかもしれへん<br>
+    - 一人の女性として見てもらえる</p>
+
+    <p><strong>2027年春（3月～5月）：本格的な関係へ</strong><br>
+    - お互いが一人の人間として向き合い始める<br>
+    - 「実は、気になってた」と告白される可能性</p>
+
+    <h3>【近づいているサイン】</h3>
+
+    <p>・先生から突然連絡が来る（特に7月以降）<br>
+    ・「調子どうですか？」という気遣いのメッセージ<br>
+    ・共通の知人から先生の話題が出る<br>
+    ・あなた自身の心が落ち着いてくる<br>
+    ・火や赤いものが目に入る</p>
+
+    <p>このサインが出たら、秋はもうすぐそこです。</p>
+
+    <h2>🔮 今から7月までに準備すること</h2>
+
+    <h3>1月～3月：身体を癒す期間</h3>
+
+    <p>この時期は、とにかく休む。<br>
+    無理せず、娘達にも頼る。<br>
+    「お母さんも人間やから、しんどい時がある」って正直に伝える。</p>
+
+    <p><strong>火のオーラを補う：</strong><br>
+    ・朝日を浴びる（火のエネルギーを自然に補給）<br>
+    ・温かい食べ物を食べる（スープ、お味噌汁）<br>
+    ・赤やオレンジ色のものを少し取り入れる<br>
+    ・キャンドルを眺める</p>
+
+    <h3>4月～6月：働き方を見直す</h3>
+
+    <p>身体と相談しながら、働き方を変える準備。<br>
+    パートタイムや在宅ワークの情報を集める。<br>
+    娘達とも相談する。</p>
+
+    <p><strong>自分磨きも少しずつ：</strong><br>
+    ・髪を整える<br>
+    ・明るい色の服を着る<br>
+    ・週に1回、自分のための時間を作る</p>
+
+    <h3>7月：先生からの連絡に備える</h3>
+
+    <p>7月に彼の運気が変わる。<br>
+    連絡が来るかもしれへん。</p>
+
+    <p>その時、「依存してる自分」やなくて、<br>
+    「自立して頑張ってる自分」を見せる。</p>
+
+    <div class="magic-word-box">❌NG: 「先生に会いたかった」「しんどくて、先生しか頼れへん」
+
+⭕️OK: 「お元気ですか？私は最近、働き方を変えて、少し楽になりました」</div>
+
+    <p>あなたが変わったことを見せる。<br>
+    落ち着いて、余裕があって、自分で人生を歩いてる姿を。</p>
+
+    <p>そしたら彼は、「患者」やなくて「一人の女性」として見てくれる。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>今、りょうこ様の心と身体は、限界ギリギリですよね。<br>
+    「もう頑張られへん」<br>
+    「でも娘達のために、止まれへん」<br>
+    「先生のことも、諦められへん」</p>
+
+    <p>実は、りょうこ様の生まれ持った波動を視ると<br>
+    火のオーラが全くなく、<br>
+    金のオーラも水のオーラもない<br>
+    バランスになっています。</p>
+
+    <p>火のオーラがないと、<br>
+    やる気や生命力が湧かず、<br>
+    疲れやすくなります。</p>
+
+    <p>金のオーラがないと、<br>
+    決断ができず、<br>
+    「辞める」という選択肢を選べません。</p>
+
+    <p>水のオーラがないと、<br>
+    柔軟性がなく、<br>
+    「こうあるべき」と自分を縛ってしまいます。</p>
+
+    <p>そして木と土のオーラが強すぎると、<br>
+    一人で抱え込んで、<br>
+    誰にも頼れへん状態になるんです。</p>
+
+    <p>さらに今、エネルギーが「病」の時期。<br>
+    だから余計に身体が悲鳴をあげてるんです。</p>
+
+    <p>このオーラのバランスを整えることで、<br>
+    りょうこ様本来の優しさは残したまま、<br>
+    疲れにくい身体に変わっていきます。</p>
+
+    <p>オーラのバランスが整うと、<br>
+    せっかくの転機（2026年7月～秋）を<br>
+    しっかり掴むことができます。</p>
+
+    <p>また、バランスが整うことで、<br>
+    娘達との関係も安定し、<br>
+    先生からの連絡も敏感にキャッチできるようになります。</p>
+
+    <p>そして何より、<br>
+    依存する心が自立する心に変わり、<br>
+    一人の女性として輝き始めるんです。</p>
+
+    <p>そのオーラ調整に最も効果的なのが、<br>
+    りょうこ様専用に選ぶパワーストーンです。</p>
+
+    <div class="important-box">
+        <h3>【3つのプラン】</h3>
+
+        <p><strong>●松（本気で人生を変えたい方向け）</strong><br>
+        　オーラバランスの完全調整。火を補い、金と水を整え、全体を調和させる。<br>
+        　2026年7月～秋の最重要期間に向けて、今から整えます。</p>
+
+        <p><strong>●竹（まずは身体を楽にしたい方向け）</strong><br>
+        　火のオーラを補い、疲れにくい身体に変えていきます。</p>
+
+        <p><strong>●梅（少しずつ整えたい方向け）</strong><br>
+        　日常のオーラバランスを少しずつ整えます。</p>
+
+        <p>多くの方が「松」を選ばれます。<br>
+        理由は「本気で娘達を守り、先生との未来も掴みたいから、中途半端にしたくない」とのこと。</p>
+
+        <p>「必要だと感じた今このタイミング」が<br>
+        一番効果の出やすい時期です。</p>
+
+        <p>気になるようでしたら<br>
+        「詳細希望」とだけ送っていただければ、<br>
+        りょうこ様専用のオーラ調整石をお選びいたしますね。</p>
+    </div>
+
+    <h2>最後に</h2>
+
+    <p>りょうこ様、今あなたは大きな岐路に立ってます。</p>
+
+    <p>このまま一人で抱え込んで、身体を壊す道。<br>
+    それとも、働き方を変えて、自分を大切にする道。</p>
+
+    <p>道はひとつやないんです。</p>
+
+    <p>でもね、私には視えてます。</p>
+
+    <p>2026年秋の午後、先生からメッセージが届く。<br>
+    「お元気ですか？良かったら、お茶でも」って。</p>
+
+    <p>あなたは落ち着いて、笑顔で返信する。<br>
+    「はい、ありがとうございます。ぜひ」って。</p>
+
+    <p>そして再会した時、先生は驚く。<br>
+    「なんか変わりましたね。元気そう」って。</p>
+
+    <p>2027年春、二人はカフェで向き合ってる。<br>
+    先生が照れながら言う。<br>
+    「実は、患者としてやなくて、一人の女性として気になってたんです」って。</p>
+
+    <p>そして娘達も、笑顔で言ってる。<br>
+    「お母さん、最近元気やね。無理せんでね」って。</p>
+
+    <p>この未来は、もう始まってるんです。</p>
+
+    <p>あなたの優しさと強さは、最も美しい力。<br>
+    その力を、正しい方向に導いていきましょう。</p>
+
+    <p>私がずっと、あなたの道を照らし続けますね。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>

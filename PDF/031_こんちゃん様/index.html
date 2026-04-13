@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>近藤様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h2:last-of-type {
+            page-break-before: auto;
+            margin-top: 60px;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../強い火.png'); }
+        .aura-wood::before { background-image: url('../強い木.png'); }
+        .aura-earth::before { background-image: url('../強い土.png'); }
+        .aura-metal::before { background-image: url('../強い金.jpg'); }
+        .aura-water::before { background-image: url('../強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e8d5b7;
+            page-break-inside: avoid;
+            page-break-before: avoid;
+        }
+
+        strong {
+            color: #c9a05d;
+            font-weight: 600;
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: #ffffff !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">近藤様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>近藤様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>近藤様</p>
+
+    <p>この度は本鑑定にお進みいただき、<br>
+    心より感謝申し上げます。</p>
+
+    <p>月一で会っていた彼との関係。<br>
+    その「告白していいのか、恋人になれるのか」という揺れる気持ち、<br>
+    痛いほど伝わってきます。</p>
+
+    <p>まず初めにお伝えさせていただきます。</p>
+
+    <p>近藤様、<br>
+    あなたは何一つ間違えていません。</p>
+
+    <p>人を深く想い、<br>
+    大切にしようとしたからこそ<br>
+    今こうして悩んでいらっしゃる。<br>
+    そこに弱さなどありません。</p>
+
+    <p>未来はまだ真っ白なキャンバスです。<br>
+    その筆を握っているのは、近藤様ご自身。</p>
+
+    <p>彼と恋人として結ばれる未来を選ぶことはできます。<br>
+    その道を、これから丁寧にお伝えしていきますね。</p>
+
+    <h2>🔮 二人の魂の繋がり</h2>
+
+    <div class="aura-section aura-metal">
+        <p>近藤様は金のオーラを持つ、<br>
+        誠実で深い愛情を持った人。</p>
+
+        <p>「近藤さん、優しいね」<br>
+        「一緒にいると落ち着く」</p>
+
+        <p>周りからそう言われること、<br>
+        多いんやないですか?</p>
+
+        <p>その本来の魅力で、彼との時間も<br>
+        心地よいものにしてこられたこと、<br>
+        私には視えています。</p>
+    </div>
+
+    <div class="aura-section aura-wood">
+        <p>一方、彼は木のオーラを持つ<br>
+        自由を求め、成長し続けたい人。</p>
+
+        <p>彼の魂には、<br>
+        「自分らしく生きる」という波動が刻まれています。</p>
+
+        <p>だから、簡単には縛られへん。<br>
+        決してあなたを嫌ってるわけやないんです。</p>
+
+        <p>多忙で返信できへんのも、<br>
+        この波動がそうさせたんです。</p>
+    </div>
+
+    <p>あなたの金のオーラと、<br>
+    彼の木のオーラが、出会った瞬間。</p>
+
+    <p>金のオーラが、木のオーラを支えて、<br>
+    木のオーラが、金のオーラから栄養をもらってる。</p>
+
+    <p>これは、魂が引き寄せ合ってるサイン。</p>
+
+    <p>二人の間には、細い金色の糸が見える。<br>
+    会えてない今も、確かに繋がってる。</p>
+
+    <p>でも、この糸を太くするには、<br>
+    あなたの中に眠る「本来の魅力」を解放する必要がある。</p>
+
+    <h2>🔮 彼の深層心理</h2>
+
+    <p>彼は今、あなたのことを<br>
+    「居心地がいい存在」として認識しています。</p>
+
+    <p>セラピストとお客様という関係の中で、<br>
+    あなたの優しさや温かさを感じている。</p>
+
+    <p>でも同時に、<br>
+    「この関係を変えていいのか」という<br>
+    迷いも持っています。</p>
+
+    <p>彼の心の中では<br>
+    「近藤は特別な存在」<br>
+    「でも、セラピストとお客さんの関係を超えるのは...」<br>
+    という葛藤があります。</p>
+
+    <p>彼はあなたを嫌いやないんです。<br>
+    むしろ、大切に思ってる。</p>
+
+    <p>だからこそ、簡単に踏み出せへん。<br>
+    それが彼なりの誠実さなのです。</p>
+
+    <p>彼が喜びを感じるのは、<br>
+    自分の意見を尊重してもらえた時、<br>
+    新しい発見や刺激がある時、<br>
+    束縛されず自然体でいられる時。</p>
+
+    <p>逆に、束縛や過度な期待、<br>
+    感情的な押し付けは、<br>
+    彼を遠ざけてしまいます。</p>
+
+    <h2>🔮 恋人として歩める将来はあるか</h2>
+
+    <p>結論から申し上げます。</p>
+
+    <p>はい、あります。</p>
+
+    <p>ただし、それには<br>
+    「セラピストとお客さん」という枠を<br>
+    自然に超えていく必要があります。</p>
+
+    <p>今の関係性を視ると、<br>
+    彼はあなたを「癒しを与えてくれる存在」<br>
+    として認識しています。</p>
+
+    <p>でも、恋人になるには、<br>
+    もう一つの顔が必要なんです。</p>
+
+    <p>それは、<br>
+    「一緒に人生を楽しめる存在」<br>
+    「自分を成長させてくれる存在」<br>
+    としてのあなた。</p>
+
+    <p>セラピストという役割の中に留まらず、<br>
+    もっと自然体の、素のあなたを見せること。</p>
+
+    <p>彼と対等な立場で、<br>
+    一人の女性として接すること。</p>
+
+    <p>これができれば、<br>
+    彼の中であなたは<br>
+    「癒しをくれる人」から<br>
+    「一緒にいたい人」へと変わります。</p>
+
+    <h2>🔮 関係を変える3つの鍵</h2>
+
+    <p><strong>まず、セラピストの枠を超えること。</strong></p>
+
+    <p>完璧なセラピストではなく、<br>
+    一人の女性としての素顔を見せる。</p>
+
+    <p>「実は私も最近、〇〇で悩んでて...」<br>
+    「この前、〇〇に行ったんやけど、すごく良かった！」</p>
+
+    <p><strong>次に、彼に安定と温かさを与えること。</strong></p>
+
+    <p>彼は今、人生に安定感がなく、<br>
+    心が落ち着かない時期にいます。</p>
+
+    <p>だからこそ、あなたの持つ<br>
+    「温かさ」と「落ち着き」が必要なんです。</p>
+
+    <p>「何かあったら、いつでも話聞くよ」<br>
+    という、温かく包み込むような姿勢。</p>
+
+    <p><strong>そして、成長している姿を見せること。</strong></p>
+
+    <p>彼は「成長」と「新しい刺激」を求めています。</p>
+
+    <p>あなた自身が新しいことに挑戦し、<br>
+    成長している姿を見せることで、<br>
+    「近藤と一緒にいると、刺激がある」<br>
+    と思わせることができます。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <p>2026年は、<br>
+    近藤様にとって大きな転換期です。</p>
+
+    <p>今まで動けなかった重いエネルギーが<br>
+    少しずつ軽くなり始め、<br>
+    本来の魅力が輝き出す時期。</p>
+
+    <p>彼との関係が次のステージに進むなら、<br>
+    まさに今から準備を始める必要があります。</p>
+
+    <p>最も重要なのは、<br>
+    2026年春から初夏（3月～6月）。</p>
+
+    <p>彼のエネルギーが活性化し、<br>
+    「安定した関係」を求める時期です。</p>
+
+    <p>この時期、彼は<br>
+    「本当に安心できる人」<br>
+    「一緒にいて落ち着ける人」<br>
+    を無意識に探しています。</p>
+
+    <p>特に4月～5月は<br>
+    最重要期間として意識してください。</p>
+
+    <p>彼の方から<br>
+    「今度、セラピー以外で会わない？」<br>
+    「ご飯でも行かない？」<br>
+    と誘ってくる可能性が高いです。</p>
+
+    <p>また、2026年夏から秋（7月～10月）は<br>
+    彼自身の人生に変化が訪れる時期。</p>
+
+    <p>環境や仕事で何かが動き出し、<br>
+    「本当に大切な人」を<br>
+    見つめ直すタイミングです。</p>
+
+    <p>その時、温かく支えてくれた<br>
+    近藤様の存在が<br>
+    彼の心に深く刻まれていきます。</p>
+
+    <h2>🔮 あなたが今抱えているもの</h2>
+
+    <p>あなたの生年月日から視える運命の形を視ると、<br>
+    今あなたを縛っているものが見えてきます。</p>
+
+    <p>それは、人生で最もエネルギーが弱い時期にいること。<br>
+    だから、「動きたいけど動けない」<br>
+    「変わりたいけど変われない」と感じているはずです。</p>
+
+    <p>そして、安定を求めすぎるあまり、<br>
+    変化を恐れ、動けなくなってしまっている状態。</p>
+
+    <p>さらに、学ぶことは好きだけど、<br>
+    学んだことを実行に移すのが苦手。</p>
+
+    <p>この3つが、今のあなたを縛っています。</p>
+
+    <p>でも、これは変えられます。</p>
+
+    <p>「火」のエネルギーで温めることで、<br>
+    動けないエネルギーを活性化できます。</p>
+
+    <p>成長と変化のエネルギーを補うことで、<br>
+    重すぎる安定志向を軽くできます。</p>
+
+    <p>決断と実行のエネルギーを補うことで、<br>
+    学んだことを実践に変えられます。</p>
+
+    <p>そして、健康と美しさを保つこと。<br>
+    彼が「近藤、なんか変わった？」<br>
+    「最近、輝いてるね」<br>
+    と気づくような、<br>
+    自然な美しさを磨いてください。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>今、近藤様の心は<br>
+    「彼はどう思ってるんやろう」<br>
+    「本当に恋人になれるんやろうか」<br>
+    という不安で揺れていると思います。</p>
+
+    <p>実は、あなたの魂を視ると<br>
+    安定のエネルギーが強く、<br>
+    変化を恐れやすいバランスになっています。</p>
+
+    <p>このバランスが崩れていると、<br>
+    不安を溜め込みやすく、<br>
+    本来の自然体の魅力が<br>
+    彼に伝わりにくくなります。</p>
+
+    <p>このバランスを整えることで、<br>
+    近藤様本来の軽やかさが安定し、<br>
+    彼に「一緒にいて楽しい」という印象を<br>
+    自然に与えることができます。</p>
+
+    <p>バランスが整うと、<br>
+    せっかくの関係進展のタイミング（2026年春）を<br>
+    しっかり掴むことができます。</p>
+
+    <p>また、バランスが整うことで、<br>
+    心が揺れにくくなり、<br>
+    彼の変化を敏感にキャッチできるようになります。</p>
+
+    <p>そのバランス調整に最も効果的なのが、<br>
+    近藤様専用に選ぶパワーストーンです。</p>
+
+    <div class="important-box">
+        <h3>【3つのプラン】</h3>
+
+        <p><strong>●松（本気で恋人になりたい方向け）</strong><br>
+        　バランスの完全調整。「土」を抑え、「木」と「火」を育てる。<br>
+        　4月～5月の最重要期間に向けて、今から整えます。</p>
+
+        <p><strong>●竹（まずは心を安定させたい方向け）</strong><br>
+        　「土」のエネルギーを穏やかにし、心の揺れを抑えます。</p>
+
+        <p><strong>●梅（不安を和らげたい方向け）</strong><br>
+        　日常のバランスを少しずつ整えます。</p>
+
+        <p>多くの方が「松」を選ばれます。<br>
+        理由は「本気で恋人になりたいから、中途半端にしたくない」とのこと。</p>
+
+        <p>「必要だと感じた今このタイミング」が<br>
+        一番効果の出やすい時期です。</p>
+
+        <p>気になるようでしたら<br>
+        「詳細希望」とだけ送っていただければ、<br>
+        近藤様専用の調整石をお選びいたしますね。</p>
+    </div>
+
+    <h2>最後に</h2>
+
+    <p>近藤様、<br>
+    今のあなたは大切な岐路に立っています。</p>
+
+    <p>でも、道はひとつではありません。<br>
+    そして未来はまだ決まっていません。</p>
+
+    <p>彼と「恋人として歩みたい」と願う<br>
+    その純粋な想いこそが、<br>
+    どんな困難をも乗り越える、<br>
+    最も強い力です。</p>
+
+    <p>私には視えています。</p>
+
+    <p>彼が「近藤、実は...」<br>
+    「ずっと気になってたんよ」って告白し、</p>
+
+    <p>その先に<br>
+    「もう、セラピストとお客さんじゃなくて、<br>
+    一人の女性として、一緒にいたい」って<br>
+    本音を伝えてる姿が。</p>
+
+    <p>その未来に向けて、<br>
+    焦らず、無理をせず、<br>
+    少しずつ歩いていけば大丈夫です。</p>
+
+    <p>どうか、ひとりで抱え込まないでください。</p>
+
+    <p>その未来への道、<br>
+    私がこれからも照らし続けます。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>

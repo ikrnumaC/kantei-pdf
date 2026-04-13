@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヒロ様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Crimson+Pro:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #2a4a7c 80%, #3d5a9e 100%);
+            color: #e8e8e8;
+            padding: 40px 20px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #ffd700;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #c9a7ff;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #e8e8e8;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #c9a7ff;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #c9a7ff;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../強い火.png'); }
+        .aura-wood::before { background-image: url('../強い木.png'); }
+        .aura-earth::before { background-image: url('../強い土.png'); }
+        .aura-metal::before { background-image: url('../強い金.jpg'); }
+        .aura-water::before { background-image: url('../強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(155, 125, 255, 0.1) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: rgba(255, 215, 0, 0.08);
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: rgba(155, 125, 255, 0.1);
+            border: 2px dashed rgba(201, 167, 255, 0.5);
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        /* ===== スマホレスポンシブ対応 ===== */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page::before {
+                width: 250px;
+                height: 250px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+                letter-spacing: 1px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+                letter-spacing: 2px;
+                margin-bottom: 10px;
+            }
+
+            h1::after {
+                width: 100px;
+                margin: 15px auto 0;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 40px;
+                letter-spacing: 1px;
+            }
+
+            h2 {
+                font-size: 24px;
+                margin-top: 60px;
+                margin-bottom: 30px;
+                padding-bottom: 12px;
+            }
+
+            h3 {
+                font-size: 20px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                margin-bottom: 20px;
+                font-size: 15px;
+            }
+
+            .aura-section {
+                padding: 25px;
+                margin: 20px 0;
+            }
+
+            .header-info,
+            .important-box {
+                padding: 20px;
+                margin: 20px 0;
+            }
+
+            .magic-word-box {
+                padding: 25px;
+                margin: 20px 0;
+            }
+
+            .sign-box {
+                margin-top: 40px;
+                padding-top: 20px;
+            }
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #2a4a7c 80%, #3d5a9e 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: rgba(26, 26, 46, 0.95) !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.15;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">ヒロ様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>ヒロ様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <h2>はじめに</h2>
+
+    <p>ヒロ様、大切なお気持ちを打ち明けてくださって、<br>
+    ほんまにありがとうございます。</p>
+
+    <p>4年以上、一緒にいる。</p>
+
+    <p>10ヶ月前と7ヶ月前、<br>
+    2回も正式に想いを伝えた。</p>
+
+    <p>それでも返ってきた言葉は「考え中」。</p>
+
+    <p>待ってる時間、長いですよね。<br>
+    ただの遊びやったら、ここまで続かへん。</p>
+
+    <p>それだけの想いがあるからこそ、<br>
+    この先を真剣に考えてる。</p>
+
+    <p>でも、彼女の答えが出ないまま、<br>
+    時間だけが過ぎていく。</p>
+
+    <p>このままでええのか、<br>
+    もう一歩踏み込むべきなのか。</p>
+
+    <p>その想い、痛いほど伝わってきます。</p>
+
+    <p>どうか、ご自身を責めないでください。<br>
+    あなたは真剣に向き合っています。</p>
+
+    <p>大丈夫です。<br>
+    今、あなたの前には道が見えています。</p>
+
+    <p>この鑑定書が、その道を照らす灯火となりますように。</p>
+
+    <h2>🔮 「考え中」の本当の理由</h2>
+
+    <h3>あなたの本質</h3>
+
+    <div class="aura-section aura-earth">
+        <p>ヒロ様、あなたを霊視した瞬間、<br>
+        柔らかい土色のオーラが、優しく広がっていました。</p>
+
+        <p>畑のように、全部受け止める。</p>
+
+        <p>あなたの魂には、<br>
+        「抱え込む」「責任を感じる」<br>
+        という波動が刻まれています。</p>
+
+        <p>だから、<br>
+        ・言いたいことを、送る直前で消した夜がある<br>
+        ・本当は答えが欲しいのに「待つよ」って返した瞬間がある<br>
+        ・本音を言いかけて、笑ってごまかした時がある</p>
+    </div>
+
+    <p>あなたは、感情がないんやない。<br>
+    むしろ、抱え込む。責任感が強い。</p>
+
+    <p>ただ、その気持ちを<br>
+    笑ってごまかしながら、<br>
+    ずっと自分の中に置いてきただけ。</p>
+
+    <p>そして、あなたの魂には<br>
+    内に秘める波動もある。</p>
+
+    <p>だから、彼女に「考え中」と言われても、<br>
+    本音を言えずに待ち続けてしまう。</p>
+
+    <h3>彼女の本質</h3>
+
+    <div class="aura-section aura-wood">
+        <p>一方、彼女を霊視した瞬間、<br>
+        まっすぐ伸びる深い緑のオーラが、天に向かって伸びていました。</p>
+
+        <p>大木のように力強く、頑固で曲がらない。</p>
+
+        <p>彼女の魂には、<br>
+        「正しくありたい」「ルールを守りたい」<br>
+        という波動が、ものすごく強く刻まれています。</p>
+
+        <p>これが2つも重なってるから、<br>
+        正しさに縛られやすい。</p>
+
+        <p>「これは正しいことなのか」<br>
+        「この関係を続けていいのか」<br>
+        「周りに知られたらどうなるのか」</p>
+
+        <p>こんな風に、ずっと考えてしまうんです。</p>
+    </div>
+
+    <h3>「考え中」の本当の理由</h3>
+
+    <p>視えてきます。</p>
+
+    <p>彼女があなたに「考え中」と答え続けている理由は、<br>
+    「あなたが嫌いだから」ではありません。</p>
+
+    <p>むしろ、真剣に向き合おうとしている証。</p>
+
+    <p>彼女の心の中では、<br>
+    2つの気持ちが戦ってるんです。</p>
+
+    <p><strong>1つ目の気持ち：</strong><br>
+    「ヒロさんのことは好き」<br>
+    「4年以上も一緒にいるのは、気持ちがあるから」<br>
+    「正式に付き合いたい気持ちもある」</p>
+
+    <p><strong>2つ目の気持ち：</strong><br>
+    「でも、ヒロさんは既婚者」<br>
+    「この関係を正式にするのは正しいことなのか」<br>
+    「周りに知られたら、私はどう思われるのか」<br>
+    「30歳も年上で、将来は大丈夫なのか」</p>
+
+    <p>この2つの気持ちが、<br>
+    ずっと彼女の心の中で戦ってる。</p>
+
+    <p>だから、答えが出せへん。</p>
+
+    <p>「考え中」という言葉は、<br>
+    あなたを拒絶してるんやない。</p>
+
+    <p>「まだ答えが出せない」<br>
+    「でも、あなたのことは手放したくない」</p>
+
+    <p>そういう意味なんです。</p>
+
+    <h2>🔮 彼女の心を動かす道筋</h2>
+
+    <p>彼女の心を動かし、答えを出させるには、<br>
+    ヒロ様自身の3つの転換が必要です。</p>
+
+    <h3>転換①：「待つ姿勢」→「決断を促す姿勢」へ</h3>
+
+    <p>今のあなたは、<br>
+    「待つよ」と言って、彼女のペースに合わせている。</p>
+
+    <p>でもね、これが逆効果なんです。</p>
+
+    <p>彼女の「正しくありたい」という波動は、<br>
+    決断を先延ばしにしてしまう。</p>
+
+    <p>これからは、優しく、でもはっきりと<br>
+    期限を示す。</p>
+
+    <p>「いつまでも待つよ」やなくて、<br>
+    「〇月までに答えを聞かせてほしい」</p>
+
+    <p>この明確さが、彼女の背中を押すんです。</p>
+
+    <div class="important-box">
+        <h3>具体例：</h3>
+        <p>- 「春までに、答えを聞かせてほしい」と優しく伝える<br>
+        - 「ずっと待つ」という言葉は使わない<br>
+        - 「俺も真剣に考えてる。だから、君の答えが必要なんだ」と伝える</p>
+    </div>
+
+    <h3>転換②：「受け止める土」→「導く土」へ</h3>
+
+    <p>今のあなたの土のオーラは、<br>
+    彼女の全部を受け止めようとしている。</p>
+
+    <p>でもね、彼女が本当に必要としてるのは、<br>
+    受け止めるんやなくて、導いてくれる人。</p>
+
+    <p>これからは、<br>
+    「一緒に考えよう」やなくて、<br>
+    「俺はこうしたいと思ってる」と示す。</p>
+
+    <div class="important-box">
+        <h3>具体例：</h3>
+        <p>- 「将来のこと、一緒に考えてみないか」と提案する<br>
+        - 「俺は君と真剣に付き合いたい。そのために、〇〇する覚悟がある」と具体的に示す<br>
+        - 彼女に決断を委ねるんやなくて、自分の覚悟を見せる</p>
+    </div>
+
+    <h3>転換③：「曖昧な関係」→「明確な関係」へ</h3>
+
+    <p>今の関係は、セフレという曖昧な状態。</p>
+
+    <p>これが、彼女の「正しくありたい」という波動を<br>
+    ずっと刺激し続けてる。</p>
+
+    <p>これからは、<br>
+    関係性をはっきりさせる。</p>
+
+    <p>「正式に付き合う」か「終わらせる」か。</p>
+
+    <p>この二択を、優しく、でもはっきりと示す。</p>
+
+    <div class="important-box">
+        <h3>具体例：</h3>
+        <p>- 「このままの関係を続けるのは、君にとっても良くないと思う」<br>
+        - 「俺は真剣に付き合いたい。でも、君がそう思えないなら、一度距離を置こう」<br>
+        - 「君のことを大切に思ってるからこそ、曖昧なままにしたくない」</p>
+    </div>
+
+    <h2>🔮 運命の転機</h2>
+
+    <h3>なぜ今が大切なのか</h3>
+
+    <p>2026年は、60年に一度巡る「丙午」の年。<br>
+    火のエネルギーが最も強い年です。</p>
+
+    <p>ヒロ様は、土のオーラを持つ方。</p>
+
+    <p>2026年の火のエネルギーは、<br>
+    あなたの土のオーラを温めて、<br>
+    行動する力を与えてくれます。</p>
+
+    <p>今まで内に秘めていた想いを、<br>
+    外に出す絶好のタイミング。</p>
+
+    <p>一方、彼女は木のオーラを持つ方。</p>
+
+    <p>2026年の火のエネルギーは、<br>
+    彼女の木のオーラを刺激して、<br>
+    決断を促す作用があります。</p>
+
+    <p>「このままでいいのかな」<br>
+    「ちゃんと答えを出さないと」</p>
+
+    <p>そう感じ始める時期なんです。</p>
+
+    <h3>いつ彼女の心が動くのか</h3>
+
+    <p>視えてきます。</p>
+
+    <p>彼女が答えを出す可能性が最も高いのは、<br>
+    2026年春から初夏にかけてです。</p>
+
+    <p>なぜこの時期なのか。</p>
+
+    <p>彼女は2026年、<br>
+    運気の転換期を迎えます。</p>
+
+    <p>23-24歳という年齢は、<br>
+    10年に一度の運気の変わり目。</p>
+
+    <p>新しいサイクルが始まる時、<br>
+    人は過去を振り返り、決断を迫られます。</p>
+
+    <p>そして2026年は丙午年。<br>
+    火のエネルギーが最も強い年。</p>
+
+    <p>彼女の木のオーラは、<br>
+    火を生じる関係にあります。</p>
+
+    <p>だから、火のエネルギーが強い年は、<br>
+    彼女の木のオーラが活発に動く年なんです。</p>
+
+    <p>特に、春（3月〜5月）は<br>
+    木のエネルギーが最も強い季節。</p>
+
+    <p>そして初夏（6月）は<br>
+    火のエネルギーがピークを迎える季節。</p>
+
+    <p>この春から初夏にかけて、<br>
+    彼女の木のオーラが最も活発に動き、<br>
+    決断を促されるんです。</p>
+
+    <p>2026年冬から春（1月〜4月）、<br>
+    あなたが覚悟を決めて、彼女に期限を示す時期。</p>
+
+    <p>「春までに答えを聞かせてほしい」<br>
+    「俺は真剣に付き合いたいと思ってる」</p>
+
+    <p>この言葉が、彼女の心を揺さぶります。</p>
+
+    <p>そして2026年春から初夏（4月〜6月）、<br>
+    彼女の運気の転換期と、<br>
+    火のエネルギーのピークが重なる時期。</p>
+
+    <p>「もう答えを出さないと」<br>
+    という気持ちが最も高まるんです。</p>
+
+    <h3>今年の流れ</h3>
+
+    <p><strong>1月〜2月</strong><br>
+    あなたが覚悟を決める時期。<br>
+    彼女に優しく、でもはっきりと期限を伝える。</p>
+
+    <p>「春（4月末）までに、答えを聞かせてほしい」</p>
+
+    <p>彼女は最初、戸惑うかもしれへん。<br>
+    でも、それでいいんです。</p>
+
+    <p><strong>3月〜4月</strong><br>
+    彼女が真剣に考え始める時期。<br>
+    「このままじゃダメだ」<br>
+    「ちゃんと答えを出さないと」<br>
+    と感じ始める。</p>
+
+    <p>あなたは、この時期も待つ。<br>
+    でも、「待ってるよ」とだけ伝える。</p>
+
+    <p><strong>5月〜6月</strong><br>
+    彼女が答えを出す可能性が最も高い時期。</p>
+
+    <p>「やっぱり、ヒロさんと一緒にいたい」<br>
+    「真剣に付き合いたい」</p>
+
+    <p>または</p>
+
+    <p>「ごめんなさい、やっぱり無理」</p>
+
+    <p>どちらかの答えが出ます。</p>
+
+    <p><strong>7月以降</strong><br>
+    答えが出た後の新しい関係が始まる。</p>
+
+    <h3>近づいているサイン</h3>
+
+    <p>彼女の心が動き始めると、こんなサインが現れます。</p>
+
+    <p>- 彼女から「ちょっと話がある」と連絡が来る<br>
+    - 会った時、彼女が真剣な表情をしている<br>
+    - 「将来のこと、考えてる」と話し始める<br>
+    - 「ヒロさんは、本当に私でいいの？」と聞いてくる</p>
+
+    <p>これらを見逃さないでください。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <h3>1月〜2月にすべきこと</h3>
+
+    <p>この時期、彼女に期限を伝える。</p>
+
+    <p>でもね、責めるんやなくて、<br>
+    優しく、でもはっきりと。</p>
+
+    <div class="magic-word-box">伝え方の例：
+
+「〇〇ちゃん、10ヶ月前と7ヶ月前に想いを伝えて、
+ずっと待ってきた。
+
+俺は君のことを真剣に考えてる。
+だから、このままの曖昧な関係を続けるのは、
+君にとっても良くないと思うんだ。
+
+春（4月末）までに、答えを聞かせてほしい。
+
+正式に付き合うのか、
+それとも、一度距離を置くのか。
+
+君の気持ちを、ちゃんと聞きたいんだ」</div>
+
+    <p>この言葉を、優しく、でもはっきりと伝える。</p>
+
+    <h3>3月〜4月にすべきこと</h3>
+
+    <p>この時期は、待つ。</p>
+
+    <p>でもね、<br>
+    「待ってるよ」とだけ伝える。</p>
+
+    <p>彼女が「まだ考え中」と言っても、<br>
+    「わかった。でも、4月末までには答えを聞かせてね」<br>
+    と優しく念押しする。</p>
+
+    <p>追い詰めるんやなくて、<br>
+    でも、期限は守ってもらう。</p>
+
+    <h3>5月〜6月にすべきこと</h3>
+
+    <p>この時期、彼女から答えが来る可能性が高い。</p>
+
+    <p>もし、「真剣に付き合いたい」と言ってくれたら、<br>
+    すぐに行動する。</p>
+
+    <p>・デートの頻度を増やす<br>
+    ・将来の話を具体的にする<br>
+    ・「大切にするよ」と言葉で伝える</p>
+
+    <p>もし、「やっぱり無理」と言われたら、<br>
+    受け入れる覚悟も持つ。</p>
+
+    <p>「わかった。ありがとう。<br>
+    今まで一緒にいてくれて、嬉しかったよ」</p>
+
+    <p>潔く、でも感謝を伝える。</p>
+
+    <h3>大切な心構え</h3>
+
+    <p>彼女の答えがどちらであっても、<br>
+    受け入れる覚悟を持ってください。</p>
+
+    <p>「正式に付き合いたい」と言ってくれたら、<br>
+    それは彼女が覚悟を決めたということ。</p>
+
+    <p>大切にしてください。</p>
+
+    <p>「やっぱり無理」と言われたら、<br>
+    それも彼女の答え。</p>
+
+    <p>潔く受け入れて、<br>
+    新しい道に進む勇気を持ってください。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <h3>今、あなたの心は揺れています</h3>
+
+    <p>不安ですよね。<br>
+    「彼女は本当に答えを出してくれるのか」<br>
+    「もし断られたらどうしよう」</p>
+
+    <p>その気持ち、痛いほど分かります。</p>
+
+    <p>でも、その不安を抱えたまま<br>
+    曖昧な関係を続けても、<br>
+    何も変わりません。</p>
+
+    <h3>あなたのオーラから視えること</h3>
+
+    <p>あなたを霊視した瞬間、<br>
+    柔らかい土のオーラが視えました。</p>
+
+    <p>でも今、火のオーラが全くないんです。</p>
+
+    <p>火のオーラは、情熱、決断力、行動力を表します。<br>
+    これが不足してるから、<br>
+    「行動に移せない」<br>
+    「期限を示せない」<br>
+    という状態になりやすいのです。</p>
+
+    <p>逆に言えば、<br>
+    火のオーラを補うことで、決断力が生まれ、<br>
+    彼女に期限を示すことができるようになります。</p>
+
+    <p>そして、その「覚悟」こそが、<br>
+    彼女の心を動かすのです。</p>
+
+    <h3>パワーストーンでオーラを整える</h3>
+
+    <p>私がおすすめしているのは、<br>
+    パワーストーンによるオーラ調整です。</p>
+
+    <p>あなたに必要なのは火のオーラ。</p>
+
+    <p>3つのプランをご用意しています。</p>
+
+    <div class="important-box">
+        <h3>【松】完全調整プラン</h3>
+        <p>火のオーラを中心に、全体のバランスも完全に整える組み合わせ。<br>
+        本気で答えを出させたい、<br>
+        今この運命の転機を逃したくないという方へ。</p>
+
+        <p>多くの方が松プランを選ばれます。</p>
+
+        <p>それは、「本気で彼女との関係をはっきりさせたいから」<br>
+        「今このタイミングが一番効果的だから」という理由です。</p>
+
+        <p>このプランを持つことで<br>
+        - 決断力が生まれ、彼女に期限を示すことができます<br>
+        - 彼女の変化やサインを敏感にキャッチできるようになります<br>
+        - 覚悟を持って接することができ、彼女の心を動かします<br>
+        - 今後の人生全体が安定し、後悔のない選択ができます</p>
+    </div>
+
+    <div class="important-box">
+        <h3>【竹】心の安定プラン</h3>
+        <p>火のオーラを中心に、決断力を高める組み合わせ。<br>
+        まずは行動する勇気が欲しい方へ。</p>
+    </div>
+
+    <div class="important-box">
+        <h3>【梅】お守りプラン</h3>
+        <p>基本的な火のオーラを補う組み合わせ。<br>
+        日常の迷いを少しでも減らしたいという方へ。</p>
+    </div>
+
+    <h3>ご希望の方へ</h3>
+
+    <p>詳細をお知りになりたい方は、<br>
+    「詳細希望」とだけ送っていただければ、<br>
+    折り返しご案内させていただきます。</p>
+
+    <p>押し売りは一切いたしません。<br>
+    あなたの心を守り、<br>
+    二人の未来を照らすためのサポートです。</p>
+
+    <h2>最後に</h2>
+
+    <p>ヒロ様、今あなたは大きな岐路に立っています。</p>
+
+    <p>このまま曖昧な関係を続ける道。<br>
+    それとも、覚悟を決めて答えを求める道。</p>
+
+    <p>道はひとつやないんです。</p>
+
+    <p>でもね、私には視えてます。</p>
+
+    <p>2026年春、カフェで<br>
+    あなたと彼女が真剣に話している姿が。</p>
+
+    <p>「ずっと考えてた。やっぱり、ヒロさんと一緒にいたい」<br>
+    「真剣に付き合いたい」</p>
+
+    <p>彼女がそう言って、<br>
+    あなたの手を握ってる。</p>
+
+    <p>「ありがとう。大切にするよ」</p>
+
+    <p>あなたが優しく微笑んでる。</p>
+
+    <p>その未来は、もう始まってるんです。</p>
+
+    <p>あなたの真剣な想いこそが、最も強い力。<br>
+    その想いを、行動に変えていきましょう。</p>
+
+    <p>私がずっと、あなたの道を照らし続けますね。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        鑑定士 かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>

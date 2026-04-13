@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>横田様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Crimson+Pro:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #2a4a7c 80%, #3d5a9e 100%);
+            color: #e8e8e8;
+            padding: 40px 20px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #ffd700;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #c9a7ff;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #e8e8e8;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #c9a7ff;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #c9a7ff;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../強い火.png'); }
+        .aura-wood::before { background-image: url('../強い木.png'); }
+        .aura-earth::before { background-image: url('../強い土.png'); }
+        .aura-metal::before { background-image: url('../強い金.jpg'); }
+        .aura-water::before { background-image: url('../強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(155, 125, 255, 0.1) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: rgba(255, 215, 0, 0.08);
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: rgba(155, 125, 255, 0.1);
+            border: 2px dashed rgba(201, 167, 255, 0.5);
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        /* ===== スマホレスポンシブ対応 ===== */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            /* 表紙ページ */
+            .cover-page::before {
+                width: 250px;
+                height: 250px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+                letter-spacing: 1px;
+            }
+
+            /* コンテンツページ */
+            .container {
+                padding: 30px 20px;
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+                letter-spacing: 2px;
+                margin-bottom: 10px;
+            }
+
+            h1::after {
+                width: 100px;
+                margin: 15px auto 0;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 40px;
+                letter-spacing: 1px;
+            }
+
+            h2 {
+                font-size: 24px;
+                margin-top: 60px;
+                margin-bottom: 30px;
+                padding-bottom: 12px;
+            }
+
+            h3 {
+                font-size: 20px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                margin-bottom: 20px;
+                font-size: 15px;
+            }
+
+            /* オーラセクション */
+            .aura-section {
+                padding: 25px;
+                margin: 20px 0;
+            }
+
+            /* ボックス装飾 */
+            .header-info,
+            .important-box {
+                padding: 20px;
+                margin: 20px 0;
+            }
+
+            .magic-word-box {
+                padding: 25px;
+                margin: 20px 0;
+            }
+
+            .sign-box {
+                margin-top: 40px;
+                padding-top: 20px;
+            }
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #2a4a7c 80%, #3d5a9e 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: rgba(26, 26, 46, 0.95) !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.15;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">横田様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>横田様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <h2>はじめに</h2>
+
+    <p>横田様、大切なお気持ちを打ち明けてくださって、<br>
+    ほんまにありがとうございます。</p>
+
+    <p>半年前に知り合った彼女。<br>
+    2回告白して、2回振られた。</p>
+
+    <p>しつこく迫ってしまってLINEをブロックされた。<br>
+    お店で謝って、ブロックは解除してもらえた。</p>
+
+    <p>でも、ギクシャクした関係が続いてる。</p>
+
+    <p>クリスマスに以前の彼女に戻ってたから安心したのに、<br>
+    また距離を置かれてしまった。</p>
+
+    <p>「彼女は僕のこと、どう思ってるんだろう」<br>
+    「諦めたくないけど、どうすればいいかわからない」</p>
+
+    <p>その想い、痛いほど伝わってきます。</p>
+
+    <p>でもね、あなたは何も悪くない。<br>
+    ただ、想いが強すぎて、その伝え方を間違えてしまっただけなんです。</p>
+
+    <p>大丈夫です。<br>
+    今、あなたの前には新しい道が広がっています。</p>
+
+    <p>この鑑定書が、その道を照らす灯火となりますように。</p>
+
+    <h2>🔮 距離を置かれた本当の理由</h2>
+
+    <h3>あなたの本質</h3>
+
+    <div class="aura-section aura-fire">
+        <p>横田様、あなたを霊視した瞬間、<br>
+        真っ赤な炎のオーラが、パッと広がりました。</p>
+
+        <p>太陽のように、明るく情熱的に燃える炎。</p>
+
+        <p>そして、あなたの魂には<br>
+        「上昇していきたい」「積極的に行動したい」<br>
+        という強い波動が刻まれています。</p>
+
+        <p>だから、好きな人ができたら<br>
+        まっすぐに想いを伝える。</p>
+
+        <p>告白して振られても、<br>
+        もう一度チャレンジする。</p>
+
+        <p>これは本当に美しい資質です。</p>
+    </div>
+
+    <p>でもね、その積極性が今、<br>
+    強すぎて相手を圧倒してしまってる。</p>
+
+    <p>あなたの魂の波動は、<br>
+    「自分の想いを伝えたい」という気持ちが先に出てしまう。</p>
+
+    <p>相手のペースより、自分の気持ちを優先してしまう。</p>
+
+    <p>・想いが強すぎて、押し付けてしまった<br>
+    ・2回目の告白も、相手の気持ちより自分の想いを優先してしまった<br>
+    ・ブロックされた後も、しつこく迫ってしまった</p>
+
+    <p>あなたは感情がないんやない。<br>
+    むしろ、誰よりも強く感じてる。</p>
+
+    <p>ただ、その炎の使い方を<br>
+    今は間違えてしまってる状態なんです。</p>
+
+    <h3>彼女の本質</h3>
+
+    <div class="aura-section aura-water">
+        <p>一方、彼女を霊視した瞬間、<br>
+        深く流れる青い水のオーラが、静かに広がりました。</p>
+
+        <p>大海のように、深くて底が見えへん。<br>
+        自由に流れたい水。</p>
+
+        <p>彼女の魂には、<br>
+        「独立していたい」「誰かに頼らず自分で動きたい」<br>
+        という波動が、ものすごく強く刻まれています。</p>
+
+        <p>これが2つも重なってるから、<br>
+        束縛や圧を感じると、本能的に逃げたくなる。</p>
+
+        <p>そして、彼女の魂には<br>
+        「心を開くまで時間がかかる」という波動もある。</p>
+    </div>
+
+    <p>マイペースで、自分の世界を大切にしたい人。</p>
+
+    <p>社交的に見えても、<br>
+    本当の心を開くまでには、ものすごく時間がかかるんです。</p>
+
+    <p>そして今、彼女はまだ若い。<br>
+    22歳という年齢は、守りたいものより、<br>
+    自分自身を大切にしたい時期。</p>
+
+    <h3>2回振られた本当の理由</h3>
+
+    <p>視えてきます。</p>
+
+    <p>彼女があなたを振った理由は、<br>
+    「あなたが嫌いだから」ではありません。</p>
+
+    <p>1回目の告白の時、<br>
+    彼女はあなたの想いの強さに、少し圧を感じた。</p>
+
+    <p>「まだそこまでの気持ちがない」<br>
+    「この人と付き合ったら、束縛されそう」</p>
+
+    <p>そう感じたんです。</p>
+
+    <p>2回目の告白の時、<br>
+    さらに強く迫られて、彼女の心は「逃げたい」って感じた。</p>
+
+    <p>しつこく迫った時、彼女の水のオーラは<br>
+    あなたの炎のオーラから「逃れたい」と強く反応してしまったんです。</p>
+
+    <p>ブロックされたのも、<br>
+    あなたを嫌いになったわけやない。</p>
+
+    <p>ただ、圧から解放されたかっただけ。</p>
+
+    <p>クリスマスに以前の彼女に戻ってたのは、<br>
+    あなたが謝罪して、少し落ち着いたから。</p>
+
+    <p>「この人、変わったかな」<br>
+    そう感じてくれたんです。</p>
+
+    <p>でも、3週間後にまたギクシャクしたのは、<br>
+    あなたの中の「好き」という気持ちが<br>
+    また炎のように溢れ出してしまったから。</p>
+
+    <p>彼女は敏感に、それを感じ取ってしまった。</p>
+
+    <p>でも、誤解しないでください。</p>
+
+    <p>彼女はあなたのことを完全に嫌いになったわけやない。<br>
+    ただ、「距離を保ちたい」と感じてるだけなんです。</p>
+
+    <h2>🔮 関係を修復する道筋</h2>
+
+    <p>この関係を修復し、彼女の心を動かすには、<br>
+    横田様自身の3つの転換が必要です。</p>
+
+    <h3>転換①：「燃え上がる炎」→「静かな灯火」へ</h3>
+
+    <p>今のあなたの炎は、強すぎる。</p>
+
+    <p>彼女を照らそうとして、<br>
+    逆に眩しすぎて、目を背けられてしまってる。</p>
+
+    <p>これからは、静かに灯る炎になってください。</p>
+
+    <p>追いかけるんやなくて、<br>
+    自分の人生を楽しむ。</p>
+
+    <p>「私はあなたがいなくても大丈夫です。<br>
+    でも、あなたと一緒ならもっと楽しい」</p>
+
+    <p>この余裕を持つんです。</p>
+
+    <div class="important-box">
+        <h3>具体例：</h3>
+        <p>・彼女のことを考える時間を減らし、自分の趣味や仕事に没頭する<br>
+        ・お店に行く頻度を減らす（月1回程度に）<br>
+        ・SNSで彼女の投稿に反応しすぎない</p>
+    </div>
+
+    <h3>転換②：「感情的な男」→「冷静な大人の男性」へ</h3>
+
+    <p>今のあなたは、感情が先に出てしまう。</p>
+
+    <p>でも、彼女が惹かれるのは、<br>
+    冷静で余裕のある大人の男性なんです。</p>
+
+    <p>しつこく迫るんやなくて、<br>
+    紳士的に接する。</p>
+
+    <p>「君のペースでいいよ」<br>
+    この一言が言えるようになることが大切です。</p>
+
+    <div class="important-box">
+        <h3>具体例：</h3>
+        <p>・お店で会っても、長時間話し込まない<br>
+        ・彼女が忙しそうだったら「頑張ってね」と笑顔で引く<br>
+        ・LINEは送らない（向こうから来るのを待つ）</p>
+    </div>
+
+    <h3>転換③：「追う側」→「追われる側」へ</h3>
+
+    <p>今のあなたは、完全に追う側。</p>
+
+    <p>でも、彼女の水のオーラは、<br>
+    追われると逃げる性質なんです。</p>
+
+    <p>これからは、追われる側になる。</p>
+
+    <p>お店に頻繁に行くんやなくて、<br>
+    「最近、横田さん来ないね」<br>
+    って彼女に思わせる。</p>
+
+    <p>そうすると、彼女の中で<br>
+    「あれ、どうしたんだろう」<br>
+    って気になり始めるんです。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <h3>なぜ今が大切なのか</h3>
+
+    <p>2026年は、60年に一度巡る「丙午」の年。<br>
+    火のエネルギーが最も強い年です。</p>
+
+    <p>横田様は、火のオーラを持つ方。</p>
+
+    <p>2026年は、あなたにとって<br>
+    火のエネルギーが強すぎて、<br>
+    逆に「落ち着き」「冷静さ」を学ぶ年なんです。</p>
+
+    <p>今まで燃え盛っていた炎を、<br>
+    静かな灯火に変える絶好のタイミング。</p>
+
+    <p>一方、彼女は水のオーラを持つ方。</p>
+
+    <p>2026年の火のエネルギーは、<br>
+    彼女の水を刺激して、変化をもたらします。</p>
+
+    <p>「今のままでいいのかな」<br>
+    そう感じ始める時期なんです。</p>
+
+    <p>そして、彼女は2026年11月（誕生日）に<br>
+    運気が大きく変わります。</p>
+
+    <p>今までの10年のサイクルが終わり、<br>
+    新しい10年のサイクルが始まる。</p>
+
+    <p>この転換期に、彼女の心も大きく動くんです。</p>
+
+    <h3>いつ彼女の心が動くのか</h3>
+
+    <p>視えてきます。</p>
+
+    <p>彼女の心が動く可能性があるのは、<br>
+    2026年11月から2027年春にかけてです。</p>
+
+    <p>なぜこの時期なのか。</p>
+
+    <p>2026年春から秋、<br>
+    あなたが変化を見せる時期。</p>
+
+    <p>お店に頻繁に来なくなり、<br>
+    会った時も余裕を持って接するあなた。</p>
+
+    <p>彼女は最初、何も感じないかもしれへん。<br>
+    でもね、時間が経つにつれて、<br>
+    「あれ、横田さん変わったな」<br>
+    って気づき始める。</p>
+
+    <p>そして2026年11月、<br>
+    彼女の運気が大きく変わる転換期。</p>
+
+    <p>新しいサイクルが始まる時、<br>
+    人は過去を振り返るんです。</p>
+
+    <p>「横田さん、最近全然来ないな」<br>
+    「あの時、私も冷たくしすぎたかな」<br>
+    「変わった横田さん、ちょっと気になる」</p>
+
+    <p>こんな風に、彼女の心が動き始めます。</p>
+
+    <p>2027年に入ると、あなたの運気も大きく変わります。<br>
+    新しいサイクルが始まる時。</p>
+
+    <p>この時期、彼女から連絡が来る可能性があります。</p>
+
+    <h3>今年1年の大きな流れ</h3>
+
+    <p><strong>1月〜2月</strong><br>
+    土台を整える我慢の時期。<br>
+    お店に行かず、自分自身を整える。</p>
+
+    <p><strong>3月〜6月</strong><br>
+    変化を見せる時期。<br>
+    月1回お店に行き、余裕のある姿を見せる。<br>
+    彼女の心が少しずつ気になり始める。</p>
+
+    <p><strong>7月〜10月</strong><br>
+    関係性の変化。<br>
+    彼女の態度が柔らかくなってくる。<br>
+    「横田さん、最近来ないね」と話しかけてくる可能性。</p>
+
+    <p><strong>11月（最重要）</strong><br>
+    彼女の誕生日、そして運気が大きく変わる転機。</p>
+
+    <p>この時期、彼女の心が大きく動きます。<br>
+    新しいサイクルの始まりに、<br>
+    過去を振り返り、「横田さん、どうしてるかな」と気になり始める。</p>
+
+    <p>彼女から何かしらの反応がある可能性が最も高い時期。</p>
+
+    <p><strong>12月〜2027年春</strong><br>
+    新しいサイクルの始まり。<br>
+    彼女から連絡が来る、または<br>
+    お店で会った時に彼女の態度が明らかに変わる。</p>
+
+    <p>「横田さん、最近全然来ないけど、元気にしてる？」<br>
+    「あの時は、ごめんね」<br>
+    こんなLINEが来る可能性があります。</p>
+
+    <h3>近づいているサイン</h3>
+
+    <p>彼女の心が動き始めると、こんなサインが現れます。</p>
+
+    <p>・お店で会った時、彼女から話しかけてくる<br>
+    ・仲の良いキャバ嬢から「〇〇ちゃん、横田さんのこと聞いてたよ」と言われる<br>
+    ・彼女のSNSの投稿が増える（あなたに見せたい心理）<br>
+    ・偶然、お店以外の場所で会う</p>
+
+    <p>これらを見逃さないでください。</p>
+
+    <h2>🔮 今から11月までの道のり</h2>
+
+    <h3>1月〜2月：一番つらい我慢の時期（土台を作る）</h3>
+
+    <p>この時期は、完全に距離を置く。</p>
+
+    <p>お店には行かない。<br>
+    LINEも送らない。</p>
+
+    <p>「えっ、それじゃ彼女のこと忘れられてしまうんじゃ…」<br>
+    って不安になりますよね。</p>
+
+    <p>でもね、大丈夫。</p>
+
+    <p>今のままお店に通っても、<br>
+    彼女はあなたから逃げるだけ。</p>
+
+    <p>この2ヶ月は、あなた自身を整える時期なんです。</p>
+
+    <div class="important-box">
+        <h3>やること：</h3>
+        <p>・週2回、ゆっくりお風呂に浸かる（水のエネルギーで火を静める）<br>
+        ・朝、冷たい水を飲む（内側から冷静さを取り戻す）<br>
+        ・青や水色の服を着る（水のオーラを補う）<br>
+        ・ジムに通う、またはランニングを始める（エネルギーの発散）<br>
+        ・新しい趣味を見つける（彼女以外に意識を向ける）</p>
+    </div>
+
+    <p>「彼女のことを考えない時間」を<br>
+    意識的に作ってください。</p>
+
+    <p>この2ヶ月が、一番大切な土台作りです。</p>
+
+    <h3>3月：変化を見せ始める（正念場）</h3>
+
+    <p>3月、1回だけお店に行ってください。</p>
+
+    <p>でもね、以前のあなたとは違う姿で。</p>
+
+    <div class="important-box">
+        <p><strong>❌NG</strong><br>
+        「久しぶり、会いたかった」<br>
+        「最近冷たくない？」<br>
+        「俺のこと、どう思ってる？」</p>
+
+        <p><strong>⭕️OK</strong><br>
+        「久しぶり。元気そうやね」<br>
+        「頑張ってるね」</p>
+    </div>
+
+    <p>彼女が話しかけてきても、<br>
+    深追いしない。</p>
+
+    <p>「そうなんや、良かったね」<br>
+    と軽く受け止めて、それ以上は聞かない。</p>
+
+    <p>そして、30分くらいで<br>
+    「そろそろ帰るわ。また来るね」<br>
+    と余裕を持って帰る。</p>
+
+    <p>この時、彼女は<br>
+    「あれ？横田さん、なんか違う」<br>
+    って少し気になるはず。</p>
+
+    <p>でも、まだ何も言わへん。<br>
+    それでいいんです。</p>
+
+    <h3>4月：彼女の心に変化の兆し</h3>
+
+    <p>4月も、1回だけお店に行く。</p>
+
+    <p>でもね、この時はもっと余裕を見せる。</p>
+
+    <p>仲の良いキャバ嬢にも話しかけて、<br>
+    楽しそうに過ごす。</p>
+
+    <p>彼女だけを見るんやなくて、<br>
+    周りとも自然に話す。</p>
+
+    <p>彼女は、その姿を見て<br>
+    「横田さん、本当に変わったな」<br>
+    「私のことはもういいのかな」<br>
+    って少し気になり始める。</p>
+
+    <p>でも、この時もまだ<br>
+    彼女から何も言ってこないかもしれへん。</p>
+
+    <p>それでいいんです。</p>
+
+    <p>焦らへん。追わへん。</p>
+
+    <h3>5月〜6月：火のエネルギーがピークへ</h3>
+
+    <p>5月から6月、火のエネルギーが最も強い時期。</p>
+
+    <p>あなたの魅力が最高潮に達します。</p>
+
+    <p>この時期も、月1回お店に行く。</p>
+
+    <p>でもね、もう彼女に執着してない姿を見せる。</p>
+
+    <p>彼女が忙しそうだったら、<br>
+    「頑張ってね」と笑顔で引く。</p>
+
+    <p>他のキャバ嬢と楽しそうに話してる姿を見せる。</p>
+
+    <p>そうすると、彼女の心は<br>
+    「あれ、横田さん、私のこと諦めたのかな」<br>
+    「ちょっと寂しいな」<br>
+    って動き始めるんです。</p>
+
+    <p>この時期に、彼女から<br>
+    「横田さん、最近あっさりしてるね」<br>
+    って話しかけてくる可能性があります。</p>
+
+    <p>その時は、<br>
+    「そう？元気にしてるだけやで」<br>
+    と軽く返す。</p>
+
+    <p>深追いせず、余裕を見せる。</p>
+
+    <h3>LINEについて（この半年間）</h3>
+
+    <p>基本的に、こちらからLINEは送らない。</p>
+
+    <p>彼女から来たら、<br>
+    すぐに返信せず、数時間後に返す。</p>
+
+    <p>そして、会話を続けようとせず、<br>
+    1〜2往復で終わらせる。</p>
+
+    <p>「忙しいから、また今度ね」<br>
+    この一言で切り上げる余裕を見せる。</p>
+
+    <p>これが、彼女の心を動かすんです。</p>
+
+    <h3>7月〜10月：関係性の変化</h3>
+
+    <p>この時期も、月1回お店に行く。</p>
+
+    <p>でも、彼女への接し方は変わらへん。<br>
+    余裕を持って、軽やかに。</p>
+
+    <p>彼女の態度が少しずつ柔らかくなってくる可能性があります。</p>
+
+    <p>「横田さん、最近来ないね」<br>
+    「元気にしてた？」</p>
+
+    <p>こんな風に、彼女から話しかけてくるかもしれへん。</p>
+
+    <p>でも、この時も深追いせず、<br>
+    「元気やで。〇〇ちゃんも頑張ってるね」<br>
+    と軽く返す。</p>
+
+    <h3>11月：最重要ポイント</h3>
+
+    <p>11月、彼女の誕生日。<br>
+    そして、運気が大きく変わる転機。</p>
+
+    <p>この時、お店に行って<br>
+    「誕生日おめでとう。今日も頑張ってね」<br>
+    そう言って、30分くらいで帰る。</p>
+
+    <p>彼女は驚いた顔をして、<br>
+    「横田さん、本当に変わったね」<br>
+    「ありがとう」<br>
+    って言う。</p>
+
+    <p>この時から、彼女の心が大きく動き始めます。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <h3>今、あなたの心は揺れています</h3>
+
+    <p>辛いですよね。<br>
+    「彼女のことが好きなのに、距離を置かれてる」<br>
+    「諦めたくないけど、どうすればいいかわからない」</p>
+
+    <p>その気持ち、痛いほど分かります。</p>
+
+    <p>でも、その想いが強すぎるから、<br>
+    今のあなたの炎は燃え盛りすぎてるんです。</p>
+
+    <h3>あなたのオーラから視えること</h3>
+
+    <p>あなたを霊視した瞬間、<br>
+    真っ赤な炎のオーラが視えました。</p>
+
+    <p>でも今、水のオーラが少ないんです。</p>
+
+    <p>水のオーラは、冷静さ、柔軟性、流れを表します。<br>
+    これが不足してるから、<br>
+    「感情的になってしまう」<br>
+    「執着してしまう」<br>
+    という状態になりやすいのです。</p>
+
+    <p>逆に言えば、<br>
+    水のオーラを補うことで、心が落ち着き、<br>
+    余裕を持って彼女を待つことができるようになります。</p>
+
+    <p>そして、その「余裕のある魅力」こそが、<br>
+    彼女の心を動かすのです。</p>
+
+    <h3>パワーストーンでオーラを整える</h3>
+
+    <p>私がおすすめしているのは、<br>
+    パワーストーンによるオーラ調整です。</p>
+
+    <p>あなたに必要なのは水のオーラ。</p>
+
+    <p>3つのプランをご用意しています。</p>
+
+    <div class="important-box">
+        <h3>【松】完全調整プラン</h3>
+        <p>水のオーラを中心に、全体のバランスも完全に整える組み合わせ。<br>
+        本気で関係を修復したい、<br>
+        今この運命の転機を逃したくないという方へ。</p>
+
+        <p>多くの方が松プランを選ばれます。</p>
+
+        <p>それは、「本気で彼女との関係を取り戻したいから」<br>
+        「今このタイミングが一番効果的だから」という理由です。</p>
+
+        <p>このプランを持つことで<br>
+        ・感情的にならず、冷静に接することができます<br>
+        ・彼女の変化やサインを敏感にキャッチできるようになります<br>
+        ・余裕を持って接することができ、「大人の男性」として映ります<br>
+        ・今後の恋愛全体が安定し、「追われる側」に自然となれます</p>
+    </div>
+
+    <div class="important-box">
+        <h3>【竹】心の安定プラン</h3>
+        <p>水のオーラを中心に、心を安定させる組み合わせ。<br>
+        まずは感情を落ち着かせたい方へ。</p>
+    </div>
+
+    <div class="important-box">
+        <h3>【梅】お守りプラン</h3>
+        <p>基本的な水のオーラを補う組み合わせ。<br>
+        日常の心の揺れを少しでも軽くしたいという方へ。</p>
+    </div>
+
+    <h3>ご希望の方へ</h3>
+
+    <p>詳細をお知りになりたい方は、<br>
+    「詳細希望」とだけ送っていただければ、<br>
+    折り返しご案内させていただきます。</p>
+
+    <p>押し売りは一切いたしません。<br>
+    あなたの心を守り、<br>
+    二人の未来を照らすためのサポートです。</p>
+
+    <h2>最後に</h2>
+
+    <p>横田様、今あなたは大きな岐路に立っています。</p>
+
+    <p>このまま追い続ける道。<br>
+    それとも、変化して余裕を持つ道。</p>
+
+    <p>道はひとつやないんです。</p>
+
+    <p>でもね、私には視えてます。</p>
+
+    <p>2026年11月、彼女の誕生日の頃。</p>
+
+    <p>お店で偶然会った時、<br>
+    あなたが穏やかな笑顔で紳士的に接している姿が。</p>
+
+    <p>「誕生日おめでとう。今日も頑張ってね」<br>
+    そう言って、30分くらいで帰るあなた。</p>
+
+    <p>彼女は驚いた顔をして、<br>
+    「横田さん、変わったね」<br>
+    「なんか、大人になった」<br>
+    って言う。</p>
+
+    <p>そして2027年初め、<br>
+    彼女からLINEが来る。</p>
+
+    <p>「横田さん、最近全然来ないけど、元気にしてる？」<br>
+    「あの時は、ごめんね」って。</p>
+
+    <p>その未来は、もう始まってるんです。</p>
+
+    <p>あなたの純粋な想いこそが、最も強い力。<br>
+    その想いを、正しい方向に導いていきましょう。</p>
+
+    <p>私がずっと、あなたの道を照らし続けますね。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        鑑定士 かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>えいこ様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../強い火.png'); }
+        .aura-wood::before { background-image: url('../強い木.png'); }
+        .aura-earth::before { background-image: url('../強い土.png'); }
+        .aura-metal::before { background-image: url('../強い金.jpg'); }
+        .aura-water::before { background-image: url('../強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #c9a05d;
+            font-weight: 600;
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: #ffffff !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">えいこ様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>えいこ様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>えいこ様</p>
+
+    <p>この度は本鑑定にお進みいただき、<br>
+    心より感謝申し上げます。</p>
+
+    <p>生涯共に生きるパートナーとの出会いを求めている、<br>
+    その「本当に心から支え合える人と出会いたい」っていう真摯な想い、<br>
+    痛いほど伝わってきます。</p>
+
+    <p>まず初めにお伝えさせていただきます。</p>
+
+    <p>えいこ様、<br>
+    あなたは何一つ間違えていません。</p>
+
+    <p>真実の愛を求めて、<br>
+    生涯のパートナーを本気で探してるからこそ<br>
+    今こうして前を向いていらっしゃる。<br>
+    そこに弱さなどありません。</p>
+
+    <p>未来はまだ真っ白なキャンバスです。<br>
+    その筆を握っているのは、えいこ様ご自身。</p>
+
+    <p>運命の人と出会う未来を選ぶことはできます。<br>
+    その道を、これから丁寧にお伝えしていきますね。</p>
+
+    <h2>🔮 あなたのオーラと本質</h2>
+
+    <div class="aura-section aura-earth">
+        <p>えいこ様を視た瞬間、<br>
+        しっかりとした大地のオーラが、ゆったりと広がった。</p>
+
+        <p>温かい茶色の土のオーラ。<br>
+        その奥に優しい金色の光がキラキラ輝いてる。</p>
+
+        <p>土のオーラは「安定」と「包容力」の波動。<br>
+        金のオーラは「誠実」と「深い愛」の波動。</p>
+
+        <p>「えいこさんがいると安心する」<br>
+        「信頼できる人ね」</p>
+
+        <p>周りからそう言われること、<br>
+        多いんやないですか?</p>
+
+        <p>あなたの魂には、<br>
+        「人を深く愛し続ける」という波動が刻まれています。</p>
+
+        <p>大切な人のために、<br>
+        自分のことを後回しにしてでも支えてきた。<br>
+        そんな経験、ありますよね。</p>
+
+        <p>これがあなたの美しさ。</p>
+
+        <p>揺るぎない温かいエネルギーが、<br>
+        今もあなたを内側から突き動かしてる。</p>
+    </div>
+
+    <p>でも今、その土のオーラが少し重くなってる。</p>
+
+    <p>土のエネルギーが強すぎて、<br>
+    動きが止まってしまってる状態。</p>
+
+    <p>だから、パートナーを求める気持ちはあるのに、<br>
+    「もう遅いんやないか」<br>
+    「今更新しい出会いなんて」<br>
+    と諦めそうになってしまう。</p>
+
+    <p>そして、木のエネルギーが全くないことで、<br>
+    「成長」や「新しい挑戦」への<br>
+    エネルギーが湧きにくくなってる。</p>
+
+    <p>この重さを軽くして、<br>
+    新しい風を取り込むことが、<br>
+    運命の人を引き寄せる鍵なんです。</p>
+
+    <h2>🔮 運命の人の特徴</h2>
+
+    <div class="aura-section aura-water">
+        <p>あなたの運命の人を視てみると、<br>
+        水のオーラを持つ人が視えてきます。</p>
+
+        <p>深い青色の、静かで知的なオーラ。<br>
+        でも、その奥に温かい優しさが流れてる。</p>
+    </div>
+
+    <h3>【外見と雰囲気】</h3>
+
+    <p>・落ち着いた知的な印象<br>
+    ・清潔感があって、シンプルな服装<br>
+    ・派手ではないけど、存在感がある<br>
+    ・穏やかな笑顔を持ってる<br>
+    ・物腰が柔らかい</p>
+
+    <h3>【性格】</h3>
+
+    <p>・物静かで優しい<br>
+    ・人の話をよく聞いてくれる<br>
+    ・感情的にならず、冷静に判断する<br>
+    ・でも、心の中に深い情熱を秘めてる<br>
+    ・信頼できる、誠実な人<br>
+    ・真剣に愛を育てたいと思ってる</p>
+
+    <h3>【職業・年齢層】</h3>
+
+    <p>・知的な仕事（教育、医療、専門職、IT系など）<br>
+    ・落ち着いた環境で働いてる<br>
+    ・堅実で真面目な職業<br>
+    ・あなたと同年代か、少し年上の可能性</p>
+
+    <p>あなたの土のオーラと彼の水のオーラが出会った時、<br>
+    土が水を受け止めて、<br>
+    水が土を潤して育てる。</p>
+
+    <p>これは自然界の理。<br>
+    土と水は、最も深い調和を生む組み合わせ。</p>
+
+    <p>あなたの安定が彼を包み込み、<br>
+    彼の柔らかさがあなたを癒す。</p>
+
+    <p>二人の間には、太い金色の糸が結ばれる。<br>
+    それは、魂同士が深く響き合うサイン。</p>
+
+    <p>これが、運命の相手なんです。</p>
+
+    <h2>🔮 運命の出会いへの道筋</h2>
+
+    <p>運命の人と出会うには、<br>
+    あなたのオーラを調整して、<br>
+    本来の波動を取り戻す必要があります。</p>
+
+    <h3>【オーラ調整1：重い土から軽やかな大地へ】</h3>
+
+    <p>今のあなたの土のオーラは、<br>
+    強すぎて重くなっている。</p>
+
+    <p>この重さが、動けない状態を作り、<br>
+    運命の人との出会いを遠ざけてしまう。</p>
+
+    <p>運命の人を引き寄せるには、<br>
+    「動けない大地」から<br>
+    「豊かに実る大地」へと変わる必要がある。</p>
+
+    <p>そのために、<br>
+    軽やかなエネルギーを取り込む。</p>
+
+    <p>朝、窓を開けて新鮮な空気を吸い込む。<br>
+    「今日も新しい出会いがある」と唱える。</p>
+
+    <p>新しい場所に行く。<br>
+    新しいことを始める。<br>
+    新しい人と話す。</p>
+
+    <p>この「新しさ」が、<br>
+    重い土のオーラを軽くして、<br>
+    運命の人を引き寄せる波動を生む。</p>
+
+    <h3>【オーラ調整2：木のエネルギーで成長の波動を生む】</h3>
+
+    <p>あなたの魂には、木のエネルギーが全くない。</p>
+
+    <p>木は「成長」「変化」「新しい挑戦」の波動。<br>
+    これがないと、同じ場所に留まり続け、<br>
+    新しい出会いが訪れにくくなる。</p>
+
+    <p>木のエネルギーを取り込むことで、<br>
+    あなたのオーラに動きが生まれ、<br>
+    運命の人があなたを見つけやすくなる。</p>
+
+    <div class="important-box">
+        <p>観葉植物を部屋に置く。<br>
+        緑の多い場所を散歩する。<br>
+        青や緑色のものを身につける。</p>
+
+        <p>本を読んで学ぶ。<br>
+        新しい趣味を始める。<br>
+        今までやったことのないことに挑戦する。</p>
+
+        <p>木の波動があなたを包み込んだ時、<br>
+        運命の人のオーラと共鳴し始める。</p>
+    </div>
+
+    <h3>【オーラ調整3：魂の波動を開く】</h3>
+
+    <p>運命の人と出会うには、<br>
+    心を開いて、魂の波動を外に放つ必要がある。</p>
+
+    <p>今は、心を守るために<br>
+    少し閉じてしまってるかもしれません。</p>
+
+    <p>「また傷つくんやないか」<br>
+    「もう遅いんやないか」</p>
+
+    <p>その不安が、壁を作ってる。</p>
+
+    <p>でも、その壁を少しずつ溶かしていく。</p>
+
+    <div class="important-box">
+        <p>「私は愛される価値がある」<br>
+        と毎日唱える。</p>
+
+        <p>鏡を見て、自分に微笑む。<br>
+        自分を褒める。<br>
+        自分を大切にする。</p>
+
+        <p>この自己愛が、<br>
+        魂の波動を開いて、<br>
+        運命の人を引き寄せる。</p>
+    </div>
+
+    <h2>🔮 運命の転機</h2>
+
+    <h3>【なぜ今が大切なのか】</h3>
+
+    <p>2026年は、<br>
+    えいこ様にとって大きな転換期です。</p>
+
+    <p>今まで止まっていたエネルギーが<br>
+    少しずつ動き始め、<br>
+    本来の魅力が輝き出す時期。</p>
+
+    <p>運命の人と出会うなら、<br>
+    まさに今から準備を始める必要があります。</p>
+
+    <h3>【いつ出会いが訪れるのか】</h3>
+
+    <p>最も重要なのは、<br>
+    <strong>2026年春から初夏（4月～7月）</strong>。</p>
+
+    <p>宇宙のエネルギーが大きく動き、<br>
+    運命の扉が開く時期です。</p>
+
+    <p>この時期、あなたの土のエネルギーが<br>
+    最も豊かに実る運勢。</p>
+
+    <p>そして、運命の人の水のエネルギーも<br>
+    あなたを求めて流れ始める。</p>
+
+    <p>特に<strong>5月～6月</strong>は<br>
+    最重要期間として意識してください。</p>
+
+    <p>この時期に、あなたのオーラが<br>
+    「軽やかな豊かさ」<br>
+    「開かれた波動」<br>
+    を持っていれば、<br>
+    運命的な出会いが引き寄せられます。</p>
+
+    <p>また、2026年秋（9月～11月）も<br>
+    重要な時期。</p>
+
+    <p>この時期は、出会った人との関係が<br>
+    深まる時期です。</p>
+
+    <h3>【出会いの場所】</h3>
+
+    <p>・静かなカフェやレストラン<br>
+    ・学びの場（セミナー、講座、習い事など）<br>
+    ・自然の中（公園、植物園、ウォーキングコースなど）<br>
+    ・趣味の集まり（読書会、料理教室など）<br>
+    ・共通の知人の紹介</p>
+
+    <p>派手な場所ではなく、<br>
+    落ち着いた場所での出会いが多い。</p>
+
+    <h3>【近づいているサイン】</h3>
+
+    <p>・青い色のものが目に入る<br>
+    ・水に関する夢を見る<br>
+    ・川や海に惹かれる<br>
+    ・静かな場所に行きたくなる<br>
+    ・「出会い」という言葉が目に入る</p>
+
+    <p>これらのサインが現れたら、<br>
+    心の準備をしておいてくださいね。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <h3>【日常の実践：木のエネルギーを取り込む】</h3>
+
+    <div class="important-box">
+        <p><strong>〈朝のルーティン〉</strong></p>
+
+        <p>起きたら、まずカーテンを開けて<br>
+        朝日を浴びる。</p>
+
+        <p>「今日も新しい出会いがある」<br>
+        「私は愛される価値がある」<br>
+        と心の中で唱える。</p>
+
+        <p>朝食に野菜やフルーツを取り入れる。<br>
+        緑茶を飲む。</p>
+
+        <p>青や緑色の服や小物を<br>
+        週に3回以上身につける。<br>
+        これが木のエネルギーを呼び込みます。</p>
+
+        <hr>
+
+        <p><strong>〈日中のルーティン〉</strong></p>
+
+        <p>1日1回、自然に触れる。<br>
+        公園を散歩する、植物に水をやる、<br>
+        木や花を見る。</p>
+
+        <p>新しいことを一つする。<br>
+        新しい道を通る、<br>
+        新しい店に入る、<br>
+        新しい人と話す。</p>
+
+        <p>これが心を開き、<br>
+        出会いを引き寄せます。</p>
+
+        <hr>
+
+        <p><strong>〈夜のルーティン〉</strong></p>
+
+        <p>湯船にゆっくり浸かる。<br>
+        アロマオイル（ラベンダー、ローズなど）を入れると、<br>
+        さらに効果的。</p>
+
+        <p>寝る前に、<br>
+        今日の良かったことを3つ書き出す。</p>
+
+        <p>そして、<br>
+        「明日も素敵な出会いがある」<br>
+        と唱えて眠る。</p>
+
+        <p>この習慣が、<br>
+        運命の人を引き寄せる波動を生みます。</p>
+    </div>
+
+    <h3>【出会いの準備】</h3>
+
+    <p><strong>〈内面を磨く〉</strong></p>
+
+    <p>・月に1冊、本を読む<br>
+    ・新しい趣味や学びに挑戦する<br>
+    ・一人で楽しめる時間を持つ<br>
+    ・自分の好きなことを大切にする</p>
+
+    <p><strong>〈外見を整える〉</strong></p>
+
+    <p>・髪のケア（月1回美容院）<br>
+    ・肌のケア（朝晩のスキンケア）<br>
+    ・清潔感のある服装<br>
+    ・優しい色の服（白、ベージュ、水色、淡いピンク）<br>
+    ・少し華やかなアクセサリー</p>
+
+    <p><strong>〈心の準備〉</strong></p>
+
+    <p>・過去の恋愛を手放す<br>
+    ・「もう遅い」という思い込みを手放す<br>
+    ・「自然に出会える」と信じる<br>
+    ・「私は愛される」と信じる</p>
+
+    <p>焦らず、でも準備はしっかりと。</p>
+
+    <h3>【出会った時の心構え】</h3>
+
+    <p>運命の人と出会った時、<br>
+    最初は気づかないかもしれません。</p>
+
+    <p>でも、こんな感覚があったら、<br>
+    それは運命のサインです：</p>
+
+    <div class="magic-word-box">・一緒にいて落ち着く
+・無理に話さなくても心地いい
+・価値観が似てる
+・「この人、信頼できるな」と自然に思う
+・また会いたいと思う</div>
+
+    <p>焦って関係を進めようとせず、<br>
+    ゆっくり関係を深めていく。</p>
+
+    <p>相手のペースを尊重し、<br>
+    でも、あなたの魅力も自然に見せる。</p>
+
+    <p>この「ゆっくり、でも確実に」が<br>
+    運命の恋を育てる秘訣です。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>今、えいこ様の心は<br>
+    「本当にパートナーと出会えるんやろうか」<br>
+    「もう年齢的にも遅いんやないか」<br>
+    という不安で揺れていると思います。</p>
+
+    <p>実は、えいこ様の命式を視ると<br>
+    土のエネルギーが強すぎて、<br>
+    木のエネルギーが全くない<br>
+    バランスになっています。</p>
+
+    <p>土が強すぎると、<br>
+    動けなくなり、<br>
+    「もう遅い」「無理や」と<br>
+    諦めの気持ちが強くなります。</p>
+
+    <p>木がないと、<br>
+    新しい挑戦や変化への<br>
+    エネルギーが湧かず、<br>
+    同じ場所に留まり続けてしまいます。</p>
+
+    <p>この五行のバランスを整えることで、<br>
+    えいこ様本来の軽やかな魅力が輝き、<br>
+    運命の人に「この人だ」と気づいてもらいやすくなります。</p>
+
+    <p>五行のバランスが整うと、<br>
+    せっかくの出会いのタイミング（2026年春）を<br>
+    しっかり掴むことができます。</p>
+
+    <p>また、バランスが整うことで、<br>
+    心が前向きになり、<br>
+    運命の人のサインを敏感にキャッチできるようになります。</p>
+
+    <p>その五行調整に最も効果的なのが、<br>
+    えいこ様専用に選ぶパワーストーンです。</p>
+
+    <div class="important-box">
+        <h3>【3つのプラン】</h3>
+
+        <p><strong>●松（本気で運命の人と出会いたい方向け）</strong><br>
+        　五行バランスの完全調整。木を補い、土を調和させる。<br>
+        　5月～6月の最重要期間に向けて、今から整えます。</p>
+
+        <p><strong>●竹（まずは心を前向きにしたい方向け）</strong><br>
+        　木のエネルギーを補い、動けない状態を軽くします。</p>
+
+        <p><strong>●梅（不安を和らげたい方向け）</strong><br>
+        　日常の五行バランスを少しずつ整えます。</p>
+
+        <hr>
+
+        <p>多くの方が「松」を選ばれます。<br>
+        理由は「本気で人生のパートナーと出会いたいから、中途半端にしたくない」とのこと。</p>
+
+        <p>「必要だと感じた今このタイミング」が<br>
+        一番効果の出やすい時期です。</p>
+
+        <p>気になるようでしたら<br>
+        「詳細希望」とだけ送っていただければ、<br>
+        えいこ様専用の五行調整石をお選びいたしますね。</p>
+    </div>
+
+    <h2>最後に</h2>
+
+    <p>えいこ様、<br>
+    今のあなたは大切な岐路に立っています。</p>
+
+    <p>でも、道はひとつではありません。<br>
+    そして未来はまだ決まっていません。</p>
+
+    <p>生涯のパートナーと出会いたいと願う<br>
+    その純粋な想いこそが、<br>
+    どんな困難をも乗り越える、<br>
+    最も強い力です。</p>
+
+    <p>私には視えています。</p>
+
+    <p>あなたが、運命の人と手を取り合いながら<br>
+    「やっと出会えたね」<br>
+    「これからずっと一緒にいよう」って<br>
+    微笑み合ってる姿が。</p>
+
+    <p>その未来に向けて、<br>
+    焦らず、無理をせず、<br>
+    少しずつ歩いていけば大丈夫です。</p>
+
+    <p>どうか、ひとりで抱え込まないでください。</p>
+
+    <p>その未来への道、<br>
+    私がこれからも照らし続けます。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>

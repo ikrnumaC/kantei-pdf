@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>芽衣理様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../強い火.png'); }
+        .aura-wood::before { background-image: url('../強い木.png'); }
+        .aura-earth::before { background-image: url('../強い土.png'); }
+        .aura-metal::before { background-image: url('../強い金.jpg'); }
+        .aura-water::before { background-image: url('../強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #c9a05d;
+            font-weight: 600;
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: #ffffff !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">芽衣理様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>芽衣理様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <h2>はじめに</h2>
+
+    <p>芽衣理様、この度は有料鑑定をお申し込みいただき、<br>
+    誠にありがとうございます。</p>
+
+    <p>6年間も想い続けた峻さんへの純粋な愛情が、<br>
+    痛いほど伝わってきます。</p>
+
+    <p>出会った頃は彼から追われていたのに、<br>
+    いつの間にか追う側になってしまった。</p>
+
+    <p>曖昧な関係に一喜一憂しながらも、<br>
+    「結婚前提でお付き合いしたい」<br>
+    「彼から最も愛される妻になりたい」<br>
+    という真っすぐな想いを抱き続けているあなた。</p>
+
+    <p>どうか、ご自身を責めないでください。<br>
+    あなたは何一つ間違えていません。</p>
+
+    <p>ただ、あなたの優しい炎が、彼にとって少しだけ<br>
+    「追われているプレッシャー」になってしまっただけなのです。</p>
+
+    <p>でも、大丈夫です。</p>
+
+    <p>今、あなたの前には真っ白なキャンバスが広がっています。<br>
+    この鑑定書が、そのキャンバスに新しい未来を描くための<br>
+    道しるべとなることを願っています。</p>
+
+    <h2>🔮 二人の関係の真相</h2>
+
+    <h3>あなたの本質</h3>
+
+    <div class="aura-section aura-fire">
+        <p>芽衣理様、あなたは優しく燃えるオレンジ色の炎を持った方です。</p>
+
+        <p>あなたのオーラはロウソクのように、<br>
+        周りの人を温かく照らし、そっと寄り添います。</p>
+
+        <p>「芽衣理さんといると心が落ち着く」と言われること、<br>
+        多いですよね。</p>
+
+        <p>そして、あなたの魂の奥には<br>
+        「正しくありたい」「誠実でありたい」という波動が眠っています。</p>
+
+        <p>これは本当に美しい資質です。</p>
+    </div>
+
+    <p>ただ、今のあなたは「待つ」ことに疲れ、不安で揺れています。<br>
+    「これって、どういう関係なんだろう」<br>
+    「彼は私のことをどう思っているんだろう」と。</p>
+
+    <h3>彼の本質</h3>
+
+    <div class="aura-section aura-earth">
+        <p>一方、峻さんはどっしりとした茶色のオーラを持つ方です。</p>
+
+        <p>彼のオーラは山のように動じない大地のように、<br>
+        安定感があり、周りから頼られる存在。<br>
+        責任感が強く、真面目です。</p>
+
+        <p>彼の魂には「自分のペースを守りたい」という波動が刻まれています。</p>
+
+        <p>だから、仕事が忙しくなると連絡を後回しにしてしまう。<br>
+        距離を気にして「会いたい」をスルーしてしまう。</p>
+    </div>
+
+    <h3>曖昧な関係が続く本当の理由</h3>
+
+    <p>視えてきます。<br>
+    この関係の本質は、「彼があなたを嫌いだから」ではありません。</p>
+
+    <p>峻さんは、あなたに心地よさを感じています。</p>
+
+    <p>でも同時に、<br>
+    「この関係を進めたら、自分のペースが崩れるかもしれない」<br>
+    という不安も感じているのです。</p>
+
+    <p>あなたの「会いたい」という想いが伝わるたびに、<br>
+    彼は「応えなきゃいけない」というプレッシャーを感じてしまう。</p>
+
+    <p>だから、彼は近づいたり離れたりを繰り返す。</p>
+
+    <p>年末にビデオ電話で盛り上がったのに、<br>
+    年明けからまた未読が続く。</p>
+
+    <p>これは「気持ちが冷めた」のではなく、<br>
+    「自分の中で整理したい」という彼の本音なのです。</p>
+
+    <p>でも、誤解しないでください。</p>
+
+    <p>彼はあなたを大切に思っています。<br>
+    6年間も関係が続いているのが、その証拠です。</p>
+
+    <p>ただ、「次のステップに進む勇気」が<br>
+    まだ持てていないだけなのです。</p>
+
+    <h2>🔮 関係を進展させる道筋</h2>
+
+    <p>この曖昧な関係を、結婚前提のお付き合いへと進めるには、<br>
+    芽衣理様自身の3つの転換が必要です。</p>
+
+    <h3>転換①：「追う炎」→「輝く炎」へ</h3>
+
+    <p>今までのあなたは、彼に温かさを「与えよう」としていました。</p>
+
+    <p>「会いたい」と伝え、連絡を待ち、<br>
+    彼の反応に一喜一憂する。</p>
+
+    <p>これからは、彼を照らすのではなく、<br>
+    あなた自身が輝いてください。</p>
+
+    <p>「私は私で幸せです。でもあなたと一緒ならもっと幸せ」<br>
+    という空気感を纏うのです。</p>
+
+    <div class="important-box">
+        <h3>具体例：</h3>
+        <p>・彼からの連絡を待つのではなく、自分の趣味や仕事に没頭する<br>
+        ・SNSで「新しいことを始めた」「楽しい時間を過ごした」という投稿をする（彼が見ている可能性を意識）<br>
+        ・彼と連絡が取れない時も、自分の時間を楽しむ</p>
+    </div>
+
+    <h3>転換②：「重い想い」→「軽やかな風」へ</h3>
+
+    <p>あなたの真っすぐな想いは美しい。</p>
+
+    <p>でも、今のあなたの「結婚したい」「毎日連絡したい」という想いは、<br>
+    彼にとって少し重く感じられています。</p>
+
+    <p>これからは、水のように流れるのではなく、<br>
+    風のように軽やかに。</p>
+
+    <p>彼を包み込むのではなく、そっと背中を押す。</p>
+
+    <div class="important-box">
+        <h3>具体例：</h3>
+        <p>・「会いたい」ではなく「最近どう？元気？」と軽く聞く<br>
+        ・返信が遅くても「忙しいのかな、無理しないでね」と一言だけ送る<br>
+        ・彼のペースを尊重し、「待てる余裕」を見せる</p>
+    </div>
+
+    <h3>転換③：「与える優しさ」→「引き出す魅力」へ</h3>
+
+    <p>今までのあなたは、彼に優しさを「与える」ことで<br>
+    愛を示していました。</p>
+
+    <p>でも、彼が本当に惹かれるのは、<br>
+    「この人といると、自分も成長できる」と感じる相手です。</p>
+
+    <p>これからは、彼の中にある<br>
+    「もっと頑張りたい」「彼女を守りたい」<br>
+    という気持ちを引き出してください。</p>
+
+    <div class="important-box">
+        <h3>具体例：</h3>
+        <p>・仕事の話を聞いて「すごいね、尊敬する」と素直に伝える<br>
+        ・彼の意見を求める「〇〇について、峻くんならどう思う？」<br>
+        ・彼に甘えすぎず、でも時々「ちょっと相談したいことがあるんだけど」と頼る</p>
+    </div>
+
+    <h2>🔮 運命の転機</h2>
+
+    <h3>なぜ今が大切なのか</h3>
+
+    <p>2026年は、60年に一度巡る「丙午（ひのえうま）」の年。<br>
+    火のエネルギーが最も強く、情熱と変革の気運が高まる特別な年です。</p>
+
+    <p>あなたを視た瞬間、<br>
+    優しく燃えるオレンジ色の炎のオーラが視えました。</p>
+
+    <p>2026年の丙午年は、あなたにとって<br>
+    火のオーラが共鳴し、本来の魅力が最も輝く年なのです。</p>
+
+    <p>そして今、あなたは内側でエネルギーが溜まっていく時期。<br>
+    眠ってた炎が、目覚めようとしてる。</p>
+
+    <p>今まで閉じ込められてた炎が、<br>
+    一気に解放されて輝き始める年なんです。</p>
+
+    <p>一方、峻さんは<br>
+    どっしりとした茶色の土のオーラを持つ方。</p>
+
+    <p>2026年の火のエネルギーは、彼にとって<br>
+    仕事運が安定し、心に余裕が生まれる年なのです。</p>
+
+    <h3>いつ彼の心が動くのか</h3>
+
+    <p>視えてきます。<br>
+    彼の心が動き始めるのは、2026年春から初夏にかけてです。</p>
+
+    <p>なぜこの時期なのか。</p>
+
+    <p>2026年春、あなたの炎のオーラが<br>
+    少しずつ外に溢れ出し始めます。</p>
+
+    <p>自信が戻り、笑顔が増え、<br>
+    周りの人があなたの変化に気づく時期。</p>
+
+    <p>そして初夏、あなたの魅力が最高潮に達します。<br>
+    火のエネルギーがピークを迎え、<br>
+    あなたの輝きが彼の心を揺さぶるんです。</p>
+
+    <p>同時に、峻さんの心にも変化が訪れます。<br>
+    仕事が落ち着き、心に余裕が生まれる。</p>
+
+    <p>「次のステップ」を考える余裕が生まれるのです。</p>
+
+    <h3>今後の流れ</h3>
+
+    <p><strong>2026年春（3月〜4月）</strong><br>
+    彼の心に変化の兆し。<br>
+    年末から続いていた未読状態が解消され、<br>
+    返信が来始める可能性。</p>
+
+    <p>あなたの魅力が外に溢れ出す時期。<br>
+    彼から「最近どう？」と連絡が来たり、<br>
+    仕事の話を振られたりする。</p>
+
+    <p><strong>2026年初夏（5月〜6月）</strong><br>
+    火のエネルギーがピーク。<br>
+    「久しぶりに会おうか」という提案が<br>
+    彼から来る可能性が最も高い時期。</p>
+
+    <p>この時期が最大のチャンス。</p>
+
+    <p><strong>2026年夏〜秋（7月〜9月）</strong><br>
+    会えた後、関係性が深まる時期。<br>
+    彼の中で「真剣に考えたい」という気持ちが<br>
+    芽生え始める。</p>
+
+    <p><strong>2026年秋〜2027年</strong><br>
+    あなたの運気が大きく変わる転機。<br>
+    新しい関係性への扉が開く。</p>
+
+    <h3>近づいているサイン</h3>
+
+    <p>彼の心が動き始めると、こんなサインが現れます。</p>
+
+    <p>・年末から続いていた未読が解消され、返信が来る<br>
+    ・「最近どう？」「元気にしてる？」と彼から連絡が来る<br>
+    ・仕事の話や将来の話をしてくる（心を開いているサイン）<br>
+    ・「今度、時間ある？」と具体的に会う提案をしてくる</p>
+
+    <p>これらを見逃さないでください。<br>
+    特に春から初夏は要注意です。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <h3>日常の実践：オーラを整える</h3>
+
+    <p><strong>火のオーラを整える</strong><br>
+    ・朝、太陽の光を5分浴びる（火のエネルギーを充電）<br>
+    ・週2回、キャンドルを灯して深呼吸する（心を落ち着かせる）<br>
+    ・オレンジや赤の小物を身につける（火のオーラを活性化）</p>
+
+    <p><strong>自分磨き</strong><br>
+    ・髪を明るめのカラーにする、または華やかなヘアアクセをつける（火の魅力を引き出す）<br>
+    ・メイクはオレンジやコーラル系のリップで温かみを演出<br>
+    ・ファッションは白やベージュを基調に、差し色で赤やオレンジを入れる</p>
+
+    <h3>再会時の言葉</h3>
+
+    <p>もし彼から連絡が来たら、あるいは偶然再会したら</p>
+
+    <div class="important-box">
+        <p><strong>❌NG</strong><br>
+        「ずっと連絡待ってた」<br>
+        「なんで返信くれないの」<br>
+        「会いたかった」</p>
+
+        <p><strong>⭕️OK</strong><br>
+        「久しぶり！元気そうで良かった」<br>
+        「最近、〇〇始めたんだけど楽しいよ」</p>
+    </div>
+
+    <p>謝罪は不要です。<br>
+    ただ、軽やかに、笑顔で。</p>
+
+    <p>彼が「会おうか」と言ってきたら<br>
+    「いいよ！いつが空いてる？」と即答せず、<br>
+    「ちょっと予定確認するね」と一呼吸置く。</p>
+
+    <p>余裕を見せることが大切です。</p>
+
+    <h3>関係を進展させるコツ</h3>
+
+    <p>会えた後の行動が、未来を決めます。</p>
+
+    <p><strong>・依存しない</strong><br>
+    「峻くんといると楽しい」と伝えつつ、<br>
+    「私も自分の時間を大切にしてる」という姿勢を見せる</p>
+
+    <p><strong>・境界線を尊重する</strong><br>
+    彼が話したくなさそうな話題は深追いしない</p>
+
+    <p><strong>・感謝を伝える</strong><br>
+    「今日は時間作ってくれてありがとう」とシンプルに</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <h3>今、あなたの心は揺れています</h3>
+
+    <p>不安ですよね。<br>
+    「本当に彼の心が動くのか」<br>
+    「また未読が続いたらどうしよう」</p>
+
+    <p>その気持ち、痛いほど分かります。</p>
+
+    <p>でも、その不安こそが、<br>
+    今あなたが克服すべき最大のハードルなのです。</p>
+
+    <p>不安なオーラは、彼に伝わります。<br>
+    そして、「重い」と感じさせてしまう。</p>
+
+    <h3>あなたのオーラから視えること</h3>
+
+    <p>あなたを視た瞬間、<br>
+    優しい火のオーラが視えました。</p>
+
+    <p>でも今、木のオーラが全くないんです。</p>
+
+    <p>木のオーラは、成長、安定、自信を表します。<br>
+    これが不足しているから、<br>
+    「彼に依存してしまう」<br>
+    「待つことに疲れてしまう」<br>
+    という状態になりやすいのです。</p>
+
+    <p>逆に言えば、<br>
+    木のオーラを補うことで、心が安定し、<br>
+    自信を持って彼を待つことができるようになります。</p>
+
+    <p>そして、その「揺れない魅力」こそが、<br>
+    彼の心を動かすのです。</p>
+
+    <h3>パワーストーンでオーラを整える</h3>
+
+    <p>私がおすすめしているのは、<br>
+    パワーストーンによるオーラ調整です。</p>
+
+    <p>あなたに必要なのは木のオーラ。</p>
+
+    <p>3つのプランをご用意しています。</p>
+
+    <div class="important-box">
+        <h3>【松】完全調整プラン</h3>
+        <p>木のオーラを中心に、全体のバランスも完全に整える組み合わせ。<br>
+        本気で関係を進展させたい、<br>
+        今この運命の転機を逃したくないという方へ。</p>
+
+        <p>多くの方が松プランを選ばれます。</p>
+
+        <p>それは、「本気で結婚前提のお付き合いをしたいから」<br>
+        「今このタイミングが一番効果的だから」という理由です。</p>
+
+        <p>このプランを持つことで<br>
+        ・不安で揺れにくくなり、彼を追いたい衝動が減ります<br>
+        ・彼の変化やサインを敏感にキャッチできるようになります<br>
+        ・再会のチャンスを逃さず、自信を持って接することができます<br>
+        ・今後の恋愛全体が安定し、「愛される側」に自然となれます</p>
+    </div>
+
+    <div class="important-box">
+        <h3>【竹】心の安定プラン</h3>
+        <p>木のオーラを中心に、心を安定させる組み合わせ。<br>
+        不安を和らげ、日々を穏やかに過ごしたい方へ。</p>
+    </div>
+
+    <div class="important-box">
+        <h3>【梅】お守りプラン</h3>
+        <p>基本的な木のオーラを補う組み合わせ。<br>
+        まずは不安を少しでも軽くしたいという方へ。</p>
+    </div>
+
+    <h3>ご希望の方へ</h3>
+
+    <p>詳細をお知りになりたい方は、<br>
+    「詳細希望」とだけ送っていただければ、<br>
+    折り返しご案内させていただきます。</p>
+
+    <p>押し売りは一切いたしません。<br>
+    あくまで、あなたの心を守り、<br>
+    二人の未来を照らすためのサポートです。</p>
+
+    <h2>最後に</h2>
+
+    <p>芽衣理様、今あなたは大きな岐路に立っています。</p>
+
+    <p>6年間も想い続けた彼。</p>
+
+    <p>でも、この道は決してひとつではありません。<br>
+    彼と結婚前提でお付き合いする未来もあれば、<br>
+    新しい出会いへと進む道もあります。</p>
+
+    <p>でも、どの道を選んだとしても、<br>
+    あなたの純粋な想いこそが、最も強い力になります。</p>
+
+    <p>私には視えています。</p>
+
+    <p>春の陽光の中、峻さんがあなたの手を取りながら<br>
+    「ずっと君のことが気になってた」<br>
+    「結婚前提で付き合ってください」と<br>
+    真剣に伝えている姿が。</p>
+
+    <p>それは、決して夢物語ではありません。</p>
+
+    <p>あなたが今から変化し、軽やかに、<br>
+    自分らしく輝けば、その未来は必ず訪れます。</p>
+
+    <p>この鑑定書が、あなたの道を照らす灯火となりますように。<br>
+    何度でも読み返してください。</p>
+
+    <p>そして、迷った時は、いつでもご相談ください。</p>
+
+    <p>あなたの幸せを、心から願い、<br>
+    これからも照らし続けます。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        鑑定士 かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>

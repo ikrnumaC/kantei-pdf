@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本鑑定書 - 二見あいこ様</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #2a4a7c 80%, #3d5a9e 100%);
+            color: #e8e8e8;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #ffd700;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #9b7dff;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #b8b8b8;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(22, 33, 62, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #ffd700;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #9b7dff;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h2:first-of-type {
+            margin-top: 40px;
+            page-break-before: auto;
+        }
+
+        h2:last-of-type {
+            page-break-before: auto;
+            margin-top: 60px;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #9b7dff;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: rgba(155, 125, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.25;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../強い火.png'); }
+        .aura-wood::before { background-image: url('../強い木.png'); }
+        .aura-earth::before { background-image: url('../強い土.png'); }
+        .aura-metal::before { background-image: url('../強い金.jpg'); }
+        .aura-water::before { background-image: url('../強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .meishiki {
+            background: rgba(155, 125, 255, 0.15);
+            border-left: 4px solid #9b7dff;
+            padding: 20px;
+            margin: 20px 0;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            page-break-inside: avoid;
+            page-break-before: avoid;
+        }
+
+        strong {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #2a4a7c 80%, #3d5a9e 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: #16213e !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.15;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">二見あいこ様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <p>二見あいこ様</p>
+
+    <p>この度は本鑑定にお進みいただき、<br>
+    心より感謝申し上げます。</p>
+
+    <p>娘の担任になってから、好きになってしまったこと。<br>
+    でも、「先生と付き合えたら」って思うけど、<br>
+    「無理そう」って諦めかけてる気持ち。</p>
+
+    <p>その「好きなのに諦めかけてる」という葛藤、<br>
+    痛いほど伝わってきます。</p>
+
+    <p>まず初めにお伝えさせていただきます。</p>
+
+    <p>二見あいこ様、<br>
+    あなたは何一つ間違えていません。</p>
+
+    <p>人を純粋に想う気持ちは、<br>
+    どんな立場であっても美しいもの。<br>
+    そこに後ろめたさなど感じる必要はありません。</p>
+
+    <p>未来はまだ真っ白なキャンバスです。<br>
+    その筆を握っているのは、あいこ様ご自身。</p>
+
+    <p>先生と二人で会える未来を選ぶことはできます。<br>
+    その道を、これから丁寧にお伝えしていきますね。</p>
+
+    <h2>🔮 二人の魂の繋がり</h2>
+
+    <div class="aura-section aura-wood">
+        <p>二見あいこ様は木のオーラを持つ、<br>
+        優しく温かく、人を育てる力を持った人。</p>
+
+        <p>誰かのために一生懸命考えて、<br>
+        サポートすること。</p>
+
+        <p>それが、あなたの本来の魅力です。</p>
+
+        <p>「あいこさん、優しいね」<br>
+        「一緒にいると安心する」</p>
+
+        <p>周りからそう言われること、<br>
+        多いんやないですか?</p>
+
+        <p>その温かさで、先生との時間も<br>
+        自然と心地よいものになっていたこと、<br>
+        私には視えています。</p>
+    </div>
+
+    <div class="aura-section aura-fire">
+        <p>一方、先生は火のオーラを持つ<br>
+        情熱的で、でも繊細な心を持った人。</p>
+
+        <p>先生の魂には、<br>
+        「自立心」という波動が刻まれています。</p>
+
+        <p>だから、保護者との距離感を守ろうとする。<br>
+        決してあなたを避けてるわけやないんです。</p>
+
+        <p>でも同時に、「繊細な心」という波動もある。</p>
+
+        <p>「あいこさんのこと、気になる」<br>
+        「でも、先生と保護者やし」って、<br>
+        心の奥で揺れてる。</p>
+
+        <p>この葛藤が、彼を戸惑わせてる。</p>
+    </div>
+
+    <p>あなたの木のオーラと、<br>
+    先生の火のオーラが、出会った瞬間。</p>
+
+    <p>木が火を育てる。<br>
+    火は木に育てられて、明るく燃える。</p>
+
+    <p>これは、魂が引き寄せ合ってるサイン。</p>
+
+    <p>二人の間には、太い金色の糸が見える。<br>
+    今は、少しまだ眠ってるけど、確かに繋がってる。</p>
+
+    <p>でも、この糸を輝かせるには、<br>
+    あなたの中に眠る「本来の魅力」を解放する必要がある。</p>
+
+    <h2>🔮 先生の深層心理</h2>
+
+    <p>先生は今、あなたのことを<br>
+    「温かくて、話しやすい保護者」<br>
+    として認識しています。</p>
+
+    <p>でも同時に、<br>
+    「あいこさん、気になるな」<br>
+    という想いも持っています。</p>
+
+    <p>先生の心の中では<br>
+    「保護者やから、距離を保たないと」<br>
+    「でも、もっと話したい」<br>
+    という葛藤があります。</p>
+
+    <p>だから、冗談っぽい話をする。<br>
+    だから、距離感を保とうとしてる。</p>
+
+    <p>先生はあなたを避けてるんやないんです。<br>
+    むしろ、気になってる。</p>
+
+    <p>だからこそ、簡単に踏み出せへん。<br>
+    それが先生なりの誠実さなのです。</p>
+
+    <p>先生が惹かれるのは、<br>
+    自分を認めてくれて、<br>
+    自然体で接してくれる人。<br>
+    温かくて、優しくて、<br>
+    でも自立している人。</p>
+
+    <p>先生が避けたいのは、<br>
+    保護者という立場を前面に出すことや、<br>
+    距離感を無視すること、<br>
+    依存や重い期待です。</p>
+
+    <h2>🔮 4月以降の関係をどう続けるか</h2>
+
+    <p>あいこ様が心配されている<br>
+    「4月以降、担任を外れたら話す機会がなくなる」<br>
+    という点。</p>
+
+    <p>実は、これは大きなチャンスなんです。</p>
+
+    <p>担任でなくなることで、<br>
+    「先生と保護者」という枠が<br>
+    自然に緩くなります。</p>
+
+    <p>PTAの係になるということも、<br>
+    学校に来る機会が増えるということ。</p>
+
+    <p>廊下ですれ違った時、<br>
+    職員室の前を通りかかった時、<br>
+    自然に挨拶や軽い会話ができる。</p>
+
+    <p>「前の担任だった先生」として、<br>
+    「娘がお世話になった先生」として、<br>
+    自然に話しかける理由ができます。</p>
+
+    <p>これは、関係を深める絶好の機会なんです。</p>
+
+    <h2>🔮 関係を進展させる道筋</h2>
+
+    <p>今は「娘の母親」として接していますが、<br>
+    恋愛に進むには、<br>
+    もっと個人としてのあなたを見せる必要があります。</p>
+
+    <p>娘の母親ではなく、<br>
+    一人の女性としての素顔を見せること。</p>
+
+    <p>そして、先生に安定と方向性を与えること。</p>
+
+    <p>先生は今、人生の方向性に迷いがあり、<br>
+    心が不安定な時期にいます。</p>
+
+    <p>だからこそ、あいこ様の持つ<br>
+    「温かさ」と「安定感」が必要なんです。</p>
+
+    <p>この「安心できる存在」になることが、<br>
+    先生の心を引き寄せます。</p>
+
+    <p>さらに、学びと成長を共有すること。</p>
+
+    <p>先生は今、成長と新しい刺激を求めています。</p>
+
+    <p>あなた自身が新しいことを学び、<br>
+    成長している姿を見せることで、<br>
+    「あいこさんと話すと、刺激がある」<br>
+    と思わせることができます。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <p>2026年は、<br>
+    二見あいこ様にとって大きな転換期です。</p>
+
+    <p>あなたの中に眠っていた<br>
+    「学びと成長のエネルギー」が目覚め、<br>
+    本来の魅力が輝き出す時期。</p>
+
+    <p>先生との関係が次のステージに進むなら、<br>
+    まさに今から準備を始める必要があります。</p>
+
+    <p>最も重要なのは、<br>
+    2026年春から初夏（3月～6月）。</p>
+
+    <p>先生のエネルギーが活性化し、<br>
+    「人生の方向性」を見つめ直す時期です。</p>
+
+    <p>この時期、先生は<br>
+    「本当に自分を支えてくれる人」<br>
+    「一緒に成長できる人」<br>
+    を無意識に探しています。</p>
+
+    <p>そして、まさにこの時期が<br>
+    4月以降、担任を外れた後の時期と重なっています。</p>
+
+    <p>これは偶然ではありません。<br>
+    運命が動くタイミングなのです。</p>
+
+    <p>特に4月～5月は<br>
+    最重要期間として意識してください。</p>
+
+    <p>PTAの活動で学校に行った時、<br>
+    先生の方から<br>
+    「あいこさん、最近よく見かけますね」<br>
+    「少し話せませんか」<br>
+    と声をかけてくる可能性が高いです。</p>
+
+    <p>また、2026年夏から秋（7月～10月）は<br>
+    先生自身の環境に変化が訪れる時期。</p>
+
+    <p>学校の仕事や人間関係で何かが動き出し、<br>
+    「本当に大切な人」を<br>
+    見つめ直すタイミングです。</p>
+
+    <p>その時、温かく支えてくれた<br>
+    あいこ様の存在が<br>
+    先生の心に深く刻まれていきます。</p>
+
+    <h2>🔮 あなたが今抱えているもの</h2>
+
+    <p>あなたの生年月日から視える運命の形を深く視ると、<br>
+    今あなたを縛っているものが見えてきます。</p>
+
+    <p>それは、現実を見すぎて諦めてしまう心。</p>
+
+    <p>あなたの魂には、現実的なことで悩みやすい<br>
+    エネルギーが入っています。</p>
+
+    <p>だから、「先生と保護者やし」<br>
+    「無理そう」と現実を見て、<br>
+    諦めかけてしまうのです。</p>
+
+    <p>そして、決断できない自分への不安。</p>
+
+    <p>「告白していいのか」<br>
+    「どうすればいいのか」<br>
+    と迷い続けてしまう。</p>
+
+    <p>さらに、成長段階にいる自分への不安。</p>
+
+    <p>あなたは今、人生の成長段階にいます。</p>
+
+    <p>だから、「自分はまだ未熟」<br>
+    「先生には釣り合わない」<br>
+    と感じてしまうのです。</p>
+
+    <p>でも、これは弱さではありません。<br>
+    むしろ、先生と一緒に成長できる<br>
+    という魅力になります。</p>
+
+    <p>これらは変えられます。</p>
+
+    <p>決断と実行のエネルギーを補うことで、<br>
+    現実的すぎる思考を軽くできます。</p>
+
+    <p>学びと成長を楽しむ姿勢を見せることで、<br>
+    未熟さが魅力に変わります。</p>
+
+    <p>人を育てる力と温かさを活かすことで、<br>
+    先生を引き寄せることができます。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>今、あいこ様の心は<br>
+    「先生はどう思ってるんやろう」<br>
+    「本当に付き合えるんやろうか」<br>
+    という不安で揺れていると思います。</p>
+
+    <p>実は、あなたの魂を視ると<br>
+    土のエネルギーが強く、<br>
+    現実を見すぎて不安になりやすい<br>
+    バランスになっています。</p>
+
+    <p>土が強すぎると、<br>
+    「無理そう」という思考に囚われやすく、<br>
+    本来の自然体の魅力が<br>
+    先生に伝わりにくくなります。</p>
+
+    <p>このバランスを整えることで、<br>
+    あいこ様本来の軽やかさが安定し、<br>
+    先生に「一緒にいて心地いい」という印象を<br>
+    自然に与えることができます。</p>
+
+    <p>バランスが整うと、<br>
+    せっかくの関係進展のタイミング（2026年春）を<br>
+    しっかり掴むことができます。</p>
+
+    <p>また、バランスが整うことで、<br>
+    心が揺れにくくなり、<br>
+    先生の変化を敏感にキャッチできるようになります。</p>
+
+    <p>そのバランス調整に最も効果的なのが、<br>
+    あいこ様専用に選ぶパワーストーンです。</p>
+
+    <p><strong>【3つのプラン】</strong></p>
+
+    <p>●松（本気で関係を進展させたい方向け）<br>
+    　バランスの完全調整。土を抑え、金と木を育てる。<br>
+    　4月～5月の最重要期間に向けて、今から整えます。</p>
+
+    <p>●竹（まずは心を安定させたい方向け）<br>
+    　土のエネルギーを穏やかにし、心の揺れを抑えます。</p>
+
+    <p>●梅（不安を和らげたい方向け）<br>
+    　日常のバランスを少しずつ整えます。</p>
+
+    <p>多くの方が「松」を選ばれます。<br>
+    理由は「本気で先生との関係を進めたいから、中途半端にしたくない」とのこと。</p>
+
+    <p>「必要だと感じた今このタイミング」が<br>
+    一番効果の出やすい時期です。</p>
+
+    <p>気になるようでしたら<br>
+    「詳細希望」とだけ送っていただければ、<br>
+    あいこ様専用の調整石をお選びいたしますね。</p>
+
+    <h2>最後に</h2>
+
+    <p>二見あいこ様、<br>
+    今のあなたは大切な岐路に立っています。</p>
+
+    <p>でも、道はひとつではありません。<br>
+    そして未来はまだ決まっていません。</p>
+
+    <p>先生と「二人で会いたい」と願う<br>
+    その純粋な想いこそが、<br>
+    どんな困難をも乗り越える、<br>
+    最も強い力です。</p>
+
+    <p>私には視えています。</p>
+
+    <p>先生が「あいこさん、実は...」<br>
+    「ずっと気になってました」って告白し、</p>
+
+    <p>その先に<br>
+    「もう、保護者と先生じゃなくて、<br>
+    一人の女性として、一緒にいたい」って<br>
+    本音を伝えてる姿が。</p>
+
+    <p>その未来に向けて、<br>
+    焦らず、無理をせず、<br>
+    少しずつ歩いていけば大丈夫です。</p>
+
+    <p>どうか、ひとりで抱え込まないでください。</p>
+
+    <p>その未来への道、<br>
+    私がこれからも照らし続けます。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>

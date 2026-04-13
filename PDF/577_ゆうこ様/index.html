@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゆうこ様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../強い火.png'); }
+        .aura-wood::before { background-image: url('../強い木.png'); }
+        .aura-earth::before { background-image: url('../強い土.png'); }
+        .aura-metal::before { background-image: url('../強い金.jpg'); }
+        .aura-water::before { background-image: url('../強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #c9a05d;
+            font-weight: 600;
+        }
+
+        /* ===== スマホレスポンシブ対応 ===== */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page::before {
+                width: 250px;
+                height: 250px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+                letter-spacing: 1px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+                letter-spacing: 2px;
+                margin-bottom: 10px;
+            }
+
+            h1::after {
+                width: 100px;
+                margin: 15px auto 0;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 40px;
+                letter-spacing: 1px;
+            }
+
+            h2 {
+                font-size: 24px;
+                margin-top: 60px;
+                margin-bottom: 30px;
+                padding-bottom: 12px;
+            }
+
+            h3 {
+                font-size: 20px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                margin-bottom: 20px;
+                font-size: 15px;
+            }
+
+            .aura-section {
+                padding: 25px;
+                margin: 20px 0;
+            }
+
+            .header-info,
+            .important-box {
+                padding: 20px;
+                margin: 20px 0;
+            }
+
+            .magic-word-box {
+                padding: 25px;
+                margin: 20px 0;
+            }
+
+            .sign-box {
+                margin-top: 40px;
+                padding-top: 20px;
+            }
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: #ffffff !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">ゆうこ様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>ゆうこ様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <h2>はじめに</h2>
+
+    <p>ゆうこ様、大切なお気持ちを打ち明けてくださって、<br>
+    ほんまにありがとうございます。</p>
+
+    <p>4〜5年、気軽に話せる関係だった。</p>
+
+    <p>でも、2025年4月に仕事で助けてもらった時、<br>
+    恋愛感情のような感覚を抱いてしまってから、<br>
+    すべてが変わってしまった。</p>
+
+    <p>お互い距離をはかって、<br>
+    どことなく意識してギクシャクしている。</p>
+
+    <p>以前のように気軽に話ができない。</p>
+
+    <p>本人にも友人にも誰にも思いを話せない。<br>
+    半年以上、本気で悩み苦しんだ。</p>
+
+    <p>既婚者同士だから、<br>
+    恋愛関係を求めてるわけじゃない。</p>
+
+    <p>でも、好きな気持ちは止められへん。<br>
+    もっと近づきたい、気のおけない仲間になりたい。</p>
+
+    <p>その想い、痛いほど伝わってきます。</p>
+
+    <p>どうか、ご自身を責めないでください。<br>
+    あなたは何も悪くない。</p>
+
+    <p>ただ、心が正直に反応してしまっただけ。</p>
+
+    <p>大丈夫です。<br>
+    今、あなたの前には新しい道が広がっています。</p>
+
+    <p>この鑑定書が、その道を照らす灯火となりますように。</p>
+
+    <h2>🔮 ギクシャクした本当の理由</h2>
+
+    <h3>あなたの本質</h3>
+
+    <div class="aura-section aura-water">
+        <p>ゆうこ様、あなたを霊視した瞬間、<br>
+        深く流れる青い水のオーラが、静かに広がりました。</p>
+
+        <p>大海のように静かで、<br>
+        でも止まらず流れ続けてる水。</p>
+
+        <p>あなたの魂には、<br>
+        「感じすぎる」「察しすぎる」<br>
+        という波動が刻まれています。</p>
+
+        <p>だから、言いたいことを<br>
+        送る直前で消した夜がある。</p>
+
+        <p>本当は寂しいのに<br>
+        「大丈夫」って返した瞬間がある。</p>
+
+        <p>これを言ったら関係が壊れる気がして、<br>
+        何も言えなかった時がある。</p>
+    </div>
+
+    <p>あなたは、感情がないんやない。<br>
+    むしろ、感じすぎる。</p>
+
+    <p>ただ、その気持ちが<br>
+    いつの間にか、胸の奥へ流れていっただけ。</p>
+
+    <p>この深い青は、<br>
+    言葉にならなかった想いの色です。</p>
+
+    <p>そして、あなたの魂には<br>
+    「前に進みたい」「積極的に行動したい」<br>
+    という波動もある。</p>
+
+    <p>だから、4月に助けてもらった時、<br>
+    心が正直に反応してしまった。</p>
+
+    <p>「この人、素敵だな」<br>
+    「もっと近づきたい」</p>
+
+    <p>でも、既婚者同士という現実が<br>
+    その想いを押し込めてしまった。</p>
+
+    <h3>彼の本質</h3>
+
+    <div class="aura-section aura-fire">
+        <p>一方、良幸様を霊視した瞬間、<br>
+        静かに揺れるオレンジ色の炎のオーラが、灯っていました。</p>
+
+        <p>ロウソクのように、静かで消えへん。</p>
+
+        <p>彼の魂には、<br>
+        「正しくありたい」「責任を果たしたい」<br>
+        という強い信念が刻まれています。</p>
+
+        <p>そして、彼の炎のオーラは<br>
+        ものすごく強い。</p>
+
+        <p>最も強い意志を持つ波動。</p>
+
+        <p>だから、責任感が強い。<br>
+        自分なりの基準や立場を、大事にしてきた人。</p>
+
+        <p>守りたいものが増えるほど、<br>
+        正しさに縛られてしまう。</p>
+    </div>
+
+    <h3>ギクシャクした本当の理由</h3>
+
+    <p>視えてきます。</p>
+
+    <p>2025年4月、あなたが彼に恋愛感情を抱いた瞬間、<br>
+    あなたのオーラが大きく揺れた。</p>
+
+    <p>そして、彼はそれを感じ取ってしまったんです。</p>
+
+    <p>彼の魂には、<br>
+    学びや知識を大切にする波動がある。</p>
+
+    <p>だから、人の気持ちを察する力も強い。</p>
+
+    <p>「ゆうこさん、何か変わったな」<br>
+    「もしかして…」</p>
+
+    <p>そう感じた彼は、<br>
+    自分の立場を守るために、距離を置いた。</p>
+
+    <p>直属上司で、人事評価者。<br>
+    既婚者同士。</p>
+
+    <p>「正しくありたい」という彼の信念が、<br>
+    距離を置くことを選ばせたんです。</p>
+
+    <p>でも、誤解しないでください。</p>
+
+    <p>彼があなたを嫌いになったわけやない。</p>
+
+    <p>むしろ、簡単に扱えない想いがあったから、<br>
+    距離を置かざるを得なかった。</p>
+
+    <p>その距離は、<br>
+    無関心じゃない。</p>
+
+    <p>むしろ、意識してるからこその距離なんです。</p>
+
+    <h2>🔮 関係を修復する道筋</h2>
+
+    <p>この関係を、以前のような気のおけない仲間に戻すには、<br>
+    ゆうこ様自身の3つの転換が必要です。</p>
+
+    <h3>転換①：「揺れる水」→「静かな水」へ</h3>
+
+    <p>今のあなたの水のオーラは、<br>
+    彼への想いで大きく揺れている。</p>
+
+    <p>その揺れが、彼に伝わってしまってる。</p>
+
+    <p>これからは、静かな水になる。</p>
+
+    <p>彼を意識しすぎるんやなくて、<br>
+    自然体で接する。</p>
+
+    <p>「好き」という気持ちは心の奥にしまって、<br>
+    表面は穏やかに。</p>
+
+    <div class="important-box">
+        <h3>具体例：</h3>
+        <p>- 彼と話す時、必要以上に緊張しない<br>
+        - 他のメンバーと接するのと同じ温度感で接する<br>
+        - 彼の目を見すぎない（でも避けすぎない）</p>
+    </div>
+
+    <h3>転換②：「意識する関係」→「自然な関係」へ</h3>
+
+    <p>今は、お互いが意識しすぎて<br>
+    ギクシャクしてる。</p>
+
+    <p>これからは、意識を外す。</p>
+
+    <p>「恋愛感情」を前面に出すんやなくて、<br>
+    「職場の仲間」として自然に接する。</p>
+
+    <div class="important-box">
+        <h3>具体例：</h3>
+        <p>- 仕事の話を普通に持ちかける<br>
+        - 軽い雑談も以前のようにする<br>
+        - 「距離を縮めよう」と意識しない</p>
+    </div>
+
+    <h3>転換③：「求める関係」→「与える関係」へ</h3>
+
+    <p>今のあなたは、<br>
+    「もっと近づきたい」「気のおけない仲間になりたい」<br>
+    と求めている。</p>
+
+    <p>でも、彼が本当に必要としてるのは、<br>
+    プレッシャーのない、自然な関係。</p>
+
+    <p>これからは、求めるんやなくて、<br>
+    自然に寄り添う。</p>
+
+    <div class="important-box">
+        <h3>具体例：</h3>
+        <p>- 彼が忙しそうな時は「何か手伝えることある？」と自然に聞く<br>
+        - 彼の話を聞く側に回る<br>
+        - 「もっと話したい」という気持ちを前に出さない</p>
+    </div>
+
+    <h2>🔮 運命の転機</h2>
+
+    <h3>なぜ今が大切なのか</h3>
+
+    <p>2026年は、60年に一度巡る「丙午」の年。<br>
+    火のエネルギーが最も強い年です。</p>
+
+    <p>ゆうこ様は、水のオーラを持つ方。</p>
+
+    <p>2026年の火のエネルギーは、<br>
+    あなたの水のオーラを刺激して、<br>
+    揺れていた心を落ち着かせる作用があります。</p>
+
+    <p>今まで言葉にならなかった想いが、<br>
+    少しずつ整理されていく時期。</p>
+
+    <p>一方、良幸様は火のオーラを持つ方。</p>
+
+    <p>2026年の火のエネルギーは、<br>
+    彼の火のオーラをさらに強化します。</p>
+
+    <p>「正しくありたい」という信念が<br>
+    さらに強まる時期。</p>
+
+    <p>でも同時に、心に余裕も生まれます。</p>
+
+    <h3>いつ関係が変わるのか</h3>
+
+    <p>視えてきます。</p>
+
+    <p>関係が以前のように戻る可能性があるのは、<br>
+    2026年春から初夏にかけてです。</p>
+
+    <p>なぜこの時期なのか。</p>
+
+    <p>2026年1月から3月、<br>
+    あなたが「静かな水」になる時期。</p>
+
+    <p>揺れていた心を落ち着かせ、<br>
+    彼への接し方を変えていく。</p>
+
+    <p>彼は最初、何も反応しないかもしれへん。<br>
+    でもね、時間が経つにつれて、<br>
+    「ゆうこさん、落ち着いたな」<br>
+    って気づき始める。</p>
+
+    <p>そして2026年春（4月〜5月）、<br>
+    彼の心に余裕が生まれる時期。</p>
+
+    <p>「もう大丈夫かな」<br>
+    「以前みたいに普通に話せそう」</p>
+
+    <p>こんな風に、彼の心が動き始めます。</p>
+
+    <p>そして2026年初夏（6月〜7月）、<br>
+    関係が以前のように戻る可能性が最も高い時期。</p>
+
+    <p>彼から軽い雑談を振ってくる。<br>
+    以前のように気軽に話せる雰囲気が戻ってくる。</p>
+
+    <h3>今年の流れ</h3>
+
+    <p><strong>1月〜3月</strong><br>
+    あなたが変化を見せる時期。<br>
+    揺れていた心を落ち着かせ、<br>
+    自然体で彼に接する。</p>
+
+    <p>彼はまだ距離を保つかもしれません。<br>
+    でも、それでいいんです。</p>
+
+    <p><strong>4月〜5月</strong><br>
+    彼の心が動き始める時期。<br>
+    「ゆうこさん、変わったな」<br>
+    「以前みたいに話せそう」<br>
+    と感じ始める。</p>
+
+    <p>彼から軽い雑談を振ってくる可能性。</p>
+
+    <p><strong>6月〜7月</strong><br>
+    関係が戻る時期。<br>
+    以前のように気軽に話せる雰囲気が戻ってくる。</p>
+
+    <p>11月から始まっていた雪解けが、<br>
+    完全に溶ける時期。</p>
+
+    <p><strong>8月〜12月</strong><br>
+    自然な関係が続く。<br>
+    気のおけない仲間として、<br>
+    穏やかな関係が築ける。</p>
+
+    <h3>近づいているサイン</h3>
+
+    <p>関係が戻り始めると、こんなサインが現れます。</p>
+
+    <p>- 彼から軽い雑談を振ってくる<br>
+    - 以前のように笑いながら話せる<br>
+    - 仕事以外の話題も自然に出てくる<br>
+    - 「最近、調子いいね」と声をかけてくる</p>
+
+    <p>これらを見逃さないでください。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <h3>日常の実践：オーラを整える</h3>
+
+    <p><strong>水のオーラを静める</strong><br>
+    - 朝、深呼吸を5回する（心を落ち着かせる）<br>
+    - 週2回、ゆっくりお風呂に浸かる（揺れを静める）<br>
+    - 青や水色の服を着る（水のオーラを安定させる）</p>
+
+    <p><strong>自分の時間を大切にする</strong><br>
+    - 趣味に没頭する時間を作る（彼以外に意識を向ける）<br>
+    - 家族との時間を大切にする（既婚者としての軸を保つ）<br>
+    - 仕事に集中する（恋愛感情に振り回されない）</p>
+
+    <h3>職場での接し方</h3>
+
+    <p><strong>彼と話す時</strong></p>
+
+    <div class="important-box">
+        <p><strong>❌NG</strong><br>
+        「最近、忙しそうですね」（気にかけすぎ）<br>
+        「何か困ってることないですか？」（近づきすぎ）<br>
+        目を見つめすぎる</p>
+
+        <p><strong>⭕️OK</strong><br>
+        「おはようございます」（自然に挨拶）<br>
+        「この件、確認お願いします」（仕事の話は普通に）<br>
+        他のメンバーと同じ温度感で接する</p>
+    </div>
+
+    <p>雑談が始まったら、<br>
+    深追いせず、軽やかに。</p>
+
+    <p>「そうなんですね」<br>
+    「いいですね」</p>
+
+    <p>と軽く受け止めて、それ以上は聞かない。</p>
+
+    <p>この「自然体」が大切です。</p>
+
+    <h3>大切な境界線</h3>
+
+    <p>既婚者同士という関係性を、<br>
+    決して忘れないでください。</p>
+
+    <p>・二人きりで食事に行くことは避ける<br>
+    ・プライベートな話題は深入りしない<br>
+    ・LINEや個人的な連絡は最小限に<br>
+    ・職場以外で会うことは考えない</p>
+
+    <p>「気のおけない仲間」という距離感を、<br>
+    しっかり保つこと。</p>
+
+    <p>これが、この関係を長く続ける秘訣です。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <h3>今、あなたの心は揺れています</h3>
+
+    <p>辛いですよね。<br>
+    「好きな気持ちを誰にも話せない」<br>
+    「この想いをどうすればいいかわからない」</p>
+
+    <p>その気持ち、痛いほど分かります。</p>
+
+    <p>でも、その想いを抱えたまま<br>
+    彼に接してしまうから、<br>
+    今のあなたの水のオーラは揺れてるんです。</p>
+
+    <h3>あなたのオーラから視えること</h3>
+
+    <p>あなたを霊視した瞬間、<br>
+    深い青の水のオーラが視えました。</p>
+
+    <p>でも今、木のオーラが全くないんです。</p>
+
+    <p>木のオーラは、成長、安定、自信を表します。<br>
+    これが不足してるから、<br>
+    「想いに振り回されてしまう」<br>
+    「心が揺れやすい」<br>
+    という状態になりやすいのです。</p>
+
+    <p>逆に言えば、<br>
+    木のオーラを補うことで、心が安定し、<br>
+    自然体で彼と接することができるようになります。</p>
+
+    <p>そして、その「揺れない魅力」こそが、<br>
+    彼に安心感を与えるのです。</p>
+
+    <h3>パワーストーンでオーラを整える</h3>
+
+    <p>私がおすすめしているのは、<br>
+    パワーストーンによるオーラ調整です。</p>
+
+    <p>あなたに必要なのは木のオーラ。</p>
+
+    <p>3つのプランをご用意しています。</p>
+
+    <div class="important-box">
+        <h3>【松】完全調整プラン</h3>
+        <p>木のオーラを中心に、全体のバランスも完全に整える組み合わせ。<br>
+        本気で関係を修復したい、<br>
+        今この運命の転機を逃したくないという方へ。</p>
+
+        <p>多くの方が松プランを選ばれます。</p>
+
+        <p>それは、「本気で以前のような関係に戻りたいから」<br>
+        「今このタイミングが一番効果的だから」という理由です。</p>
+
+        <p>このプランを持つことで<br>
+        - 想いに振り回されず、心が安定します<br>
+        - 彼の変化やサインを敏感にキャッチできるようになります<br>
+        - 自然体で接することができ、彼に安心感を与えます<br>
+        - 今後の人間関係全体が安定し、穏やかに過ごせます</p>
+    </div>
+
+    <div class="important-box">
+        <h3>【竹】心の安定プラン</h3>
+        <p>木のオーラを中心に、心を安定させる組み合わせ。<br>
+        まずは心の揺れを落ち着かせたい方へ。</p>
+    </div>
+
+    <div class="important-box">
+        <h3>【梅】お守りプラン</h3>
+        <p>基本的な木のオーラを補う組み合わせ。<br>
+        日常の心の揺れを少しでも軽くしたいという方へ。</p>
+    </div>
+
+    <h3>ご希望の方へ</h3>
+
+    <p>詳細をお知りになりたい方は、<br>
+    「詳細希望」とだけ送っていただければ、<br>
+    折り返しご案内させていただきます。</p>
+
+    <p>押し売りは一切いたしません。<br>
+    あなたの心を守り、<br>
+    二人の未来を照らすためのサポートです。</p>
+
+    <h2>最後に</h2>
+
+    <p>ゆうこ様、今あなたは大きな岐路に立っています。</p>
+
+    <p>この想いを抱えたまま苦しみ続ける道。<br>
+    それとも、心を整えて自然な関係を築く道。</p>
+
+    <p>道はひとつやないんです。</p>
+
+    <p>でもね、私には視えてます。</p>
+
+    <p>2026年夏、職場の休憩室で<br>
+    あなたと良幸さんが笑顔で話している姿が。</p>
+
+    <p>「最近、落ち着きましたね」<br>
+    「ありがとうございます。良幸さんも元気そうで」</p>
+
+    <p>軽やかに、でも温かく。</p>
+
+    <p>以前のような、気のおけない仲間として。</p>
+
+    <p>その未来は、もう始まってるんです。</p>
+
+    <p>あなたの純粋な想いこそが、最も強い力。<br>
+    その想いを、正しい方向に導いていきましょう。</p>
+
+    <p>私がずっと、あなたの道を照らし続けますね。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        鑑定士 かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>

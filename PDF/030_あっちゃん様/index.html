@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>松尾様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #2a4a7c 80%, #3d5a9e 100%);
+            color: #e8e8e8;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #ffd700;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #9b7dff;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #b8b8b8;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(22, 33, 62, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #ffd700;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #9b7dff;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #9b7dff;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: rgba(155, 125, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.25;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../強い火.png'); }
+        .aura-wood::before { background-image: url('../強い木.png'); }
+        .aura-earth::before { background-image: url('../強い土.png'); }
+        .aura-metal::before { background-image: url('../強い金.jpg'); }
+        .aura-water::before { background-image: url('../強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: rgba(255, 215, 0, 0.15);
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: rgba(155, 125, 255, 0.15);
+            border: 2px dashed rgba(155, 125, 255, 0.5);
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #2a4a7c 80%, #3d5a9e 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: #16213e !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.15;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">松尾様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>松尾様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>松尾様</p>
+
+    <p>この度は本鑑定にお進みいただき、<br>
+    心より感謝申し上げます。</p>
+
+    <p>LINEブロック、<br>
+    アイコンには「大切なひとがいます」、<br>
+    背景はお子さんの写真。</p>
+
+    <p>4年間一度もケンカなく仲良くしてきたのに、<br>
+    突然の音信不通。</p>
+
+    <p>「もう終わりなんやろうか」という不安、<br>
+    痛いほど伝わってきます。</p>
+
+    <p>でも、松尾様、<br>
+    大丈夫です。</p>
+
+    <p>彼の心は、まだあなたに向いています。<br>
+    そして、再び会える未来は確かにあります。</p>
+
+    <p>未来はまだ真っ白なキャンバス。<br>
+    その筆を握っているのは、松尾様ご自身。</p>
+
+    <p>彼と再び笑い合う未来を選ぶことはできます。<br>
+    その道を、これから丁寧にお伝えしていきますね。</p>
+
+    <h2>🔮 今、何が起こっているのか</h2>
+
+    <div class="aura-section aura-metal">
+        <p>松尾様は水と火と金のオーラを持つ、<br>
+        深い愛情と温かい情熱、そして強さを持つ人。</p>
+
+        <p>4年間一度もケンカせず、<br>
+        彼が仕事でいっぱいいっぱいになった時も<br>
+        「落ち着くまで待ってる」と言えるあなた。</p>
+
+        <p>その包容力は、誰にでもできることではありません。</p>
+    </div>
+
+    <div class="aura-section aura-water">
+        <p>一方、彼は木と水のオーラを持つ<br>
+        穏やかで波風を立てたくない性質の人。</p>
+
+        <p>でも今、彼のオーラには<br>
+        深い青色（距離を置きたい気持ち）、<br>
+        グレー（どうしたらいいか分からない迷い）、<br>
+        そして淡いピンク色（あっちゃんへの想い）が混ざっています。</p>
+    </div>
+
+    <p>正直にお伝えします。</p>
+
+    <p>彼は今、奥さんにバレています。</p>
+
+    <p>「大切なひとがいます」のアイコン、<br>
+    お子さんの写真の背景。<br>
+    これは奥さんへの「家庭を大切にします」メッセージ。</p>
+
+    <p>LINEブロックは、<br>
+    奥さんへの「もう連絡取りません」約束。</p>
+
+    <p>彼は今、家庭を守るために<br>
+    あなたとの関係を断とうとしています。</p>
+
+    <p>でも、彼の中のピンク色のオーラ。<br>
+    これは「あっちゃんのことは、今でも大切や」という想い。</p>
+
+    <p>完全に終わりにしたい人のオーラは、真っ黒か冷たい青色だけ。<br>
+    彼には、まだピンク色が残っています。</p>
+
+    <p>彼は「完全に終わり」とは思っていません。<br>
+    ただ「今は、家庭を優先しなあかん」と思っているだけです。</p>
+
+    <h2>🔮 復縁への道筋</h2>
+
+    <p>この状況での復縁の鍵は、<br>
+    「待つだけ」でも「責める」でもなく、<br>
+    「彼の心を軽くする存在」に変わること。</p>
+
+    <h3>まず「重い想い」から「軽い信頼」へ</h3>
+
+    <p>前回は半年後に連絡が来ました。<br>
+    だから今回も「待ってたら大丈夫」と思いがち。</p>
+
+    <p>でも、前回は彼が「仕事でいっぱい」でした。<br>
+    今回は「奥さんにバレた」です。</p>
+
+    <p>状況がまったく違います。</p>
+
+    <p>今回必要なのは、<br>
+    「私は、あなたがどんな選択をしても尊重する」<br>
+    というメッセージを彼に感じさせること。</p>
+
+    <h3>次に「追いかける愛」から「解放する愛」へ</h3>
+
+    <p>「なんで連絡くれへんの？」と責めたら、<br>
+    彼は「今は無理や」と心を閉ざします。</p>
+
+    <p>「奥さんと別れて」と詰めたら、<br>
+    彼は「それは無理や」と完全に離れます。</p>
+
+    <p>でも、彼が連絡してきた時に<br>
+    「落ち着いた？　無理せんでええよ」<br>
+    と優しく受け止めたら、</p>
+
+    <p>彼は「この人は、俺のこと本当に分かってくれる」<br>
+    と感じ、心の扉を開きます。</p>
+
+    <h3>そして「依存する関係」から「選ばれる魅力」へ</h3>
+
+    <p>自分の趣味や仕事に打ち込む姿を見せることで、<br>
+    「あっちゃんは、俺がいなくても幸せに生きていける。<br>
+    でも、俺と一緒にいることを選んでくれる」<br>
+    というメッセージが自然に伝わります。</p>
+
+    <p>この「軽さ」と「自由」が、<br>
+    彼の魂を揺さぶります。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <h3>【なぜ今が大切なのか】</h3>
+
+    <p>松尾様の生まれ持った星を、深く視ていきます。</p>
+
+    <p>松尾様の中には、<br>
+    「水」と「火」のエネルギーが強く、<br>
+    「金」と「土」のエネルギーが少しあります。</p>
+
+    <p>でも、<strong>「木」のエネルギーが完全に欠けています。</strong></p>
+
+    <p>「木」というのは、<br>
+    「成長」「伸びる」「新しい関係を育てる」力。</p>
+
+    <p>これが欠けているということは、<br>
+    今まで「関係を育てる力」が不足していた状態です。</p>
+
+    <p>そして、松尾様の核となる星は、<br>
+    「金」の上に「火」が乗っている形。</p>
+
+    <p>火が金を溶かし続けている状態です。</p>
+
+    <p>これは、松尾様の本質が<br>
+    常にプレッシャーを受けている状態。<br>
+    「自分を抑えて、相手に合わせる」性質が強く出ています。</p>
+
+    <p>一方、彼の生まれ持った星。</p>
+
+    <p>彼の中には、<br>
+    「水」と「金」のエネルギーが強く、<br>
+    「木」と「土」が少しあります。</p>
+
+    <p>でも、<strong>「火」のエネルギーが完全に欠けています。</strong></p>
+
+    <p>「火」というのは、<br>
+    「情熱」「決断」「行動」する力。</p>
+
+    <p>これが欠けているということは、<br>
+    「決断できない」「動けない」状態になりやすい。</p>
+
+    <p>だから今、彼は<br>
+    「家庭を取るか、松尾様を取るか」で<br>
+    決断できず、ブロックという形で「逃げている」のです。</p>
+
+    <h3>【2026年という特別な年】</h3>
+
+    <p>2026年は、「火」のエネルギーが最も強くなる特別な年。</p>
+
+    <p>松尾様にとって：<br>
+    もともと「水」と「火」のバランスが良かったのに、<br>
+    さらに「火」が強まる年。</p>
+
+    <p>「感情が激しく揺れる」年になります。</p>
+
+    <p>でも同時に、松尾様の核にある「金」を<br>
+    「火」が溶かし、形を変える年。</p>
+
+    <p><strong>「変容」「生まれ変わり」が起こる年です。</strong></p>
+
+    <p>今まで我慢していた本当の想いを<br>
+    解放できるタイミングです。</p>
+
+    <p>彼にとって：<br>
+    完全に欠けていた「火」のエネルギーが<br>
+    この年に巡ってきます。</p>
+
+    <p><strong>「決断力」「行動力」が芽生える年。</strong></p>
+
+    <p>今まで決められなかったことを<br>
+    決断できるようになります。</p>
+
+    <h3>【最も重要な3ヶ月】</h3>
+
+    <p><strong>2026年4月</strong><br>
+    「水」と「土」のエネルギーが巡る月。</p>
+
+    <p>松尾様の「水」のエネルギーを補い、<br>
+    「土」で「安定」をもたらします。</p>
+
+    <p>火の年に揺れていた感情が、<br>
+    この月に落ち着きます。</p>
+
+    <p>彼にとっても、<br>
+    過去を整理し、新しい一歩を踏み出す準備の月。</p>
+
+    <p>この月に、彼の中で<br>
+    「もう一度、松尾様と話したい」という想いが<br>
+    静かに芽生え始めます。</p>
+
+    <p><strong>2026年5月</strong><br>
+    「水」と「火」のバランスが整う月。</p>
+
+    <p>松尾様の本来の力（水と火）が<br>
+    最も整う月です。</p>
+
+    <p>松尾様の核となる星と<br>
+    この月のエネルギーが共鳴します。</p>
+
+    <p><strong>この月が、最も重要なタイミング。</strong></p>
+
+    <p>彼から連絡が来る可能性が最も高く、<br>
+    松尾様自身も「自然体で接する力」が整います。</p>
+
+    <p><strong>2026年6月</strong><br>
+    松尾様に欠けている「木」のエネルギーが巡ってくる月。</p>
+
+    <p>「木」は「成長」「育てる」「新しい関係を築く」力。</p>
+
+    <p>この月に、二人の関係が<br>
+    <strong>「新しい形で再構築される」タイミング。</strong></p>
+
+    <p>彼も「木」の性質を持つ人なので、<br>
+    この月に彼の本質が目覚め、<br>
+    「松尾様との未来」を真剣に考え始めます。</p>
+
+    <h3>【近づいているサイン】</h3>
+
+    <p>3月頃から、こんなサインが現れます：</p>
+
+    <p>彼と過ごした場所を偶然通りかかる、<br>
+    彼の好きだった音楽や食べ物に出会う、<br>
+    夢に彼が出てくる（特に水辺の夢）、<br>
+    「あの人、今どうしてるんやろう」と<br>
+    ふと思う瞬間が増える。</p>
+
+    <p>数字の「4」「5」「6」が目に入る、<br>
+    午（馬）に関するものに出会う、<br>
+    金色や白色のものを見かける。</p>
+
+    <p>これらのサインが現れたら、<br>
+    心の準備をしておいてくださいね。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <p>松尾様の生まれ持った星から導き出される、<br>
+    具体的なエネルギー調整法をお伝えします。</p>
+
+    <h3>【「木」のエネルギーを補う】</h3>
+
+    <p>松尾様に完全に欠けている「木」の力を補います。</p>
+
+    <p><strong>観葉植物を育てる</strong><br>
+    ポトス、モンステラ、サンスベリアなど。<br>
+    毎日水をあげ、成長を見守ることで、<br>
+    「育てる力」「関係を伸ばす力」が自然に養われます。</p>
+
+    <p><strong>森林浴、公園での散歩</strong><br>
+    週に1回以上、緑の中を歩く。<br>
+    木のエネルギーを直接取り込みます。</p>
+
+    <p><strong>緑色のものを取り入れる</strong><br>
+    服、小物、インテリアに緑色を。<br>
+    特に再会の時は、緑色のアクセサリーを身につけると良い。</p>
+
+    <h3>【「金」のエネルギーを強化する】</h3>
+
+    <p>松尾様の「金」の力が弱いので、補強します。</p>
+
+    <p><strong>白色・金色のアイテムを身につける</strong><br>
+    白い服、金属のアクセサリー（ゴールド、シルバー）。<br>
+    「金」のエネルギーは「潔さ」「決断力」を与えます。</p>
+
+    <p><strong>呼吸法を取り入れる</strong><br>
+    毎朝5分、深呼吸をする習慣で、<br>
+    「金」のエネルギーが整います。</p>
+
+    <p><strong>整理整頓、断捨離</strong><br>
+    「金」のエネルギーは「手放す力」。<br>
+    不要なものを手放すことで、<br>
+    新しいものを受け入れる余白ができます。</p>
+
+    <h3>【「水」と「火」のバランスを保つ】</h3>
+
+    <p>松尾様の本来の強みを活かします。</p>
+
+    <p><strong>お風呂で「水」のエネルギーを整える</strong><br>
+    週3回以上、ゆっくり湯船に浸かる。<br>
+    38〜40度のぬるめのお湯で20分。<br>
+    「水」のエネルギーが心を落ち着かせます。</p>
+
+    <p><strong>キャンドルで「火」のエネルギーを活性化</strong><br>
+    夜、キャンドルを灯して5分眺める。<br>
+    「火」のエネルギーが「情熱」「前に進む力」を与えます。</p>
+
+    <h3>【「土」のエネルギーで調和させる】</h3>
+
+    <p>「土」はすべてのエネルギーを調和させる「仲介役」。</p>
+
+    <p><strong>陶器の器を使う</strong><br>
+    食事は陶器の器で。<br>
+    「土」のエネルギーが安定をもたらします。</p>
+
+    <p><strong>土に触れる</strong><br>
+    ガーデニング、陶芸体験など。<br>
+    「土」のエネルギーが「安定」「落ち着き」を与えます。</p>
+
+    <p><strong>黄色、ベージュの服を着る</strong><br>
+    特に4月は黄色系の服がおすすめ。</p>
+
+    <h3>【再会に向けての準備】</h3>
+
+    <p>美容や健康に力を入れ、<br>
+    新しい服や髪型にチャレンジしてください。</p>
+
+    <p>5月に彼と会う可能性が高いので、<br>
+    4月から準備を始めましょう。</p>
+
+    <p>こうして「エネルギーバランスの整った自分」を準備することが、<br>
+    彼の心を動かす第一歩になります。</p>
+
+    <h3>再会したときの言葉も決めておきましょう</h3>
+
+    <div class="magic-word-box">「あの時は、自分のことしか見えてへんかった。
+あなたの気持ちも今は分かる。
+大変やったよね」
+
+近況を聞かれたら
+「新しいこと始めたよ。充実してる」
+と明るく答える。
+
+少し会話が弾んだら
+「あなたには守るべきものがあるって分かってる。
+私はあなたの人生を邪魔するつもりはない。
+ただ、話せる時があったら嬉しいなって思ってるだけ」</div>
+
+    <p>この「軽さ」と「自由」が、<br>
+    彼の心を動かします。</p>
+
+    <h3>復縁後の関係を続けるには</h3>
+
+    <p>お互いの境界線を尊重すること。</p>
+
+    <p>彼の家族の時間を邪魔せず、<br>
+    会う頻度は彼に決めてもらう。</p>
+
+    <p>依存せず求めすぎず、<br>
+    自分の趣味や友人との時間も大切にする。</p>
+
+    <p>会ったときは明るく楽しい話だけをして、<br>
+    ネガティブな話や愚痴は他の友人に話すこと。</p>
+
+    <p>これが長く深い関係を築く秘訣です。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>今、松尾様の心は<br>
+    「彼はどう思ってるんやろう」<br>
+    「本当にもう一度会えるんやろうか」<br>
+    という不安で揺れていると思います。</p>
+
+    <p>実は、松尾様の命式を視ると<br>
+    水と火のエネルギーがバランスよく配置されていますが、<br>
+    今の状況では水（不安、揺れ）が強くなりすぎています。</p>
+
+    <p>水が強すぎると、<br>
+    感情が揺れやすく、不安を吸収しやすく、<br>
+    本来の魅力が彼に伝わりにくくなります。</p>
+
+    <p>この五行のバランスを整えることで、<br>
+    松尾様本来の温かさと強さが安定し、<br>
+    彼に「変わった」「軽くなった」という印象を<br>
+    自然に与えることができます。</p>
+
+    <p>五行バランスが整うと、<br>
+    心が揺れにくくなり、<br>
+    彼の変化を敏感にキャッチでき、<br>
+    2026年春のチャンスを逃さなくなります。</p>
+
+    <p>その五行調整に最も効果的なのが、<br>
+    松尾様専用に選ぶパワーストーンです。</p>
+
+    <div class="important-box">
+        <h3>【3つのプラン】</h3>
+
+        <p><strong>●松（本気で復縁を叶えたい方向け）</strong><br>
+        　五行バランスの完全調整。水を穏やかにし、土と金を育てる。<br>
+        　4月～6月の最重要期間に向けて、今から整えます。</p>
+
+        <p><strong>●竹（まずは心を安定させたい方向け）</strong><br>
+        　水のエネルギーを穏やかにし、心の揺れを抑えます。</p>
+
+        <p><strong>●梅（不安を和らげたい方向け）</strong><br>
+        　日常の五行バランスを少しずつ整えます。</p>
+
+        <p>多くの方が「松」を選ばれます。<br>
+        理由は「本気で復縁したいから、中途半端にしたくない」とのこと。</p>
+
+        <p>「必要だと感じた今このタイミング」が<br>
+        一番効果の出やすい時期です。</p>
+
+        <p>気になるようでしたら<br>
+        「詳細希望」とだけ送っていただければ、<br>
+        松尾様専用の五行調整石をお選びいたしますね。</p>
+    </div>
+
+    <h2>最後に</h2>
+
+    <p>松尾様、<br>
+    今のあなたは大切な岐路に立っています。</p>
+
+    <p>でも、道はひとつではありません。<br>
+    そして未来はまだ決まっていません。</p>
+
+    <p>彼と「もう一度会いたい」と願う<br>
+    その純粋な想いこそが、<br>
+    どんな困難をも乗り越える、<br>
+    最も強い力です。</p>
+
+    <p>私には視えています。</p>
+
+    <p>彼が数ヶ月後に<br>
+    「待っててくれて、ありがとう」<br>
+    「やっぱり、あっちゃんは特別や」って<br>
+    本音を伝えている姿が。</p>
+
+    <p>その未来に向けて、<br>
+    焦らず、無理をせず、<br>
+    少しずつ歩いていけば大丈夫です。</p>
+
+    <p>どうか、ひとりで抱え込まないでください。</p>
+
+    <p>その未来への道、<br>
+    私がこれからも照らし続けます。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>

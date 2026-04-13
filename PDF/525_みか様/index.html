@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>みか様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../強い火.png'); }
+        .aura-wood::before { background-image: url('../強い木.png'); }
+        .aura-earth::before { background-image: url('../強い土.png'); }
+        .aura-metal::before { background-image: url('../強い金.jpg'); }
+        .aura-water::before { background-image: url('../強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #c9a05d;
+            font-weight: 600;
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: #ffffff !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">みか様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>みか様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>みか様</p>
+
+    <p>この度は本鑑定にお進みいただき、<br>
+    心より感謝申し上げます。</p>
+
+    <p>部署が離れて、話す機会がなくなった。<br>
+    でも、あの笑顔がどうしても忘れられへん。</p>
+
+    <p>「また会えるかな」<br>
+    「進展する可能性、あるのかな」</p>
+
+    <p>そんな想いを抱え続けてきたこと、<br>
+    痛いほど伝わってきます。</p>
+
+    <p>みか様、<br>
+    あなたの想いは、きっと彼に伝わっていますよ！</p>
+
+    <p>彼と笑い合う未来は、まだ可能性としてしっかり存在しています。<br>
+    その道を、これからお伝えしていきますね。</p>
+
+    <h2>🔮 彼の深層心理</h2>
+
+    <div class="aura-section aura-fire">
+        <p>彼は今、人生で最もエネルギーが高まる時期にいます。<br>
+        仕事も私生活も充実して、毎日が輝いている。</p>
+
+        <p>「誰かを笑顔にしたい」という想いが、<br>
+        彼の魂には刻まれています。</p>
+
+        <p>だからこそ、みか様と話すとき、<br>
+        自然と笑顔になっていたんです。</p>
+    </div>
+
+    <p>部署が離れた今も、<br>
+    「みかさん」という存在は彼の心に残っています。</p>
+
+    <p>ただ、彼はまだそれを「恋愛」として意識できていません。</p>
+
+    <p>12歳年下の彼は今、キャリアや将来に意識が向いていて、<br>
+    「誰かと深く付き合う」準備がまだ整っていない。</p>
+
+    <p>でも、それは「可能性がない」という意味ではありません。</p>
+
+    <p>実は、彼の命式を視ると、<br>
+    元から金のオーラを持つ女性に縁がある運命なんです。</p>
+
+    <p>彼がみか様を意識し始めるのは、<br>
+    「この人といると、なぜか心地いい」と<br>
+    改めて感じる瞬間が訪れたとき。</p>
+
+    <p>その瞬間を作るには、<br>
+    みか様のオーラを整えることが鍵になります。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <p>2026年は丙午年。<br>
+    みか様にとっては恋愛のエネルギーが高まる年。<br>
+    彼にとっては最も輝く年。</p>
+
+    <p>お互いの運気が重なる今年は、大きなチャンスの年です。</p>
+
+    <div class="important-box">
+        <h3>【これからの半年】</h3>
+
+        <p><strong>1月〜2月：準備期間</strong><br>
+        まだ動く時期ではありません。<br>
+        オーラを整えて、自分を磨く期間です。</p>
+
+        <p><strong>3月：小さな兆し</strong><br>
+        みか様の金のエネルギーが高まる月。<br>
+        彼から見ると、この月は「恋愛対象の女性」を意識しやすい時期。<br>
+        偶然すれ違う、ふと思い出すなど、小さな接点が生まれやすい。</p>
+
+        <p><strong>4月〜5月：焦らず待つ</strong><br>
+        彼は仕事に集中する時期。<br>
+        みか様は自分磨きを続けてください。</p>
+
+        <p><strong>6月：最初の大チャンス</strong><br>
+        火のエネルギーが重なり、彼のエネルギーが最高潮に。<br>
+        みか様も魅力が開花する時期。<br>
+        再会や接点があれば、彼の印象に強く残ります。</p>
+    </div>
+
+    <h3>【近づいているサイン】</h3>
+
+    <p>・彼の声やしぐさを突然思い出す<br>
+    ・職場で彼の話題が偶然耳に入る<br>
+    ・夢に彼が出てくる</p>
+
+    <p>これらが現れたら、運命が動き始めている証拠です。</p>
+
+    <h2>🔮 オーラの調整方法</h2>
+
+    <div class="aura-section aura-metal">
+        <p>みか様の命式は水が0。<br>
+        感情を流す力が弱く、想いを溜め込みやすい傾向があります。</p>
+
+        <p>また、金のオーラは本来宝石のように美しいのですが、<br>
+        今は少し曇っている状態。</p>
+
+        <p>この曇りを取り除き、水の流れを取り入れることが、<br>
+        彼の心を動かす第一歩です。</p>
+    </div>
+
+    <h3>【水のエネルギーを取り入れる】</h3>
+
+    <p>水のオーラを持つ人は、<br>
+    柔らかくて、どこか神秘的な雰囲気を纏っています。</p>
+
+    <p>芸能人でいうと、綾瀬はるかさんや新垣結衣さんのような、<br>
+    ふんわりとした癒しのオーラ。</p>
+
+    <p>みか様も水を取り入れることで、<br>
+    そんな柔らかさが加わります。</p>
+
+    <p><strong>●朝起きたら、コップ一杯の水を飲む</strong><br>
+    体の中から水のエネルギーを循環させます。<br>
+    「今日も感情を流していこう」と心の中で唱えながら。</p>
+
+    <p><strong>●お風呂にゆっくり浸かる</strong><br>
+    湯船の中で、溜まった想いを水に流すイメージ。<br>
+    できれば入浴剤を入れて、香りでも癒されてください。</p>
+
+    <p><strong>●川や海、水辺を訪れる</strong><br>
+    水の流れを眺めるだけで、<br>
+    オーラが浄化されていきます。<br>
+    難しければ、水の流れる動画を見るだけでもOK。</p>
+
+    <h3>【金のオーラを磨く】</h3>
+
+    <p><strong>●アクセサリーを丁寧に磨く</strong><br>
+    シルバーや金属のアクセサリーを磨くと、<br>
+    同時にあなたの金のオーラも輝き出します。</p>
+
+    <p><strong>●白やシルバーの服を身につける</strong><br>
+    金のオーラと共鳴する色。<br>
+    清潔感と凛とした美しさが増します。</p>
+
+    <h3>【彼の火と共鳴する】</h3>
+
+    <p><strong>●朝日を浴びる</strong><br>
+    彼の火のオーラと同じエネルギーを取り込むことで、<br>
+    波長が合いやすくなります。</p>
+
+    <p><strong>●キャンドルを灯す時間を作る</strong><br>
+    炎を見つめながら、彼との未来をイメージしてみて。</p>
+
+    <h3>【自分を大切にする】</h3>
+
+    <p>新しい趣味、美容、友人との時間。<br>
+    「彼がいなくても輝いている自分」を作ることが、<br>
+    実は一番のオーラ調整になります。</p>
+
+    <p>再会したとき、彼は驚くでしょう。<br>
+    「みかさん、なんか変わった？」<br>
+    「前より、柔らかくなった気がする」<br>
+    この印象が、彼の心を揺さぶります。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>今、みか様の心は不安で揺れていると思います。</p>
+
+    <p>命式の水が0という特徴から、<br>
+    感情を上手く流せず、不安を溜め込みやすい傾向があります。</p>
+
+    <p>この五行バランスを整えることで、<br>
+    心が軽くなり、本来の魅力が溢れ出します。</p>
+
+    <p>6月のチャンスを掴むためにも、<br>
+    今からバランスを整えておくことが大切です。</p>
+
+    <div class="important-box">
+        <h3>【3つのプラン】</h3>
+
+        <p><strong>●松（本気で進展したい方向け）</strong><br>
+        五行バランスの完全調整。水を補い、金を輝かせる。<br>
+        6月のチャンスに向けて、今から整えます。</p>
+
+        <p><strong>●竹（心を安定させたい方向け）</strong><br>
+        不安を和らげ、心の揺れを穏やかにします。</p>
+
+        <p><strong>●梅（日常の安定を求める方向け）</strong><br>
+        日々のオーラバランスを少しずつ整えます。</p>
+
+        <p>パワーストーンを持つことで、<br>
+        心が揺れにくくなり、<br>
+        彼との再会時も自然体でいられるようになります。</p>
+
+        <p>気になるようでしたら<br>
+        「詳細希望」とだけ送ってくださいね。</p>
+    </div>
+
+    <h2>最後に</h2>
+
+    <p>みか様、<br>
+    部署が離れたことは、終わりではありません。<br>
+    新しい始まりのサインです。</p>
+
+    <p>私には視えています。</p>
+
+    <p>彼が「あ、みかさん！久しぶり！」<br>
+    「元気にしてた？」って<br>
+    嬉しそうに話しかけてくる姿が。</p>
+
+    <p>そしてその先に、<br>
+    「みかさんといると、なんか落ち着く」<br>
+    って彼が感じている未来が。</p>
+
+    <p>焦らず、まずは自分を大切に磨いてください。</p>
+
+    <p>その未来への道、<br>
+    私がこれからも照らし続けます。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>

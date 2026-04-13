@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゆき様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../強い火.png'); }
+        .aura-wood::before { background-image: url('../強い木.png'); }
+        .aura-earth::before { background-image: url('../強い土.png'); }
+        .aura-metal::before { background-image: url('../強い金.jpg'); }
+        .aura-water::before { background-image: url('../強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #c9a05d;
+            font-weight: 600;
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: #ffffff !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">ゆき様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>ゆき様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>ゆき様、</p>
+
+    <p>大切な想いを打ち明けてくださって、<br>
+    ほんまにありがとうございます。</p>
+
+    <p>好き同士なのに、まだ付き合ってへん。<br>
+    彼は既婚者。<br>
+    「生涯のパートナーとして一緒にいたい」という想いと、<br>
+    「でも現実は」という複雑な気持ち。</p>
+
+    <p>痛いほど伝わってきます。</p>
+
+    <p>ゆき様は、何一つ間違えていません。</p>
+
+    <p>あなたの真っすぐな想い、<br>
+    彼を想う純粋な気持ち、<br>
+    それは全部、本物です。</p>
+
+    <p>そして、あきさんもまた、<br>
+    あなたのことを想ってる。</p>
+
+    <p>私には視えてます。</p>
+
+    <p>二人の間に流れる、太い金色の糸が。<br>
+    今も、確かに輝いてる。</p>
+
+    <p>この鑑定書は、<br>
+    その糸をもっと太く、もっと強くして、<br>
+    お二人が本来辿りつくべき未来へと<br>
+    導くための道標です。</p>
+
+    <h2>🔮 関係の真相</h2>
+
+    <h3>【ゆき様の本質】</h3>
+
+    <div class="aura-section aura-metal">
+        <p>ゆき様は、金のオーラを持つ人。</p>
+
+        <p>輝く銀色の光。<br>
+        芯が強くて、でも温かい。<br>
+        揺るがへん信念を持ってる。</p>
+
+        <p>「頼りになる」<br>
+        「一緒にいると安心する」</p>
+
+        <p>そんな風に言われること、多いんやないですか?</p>
+
+        <p>あなたの魂には、<br>
+        「相手を支えたい」という波動が刻まれています。</p>
+
+        <p>だから、彼が既婚者でも、<br>
+        その想いを貫こうとしてる。</p>
+
+        <p>これは、あなたの美しさです。</p>
+
+        <p>金のオーラを持つ人は、<br>
+        一度「この人」と決めたら、<br>
+        簡単には諦めへん。</p>
+
+        <p>でも、それは執着やない。<br>
+        真っすぐな愛なんです。</p>
+    </div>
+
+    <h3>【あきさんの本質】</h3>
+
+    <div class="aura-section aura-wood">
+        <p>一方、あきさんは木のオーラを持つ人。</p>
+
+        <p>柔らかい緑色の光。<br>
+        でも、根っこは深く張ってる。</p>
+
+        <p>だから、慎重なんです。</p>
+
+        <p>好き同士なのに、まだ付き合ってへんのも、<br>
+        この木のオーラの性質。</p>
+
+        <p>彼の魂には、<br>
+        「大切な人を守りたい」という波動が刻まれています。</p>
+
+        <p>ゆき様のこと、好き。<br>
+        でも、今の状況を整理したいって思ってるんです。</p>
+
+        <p>既婚者という立場。<br>
+        家族への責任。<br>
+        そして、ゆき様への想い。</p>
+
+        <p>彼は今、その全てを抱えながら、<br>
+        どう進むべきか考えてる。</p>
+
+        <p>決して、逃げてるわけやない。<br>
+        ゆき様を軽く見てるわけでもない。</p>
+
+        <p>真剣だからこそ、慎重なんです。</p>
+    </div>
+
+    <h3>【二人のオーラの関係】</h3>
+
+    <p>ゆき様の金のオーラと、<br>
+    あきさんの木のオーラ。</p>
+
+    <p>この組み合わせは、<br>
+    自然界の理にかなった、美しい関係。</p>
+
+    <p>金が木を磨き、<br>
+    木が金を支える。</p>
+
+    <p>お互いを高め合う、最高の相性です。</p>
+
+    <p>二人の間には、太い金色の糸が見える。<br>
+    すごく強く、輝いてる。</p>
+
+    <p>これは、魂が運命的に引き寄せ合ってるサイン。</p>
+
+    <p>ただ、今は彼の木のオーラが<br>
+    答えを出すための時間を必要としています。</p>
+
+    <p>木は、じっくりと根を張って、<br>
+    確かな答えを見つける。</p>
+
+    <p>焦らせると、かえって遠ざかってしまう。</p>
+
+    <p>でも、正しいアプローチをすれば、<br>
+    彼は必ず決断します。</p>
+
+    <h2>🔮 二人が辿りつく道筋</h2>
+
+    <h3>【彼が求めているもの】</h3>
+
+    <p>彼の命式を深く視ると、<br>
+    今、彼に足りへんのは「水」のエネルギー。</p>
+
+    <p>水は「明確さ」と「流れ」を象徴します。</p>
+
+    <p>だから、彼は今、<br>
+    「どう進むべきか」が見えてへん。</p>
+
+    <p>迷ってるんです。</p>
+
+    <p>でも、ゆき様の中には<br>
+    「水」のエネルギーがある。</p>
+
+    <p>だからこそ、二人は引き寄せ合ってる。</p>
+
+    <p>あなたが、彼に「明確な未来」を見せることができれば、<br>
+    彼は決断します。</p>
+
+    <h3>【必要な3つの変化】</h3>
+
+    <p><strong>①「待つ愛」から「導く愛」へ</strong></p>
+
+    <p>今のゆき様は、<br>
+    彼の決断を「待ってる」状態。</p>
+
+    <p>でも、彼が求めてるのは、<br>
+    「一緒に未来を描いてくれる人」。</p>
+
+    <p>「私たち、こんな未来が築けるよ」<br>
+    「二人なら、こんな関係が作れるよ」</p>
+
+    <p>そんな風に、優しく導いてあげる。</p>
+
+    <p>これが、彼の心を動かします。</p>
+
+    <p><strong>②「不安な想い」から「確かな信頼」へ</strong></p>
+
+    <p>「忘れられてないかな」<br>
+    「他に誰かいるんじゃないかな」</p>
+
+    <p>そんな不安を抱えてると、<br>
+    その波動が彼に伝わってしまう。</p>
+
+    <p>でも、「あきさんは、私を想ってくれてる」<br>
+    「時間はかかっても、必ず答えを出してくれる」</p>
+
+    <p>そんな確かな信頼を持つことで、<br>
+    あなたの金のオーラがもっと輝く。</p>
+
+    <p>その輝きが、彼を引き寄せます。</p>
+
+    <p><strong>③「重い金」から「軽やかな金」へ</strong></p>
+
+    <p>金のオーラは、強すぎると重くなる。</p>
+
+    <p>「どうして決めてくれへんの？」<br>
+    「いつまで待たせるの？」</p>
+
+    <p>こんな重さは、木のオーラを圧迫してしまう。</p>
+
+    <p>でも、「私は、あなたのペースで大丈夫」<br>
+    「焦らなくていいよ」</p>
+
+    <p>そんな軽やかさを持つことで、<br>
+    彼は逆に「早く決断したい」と思うようになります。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <h3>【なぜ今が大切なのか】</h3>
+
+    <p>2026年は、二人にとって大きな転換期です。</p>
+
+    <p>ゆき様の命式では、<br>
+    「金」のエネルギーが活性化する時期。</p>
+
+    <p>あなたの魅力が、最も輝く年です。</p>
+
+    <p>同時に、あきさんの命式では、<br>
+    「決断」のエネルギーが動き出す時期。</p>
+
+    <p>今まで迷ってたことに、<br>
+    答えを出すタイミングが来ます。</p>
+
+    <p>この二つのエネルギーが重なる2026年は、<br>
+    まさに運命の年なんです。</p>
+
+    <h3>【いつ彼の心が動くのか】</h3>
+
+    <p>最も重要なのは、<br>
+    2026年春から初夏（3月～6月）。</p>
+
+    <p>彼の木のエネルギーが活性化し、<br>
+    新しい方向へ動き出す時期です。</p>
+
+    <p>この時期、彼の中で<br>
+    「今の状況を変えたい」<br>
+    「新しい一歩を踏み出したい」<br>
+    という想いが強くなります。</p>
+
+    <p>特に4月～5月は、<br>
+    最重要期間として意識してください。</p>
+
+    <p>この時期に、あなたが<br>
+    「一緒にいたい未来」を優しく示すことができれば、<br>
+    彼は決断に向けて大きく動きます。</p>
+
+    <p>また、2026年夏から秋（7月～10月）は、<br>
+    彼自身の環境に変化が訪れる時期。</p>
+
+    <p>仕事や家庭で何かが動き出し、<br>
+    「本当に大切な人は誰か」を<br>
+    見つめ直すタイミングです。</p>
+
+    <p>その時、いつも支えてくれたゆき様の存在が、<br>
+    彼の心に深く刻まれていきます。</p>
+
+    <h3>【今後数年の流れ】</h3>
+
+    <p>2027年から2028年にかけても、<br>
+    重要な波が訪れます。</p>
+
+    <p>この期間、お二人の関係が<br>
+    次のステージへと進化する時期。</p>
+
+    <p>彼の決断が形になり、<br>
+    二人で新しい未来を築き始めるタイミングです。</p>
+
+    <h3>【近づいているサイン】</h3>
+
+    <p>・彼からの連絡が少し増える<br>
+    ・会った時に、将来の話が出る<br>
+    ・「君といると落ち着く」という言葉が増える<br>
+    ・彼の目が、前より深くあなたを見つめている<br>
+    ・「これからのこと、考えてる」という言葉</p>
+
+    <p>これらのサインが現れたら、<br>
+    心の準備をしておいてくださいね。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <h3>【五行バランス調整：木のエネルギーを補う】</h3>
+
+    <p>ゆき様の命式で最も足りへんのは、<br>
+    「木」のエネルギーです。</p>
+
+    <p>木が全くないことで、<br>
+    一度決めたら他が見えなくなり、<br>
+    心が固まって柔軟性を失ってしまう。</p>
+
+    <p>「彼しか見えへん」<br>
+    「彼がいなかったらどうしよう」</p>
+
+    <p>そんな風に、視野が狭くなってしまう。</p>
+
+    <p>でも、木のエネルギーを取り込むことで、<br>
+    心に「しなやかさ」が生まれます。</p>
+
+    <p>彼への想いは変わらないまま、<br>
+    「焦らず、自然な流れに任せる」という<br>
+    軽やかな波動が生まれるんです。</p>
+
+    <div class="important-box">
+        <h3>〈木の波動を取り込む実践〉</h3>
+
+        <p><strong>朝の儀式</strong></p>
+
+        <p>起きたら、窓を開けて<br>
+        緑の植物や木を見つめる。<br>
+        （ベランダの観葉植物でも、外の木でも）</p>
+
+        <p>深く息を吸いながら、<br>
+        「私は柔軟で、しなやか」<br>
+        「流れに身を任せられる」<br>
+        と3回唱える。</p>
+
+        <p>朝食に緑の野菜を取り入れる。<br>
+        ほうれん草、小松菜、ブロッコリーなど。</p>
+
+        <p>青色や緑色の服、小物を<br>
+        週に4日以上身につける。<br>
+        これが木の波動をあなたに宿します。</p>
+
+        <p><strong>日中の波動調整</strong></p>
+
+        <p>1日1回、必ず自然に触れる。<br>
+        公園を歩く、木に触れる、<br>
+        緑のある場所で深呼吸する。</p>
+
+        <p>これが、あなたの魂に<br>
+        「成長」と「柔軟性」の波動を刻みます。</p>
+
+        <p>彼のことを想い始めたら、<br>
+        一度立ち止まって、<br>
+        窓の外の木や空を見る。</p>
+
+        <p>「全ては良い方向に流れてる」<br>
+        「私は焦らなくていい」<br>
+        と唱える。</p>
+
+        <p>この儀式が、執着を手放し、<br>
+        軽やかな愛へと変えてくれます。</p>
+
+        <p><strong>夜の浄化</strong></p>
+
+        <p>湯船に浸かる時、<br>
+        ユーカリやティーツリーなど<br>
+        木の精油を数滴垂らす。</p>
+
+        <p>目を閉じて、<br>
+        「今日の重いエネルギーを手放す」<br>
+        「明日はもっと軽やかに」<br>
+        と唱える。</p>
+
+        <p>寝る前に、緑色のものを見つめながら<br>
+        今日の感謝を3つ唱える。</p>
+
+        <p>これが、木のエネルギーを魂に定着させます。</p>
+    </div>
+
+    <h3>【金のエネルギーを軽やかに変える】</h3>
+
+    <p>ゆき様の金のエネルギーは非常に強い。</p>
+
+    <p>これは「信念」「誠実さ」という<br>
+    美しい輝きですが、<br>
+    強すぎると「重さ」「執着」に変わってしまいます。</p>
+
+    <p>「どうして決めてくれへんの？」<br>
+    「私のこと、本当に好きなん？」</p>
+
+    <p>こんな想いが湧いてくるのは、<br>
+    金のエネルギーが重くなってるサイン。</p>
+
+    <p>金を「重い鉛」から「輝く光」に変える必要があります。</p>
+
+    <div class="important-box">
+        <h3>〈金の波動を軽やかにする実践〉</h3>
+
+        <p><strong>執着を手放す儀式</strong></p>
+
+        <p>週に1回、白い紙に<br>
+        今感じてる不安や執着を書き出す。</p>
+
+        <p>「彼が離れていくんじゃないか」<br>
+        「忘れられてるんじゃないか」<br>
+        「他に誰かいるんじゃないか」</p>
+
+        <p>全部、正直に書く。</p>
+
+        <p>書き終えたら、その紙を破って捨てる。<br>
+        （もしくは燃やす）</p>
+
+        <p>その時に、<br>
+        「この重さを手放します」<br>
+        「私は軽やかに愛します」<br>
+        と唱える。</p>
+
+        <p>この儀式が、金の重さを<br>
+        キラキラした輝きに変えてくれます。</p>
+
+        <p><strong>信頼の波動を定着させる</strong></p>
+
+        <p>1日3回、鏡の前で<br>
+        自分の目を見つめながら、</p>
+
+        <p>「あきさんは、私を想ってくれてる」<br>
+        「彼は、ちゃんと答えを出してくれる」<br>
+        「私は信頼して待つことができる」</p>
+
+        <p>と唱える。</p>
+
+        <p>この「信頼」の波動が、<br>
+        あなたの金のオーラを<br>
+        「重い執着」から「輝く信念」に変えます。</p>
+
+        <p>すると、彼はあなたの軽やかさに<br>
+        逆に惹かれて、<br>
+        「早く一緒になりたい」と思うようになります。</p>
+    </div>
+
+    <h3>【水のエネルギーで流れを作る】</h3>
+
+    <p>ゆき様は、水のエネルギーも持っています。</p>
+
+    <p>水は「流れ」「明確さ」「浄化」の波動。</p>
+
+    <p>この水のエネルギーを活性化させることで、<br>
+    彼が求めてる「明確な未来」を<br>
+    自然に示すことができるようになります。</p>
+
+    <div class="important-box">
+        <h3>〈水の波動を活性化させる実践〉</h3>
+
+        <p><strong>水の儀式</strong></p>
+
+        <p>毎朝、コップ一杯の水を飲む前に、<br>
+        両手で包んで、</p>
+
+        <p>「この水のように、<br>
+        私たちの関係も流れていく」<br>
+        「全ては最善の方向へ」</p>
+
+        <p>と唱えてから飲む。</p>
+
+        <p>週に1回、川や海、湖など<br>
+        水のある場所へ行く。</p>
+
+        <p>水を見つめながら、<br>
+        「私は流れに身を任せる」<br>
+        「全ては自然に動いていく」<br>
+        と唱える。</p>
+
+        <p>この儀式が、あなたの魂に<br>
+        「流れ」の波動を刻み、<br>
+        彼との関係も自然に流れ始めます。</p>
+    </div>
+
+    <h3>【彼との接し方：波動で心を動かす】</h3>
+
+    <p><strong>〈会った時の波動〉</strong></p>
+
+    <p>会う前に、深呼吸を3回。<br>
+    「私は軽やかで、魅力的」<br>
+    「彼は私の輝きに惹かれる」<br>
+    と唱える。</p>
+
+    <p>会った瞬間、心の中で<br>
+    「ありがとう、会えて嬉しい」<br>
+    と感謝の波動を送る。</p>
+
+    <p>この感謝の波動が、<br>
+    彼の心を開きます。</p>
+
+    <div class="magic-word-box">〈言葉に込める波動〉
+
+「久しぶり。元気にしてた？」
+→ 明るく、軽やかに。重さゼロで。
+
+「最近、〇〇始めてん。すごく楽しい！」
+→ あなたが充実してる波動を見せる。
+　 これが彼に「一緒にいたい」と思わせます。
+
+「あきさんは、最近どう？」
+→ 彼の話を全て受け止める。
+　 否定せず、ただ聞く。
+　 この「受容」の波動が、彼を癒します。
+
+タイミングを見て、
+「私たち、これからどうなっていくんだろうね」
+→ 優しく、未来の話を振る。
+　 でも押し付けない。
+
+「焦らなくていいから、
+あきさんが決めたい時に教えてね」
+→ この「待てる」波動が、
+　 彼を「早く決断したい」と思わせます。</div>
+
+    <p><strong>〈波動で関係を深める〉</strong></p>
+
+    <p>会ってる間、心の中で<br>
+    「私はこの人を信頼してる」<br>
+    「この人は私を選んでくれる」<br>
+    と唱え続ける。</p>
+
+    <p>この無言の波動が、<br>
+    彼の魂に届いて、<br>
+    二人の金色の糸を太くしていきます。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <h3>【今のあなたの心】</h3>
+
+    <p>ゆき様、</p>
+
+    <p>今、あなたの心は揺れてると思います。</p>
+
+    <p>「彼は本当に私を想ってくれてるのかな」<br>
+    「いつまで待てばいいんやろう」<br>
+    「このまま進展しないんじゃないか」</p>
+
+    <p>そんな不安で、夜も眠れへん時がある。</p>
+
+    <p>それは、あなたが彼を本気で想ってる証拠です。</p>
+
+    <p>でも、その不安が大きくなりすぎると、<br>
+    金のオーラが重くなって、<br>
+    かえって彼を遠ざけてしまう。</p>
+
+    <h3>【五行バランスから見た課題】</h3>
+
+    <p>ゆき様の命式を視ると、<br>
+    「木」のエネルギーが全くありません。</p>
+
+    <p>木は「成長」と「柔軟性」を象徴します。</p>
+
+    <p>だから、一度決めたことを<br>
+    なかなか変えられへん。</p>
+
+    <p>「彼と一緒にいたい」と決めたら、<br>
+    他の選択肢が見えなくなってしまう。</p>
+
+    <p>これは、あなたの誠実さの表れでもありますが、<br>
+    時に心を苦しくさせてしまいます。</p>
+
+    <p>また、「金」のエネルギーが非常に強い。</p>
+
+    <p>金は「信念」と「強さ」を象徴しますが、<br>
+    強すぎると「重さ」になってしまいます。</p>
+
+    <h3>【五行を整えることの効果】</h3>
+
+    <p>木のエネルギーを補うことで、<br>
+    心が柔軟になります。</p>
+
+    <p>「彼を想う」気持ちは変わらないまま、<br>
+    「焦らず、自然な流れに任せる」<br>
+    という心の余裕が生まれます。</p>
+
+    <p>金のエネルギーを調整することで、<br>
+    あなたの強さが「重さ」ではなく「輝き」に変わります。</p>
+
+    <p>彼が「一緒にいたい」と思う、<br>
+    軽やかで魅力的なあなたになれます。</p>
+
+    <h3>【パワーストーンのご提案】</h3>
+
+    <p>五行バランスを整えるために、<br>
+    パワーストーンをご提案させていただきます。</p>
+
+    <div class="important-box">
+        <p><strong>■ 松プラン（完全調整）</strong><br>
+        木のエネルギーを補い、金のエネルギーを調整する<br>
+        完全バランス調整ブレスレット</p>
+
+        <p>・グリーンアベンチュリン（木のエネルギー）<br>
+        ・シトリン（金のエネルギーを軽やかに）<br>
+        ・ローズクォーツ（愛の波動）</p>
+
+        <p>→ 本気で彼との未来を掴みたい方向け<br>
+        → 多くの方がこのプランを選ばれています</p>
+
+        <p>このブレスレットを身につけることで、<br>
+        心が揺れにくくなり、<br>
+        彼の変化を敏感にキャッチできるようになります。</p>
+
+        <p>チャンスを逃さなくなり、<br>
+        マイナスの思考が減って、<br>
+        今後の恋愛全体が安定していきます。</p>
+
+        <hr>
+
+        <p><strong>■ 竹プラン（心の安定）</strong><br>
+        不安を和らげ、心を落ち着かせる<br>
+        安定サポートブレスレット</p>
+
+        <p>・アマゾナイト（心の平穏）<br>
+        ・ムーンストーン（感情の調整）</p>
+
+        <p>→ まずは心を安定させたい方向け</p>
+
+        <hr>
+
+        <p><strong>■ 梅プラン（不安の軽減）</strong><br>
+        日々の不安を和らげる<br>
+        ベーシックブレスレット</p>
+
+        <p>・ローズクォーツ（愛の波動）</p>
+
+        <p>→ まずは小さく始めたい方向け</p>
+
+        <hr>
+
+        <p>ご希望の方は、<br>
+        「詳細希望」とだけお送りください。</p>
+
+        <p>詳しい説明と、<br>
+        ゆき様専用の調整内容をお伝えします。</p>
+    </div>
+
+    <h2>最後に</h2>
+
+    <p>ゆき様、</p>
+
+    <p>今、あなたは人生の岐路に立っています。</p>
+
+    <p>でも、道はひとつやない。</p>
+
+    <p>「彼を諦める」か「彼を想い続ける」か、<br>
+    そんな二択やないんです。</p>
+
+    <p>「本来の自分を輝かせながら、<br>
+    彼との未来を自然に引き寄せる」</p>
+
+    <p>そんな第三の道があるんです。</p>
+
+    <p>あなたの純粋な想いこそが、<br>
+    最も強い力なんです。</p>
+
+    <p>私には視えてます。</p>
+
+    <p>あきさんが、ゆき様の目を見つめながら、<br>
+    「君と一緒にいたい」<br>
+    「これからもずっと」<br>
+    って本音を伝えてる姿が。</p>
+
+    <p>その未来への道、私が照らし続けます。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>

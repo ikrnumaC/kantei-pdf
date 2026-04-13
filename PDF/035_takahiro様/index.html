@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>takahiro様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #0f3460 70%, #1a1a2e 100%);
+            color: #e8d5b7;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #d4af37;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #9d84b7;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #a0a0a0;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(30, 30, 46, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                        inset 0 0 0 1px rgba(212, 175, 55, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #d4af37;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #9d84b7;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #4a4a6a;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #9d84b7;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #4a4a6a;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: rgba(60, 60, 90, 0.5);
+            border: 2px solid #4a4a6a;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../強い火.png'); }
+        .aura-wood::before { background-image: url('../強い木.png'); }
+        .aura-earth::before { background-image: url('../強い土.png'); }
+        .aura-metal::before { background-image: url('../強い金.jpg'); }
+        .aura-water::before { background-image: url('../強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: rgba(60, 60, 90, 0.5);
+            border: 2px solid #4a4a6a;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: rgba(80, 70, 50, 0.5);
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: rgba(70, 60, 90, 0.5);
+            border: 2px dashed #9d84b7;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #4a4a6a;
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #0f3460 70%, #1a1a2e 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: rgba(30, 30, 46, 0.95) !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.15;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">takahiro様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>takahiro様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>takahiro様</p>
+
+    <p>この度は本鑑定にお進みいただき、<br>
+    心より感謝申し上げます。</p>
+
+    <p>「彼女は今、どう思ってるんやろうか」<br>
+    「このまま諦めるべきなんやろうか」<br>
+    「もう一度、アプローチすべきなんやろうか」</p>
+
+    <p>その揺れる気持ち、<br>
+    痛いほど伝わってきます。</p>
+
+    <p>まず初めにお伝えさせていただきます。</p>
+
+    <p>takahiro様、<br>
+    あなたは何一つ間違えていません。</p>
+
+    <p>人を純粋に想う気持ちは、<br>
+    年齢差なんて関係なく、美しいもの。</p>
+
+    <p>ただ、伝え方とタイミングが<br>
+    少しずれてしまっただけなんです。</p>
+
+    <p>未来はまだ真っ白なキャンバスです。<br>
+    その筆を握っているのは、takahiro様ご自身。</p>
+
+    <p>彼女との関係を修復し、<br>
+    恋人として歩む未来を選ぶことはできます。</p>
+
+    <p>その道を、これから丁寧にお伝えしていきますね。</p>
+
+    <h2>🔮 今、何が起きているのか</h2>
+
+    <h3>【takahiro様の本質】</h3>
+
+    <div class="aura-section aura-fire">
+        <p>takahiro様を視た瞬間、分かりました。</p>
+
+        <p>あなた、めちゃくちゃ「火」のエネルギーが強い人や。</p>
+
+        <p>火は情熱、行動力、決断力を表します。</p>
+
+        <p>好きになったら一直線。<br>
+        思ったら即行動。<br>
+        迷わず突き進む。</p>
+
+        <p>これがtakahiro様の魅力です。</p>
+
+        <p>でも同時に、火のエネルギーは<br>
+        「焦り」「暴走」も表してる。</p>
+
+        <p>相手のペースや、周りの状況を<br>
+        見る余裕がなくなってしまう。</p>
+
+        <p>告白したのも、<br>
+        周りが反対してる中で2人でご飯行ったのも、<br>
+        全部、あなたの「火」のエネルギーが<br>
+        暴走した結果なんです。</p>
+
+        <p>悪気はないんです。<br>
+        でも、相手の気持ちや、周りの状況を<br>
+        見る余裕がなかった。</p>
+
+        <p>だからこそ、今、こうなってる。</p>
+
+        <p>でもね、視えてるんです。</p>
+
+        <p>あなたの魂には、<br>
+        めちゃくちゃ強いエネルギーがある。</p>
+
+        <p>これは「自分で道を切り開く力」。</p>
+
+        <p>諦めへん強さ、<br>
+        何度でも立ち上がる力。</p>
+
+        <p>今は辛いと思うけど、<br>
+        この力があるから、まだチャンスはある。</p>
+    </div>
+
+    <h3>【彼女の本質】</h3>
+
+    <div class="aura-section aura-earth">
+        <p>彼女を視ると、<br>
+        木と金と水と土のエネルギーを<br>
+        バランスよく持ってる人。</p>
+
+        <p>その中で特に強いのが「金」のエネルギー。</p>
+
+        <p>金は美しさ、知性、<br>
+        でも同時に「ルールを守る」<br>
+        「周りの目を気にする」っていう<br>
+        慎重さも表してる。</p>
+
+        <p>彼女のオーラを視ると、<br>
+        淡いピンク色の中に、<br>
+        厚いグレーの壁が立ってる。</p>
+
+        <p>ピンク色は「takahiro様への好意」。<br>
+        でも、グレーの壁は「ブロック」。</p>
+
+        <p>彼女の波動を視ると、こう感じてる。</p>
+
+        <p>「takahiro様のこと、嫌いやない」<br>
+        「でも、お兄ちゃんって思ってた人が急に告白してきて、戸惑った」<br>
+        「周りからも反対されて、怖くなった」<br>
+        「今は距離を取りたい」</p>
+
+        <p>正直に言うと、<br>
+        彼女の中にtakahiro様への「好意」は、<br>
+        うっすらある。</p>
+
+        <p>でも、今は「ブロック」が強すぎて、<br>
+        その好意が表に出てけえへん状態。</p>
+    </div>
+
+    <h3>【このブロックは壊せるのか？】</h3>
+
+    <p>takahiro様。</p>
+
+    <p>視えてるんです。</p>
+
+    <p>このブロック、壊せます。</p>
+
+    <p>お二人を深く視ると、<br>
+    実は「相性」がめちゃくちゃいい。</p>
+
+    <p>takahiro様の「火」と、彼女の「金」。<br>
+    火は金を溶かして、形を変える。</p>
+
+    <p>これは、「あなたが彼女の価値観を変えられる」<br>
+    っていう意味。</p>
+
+    <p>そして、お二人とも同じリズムで生きてる。</p>
+
+    <p>だからこそ、最初は「娘さん」やったのに、<br>
+    話すようになって、惹かれていった。</p>
+
+    <p>彼女の中にも、うっすら「好意」がある。</p>
+
+    <p>でも、今は「ブロック」が邪魔してる。</p>
+
+    <p>このブロックは何なのか。</p>
+
+    <p>・16歳の年の差への不安<br>
+    ・周りの反対への怖さ<br>
+    ・「お兄ちゃん」っていう固定観念<br>
+    ・自分の気持ちがよく分からへん混乱</p>
+
+    <p>この4つのブロックが重なって、<br>
+    彼女は今、takahiro様から距離を取ってる。</p>
+
+    <h2>🔮 ブロックを壊す道筋</h2>
+
+    <h3>【ブロック1：年の差への不安を消す】</h3>
+
+    <p>彼女を深く視ると、<br>
+    「不安が強い」エネルギーを持ってる。</p>
+
+    <p>だからこそ、周りの反対に怖くなって、<br>
+    ブロックを作ってしまった。</p>
+
+    <p>でも、彼女には「知性」と<br>
+    「幸せを求める力」がある。</p>
+
+    <p>だからこそ、<br>
+    「感情」で攻めるんやなくて、<br>
+    「理性」で納得させることが大事。</p>
+
+    <p>具体的に言うと、<br>
+    takahiro様が「安定した未来」を見せること。</p>
+
+    <p>「俺はちゃんと考えてる」<br>
+    「焦ってない」<br>
+    「周りとも向き合う準備がある」</p>
+
+    <p>これを、言葉やなくて「行動」で示す。</p>
+
+    <p>そうすると、彼女の中の「不安」が和らいで、<br>
+    ブロックが一つ、崩れる。</p>
+
+    <h3>【ブロック2：周りの反対への怖さを和らげる】</h3>
+
+    <p>彼女が最も恐れているのは、<br>
+    「周りから否定されること」。</p>
+
+    <p>お母さんからの反対、<br>
+    友達からの心配。</p>
+
+    <p>これが彼女を追い詰めてる。</p>
+
+    <p>だからこそ、<br>
+    takahiro様が直接彼女に<br>
+    アプローチするんやなくて、</p>
+
+    <p>まず「周りとの関係を修復する」ことが<br>
+    めちゃくちゃ大事。</p>
+
+    <p>お母さんとの関係を修復し、<br>
+    「takahiroさんなら安心」<br>
+    と思ってもらうこと。</p>
+
+    <p>そうすると、彼女の中の<br>
+    「周りへの怖さ」が消えて、<br>
+    ブロックがまた一つ、崩れる。</p>
+
+    <h3>【ブロック3：「お兄ちゃん」から「男性」へ】</h3>
+
+    <p>彼女の中で、takahiro様は<br>
+    まだ「お兄ちゃん」のイメージが強い。</p>
+
+    <p>これを「一人の男性」に変えるには、<br>
+    「距離感」を作ることが大事。</p>
+
+    <p>今まで通り優しく接するんやなくて、<br>
+    少し距離を置く。</p>
+
+    <p>「お兄ちゃん」は優しい。<br>
+    でも「男性」は、少し遠い。</p>
+
+    <p>この距離感が、<br>
+    彼女の中の「お兄ちゃん」イメージを<br>
+    壊していきます。</p>
+
+    <h3>【ブロック4：彼女の気持ちを明確にさせる】</h3>
+
+    <p>彼女は今、自分の気持ちが<br>
+    よく分かってない状態。</p>
+
+    <p>「takahiroさんのこと、どう思ってるんやろう？」<br>
+    「好きなんやろうか？」<br>
+    「お兄ちゃんとして好きなだけなんやろうか？」</p>
+
+    <p>この混乱が、ブロックを作ってる。</p>
+
+    <p>だからこそ、<br>
+    彼女に「考える時間」を与えること。</p>
+
+    <p>距離を置くことで、<br>
+    「takahiroさんがいない生活」を体験させる。</p>
+
+    <p>そうすると、彼女は<br>
+    「やっぱり、takahiroさんがいないと寂しい」<br>
+    「これって、恋やったんや」<br>
+    と気づくんです。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <h3>【なぜ今が大切なのか】</h3>
+
+    <p>2026年は、takahiro様にとって<br>
+    大きな転換期です。</p>
+
+    <p>今まで暴走しがちだった火のエネルギーが<br>
+    少しずつ落ち着き始め、<br>
+    冷静さと余裕が生まれる時期。</p>
+
+    <p>彼女との関係が次のステージに進むなら、<br>
+    まさに今から準備を始める必要があります。</p>
+
+    <h3>【いつ彼女の心が動くのか】</h3>
+
+    <p>最も重要なのは、<br>
+    2026年春から夏（3月～8月）。</p>
+
+    <p>彼女の魂を視ると、<br>
+    この時期に「安定と温かさ」を<br>
+    求めるエネルギーが強くなります。</p>
+
+    <p>これはtakahiro様の土のエネルギーが<br>
+    彼女に必要とされる時期です。</p>
+
+    <p>そして、彼女自身が<br>
+    「本当に大切な人」を見つめ直す<br>
+    タイミングでもあります。</p>
+
+    <p>この時期、彼女の中の<br>
+    「ブロック」が弱まる。</p>
+
+    <p>特に4月～6月は<br>
+    最重要期間として意識してください。</p>
+
+    <p>この時期に、takahiro様が<br>
+    「変わった姿」を見せることができれば、<br>
+    彼女の心は大きく動きます。</p>
+
+    <h3>【今後の流れ】</h3>
+
+    <p><strong>2026年春〜夏：</strong><br>
+    彼女の中のブロックが弱まる時期。<br>
+    距離を置きながら、変化を見せる。</p>
+
+    <p><strong>2026年秋〜冬：</strong><br>
+    再接近のタイミング。<br>
+    共通の友人を通じて、自然に会う機会を作る。</p>
+
+    <p><strong>2027年春：</strong><br>
+    関係が大きく動く時期。<br>
+    彼女から「話したい」と言ってくる可能性が高い。</p>
+
+    <h3>【近づいているサイン】</h3>
+
+    <p>彼女から何気ないLINEが来る、<br>
+    SNSでtakahiro様の投稿に反応がある、<br>
+    共通の友人が「〇〇ちゃん、takahiroさんのこと聞いてたよ」<br>
+    と言ってくる。</p>
+
+    <p>これらのサインが現れたら、<br>
+    心の準備をしておいてくださいね。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <h3>【火のエネルギーを落ち着かせる】</h3>
+
+    <p>takahiro様の最大の課題は、<br>
+    「火のエネルギーを落ち着かせること」。</p>
+
+    <p>焦りを抑え、<br>
+    冷静さと余裕を身につける。</p>
+
+    <p><strong>〈朝のルーティン〉</strong></p>
+
+    <p>起きたら、まず深呼吸を3回。<br>
+    「今日は焦らない」<br>
+    「今日は冷静に」<br>
+    と心の中で唱える。</p>
+
+    <p>朝食は温かいものを食べる。<br>
+    でも、辛いものや刺激物は避ける。</p>
+
+    <p><strong>〈日中のルーティン〉</strong></p>
+
+    <p>何か決断する前に、3秒待つ。<br>
+    「これ、今すぐやる必要ある？」<br>
+    「相手の気持ちは？」<br>
+    と自問する。</p>
+
+    <p><strong>〈夜のルーティン〉</strong></p>
+
+    <p>その日の「焦ってしまったこと」を<br>
+    一つだけ振り返る。</p>
+
+    <p>「次はどうすればよかったか」を考える。</p>
+
+    <p>この積み重ねが、<br>
+    火のエネルギーを落ち着かせます。</p>
+
+    <h3>【距離を置く勇気】</h3>
+
+    <p>今、一番大事なのは<br>
+    「距離を置くこと」。</p>
+
+    <p>彼女に連絡しない。<br>
+    共通の友人を通じて様子を聞かない。<br>
+    SNSも見ない。</p>
+
+    <p>この「我慢」が、<br>
+    彼女の中の「takahiroさんがいない寂しさ」を<br>
+    育てます。</p>
+
+    <p>最低3ヶ月、できれば6ヶ月。</p>
+
+    <p>この期間、完全に距離を置く。</p>
+
+    <h3>【周りとの関係を修復する】</h3>
+
+    <p>お母さんに謝罪する。</p>
+
+    <div class="magic-word-box">「軽率な行動をして、申し訳ありませんでした」
+「〇〇ちゃんのことは本気で大切に思っています」
+「でも、焦りすぎました」
+「今は距離を置いて、自分を見つめ直しています」</div>
+
+    <p>この誠実な姿勢が、<br>
+    お母さんの心を開きます。</p>
+
+    <h3>【自分を成長させる】</h3>
+
+    <p>この期間、自分磨きに専念する。</p>
+
+    <p>仕事に打ち込む。<br>
+    新しい趣味を始める。<br>
+    健康に気を使う。</p>
+
+    <p>彼女が次に会った時、<br>
+    「takahiroさん、変わったな」<br>
+    「前より落ち着いてる」<br>
+    「かっこよくなった」<br>
+    と思わせることが大事。</p>
+
+    <h3>【再会した時の言葉】</h3>
+
+    <p>もし6ヶ月後、偶然会ったら。</p>
+
+    <div class="magic-word-box">「久しぶり。元気にしてた？」
+と自然に。
+
+重くならず、明るく。
+
+彼女が何か話してきたら、
+否定せず、全部受け止める。
+
+「そうなんや」
+「それ、いいね」
+
+そして、長く話さず、
+「じゃあ、また」
+とさらっと去る。
+
+この「余裕」が、
+彼女を「あれ？」と思わせます。</div>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>今、takahiro様の心は<br>
+    「彼女はどう思ってるんやろう」<br>
+    「もう無理なんやろうか」<br>
+    という不安で揺れていると思います。</p>
+
+    <p>実は、あなたの魂を視ると<br>
+    火のエネルギーが強すぎて、<br>
+    バランスが崩れています。</p>
+
+    <p>火が強すぎると、<br>
+    焦りやすく、冷静さを失いやすく、<br>
+    チャンスを逃してしまいます。</p>
+
+    <p>このバランスを整えることで、<br>
+    takahiro様本来の落ち着きと余裕が生まれ、<br>
+    彼女に「変わったな」という印象を<br>
+    自然に与えることができます。</p>
+
+    <p>バランスが整うと、<br>
+    せっかくの再接近のタイミング（2026年春）を<br>
+    しっかり掴むことができます。</p>
+
+    <p>また、バランスが整うことで、<br>
+    焦りが減り、<br>
+    彼女の変化を敏感にキャッチできるようになります。</p>
+
+    <p>そのバランス調整に最も効果的なのが、<br>
+    takahiro様専用に選ぶパワーストーンです。</p>
+
+    <div class="important-box">
+        <h3>【3つのプラン】</h3>
+
+        <p><strong>●松（本気で関係を修復したい方向け）</strong><br>
+        　バランスの完全調整。火を抑え、水と土を補う。<br>
+        　2026年春の最重要期間に向けて、今から整えます。</p>
+
+        <p><strong>●竹（まずは心を落ち着かせたい方向け）</strong><br>
+        　火のエネルギーを穏やかにし、焦りを抑えます。</p>
+
+        <p><strong>●梅（不安を和らげたい方向け）</strong><br>
+        　日常のバランスを少しずつ整えます。</p>
+
+        <p>多くの方が「松」を選ばれます。<br>
+        理由は「本気で彼女との関係を修復したいから、中途半端にしたくない」とのこと。</p>
+
+        <p>「必要だと感じた今このタイミング」が<br>
+        一番効果の出やすい時期です。</p>
+
+        <p>気になるようでしたら<br>
+        「詳細希望」とだけ送っていただければ、<br>
+        takahiro様専用の調整石をお選びいたしますね。</p>
+    </div>
+
+    <div class="sign-box">
+        <p>takahiro様、<br>
+        今のあなたは大切な岐路に立っています。</p>
+
+        <p>でも、道はひとつではありません。<br>
+        そして未来はまだ決まっていません。</p>
+
+        <p>彼女と「恋人として歩みたい」と願う<br>
+        その純粋な想いこそが、<br>
+        どんな困難をも乗り越える、<br>
+        最も強い力です。</p>
+
+        <p>私には視えています。</p>
+
+        <p>2年後、<br>
+        彼女が「takahiroさん、実は...」<br>
+        「あの時、待っててくれてありがとう」って<br>
+        笑顔で言ってる姿が。</p>
+
+        <p>その先に<br>
+        「年の差なんて関係ない、<br>
+        一緒にいたいんです」って<br>
+        本音を伝えてる姿が。</p>
+
+        <p>その温かい未来が、<br>
+        しっかり視えています。</p>
+
+        <p>その未来に向けて、<br>
+        焦らず、無理をせず、<br>
+        少しずつ歩いていけば大丈夫です。</p>
+
+        <p>どうか、ひとりで抱え込まないでください。</p>
+
+        <p>その未来への道、<br>
+        私がこれからも照らし続けます。</p>
+
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>

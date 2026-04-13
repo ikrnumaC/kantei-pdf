@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>松井様の本鑑定書 - ツインレイ相談</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.9;
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #d4af37;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(212, 175, 55, 0.2);
+        }
+
+        h1 {
+            font-size: 2.2em;
+            color: #2d2d2d;
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #d4af37;
+            letter-spacing: 0.05em;
+        }
+
+        .client-info {
+            background: linear-gradient(135deg, #fff9f0 0%, #fffbf5 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border-left: 5px solid #d4af37;
+        }
+
+        .client-info p {
+            margin: 8px 0;
+            font-size: 1.05em;
+        }
+
+        .divider {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+            margin: 40px 0;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #2d2d2d;
+            margin: 50px 0 25px 0;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #fff9f0 0%, #fffbf5 100%);
+            border-left: 6px solid #d4af37;
+            border-radius: 8px;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: #4a4a4a;
+            margin: 35px 0 20px 0;
+            padding-left: 15px;
+            border-left: 4px solid #d4af37;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: #5a5a5a;
+            margin: 25px 0 15px 0;
+            padding-left: 12px;
+            border-left: 3px solid #c9a861;
+        }
+
+        p {
+            margin: 15px 0;
+            font-size: 1.05em;
+            page-break-inside: avoid;
+        }
+
+        .intro-text {
+            font-size: 1.1em;
+            line-height: 2;
+            margin: 30px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #fffbf5 0%, #fff9f0 100%);
+            border-radius: 12px;
+            border-left: 5px solid #d4af37;
+        }
+
+        .aura-section {
+            position: relative;
+            margin: 40px 0;
+            padding: 40px;
+            background: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.08;
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+        }
+
+        .aura-fire::before {
+            background-image: url('強い火.jpg');
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .important-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #fffbf0 100%);
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+            page-break-inside: avoid;
+        }
+
+        .important-box p:first-child {
+            font-weight: 600;
+            color: #d4af37;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .three-points {
+            margin: 30px 0;
+        }
+
+        .point-item {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 12px;
+            border-left: 5px solid #d4af37;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            page-break-inside: avoid;
+        }
+
+        .point-item h4 {
+            color: #d4af37;
+            font-size: 1.3em;
+            margin: 0 0 15px 0;
+            padding: 0;
+            border: none;
+        }
+
+        .timeline {
+            margin: 30px 0;
+        }
+
+        .timeline-item {
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 12px;
+            border-left: 5px solid #c9a861;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            page-break-inside: avoid;
+        }
+
+        .timeline-item h4 {
+            color: #d4af37;
+            font-size: 1.25em;
+            margin: 0 0 15px 0;
+            padding: 0;
+            border: none;
+        }
+
+        .sign-box {
+            background: linear-gradient(135deg, #f0f8ff 0%, #f5fbff 100%);
+            border: 2px solid #87ceeb;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            page-break-inside: avoid;
+        }
+
+        .sign-box ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        .sign-box li {
+            margin: 10px 0;
+            line-height: 1.8;
+        }
+
+        .action-plan {
+            background: linear-gradient(135deg, #fff5f8 0%, #fffafc 100%);
+            border: 2px solid #ffb6c1;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            page-break-inside: avoid;
+        }
+
+        .action-plan h4 {
+            color: #d4af37;
+            margin: 0 0 15px 0;
+            padding: 0;
+            border: none;
+        }
+
+        .ok-ng-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+            page-break-inside: avoid;
+        }
+
+        .ng-box {
+            background: linear-gradient(135deg, #fff0f0 0%, #fff5f5 100%);
+            border: 2px solid #ffcccc;
+            border-radius: 10px;
+            padding: 20px;
+            page-break-inside: avoid;
+        }
+
+        .ok-box {
+            background: linear-gradient(135deg, #f0fff0 0%, #f5fff5 100%);
+            border: 2px solid #90ee90;
+            border-radius: 10px;
+            padding: 20px;
+            page-break-inside: avoid;
+        }
+
+        .ng-box p:first-child,
+        .ok-box p:first-child {
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .tips-list {
+            background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            page-break-inside: avoid;
+        }
+
+        .tips-list ul {
+            padding-left: 25px;
+        }
+
+        .tips-list li {
+            margin: 12px 0;
+            line-height: 1.8;
+        }
+
+        .powerstone-section {
+            background: linear-gradient(135deg, #fff9e6 0%, #fffef0 100%);
+            border: 3px solid #d4af37;
+            border-radius: 15px;
+            padding: 35px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+        }
+
+        .powerstone-section h2 {
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+            color: #d4af37;
+        }
+
+        .plan-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .plan-item {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #e8d5b5;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            page-break-inside: avoid;
+        }
+
+        .plan-item h4 {
+            color: #d4af37;
+            font-size: 1.3em;
+            margin: 0 0 15px 0;
+            padding: 0;
+            border: none;
+        }
+
+        .closing-section {
+            margin: 50px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #fffbf5 0%, #fff9f0 100%);
+            border-radius: 15px;
+            border: 2px solid #d4af37;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+        }
+
+        .closing-section h2 {
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 40px;
+            font-size: 1.2em;
+            color: #5a5a5a;
+        }
+
+        @media print {
+            body {
+                background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 40px;
+                max-width: 100%;
+            }
+
+            h2, h3, h4 {
+                page-break-after: avoid;
+            }
+
+            p {
+                page-break-inside: avoid;
+            }
+
+            .important-box,
+            .point-item,
+            .timeline-item,
+            .sign-box,
+            .action-plan,
+            .ok-ng-box,
+            .tips-list,
+            .plan-item {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .ok-ng-box {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">松井様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+    <div class="container">
+
+
+        <section class="intro-text">
+            <h2>はじめに</h2>
+
+            <p>松井様、大切な想いを打ち明けてくださって、ほんまにありがとうございます。</p>
+
+            <p>「タイプやないのに、頭から離れへん」<br>
+            「好きな気持ちも嫌いな気持ちも、日によって変わる」</p>
+
+            <p>この揺れ動く気持ち、痛いほど伝わってきます。</p>
+
+            <p>でもね、その揺らぎこそが、ツインレイの証拠なんです。<br>
+            離れたくても離れられへん。理屈やないところで繋がってる。</p>
+
+            <p>あなたは何一つ間違えてへん。<br>
+            今まで感じてきた全部が、本物やったんです。</p>
+
+            <p>今、あなたの目の前には真っ白なキャンバスが広がってます。<br>
+            これから一緒に、新しい未来を描いていきましょう。</p>
+        </section>
+
+        <hr class="divider">
+
+        <section class="aura-section aura-fire">
+            <h2>🔮 サイレント期間の真相</h2>
+
+            <p>あなたを視た瞬間、真っ赤な炎のオーラが、パッと広がりました。<br>
+            熱くて、優しくて、でも今はすごく揺れてる。</p>
+
+            <p>あなたの魂は今、新しいエネルギーが生まれる時期。<br>
+            新しい命が宿るように、新しい自分が生まれようとしてる。</p>
+
+            <p>でも今、水のエネルギーがあなたの炎を抑えてる運気の流れなんです。<br>
+            だから自信が揺らぎ、「私なんかが」って思ってしまう。</p>
+
+            <p>そしてあなたの魂の波動には、まっすぐに想いを伝える力がある。<br>
+            魅力的で、言葉に力がある。<br>
+            これは本当に美しい資質。</p>
+
+            <p>でもね、その強い想いが、<br>
+            彼には少し重く感じられてしもたんです。</p>
+
+            <p>あなたは何も悪くない。<br>
+            ただ、あなたの愛が大きすぎて、<br>
+            彼の器では受け止めきれへんかった。</p>
+
+            <p>実はあなたには金のオーラが全くないから、<br>
+            想いを手放すことが難しい。<br>
+            だから今も、こんなに揺れてるんですよね。<br>
+            これも、あなたが本気で愛してる証拠なんです。</p>
+
+            <div class="important-box">
+                <p>一方、hideさんを視た瞬間、<br>
+                柔らかい緑色の木のオーラが揺れてました。<br>
+                森みたいに優しいけど、迷ってる。</p>
+
+                <p>彼のエネルギーも今、古い自分が終わって、<br>
+                新しい自分に生まれ変わろうとしてる時期。</p>
+
+                <p>そして今、金のエネルギーが彼の木のオーラを押さえ込んでる運気。<br>
+                責任やルールに縛られて、自由に動けへん。</p>
+
+                <p>彼女を作ったのも、<br>
+                責任を重んじる魂の波動から来てるんです。<br>
+                社会的な正しさ、年齢的な常識を選んだ。</p>
+
+                <p>彼の魂には、競争心や対抗心の波動もある。<br>
+                あなたに負けたくない。飲み込まれたくない。<br>
+                だから距離を取った。</p>
+
+                <p>17歳という年齢差が、彼の「これは正しいことやろか」という思いを刺激する。</p>
+            </div>
+
+            <p>でもね、彼の中には水のオーラが全くない。<br>
+            水は「柔軟性」「流れ」。<br>
+            だから頑なに、一度決めたら動けへんのです。</p>
+
+            <p>ケンカ気味になってから会わへんくなった。<br>
+            でも、ジムでは鉢合わせして来た。</p>
+
+            <p>それは、あなたのことが気になってるから。<br>
+            心の奥では、あなたのことが頭から離れへん。</p>
+
+            <p>あなたの炎が強すぎて、自分の木が燃え尽きてしまう恐怖。<br>
+            あなたと一緒になったら、自分が自分でなくなる感覚。<br>
+            依存しきって抜け出されへん未来が、彼には視えてしまったんです。</p>
+
+            <p>でも、お二人とも今、閉じこもりやすく、<br>
+            エネルギーが弱まり、新しく生まれ変わる時期。</p>
+
+            <p><strong>これは終わりやない。再生の時期なんです。</strong></p>
+        </section>
+
+        <hr class="divider">
+
+        <section>
+            <h2>🔮 再会への道筋</h2>
+
+            <p>サイレント期間を終わらせるには、あなた自身が変化する必要があります。<br>
+            でも難しいことやないんです。</p>
+
+            <h3>3つの転換ポイント</h3>
+
+            <div class="three-points">
+                <div class="point-item">
+                    <h4>① 「燃え盛る炎」→「優しい灯火」へ</h4>
+
+                    <p>あなたの赤い炎は、本来すごく美しい。<br>
+                    でも鋭い魂の波動が、今は激しく燃えてる。</p>
+
+                    <p>彼が求めてるのは、静かに寄り添う優しい灯火。<br>
+                    あなたの温かさは残したまま、落ち着きと余裕を纏うんです。</p>
+
+                    <p>彼を追いかけるんやなくて、自分の人生を楽しむ。<br>
+                    そしたら彼は、あなたの光に自然と引き寄せられる。</p>
+                </div>
+
+                <div class="point-item">
+                    <h4>② 「掴む愛」→「手放す愛」へ</h4>
+
+                    <p>金のオーラが足りへんから、今のあなたは掴みたくなる。<br>
+                    「離したくない」「どうにかしたい」って。</p>
+
+                    <p>でもね、手放す勇気を持った時、本当の愛が始まるんです。</p>
+
+                    <p>「彼が幸せならそれでいい」<br>
+                    「私は私で幸せになる」</p>
+
+                    <p>この境地に立てた時、彼の責任を重んじる波動から来る恐れは消える。</p>
+                </div>
+
+                <div class="point-item">
+                    <h4>③ 「傷つける言葉」→「癒す言葉」へ</h4>
+
+                    <p>あなたには鋭く表現する力がある。<br>
+                    でも今は、それが相手を傷つける刃になってる。</p>
+
+                    <p>「なんで連絡くれへんの？」<br>
+                    「彼女といて幸せなん？」</p>
+
+                    <p>こんな言葉は、彼の競争心の波動を刺激して、対抗心を生む。</p>
+
+                    <p>そうやなくて、癒す言葉を使う。<br>
+                    「元気やった？」<br>
+                    「楽しそうやね」</p>
+
+                    <p>この優しさが、彼の木のオーラを落ち着かせる。</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section>
+            <h2>🔮 運命の転機</h2>
+
+            <h3>なぜ今が大切なのか</h3>
+
+            <p>松井様は今、水のエネルギーが火を抑えてる運気の流れ。<br>
+            でもね、抑えられてる時期こそ、内側でエネルギーが溜まっていく時期なんです。<br>
+            眠ってた炎が、目覚めようとしてる。</p>
+
+            <p><strong>そして2026年は、火のエネルギーが最も強い年。<br>
+            今まで閉じ込められてた炎が、一気に解放されて輝き始める年なんです。</strong></p>
+
+            <h3>いつ彼の心が動くのか</h3>
+
+            <p>hideさんは今、金のエネルギーが<br>
+            木のオーラを押さえ込んでる運気の流れ。<br>
+            責任やルールに縛られて、本当の気持ちを封じ込めてる状態。<br>
+            彼女といることも、その一つ。</p>
+
+            <div class="important-box">
+                <p><strong>2026年夏（6月～8月）は、<br>
+                火のエネルギーが最も強い時期。</strong></p>
+
+                <p>彼は今の関係に疲れて、<br>
+                疑問を感じ始めるんです。</p>
+
+                <p>この時期、あなたの火のオーラが輝き、<br>
+                彼の変化を求める木のオーラが<br>
+                再びあなたを求め始めます。</p>
+            </div>
+
+            <h3>最も重要なタイミング：</h3>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>2026年夏（6月～8月）: 彼が変化を求める時期</h4>
+                    <ul>
+                        <li>彼の木のオーラが疲れて、今の関係を見直す</li>
+                        <li>あなたの火のオーラが輝き、魅力が増す</li>
+                        <li>近所でばったり会う可能性が最も高い</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>2026年秋～冬（9月～12月）: 準備と調整の時期</h4>
+                    <ul>
+                        <li>彼が心の整理をする</li>
+                        <li>あなたは自分磨きを続ける</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>2027年春～夏（3月～7月）: 本格的な再会・結ばれる可能性</h4>
+                    <ul>
+                        <li>2027年は、松井様の火のオーラがさらに強まる年</li>
+                        <li>hideさんの木のオーラが新しい方向を求める</li>
+                        <li>二人が本格的に結ばれる最大のチャンス</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sign-box">
+                <h3>近づいているサイン</h3>
+                <ul>
+                    <li>彼があなたの近所で姿を見せる（特に夏）</li>
+                    <li>共通の友人から彼の話題が出る</li>
+                    <li>彼の彼女との関係がぎくしゃくする</li>
+                    <li>あなた自身の心が落ち着いてくる</li>
+                    <li>火や赤いものが目に入る</li>
+                </ul>
+                <p><strong>このサインが出たら、再開はもうすぐそこです。</strong></p>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section>
+            <h2>🔮 今から6月までに準備すること</h2>
+
+            <div class="action-plan">
+                <h4>1月～3月：土台を整える期間</h4>
+                <p>この時期は、オーラの基礎を整える。<br>
+                断捨離（手放す練習）、白や金色のものを身につける、朝日を浴びる、自然の中を歩く。<br>
+                週に1回、「私は優しい光」と鏡の前で唱える。<br>
+                自分磨きを始めて、少しずつ変化していく。</p>
+            </div>
+
+            <div class="action-plan">
+                <h4>4月：最も苦しい浄化の月（正念場）</h4>
+                <p>水のエネルギーが最も強く、一番つらい時期。<br>
+                「もうダメかも」と思う瞬間が来るかもしれへん。<br>
+                でもこれは、最後の浄化。古い執着を手放す試練なんです。</p>
+
+                <p><strong>この時期、絶対に彼に連絡したらあかん。</strong><br>
+                どんなに辛くても、耐える。<br>
+                お風呂にゆっくり浸かって、涙を流して、心を浄化する。<br>
+                この時期を乗り越えたら、本当の再会が訪れます。</p>
+            </div>
+
+            <div class="action-plan">
+                <h4>5月：兆しが見え始める</h4>
+                <p>少しずつ心が軽くなってくる。<br>
+                彼の変化の兆候が現れ始める（共通の友人から話を聞く、近所で見かけるなど）。<br>
+                夏に向けて、最終調整。髪を切る、新しい服を買う。</p>
+            </div>
+
+            <div class="action-plan">
+                <h4>6月：再会のチャンス</h4>
+                <p>火のエネルギーが解放される。<br>
+                あなたが輝き、彼が変化を求める。<br>
+                ばったり会う可能性が最も高い時期。</p>
+            </div>
+
+            <h3>再会したら</h3>
+
+            <div class="ok-ng-box">
+                <div class="ng-box">
+                    <p>❌NG:</p>
+                    <p>「ずっと会いたかった」<br>
+                    「なんで連絡くれへんかったの？」</p>
+                </div>
+
+                <div class="ok-box">
+                    <p>⭕️OK:</p>
+                    <p>「久しぶり！元気やった？」<br>
+                    （軽やかに、笑顔で）</p>
+                </div>
+            </div>
+
+            <p>あなたが変わったことを見せる。<br>
+            落ち着いて、余裕があって、輝いてる姿を。</p>
+
+            <p>そして彼から話しかけてくるのを待つ。<br>
+            焦らへん。追いかけへん。<br>
+            鋭さを封印する。</p>
+
+            <h3>再会後の関係を続けるコツ</h3>
+
+            <div class="tips-list">
+                <ul>
+                    <li>週に1〜2回のペースで会う（毎日は求めへん）</li>
+                    <li>彼の予定を尊重する（責任感を大切にしてあげる）</li>
+                    <li>「私も忙しい」という姿勢を見せる</li>
+                    <li>彼の話を聞く側に回る（対抗心を生まない）</li>
+                    <li>自分の人生を楽しんでることを伝える</li>
+                </ul>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section class="powerstone-section">
+            <h2>🔑 心を守るサポート</h2>
+
+            <p>今、松井様の心は不安で揺れてますよね。<br>
+            「本当にサイレント期間なんやろか」<br>
+            「ただの失恋やないんやろか」<br>
+            「彼は本当に戻ってきてくれるんやろか」</p>
+
+            <p>実は、松井様の生まれ持った波動を視ると<br>
+            金のオーラが全くなく、<br>
+            火のオーラも1つだけで弱い<br>
+            バランスになっています。</p>
+
+            <p>金のオーラがないと、<br>
+            決断ができず、<br>
+            手放すこともできず、<br>
+            迷いや不安を抱えやすくなります。</p>
+
+            <p>火のオーラが弱いと、<br>
+            自信が持てず、<br>
+            「私なんかが」と思ってしまいます。</p>
+
+            <p>そして木と水のオーラが強すぎると、<br>
+            感情が揺れ続けて、<br>
+            心も体も疲弊してしまうのです。</p>
+
+            <p>さらに今、運気の流れで水が火を抑えてる。<br>
+            だから余計に自信が揺らぎ、不安が大きくなるんです。</p>
+
+            <div class="important-box">
+                <p>このオーラのバランスを整えることで、<br>
+                松井様本来の魅力が安定し、<br>
+                彼が「やっぱり松井さんだ」と気づきやすくなります。</p>
+
+                <p>オーラのバランスが整うと、<br>
+                せっかくの再会のタイミング（2026年夏～2027年春）を<br>
+                しっかり掴むことができます。</p>
+
+                <p>また、バランスが整うことで、<br>
+                心が揺れにくくなり、<br>
+                彼の心の変化を敏感にキャッチできるようになります。</p>
+
+                <p>そして何より、<br>
+                鋭い魂の波動が優しさに変わり、<br>
+                復縁後の関係も安定し、<br>
+                今後の恋愛全体がうまく回り始めるんです。</p>
+            </div>
+
+            <p>そのオーラ調整に最も効果的なのが、<br>
+            松井様専用に選ぶパワーストーンです。</p>
+
+            <h3>【3つのプラン】</h3>
+
+            <div class="plan-grid">
+                <div class="plan-item">
+                    <h4>●松（本気で再会を叶えたい方向け）</h4>
+                    <p>オーラバランスの完全調整。金を補い、火を安定させ、全体を調和させる。<br>
+                    2026年夏～2027年春の最重要期間に向けて、今から整えます。</p>
+                </div>
+
+                <div class="plan-item">
+                    <h4>●竹（まずは心を安定させたい方向け）</h4>
+                    <p>金のオーラを補い、心の揺れを抑えます。</p>
+                </div>
+
+                <div class="plan-item">
+                    <h4>●梅（不安を和らげたい方向け）</h4>
+                    <p>日常のオーラバランスを少しずつ整えます。</p>
+                </div>
+            </div>
+
+            <p>多くの方が「松」を選ばれます。<br>
+            理由は「本気で彼との未来を掴みたいから、中途半端にしたくない」とのこと。</p>
+
+            <p><strong>「必要だと感じた今このタイミング」が<br>
+            一番効果の出やすい時期です。</strong></p>
+
+            <p>気になるようでしたら<br>
+            「詳細希望」とだけ送っていただければ、<br>
+            松井様専用のオーラ調整石をお選びいたしますね。</p>
+        </section>
+
+        <hr class="divider">
+
+        <section class="closing-section">
+            <h2>最後に</h2>
+
+            <p>松井様、今あなたは大きな岐路に立ってます。</p>
+
+            <p>このまま不安に揺れ続ける道。<br>
+            それとも、変化して輝く道。</p>
+
+            <p>道はひとつやないんです。</p>
+
+            <p>でもね、私には視えてます。</p>
+
+            <div class="important-box">
+                <p>2026年夏の午後、近所の道で彼とばったり会う。<br>
+                あなたは落ち着いて、笑顔で挨拶する。</p>
+
+                <p>彼は驚いた顔をして、<br>
+                「なんか変わったね」<br>
+                「綺麗になった」<br>
+                って言う。</p>
+
+                <p>そして秋に、彼から連絡が来る。<br>
+                「久しぶりに話さへん？」って。</p>
+
+                <p>2027年春、二人は本格的に向き合い始める。<br>
+                お互いが変わったことを認め合って、<br>
+                新しい関係が始まる。</p>
+            </div>
+
+            <p><strong>この未来は、もう始まってるんです。</strong></p>
+
+            <p>あなたの純粋な想いこそが、最も強い力。<br>
+            その想いを、正しい方向に導いていきましょう。</p>
+
+            <p>私がずっと、あなたの道を照らし続けますね。</p>
+
+            <div class="signature">
+                <p>心からの愛と光を込めて。</p>
+                <p><strong>かな</strong></p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

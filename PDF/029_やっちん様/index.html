@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鑑定書 - PDF軽量版（ダーク）</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #2a4a7c 80%, #3d5a9e 100%);
+            color: #e8e8e8;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #ffd700;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #9b7dff;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #b8b8b8;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(22, 33, 62, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #ffd700;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #9b7dff;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #9b7dff;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: rgba(155, 125, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.25;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../強い火.png'); }
+        .aura-wood::before { background-image: url('../強い木.png'); }
+        .aura-earth::before { background-image: url('../強い土.png'); }
+        .aura-metal::before { background-image: url('../強い金.jpg'); }
+        .aura-water::before { background-image: url('../強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .meishiki {
+            background: rgba(155, 125, 255, 0.15);
+            border-left: 4px solid #9b7dff;
+            padding: 20px;
+            margin: 20px 0;
+            page-break-inside: avoid;
+        }
+
+        .tarot-card {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: rgba(155, 125, 255, 0.25);
+            border: 3px solid rgba(155, 125, 255, 0.85);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: rgba(155, 125, 255, 0.15);
+            border: 2px dashed rgba(155, 125, 255, 0.5);
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .ng-box {
+            background: rgba(220, 53, 69, 0.15);
+            border: 2px solid rgba(220, 53, 69, 0.5);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #2a4a7c 80%, #3d5a9e 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: #16213e !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.15;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">やっちん様</div>
+    <div class="cover-title">本鑑定書</div>
+    <div class="cover-subtitle">飲み友達まーちゃんとの関係修復</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>本鑑定書</h1>
+    <p class="subtitle">飲み友達まーちゃんとの関係修復</p>
+
+    <p>やっちん様</p>
+
+    <p>この度は本鑑定にお進みいただき、<br>
+    心より感謝申し上げます。</p>
+
+    <p>心地よかった飲み友達との関係。<br>
+    その「前のような関係に戻れるのか」という揺れる気持ち、<br>
+    痛いほど伝わってきます。</p>
+
+    <p>まず初めにお伝えさせていただきます。</p>
+
+    <p>やっちん様、<br>
+    あなたは何一つ間違えていません。</p>
+
+    <p>人との縁を大切にし、<br>
+    楽しい時間を作ろうとしたからこそ<br>
+    今こうして悩んでいらっしゃる。<br>
+    そこに弱さなどありません。</p>
+
+    <p>未来はまだ真っ白なキャンバスです。<br>
+    その筆を握っているのは、やっちん様ご自身。</p>
+
+    <p>まーちゃんとまた楽しく笑い合う未来を選ぶことはできます。<br>
+    その道を、これから丁寧にお伝えしていきますね。</p>
+
+    <h2>🔮 距離ができた真相</h2>
+
+    <div class="aura-section aura-water">
+        <p>やっちん様は水のオーラを持つ、<br>
+        深く包み込む優しさと人への気遣いを持った人。</p>
+
+        <p>「やっちんさんといると楽しい」<br>
+        「また飲みたいな」</p>
+
+        <p>周りからそう言われること、<br>
+        多いんやないですか?</p>
+
+        <p>その本来の魅力で、まーちゃんとの時間も<br>
+        楽しく心地よいものにしてこられたこと、<br>
+        私には視えています。</p>
+    </div>
+
+    <div class="aura-section aura-metal">
+        <p>一方、まーちゃんは金のオーラを持つ<br>
+        自分をしっかり持ち、繊細な心を守る人。</p>
+
+        <p>まーちゃんの魂には、<br>
+        「自分を守る」という波動が刻まれています。</p>
+
+        <p>だから、ちょっとしたことで傷ついて、<br>
+        距離を取ってしまう。<br>
+        決してあなたを嫌いになったわけやないんです。</p>
+    </div>
+
+    <p>距離ができた本質は、<br>
+    何かのきっかけで彼女の心に<br>
+    小さな「守りの壁」ができてしまったこと。</p>
+
+    <p>でも、<br>
+    まーちゃんはやっちん様との時間を<br>
+    嫌いになったわけではありません。</p>
+
+    <p>むしろ、繊細さゆえに距離を置いてるだけ。<br>
+    それは拒絶ではなく、彼女なりの自己防衛なのです。</p>
+
+    <p>完全に関係を切っていない今は、<br>
+    まだ可能性を残しているサイン。</p>
+
+    <p>まーちゃんの心の中では<br>
+    「やっちんが変わらず自然体でいてくれたら、<br>
+    また飲めるかもしれない」<br>
+    という想いが確かにあります。</p>
+
+    <h2>🔮 関係を取り戻す道筋</h2>
+
+    <p>関係修復の鍵は、<br>
+    やっちん様が「本来の魅力」を自然に見せること。</p>
+
+    <p>でも、それは自分を変えることではありません。<br>
+    本来のあなたの魅力を、<br>
+    もっと輝かせることなのです。</p>
+
+    <p>まず「気を遣いすぎる関係」から「軽やかな繋がり」へ。</p>
+
+    <p>今は相手の反応を気にしすぎて、<br>
+    重くなってしまってるかもしれません。</p>
+
+    <p>「誘ってもいいかな」<br>
+    「連絡したら迷惑かな」</p>
+
+    <p>そういう気遣いが、<br>
+    かえって相手にプレッシャーを与えてしまいます。</p>
+
+    <p>次に「期待する繋がり」から「自然な流れ」へ。</p>
+
+    <p>「また前のように飲みたい」という想いが強すぎると、<br>
+    その期待が相手に伝わってしまいます。</p>
+
+    <p>期待を手放し、<br>
+    「会えたら嬉しい、でも会えなくても大丈夫」<br>
+    という軽やかさを持ってください。</p>
+
+    <p>この余裕が「やっちんは変わらないな」という安心感を与え、<br>
+    まーちゃんの心を軽くしてくれます。</p>
+
+    <p>そして「特別な関係」から「自然な繋がり」へ。</p>
+
+    <p>まーちゃんにとって、<br>
+    「やっちんとの時間」が特別すぎると<br>
+    プレッシャーになります。</p>
+
+    <p>「たまたま会って、楽しく飲める関係」<br>
+    という軽さが、彼女にとっては心地いいんです。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <h3>【なぜ今が大切なのか】</h3>
+
+    <p>2026年は、<br>
+    やっちん様にとって大きな転換期です。</p>
+
+    <p>あなたの水のオーラが落ち着き、<br>
+    新しいエネルギーの波が流れ込んでいます。</p>
+
+    <p>あなたとまーちゃんのエネルギーが<br>
+    調和しやすくなる時期が、<br>
+    まさに今、訪れているのです。</p>
+
+    <h3>【いつまーちゃんの心が動くのか】</h3>
+
+    <p><strong>最も重要なのは、<br>
+    2026年春から初夏（3月～6月）。</strong></p>
+
+    <p>まーちゃんの金のエネルギーが柔らかくなり、<br>
+    心の壁が自然に下がる時期です。</p>
+
+    <p>共通の知り合いから誘われる、<br>
+    偶然会う場所に居合わせるなど、<br>
+    何らかの接点が生まれる可能性が高いです。</p>
+
+    <p><strong>特に4月～5月は<br>
+    最重要期間として意識してください。</strong></p>
+
+    <p>また、2026年夏から秋（7月～10月）は<br>
+    まーちゃん自身の生活に変化が訪れる時期。</p>
+
+    <p>環境や人間関係で何かが動き出し、<br>
+    「本当に心地いい関係」を<br>
+    見つめ直すタイミングです。</p>
+
+    <p>その時、自然体のやっちん様の存在が<br>
+    まーちゃんの心に蘇ってきます。</p>
+
+    <h3>【今後数年の流れ】</h3>
+
+    <p>2027年から2028年にかけても<br>
+    重要な波が訪れます。</p>
+
+    <p>この期間、やっちん様のエネルギーが<br>
+    さらに安定し、<br>
+    自然体の魅力が増す時期。</p>
+
+    <p>まーちゃんとの関係が再構築されるなら、<br>
+    この数年間でより心地よい<br>
+    飲み友達の関係が育まれていくでしょう。</p>
+
+    <h3>【近づいているサイン】</h3>
+
+    <div class="magic-word-box">
+まーちゃんと一緒に行った店に偶然通りかかる、
+まーちゃんの好きだったお酒や料理に出会う、
+夢にまーちゃんが出てくる、
+「まーちゃん、今どうしてるんやろう」と
+ふと思う瞬間が増える。
+
+これらのサインが現れたら、
+心の準備をしておいてくださいね。
+    </div>
+
+    <h2>🔮 今からできること</h2>
+
+    <p>焦る必要はありません。</p>
+
+    <p>でも、何もせずに待つのではなく、<br>
+    自分を大切に磨いていくことが大切です。</p>
+
+    <p>やっちん様の命式は水が強すぎて、<br>
+    感情が揺れやすい状態。<br>
+    だからこそ、土と火のエネルギーを補って<br>
+    バランスを整えることが大切です。</p>
+
+    <p><strong>土のエネルギーを補う</strong><br>
+    朝起きたら、ベランダや庭の植物に触れる。<br>
+    園芸や陶芸など、土に触れる趣味を始める。<br>
+    黄色や茶色、ベージュのアイテムを身につける。<br>
+    山や公園など、大地を感じる場所を訪れる。</p>
+
+    <p><strong>火のエネルギーを補う</strong><br>
+    朝、太陽の光を5分でも浴びる。<br>
+    温かい食べ物を積極的に食べる。<br>
+    赤やオレンジ色の小物を持ち歩く。<br>
+    夜、キャンドルを灯して心を落ち着ける。</p>
+
+    <p>そして、健康に気を遣い、<br>
+    清潔感のある身だしなみを心がけてください。</p>
+
+    <p>こうして「変わらないけど、軽やかな自分」を準備することが、<br>
+    まーちゃんの心を動かす第一歩になります。</p>
+
+    <h3>再会したときの言葉も決めておきましょう。</h3>
+
+    <div class="magic-word-box">
+「久しぶり！元気にしてた？」
+と自然に挨拶し、
+
+近況を聞かれたら
+「最近、〇〇始めたんよ。結構楽しい！」
+と明るく答える。
+
+少し会話が弾んだら
+「また機会があったら、一緒に飲めたら嬉しいな。
+でも無理せんでええからね」
+と伝えてください。
+
+この「軽さ」と「自由」が、
+まーちゃんの心を揺さぶります。
+    </div>
+
+    <h3>関係を続けるには、<br>
+    お互いの境界線を尊重すること。</h3>
+
+    <p>まーちゃんのペースを尊重し、<br>
+    会う頻度は相手に決めてもらう。</p>
+
+    <p>期待せず求めすぎず、<br>
+    自分の趣味や他の友人との時間も大切にする。</p>
+
+    <p>会ったときは明るく楽しい話だけをして、<br>
+    ネガティブな話や愚痴は他の友人に話すこと。</p>
+
+    <p>これが長く心地よい関係を築く秘訣です。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>今、やっちん様の心は<br>
+    「まーちゃんはどう思ってるんやろう」<br>
+    「本当にまた飲める関係に戻れるんやろうか」<br>
+    という不安で揺れていると思います。</p>
+
+    <p>実は、やっちん様の命式を視ると<br>
+    水のエネルギーが強く、<br>
+    感情が揺れやすい<br>
+    バランスになっています。</p>
+
+    <p>水が強すぎると、<br>
+    不安を吸収しやすく、<br>
+    本来の自然体の魅力が<br>
+    まーちゃんに伝わりにくくなります。</p>
+
+    <p>この五行のバランスを整えることで、<br>
+    やっちん様本来の軽やかさが安定し、<br>
+    まーちゃんに「自然体で心地いい」という印象を<br>
+    自然に与えることができます。</p>
+
+    <p>五行のバランスが整うと、<br>
+    関係修復のタイミング（2026年春）を<br>
+    しっかり掴むことができます。</p>
+
+    <p>また、バランスが整うことで、<br>
+    心が揺れにくくなり、<br>
+    まーちゃんの変化を敏感にキャッチできるようになります。</p>
+
+    <p>その五行調整に最も効果的なのが、<br>
+    やっちん様専用に選ぶパワーストーンです。</p>
+
+    <h3>【3つのプラン】</h3>
+
+    <p><strong>●松（本気で関係を取り戻したい方向け）</strong><br>
+    　五行バランスの完全調整。水を抑え、土を育てる。<br>
+    　4月～5月の最重要期間に向けて、今から整えます。</p>
+
+    <p><strong>●竹（まずは心を安定させたい方向け）</strong><br>
+    　水のエネルギーを穏やかにし、心の揺れを抑えます。</p>
+
+    <p><strong>●梅（不安を和らげたい方向け）</strong><br>
+    　日常の五行バランスを少しずつ整えます。</p>
+
+    <p>多くの方が「松」を選ばれます。<br>
+    理由は「本気で関係を取り戻したいから、中途半端にしたくない」とのこと。</p>
+
+    <p>「必要だと感じた今このタイミング」が<br>
+    一番効果の出やすい時期です。</p>
+
+    <p>気になるようでしたら<br>
+    「詳細希望」とだけ送っていただければ、<br>
+    やっちん様専用の五行調整石をお選びいたしますね。</p>
+
+    <h2>最後に</h2>
+
+    <p>やっちん様、<br>
+    今のあなたは大切な岐路に立っています。</p>
+
+    <p>でも、道はひとつではありません。<br>
+    そして未来はまだ決まっていません。</p>
+
+    <p>まーちゃんと「もう一度楽しく飲みたい」と願う<br>
+    その純粋な想いこそが、<br>
+    どんな困難をも乗り越える、<br>
+    最も強い力です。</p>
+
+    <p>私には視えています。</p>
+
+    <div class="magic-word-box">
+まーちゃんが「やっちん、久しぶり」
+「元気にしてた？」って話しかけ、
+
+その先に
+「また飲もうね」
+「やっぱりやっちんと飲むのが一番楽しい」って
+笑顔で言ってる姿が。
+    </div>
+
+    <p>その未来に向けて、<br>
+    焦らず、無理をせず、<br>
+    少しずつ歩いていけば大丈夫です。</p>
+
+    <p>どうか、ひとりで抱え込まないでください。</p>
+
+    <p>その未来への道、<br>
+    私がこれからも照らし続けます。</p>
+
+    <p>心からの愛と光を込めて。</p>
+
+    <div class="sign-box">
+        <p>鑑定師：かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>

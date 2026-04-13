@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>永山様専用鑑定書</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif JP', serif;
+            line-height: 1.8;
+            color: #2c2c2c;
+            background: linear-gradient(135deg, #f5f0e8 0%, #e8dfd0 100%);
+        }
+
+        /* 表紙 */
+        .cover-page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #faf7f2 0%, #f0e8dc 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-recipient {
+            font-size: 24px;
+            font-weight: 300;
+            color: #8b6f9c;
+            margin-bottom: 30px;
+            z-index: 1;
+        }
+
+        .cover-title {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #c9a05d 0%, #8b6f9c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+
+        .cover-subtitle {
+            font-size: 16px;
+            font-weight: 300;
+            color: #666;
+            letter-spacing: 3px;
+            margin-bottom: 60px;
+            z-index: 1;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            font-weight: 400;
+            color: #555;
+            z-index: 1;
+        }
+
+        /* コンテンツページ */
+        .container {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 25mm 20mm;
+            background: linear-gradient(135deg, #faf7f2 0%, #f0e8dc 100%);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            background: linear-gradient(135deg, #c9a05d 0%, #8b6f9c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 300;
+            color: #888;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #c9a05d;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #c9a05d;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            page-break-after: avoid;
+        }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-align: justify;
+            color: #333;
+            page-break-inside: avoid;
+        }
+
+        /* オーラセクション */
+        .aura-section {
+            margin: 30px 0;
+            padding: 25px;
+            border-radius: 15px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            z-index: 0;
+        }
+
+        .aura-section p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-wood {
+            background-image: url('../強い木.png');
+        }
+
+        .aura-fire {
+            background-image: url('../強い火.png');
+        }
+
+        .aura-earth {
+            background-image: url('../強い土.png');
+        }
+
+        .aura-metal {
+            background-image: url('../強い金.png');
+        }
+
+        .aura-water {
+            background-image: url('../強い水.png');
+        }
+
+        /* 重要なボックス */
+        .important-box {
+            background: linear-gradient(135deg, rgba(201, 160, 93, 0.1) 0%, rgba(139, 111, 156, 0.1) 100%);
+            border-left: 4px solid #c9a05d;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+
+        .important-box h3 {
+            margin-top: 0;
+            color: #8b6f9c;
+        }
+
+        /* 魔法の言葉ボックス */
+        .magic-word-box {
+            background: linear-gradient(135deg, #f9f5f0 0%, #f0e8dc 100%);
+            border: 2px solid #c9a05d;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+            color: #8b6f9c;
+            letter-spacing: 1px;
+            page-break-inside: avoid;
+        }
+
+        /* ステップボックス */
+        .step-box {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 3px solid #8b6f9c;
+            page-break-inside: avoid;
+        }
+
+        /* リスト */
+        ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: #333;
+            page-break-inside: avoid;
+        }
+
+        /* 印刷用調整 */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .container {
+                box-shadow: none;
+                page-break-after: always;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .aura-section {
+                background-size: cover;
+            }
+
+            h2 {
+                page-break-before: always;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 20mm;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙 -->
+<div class="cover-page">
+    <div class="cover-recipient">永山様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<!-- コンテンツ -->
+<div class="container">
+    <h1>永山様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>永山様</p>
+
+    <p>この度は本鑑定にお進みいただき、<br>
+    心より感謝申し上げます。</p>
+
+    <p>17歳年下の彼に恋をして、<br>
+    部署が変わってしまって話す機会が減って、<br>
+    「私、オカシイのかな？」<br>
+    「独りよがりの気持ちなんかな？」<br>
+    って不安になってしまう気持ち。</p>
+
+    <p>でも同時に、<br>
+    彼の姿が映像で視えたり、<br>
+    彼がそばにいる感じがしたり。</p>
+
+    <p>「叶えたい」<br>
+    「彼と、末長く一緒にいたい」</p>
+
+    <p>その全部が、痛いほど伝わってきます。</p>
+
+    <p>まず初めにお伝えさせていただきます。</p>
+
+    <p>永山様、<br>
+    あなたは何一つ間違えていません。</p>
+
+    <p>人を純粋に想う気持ちは、<br>
+    年齢差なんて関係なく、美しいもの。<br>
+    そこに後ろめたさなど感じる必要はありません。</p>
+
+    <p>そして、あなたが視た映像、<br>
+    彼がそばにいる感覚。</p>
+
+    <p>それは「予知」です。<br>
+    オカシイんやない、才能なんです。</p>
+
+    <p>未来はまだ真っ白なキャンバスです。<br>
+    その筆を握っているのは、永山様ご自身。</p>
+
+    <p>彼と末長く一緒にいる未来を選ぶことはできます。<br>
+    その道を、これから丁寧にお伝えしていきますね。</p>
+
+    <h2>🔮 二人の魂の繋がり</h2>
+
+    <div class="aura-section aura-wood">
+        <p>永山様は木のオーラを持つ、<br>
+        柔らかな草花のような、<br>
+        優しく温かい人。</p>
+
+        <p>あなたの魂には、<br>
+        しなやかなエネルギーが宿っています。</p>
+
+        <p>風に揺れても折れない、<br>
+        芯のある強さを持っています。</p>
+
+        <p>そして、とても高貴で特別な光が輝いている。</p>
+
+        <p>これは選ばれた人にだけ宿る、特別な光。</p>
+
+        <p>普通の人には視えないものが視える。<br>
+        感じられないものを感じ取れる。</p>
+
+        <p>彼が喪服で来る姿、<br>
+        ドライブしている姿、<br>
+        花火大会に行く姿。</p>
+
+        <p>これ、ただの妄想やありません。<br>
+        「予知」です。</p>
+
+        <p>あなたの魂は、未来を視る力を持っている。</p>
+    </div>
+
+    <div class="aura-section aura-fire">
+        <p>一方、彼は火のオーラを持つ<br>
+        情熱的で、明るく、でも繊細な心を持った人。</p>
+
+        <p>彼の魂には、<br>
+        太陽のような、温かく明るいエネルギーが宿っています。</p>
+
+        <p>彼の魂には、<br>
+        「誠実さ」という波動が刻まれています。</p>
+
+        <p>だから、職場での立場や周りの目を気にする。<br>
+        決してあなたを避けてるわけやないんです。</p>
+
+        <p>でも同時に、「繊細な心」という波動もある。</p>
+
+        <p>「永山さん、気になる」<br>
+        「でも、17歳上の女性やし」<br>
+        「周りから何て思われるんやろう」って、<br>
+        心の奥で揺れてる。</p>
+
+        <p>この葛藤が、彼を戸惑わせてる。</p>
+    </div>
+
+    <p>あなたの木のオーラと、<br>
+    彼の火のオーラが、出会った瞬間。</p>
+
+    <p>木が火を育てる。<br>
+    火は木に育てられて、明るく燃える。</p>
+
+    <p>これは、魂が引き寄せ合ってるサイン。</p>
+
+    <p>二人の間には、太い金色の糸が見える。<br>
+    今は、少しまだ眠ってるけど、確かに繋がってる。</p>
+
+    <p>でも、この糸を輝かせるには、<br>
+    あなたの中に眠る「本来の魅力」を解放する必要がある。</p>
+
+    <h2>🔮 彼の深層心理</h2>
+
+    <p>彼は今、あなたのことを<br>
+    「温かくて、話しやすい先輩」<br>
+    として認識しています。</p>
+
+    <p>でも同時に、<br>
+    「永山さん、気になるな」<br>
+    という想いも持っています。</p>
+
+    <p>彼の心の中では<br>
+    「17歳も上の女性やし、距離を保たないと」<br>
+    「でも、もっと話したい」<br>
+    という葛藤があります。</p>
+
+    <p>だから、仕事の話はするけど、<br>
+    それ以上は踏み込まない。<br>
+    だから、距離感を保とうとしてる。</p>
+
+    <p>彼はあなたを避けてるんやないんです。<br>
+    むしろ、気になってる。</p>
+
+    <p>だからこそ、簡単に踏み出せへん。<br>
+    それが彼なりの誠実さなのです。</p>
+
+    <p>彼の波動から聞こえてくる想い：</p>
+
+    <p>「永山さん、元気かな？」<br>
+    「また話したいな」<br>
+    「でも、どう接したらいいんやろう？」<br>
+    「年齢差、どう思ってるんやろう？」</p>
+
+    <p>彼が惹かれるのは、<br>
+    自分を認めてくれて、<br>
+    自然体で接してくれる人。<br>
+    温かくて、優しくて、<br>
+    でも自立している人。</p>
+
+    <p>彼が避けたいのは、<br>
+    年齢差を気にして卑屈になることや、<br>
+    距離感を無視すること、<br>
+    依存や重い期待です。</p>
+
+    <h2>🔮 部署が変わった後の関係をどう続けるか</h2>
+
+    <p>永山様が心配されている<br>
+    「部署が変わって、話す機会がなくなる」<br>
+    という点。</p>
+
+    <p>実は、これは大きなチャンスなんです。</p>
+
+    <p>部署が変わることで、<br>
+    「同じ部署の同僚」という枠が<br>
+    自然に緩くなります。</p>
+
+    <p>廊下ですれ違った時、<br>
+    休憩スペースで偶然会った時、<br>
+    自然に挨拶や軽い会話ができる。</p>
+
+    <p>「以前同じ部署だった人」として、<br>
+    「仕事でお世話になった人」として、<br>
+    自然に話しかける理由ができます。</p>
+
+    <p>これは、関係を深める絶好の機会なんです。</p>
+
+    <h2>🔮 関係を進展させる道筋</h2>
+
+    <p>今は「職場の先輩」として接していますが、<br>
+    恋愛に進むには、<br>
+    もっと個人としてのあなたを見せる必要があります。</p>
+
+    <p>職場の先輩ではなく、<br>
+    一人の女性としての素顔を見せること。</p>
+
+    <p>そして、彼に安心と癒しを与えること。</p>
+
+    <p>彼は今、仕事に追われて、<br>
+    心が少し疲れている時期にいます。</p>
+
+    <p>だからこそ、永山様の持つ<br>
+    「温かさ」と「癒しのエネルギー」が必要なんです。</p>
+
+    <p>この「一緒にいると安心できる存在」になることが、<br>
+    彼の心を引き寄せます。</p>
+
+    <p>さらに、自分らしさと自立を見せること。</p>
+
+    <p>彼は今、成長と新しい刺激を求めています。</p>
+
+    <p>あなた自身が楽しんでいること、<br>
+    自分らしく生きている姿を見せることで、<br>
+    「永山さんと話すと、元気が出る」<br>
+    と思わせることができます。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <p>2026年は、<br>
+    永山様にとって大きな転換期です。</p>
+
+    <p>あなたの中に眠っていた<br>
+    「魅力と輝き」が目覚め、<br>
+    本来の美しさが輝き出す時期。</p>
+
+    <p>彼との関係が次のステージに進むなら、<br>
+    まさに今から準備を始める必要があります。</p>
+
+    <p>最も重要なのは、<br>
+    2026年春から初夏（3月～6月）。</p>
+
+    <p>あなたの木のエネルギーが最も強く輝く時期。<br>
+    草花が芽吹き、成長する季節。</p>
+
+    <p>そして、彼の火のエネルギーが活性化し、<br>
+    「人生の方向性」を見つめ直す時期です。</p>
+
+    <p>この時期、彼は<br>
+    「本当に一緒にいたい人」<br>
+    「心から支えてくれる人」<br>
+    を無意識に探しています。</p>
+
+    <p>そして、まさにこの時期が<br>
+    部署が変わった後の時期と重なっています。</p>
+
+    <p>これは偶然ではありません。<br>
+    運命が動くタイミングなのです。</p>
+
+    <p>特に4月～5月は<br>
+    最重要期間として意識してください。</p>
+
+    <p>この時期、彼から<br>
+    「永山さん、最近どう？」<br>
+    「少し話せませんか」<br>
+    と声をかけてくる可能性が高いです。</p>
+
+    <p>こんなサインが出ます：</p>
+
+    <ul>
+        <li>彼から話しかけてくる回数が増える</li>
+        <li>彼が笑顔で、仕事以外の話をしてくる</li>
+        <li>「休みの日は何してるん？」って聞いてくる</li>
+        <li>偶然すれ違う回数が増える</li>
+    </ul>
+
+    <p>これらのサインが出たら、<br>
+    運命の扉が開きかけている証拠。</p>
+
+    <p>また、2026年夏から秋（7月～10月）は<br>
+    彼自身の環境に変化が訪れる時期。</p>
+
+    <p>仕事や人間関係で何かが動き出し、<br>
+    「本当に大切な人」を<br>
+    見つめ直すタイミングです。</p>
+
+    <p>その時、温かく支えてくれた<br>
+    永山様の存在が<br>
+    彼の心に深く刻まれていきます。</p>
+
+    <h2>🔮 あなたが今抱えているもの</h2>
+
+    <p>あなたの生年月日から視える運命の形を深く視ると、<br>
+    今あなたを縛っているものが見えてきます。</p>
+
+    <p>それは、行動に移せない心の弱さ。</p>
+
+    <p>あなたの魂のバランスを視ると、<br>
+    「火」のエネルギーが足りないという<br>
+    特徴があります。</p>
+
+    <p>「火」は「情熱」「行動力」「決断力」「自信」を表すエネルギー。</p>
+
+    <p>これが足りないと、<br>
+    「彼はどう思ってるんやろう」<br>
+    「この想い、届くんやろうか」<br>
+    と不安になって、行動に移せなくなってしまう。</p>
+
+    <p>だから、「独りよがりなんかな？」<br>
+    「私、オカシイのかな？」<br>
+    と感じてしまうのです。</p>
+
+    <p>そして、自分を否定してしまう心。</p>
+
+    <p>「17歳も年上やし」<br>
+    「私なんて」<br>
+    と自分を低く見て、諦めかけてしまう。</p>
+
+    <p>でも、これは弱さではありません。<br>
+    むしろ、火のエネルギーを補うことで、<br>
+    本来の魅力が輝き出します。</p>
+
+    <p>これらは変えられます。</p>
+
+    <p>火のエネルギーを補うことで、<br>
+    自信と行動力が湧いてきます。</p>
+
+    <p>不安が減り、<br>
+    彼の変化を敏感にキャッチできるようになり、<br>
+    チャンスを逃さず行動できるようになります。</p>
+
+    <p>自分を肯定する心が育ち、<br>
+    自信が魅力に変わります。</p>
+
+    <p>温かさと行動力を活かすことで、<br>
+    彼を引き寄せることができます。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <p>運命の春を迎えるまでに、<br>
+    今からできることがあります。</p>
+
+    <p>永山様の魂には、<br>
+    火と水のエネルギーが足りていません。</p>
+
+    <p>そして、金のエネルギーが強すぎる。</p>
+
+    <p>これを整えることで、<br>
+    彼を引き寄せる力が目覚めます。</p>
+
+    <h3>① 火のエネルギーを補う（行動力と自信を取り戻す）</h3>
+
+    <p>火が無いと、<br>
+    「どうせ無理」と諦めやすくなり、<br>
+    行動に移せなくなってしまいます。</p>
+
+    <p>火を補う具体的な方法：</p>
+
+    <ul>
+        <li>毎朝、朝日を浴びる（5分でOK）</li>
+        <li>赤やオレンジ色の服、小物を身につける</li>
+        <li>キャンドルを灯してリラックスする</li>
+        <li>温かい食べ物を意識的に食べる（スープ、お茶など）</li>
+        <li>軽い運動をする（散歩、ストレッチ）</li>
+        <li>笑顔の練習をする（鏡の前で）</li>
+    </ul>
+
+    <p>これを続けることで、<br>
+    自然と「やってみよう」という気持ちが湧いてきます。</p>
+
+    <h3>② 水のエネルギーを補う（柔軟性と癒しを取り戻す）</h3>
+
+    <p>水が無いと、<br>
+    心が固くなり、<br>
+    柔軟に対応できなくなってしまいます。</p>
+
+    <p>水を補う具体的な方法：</p>
+
+    <ul>
+        <li>意識的に水を飲む（1日1.5リットル）</li>
+        <li>お風呂にゆっくり浸かる（15分以上）</li>
+        <li>水辺に行く（川、海、噴水のある公園）</li>
+        <li>青や黒の服、小物を取り入れる</li>
+        <li>深呼吸や瞑想でリラックスする</li>
+        <li>流れるような音楽を聴く</li>
+    </ul>
+
+    <p>これを続けることで、<br>
+    心が柔らかくなり、彼に優しく接することができます。</p>
+
+    <h3>③ 金のエネルギーを緩める（完璧主義を手放す）</h3>
+
+    <p>永山様の魂には金のエネルギーが強く、<br>
+    「完璧にしないと」<br>
+    「失敗したらどうしよう」<br>
+    と自分を厳しく追い込んでしまいがち。</p>
+
+    <p>金を緩める具体的な方法：</p>
+
+    <ul>
+        <li>「まあいいか」と口に出して言う</li>
+        <li>70点でOKと自分に言い聞かせる</li>
+        <li>自分を褒める習慣をつける（1日1回）</li>
+        <li>失敗を笑い飛ばす練習をする</li>
+        <li>「私なんて」を禁句にする</li>
+    </ul>
+
+    <p>これを続けることで、<br>
+    自然体で彼に接することができます。</p>
+
+    <h3>④ 彼と再会した時の言葉</h3>
+
+    <p>もし彼から話しかけてきたら、<br>
+    こんな風に返してみてください：</p>
+
+    <div class="step-box">
+        <p>彼「最近どう？」<br>
+        →「元気だよ。〇〇さんは？忙しそうだね」</p>
+    </div>
+
+    <div class="step-box">
+        <p>彼「休みの日は何してるん？」<br>
+        →「最近、散歩したり、ゆっくり過ごしてる。〇〇さんは？」</p>
+    </div>
+
+    <p>ポイントは、<br>
+    自然体で、でも柔らかく。</p>
+
+    <p>焦らず、無理に距離を縮めようとせず、<br>
+    彼のペースに合わせる。</p>
+
+    <p>そして、笑顔を忘れずに。</p>
+
+    <h3>⑤ やってはいけないこと</h3>
+
+    <ul>
+        <li>彼にしつこく連絡する</li>
+        <li>年齢差を気にして卑屈になる</li>
+        <li>「私なんて…」という否定的な言葉を使う</li>
+        <li>彼の予定を詮索する</li>
+        <li>焦って告白する</li>
+        <li>完璧を求めすぎる</li>
+    </ul>
+
+    <p>これらは逆効果。</p>
+
+    <p>彼が自然と「やっぱりこの人や」と<br>
+    思えるように、焦らず待つことが大切です。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>今、永山様の心は<br>
+    「彼はどう思ってるんやろう」<br>
+    「本当に付き合えるんやろうか」<br>
+    という不安で揺れていると思います。</p>
+
+    <p>実は、あなたの魂を視ると<br>
+    火と水のエネルギーが足りず、<br>
+    行動に移しにくいバランスになっています。</p>
+
+    <p>火が足りないと、<br>
+    「独りよがりなんかな？」という思考に囚われやすく、<br>
+    行動に移せなくなります。</p>
+
+    <p>水が足りないと、<br>
+    柔軟性や適応力が弱くなり、<br>
+    心が固くなってしまいます。</p>
+
+    <p>このバランスを整えることで、<br>
+    永山様本来の自信と行動力、そして柔軟性が目覚め、<br>
+    彼に「魅力的だな」という印象を<br>
+    自然に与えることができます。</p>
+
+    <p>バランスが整うと、<br>
+    せっかくの関係進展のタイミング（2026年春）を<br>
+    しっかり掴むことができます。</p>
+
+    <p>また、バランスが整うことで、<br>
+    不安が減り、<br>
+    彼の変化を敏感にキャッチできるようになります。</p>
+
+    <p>そのバランス調整に最も効果的なのが、<br>
+    永山様専用に選ぶパワーストーンです。</p>
+
+    <div class="important-box">
+        <h3>【3つのプラン】</h3>
+
+        <p><strong>●松（本気で関係を進展させたい方向け）</strong><br>
+        　バランスの完全調整。火と水を補い、自信と行動力、柔軟性を輝かせる。<br>
+        　4月～5月の最重要期間に向けて、今から整えます。</p>
+
+        <p><strong>●竹（まずは自信をつけたい方向け）</strong><br>
+        　火と水のエネルギーを補い、不安を減らし心を柔らかくします。</p>
+
+        <p><strong>●梅（少しずつ前向きになりたい方向け）</strong><br>
+        　日常のバランスを少しずつ整えます。</p>
+    </div>
+
+    <p>多くの方が「松」を選ばれます。<br>
+    理由は「本気で彼との関係を進めたいから、中途半端にしたくない」とのこと。</p>
+
+    <p>「必要だと感じた今このタイミング」が<br>
+    一番効果の出やすい時期です。</p>
+
+    <p>気になるようでしたら<br>
+    「詳細希望」とだけ送っていただければ、<br>
+    永山様専用の調整石をお選びいたしますね。</p>
+
+    <h2>最後に</h2>
+
+    <p>永山様、<br>
+    今のあなたは大切な岐路に立っています。</p>
+
+    <p>でも、道はひとつではありません。<br>
+    そして未来はまだ決まっていません。</p>
+
+    <p>彼と「末長く一緒にいたい」と願う<br>
+    その純粋な想いこそが、<br>
+    どんな困難をも乗り越える、<br>
+    最も強い力です。</p>
+
+    <p>私には視えています。</p>
+
+    <p>2026年の春、<br>
+    桜が咲く頃。</p>
+
+    <p>彼が「永山さん、実は...」<br>
+    「ずっと気になってました」って告白し、</p>
+
+    <p>その先に<br>
+    「年齢差なんて関係ない、<br>
+    一緒にいたいんです」って<br>
+    本音を伝えてる姿が。</p>
+
+    <p>そして、<br>
+    彼が「これからもずっと、一緒にいよう」って<br>
+    言ってくれてる姿が。</p>
+
+    <p>その温かい未来が、<br>
+    しっかり視えています。</p>
+
+    <p>その未来に向けて、焦らず、無理をせず、少しずつ歩いていけば大丈夫です。<br>
+    どうか、ひとりで抱え込まないでください。</p>
+
+    <p>その未来への道、私がこれからも照らし続けます。</p>
+
+    <p style="margin-bottom: 0;">心からの愛と光を込めて。　かな</p>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茅野様専用鑑定書（詳細版）</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../強い火.png'); }
+        .aura-wood::before { background-image: url('../強い木.png'); }
+        .aura-earth::before { background-image: url('../強い土.png'); }
+        .aura-metal::before { background-image: url('../強い金.jpg'); }
+        .aura-water::before { background-image: url('../強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .action-box {
+            background: #f0f8ff;
+            border: 2px solid #a0c4e8;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .ng-box {
+            background: #fff0f0;
+            border: 2px solid #e8a0a0;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #c9a05d;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 25px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: #ffffff !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">茅野様</div>
+    <div class="cover-title">専用鑑定書（詳細版）</div>
+    <div class="cover-subtitle">Premium Spiritual Reading - Detailed Edition</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>茅野様の本鑑定書（詳細版）</h1>
+    <p class="subtitle">Premium Spiritual Reading - Detailed Edition</p>
+
+    <div class="header-info">
+        <p><strong>お名前：</strong>茅野様（1983年1月16日生まれ）</p>
+        <p><strong>相談内容：</strong>一度途絶えた縁が再び繋がった彼との関係を、曖昧な関係から「ちゃんとした形」にしたい</p>
+        <p><strong>鑑定者：</strong>かな</p>
+    </div>
+
+    <h2>🔮 曖昧な関係の真相</h2>
+
+    <h3>【あなたの本質】</h3>
+
+    <div class="aura-section aura-wood">
+        <p>茅野様のオーラは、深い森のような落ち着いた緑色。<br>
+        木のエネルギーが、静かに、でも確かに伸びていく様子が視えます。</p>
+
+        <p>あなたの魂には「深く愛し、深く愛される」という波動が眠っています。<br>
+        簡単には諦めず、じっくりと関係を育てようとする粘り強さを持つ人。</p>
+    </div>
+
+    <p>「一緒にいると落ち着く」<br>
+    「なんか、安心する」</p>
+
+    <p>そんな風に言われることが多いのは、この成熟した包容力のエネルギーが、あなたを内側から支えているからです。</p>
+
+    <p>あなたの命式を深く視ると、木のエネルギーが核にあり、その周りを水と土が囲んでいます。</p>
+
+    <p>木は「成長」「育てる」「粘り強さ」を表します。<br>
+    水は「深い感情」「共感力」「柔軟性」を表します。<br>
+    土は「安定」「信頼」「包容力」を表します。</p>
+
+    <p>だから、あなたは「相手を深く理解し、長く関係を育てる力」を持っているのです。</p>
+
+    <p>一度は途絶えた縁なのに、また繋がったこと。<br>
+    それは、あなたのこの「諦めない力」「相手を信じ続ける力」があったからです。</p>
+
+    <h3>【彼の本質】</h3>
+
+    <div class="aura-section aura-earth">
+        <p>一方、お相手のオーラは、山のようにどっしりとした土のエネルギー。<br>
+        彼の魂には「一度決めたら揺るがない」という波動が刻まれています。</p>
+
+        <p>だから、本当に大切なことほど、すぐには動けません。<br>
+        慎重に、慎重に、確かめながら進む人なのです。</p>
+    </div>
+
+    <p>彼の命式を深く視ると、土のエネルギーが非常に強く、その中に木と火と水が少しずつ混ざっています。</p>
+
+    <p>土が強い人は「安定を求める」「変化を恐れる」「確実なものしか選ばない」という性質があります。</p>
+
+    <p>だからこそ、彼は今「本当にこの人と進んでいいのか」をじっくり確かめているのです。</p>
+
+    <p>一度離れたのに、また連絡してきたのも、この波動がそうさせました。<br>
+    彼はあなたのことを「忘れられない存在」として、ずっと心の中に留めていたのです。</p>
+
+    <p>彼の中で「この人は特別だ」という認識は、確かにあります。<br>
+    でも、同時に「本当に大丈夫なのか」という慎重さも働いているのです。</p>
+
+    <h3>【曖昧な関係になっている理由】</h3>
+
+    <p>今、彼があなたとの関係を「曖昧」にしているのは、決してあなたへの気持ちが薄いからではありません。</p>
+
+    <p>彼の中では「この人と本当に進めていいのか」という確認のプロセスが、まだ続いているだけなのです。</p>
+
+    <p>彼の命式には「墓」という星があります。<br>
+    これは「一度決めたことを最後まで貫く」という強さを持つ一方で、「決断するまでに時間がかかる」という面もあるのです。</p>
+
+    <p>前より肩の力が抜けてきたのは、彼の中で何かが変わり始めているサイン。<br>
+    あなたといる時間が、彼にとって「自然」になってきている証拠です。</p>
+
+    <p>でも、彼の中には「このまま曖昧でいいのか」という葛藤もあります。<br>
+    「ちゃんとしたい」という気持ちと、「今のままでいい」という気持ちが揺れているのです。</p>
+
+    <p>彼を「決断」へと導くには、あなたの中に眠る「本来の魅力」を解放する必要があります。</p>
+
+    <h2>🔮 本来の魅力を解放する道筋</h2>
+
+    <h3>【二人の相性と課題】</h3>
+
+    <p>あなたの木のオーラと、彼の土のオーラは、本来、完璧に調和します。<br>
+    木が土に根を張り、土が木を支える。お互いがお互いを必要とする、自然な関係。</p>
+
+    <p>でも今、あなたの命式には「火」のエネルギーがゼロです。</p>
+
+    <p>火は、木を燃やして光と温かさを生み出すエネルギー。<br>
+    つまり、「自分の魅力を外に放つ力」「輝く力」が、今は眠っている状態なのです。</p>
+
+    <p>そして、彼の命式には「火」が少しだけあります。<br>
+    彼は無意識のうちに「火のエネルギーを持つ女性」「自分を照らしてくれる女性」を求めているのです。</p>
+
+    <p>だからこそ、あなたが内側に秘めた「温かさ」と「輝き」を外に放つことで、彼の心が動きます。</p>
+
+    <p>また、あなたには「金」のエネルギーもゼロです。<br>
+    金は「決断力」「区切りをつける力」「自分の軸を持つ力」を表します。</p>
+
+    <p>金がないと、「相手に合わせすぎる」「自分を見失う」「ブレやすい」という状態になりやすいのです。</p>
+
+    <p>この2つのエネルギー不足が、今の「曖昧な関係」を長引かせている一因でもあります。</p>
+
+    <h3>【転換①：「待つ優しさ」から「輝く温かさ」へ】</h3>
+
+    <p>今のあなたは、彼をじっくり見守る「包容力」という魅力を持っています。<br>
+    でも、それだけでは「安心できる存在」のままで終わってしまいます。</p>
+
+    <p>彼が求めているのは「一緒にいると未来が明るく感じられる」というエネルギー。</p>
+
+    <p><strong>なぜこの転換が必要なのか：</strong></p>
+
+    <p>彼の土のエネルギーは「安定」を求めますが、同時に「退屈」も感じやすいのです。<br>
+    「安心できる」だけでは、彼の心は動きません。<br>
+    「この人といると、人生が明るくなる」と感じた時、初めて「ちゃんとしたい」と思うのです。</p>
+
+    <div class="action-box">
+        <h3>具体的にどうすればいいのか：</h3>
+
+        <p><strong>1. 自分の人生を楽しむ姿を見せる</strong></p>
+        <ul>
+            <li>新しい趣味を始める（料理、ヨガ、写真、旅行など）</li>
+            <li>その様子をSNSや会話で自然に伝える</li>
+            <li>「最近○○始めたんだ。楽しいよ」と明るく話す</li>
+        </ul>
+
+        <p><strong>2. 会う時は笑顔と明るさを意識する</strong></p>
+        <ul>
+            <li>彼と会う前に、鏡を見て笑顔を作る練習をする</li>
+            <li>会話は明るい話題を中心に</li>
+            <li>ネガティブな話や愚痴は避ける</li>
+        </ul>
+
+        <p><strong>3. 自分で自分を褒める習慣を持つ</strong></p>
+        <ul>
+            <li>毎日寝る前に「今日の自分、よく頑張った」と言う</li>
+            <li>自分の良いところを3つ書き出す</li>
+            <li>自己肯定感が高まると、自然と輝きが出る</li>
+        </ul>
+    </div>
+
+    <div class="ng-box">
+        <h3>やってはいけないNG行動：</h3>
+        <ul>
+            <li>「私なんて」と自己否定する</li>
+            <li>彼の前で暗い表情をする</li>
+            <li>「あなたがいないと」と依存を見せる</li>
+            <li>彼の選択を否定する</li>
+        </ul>
+    </div>
+
+    <h3>【転換②：「深く愛する」から「自由に愛する」へ】</h3>
+
+    <p>あなたの木のエネルギーは、深く根を張り、長く関係を育てる力があります。<br>
+    でも、その分「深く考えすぎる」「関係を守ろうとしすぎる」という面も出やすいのです。</p>
+
+    <p>彼の土のエネルギーは、自由を大切にします。<br>
+    「縛られない」「自分のペースで進める」ことで、安心して愛を育てられる人なのです。</p>
+
+    <p><strong>なぜこの転換が必要なのか：</strong></p>
+
+    <p>彼の命式には「長生」という星があります。<br>
+    これは「自由に生きたい」「自分のペースを大切にしたい」という性質を表します。</p>
+
+    <p>今、彼が「曖昧」にしているのは、もしかすると「ちゃんとしたら、自由がなくなるかも」という不安があるからかもしれません。</p>
+
+    <p>だから、あなたが「深く愛するけど、縛らない」という姿勢を見せることで、彼は安心して「ちゃんとしたい」と思えるのです。</p>
+
+    <div class="action-box">
+        <h3>具体的にどうすればいいのか：</h3>
+
+        <p><strong>1. 彼のペースを尊重する言葉を使う</strong></p>
+        <ul>
+            <li>「私はあなたを信じているから、焦らない」</li>
+            <li>「あなたのペースで大丈夫」</li>
+            <li>「無理しなくていいよ」</li>
+        </ul>
+
+        <p><strong>2. 連絡の頻度を彼に合わせる</strong></p>
+        <ul>
+            <li>毎日連絡を求めない</li>
+            <li>彼から連絡が来た時は嬉しそうに返す</li>
+            <li>でも、来ない時も不安な様子を見せない</li>
+        </ul>
+
+        <p><strong>3. 会う頻度も彼に決めてもらう</strong></p>
+        <ul>
+            <li>「いつ会える？」ではなく「会いたい時、言ってね」</li>
+            <li>彼が誘ってきた時は予定を調整して会う</li>
+            <li>でも、自分の予定も大切にする</li>
+        </ul>
+
+        <p><strong>4. 将来の話を焦らない</strong></p>
+        <ul>
+            <li>「ちゃんと付き合って」と迫らない</li>
+            <li>「将来どうするの？」と詰めない</li>
+            <li>彼が自然とその話をするのを待つ</li>
+        </ul>
+    </div>
+
+    <div class="ng-box">
+        <h3>やってはいけないNG行動：</h3>
+        <ul>
+            <li>「私たちの関係、いつまで曖昧なの？」と詰める</li>
+            <li>連絡がないと責める</li>
+            <li>他の女性と比べる</li>
+            <li>束縛や制限を見せる</li>
+        </ul>
+    </div>
+
+    <h3>【転換③：「彼中心」から「自分中心」へ】</h3>
+
+    <p>あなたの命式には「水」のエネルギーが多く、これは「相手に合わせる力」「共感する力」を表します。</p>
+
+    <p>でも、水が多すぎると「自分を見失う」「相手に流される」という状態になりやすいのです。</p>
+
+    <p><strong>なぜこの転換が必要なのか：</strong></p>
+
+    <p>彼の命式を視ると、彼は「自立した女性」に惹かれます。<br>
+    「自分がいなくても幸せそうな人」「でも、自分と一緒にいることを選んでくれる人」を求めているのです。</p>
+
+    <p>今、彼があなたとの関係を「曖昧」にしているのは、もしかすると「この人は、自分がいないとダメなのかな」と感じている可能性があります。</p>
+
+    <p>だから、あなた自身が「彼がいなくても、私は私で幸せ」という軸を持つことが大切。</p>
+
+    <div class="action-box">
+        <h3>具体的にどうすればいいのか：</h3>
+
+        <p><strong>1. 自分の時間を大切にする</strong></p>
+        <ul>
+            <li>週に1回は友人と会う</li>
+            <li>月に1回は一人で好きな場所に行く</li>
+            <li>趣味や仕事に打ち込む時間を作る</li>
+        </ul>
+
+        <p><strong>2. 彼以外の人間関係を充実させる</strong></p>
+        <ul>
+            <li>家族との時間を大切にする</li>
+            <li>新しい友人を作る</li>
+            <li>コミュニティに参加する</li>
+        </ul>
+
+        <p><strong>3. 自分の目標を持つ</strong></p>
+        <ul>
+            <li>仕事でのキャリアアップ</li>
+            <li>資格取得</li>
+            <li>健康やダイエットの目標</li>
+        </ul>
+
+        <p><strong>4. 彼との会話で「自分の話」もする</strong></p>
+        <ul>
+            <li>彼の話を聞くだけでなく、自分の話もする</li>
+            <li>「私、最近こんなことがあって」と自分の人生を共有する</li>
+            <li>彼に興味を持ってもらう</li>
+        </ul>
+    </div>
+
+    <div class="ng-box">
+        <h3>やってはいけないNG行動：</h3>
+        <ul>
+            <li>彼のために自分の予定を全てキャンセルする</li>
+            <li>彼の意見に全て合わせる</li>
+            <li>自分の気持ちを我慢する</li>
+            <li>「あなたがいないと生きていけない」と言う</li>
+        </ul>
+    </div>
+
+    <h2>🔮 運命の転機</h2>
+
+    <h3>【2026年という特別な年】</h3>
+
+    <p>今、あなたと彼の間には「銀色の糸」が視えます。<br>
+    一度は細くなったけど、また太くなり始めている。これは、魂が「やり直し」を選んだサインです。</p>
+
+    <p>でも、この糸を「金色」に変えるタイミングがあります。</p>
+
+    <p>あなたの命式では、2026年の春から夏にかけて「火」のエネルギーが外から流れ込んできます。<br>
+    これは、あなたの眠っていた魅力が自然と目覚める時期なのです。</p>
+
+    <div class="important-box">
+        <p><strong>なぜ2026年なのか：</strong></p>
+
+        <p>2026年は「丙午（ひのえうま）」の年。<br>
+        火のエネルギーが最も強い年です。</p>
+
+        <p>あなたには火がゼロなので、この年に外から火のエネルギーが流れ込むことで、自然と「輝き」「温かさ」「前向きさ」が出てきます。</p>
+
+        <p>同時に、彼の命式では「土」のエネルギーが強まる時期でもあります。<br>
+        土が強まると、彼は「安定」「将来」を真剣に考え始めます。</p>
+
+        <p>つまり、この春から夏は、あなたの魅力が最も輝き、彼が「決断」しやすい時期なのです。</p>
+    </div>
+
+    <h3>【4月：準備の月】</h3>
+
+    <p>2026年4月は「壬辰（みずのえたつ）」の月。<br>
+    水と土のエネルギーが巡る月です。</p>
+
+    <p><strong>あなたにとって：</strong><br>
+    水のエネルギーがあなたの本質と共鳴し、心が落ち着きます。<br>
+    冬の間に揺れていた感情が、この月に安定し始めます。</p>
+
+    <p><strong>彼にとって：</strong><br>
+    土のエネルギーが彼の本質を強化し、「将来のこと」を考え始める月です。<br>
+    仕事や生活で何か変化が起こり、「このままでいいのか」と考えるきっかけが訪れます。</p>
+
+    <div class="important-box">
+        <h3>この月に起こりうること：</h3>
+        <ul>
+            <li>彼から「最近、将来のこと考えるんだよね」という話が出る</li>
+            <li>友人や家族から結婚や将来の話を振られる</li>
+            <li>仕事で新しいプロジェクトや異動の話が出る</li>
+        </ul>
+    </div>
+
+    <div class="action-box">
+        <h3>あなたがすべきこと：</h3>
+        <ul>
+            <li>4月に入ったら、自分の身なりを整え始める</li>
+            <li>新しい服を買う、髪型を変える</li>
+            <li>美容や健康に力を入れる</li>
+            <li>彼と会う機会があれば、明るく前向きな話をする</li>
+        </ul>
+    </div>
+
+    <h3>【5月：最重要の月】</h3>
+
+    <p>2026年5月は「癸巳（みずのとみ）」の月。<br>
+    水と火のエネルギーが巡る月です。</p>
+
+    <p><strong>あなたにとって：</strong><br>
+    あなたの本質（水と木）と、今年のエネルギー（火）が完璧に調和する月。<br>
+    あなたの魅力が最も輝く時期です。</p>
+
+    <p><strong>彼にとって：</strong><br>
+    火のエネルギーが彼に「決断力」「行動力」を与える月。<br>
+    今まで決められなかったことを決断できるようになります。</p>
+
+    <div class="important-box">
+        <h3>この月に起こりうること：</h3>
+        <ul>
+            <li>彼から「ちゃんと話がしたい」と連絡が来る</li>
+            <li>二人で食事やデートの約束をする</li>
+            <li>彼が「俺たちの関係、どうしようか」と切り出す</li>
+            <li>告白や関係の進展の話が出る</li>
+        </ul>
+    </div>
+
+    <div class="action-box">
+        <h3>サインが出た時の対応方法：</h3>
+
+        <p><strong>1. 彼から「会いたい」と言われたら</strong></p>
+        <ul>
+            <li>すぐにOKせず、「いいよ。いつがいい？」と彼に決めさせる</li>
+            <li>会う時は笑顔で、リラックスした雰囲気で</li>
+            <li>深刻な話になっても、焦らず冷静に</li>
+        </ul>
+
+        <p><strong>2. 彼が「俺たち、どうする？」と聞いてきたら</strong></p>
+        <ul>
+            <li>「私はあなたと一緒にいたい。でも、あなたのペースで大丈夫」</li>
+            <li>「焦らなくていいよ。ゆっくり考えて」</li>
+            <li>彼にプレッシャーをかけない</li>
+        </ul>
+
+        <p><strong>3. 彼が将来の話をし始めたら</strong></p>
+        <ul>
+            <li>真剣に聞く</li>
+            <li>自分の想いも正直に伝える</li>
+            <li>でも、結論を急がせない</li>
+        </ul>
+    </div>
+
+    <h3>【6月：確定の月】</h3>
+
+    <p>2026年6月は「甲午（きのえうま）」の月。<br>
+    木と火のエネルギーが巡る月です。</p>
+
+    <p><strong>あなたにとって：</strong><br>
+    あなたに欠けていた「火」のエネルギーが最も強く流れ込む月。<br>
+    そして、あなたの本質である「木」も強化される月。<br>
+    新しい関係を築く力が最高潮に達します。</p>
+
+    <p><strong>彼にとって：</strong><br>
+    彼の中にある「木」のエネルギーが目覚める月。<br>
+    木は「成長」「新しい関係」「未来を育てる」力を表します。</p>
+
+    <div class="important-box">
+        <h3>この月に起こりうること：</h3>
+        <ul>
+            <li>彼が「ちゃんと付き合おう」と言ってくる</li>
+            <li>二人の関係が「曖昧」から「ちゃんとした形」になる</li>
+            <li>将来の話（同棲、結婚など）が具体的になる</li>
+        </ul>
+
+        <h3>この月の過ごし方：</h3>
+        <ul>
+            <li>5月に進展があったら、6月はその関係を安定させる時期</li>
+            <li>焦らず、自然体で彼と接する</li>
+            <li>彼の決断を信じて、見守る</li>
+        </ul>
+    </div>
+
+    <h3>【7月以降：関係を育てる時期】</h3>
+
+    <p>7月以降は、二人の関係を「育てる」時期になります。</p>
+
+    <p>「ちゃんとした形」になった後も、油断せず、日々の積み重ねを大切にしてください。</p>
+
+    <ul>
+        <li>彼のペースを尊重し続ける</li>
+        <li>自分の人生も大切にし続ける</li>
+        <li>二人の時間を楽しむ</li>
+    </ul>
+
+    <h3>【近づいているサイン】</h3>
+
+    <p>3月頃から、こんなサインが現れ始めます：</p>
+
+    <div class="important-box">
+        <p><strong>感情面のサイン：</strong></p>
+        <ul>
+            <li>彼のことを考える時、不安ではなく「楽しみ」な気持ちになる</li>
+            <li>「大丈夫」という確信が湧いてくる</li>
+            <li>夢に彼が出てくる（特に明るい雰囲気の夢）</li>
+        </ul>
+
+        <p><strong>現実面のサイン：</strong></p>
+        <ul>
+            <li>彼からの連絡頻度が増える</li>
+            <li>彼が将来の話を少しずつするようになる</li>
+            <li>彼の態度が優しくなる、距離が近くなる</li>
+        </ul>
+
+        <p><strong>スピリチュアルなサイン：</strong></p>
+        <ul>
+            <li>数字の「4」「5」「6」をよく見る</li>
+            <li>緑色や茶色のものに惹かれる</li>
+            <li>森や自然の中に行きたくなる</li>
+        </ul>
+    </div>
+
+    <p>これらのサインが現れたら、準備が整ってきた証拠です。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <h3>【日常のエネルギー調整】</h3>
+
+    <p><strong>火のエネルギーを補う方法：</strong></p>
+
+    <div class="action-box">
+        <p><strong>1. 朝のルーティン</strong></p>
+        <ul>
+            <li>朝起きたら、必ずカーテンを開けて太陽の光を浴びる（5分）</li>
+            <li>温かい白湯を飲む</li>
+            <li>鏡を見て、自分に笑顔を向けて「今日も良い日になる」と言う</li>
+        </ul>
+
+        <p><strong>2. 日中の心がけ</strong></p>
+        <ul>
+            <li>赤やオレンジの服を着る（週に2〜3回）</li>
+            <li>キャンドルを灯す（夜5分でOK）</li>
+            <li>明るい音楽を聴く</li>
+            <li>太陽の光が当たる場所で過ごす時間を作る</li>
+        </ul>
+
+        <p><strong>3. 夜のルーティン</strong></p>
+        <ul>
+            <li>温かいお風呂に入る（38〜40度、20分）</li>
+            <li>キャンドルの光を見つめて瞑想（5分）</li>
+            <li>「今日の良かったこと」を3つ書き出す</li>
+        </ul>
+    </div>
+
+    <p><strong>金のエネルギーを補う方法：</strong></p>
+
+    <div class="action-box">
+        <p><strong>1. 身につけるもの</strong></p>
+        <ul>
+            <li>金属のアクセサリー（ゴールド、シルバー）</li>
+            <li>白い服を週に2〜3回着る</li>
+            <li>腕時計やブレスレットで金属を身につける</li>
+        </ul>
+
+        <p><strong>2. 環境を整える</strong></p>
+        <ul>
+            <li>部屋の整理整頓、断捨離を月に1回</li>
+            <li>不要なものを手放す習慣</li>
+            <li>清潔で整った空間を保つ</li>
+        </ul>
+
+        <p><strong>3. 呼吸法</strong></p>
+        <ul>
+            <li>毎朝5分、深呼吸をする</li>
+            <li>鼻から4秒吸って、8秒かけて吐く</li>
+            <li>10回繰り返す</li>
+        </ul>
+    </div>
+
+    <p><strong>水と木のバランスを保つ方法：</strong></p>
+
+    <div class="action-box">
+        <p><strong>1. 木のエネルギーを育てる</strong></p>
+        <ul>
+            <li>観葉植物を育てる（ポトス、モンステラなど）</li>
+            <li>週に1回、森林浴や公園での散歩</li>
+            <li>緑色のものを取り入れる</li>
+        </ul>
+
+        <p><strong>2. 水のエネルギーを整える</strong></p>
+        <ul>
+            <li>お風呂にゆっくり浸かる（週3回以上）</li>
+            <li>水を1日1.5〜2リットル飲む</li>
+            <li>海や川など、水辺に行く</li>
+        </ul>
+    </div>
+
+    <h3>【自分磨きの具体的なプラン】</h3>
+
+    <p><strong>美容面：</strong></p>
+
+    <div class="action-box">
+        <p><strong>1. ヘアケア</strong></p>
+        <ul>
+            <li>2月〜3月：美容院で髪型を変える</li>
+            <li>トリートメントを定期的に</li>
+            <li>明るめのカラーにすると火のエネルギーが増す</li>
+        </ul>
+
+        <p><strong>2. スキンケア</strong></p>
+        <ul>
+            <li>毎日の保湿を丁寧に</li>
+            <li>月に1回、フェイシャルエステやパック</li>
+            <li>笑顔の練習で表情筋を鍛える</li>
+        </ul>
+
+        <p><strong>3. ファッション</strong></p>
+        <ul>
+            <li>春らしい明るい色の服を揃える</li>
+            <li>特に赤、オレンジ、ピンク、緑</li>
+            <li>彼と会う時用のワンピースを1着用意</li>
+        </ul>
+    </div>
+
+    <p><strong>健康面：</strong></p>
+
+    <div class="action-box">
+        <p><strong>1. 運動</strong></p>
+        <ul>
+            <li>ヨガやストレッチ（週2〜3回）</li>
+            <li>ウォーキング（週3回、30分）</li>
+            <li>自然の中での運動が効果的</li>
+        </ul>
+
+        <p><strong>2. 食事</strong></p>
+        <ul>
+            <li>温かい食事を心がける</li>
+            <li>赤い食べ物（トマト、パプリカ、イチゴ）</li>
+            <li>緑の食べ物（ほうれん草、ブロッコリー）</li>
+        </ul>
+    </div>
+
+    <h3>【彼と会う時の具体的な対応】</h3>
+
+    <p><strong>シーン別の会話例：</strong></p>
+
+    <div class="action-box">
+        <p><strong>1. 久しぶりに会った時</strong></p>
+        <p>「久しぶり！元気だった？」（笑顔で）<br>
+        「最近、○○始めたんだ。楽しいよ」（自分の話を明るく）<br>
+        「あなたは最近どう？」（彼の話を聞く）</p>
+
+        <p><strong>2. 彼が仕事の愚痴を言う時</strong></p>
+        <p>「大変だったんだね」（共感）<br>
+        「でも、あなたなら大丈夫だよ」（励まし）<br>
+        「無理しないでね」（心配を見せる）</p>
+        <p>NG：「私も」と自分の話にしない、解決策を押し付けない</p>
+
+        <p><strong>3. 彼が将来の話をし始めた時</strong></p>
+        <p>「将来のこと、考えてるんだ」（真剣に聞く）<br>
+        「私も、あなたと一緒にいたいって思ってる」（正直に伝える）<br>
+        「でも、焦らなくていいよ。あなたのペースで」（プレッシャーをかけない）</p>
+
+        <p><strong>4. 関係について聞かれた時</strong></p>
+        <p>「私たち、どうしたい？」と聞かれたら</p>
+        <p>「私は、あなたとちゃんとした関係を築きたい」（明確に）<br>
+        「でも、それはあなたも同じ気持ちの時で大丈夫」（尊重）<br>
+        「今のままでも、あなたといる時間は幸せだよ」（感謝）</p>
+    </div>
+
+    <div class="ng-box">
+        <h3>やってはいけないNG対応：</h3>
+        <ul>
+            <li>「いつになったらちゃんとしてくれるの？」と詰める</li>
+            <li>「他の人に取られちゃうかも」と脅す</li>
+            <li>泣いて訴える</li>
+            <li>過去の失敗を責める</li>
+            <li>他の女性と比べる</li>
+        </ul>
+    </div>
+
+    <h3>【関係が進展した後の続け方】</h3>
+
+    <p>「ちゃんとした形」になった後も、油断せず、以下を心がけてください：</p>
+
+    <div class="action-box">
+        <p><strong>1. 彼のペースを尊重し続ける</strong></p>
+        <ul>
+            <li>会う頻度：週1〜2回程度</li>
+            <li>連絡頻度：毎日でなくても良い</li>
+            <li>彼の時間を尊重する</li>
+        </ul>
+
+        <p><strong>2. 自分の時間も大切にする</strong></p>
+        <ul>
+            <li>友人との時間</li>
+            <li>趣味の時間</li>
+            <li>一人の時間</li>
+            <li>彼に依存しない</li>
+        </ul>
+
+        <p><strong>3. 会う時は明るく楽しく</strong></p>
+        <ul>
+            <li>ネガティブな話は避ける</li>
+            <li>笑顔を絶やさない</li>
+            <li>感謝を伝える</li>
+        </ul>
+
+        <p><strong>4. 境界線を守る</strong></p>
+        <ul>
+            <li>彼のプライベートを尊重</li>
+            <li>束縛しない</li>
+            <li>自由を奪わない</li>
+        </ul>
+
+        <p><strong>5. 変化し続ける</strong></p>
+        <ul>
+            <li>常に成長する姿を見せる</li>
+            <li>新しいことに挑戦する</li>
+            <li>マンネリ化を防ぐ</li>
+        </ul>
+    </div>
+
+    <p>これらを続けることで、二人の関係は長く、深く、安定したものになっていきます。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>
