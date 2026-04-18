@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chamo様専用鑑定書</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../強い火.png'); }
+        .aura-wood::before { background-image: url('../強い木.png'); }
+        .aura-earth::before { background-image: url('../強い土.png'); }
+        .aura-metal::before { background-image: url('../強い金.png'); }
+        .aura-water::before { background-image: url('../強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* ===== レーダーチャート ===== */
+        .aura-chart-container {
+            width: 280px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            margin: 20px auto;
+        }
+
+        .aura-chart-title {
+            text-align: center;
+            font-size: 16px;
+            color: #8b6f9c;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .aura-result-box {
+            background: linear-gradient(135deg, #f9f3ff 0%, #fff5fb 100%);
+            border: 2px solid #c9a0dc;
+            border-radius: 15px;
+            padding: 30px 35px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .aura-result-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .aura-result-box > p:last-child {
+            font-size: 17px;
+            line-height: 2.2;
+            margin-bottom: 0;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+
+            .aura-chart-container {
+                width: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">chamo様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>chamo様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>chamo様</p>
+
+    <p>この度は本鑑定にお進みいただき、心より感謝申し上げます。</p>
+
+    <p>「娘を通して再会して、惹かれ合って、惚れ合って」<br>
+    「今までにない安心を感じてる」<br>
+    「でも、どうすれば交際に進めるのか分からない」</p>
+
+    <p>その想い、<strong>痛いほど伝わってきます</strong>。</p>
+
+    <p>でも、一歩を踏み出せない。気持ちを伝えたら、この関係が壊れてしまうんじゃないかって。傷つくくらいなら、最初から期待しないでおこうって。</p>
+
+    <p>そうやって、自分の気持ちに蓋をしてきた。</p>
+
+    <p>chamo様、それは弱さやない。あなたの優しさです。</p>
+
+    <p>まず、あなたが一番知りたいこと。はっきりお伝えします。</p>
+
+    <p><strong>彼との交際、そして結婚への道は、開かれています。</strong></p>
+
+    <p><strong>可能性は、十分にあります。</strong></p>
+
+    <p>ただし、条件がある。あなた自身のオーラを整えること。これが鍵になります。</p>
+
+    <p>でも今、そのオーラのバランスが少し崩れています。火のオーラが完全に欠けているから。</p>
+
+    <p>火のオーラが欠けていることで、決断する力が湧いてこない。前に進む情熱が持てない。言葉が出てこない。</p>
+
+    <p>「このままでいいか」って、諦めてしまう。</p>
+
+    <p><strong>逆に言えば、火のオーラさえ整えれば、霧は晴れ始めます。</strong></p>
+
+    <p>自然に気持ちを伝えられるようになり、彼との関係は深まっていく。</p>
+
+    <p>なぜそう言えるのか。その理由を、これからお伝えしていきますね。</p>
+
+    <h2>🔮 あなたのオーラと彼の本質</h2>
+
+    <h3>【あなたのオーラ】</h3>
+
+    <div class="aura-section aura-metal">
+        <p>あなたのオーラは、金色。宝石のように繊細に輝いています。</p>
+
+        <p>深く理解する力がある。堅実で、コツコツと積み上げることができる。信頼される性質を持っている。</p>
+
+        <p>そして今、あなたは繊細で敏感な時期に入っています。相手の気持ちに気づきやすい時期。だから、彼との間に流れる空気を、あなたはちゃんと感じ取れている。</p>
+
+        <p>ただ、一つだけ。<strong>あなたのオーラには、火のオーラが完全に欠けています。</strong></p>
+
+        <p>これが、今のあなたの状況の根っこにある原因です。</p>
+    </div>
+
+    <h3>【足りないオーラとその影響】</h3>
+
+    <p>あなたのオーラには、<strong>火のオーラが足りていません</strong>。</p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">chamo様の現在のオーラ</div>
+        <canvas id="auraChartYou"></canvas>
+    </div>
+
+    <p>これが、今のあなたの状況の根っこにある原因です。</p>
+
+    <p>火のオーラが欠けていることで、<br>
+    ・前向きな気持ちが持ちにくい、決断する力が湧いてこない<br>
+    ・表現力が弱く、気持ちを言葉にできない<br>
+    ・「どうせ無理」と、諦めてしまう<br>
+    ・一歩を踏み出す勇気が出ない<br>
+    ・冷めた印象を与えてしまい、本当の気持ちが伝わらない</p>
+
+    <p>つまり、彼に気持ちを伝えられないのは、あなたの気持ちが足りないからでも、努力が足りないからでもない。</p>
+
+    <p><strong>火のオーラが欠けているから。</strong></p>
+
+    <p>逆に言えば、このオーラさえ整えば、霧は晴れ始めます。</p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">火を補った後のオーラ</div>
+        <canvas id="auraChartYouFixed"></canvas>
+    </div>
+
+    <div class="aura-result-box">
+        <p class="aura-result-title">火のオーラを補うと…</p>
+        <p>決断する力が湧いてくる。<br>
+        前に進む情熱が自然と生まれる。<br>
+        気持ちを言葉にできるようになる。<br>
+        笑顔が自然と出てくる。<br>
+        彼に「伝えたい」と思える。</p>
+    </div>
+
+    <p>そして、今年は火のオーラがあなたの内部ではなく外部から受け取れる時期、</p>
+
+    <p><strong>今年1年、重要な年だとお考えください。</strong></p>
+
+    <h3>【彼のオーラ】</h3>
+
+    <p>彼は、包み込む力を持っている。安定感を与えるエネルギーを持つ人。あなたの金色のオーラを、しっかり受け止める性質。</p>
+
+    <p>娘さんを通して再会したこと。それ自体が、優しさと思いやりを持っている証拠です。</p>
+
+    <p>そして、惹かれ合っている。あなたがそう感じているなら、彼も同じように感じています。</p>
+
+    <p>ただし、彼も慎重な性質。または、あなたの立場を考慮している。だから、積極的なアプローチをしてこない。</p>
+
+    <p><strong>つまり、あなたが一歩を踏み出せば、彼も応えてくれます。</strong></p>
+
+    <h3>【彼の目に映る「あなた」】</h3>
+
+    <p>今、彼の目にあなたがどう映っているか。</p>
+
+    <p>彼は、あなたのことを「冷静で落ち着いた人」だと思っています。知的で、しっかりしていて、一人で何でもこなせる人。</p>
+
+    <p>でも同時に、「近づきにくい」とも感じている。何を考えているのか分からない。笑顔が少ない。距離を感じる。</p>
+
+    <p>「もしかして、僕に興味がないのかな」って。</p>
+
+    <p>でも、これはあなたの本質が伝わっていないだけ。</p>
+
+    <p>本当のあなたは、金色に輝く繊細な魂を持っている。相手を思いやる心がある。深く理解する力がある。ただ、自分の気持ちを表に出すのが苦手なだけ。</p>
+
+    <p>だからこそ、オーラを整える必要があるのです。</p>
+
+    <p><strong>自分の気持ちを普段出さない人が彼にだけ内面を見せてあげたら、そのギャップに彼は強く惹かれていきます。</strong></p>
+
+    <h2>🔮 彼の心を動かす道筋</h2>
+
+    <p>ここからは、彼の心を動かすための具体的な言葉と行動をお伝えします。</p>
+
+    <h3>【おすすめのタイミング】</h3>
+
+    <p><strong>今年の6月を意識してください。</strong></p>
+
+    <p>火のオーラが強く巡る月。自然と前向きな気持ちが湧き、言葉が出てくる時期。</p>
+
+    <p>この月に、連絡を取ることを意識してください。</p>
+
+    <h3>【最初の一言】</h3>
+
+    <div class="magic-word-box">「お久しぶりです。〇〇ちゃん（娘さんの名前）が最近、『侑資さんに会いたい』って言ってて😊 また機会があれば、みんなでお茶でもどうですか？」</div>
+
+    <p>娘さんを理由にすることで、重くならない。相手も断りにくく、自然な流れで会える。あなたの性質（相手を優先する）を活かした、彼が安心できる誘い方です。</p>
+
+    <p>または、こんな言葉も。</p>
+
+    <div class="magic-word-box">「この前、〇〇ちゃんが施設の思い出話をしてて。侑資さんのこと、今でもすごく慕ってるんだなって感じました。あの時は本当にありがとうございました」</div>
+
+    <p>感謝の気持ちを伝えることで、彼との距離が自然に縮まります。</p>
+
+    <h3>【会った時の接し方】</h3>
+
+    <p><strong>・笑顔を意識してください</strong><br>
+    思っている5倍の笑顔の量を意識してください。あなたの気持ちが彼にちゃんと伝わるようになります。</p>
+
+    <p><strong>・彼の話をしっかり聞いてください</strong><br>
+    あなたの性質（深く理解する力）を活かす。彼は「理解してもらえた」と感じ、心を大きく開いてくれます。</p>
+
+    <p><strong>・自然体でいてください</strong><br>
+    無理せず、ありのままのあなたでいることが一番魅力的です。諦めない、緊張しすぎない、その一瞬ダメだったとしてもトータルで好印象を与える事を意識してください。</p>
+
+    <h3>【言ってはいけない言葉】</h3>
+
+    <p>・「私なんて…」は禁句です。<br>
+    自分を否定すると、オーラの力はみるみる弱くなっていきます。</p>
+
+    <p>・「迷惑じゃない？」も避けてください。<br>
+    迷惑かどうかは彼が判断をします。chamo様は、chamo様の思うように行動するのが一番いいのです。</p>
+
+    <p>・「どうしたらいい？」よりも「こうしませんか？」<br>
+    あなたの冷静な判断力、引っ張る力に相手は魅力を感じます。どうしたらいい？は最後の最後に取っておいてください。</p>
+
+    <h3>【言うと効く言葉】</h3>
+
+    <div class="magic-word-box">「一緒にいると、安心する」
+「ありがとう」
+「もっと話したいです」</div>
+
+    <p>具体的に褒められると、彼は嬉しい。「一緒にいると、安心する」この言葉は、彼の包み込む力を肯定する言葉。彼は自信を持ち、さらにあなたを大切にしたくなります。</p>
+
+    <p>感謝の言葉は、彼の心を開きます。何度でも言ってください。大切なのは質より量です。</p>
+
+    <h3>【大切な注意点】</h3>
+
+    <p>ただし、一つだけ知っておいてほしいことがあります。</p>
+
+    <p>これらの言葉や行動は、<strong>あなたのオーラが整った状態で初めて、本来の力を発揮します。</strong></p>
+
+    <p>今のまま、火のオーラが欠けた状態で動くと、言葉が上滑りしてしまったり、タイミングを逃してしまう可能性がある。</p>
+
+    <p>だから、まずはオーラを整えること。それが、全ての土台になります。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <p>今、あなたは繊細で敏感な時期に入っています。金と土のオーラが強く巡る時期です。</p>
+
+    <p>そして、2026年。この年は火のオーラが強い年。</p>
+
+    <p>あなたに完全に欠けている火のオーラが、外から強く巡ってくる。</p>
+
+    <p>決断する力、前に進む情熱が自然と湧いてくる。「今だ」と思える瞬間がやってくる、そんな年です。</p>
+
+    <p>38歳という年齢も、人生の転換期。次の10年をどう生きるかを決める時期です。</p>
+
+    <h3>【二人の運命が交わる時】</h3>
+
+    <p>あなたと彼、二人の運命が最も近づく時期。<strong>それが6月です。</strong></p>
+
+    <p>この月、あなたには火のオーラが巡り、決断する力、前に進む情熱が自然と湧いてきます。</p>
+
+    <p>彼もこの時期、心が開きやすい状態。あなたが一歩を踏み出せば、彼も自然と応えてくれる流れが視えています。</p>
+
+    <h3>【これから半年の流れ】</h3>
+
+    <h3>★ 2026年6月（最重要月）</h3>
+
+    <p>今まで「どうせ無理」と思っていたことに、「やってみよう」と思える。言葉が自然と出てくる。笑顔になれる。</p>
+
+    <p>彼との会話が弾みます。自然と距離が縮まる。「また会いたい」と思われる。彼から連絡が来る可能性もあります。</p>
+
+    <p><strong>交際に進むきっかけが生まれる月です。</strong></p>
+
+    <p><strong>やるべきこと：</strong><br>
+    ・火のオーラを補う行動を始めてください（赤い服、太陽を浴びる、笑顔を意識）<br>
+    ・彼に連絡してください。会う約束をしてください<br>
+    ・自然体で、ありのままの気持ちを伝えてください</p>
+
+    <p><strong>やってはいけないこと：</strong><br>
+    ・考えすぎて動けなくなること<br>
+    ・「迷惑かも」と自己否定すること</p>
+
+    <h3>2026年7月（重要月）</h3>
+
+    <p>土のオーラが巡り、気持ちが安定する時期。落ち着いて関係を深められます。6月で動いたことの結果が見えてくる。</p>
+
+    <p>彼との関係が安定してきます。お互いの気持ちを確認し合える。「この人と一緒にいたい」という確信が強まります。</p>
+
+    <p>6月の流れを大切にしてください。急がない。相手の気持ちをしっかり聞くようにしてください。</p>
+
+    <h3>2026年4月（準備の時期）</h3>
+
+    <p>今月は準備の時期です。彼との関係を見つめ直して、どうなりたいのかをしっかりとイメージしてください。</p>
+
+    <p>6月に向けて、心の準備を始める月。焦らず、自分の気持ちを整理していきましょう。</p>
+
+    <p>この時期は、無理に動く必要はありません。ただ、彼のことを思い出してみてください。彼と一緒にいた時の安心感。彼の笑顔。彼の優しさ。</p>
+
+    <p>それを思い出すことで、「やっぱり、この人に伝えたい」という気持ちが少しずつ育っていきます。</p>
+
+    <h3>2026年5月</h3>
+
+    <p>6月に向けて、気持ちが高まってくる時期です。</p>
+
+    <p>彼にどんな言葉をかけようか。どんな風に誘おうか。考え始めてください。</p>
+
+    <p>連絡の準備をしましょう。イメージトレーニングをするのもいい時期です。</p>
+
+    <p>鏡の前で笑顔の練習をしてみてください。「お久しぶりです」って言ってみる。「また会いたいな」って言ってみる。</p>
+
+    <p>声に出して練習すると、本番で自然に言葉が出てきやすくなります。</p>
+
+    <p>赤い服を選んでみる。明るい場所に出かけてみる。そうやって、少しずつ準備を整えていきましょう。</p>
+
+    <h3>2026年8月〜9月</h3>
+
+    <p>引き続き前向きな気持ちが続きます。関係をさらに深める時期です。</p>
+
+    <p>6月〜7月で動いたことが、実を結び始める頃。</p>
+
+    <p>彼との連絡が自然に続いている。会う約束ができている。会った時の会話が弾んでいる。</p>
+
+    <p>あなたの本質が輝き、彼との関係が自然体で続いていく。</p>
+
+    <p>この頃には、二人の間に安心できる空気が流れているはずです。「また会おうね」が当たり前になっている。そんな関係が、視えています。</p>
+
+    <h3>【1年後の未来】</h3>
+
+    <p><strong>2027年春。</strong></p>
+
+    <p>あなたと彼は、プライベートでも自然に会える関係になっています。</p>
+
+    <p>娘さんを通してではなく、二人だけで会えるようになっている。</p>
+
+    <p>「今度、二人で食事に行きませんか」そんな誘いが、自然に交わされている。</p>
+
+    <p>お互いの気持ちを確認し合い、安心のある交際が始まっている。</p>
+
+    <p>そんな未来が、視えています。</p>
+
+    <h3>【大切なこと】</h3>
+
+    <p><strong>6月が最大のチャンスです。</strong></p>
+
+    <p>あなたと彼の運命が最も近づくこの瞬間を逃さないために。</p>
+
+    <p><strong>オーラを整えた状態で6月を迎えること。</strong></p>
+
+    <p>今のまま6月を迎えると、せっかくの転機を素通りしてしまう可能性がある。</p>
+
+    <p>6月までに、オーラを整えておくこと。これが、この半年で最も大切なことです。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <h3>【日常のオーラ調整法】</h3>
+
+    <p>まず、今日からできることをお伝えしますね。</p>
+
+    <p><strong>赤やオレンジの服を選んでください。</strong>クローゼットの中から、明るい色を探してみる。それを身につけるだけで、気持ちが少し前向きになります。</p>
+
+    <p><strong>朝、窓を開けて太陽の光を浴びてください。</strong>たった5分でいい。光を浴びることで、心が温かくなっていきます。</p>
+
+    <p><strong>鏡の前で笑顔を作ってみてください。</strong>最初はぎこちなくてもいい。毎日続けると、自然と笑顔が出やすくなります。</p>
+
+    <p><strong>温かいものを食べてください。</strong>温かいスープ、お茶。体が温まると、心も温まります。</p>
+
+    <p><strong>夜、キャンドルを灯してみてください。</strong>リラックスしながら火を見る。ゆっくりと、心の緊張がほどけていきます。</p>
+
+    <p><strong>明るい場所に出かけてください。</strong>カフェでも、公園でもいい。明るい場所にいることで、あなた自身も明るくなっていきます。</p>
+
+    <h3>【日常の実践】</h3>
+
+    <p>朝起きたら、窓を開けて太陽の光を浴びる。鏡の前で笑顔を作る。「今日は良い日になる」と声に出す。</p>
+
+    <p>夜寝る前に、キャンドルを灯してリラックス。今日の良かったことを3つ書き出す。「明日は〇〇しよう」と決める。</p>
+
+    <p>この小さな習慣を続けることで、少しずつ、心が整っていきます。</p>
+
+    <h3>【気をつけてほしいこと】</h3>
+
+    <p><strong>考えすぎて黙り込まないでください。</strong>言葉が出なくなると、彼は不安になります。</p>
+
+    <p><strong>相手を優先しすぎて、自分を出さないのもやめましょう。</strong>あなたの本当の気持ちが伝わらなくなります。</p>
+
+    <p><strong>自己否定の言葉を使わないこと。</strong>「私なんて」「迷惑かも」は禁句です。そう思いそうになったら、「いや、私は私でいいんだ」って自分に言い聞かせてください。</p>
+
+    <h3>【正直にお伝えしたいこと】</h3>
+
+    <p>ここまでお伝えした調整法で、少しずつオーラは整い始めます。</p>
+
+    <p>ただ、正直に言うと、<strong>完全に欠けているオーラを日常の調整だけで補うには、どうしても限界があります。</strong></p>
+
+    <p>水を飲む、色を身につける。これらは「維持する力」にはなりますが、ゼロから補う力としては、時間がかかります。</p>
+
+    <p>もし本気でオーラを整えたいなら、もう一つ、お伝えしたい方法があります。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>ここまでお伝えしてきた通り、chamo様のオーラには火のオーラが欠けています。</p>
+
+    <p>これが今の状況の根っこにある原因であり、6月のチャンスを掴むために、最も整えるべき部分です。</p>
+
+    <p><strong>火のオーラが整うと、</strong><br>
+    ・彼に気持ちを伝える言葉が、自然と出てくる<br>
+    ・6月、彼を誘う勇気が湧いてくる<br>
+    ・笑顔が自然と出てきて、彼があなたの変化に気づく<br>
+    ・「この人と一緒にいたい」という気持ちを、素直に伝えられる<br>
+    ・彼との会話が弾み、「また会いたい」と思われる<br>
+    ・自信が湧いてきて、「私は大丈夫」と思える</p>
+
+    <p>日常の調整法に加えて、本格的にオーラを補うために、<strong>パワーストーンをお守りとして取り入れる方法があります。</strong></p>
+
+    <p>chamo様のオーラに合わせて、三つのプランをご用意しました。</p>
+
+    <div class="important-box">
+        <h3>【3つのプラン】</h3>
+
+        <p><strong>●松プラン：目標に本気で向き合いたい方向け</strong><br>
+        火のオーラを本格的に補う石の組み合わせ。6月のチャンスを最大限に活かせます。<br>
+        ・彼に連絡する勇気が自然と湧いてくる<br>
+        ・会った時、笑顔で自然に話せる<br>
+        ・「もっと話したい」という言葉が自然と出てくる</p>
+
+        <p><strong>●竹プラン：心を安定させたい方向け</strong><br>
+        火のオーラを補う石の組み合わせ。前向きな気持ちが湧いてきます。<br>
+        ・「伝えよう」と思える瞬間が訪れる</p>
+
+        <p><strong>●梅プラン：まずは不安を和らげたい方向け</strong><br>
+        最も必要な石を1つ。不安が和らぎ、一歩を踏み出せるようになります。<br>
+        ・「どうせ無理」という思いが減っていく</p>
+
+        <p>多くの方が松プランを選ばれています。6月に向けて今から整え始めることで、最も効果的なタイミングでオーラが整います。</p>
+
+        <p>もし興味がありましたら、「詳細希望」とだけ送っていただければ、chamo様専用の石の組み合わせをお伝えしますね。</p>
+    </div>
+
+    <h2>最後に</h2>
+
+    <p>chamo様、今、あなたは岐路に立っています。</p>
+
+    <p>このまま、気持ちを出せずにいるのか。それとも、オーラを整えて、一歩を踏み出すのか。</p>
+
+    <p>どちらを選ぶかは、あなた次第です。</p>
+
+    <p>でも、私には視えています。</p>
+
+    <p><strong>あなたのオーラが整って、本来の輝きを取り戻したとき。</strong></p>
+
+    <p>6月のある日、あなたが彼に連絡する。そして、彼が笑顔で「会いましょう」って返信してくれる。</p>
+
+    <p>会った時、彼があなたの笑顔を見て、「変わったね」って言ってくれる。</p>
+
+    <p>そして、自然な流れで、「また会いたい」って言い合える関係になっていく。</p>
+
+    <p><strong>その未来が、視えています。</strong></p>
+
+    <p>あなたの想いは、本物です。だから、諦めないでほしい。</p>
+
+    <p>オーラを整えて、6月を迎えてください。私が、全力でサポートしますね。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+<script>
+const chartOptions = {
+    responsive: true,
+    plugins: {
+        legend: { display: false }
+    },
+    scales: {
+        r: {
+            beginAtZero: true,
+            max: 3,
+            min: 0,
+            ticks: {
+                stepSize: 1,
+                display: false
+            },
+            pointLabels: {
+                font: { size: 14, family: 'Noto Serif JP' },
+                color: '#2d2d2d'
+            },
+            grid: { color: 'rgba(201, 160, 93, 0.3)' },
+            angleLines: { color: 'rgba(201, 160, 93, 0.3)' }
+        }
+    }
+};
+
+// chamo様の現在のオーラ: 木2 火0 土2 金1 水1
+new Chart(document.getElementById('auraChartYou'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [{
+            data: [2, 0, 2, 1, 1],
+            backgroundColor: 'rgba(201, 160, 93, 0.3)',
+            borderColor: '#c9a05d',
+            borderWidth: 2,
+            pointBackgroundColor: '#c9a05d',
+            pointBorderColor: '#fff',
+            pointRadius: 5
+        }]
+    },
+    options: chartOptions
+});
+
+// chamo様の補った後のオーラ: 火を補う
+// 火を補う → 火2、火の隣接（木2、土2を持ってる）
+// 緑のデータ: [2, 2, 2, 1, 1]
+new Chart(document.getElementById('auraChartYouFixed'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [
+            {
+                // 補う部分（緑）
+                data: [2, 2, 2, 1, 1],
+                backgroundColor: 'rgba(100, 180, 100, 0.4)',
+                borderColor: '#5a9a5a',
+                borderWidth: 2,
+                pointBackgroundColor: '#5a9a5a',
+                pointBorderColor: '#fff',
+                pointRadius: 6
+            },
+            {
+                // 元のオーラ（ゴールド）
+                data: [2, 0, 2, 1, 1],
+                backgroundColor: 'rgba(201, 160, 93, 0.3)',
+                borderColor: '#c9a05d',
+                borderWidth: 2,
+                pointBackgroundColor: '#c9a05d',
+                pointBorderColor: '#fff',
+                pointRadius: 5
+            }
+        ]
+    },
+    options: chartOptions
+});
+</script>
+
+</body>
+</html>
