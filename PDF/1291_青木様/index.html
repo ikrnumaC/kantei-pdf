@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>青木様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #0f3460 70%, #1a1a2e 100%);
+            color: #e8e8e8;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #d4af37;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #a8a8d8;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #b8b8b8;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(30, 30, 50, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                        inset 0 0 0 1px rgba(212, 175, 55, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #d4af37;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #a8a8d8;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #4a4a6a;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #a8a8d8;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #4a4a6a;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: rgba(50, 50, 70, 0.6);
+            border: 2px solid #4a4a6a;
+            position: relative;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.1;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before {
+            background-image: url('../強い火.png');
+        }
+
+        .aura-wood::before {
+            background-image: url('../強い木.png');
+        }
+
+        .aura-earth::before {
+            background-image: url('../強い土.png');
+        }
+
+        .aura-metal::before {
+            background-image: url('../強い金.png');
+        }
+
+        .aura-water::before {
+            background-image: url('../強い水.png');
+        }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: rgba(50, 50, 70, 0.6);
+            border: 2px solid #4a4a6a;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .important-box {
+            background: rgba(60, 50, 40, 0.6);
+            border: 2px solid #8a7a5a;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .magic-word-box {
+            background: rgba(60, 50, 80, 0.6);
+            border: 2px dashed #a89ac0;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #4a4a6a;
+        }
+
+        strong {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">青木様</div>
+    <div class="cover-title">追加質問</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>青木様の追加質問</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>追加質問<br>
+    1. Instagramでメッセージを送ったが無視されている。他に気になる人がいるのか？<br>
+    2. 本当に介護なのか？<br>
+    3. 今の私に対する気持ちは？<br>
+    4. 彼は浮気しているのか？</p>
+
+    <h2>🔮 浮気の可能性について</h2>
+
+    <p>結論から言います。<br>
+    彼が浮気している可能性は、<strong>かなり低いです</strong>。</p>
+
+    <p>彼のオーラを改めて視ると、<br>
+    今の彼は「新しい恋愛をする余裕がない状態」です。</p>
+
+    <p>彼の魂は今、弱っている時期に入っています。<br>
+    これは心が弱っている時期で、<br>
+    繊細で傷つきやすく、外からのプレッシャーに耐えられない状態です。</p>
+
+    <p>彼は今、自分のことだけで精一杯。<br>
+    あなたに返信する余裕すらないのに、<br>
+    他の誰かと新しい関係を始める余裕はありません。</p>
+
+    <p>さらに、<br>
+    彼の魂は<strong>責任感が非常に強い性質</strong>を持っています。</p>
+
+    <p>二股や浮気のような裏切り行為は、<br>
+    彼の性格的に最も合わない行動なんです。</p>
+
+    <p>つまり、彼が無視しているのは<br>
+    「他に女性がいるから」ではなく、<br>
+    「誰とも向き合えないほど心が疲れているから」です。</p>
+
+    <hr>
+
+    <h2>🔮 本当に介護なのか？</h2>
+
+    <p><strong>はい、彼の言っていることは本当だと視えます。</strong></p>
+
+    <p>彼のオーラには「嘘をつく」要素がありません。<br>
+    むしろ、真面目すぎて、全部一人で抱え込んでしまう性質です。</p>
+
+    <p>おばあちゃんの介護、不規則勤務、そしてあなたとの関係。<br>
+    彼はこれら全てに「ちゃんと向き合いたい」と思っています。<br>
+    でも、心が疲れ切っていて、どれにも向き合えない。</p>
+
+    <p>責任感が強すぎるから、あなたに「今は無理」と正直に言えない。<br>
+    かといって、中途半端な返事もできない。<br>
+    だから、未読のまま。</p>
+
+    <p>これが彼の今の状態です。</p>
+
+    <hr>
+
+    <h2>🔮 今の私に対する気持ち</h2>
+
+    <p><strong>彼はあなたのことを忘れていません。</strong><br>
+    <strong>今も、あなたのことを想っています。</strong></p>
+
+    <p>ただし、今の彼の心は<br>
+    「どうすればいいかわからない」という混乱の中にあります。</p>
+
+    <p>「これからどうすればいいか」「何が正しいのか」を、<br>
+    自分の内側で模索している時期なんです。</p>
+
+    <p><strong>あなたへの気持ちはある。</strong><br>
+    でも、「今の自分に、あなたを幸せにする余裕があるのか」という葛藤もある。<br>
+    だから、答えが出せない。</p>
+
+    <p>彼が返信できないのは「気持ちがないから」ではなく、<br>
+    「ちゃんと答えを出したいのに、今は答えが出せないから」です。</p>
+
+    <hr>
+
+    <h2>🔮 Instagramでも無視される理由</h2>
+
+    <p>LINEからInstagramに変えても、<br>
+    彼の心理状態は変わりません。</p>
+
+    <p>むしろ、追いかけられることで、彼は「プレッシャー」を感じています。</p>
+
+    <p>「期待に応えなきゃ」<br>
+    「でも今は無理」<br>
+    「どうすればいいんだ」</p>
+
+    <p>この葛藤が、さらに彼の心を閉ざしてしまうんです。</p>
+
+    <p><strong>今は、追いかけるのをやめてください。</strong></p>
+
+    <p>彼の魂が必要としているのは、「時間」と「静けさ」です。<br>
+    一人で、自分の心を整理する時間。<br>
+    プレッシャーなく、「これからどうするか」を考える余裕。</p>
+
+    <p><strong>あなたが追いかければ追いかけるほど、彼は遠ざかります。</strong></p>
+
+    <hr>
+
+    <h2>🔮 これからどうすればいいか</h2>
+
+    <p><strong>2026年5月まで、待ってください。</strong></p>
+
+    <p>これは「諦める」ことではありません。<br>
+    「彼が心を開ける時期まで、彼を信じて待つ」ということです。</p>
+
+    <p>その間、あなたがやるべきことは：</p>
+
+    <p><strong>1. 追いかけるのをやめる</strong><br>
+    ・Instagram、LINE、SMS、全てのプラットフォームで連絡を控える<br>
+    ・彼に「静けさ」を与える</p>
+
+    <p><strong>2. 自分のオーラを整える</strong><br>
+    ・火を鎮めて冷静さを保つ（水を飲む、深呼吸、お風呂にゆっくり浸かる）<br>
+    ・木を補って柔軟性を身につける（緑色を身につける、観葉植物を育てる）<br>
+    ・土を補って安定する（茶色やベージュの服、根菜類を食べる）</p>
+
+    <p><strong>3. 本来のあなたの輝きを取り戻す</strong><br>
+    ・彼が「また会いたい」と思える、魅力的なあなたに戻る<br>
+    ・感情的にならず、冷静で柔軟で安定したあなた</p>
+
+    <p><strong>2026年5月になったら、軽めのメッセージを送ってください。</strong></p>
+
+    <div class="magic-word-box">「最近どう？無理してない？」
+
+この一言だけで十分です。</div>
+
+    <p>その時、彼の心は開いています。<br>
+    <strong>返信が来る可能性が、一番高い時期です。</strong></p>
+
+    <hr>
+
+    <p><strong>大丈夫です。</strong><br>
+    <strong>彼はあなたのことを忘れていません。</strong><br>
+    今は、待つ時期。<br>
+    <strong>2026年5月が、二人の運命が動く時期です。</strong></p>
+
+    <p>それまで、自分を大切にしてください。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>
