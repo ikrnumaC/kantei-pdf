@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杉村千恵様専用鑑定書</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before {
+            background-image: url('../強い火.png');
+        }
+
+        .aura-wood::before {
+            background-image: url('../強い木.png');
+        }
+
+        .aura-earth::before {
+            background-image: url('../強い土.png');
+        }
+
+        .aura-metal::before {
+            background-image: url('../強い金.png');
+        }
+
+        .aura-water::before {
+            background-image: url('../強い水.png');
+        }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+        }
+
+        strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* ===== レーダーチャート ===== */
+        .aura-chart-container {
+            width: 280px;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+        }
+
+        .aura-chart-title {
+            text-align: center;
+            font-size: 16px;
+            color: #8b6f9c;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .aura-result-box {
+            background: linear-gradient(135deg, #f9f3ff 0%, #fff5fb 100%);
+            border: 2px solid #c9a0dc;
+            border-radius: 15px;
+            padding: 30px 35px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .aura-result-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .aura-result-box > p:last-child {
+            font-size: 17px;
+            line-height: 2.2;
+            margin-bottom: 0;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">杉村千恵様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>杉村千恵様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>杉村千恵様</p>
+
+    <p>この度は本鑑定にお進みいただき、心より感謝申し上げます。</p>
+
+    <p>「手紙を書いたのに、何も返事がない」<br>
+    「電話番号も書いたのに、何も起きない」<br>
+    「私のこと、どう思ってるんやろう」</p>
+
+    <p>その想い、痛いほど伝わってきます。</p>
+
+    <p>入院中、毎日顔を合わせるうちに、<br>
+    彼の表情が柔らかくなっていった。</p>
+
+    <p>「先生のことが好きだ」ってはっきり分かった。</p>
+
+    <p>でも、退院して手紙を書いても、何も返ってこない。</p>
+
+    <p>「もしかして、迷惑やったんかな」<br>
+    「患者と医師やから、ダメなんかな」</p>
+
+    <p>ほんまは、ただ「もう一度会いたい」って、それだけなのに…</p>
+
+    <p>でも、千恵様。</p>
+
+    <p>まず、一番大切なことをお伝えさせてください。</p>
+
+    <p><strong>彼とお近づきになれる可能性は、あります。</strong></p>
+
+    <p>彼のオーラを視ると、<br>
+    銀色に輝く金のエネルギーが視えます。</p>
+
+    <p>責任感が強く、<br>
+    立場や秩序を何より大切にする魂。</p>
+
+    <p>あなたの手紙は読んでいます。</p>
+
+    <p>でも、「患者さんだから」という壁が、<br>
+    彼を止めている。</p>
+
+    <p>つまり、彼が興味がないのではなく、<br>
+    あなたのオーラが今、彼に届いていないだけです。</p>
+
+    <p>なぜこうなったのか。</p>
+
+    <p>その原因は、あなたのオーラに視えています。</p>
+
+    <p>次で、詳しくお伝えしますね。</p>
+
+    <h2>🔮 あなたのオーラに視えた真相</h2>
+
+    <p>無料鑑定でもお伝えした通り、<br>
+    千恵様のオーラは柔らかなアンバー色。</p>
+
+    <div class="aura-section aura-earth">
+        <p>畑のように豊かな土のオーラで、<br>
+        誰かを支えることに喜びを感じる、<br>
+        とても美しいオーラです。</p>
+    </div>
+
+    <p>そして、あなたのオーラをさらに深く視ると、<br>
+    大切なことが視えてきました。</p>
+
+    <p><strong>あなたのオーラには木のオーラがとても少ない状態で、<br>
+    これが今のあなたの状況の根っこにある原因です。</strong></p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">千恵様の今のオーラバランス</div>
+        <canvas id="auraChartYou"></canvas>
+    </div>
+
+    <p>木のオーラが欠けていることで、<br>
+    こんなことが起きています。</p>
+
+    <p>・新しいことに挑戦する勇気が出ない、<br>
+    「もう一度連絡してみよう」と思えない</p>
+
+    <p>・柔軟に対応できず、<br>
+    「患者と医師やから無理」という枠に縛られてしまう</p>
+
+    <p>・成長を実感しにくく、<br>
+    「私、変われてない」と自分を責めてしまう</p>
+
+    <p>つまり、手紙に返事がないことで諦めかけているのは、<br>
+    あなたの気持ちが足りないからでも努力が足りないからでもなく、<br>
+    木のオーラが欠けているからなのです。</p>
+
+    <p>逆に言えば、木のオーラさえ整えば霧は晴れ始めて、<br>
+    「もう一度、会いたい」という勇気が自然と湧いてきて、<br>
+    柔軟に対応できるようになり、新しい道が見えてきます。</p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">木のオーラを補った後</div>
+        <canvas id="auraChartYouFixed"></canvas>
+    </div>
+
+    <div class="aura-result-box">
+        <p class="aura-result-title">木のオーラを補うと…</p>
+        <p>「もう一度、連絡してみよう」という勇気が湧いてくる。<br>
+        彼の前で自然な笑顔が出せる、緊張せずに会話を楽しめる。<br>
+        柔軟に対応できるようになり、「患者と医師」という枠に縛られなくなる。<br>
+        <strong>6月の転機を逃さず、しっかり掴める。</strong></p>
+    </div>
+
+    <p>そしてあなたの魂には、穏やかに表現する力があり、<br>
+    人を楽しませることや与えることに喜びを感じる優しい性質を持っています。</p>
+
+    <p>ただ、ストレスを感じると本音を隠してしまい、<br>
+    「迷惑かけたくない」と引っ込んでしまうところがあります。</p>
+
+    <p>今のあなたは、まさにその状態で、<br>
+    想いを内に秘めたまま外に出せずに苦しんでいるのです…</p>
+
+    <p>そして、彼のオーラ。</p>
+
+    <div class="aura-section aura-metal">
+        <p>彼のオーラは<br>
+        刀のように鋭く、まっすぐに貫くエネルギー。</p>
+
+        <p>責任感が強く、誠実で、秩序を重んじる魂です。</p>
+
+        <p>彼の魂の性質を視ると、立場を守ることを何より大切にし、<br>
+        筋を通して信頼され、責任を果たすことを重んじる性質が強くあります。</p>
+    </div>
+
+    <p>だから、「患者と医師」という立場に縛られて、<br>
+    本当の気持ちを封じているのです。</p>
+
+    <p>彼にも、欠けているオーラがあります。</p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">彼の今のオーラバランス</div>
+        <canvas id="auraChartPartner"></canvas>
+    </div>
+
+    <p>火のオーラが弱いため、情熱を表に出す力が弱く、<br>
+    気持ちがあっても表現できず、「立場」で自分を抑え込んでしまうのです。</p>
+
+    <p>そして、千恵様が感じた<br>
+    「彼の表情が柔らかくなっていった」という変化。</p>
+
+    <p>これは、気のせいではないです。</p>
+
+    <p>彼の金のオーラは、最初は硬く閉じています。</p>
+
+    <p>でも、信頼できる相手に対しては少しずつ柔らかくなっていく性質があり、<br>
+    表情が柔らかくなったということは、<br>
+    彼があなたを「信頼できる人」として認めた証拠です。</p>
+
+    <p>ただ、彼には時間が必要だったのです。</p>
+
+    <p>金のオーラの人は感情の変化を自分でも理解するのに時間がかかるため、<br>
+    あなたが退院する頃にはまだその変化を受け入れる準備ができておらず、<br>
+    手紙をもらってもどう返していいか分からなかったのです。</p>
+
+    <p>でも、あなたに対して何も感じていないわけやない。</p>
+
+    <p>表情が柔らかくなったのは、そういうこと。</p>
+
+    <p>今の彼は安定した時期にいて、<br>
+    医師としての立場が確立している時期です。</p>
+
+    <p>でも、だからこそその立場を崩すことを恐れており、<br>
+    変化を嫌い、個人的な感情を出せない状態にいます。</p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">火のオーラを補った後</div>
+        <canvas id="auraChartPartnerFixed"></canvas>
+    </div>
+
+    <div class="aura-result-box">
+        <p class="aura-result-title">でも、火のオーラを補うと…</p>
+        <p>情熱を表に出す力が芽生えて、<br>
+        気持ちを素直に表現できるようになる。<br>
+        「立場」だけでなく「想い」も大切にできるようになり、<br>
+        <strong>彼の心が、少しずつ動き始める。</strong></p>
+    </div>
+
+    <p>でも、木のオーラを整えたあなたは彼の目に全く違う印象で映るようになり、<br>
+    一歩踏み出す勇気を持って柔軟に対応できるあなたの姿が、<br>
+    彼の心を動かしていきます。</p>
+
+    <h2>🔮 彼の心を動かす道筋</h2>
+
+    <p>ここからは、<br>
+    彼の心を動かすための具体的な言葉と行動をお伝えします。</p>
+
+    <p>まず、いつ連絡すべきか。</p>
+
+    <p><strong>それは2026年6月です。</strong></p>
+
+    <p>この月、あなたに足りない木のオーラが巡って<br>
+    「もう一度、会いたい」という勇気が自然と湧いてくる時期で、<br>
+    彼も火のオーラを受け取っていつもの硬さが少し柔らかくなる時期です。</p>
+
+    <p>最初の一言はこうです。</p>
+
+    <div class="magic-word-box">「先生、以前お世話になった杉村です。
+あの時は本当にありがとうございました。
+おかげさまで元気に過ごしています。」</div>
+
+    <p>なぜこの言葉なのか。</p>
+
+    <p>彼は責任感が強い性質です。</p>
+
+    <p>「患者さんが元気になった」という報告は彼にとって嬉しい言葉で、<br>
+    立場を崩さずに安心感を与えることができ、<br>
+    過去を蒸し返すのではなく前向きな報告から入ることで、<br>
+    彼も返事がしやすくなります。</p>
+
+    <p>もう一つ。</p>
+
+    <div class="magic-word-box">「入院中、先生と話せた時間が短くて、
+もっと聞きたいことがたくさんあったんです。
+もし差し支えなければ、お時間いただけませんか。」</div>
+
+    <p>なぜこの言葉なのか。</p>
+
+    <p>「もっと聞きたいことがあった」という正直な気持ちを伝えることで、<br>
+    彼の性質上「教える」「伝える」ことには応えやすく、<br>
+    プレッシャーではなく純粋な関心として受け取ってもらえます。</p>
+
+    <p>もう一つ。</p>
+
+    <div class="magic-word-box">「もし可能であれば、
+一度お礼をさせてください。
+お忙しいと思いますが、お茶だけでも。」</div>
+
+    <p>「お礼」という名目なら彼も受け入れやすく、<br>
+    「可能であれば」という柔らかい表現でプレッシャーを与えずに、<br>
+    あなたの土のオーラ（柔らかさ）が伝わる言葉です。</p>
+
+    <h2>🔮会った時の接し方で大切なこと</h2>
+
+    <p>笑顔で自然体でいてください。</p>
+
+    <p>あなたの魂には人を楽しませる力があるので、<br>
+    その力を発揮して彼の緊張をほぐし、<br>
+    彼の話をよく聞いて共感することで、<br>
+    あなたの包容力が彼を安心させます。</p>
+
+    <p>そして感謝を伝えて彼を立てることも意識してください。</p>
+
+    <p>責任感の強い彼は「貢献を認められる」ことで心が動きます。</p>
+
+    <h2>🔮絶対に言ってはいけない言葉</h2>
+
+    <p>「なんで返事くれなかったんですか？」</p>
+
+    <p>これは責める言葉に聞こえてしまい、<br>
+    理性的な彼は責められると硬直してしまうので、<br>
+    過去を蒸し返さないこと。</p>
+
+    <p>「私のこと、どう思ってますか？」</p>
+
+    <p>これは答えにくい質問で彼を追い詰めてしまい、<br>
+    慎重な彼は引いてしまいます。</p>
+
+    <p>「患者じゃないから、もう大丈夫ですよね？」</p>
+
+    <p>これは彼の大切にしている「立場」を軽視する言葉で、<br>
+    逆効果です。</p>
+
+    <p>代わりに、こう言ってください。</p>
+
+    <p>「先生のおかげで、私、変われました。」</p>
+
+    <p>彼の貢献を認める言葉で、<br>
+    責任感の強い彼の心に響きます。</p>
+
+    <p>「先生と話していると、安心します。」</p>
+
+    <p>あなたの土のオーラ（安心感）を伝えて、<br>
+    彼の存在価値を認める言葉です。</p>
+
+    <p>「また、お話聞かせてください。」</p>
+
+    <p>プレッシャーをかけずに継続を示唆して、<br>
+    彼が「また会ってもいい」と思える言葉です。</p>
+
+    <p>ただし、一つだけ知っておいてほしいことがあります。</p>
+
+    <p>これらの言葉や行動は、<br>
+    あなたのオーラが整った状態で初めて本来の力を発揮します。</p>
+
+    <p>今のまま木のオーラが欠けた状態で動くと、<br>
+    言葉が上滑りしてしまったりタイミングを逃してしまう可能性があるので、<br>
+    まずはオーラを整えることが全ての土台になります。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <p>あなたの運命の転換期についてお伝えします。</p>
+
+    <p>今、あなたは内面を見つめる時期に入っています。</p>
+
+    <p>土のオーラが強く巡る時期です。</p>
+
+    <p>さらに、<strong>2026年は火のオーラが強い年。</strong></p>
+
+    <p>火は土を温めて生む力を強めてくれるので、<br>
+    あなたの内に秘めていたもの（土）が<br>
+    火のオーラによって表に出る時期なんです。</p>
+
+    <p>「もう一度、行動してみよう」そう思えるのは、<br>
+    この火のオーラが巡っているからで、<br>
+    <strong>今年は決断と行動の年です。</strong></p>
+
+    <p>そして、あなたと彼、<br>
+    <strong>二人の運命が最も近づく時期、2026年6月。</strong></p>
+
+    <p>この月、あなたには木のオーラが巡って<br>
+    「もう一度、会いたい」という勇気が自然と湧いてきて、<br>
+    彼には火のオーラが巡っていつもの硬さが少しだけ溶けて柔らかくなる時期です。</p>
+
+    <p>二人のエネルギーが重なり合う月で、<br>
+    自然な再会のきっかけが訪れます。</p>
+
+    <p>これから半年の流れを、詳しくお伝えしますね。</p>
+
+    <h3>🔮2026年5月-準備の月。</h3>
+
+    <p>6月に向けてオーラを整える時期です。</p>
+
+    <p>感情が流れやすくなるので自分の気持ちを整理してください。</p>
+
+    <p>火のオーラで少しずつ決断する力が湧いてくるので、<br>
+    焦らず6月に向けて心を整えていきましょう。</p>
+
+    <h3>🔮2026年6月</h3>
+
+    <p><strong>これが最も大切な月です。</strong></p>
+
+    <p>この月、あなたには木と火のオーラが巡り、<br>
+    決断する力が最高潮に達します。</p>
+
+    <p><strong>二人の運命が最も近づく月です。</strong></p>
+
+    <p>木のオーラが巡ることで「もう一度、連絡してみよう」という勇気が自然と湧いてきて、<br>
+    火のオーラで「今、動かなきゃ」という決断力も高まり、<br>
+    柔軟に対応できるようになって新しい道が見えてきます。</p>
+
+    <h3>🔮この月に起こること</h3>
+
+    <p>彼のことを思い出すきっかけが増えていきます。</p>
+
+    <p>SNS、共通の知人、偶然の出来事など、<br>
+    「連絡してみようかな」と自然に思える日が来て、<br>
+    彼からの反応が良くなったり会える可能性が高まります。</p>
+
+    <p>そして自分に自信が湧いてきて、<br>
+    「私、変われてる」と実感できるようになります。</p>
+
+    <p>この月にやるべきこと。</p>
+
+    <p><strong>6月中旬までに彼に連絡して、<br>
+    「以前お世話になった杉村です。おかげさまで元気に過ごしています」という報告から始めてください。</strong></p>
+
+    <p>もし反応が良ければ「お礼をさせてください」と提案し、<br>
+    会えた場合は彼の話をよく聞いて共感し、感謝を伝えましょう。</p>
+
+    <p>やってはいけないこと。</p>
+
+    <p>焦って気持ちをぶつけすぎると慎重な彼は引いてしまいます。</p>
+
+    <p>ネガティブな言葉も使わないようにして、<br>
+    「忙しいですよね...」そういう言葉は避けてください。</p>
+
+    <p><strong>2026年7月</strong>は引き続き木のオーラが巡る月で、<br>
+    6月に動き出した流れを継続していきます。</p>
+
+    <p>土のオーラも巡るのであなたの本来の魅力（包容力）が発揮され、<br>
+    6月の接触が続いたり次のステップへ進んだりして、<br>
+    彼との距離が少しずつ縮まり、<br>
+    「お茶に行けた」「会えた」という変化が起こる可能性があります。</p>
+
+    <p><strong>2026年8月、9月</strong>は火と金のオーラが巡る月で、<br>
+    火のオーラで決断力が高まり、<br>
+    金のオーラが巡るので彼との相性が良い時期です。</p>
+
+    <p>会えた場合は彼の心が動きやすいですが、<br>
+    火が強すぎるので焦りに注意して、<br>
+    冷静さを保ってください。</p>
+
+    <p><strong>2026年10月</strong>は土のオーラが強い月で、<br>
+    あなたの本来の魅力が最大限に発揮されて、<br>
+    包容力や安定感が伝わり、<br>
+    ゆっくり関係を育てる時期です。</p>
+
+    <p>そして、1年後の未来。</p>
+
+    <p>2027年の今頃、あなたと彼の関係は今とは全く違う場所にいて、<br>
+    プライベートでも自然に会える関係になり、<br>
+    彼があなたに個人的な話をするようになっている、<br>
+    その未来が視えています。</p>
+
+    <p>大切なこと。</p>
+
+    <p><strong>6月が最大のチャンスです。</strong></p>
+
+    <p>あなたと彼の運命が最も近づくこの瞬間を逃さないために、<br>
+    オーラを整えた状態で6月を迎えてください。</p>
+
+    <p>木のオーラが欠けたまま6月を迎えると<br>
+    せっかくの転機を素通りしてしまう可能性があるので、<br>
+    <strong>6月までにオーラを整えておくことが、<br>
+    この半年で最も大切なことです。</strong></p>
+
+    <h2>🔮 今からできること</h2>
+
+    <p>まず、今日からできることをお伝えしますね。</p>
+
+    <p>木のオーラを補う方法です。</p>
+
+    <p>・緑色の服を身につける。トップス、スカーフ、アクセサリー。<br>
+    ・植物を育てる。観葉植物を部屋に置いて、毎日水やりをする。<br>
+    ・森林浴をする、公園を歩く。週1回以上。<br>
+    ・野菜・果物を積極的に食べる。サラダ、フルーツを毎食。<br>
+    ・朝、木々の多い場所を散歩する。15分以上。</p>
+
+    <p>そして、日常の中でこう意識してください。</p>
+
+    <p>「私、変われてる」と自分を認める言葉を心の中で言い、<br>
+    新しいことに挑戦する意識を持ってください（小さな一歩でOK）。</p>
+
+    <p>その日の「できたこと」を3つ書き出して成長を実感し、<br>
+    「明日も一歩、前に進める」と自分に言い聞かせてください。</p>
+
+    <p>気をつけてほしいこと。</p>
+
+    <p>・「どうせ無理」と諦めないでください。<br>
+    　木のオーラが欠けていると、諦めやすくなります。<br>
+    　でも、それはあなたの本質ではありません。</p>
+
+    <p>・焦らないでください。6月まで、<br>
+    　じっくり整える時間があります。</p>
+
+    <p>・自分を責めないでください。<br>
+    　「動けない自分」を責める必要はない。<br>
+    　木のオーラが欠けているから、動けないだけなんです。</p>
+
+    <p>正直にお伝えしたいこと。</p>
+
+    <p>ここまでお伝えした調整法で少しずつオーラは整い始めますが、<br>
+    正直に言うと、木のオーラが完全に欠けている場合、<br>
+    日常の調整だけでは補いきれない部分があります。</p>
+
+    <p>水を飲んだり色を身につけたりすることは<br>
+    「維持する力」にはなりますが、<br>
+    ゼロから補う力としてはどうしても限界があります。</p>
+
+    <p>もし本気でオーラを整えたいなら、<br>
+    もう一つお伝えしたい方法があります。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>ここまでお伝えしてきた通り、<br>
+    千恵様のオーラには木のオーラが欠けていて、<br>
+    これが今の状況の根っこにある原因であり、<br>
+    6月のチャンスを掴むために最も整えるべき部分です。</p>
+
+    <p>木のオーラが整うと、こう変わります。</p>
+
+    <p>・「もう一度、連絡してみよう」と自然に思える。勇気が湧いてくる。<br>
+    ・彼に会った時、自信を持って笑える。緊張しなくなる。<br>
+    ・柔軟に対応できるようになり、「患者と医師」という枠に縛られなくなる。<br>
+    ・彼があなたを見る目が変わる。「変わったな」と思わせることができる。<br>
+    ・6月の転機を、しっかり掴める。</p>
+
+    <p>日常の調整法に加えて本格的にオーラを補うために、<br>
+    パワーストーンをお守りとして取り入れる方法があります。</p>
+
+    <p>千恵様のオーラに合わせて三つのプランをご用意しました。</p>
+
+    <div class="important-box">
+        <p><strong>松プラン: 6月の転機に本気で向き合いたい方向け</strong><br>
+        木のオーラを本格的に補う石の組み合わせ。</p>
+
+        <p>グリーンアベンチュリン、ペリドット、グリーンアゲート。<br>
+        さらに、決断力を高める火のオーラの石、カーネリアン。</p>
+
+        <p>・彼に「元気に過ごしています」と連絡する時、迷わずに送信ボタンを押せる<br>
+        ・「お茶に誘ってもいいかな」と思った瞬間に、素直に行動できる<br>
+        ・彼の前で自然な笑顔が出せる、緊張せずに会話を楽しめる<br>
+        ・彼が「また会いたい」と思える、あなたの本来の魅力が発揮される<br>
+        ・<strong>6月の転機を逃さず、しっかり掴める</strong></p>
+
+        <p><strong>竹プラン: 心を安定させたい方向け</strong><br>
+        木のオーラを補う石の組み合わせ。グリーンアベンチュリン、ペリドット。</p>
+
+        <p>・「もう一度会いたい」と思った時、素直に連絡できる勇気が湧く<br>
+        ・彼の反応を柔軟に受け止められる、焦らずに対応できる</p>
+
+        <p><strong>梅プラン: まずは不安を和らげたい方向け</strong><br>
+        最も必要な木のオーラの石を1つ。グリーンアベンチュリン。</p>
+
+        <p>・「先生、お久しぶりです」と連絡する勇気が湧く</p>
+
+        <p>多くの方が松プランを選ばれています。</p>
+
+        <p>6月に向けて今から整え始めることで、<br>
+        最も効果的なタイミングでオーラが整います。</p>
+
+        <p>もし興味がありましたら「詳細希望」とだけ送っていただければ、<br>
+        千恵様専用の石の組み合わせをお伝えしますね。</p>
+    </div>
+
+    <h2>最後に</h2>
+
+    <p>千恵様、今、二つの道があります。</p>
+
+    <p>一つは、このまま「返事が来ないから諦めよう」と距離を置く道で、<br>
+    もう一つは、オーラを整えて6月にもう一度動く道です。</p>
+
+    <p>どちらを選ぶかは千恵様が決めることです。</p>
+
+    <p>ただ、私には視えてます。</p>
+
+    <p>あなたの木のオーラが整って本来の輝きを取り戻したとき、<br>
+    彼があなたの目を見つめながら<br>
+    「ちゃんと話したい」そう言っている場面が。</p>
+
+    <p>その未来への道、私が照らしますね。</p>
+
+    <p>いつでもサポートさせていただきます。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+<script>
+// チャート共通設定
+const chartOptions = {
+    responsive: true,
+    plugins: {
+        legend: { display: false }
+    },
+    scales: {
+        r: {
+            beginAtZero: true,
+            max: 3,
+            min: 0,
+            ticks: {
+                stepSize: 1,
+                display: false
+            },
+            pointLabels: {
+                font: { size: 14, family: 'Noto Serif JP' },
+                color: '#2d2d2d'
+            },
+            grid: { color: 'rgba(201, 160, 93, 0.3)' },
+            angleLines: { color: 'rgba(201, 160, 93, 0.3)' }
+        }
+    }
+};
+
+// 千恵様の現状のオーラチャート（木0, 火1, 土2, 金2, 水1）
+new Chart(document.getElementById('auraChartYou'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [{
+            data: [0, 1, 2, 2, 1],
+            backgroundColor: 'rgba(201, 160, 93, 0.3)',
+            borderColor: '#c9a05d',
+            borderWidth: 2,
+            pointBackgroundColor: '#c9a05d',
+            pointBorderColor: '#fff',
+            pointRadius: 5
+        }]
+    },
+    options: chartOptions
+});
+
+// 千恵様の補った後のチャート（木を補う）
+new Chart(document.getElementById('auraChartYouFixed'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [
+            {
+                // 補う部分（緑）※先に描画
+                data: [2, 1, 0, 0, 1],
+                backgroundColor: 'rgba(100, 180, 100, 0.4)',
+                borderColor: '#5a9a5a',
+                borderWidth: 2,
+                pointBackgroundColor: '#5a9a5a',
+                pointBorderColor: '#fff',
+                pointRadius: 6
+            },
+            {
+                // 元のオーラ（ゴールド）※後に描画
+                data: [0, 1, 2, 2, 1],
+                backgroundColor: 'rgba(201, 160, 93, 0.3)',
+                borderColor: '#c9a05d',
+                borderWidth: 2,
+                pointBackgroundColor: '#c9a05d',
+                pointBorderColor: '#fff',
+                pointRadius: 5
+            }
+        ]
+    },
+    options: chartOptions
+});
+
+// 彼の現状のオーラチャート（木1, 火0, 土1, 金2, 水1）
+new Chart(document.getElementById('auraChartPartner'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [{
+            data: [1, 0, 1, 2, 1],
+            backgroundColor: 'rgba(139, 111, 156, 0.3)',
+            borderColor: '#8b6f9c',
+            borderWidth: 2,
+            pointBackgroundColor: '#8b6f9c',
+            pointBorderColor: '#fff',
+            pointRadius: 5
+        }]
+    },
+    options: chartOptions
+});
+
+// 彼の補った後のチャート（火を補う）
+new Chart(document.getElementById('auraChartPartnerFixed'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [
+            {
+                // 補う部分（緑）※先に描画
+                data: [1, 2, 1, 0, 0],
+                backgroundColor: 'rgba(100, 180, 100, 0.4)',
+                borderColor: '#5a9a5a',
+                borderWidth: 2,
+                pointBackgroundColor: '#5a9a5a',
+                pointBorderColor: '#fff',
+                pointRadius: 6
+            },
+            {
+                // 元のオーラ（紫）※後に描画
+                data: [1, 0, 1, 2, 1],
+                backgroundColor: 'rgba(139, 111, 156, 0.3)',
+                borderColor: '#8b6f9c',
+                borderWidth: 2,
+                pointBackgroundColor: '#8b6f9c',
+                pointBorderColor: '#fff',
+                pointRadius: 5
+            }
+        ]
+    },
+    options: chartOptions
+});
+</script>
+
+</body>
+</html>
