@@ -69,6 +69,7 @@ body {
     line-height: 1.8;
     padding: 20px;
     min-height: 100vh;
+    font-size: 17px;  /* PC表示の基本フォントサイズ */
 }
 
 .container {
@@ -179,7 +180,7 @@ ul li {
     background: rgba(30, 30, 70, 0.5);
     border: 1px solid rgba(168, 184, 255, 0.2);
     border-radius: 15px;
-    padding: 40px;
+    padding: 40px 25px;  /* 左右25pxで横幅を確保 */
     margin: 40px 0;
     text-align: center;
     box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
@@ -241,7 +242,7 @@ ul li {
 .closing {
     text-align: center;
     margin: 40px 0;
-    padding: 30px;
+    padding: 30px 15px;  /* 左右15pxで文字が入るように */
     background: rgba(60, 60, 120, 0.2);
     border-radius: 15px;
     font-size: 1.1em;
@@ -257,7 +258,7 @@ ul li {
 
 @media (max-width: 768px) {
     body {
-        font-size: 14px;
+        font-size: 15px;  /* スマホ表示の基本フォントサイズ */
         padding: 10px;  /* 左右の余白を狭くして表示幅を確保 */
     }
 
@@ -336,31 +337,32 @@ ul li {
 
 ```html
 <div class="oracle-message">
-    <p style="margin-bottom: 30px;">【名前】様、</p>
+    <p style="margin-bottom: 30px;">りーママ様、</p>
     <p style="margin-bottom: 30px;">視えました。</p>
-    <p class="guardian" style="margin-bottom: 30px;">あなたを守っているのは、<br>【守護神名】。</p>
-    <p>【守護神の説明】</p>
-    <img src="../鑑定画像/【守護神名】.png" alt="【守護神名】" class="guardian-image">
+    <p class="guardian" style="margin-bottom: 30px;">あなたを守っているのは、<br>大山祇神(おおやまつみのかみ)。</p>
+    <p>山を司る偉大な神様です。</p>
+    <img src="../鑑定画像/大山祇神.png" alt="大山祇神" class="guardian-image">
 </div>
 ```
 
 **重要**:
 - 画像は相対パス `../鑑定画像/守護神名.png` で参照
 - 画像ファイル名は守護神名と完全一致させる
+- 守護神名と読み仮名は1行にまとめる（20文字以内）
 
 ### 3. オーラ・本質セクション
 
 ```html
 <div class="section">
-    <p style="margin-bottom: 30px;">あなたのオーラは、<br>【オーラの色・説明】。<br>【特徴】。</p>
-    <p style="margin-bottom: 30px;">【守護神名】に守られる人は、<br>【特徴1】、<br>【特徴2】。</p>
-    <p style="margin-bottom: 30px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">【本質の説明】<br>それがあなたの本質です。</p>
-    <p style="margin-bottom: 30px;">これほど強い守護神に守られているのに、<br>今、流れが悪くなっている…</p>
+    <p style="margin-bottom: 30px;">あなたのオーラは、深い森の緑。<br>力強く、どっしりとした生命力を<br>持っています。</p>
+    <p style="margin-bottom: 30px;">大山祇神に守られる人は、<br>どっしりと構えた大きな器を持ち、<br>周囲を守る力がある頼られる存在。</p>
+    <p style="margin-bottom: 30px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">家族を包み込む、揺るがない愛。<br>それがあなたの本質です。</p>
+    <p style="margin-bottom: 30px;">これほど強い守護神に<br>守られているのに、今、<br>流れが悪くなっている…</p>
     <p>その原因をお伝えします。</p>
 </div>
 ```
 
-**重要**: 本質の部分は必ず黄色強調にする
+**重要**: 本質の部分は必ず黄色強調にする、20文字ルールに従う
 
 ### 4. お悩みセクション
 
@@ -369,68 +371,70 @@ ul li {
 <div class="section">
     <p style="margin-bottom: 30px;">【お悩みの内容】</p>
     <p style="margin-bottom: 30px;">【現状の説明】</p>
-    <p style="margin-bottom: 30px;">この問題は、<br>実はあなたが悪いわけではありません。</p>
-    <p style="font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">オーラを整え、<br>守護神からのエネルギーを正しく受け取れば、<br>【変化する内容】、必ず変わります。</p>
+    <p style="margin-bottom: 30px;">この問題は、実はあなたが<br>悪いわけではありません。</p>
+    <p style="font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">オーラを整え、守護神からのエネルギーを<br>正しく受け取れば、お金の流れも、<br>お子さんとの関係も、精神状態も、<br>必ず変わります。</p>
 </div>
 ```
 
-**重要**: 最後の段落は必ず白強調にする
+**重要**:
+- 最後の段落は必ず白強調にする
+- 「オーラを整え〜」の部分は20文字ルールに従って改行（細切れにしない）
 
 ### 5. なぜ今、悪いものを引き寄せているのか
 
 ```html
-<h2 class="emoji-header">⛩️なぜ今、悪いものを引き寄せているのか</h2>
+<h2 class="emoji-header">⛩️なぜ今、<br>　悪いものを引き寄せているのか</h2>
 <div class="section">
-    <p style="margin-bottom: 20px;">【時期の説明】<br>こんなことがありませんでしたか?</p>
+    <p style="margin-bottom: 20px;">去年の秋。<br>こんなことがありませんでしたか?</p>
     <ul style="margin-bottom: 30px;">
-        <li>【項目1】</li>
-        <li>【項目2】</li>
-        <li>【項目3】</li>
+        <li>頑張っているのに、<br>報われない気がして<br>焦りが強くなった</li>
+        <li>周囲に頼れず、<br>一人で抱え込んで孤独を感じた</li>
+        <li>前向きになれず、<br>心から笑えない日が続いた</li>
     </ul>
-    <p style="margin-bottom: 30px;">それらは、守護神の力が弱まり、<br>あなたを守るオーラが少なくなってしまったことで起こっているのです。</p>
-    <p style="margin-bottom: 30px;">【本来の力の説明】</p>
-    <p style="margin-bottom: 30px;">【これまでの頑張りの説明】</p>
-    <p style="margin-bottom: 30px;">でも今、守護の力が弱くなってきている…</p>
-    <p>だから、【失われたもの1】、<br>【失われたもの2】、<br>今は失われてしまっているのです。</p>
+    <p style="margin-bottom: 30px;">それらは、守護神の力が弱まり、<br>あなたを守るオーラが<br>少なくなってしまったことで<br>起こっているのです。</p>
+    <p style="margin-bottom: 30px;">あなたは本来、<br>山のような包容力を持つ人。<br>家族を包み込み、<br>安心させる力がある。</p>
+    <p style="margin-bottom: 30px;">これまで、あなたは家族のために<br>懸命に頑張ってきた。<br>母として、妻として、<br>しっかりと守ろうとしてきた。</p>
+    <p style="margin-bottom: 30px;">でも今、守護の力が<br>弱くなってきている…</p>
+    <p>だから、心に余裕を持つこともできず、<br>明るく笑うこともできず、<br>お金の流れも<br>滞ってしまっているのです。</p>
 </div>
 ```
 
-**重要**: リストは自動的に黄色太字になる
+**重要**: リストは自動的に黄色太字になる、20文字ルールに従う
 
 ### 6. 二つの道
 
 ```html
 <h2 class="emoji-header">⛩️二つの道</h2>
 <div class="section">
-    <p style="margin-bottom: 30px;">このまま、オーラが乱れたままだと、<br>【悪い未来1】<br>【悪い未来2】</p>
+    <p style="margin-bottom: 30px;">このまま、オーラが乱れたままだと、<br>お金の不安は消えず、<br>家族の雰囲気も暗くなり、<br>精神的に限界を迎えてしまう。<br>誰も笑えない日々が続いてしまう。</p>
     <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">でも、ここで流れを変えたら。</p>
-    <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">オーラが整い、守護の力を受け取れるようになり、<br>【良い未来1】<br>【良い未来2】</p>
-    <p>どちらの道を歩むかは、<br>まだ今なら、あなた自身で選べます。</p>
+    <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">オーラが整い、守護の力を<br>受け取れるようになり、<br>お金の流れが良くなり、<br>家族みんなが笑顔で食卓を囲む。<br>あなたが心から安心して、<br>穏やかに過ごせる日々が訪れる。</p>
+    <p>どちらの道を歩むかは、まだ今なら、<br>あなた自身で選べます。</p>
 </div>
 ```
 
-**重要**: 「でも、ここで流れを変えたら。」と良い未来の部分は白強調にする
+**重要**: 「でも、ここで流れを変えたら。」と良い未来の部分は白強調にする、20文字ルールに従う
 
 ### 7. 守護の方法
 
 ```html
 <h2 class="emoji-header">⛩️守護の方法</h2>
 <div class="section">
-    <p style="margin-bottom: 30px;">ここまでの鑑定で、<br>あなたの守護神とオーラの状態と、<br>なぜ今のような状況なのかをお伝えしました。</p>
+    <p style="margin-bottom: 30px;">ここまでの鑑定で、<br>あなたの守護神とオーラの状態と、<br>なぜ今のような状況なのかを<br>お伝えしました。</p>
     <p style="margin-bottom: 30px;">でも、一番大事なのはここから、</p>
-    <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">「じゃあ、具体的にどうすれば良くなるのか」<br>「理想の未来を手に入れるためには、何をすればいいのか」<br>ということですよね。</p>
+    <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">「じゃあ、具体的にどうすれば<br>良くなるのか」<br>「理想の未来を手に入れるためには、<br>何をすればいいのか」<br>ということですよね。</p>
     <p style="margin-bottom: 30px;"><span style="font-size: 1.4em; font-weight: bold; color: #c8d0ff;">【本式守護鑑定】</span>では、<br>あなたが実際に守護を受け取るための<br>"具体的な方法"</p>
-    <p>そして、<br>未来が明るく広がるタイミングを<br>お伝えいたします。</p>
+    <p>そして、未来が明るく広がるタイミングを<br>お伝えいたします。</p>
 </div>
 ```
 
-**重要**: 質問部分は白強調、【本式守護鑑定】は大きく強調
+**重要**: 質問部分は白強調、【本式守護鑑定】は大きく強調、20文字ルールに従う
 
 ### 8. 本式守護鑑定でお伝えすること（4色ボックス）
 
 ```html
 <div style="padding: 40px 0; margin: 40px 0;">
-    <h2 style="text-align: center; color: #c8d0ff; font-size: 1.5em; margin-bottom: 50px; border: none; text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);">🔮 本式守護鑑定でお伝えすること</h2>
+    <h2 style="text-align: center; color: #c8d0ff; font-size: 1.3em; margin-bottom: 50px; border: none; text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);">🔮 本式守護鑑定でお伝えすること</h2>
 
     <div style="margin: 30px 0; text-align: center;">
         <!-- 項目1: 黄色背景 -->
@@ -446,7 +450,7 @@ ul li {
         <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
             <div style="position: relative; z-index: 1;">
-                <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 守護神から守護を受け取る方法</h3>
+                <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 守護神から守護を<br>受け取る方法</h3>
                 <p>【説明文 - テキストから抽出】</p>
             </div>
         </div>
@@ -455,7 +459,7 @@ ul li {
         <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
             <div style="position: relative; z-index: 1;">
-                <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 守護の力を手に入れたあなたの未来</h3>
+                <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 守護の力を手に入れた<br>あなたの未来</h3>
                 <p>【説明文 - テキストから抽出】</p>
             </div>
         </div>
@@ -464,7 +468,7 @@ ul li {
         <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 122, 255, 0.7); opacity: 0.3;"></div>
             <div style="position: relative; z-index: 1;">
-                <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 私の守護の力を、あなたに</h3>
+                <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 私の守護の力をあなたに</h3>
                 <p>【説明文 - テキストから抽出】</p>
             </div>
         </div>
@@ -473,6 +477,8 @@ ul li {
     <p style="margin-top: 30px; text-align: center;">このまま方法を知らずに過ごすか、<br>守護を受け取る道を選ぶか。<br>決めるのは、あなたです。</p>
 </div>
 ```
+
+**注意**: 4色ボックスの各タイトルには改行が入ることがあります（20文字ルールに従う）
 
 **重要**:
 - 4つの項目は必ず黄・赤・緑・青の順
@@ -485,8 +491,8 @@ ul li {
 <div class="cta">
     <h2>【運命が動く24時間】</h2>
 
-    <p style="margin-bottom: 30px;">今、あなたの守護神、守護霊は、<br>あなたがこの鑑定を読んだことに気づいています。</p>
-    <p style="margin-bottom: 30px; font-size: 1.15em; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">「この人は、守護を求めている」<br>「力を貸してあげたい」<br>「運命を動かす手助けをしてあげたい」</p>
+    <p style="margin-bottom: 30px;">今、あなたの守護神、守護霊は、<br>あなたがこの鑑定を読んだことに<br>気づいています。</p>
+    <p style="margin-bottom: 30px; font-size: 1.15em; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">「この人は、守護を求めている」<br>「力を貸してあげたい」<br>「運命を動かす手助けを<br>してあげたい」</p>
     <p style="margin-bottom: 30px;">でも、この流れは長く続きません。</p>
     <p style="margin-bottom: 30px;">何もしなければ、<br>今の延長線上の未来が待っています。</p>
     <p style="margin-bottom: 30px; font-weight: bold;">ただ、今から24時間。<br>この間に決断すれば、<br>運命はスムーズに好転し始めます。</p>
@@ -500,7 +506,7 @@ ul li {
 
     <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/69eb763d23b5d0e88f9854e9" class="cta-button" target="_blank">本式守護鑑定を受ける▼</a>
 
-    <p style="margin-top: 30px;">お申し込み後、<br>購入時のお名前をお知らせください。<br>1日以内に、あなただけの鑑定書をお届けします。</p>
+    <p style="margin-top: 30px;">お申し込み後、<br>購入時のお名前をお知らせください。<br>1日以内に、あなただけの<br>鑑定書をお届けします。</p>
 </div>
 ```
 
@@ -509,14 +515,15 @@ ul li {
 - 「ただ、今から24時間」は太字のみ
 - 価格は`.special-price`でゴールド
 - 限定バッジは`.limited-badge`で赤
+- 20文字ルールに従って改行（細切れにしない）
 
 ### 10. クロージングセクション
 
 ```html
 <div class="closing">
     <p style="margin-bottom: 30px;">私には視えています。</p>
-    <p style="margin-bottom: 30px;">あなたのオーラが整い、<br>守護神からのエネルギーを受け取ったとき。</p>
-    <p style="margin-bottom: 30px; font-weight: bold;">【ビジョン1】<br>【ビジョン2】<br>【ビジョン3】</p>
+    <p style="margin-bottom: 30px;">あなたのオーラが整い、<br>守護神からのエネルギーを<br>受け取ったとき。</p>
+    <p style="margin-bottom: 30px; font-weight: bold;">家族みんなが笑顔で食卓を囲み、<br>温かな会話が弾んでいる場面が。<br>お金の不安から解放され、<br>あなたが穏やかに微笑んでいる姿が。<br>お子さんたちが安心した表情で、<br>あなたに甘えている未来が。</p>
     <p style="margin-bottom: 40px;">その未来へ、私がお連れしますね。</p>
 
     <div class="signature">深雪</div>
@@ -529,6 +536,7 @@ ul li {
 
 **重要**:
 - ビジョン部分は太字
+- ビジョンは20文字ルールに従って改行
 - 署名は必ず「深雪」（テキストが深幸でも変更する）
 
 ---
@@ -595,11 +603,22 @@ ul li {
 - [ ] 守護神名が正しく設定されている
 - [ ] 画像パスが`../鑑定画像/守護神名.png`になっている
 - [ ] oracle-message::beforeが`content: ''`になっている（✨なし）
+- [ ] bodyに`font-size: 17px`が設定されている（PC表示）
+- [ ] スマホ用メディアクエリで`font-size: 15px`が設定されている
+- [ ] ctaのpaddingが`40px 25px`になっている
+- [ ] closingのpaddingが`30px 15px`になっている
+- [ ] スマホ用メディアクエリでctaのpaddingが`40px 15px`になっている
+- [ ] スマホ用メディアクエリでclosingのpaddingが`30px 10px`になっている
+- [ ] 「本式守護鑑定でお伝えすること」のfont-sizeが`1.3em`になっている
+- [ ] 「⛩️なぜ今、<br>　悪いものを引き寄せているのか」に改行と全角スペースが入っている
 - [ ] 4つの項目が黄・赤・緑・青の順で配置されている
 - [ ] 4つの項目のmargin-bottomが0になっている（隙間なし）
+- [ ] 「守護神から守護を<br>受け取る方法」に改行が入っている
+- [ ] 「守護の力を手に入れた<br>あなたの未来」に改行が入っている
+- [ ] 「私の守護の力をあなたに」（、なし）になっている
 - [ ] STORES URLが`https://lnuwhrs3tncycy5pf0r3.stores.jp/items/69eb763d23b5d0e88f9854e9`になっている
 - [ ] 署名が「深雪」になっている（深幸→深雪に変更）
-- [ ] 改行が元のテキストと一致している
+- [ ] 改行が20文字ルールに従っている
 - [ ] 強調すべき箇所が正しく強調されている
 - [ ] リスト項目が`<ul><li>`で記述されている
 - [ ] 本質の部分が黄色強調になっている
@@ -694,7 +713,7 @@ ul li {
 ```css
 @media (max-width: 768px) {
     body {
-        font-size: 14px;
+        font-size: 15px;  /* スマホ表示の基本フォントサイズ */
         padding: 10px;  /* 重要: 左右の余白を10pxに */
     }
 
@@ -706,12 +725,24 @@ ul li {
     .section {
         padding: 15px 10px;  /* 重要: 左右10pxで1行の文字数を確保 */
     }
+
+    .cta {
+        padding: 40px 15px;  /* CTAカードも左右を狭く */
+    }
+
+    .closing {
+        padding: 30px 10px;  /* クロージングも左右を狭く */
+    }
 }
 ```
 
 **理由**: 左右の余白を最小限にすることで、スマホでも1行に約20文字表示できるようになり、`<br>`による意図的な改行が正しく機能します。
 
-#### 3. フォントサイズとレイアウトの最適化
+#### 3. フォントサイズの最適化
+
+**基本フォントサイズ**:
+- PC表示: `font-size: 17px` (bodyに設定)
+- スマホ表示: `font-size: 15px` (メディアクエリ内のbodyに設定)
 
 **解決策**: メディアクエリ内で全体的にフォントサイズを調整
 
@@ -719,6 +750,23 @@ ul li {
 @media (max-width: 768px) {
     h1 {
         font-size: 1.3em;  /* タイトルサイズ調整 */
+    }
+
+    h2 {
+        font-size: 1.1em;  /* 見出しサイズ調整 */
+    }
+
+    .emoji-header {
+        font-size: 1.3em;  /* 絵文字ヘッダーサイズ調整 */
+    }
+
+    .oracle-message p {
+        font-size: 1em;  /* オーラクルメッセージ調整 */
+    }
+
+    .guardian {
+        font-size: 1.1em;  /* 守護神名調整 */
+        padding: 15px;
     }
 
     .price {
@@ -744,14 +792,30 @@ ul li {
 
 新規作成時は以下を確認してください：
 
+**フォントサイズ:**
+- [ ] bodyに`font-size: 17px`が設定されている（PC表示）
+- [ ] スマホ用メディアクエリでbodyに`font-size: 15px`が設定されている
+- [ ] 「本式守護鑑定でお伝えすること」が`font-size: 1.3em`になっている
+
+**横幅・padding:**
 - [ ] `.special-price` に `white-space: nowrap` が含まれている
-- [ ] `@media (max-width: 768px)` にすべての調整が含まれている
-- [ ] **重要**: `body`, `.container`, `.oracle-message`, `.section` の左右paddingが10pxになっている
+- [ ] ctaのpaddingが`40px 25px`になっている（PC）
+- [ ] closingのpaddingが`30px 15px`になっている（PC）
+- [ ] **重要**: スマホ用メディアクエリで`body`, `.container`, `.oracle-message`, `.section`の左右paddingが10pxになっている
+- [ ] **重要**: スマホ用メディアクエリでctaのpaddingが`40px 15px`になっている
+- [ ] **重要**: スマホ用メディアクエリでclosingのpaddingが`30px 10px`になっている
+
+**改行ルール:**
 - [ ] **重要**: テキストの改行が20文字ルールに従っている
+- [ ] 無駄に細切れになっていない（20文字以内なら1行に）
+- [ ] 文節の途中で改行していない
+
+**表示確認:**
 - [ ] 実際のスマートフォンまたはブラウザのデベロッパーツールで表示確認済み
 - [ ] 価格が1行で表示される
 - [ ] 文章の改行が自然で、変な位置で自動改行されていない
 - [ ] ボタンが適切なサイズで表示される
+- [ ] CTAカードと閉じカードの文字が横幅に収まっている
 
 ### テスト方法
 
@@ -763,6 +827,36 @@ ul li {
 2. **実機テスト**
    - Cloudflare Pagesにデプロイ後、実際のスマートフォンで確認
    - 特に価格表示と文章の改行を重点的にチェック
+
+---
+
+## 重要なポイントまとめ
+
+### フォントサイズ
+- **PC**: `font-size: 17px` (bodyに設定)
+- **スマホ**: `font-size: 15px` (メディアクエリ内)
+- 本式守護鑑定のタイトル: `1.3em`（1.5emから変更）
+
+### 横幅・padding
+- **PC**:
+  - cta: `padding: 40px 25px`
+  - closing: `padding: 30px 15px`
+- **スマホ**:
+  - body, container, oracle-message, section: 左右`10px`
+  - cta: `padding: 40px 15px`
+  - closing: `padding: 30px 10px`
+
+### 改行ルール
+1. **20文字ルール**: 1行20文字以内を目安に改行
+2. **できるだけ長く**: 20文字以内なら1行にまとめる
+3. **改行位置**: 読点(、)、助詞の直後
+4. **文節の途中で改行しない**: 絶対禁止
+
+### 特殊な改行
+- 「⛩️なぜ今、<br>　悪いものを引き寄せているのか」← 2行目に全角スペース
+- 「守護神から守護を<br>受け取る方法」
+- 「守護の力を手に入れた<br>あなたの未来」
+- 「私の守護の力をあなたに」← 、なし
 
 ---
 
@@ -793,14 +887,14 @@ ul li {
 
 ### 具体例
 
-#### ❌ ダメな例: 無駄に細切れ
+#### ❌ ダメな例1: 無駄に細切れ
 
 ```html
 <p>お金のこと、<br>お子さんのこと、<br>精神状態。</p>
 ```
 - 「お金のこと、お子さんのこと、精神状態。」は20文字なので1行でOK
 
-#### ✅ 良い例: 20文字を基準に
+#### ✅ 良い例1: 20文字なら1行に
 
 ```html
 <p>お金のこと、お子さんのこと、精神状態。<br>全てが重なって、<br>心が押しつぶされそうになっている。</p>
@@ -809,20 +903,44 @@ ul li {
 - 2行目: 9文字 ← 短いが、次と繋げると29文字になるので分ける
 - 3行目: 19文字 ← 20文字以内
 
-#### ❌ ダメな例: 文節の途中で改行
+#### ❌ ダメな例2: 文節の途中で改行
 
 ```html
 <p>力強く、<br>どっしりとした<br>生命力を<br>持っています。</p>
 ```
 - 「どっしりとした」と「生命力を」は一緒にすべき
 
-#### ✅ 良い例: 自然な区切り
+#### ✅ 良い例2: 自然な区切り
 
 ```html
-<p>力強く、どっしりとした<br>生命力を持っています。</p>
+<p>力強く、どっしりとした生命力を<br>持っています。</p>
 ```
-- 1行目: 13文字
-- 2行目: 12文字
+- 1行目: 17文字
+- 2行目: 8文字
+
+#### ❌ ダメな例3: 細切れすぎる強調文
+
+```html
+<p style="font-weight: bold; color: #f0f0ff;">オーラを整え、<br>守護神からのエネルギーを<br>正しく受け取れば、<br>お金の流れも、<br>お子さんとの関係も、<br>精神状態も、<br>必ず変わります。</p>
+```
+- それぞれの行が8〜13文字で短すぎる
+
+#### ✅ 良い例3: できるだけ長く
+
+```html
+<p style="font-weight: bold; color: #f0f0ff;">オーラを整え、守護神からのエネルギーを<br>正しく受け取れば、お金の流れも、<br>お子さんとの関係も、精神状態も、<br>必ず変わります。</p>
+```
+- 1行目: 19文字
+- 2行目: 18文字
+- 3行目: 18文字
+- 4行目: 8文字
+
+#### ✅ 良い例4: 見出しの改行
+
+```html
+<h2 class="emoji-header">⛩️なぜ今、<br>　悪いものを引き寄せているのか</h2>
+```
+- 長い見出しは改行して、2行目に全角スペースでインデント
 
 ### AIに修正させる場合の指示
 
@@ -842,12 +960,55 @@ AIに改行を修正させる場合は、以下のように指示してくださ
 
 ### 処理フロー（プログラム的に考える場合）
 
-1. 文章を読み込む
-2. `<br>`タグを全て削除
-3. 文字数をカウント
-4. 20文字を超える場合:
-   - 最後の読点(、)の位置を探す
-   - なければ最後の助詞の位置を探す
-   - その直後に`<br>`を挿入
-5. 20文字以内の場合:
-   - そのまま1行として保持
+#### 手動で修正する場合
+
+1. **テキストをまず長く繋げる**
+   - 既存の`<br>`を全て削除
+   - 読点(、)や句点(。)で繋げて、できるだけ長い文章にする
+
+2. **文字数をカウント**
+   - 1行が20文字を超えているか確認
+   - 20文字以内なら次の文へ
+
+3. **20文字を超える場合、改行位置を探す**
+   - 優先順位1: 最後の読点(、)の直後
+   - 優先順位2: 最後の助詞(は、が、を、に、も、で、と)の直後
+   - 優先順位3: 接続詞の直後
+   - その位置に`<br>`を挿入
+
+4. **改行後、残りの文も同じようにチェック**
+   - 2行目以降も同様に20文字ルールを適用
+
+#### AIに指示する場合
+
+```
+以下のHTMLファイルの改行を修正してください。
+
+ルール:
+1. 1行を20文字以内に抑えること
+2. 改行位置は必ず以下のいずれかにすること:
+   - 読点(、)の直後
+   - 句点(。)の直後
+   - 助詞(は、が、を、に、も、で、と)の直後
+   - 接続詞の直後
+3. 絶対に文節の途中で改行しないこと
+4. 20文字以内なら1行にまとめること（無駄に細切れにしない）
+```
+
+#### 実例: 修正前 → 修正後
+
+**修正前（細切れ）:**
+```html
+<p>これまで、<br>あなたは家族のために<br>懸命に頑張ってきた。<br>母として、<br>妻として、<br>しっかりと<br>守ろうとしてきた。</p>
+```
+
+**修正後（20文字ルール適用）:**
+```html
+<p>これまで、あなたは家族のために<br>懸命に頑張ってきた。<br>母として、妻として、<br>しっかりと守ろうとしてきた。</p>
+```
+
+各行の文字数:
+- 1行目: 17文字
+- 2行目: 13文字
+- 3行目: 11文字
+- 4行目: 17文字
