@@ -228,6 +228,7 @@ ul li {
     color: #ffd700;
     font-weight: bold;
     text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    white-space: nowrap;
 }
 
 .limited-badge {
@@ -255,12 +256,16 @@ ul li {
 }
 
 @media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
     .container {
-        padding: 20px;
+        padding: 15px;
     }
 
     h1 {
-        font-size: 1.5em;
+        font-size: 1.3em;
     }
 
     h2 {
@@ -270,6 +275,19 @@ ul li {
     .oracle-message,
     .section {
         padding: 15px;
+    }
+
+    .price {
+        font-size: 1.5em;
+    }
+
+    .special-price {
+        font-size: 1.8em;
+    }
+
+    .cta-button {
+        font-size: 1.1em;
+        padding: 15px 30px;
     }
 }
 ```
@@ -619,3 +637,84 @@ ul li {
 - `003_りーママ様M/index.html` - 守護神: 大山祇神
 
 これらをテンプレートとして参照してください。
+
+---
+
+## モバイル対応について
+
+### 実装されている対応
+
+このテンプレートはスマートフォンで閲覧した際に最適化されるよう、以下の対応が施されています。
+
+#### 1. 価格表示の改行防止
+
+**問題**: スマホで「4980円」が「4980」と「円」に分かれて表示される
+
+**解決策**: `.special-price` クラスに `white-space: nowrap` を追加
+
+```css
+.special-price {
+    font-size: 2em;
+    color: #ffd700;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    white-space: nowrap;  /* 重要: 価格を改行させない */
+}
+```
+
+#### 2. フォントサイズとレイアウトの最適化
+
+**問題**: スマホで文字が大きすぎて不自然な改行が発生する
+
+**解決策**: メディアクエリ内で全体的にフォントサイズを縮小
+
+```css
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;  /* 基本フォントサイズを縮小 */
+    }
+
+    .container {
+        padding: 15px;  /* パディングも縮小 */
+    }
+
+    h1 {
+        font-size: 1.3em;  /* タイトルサイズ調整 */
+    }
+
+    .price {
+        font-size: 1.5em;  /* 通常価格サイズ調整 */
+    }
+
+    .special-price {
+        font-size: 1.8em;  /* 特別価格サイズ調整 */
+    }
+
+    .cta-button {
+        font-size: 1.1em;  /* ボタンテキストサイズ調整 */
+        padding: 15px 30px;  /* ボタンパディング調整 */
+    }
+}
+```
+
+### モバイル対応チェックポイント
+
+新規作成時は以下を確認してください：
+
+- [ ] `.special-price` に `white-space: nowrap` が含まれている
+- [ ] `@media (max-width: 768px)` にすべての調整が含まれている
+- [ ] 実際のスマートフォンまたはブラウザのデベロッパーツールで表示確認済み
+- [ ] 価格が1行で表示される
+- [ ] 文章の改行が自然である
+- [ ] ボタンが適切なサイズで表示される
+
+### テスト方法
+
+1. **Chrome DevTools**
+   - F12でデベロッパーツールを開く
+   - デバイスツールバー（Ctrl+Shift+M / Cmd+Shift+M）を有効化
+   - iPhone SEやiPhone 12 Proなどのプリセットで確認
+
+2. **実機テスト**
+   - Cloudflare Pagesにデプロイ後、実際のスマートフォンで確認
+   - 特に価格表示と文章の改行を重点的にチェック
