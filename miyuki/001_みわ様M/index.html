@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>みわ様　守護神鑑定書</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 1.8;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .highlight {
+            color: #ffb8d8;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 184, 216, 0.3);
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 40px 0;
+            color: #6677aa;
+            letter-spacing: 0.2em;
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        ul li {
+            margin: 10px 0;
+            font-weight: bold;
+            color: #ffd966;
+            text-shadow: 0 0 10px rgba(255, 217, 102, 0.3);
+        }
+
+        .cta {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.2);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+        }
+
+        .cta h2 {
+            border: none;
+            margin: 20px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #4a5a9a, #6a7aca);
+            color: white;
+            text-decoration: none;
+            padding: 20px 50px;
+            border-radius: 35px;
+            margin: 20px 0;
+            font-size: 1.3em;
+            font-weight: bold;
+            box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(168, 184, 255, 0.5);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(106, 122, 202, 0.9);
+            background: linear-gradient(135deg, #5a6aaa, #7a8aca);
+        }
+
+        .price {
+            font-size: 1.8em;
+            color: #e8e8f0;
+            margin: 20px 0 5px 0;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1em;
+        }
+
+        .special-price {
+            font-size: 2em;
+            color: #ffd700;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        }
+
+        .limited-badge {
+            color: #ff4444;
+            font-weight: bold;
+            font-size: 0.95em;
+            margin: 10px 0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>みわ様　守護神鑑定書</h1>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 30px;">みわ様、</p>
+            <p style="margin-bottom: 30px;">視えました。</p>
+            <p class="guardian" style="margin-bottom: 30px;">あなたを守っているのは、<br>豊玉姫(とよたまひめ)。</p>
+            <p>龍神の娘、海を司る女神です。</p>
+            <img src="../鑑定画像/豊玉姫.png" alt="豊玉姫" class="guardian-image">
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 30px;">あなたのオーラは、<br>深海のような藍色。<br>静かに、でも深く、強く輝いています。</p>
+            <p style="margin-bottom: 30px;">豊玉姫に守られる人は、<br>愛する人のために全てを捧げる、<br>深い愛情を持つ人、</p>
+            <p style="margin-bottom: 30px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">神秘的な美しさと、強い霊力。<br>それがあなたの本質です。</p>
+            <p style="margin-bottom: 30px;">これほど強い守護神に守られているのに、<br>今、流れが悪くなっている…</p>
+            <p>その原因をお伝えします。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️お悩みについて</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">10年近く共に歩んできた彼と、<br>去年2月に終わった。</p>
+            <p style="margin-bottom: 30px;">今は自分からしか連絡できず、<br>彼から「会いたい」と言ってもらえない。<br>でももう一度、選ばれたい…</p>
+            <p style="margin-bottom: 30px;">でも今は愛が波立って、<br>本来の静かな深さを失っている…</p>
+            <p style="margin-bottom: 30px;">この問題は、<br>実はあなたが悪いわけではありません。</p>
+            <p style="font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">オーラを整え、<br>守護神からのエネルギーを正しく受け取れば、<br>彼との流れは、必ず変わります。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️なぜ今、悪いものを引き寄せているのか</h2>
+        <div class="section">
+            <p style="margin-bottom: 20px;">去年の7月や、季節の変わり目。<br>こんなことがありませんでしたか?</p>
+            <ul style="margin-bottom: 30px;">
+                <li>心から笑えない日が続いた</li>
+                <li>執着や不安が強くなった</li>
+                <li>流れに乗れず、チャンスを逃し続けた</li>
+            </ul>
+            <p style="margin-bottom: 30px;">それらは、守護神の力が弱まり、<br>あなたを守るオーラが少なくなってしまったことで起こっているのです。</p>
+            <p style="margin-bottom: 30px;">あなたは本来、深海のような広大な包容力を持つ人。<br>愛する人を育て、包み込む力がある。</p>
+            <p style="margin-bottom: 30px;">この10年間、あなたは海のように彼を支え続けてきた。<br>戦友として、親友として、恋人として。</p>
+            <p style="margin-bottom: 30px;">でも今、守護の力が弱くなってきている…</p>
+            <p>だから、彼を包み込む余裕も、<br>育てる力も、<br>今は失われてしまっているのです。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️二つの道</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">このまま、オーラが乱れたままだと、<br>彼にとって重荷になり、心が完全に離れていく。<br>連絡すら返ってこなくなる。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">でも、ここで流れを変えたら。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">オーラが整い、守護の力を受け取れるようになり、<br>彼があなたの目を見つめて、「やっぱり君しかいない」と言う。<br>あなたが本当に愛され、満たされる日々が戻ってくる。</p>
+            <p>どちらの道を歩むかは、<br>まだ今なら、あなた自身で選べます。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️守護の方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">ここまでの鑑定で、<br>あなたの守護神とオーラの状態と、<br>なぜ今のような状況なのかをお伝えしました。</p>
+            <p style="margin-bottom: 30px;">でも、一番大事なのはここから、</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">「じゃあ、具体的にどうすれば良くなるのか」<br>「理想の未来を手に入れるためには、何をすればいいのか」<br>ということですよね。</p>
+            <p style="margin-bottom: 30px;"><span style="font-size: 1.4em; font-weight: bold; color: #c8d0ff;">【本式守護鑑定】</span>では、<br>あなたが実際に守護を受け取るための<br>"具体的な方法"</p>
+            <p>そして、<br>未来が明るく広がるタイミングを<br>お伝えいたします。</p>
+        </div>
+
+        <div style="padding: 40px 0; margin: 40px 0;">
+            <h2 style="text-align: center; color: #c8d0ff; font-size: 1.5em; margin-bottom: 50px; border: none; text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);">🔮 本式守護鑑定でお伝えすること</h2>
+
+            <div style="margin: 30px 0; text-align: center;">
+                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ あなたの運命が動き出す転機</h3>
+                        <p>あなたの流れが変わる、その瞬間。<br>いつ、どのタイミングで運命が動き出すのかをお伝えします。</p>
+                    </div>
+                </div>
+
+                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 守護神から守護を受け取る方法</h3>
+                        <p>オーラを整え、望む未来を引き寄せる方法<br>日常で実践できる、守護神からのエネルギーを受け取る秘法を伝授します。</p>
+                    </div>
+                </div>
+
+                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 守護の力を手に入れたあなたの未来</h3>
+                        <p>オーラが整い、守護されたあなたに訪れるもの。<br>霊視で視えた、あなたの半年先の未来をお伝えします。</p>
+                    </div>
+                </div>
+
+                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 122, 255, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 私の守護の力を、あなたに</h3>
+                        <p>本式守護鑑定を受けてくださった方だけに、<br>私が直接、遠隔で守護祈祷を行い、守護の力をお分けします。</p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 30px; text-align: center;">このまま方法を知らずに過ごすか、<br>守護を受け取る道を選ぶか。<br>決めるのは、あなたです。</p>
+        </div>
+
+        <div class="cta">
+            <h2>【運命が動く24時間】</h2>
+
+            <p style="margin-bottom: 30px;">今、あなたの守護神、守護霊は、<br>あなたがこの鑑定を読んだことに気づいています。</p>
+            <p style="margin-bottom: 30px; font-size: 1.15em; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">「この人は、守護を求めている」<br>「力を貸してあげたい」<br>「運命を動かす手助けをしてあげたい」</p>
+            <p style="margin-bottom: 30px;">でも、この流れは長く続きません。</p>
+            <p style="margin-bottom: 30px;">何もしなければ、<br>今の延長線上の未来が待っています。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">ただ、今から24時間。<br>この間に決断すれば、<br>運命はスムーズに好転し始めます。</p>
+            <p style="margin-bottom: 30px;">「ちゃんと守護を受け取りたい」<br>そう感じた方だけ、進んでください。</p>
+
+            <div class="price">
+                <span class="original-price">通常9,800円</span><br>
+                <span class="limited-badge">24時間限定の特別価格</span><br>
+                <span class="special-price">4,980円</span>
+            </div>
+
+            <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/69eb763d23b5d0e88f9854e9" class="cta-button" target="_blank">本式守護鑑定を受ける▼</a>
+
+            <p style="margin-top: 30px;">お申し込み後、<br>購入時のお名前をお知らせください。<br>1日以内に、あなただけの鑑定書をお届けします。</p>
+        </div>
+
+        <div class="closing">
+            <p style="margin-bottom: 30px;">私には視えています。</p>
+            <p style="margin-bottom: 30px;">あなたのオーラが整い、<br>守護神からのエネルギーを受け取ったとき。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">二人が再び心を開き合い、笑顔で手を繋いでいる姿が。<br>彼があなたを見つめながら、<br>「やっぱり君じゃないとダメなんだ」そう囁いている場面が。<br>10年間育んできた愛が、もう一度花開く瞬間が。</p>
+            <p style="margin-bottom: 40px;">その未来へ、私がお連れしますね。</p>
+
+            <div class="signature">深雪</div>
+        </div>
+    </div>
+</body>
+</html>
