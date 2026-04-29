@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>まゆみ様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 1.8;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        .month-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(40, 40, 80, 0.3);
+            border-radius: 10px;
+        }
+
+        .month-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #ffd966;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 217, 102, 0.3);
+        }
+
+        .cta {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.2);
+            border-radius: 15px;
+            padding: 40px 25px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+        }
+
+        .cta h2 {
+            border: none;
+            margin: 20px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #4a5a9a, #6a7aca);
+            color: white;
+            text-decoration: none;
+            padding: 20px 50px;
+            border-radius: 35px;
+            margin: 20px 0;
+            font-size: 1.3em;
+            font-weight: bold;
+            box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(168, 184, 255, 0.5);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(106, 122, 202, 0.9);
+            background: linear-gradient(135deg, #5a6aaa, #7a8aca);
+        }
+
+        .price {
+            font-size: 1.8em;
+            color: #e8e8f0;
+            margin: 20px 0 5px 0;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1em;
+        }
+
+        .special-price {
+            font-size: 2em;
+            color: #ffd700;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+            white-space: nowrap;
+        }
+
+        .limited-badge {
+            color: #ff4444;
+            font-weight: bold;
+            font-size: 0.95em;
+            margin: 10px 0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .price {
+                font-size: 1.5em;
+            }
+
+            .special-price {
+                font-size: 1.8em;
+            }
+
+            .cta-button {
+                font-size: 1.1em;
+                padding: 15px 30px;
+            }
+
+            .cta {
+                padding: 40px 15px;
+            }
+
+            .closing {
+                padding: 30px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>まゆみ様　本式守護鑑定</h1>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 30px;">まゆみ様、</p>
+            <p style="margin-bottom: 30px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 30px;">あなたの魂が、<br>本気で変わろうとしている。</p>
+            <p style="margin-bottom: 30px;">その強い意志が、<br>私のもとへ届きました。</p>
+            <p>ここから先、<br>あなたが本当に知るべきことを、<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <h2>【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">まず、お伝えしたいことがあります。</p>
+            <p style="margin-bottom: 30px;">あなたと上司の方が、<br>手を繋いで笑っている姿が、<br>はっきりと視えています。</p>
+            <p style="margin-bottom: 30px;">それは、一番早く動き出せば、<br>2027年の春。</p>
+            <p style="margin-bottom: 30px;">桜が咲き始める頃、<br>二人は新しい人生を<br>歩み始めている。</p>
+            <p style="margin-bottom: 30px;">そこに至るまでの道のりは、<br>決して平坦ではありません。</p>
+            <p style="margin-bottom: 30px;">でも、あなたには、<br>それを乗り越える力がある。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">そして今、運命の流れが、<br>あなたの背中を<br>押し始めています。</p>
+            <p style="margin-bottom: 30px;">早ければ2026年の秋、<br>9月から10月にかけて。</p>
+            <p style="margin-bottom: 30px;">この時期が、<br>あなたにとっての<br>「決断のとき」です。</p>
+            <p style="margin-bottom: 30px;">26年間続いた結婚生活に、<br>終わりを告げる。</p>
+            <p style="margin-bottom: 30px;">その決意を、<br>現夫に伝える時期が来ています。</p>
+            <p style="margin-bottom: 30px;">なぜなら今、<br>あなたを守る日本武尊が、<br>「戦うときが来た」と<br>告げているからです。</p>
+            <p style="margin-bottom: 30px;">そして、<br>2027年1月から3月にかけて、<br>離婚が成立します。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">その時、あなたは<br>本当の自由を手にしている。</p>
+            <p>二人が結ばれるのは、<br>2027年の春から夏にかけてです。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ 上司との未来の可能性</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">では、<br>無料鑑定でお約束した<br>3つのことを、<br>詳しくお伝えしていきます。</p>
+            <p style="margin-bottom: 30px;">この恋が実るかどうか──<br>その答えは、</p>
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #ffd966;">「実ります」</p>
+            <p style="margin-bottom: 30px;">確信を持って、お伝えできます。</p>
+            <p style="margin-bottom: 30px;">あなたと上司の方は、<br>魂のレベルで、<br>強く引き寄せ合っています。</p>
+            <p style="margin-bottom: 30px;">あなたが太陽だとすれば、<br>上司の方は、<br>あなたを育む大地と水。</p>
+            <p style="margin-bottom: 30px;">あなたが燃やし続けてきた炎を、<br>彼は優しく支えてくれる。</p>
+            <p style="margin-bottom: 30px;">そして、<br>あなたが枯れそうになったとき、<br>新しい命を吹き込んでくれる。</p>
+            <p style="margin-bottom: 30px;">まゆみさん、<br>こんな経験はありませんでしたか？</p>
+            <p style="margin-bottom: 30px;">上司の方と話していると、<br>不思議と心が落ち着く。</p>
+            <p style="margin-bottom: 30px;">彼の言葉が、<br>疲れた心に染み込んでいく。</p>
+            <p style="margin-bottom: 30px;">「この人といると、<br>自分らしくいられる」<br>そんな感覚。</p>
+            <p style="margin-bottom: 30px;">それは、あなたの魂が、<br>本当の相手を見つけた証拠です。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">運命が、<br>二人を引き寄せているのです。</p>
+            <p>彼は、待っていてくれます。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ 現夫と別れる方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">まゆみさん、あなたは今まで、<br>「決定打がない」と<br>悩んでいましたね。</p>
+            <p style="margin-bottom: 30px;">でも、決定打は必要ありません。</p>
+            <p style="margin-bottom: 30px;">「もう一緒にいたくない」<br>「価値観が合わない」<br>その気持ちだけで、十分です。</p>
+            <p style="margin-bottom: 30px;">大切なのは、「離婚したい」という<br>あなたの強い意志です。</p>
+            <p style="margin-bottom: 30px;">あなたと現夫の関係は、<br>あなたが一方的にエネルギーを<br>与え続ける関係です。</p>
+            <p style="margin-bottom: 30px;">太陽が大地を照らすように、<br>あなたは現夫を<br>支え続けてきました。</p>
+            <p style="margin-bottom: 30px;">でも、大地は太陽に何も返さない。<br>ただ、受け取るだけ。</p>
+            <p style="margin-bottom: 30px; color: #ffd966; font-weight: bold;">【タイミング】</p>
+            <p style="margin-bottom: 30px;">2026年9月から10月にかけて、<br>現夫に離婚の意思を<br>伝えてください。</p>
+            <p style="margin-bottom: 30px;">この時期に切り出せば、<br>話し合いが比較的<br>スムーズに進みます。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">運気的に見ると、<br>2026年11月から12月にかけて、<br>現夫が離婚を受け入れる<br>流れが来ます。</p>
+            <p>そして、2027年1月から3月にかけて、<br>離婚が成立する流れです。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ 新しい人生を掴む方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">三つ目。<br>新しい人生を掴むための<br>具体的な方法。</p>
+            <p style="margin-bottom: 30px;">あなたの本来のオーラは、<br>太陽のような黄金に輝く<br>紅のオーラです。</p>
+            <p style="margin-bottom: 30px;">炎のように力強く、<br>周りを明るく照らす。</p>
+            <p style="margin-bottom: 30px; color: #ffd966; font-weight: bold;">【罪悪感を手放す】</p>
+            <p style="margin-bottom: 30px;">毎朝、鏡を見て、</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">「私は、幸せになっていい」<br>「私は、愛される価値がある」<br>「私は、自由になっていい」</p>
+            <p>と、声に出して言ってください。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ 今後半年の流れ</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">ここから、今後半年間の運気の流れを、<br>月ごとにお伝えします。<br>あなたがどう動けば良いか、<br>具体的に視ていきましょう。</p>
+
+            <div class="month-section">
+                <div class="month-title">2026年5月：準備の月</div>
+                <p style="margin-bottom: 15px;">今月は、<br>まだ動き出す時期ではありません。<br>でも、準備を始めてください。</p>
+                <p style="margin-bottom: 15px;">経済的な準備、証拠集め、<br>弁護士への相談。<br>そして何より、離婚後の生活を<br>具体的にイメージすることです。</p>
+                <p>未来をイメージすることで、<br>運命が動き始めます。</p>
+            </div>
+
+            <div class="month-section">
+                <div class="month-title">2026年6月：覚悟の月</div>
+                <p style="margin-bottom: 15px;">6月は、<br>あなたの心が揺れる時期です。</p>
+                <p style="margin-bottom: 15px;">「本当に離婚していいのか」<br>「このまま我慢すればいいのでは」<br>そんな迷いが出てくるかもしれません。</p>
+                <p style="margin-bottom: 15px;">でも、その迷いは、<br>変化を恐れる心が作り出す幻です。</p>
+                <p>あなたの心は、答えを知っています。</p>
+            </div>
+
+            <div class="month-section">
+                <div class="month-title">2026年7月：決意の月</div>
+                <p style="margin-bottom: 15px;">7月は、<br>あなたの決意が固まる時期です。</p>
+                <p style="margin-bottom: 15px;">守護神・日本武尊のエネルギーが、<br>あなたに強く注がれます。</p>
+                <p style="margin-bottom: 15px;">「戦うときが来た」<br>そう感じたら、<br>それは守護神からのサインです。</p>
+                <p>弁護士との相談も、<br>この時期に詰めましょう。</p>
+            </div>
+
+            <div class="month-section">
+                <div class="month-title">2026年8月：静寂の月</div>
+                <p style="margin-bottom: 15px;">8月は、嵐の前の静けさ。</p>
+                <p style="margin-bottom: 15px;">表面的には、<br>何も変わらない日常が続きます。<br>でも、水面下では、<br>大きな変化が準備されています。</p>
+                <p style="margin-bottom: 15px;">この月は、<br>自分を整える時間に使ってください。</p>
+                <p>そして、9月に向けて、<br>エネルギーを蓄えます。</p>
+            </div>
+
+            <div class="month-section">
+                <div class="month-title">2026年9月：決断の月</div>
+                <p style="margin-bottom: 15px;">来ました。<br>この月が、<br>あなたの人生を変える月です。</p>
+                <p style="margin-bottom: 15px;">9月中旬から下旬にかけて、<br>現夫に離婚の意思を<br>伝えてください。</p>
+                <p style="margin-bottom: 15px;">運気的に、<br>この時期が最も適しています。</p>
+                <p>淡々と、冷静に、<br>離婚の意思を伝える。<br>それだけです。</p>
+            </div>
+
+            <div class="month-section">
+                <div class="month-title">2026年10月：混乱の月</div>
+                <p style="margin-bottom: 15px;">9月に離婚を切り出した後、<br>10月は少し混乱する時期です。</p>
+                <p style="margin-bottom: 15px;">現夫が、様々な手段で<br>あなたを引き留めようとします。</p>
+                <p style="margin-bottom: 15px;">でも、それはすべて、<br>あなたを支配し続けるための<br>言葉です。<br>心を動かされないでください。</p>
+                <p>それが、この月を乗り切るコツです。</p>
+            </div>
+        </div>
+
+        <h2 class="emoji-header">⛩️ オーラの調整方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">ここから、あなたのオーラを整え、<br>本来の力を取り戻す方法を<br>お伝えします。</p>
+            <p style="margin-bottom: 30px;">オーラには3つの種類があります。</p>
+            <p style="margin-bottom: 30px;">あなた自身が持っているオーラ、<br>相手から受け取るオーラ、<br>そして環境が与えてくれるオーラ。</p>
+            <p style="margin-bottom: 30px;">自分にとって良いオーラの状態を<br>保つと、自由でいることができ、<br>心が穏やかな状態を<br>保てるようになります。</p>
+            <p style="margin-bottom: 30px;">まずは一つでもいいので、<br>以下のアクションを行ってください。</p>
+            <p style="margin-bottom: 30px; color: #ffd966; font-weight: bold;">あなたの炎のオーラ、<br>太陽のような黄金の紅のオーラを<br>取り戻すために。</p>
+
+            <p style="margin-bottom: 20px; font-weight: bold; color: #ffd966;">【朝のルーティン】</p>
+            <p style="margin-bottom: 30px;">毎朝、太陽の光を浴びてください。<br>窓を開け、太陽の方を向き、<br>両手を広げ、深呼吸を3回。</p>
+
+            <p style="margin-bottom: 20px; font-weight: bold; color: #ffd966;">【色の力を使う】</p>
+            <p style="margin-bottom: 30px;">赤い小物や金色のアクセサリーを<br>身につけてください。<br>特に、離婚を切り出す日は、<br>赤いなにかを。</p>
+
+            <p style="margin-bottom: 20px; font-weight: bold; color: #ffd966;">【塩で浄化する】</p>
+            <p style="margin-bottom: 30px;">週に一度、塩を入れた塩風呂に入り、<br>ネガティブなエネルギーを<br>流します。</p>
+
+            <p style="margin-bottom: 20px; font-weight: bold; color: #ffd966;">【守護神との繋がり方】</p>
+            <p>月に一度、神社を参拝して、<br>今の状況と思っている事を<br>報告してみてください。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ あなたを支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">最後に、あなたを支える<br>パワーストーンをお伝えします。</p>
+            <p style="margin-bottom: 30px;">パワーストーンは、<br>ただの石ではありません。</p>
+            <p style="margin-bottom: 30px;">長い年月をかけて<br>地球の中で育まれた石には、<br>強いエネルギーが宿っています。</p>
+            <p style="margin-bottom: 30px;">特に、人生の転換期にある今、<br>パワーストーンは<br>あなたの強い味方になります。</p>
+
+            <p style="margin-bottom: 20px; font-weight: bold; color: #ffd966;">1. ガーネット（柘榴石）</p>
+            <p style="margin-bottom: 30px;">情熱と勇気、<br>新しい恋を引き寄せる。<br>あなたの炎のオーラと<br>相性抜群です。</p>
+
+            <p style="margin-bottom: 20px; font-weight: bold; color: #ffd966;">2. シトリン（黄水晶）</p>
+            <p style="margin-bottom: 30px;">金運と希望、<br>ネガティブなエネルギーを払う。<br>黄金のオーラと共鳴します。</p>
+
+            <p style="margin-bottom: 20px; font-weight: bold; color: #ffd966;">3. ローズクォーツ（紅水晶）</p>
+            <p style="margin-bottom: 30px;">自己愛と恋愛運、心の傷を癒す。<br>傷ついた心を優しく癒します。</p>
+
+            <p style="margin-bottom: 30px;">この3つの石を組み合わせた<br>ブレスレットを、<br>私が作成してお送りします。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">ご希望の場合は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+            <p>あなただけのブレスレットを<br>お作りいたします。</p>
+        </div>
+
+        <div class="closing">
+            <p style="margin-bottom: 30px;">まゆみ様。</p>
+            <p style="margin-bottom: 30px;">この鑑定を受け取った時から、<br>あなたの運命は動き始めています。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">2027年の春、<br>あなたは笑っています。<br>上司の方と手を繋いで、<br>桜の下を歩いている。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">「あの時、決断してよかった」<br>そう、心から思っている。</p>
+            <p style="margin-bottom: 30px;">その未来は、もう決まっています。<br>あとは、あなたが一歩を<br>踏み出すだけ。</p>
+            <p style="margin-bottom: 30px;">私は、遠隔で守護祈祷を行います。<br>あなたのオーラを整え、<br>守護神との繋がりを強くし、<br>あなたの背中を<br>そっと押します。</p>
+            <p style="margin-bottom: 30px;">どうか、自分を信じてください。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">あなたは、幸せになっていい。<br>愛されていい。<br>自由になっていい。</p>
+            <p style="margin-bottom: 40px;">その道を、<br>私がそっと照らしますね。</p>
+
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>
