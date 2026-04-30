@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【本式守護鑑定】ゆる様</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 1.8;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        ul li {
+            margin: 10px 0;
+            font-weight: bold;
+            color: #ffd966;
+            text-shadow: 0 0 10px rgba(255, 217, 102, 0.3);
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .month-section {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(40, 40, 90, 0.3);
+            border-radius: 10px;
+            border-left: 4px solid rgba(168, 184, 255, 0.5);
+            text-align: center;
+        }
+
+        .month-title {
+            font-size: 1.3em;
+            color: #a8b8ff;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        .action-box {
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(50, 50, 100, 0.3);
+            border-radius: 10px;
+            border: 1px solid rgba(168, 184, 255, 0.2);
+            text-align: center;
+        }
+
+        .action-title {
+            font-size: 1.2em;
+            color: #c8d0ff;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stone-item {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(50, 50, 100, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stone-name {
+            font-size: 1.2em;
+            color: #ffd966;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .month-section,
+            .action-box,
+            .stone-item {
+                padding: 15px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>【本式守護鑑定】ゆる様</h1>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 30px;">ゆる様、</p>
+            <p style="margin-bottom: 30px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 30px;">あなたの魂が、<br>本気で答えを求めている。</p>
+            <p style="margin-bottom: 30px;">その強い思いが、<br>私のもとへ届きました。</p>
+            <p>ここから先、<br>あなたが本当に知るべきことを、<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <h2>【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">視えています。</p>
+            <p style="margin-bottom: 30px;">2027年の春<br>桜が咲く頃。</p>
+            <p style="margin-bottom: 30px;">りくとさんが、<br>久しぶりに笑っている。</p>
+            <p style="margin-bottom: 30px;">あなたも、<br>心から笑っている。</p>
+            <p style="margin-bottom: 30px;">「また会えたね」<br>「うん、<br>待っててくれてありがとう」</p>
+            <p style="margin-bottom: 30px;">そんな言葉が、<br>自然に交わされている。</p>
+            <p style="margin-bottom: 30px;">もう、<br>未読に悩むこともない。</p>
+            <p style="margin-bottom: 30px;">もう、<br>「不安にさせてないか」と<br>心配することもない。</p>
+            <p style="margin-bottom: 30px;">ただ、<br>穏やかに繋がっている。</p>
+            <p style="margin-bottom: 30px;">そして、<br>「待っていてよかった」と<br>心から思っている。</p>
+            <p style="margin-bottom: 30px;">その未来が、<br>はっきりと視えています。</p>
+            <p style="margin-bottom: 30px;">ただし──</p>
+            <p style="margin-bottom: 30px;">そこへ至るまでの道のりは、<br>何もせずに待つだけでは<br>辿り着けません。</p>
+            <p style="margin-bottom: 30px;">あなた自身が<br>今この瞬間から<br>変わる必要がある。</p>
+            <p style="margin-bottom: 30px;">でも、大丈夫です。</p>
+            <p>あなたには、<br>それを乗り越える力がある。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ 二人の縁の繋がり</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">ゆる様、</p>
+            <p style="margin-bottom: 30px;">りくとさんとの縁、<br>とても深いです。</p>
+            <p style="margin-bottom: 30px;">二人の魂は、<br>昔から繋がっている。</p>
+            <p style="margin-bottom: 30px;">あなたは、太陽。<br>りくとさんは、薪。</p>
+            <p style="margin-bottom: 30px;">りくとさんが薪となり、<br>あなたが太陽となって<br>周囲を照らす。</p>
+            <p style="margin-bottom: 30px;">そんな関係です。</p>
+            <p style="margin-bottom: 30px;">りくとさんは、<br>あなたに力を与える人。</p>
+            <p style="margin-bottom: 30px;">あなたは、<br>その力で輝き、<br>世界を照らす人。</p>
+            <p style="margin-bottom: 30px;">これはとても<br>美しい関係です。</p>
+            <p style="margin-bottom: 30px;">でも──</p>
+            <p style="margin-bottom: 30px;">今はその流れが<br>止まっています。</p>
+            <p style="margin-bottom: 30px;">なぜか。</p>
+            <p style="margin-bottom: 30px;">りくとさんの薪が、<br>今、燃え尽きそうだから。</p>
+            <p style="margin-bottom: 30px;">あなたの太陽が、<br>今、雲に隠れているから。</p>
+            <p style="margin-bottom: 30px;">でもそれは<br>一時的なものです。</p>
+            <p style="margin-bottom: 30px;">薪はまた新しく育つ。</p>
+            <p style="margin-bottom: 30px;">太陽は雲の向こうから<br>顔を出す。</p>
+            <p style="margin-bottom: 30px;">ちゃんとまた繋がる。</p>
+            <p>そう、約束されています。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ なぜ今、<br>　彼からの連絡が<br>　途絶えているのか</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">ゆる様、</p>
+            <p style="margin-bottom: 30px;">りくとさんからのLINEが<br>未読のままになっている。</p>
+            <p style="margin-bottom: 30px;">そのこと、<br>とても心配ですよね。</p>
+            <p style="margin-bottom: 30px;">「何かあったのかな」<br>「私、何か悪いこと<br>したかな」<br>「追LINEしない私を、<br>不安に思ってないかな」</p>
+            <p style="margin-bottom: 30px;">そんな思いが、<br>ぐるぐると回っている。</p>
+            <p style="margin-bottom: 30px;">よく分かります。</p>
+            <p style="margin-bottom: 30px;">でも──</p>
+            <p style="margin-bottom: 30px;">今からお伝えすることを、<br>しっかりと<br>受け取ってください。</p>
+            <p style="margin-bottom: 30px;">りくとさんは今、<br>人生で最も厳しい時期に<br>いるのです。</p>
+            <p style="margin-bottom: 30px;">彼の魂が、今、<br>試されている。</p>
+            <p style="margin-bottom: 30px;">2026年は、<br>りくとさんにとって<br>試練の年。</p>
+            <p style="margin-bottom: 30px;">生まれ持った宿命が、<br>今年、一気に動いている。</p>
+            <p style="margin-bottom: 30px;">仕事のこと、<br>人間関係のこと、<br>健康のこと。</p>
+            <p style="margin-bottom: 30px;">いろんなことが、<br>一度に押し寄せている。</p>
+            <p style="margin-bottom: 30px;">あなたが感じている<br>「ついてない事が<br>続いてる」<br>というのは、まさにそれです。</p>
+            <p style="margin-bottom: 30px;">そして、<br>その試練の最中、<br>りくとさんは今、<br>自分の殻に<br>閉じこもっています。</p>
+            <p style="margin-bottom: 30px;">誰にも会いたくない。<br>誰とも話したくない。<br>ただ、一人で戦いたい。</p>
+            <p style="margin-bottom: 30px;">そんな状態です。</p>
+            <p style="margin-bottom: 30px;">これは、<br>りくとさんの性質です。</p>
+            <p style="margin-bottom: 30px;">彼は本来<br>孤独を好む人。</p>
+            <p style="margin-bottom: 30px;">一匹狼のように、<br>自分の力で戦う人。</p>
+            <p style="margin-bottom: 30px;">そして、<br>傷ついた時ほど、<br>人を遠ざける人。</p>
+            <p style="margin-bottom: 30px;">だから──</p>
+            <p style="margin-bottom: 30px;">LINEが未読なのは、<br>あなたを避けているから<br>じゃない。</p>
+            <p style="margin-bottom: 30px;">あなたに<br>興味がなくなったから<br>じゃない。</p>
+            <p style="margin-bottom: 30px;">ただ、<br>今は自分のことで<br>精一杯だから。</p>
+            <p style="margin-bottom: 30px;">自分を守るために、<br>殻に閉じこもっているだけ。</p>
+            <p style="margin-bottom: 30px;">そして──</p>
+            <p style="margin-bottom: 30px;">あなたが<br>「追LINEしないこと」。</p>
+            <p style="margin-bottom: 30px;">これは大正解です。</p>
+            <p style="margin-bottom: 30px;">りくとさんは今、<br>「そっとしておいてほしい」と<br>思っている。</p>
+            <p style="margin-bottom: 30px;">あなたが追わないことで、<br>「尊重してくれている」と<br>感じている。</p>
+            <p style="margin-bottom: 30px;">もし、<br>追LINEをしていたら、<br>逆に負担になっていました。</p>
+            <p>だから、<br>今のあなたの対応は<br>完璧です。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ 彼の本当の気持ち</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">彼は、あなたのことを<br>とても大切に思っています。</p>
+            <p style="margin-bottom: 30px;">「ゆるさんは、<br>自分を理解してくれる」</p>
+            <p style="margin-bottom: 30px;">「ゆるさんは、<br>自分を責めない」</p>
+            <p style="margin-bottom: 30px;">「ゆるさんは、<br>自分の太陽だ」</p>
+            <p style="margin-bottom: 30px;">そう感じています。</p>
+            <p style="margin-bottom: 30px;">でも、今は余裕がない。<br>自分のことで精一杯。<br>だから連絡できない。</p>
+            <p style="margin-bottom: 30px;">それだけです。</p>
+            <p style="margin-bottom: 30px;">そして、<br>心のどこかで<br>こう思っています。</p>
+            <p style="margin-bottom: 30px;">「また落ち着いたら、<br>ちゃんと連絡しよう」</p>
+            <p style="margin-bottom: 30px;">「ゆるさんなら、<br>待っていてくれる」</p>
+            <p style="margin-bottom: 30px;">「ゆるさんなら、<br>分かってくれる」</p>
+            <p style="margin-bottom: 30px;">そう信じています。</p>
+            <p style="margin-bottom: 30px;">だから──<br>あなたがすべきことは、<br>ただ一つ。</p>
+            <p style="margin-bottom: 30px;">待つこと。<br>信じること。<br>そして、自分を整えること。</p>
+            <p>彼が戻ってきたとき、<br>笑顔で迎えられるように。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ また笑い合える時期</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">それは、<br>2026年の秋です。</p>
+            <p style="margin-bottom: 30px;">9月から10月にかけて、<br>秋が深まる頃。</p>
+            <p style="margin-bottom: 30px;">彼の心に<br>少し余裕が出てきます。</p>
+            <p style="margin-bottom: 30px;">試練が、<br>少しずつ和らいでいく。</p>
+            <p style="margin-bottom: 30px;">そして、あなたのことを<br>思い出します。</p>
+            <p style="margin-bottom: 30px;">「そういえば、<br>ゆるさん、元気かな」</p>
+            <p style="margin-bottom: 30px;">「久しぶりに、<br>連絡してみようかな」</p>
+            <p style="margin-bottom: 30px;">そう感じる時が来ます。</p>
+            <p style="margin-bottom: 30px;">その時、<br>彼から連絡が来るでしょう。</p>
+            <p style="margin-bottom: 30px;">短いメッセージ<br>かもしれません。</p>
+            <p style="margin-bottom: 30px;">「元気？」<br>「ごめん、<br>バタバタしてた」</p>
+            <p style="margin-bottom: 30px;">そんな軽い言葉<br>かもしれません。</p>
+            <p style="margin-bottom: 30px;">それは<br>再接続の合図です。</p>
+            <p style="margin-bottom: 30px;">そこから、<br>少しずつ関係が<br>戻っていきます。</p>
+            <p style="margin-bottom: 30px;">そして、<br>2027年の春から夏。</p>
+            <p style="margin-bottom: 30px;">4月から7月にかけて、<br>桜が咲き、緑が茂る頃。</p>
+            <p style="margin-bottom: 30px;">二人は、<br>本格的に繋がり直します。</p>
+            <p style="margin-bottom: 30px;">彼の心が、完全に開き<br>あなたの太陽が、<br>完全に輝く。</p>
+            <p style="margin-bottom: 30px;">そして、<br>久しぶりに会う日が来ます。</p>
+            <p style="margin-bottom: 30px;">その時、<br>二人は笑い合います。</p>
+            <p style="margin-bottom: 30px;">「久しぶりだね」<br>「うん、本当に」</p>
+            <p style="margin-bottom: 30px;">「待っててくれて<br>ありがとう」<br>「うん、信じてたから」</p>
+            <p style="margin-bottom: 30px;">そんな言葉が<br>自然に交わされる。</p>
+            <p>その日が必ず来ます。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ 今、あなたがすべきこと</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">ゆる様、</p>
+            <p style="margin-bottom: 30px;">今あなたがすべきことは<br>3つあります。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">1. 待つこと</p>
+            <p style="margin-bottom: 30px;">焦らないでください。<br>りくとさんは、<br>必ず戻ってきます。</p>
+            <p style="margin-bottom: 30px;">今は、彼の試練の時期。</p>
+            <p style="margin-bottom: 30px;">そっと見守る。<br>それが、<br>あなたの役割です。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">2. 信じること</p>
+            <p style="margin-bottom: 30px;">「彼は私を忘れてない」<br>「彼は必ず戻ってくる」<br>「私たちの縁は深い」</p>
+            <p style="margin-bottom: 30px;">そう信じてください。</p>
+            <p style="margin-bottom: 30px;">不安になったら、<br>このメッセージを<br>読み返してください。</p>
+            <p style="margin-bottom: 30px;">彼は、<br>ちゃんと戻ってきます。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">3. 自分を整えること</p>
+            <p style="margin-bottom: 30px;">今は、<br>あなた自身を整える時期です。</p>
+            <p style="margin-bottom: 30px;">彼のことばかり考えるのでは<br>なく、<br>あなた自身の人生を<br>楽しんでください。</p>
+            <p style="margin-bottom: 30px;">あなた自身が輝けば、<br>彼も自然と戻ってきます。</p>
+            <p style="margin-bottom: 30px;">太陽は、<br>じっとそこにあるだけで<br>いい。</p>
+            <p style="margin-bottom: 30px;">無理に追いかけなくていい。</p>
+            <p style="margin-bottom: 30px;">ただ、輝いていればいい。</p>
+            <p>それだけで、<br>全てが引き寄せられて<br>きます。</p>
+        </div>
+
+        <h2>【今後6ヶ月の流れ】</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">ここから、<br>今後6ヶ月間の運気の流れを、<br>月ごとにお伝えします。</p>
+            <p>あなたがどう動けば良いか、<br>具体的に視ていきましょう。</p>
+        </div>
+
+        <div class="month-section">
+            <div class="month-title">2026年5月：待つ月</div>
+            <p style="margin-bottom: 20px;">5月は、待つ時期です。<br>まだ、彼の試練は続いています。<br>連絡は期待しないでください。</p>
+            <p style="margin-bottom: 20px;">この月は、<br>自分を整えることに<br>集中してください。<br>オーラを整え、心を落ち着け、<br>彼を信じる練習をする。</p>
+            <p>焦らないでください。<br>準備が整えば、<br>自然と流れが動きます。</p>
+        </div>
+
+        <div class="month-section">
+            <div class="month-title">2026年6月：静寂の月</div>
+            <p style="margin-bottom: 20px;">6月は、最も静かな月です。<br>彼は、最も内に籠る時期。<br>あなたの不安も、<br>最も高まる時期。</p>
+            <p style="margin-bottom: 20px;">この月も、<br>連絡を期待しないでください。<br>そして、<br>彼のことを考えすぎない<br>でください。</p>
+            <p style="margin-bottom: 20px;">あなた自身の人生を楽しむ。<br>友人と会う、趣味を楽しむ。<br>自分のために時間を使う。</p>
+            <p>それが、<br>今のあなたの役割です。</p>
+        </div>
+
+        <div class="month-section">
+            <div class="month-title">2026年7月：忍耐の月</div>
+            <p style="margin-bottom: 20px;">7月は、忍耐の月です。<br>まだ、変化は見えません。<br>でも、水面下では<br>動き始めています。</p>
+            <p style="margin-bottom: 20px;">この月は、<br>太陽のエネルギーを<br>高めてください。<br>夏の太陽を浴びて、<br>あなた自身の<br>火のエネルギーを高める。</p>
+            <p>太陽のように輝く。<br>それが、<br>あなたの本質です。</p>
+        </div>
+
+        <div class="month-section">
+            <div class="month-title">2026年8月：変化の兆しの月</div>
+            <p style="margin-bottom: 20px;">8月は、<br>変化の兆しが見える月です。<br>彼の状況が、<br>少しずつ変わり始めます。<br>あなたの内面も、<br>安定してきます。</p>
+            <p style="margin-bottom: 20px;">この月は、<br>心を開いておいてください。<br>いつ連絡が来てもいいように、<br>準備を整えておく。</p>
+            <p>でも、焦らない。<br>期待しすぎない。</p>
+            <p style="margin-bottom: 20px;">ただ、<br>準備だけしておく。</p>
+        </div>
+
+        <div class="month-section">
+            <div class="month-title">2026年9月：再接続の月</div>
+            <p style="margin-bottom: 20px;">9月は、再接続の月です。<br>秋が訪れ、<br>彼の心に余裕が出てきます。</p>
+            <p style="margin-bottom: 20px;">この月、<br>彼から連絡が来る<br>可能性があります。</p>
+            <p style="margin-bottom: 20px;">短いメッセージ<br>かもしれません。<br>久しぶりの連絡<br>かもしれません。</p>
+            <p style="margin-bottom: 20px;">その時、<br>責めないでください。<br>問い詰めないでください。</p>
+            <p style="margin-bottom: 20px;">ただ、<br>温かく迎えてください。</p>
+            <p style="margin-bottom: 20px;">「元気だった？」<br>「大変だったね」</p>
+            <p>そんな言葉で、<br>そっと受け止めて<br>あげてください。</p>
+        </div>
+
+        <div class="month-section">
+            <div class="month-title">2026年10月：希望の月</div>
+            <p style="margin-bottom: 20px;">10月は、希望の月です。<br>彼が、<br>少しずつ前を向き始めます。<br>連絡の頻度も、<br>少しずつ増えてきます。</p>
+            <p style="margin-bottom: 20px;">この月は、<br>未来の話をしてください。<br>「いつか会えるといいね」<br>「また笑い合いたいね」</p>
+            <p style="margin-bottom: 20px;">そんな言葉を、<br>軽やかに伝えてください。</p>
+            <p>彼も、<br>そう思っています。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ オーラの調整方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">ここから、<br>あなたのオーラを整え、<br>本来の力を取り戻す方法を<br>お伝えします。</p>
+            <p style="margin-bottom: 30px;">あなたの本来のオーラは、<br>太陽のような<br>黄金に輝く紅のオーラ。<br>炎のオーラです。</p>
+            <p style="margin-bottom: 30px;">存在するだけで、<br>周囲を明るくする。</p>
+            <p style="margin-bottom: 30px;">照らす力、導く力を持つ。</p>
+            <p style="margin-bottom: 30px;">それがあなたの本質です。</p>
+            <p style="margin-bottom: 30px;">でも今は、心配と不安で<br>少しだけ曇っている。</p>
+            <p>その曇りを取り除くために、<br>今すぐできることがあります。</p>
+        </div>
+
+        <div class="action-box">
+            <div class="action-title">【朝のルーティン】</div>
+            <p style="margin-bottom: 15px;">毎朝、太陽の光を<br>浴びてください。<br>窓を開け、太陽の方を向き、<br>両手を広げ、深呼吸を3回。</p>
+            <p style="margin-bottom: 10px;">「私は太陽」</p>
+            <p style="margin-bottom: 10px;">「私は光」</p>
+            <p style="margin-bottom: 10px;">「私は全てを照らす」</p>
+            <p style="margin-bottom: 15px;">と心の中で唱えます。</p>
+            <p style="margin-bottom: 15px;">太陽のエネルギーを受け取り、<br>あなた自身が太陽になる。</p>
+            <p>それをできるだけ<br>続けてください。</p>
+        </div>
+
+        <div class="action-box">
+            <div class="action-title">【火のエネルギーを高める】</div>
+            <p style="margin-bottom: 15px;">赤、オレンジ、<br>金色の服や小物を<br>身につけてください。<br>火のエネルギーを高める<br>色です。</p>
+            <p style="margin-bottom: 15px;">特に、彼のことを考えたり、<br>不安になったりする時は、<br>明るい色の服を着ると<br>良いでしょう。</p>
+            <p>そして、炎を見つめることで、<br>あなた自身の<br>火のエネルギーが<br>高まります。</p>
+        </div>
+
+        <div class="action-box">
+            <div class="action-title">【思考を止める】</div>
+            <p style="margin-bottom: 15px;">あなたは今、<br>考えすぎています。</p>
+            <p style="margin-bottom: 15px;">「彼は私を<br>どう思ってるんだろう」<br>「追いLINEしないことで、<br>不安にさせてないかな」<br>「このままずっと<br>連絡が来なかったら」</p>
+            <p style="margin-bottom: 15px;">そんな思考が、<br>ぐるぐると回っている。</p>
+            <p style="margin-bottom: 15px;">それが、<br>あなたのオーラを<br>曇らせています。</p>
+            <p style="margin-bottom: 15px;">だから、<br>思考を止める時間を<br>作ってください。</p>
+            <p style="margin-bottom: 15px;">瞑想、ヨガ、運動、<br>何でもいいです。</p>
+            <p style="margin-bottom: 15px;">「考えない時間」を<br>意識的に作る。</p>
+            <p style="margin-bottom: 15px;">体を動かすと、<br>思考は止まります。</p>
+            <p style="margin-bottom: 15px;">散歩、ジョギング、ダンス。</p>
+            <p>体を動かして、<br>思考から離れる時間を<br>作ってください。</p>
+        </div>
+
+        <div class="action-box">
+            <div class="action-title">【水のエネルギーを補う】</div>
+            <p style="margin-bottom: 15px;">あなたには今、<br>水のエネルギーが<br>足りていません。</p>
+            <p style="margin-bottom: 15px;">水は流れ、冷静さ、<br>受け入れる力。</p>
+            <p style="margin-bottom: 15px;">水のエネルギーを<br>補うために、<br>以下のことを試してください。</p>
+            <p style="margin-bottom: 10px;">・毎日、たっぷり水を飲む</p>
+            <p style="margin-bottom: 10px;">・入浴時間を長めにとる</p>
+            <p style="margin-bottom: 10px;">・川や海、湖に行く</p>
+            <p style="margin-bottom: 15px;">・水の音を聞く<br>（波の音、川のせせらぎ）</p>
+            <p>水のエネルギーが入ると、<br>心配や不安が<br>流れていきます。</p>
+        </div>
+
+        <div class="action-box">
+            <div class="action-title">【神社参拝】</div>
+            <p style="margin-bottom: 15px;">月に一度、<br>太陽を祀る神社を<br>参拝してください。</p>
+            <p style="margin-bottom: 15px;">天照大神宮<br>（港南区港南5丁目）が<br>特におすすめです。</p>
+            <p style="margin-bottom: 15px;">近所の氏神様でも<br>大丈夫です。</p>
+            <p style="margin-bottom: 15px;">神社で、<br>今の状況と<br>思っていることを<br>報告してみてください。</p>
+            <p style="margin-bottom: 15px;">神様に、<br>「彼を照らす力をください」<br>とお願いするのではなく、</p>
+            <p style="margin-bottom: 15px;">「私が太陽として<br>輝く力をください」<br>とお願いしてみてください。</p>
+            <p>あなたが輝けば、<br>彼も自然と照らされます。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ あなたを支える<br>　パワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">最後に、あなたを支える<br>パワーストーンをお伝えします。</p>
+            <p style="margin-bottom: 30px;">パワーストーンは、<br>ただの石ではありません。</p>
+            <p style="margin-bottom: 30px;">長い年月をかけて<br>地球の中で育まれた石には、<br>強いエネルギーが<br>宿っています。</p>
+            <p style="margin-bottom: 30px;">そのエネルギーが、<br>あなたのオーラを安定させ、<br>運気を高めてくれます。</p>
+            <p style="margin-bottom: 30px;">特に、今のあなたのように<br>心配や不安を抱えている時、<br>パワーストーンは<br>あなたの強い味方になります。</p>
+            <p style="margin-bottom: 30px;">待つ力、信じる力、<br>太陽のように輝く力。</p>
+            <p>それらを、<br>石が静かに後押ししてくれます。</p>
+        </div>
+
+        <div class="stone-item">
+            <div class="stone-name">1. カーネリアン（紅玉髄）</div>
+            <p style="margin-bottom: 15px;">火のエネルギーを高め、<br>情熱と勇気を与える。</p>
+            <p>心配を手放し、<br>前向きになる力。<br>あなたの太陽のオーラを<br>強化します。</p>
+        </div>
+
+        <div class="stone-item">
+            <div class="stone-name">2. ムーンストーン（月長石）</div>
+            <p style="margin-bottom: 15px;">月のエネルギー、<br>感情を安定させる。</p>
+            <p>不安を癒し、<br>女性性を高める。<br>待つ力を与えてくれます。</p>
+        </div>
+
+        <div class="stone-item">
+            <div class="stone-name">3. アクアマリン（藍玉）</div>
+            <p style="margin-bottom: 15px;">水のエネルギー、<br>冷静さと流れ。</p>
+            <p>心配や思考過多を流す。<br>コミュニケーション運を<br>高めます。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 30px;">この3つの石を組み合わせた<br>ブレスレットを、<br>私が作成してお送りします。</p>
+            <p>ご希望の場合は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <h2>【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 30px;">ゆる様、</p>
+            <p style="margin-bottom: 30px;">視えています。</p>
+            <p style="margin-bottom: 30px;">2027年の春、<br>桜の下で、<br>りくとさんと笑い合っている<br>あなたの姿が。</p>
+            <p style="margin-bottom: 30px;">「待っててよかった」<br>「信じててよかった」</p>
+            <p style="margin-bottom: 30px;">そう心から思っている<br>あなたの姿が。</p>
+            <p style="margin-bottom: 30px;">その未来は、<br>もう動き始めています。</p>
+            <p style="margin-bottom: 30px;">あなたがすべきことは、</p>
+            <p style="margin-bottom: 30px;">焦ることではなく待つこと。</p>
+            <p style="margin-bottom: 30px;">不安になることではなく、<br>信じること。</p>
+            <p style="margin-bottom: 30px;">追いかけることではなく、<br>輝くこと。</p>
+            <p style="margin-bottom: 30px;">あなたは、太陽です。</p>
+            <p style="margin-bottom: 30px;">太陽は追いかけなくていい。</p>
+            <p style="margin-bottom: 30px;">ただそこで<br>輝いていればいい。</p>
+            <p style="margin-bottom: 30px;">それだけで、<br>全てが引き寄せられてきます。</p>
+            <p style="margin-bottom: 30px;">りくとさんは<br>戻ってきます。</p>
+            <p style="margin-bottom: 30px;">あなたの太陽の光を求めて。</p>
+            <p style="margin-bottom: 30px;">私は、<br>あなたの背中を押します。</p>
+            <p style="margin-bottom: 30px;">遠隔で守護祈祷を行い、<br>あなたとりくとさんに<br>光のエネルギーを<br>お送りします。</p>
+            <p style="margin-bottom: 30px;">大丈夫です。</p>
+            <p style="margin-bottom: 30px;">あなたの未来は、<br>明るく輝いています。</p>
+            <p style="margin-bottom: 40px;">その光を<br>一緒に掴みましょう。</p>
+
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>
