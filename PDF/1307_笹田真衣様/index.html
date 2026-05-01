@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笹田真衣様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before {
+            background-image: url('../強い火.png');
+        }
+
+        .aura-wood::before {
+            background-image: url('../強い木.png');
+        }
+
+        .aura-earth::before {
+            background-image: url('../強い土.png');
+        }
+
+        .aura-metal::before {
+            background-image: url('../強い金.png');
+        }
+
+        .aura-water::before {
+            background-image: url('../強い水.png');
+        }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+        }
+
+        strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">笹田真衣様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>笹田真衣様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>笹田真衣様</p>
+
+    <p>この度は本鑑定にお進みいただき、<br>
+    心より感謝申し上げます。</p>
+
+    <p>真衣様、まず一番大切なことを、<br>
+    はっきりお伝えします。</p>
+
+    <p>結論から言います。<br>
+    彼はあなたのことを<br>
+    <strong>嫌いになったわけではありません</strong>。</p>
+
+    <p>今は静かに距離を置いて、<br>
+    自分のペースを取り戻したい時期なんです。</p>
+
+    <p>彼のオーラは優しい緑。<br>
+    草花のように柔らかく揺れる性質です。</p>
+
+    <p>強く掴もうとすると折れてしまいますが、<br>
+    そっと見守れば自然に戻ってきます。</p>
+
+    <p>そして、あなたの透明な水のオーラは、<br>
+    彼の緑を育てる力を持っています。</p>
+
+    <p><strong>適切なタイミングで声をかければ<br>
+    相手からの返事が返ってきます</strong>。</p>
+
+    <p>ただ、もう一つ、<br>
+    大切なことがあります。</p>
+
+    <p>なぜこうなったのか。<br>
+    その原因は、あなたのオーラに視えています<br>
+    次のセクションで、詳しくお伝えしますね。</p>
+
+    <h2>🔮 オーラが教えてくれたこと</h2>
+
+    <div class="aura-section aura-water">
+        <p>真衣様のオーラは、透明。<br>
+        雨のように優しく染み込む水。</p>
+
+        <p>人の心に寄り添って、包んで、<br>
+        とても美しいオーラを持ってる。</p>
+
+        <p>そして、<br>
+        あなたのオーラをさらに深く視ると、<br>
+        大切なことが視えてきました。</p>
+
+        <p>あなたのオーラには、<br>
+        <strong>木と火が足りていません</strong>。</p>
+
+        <p>木のオーラが足りていないことで、<br>
+        ・新しい一歩を踏み出す勇気が出ない<br>
+        ・柔軟に対応できず、不安に固まってしまう</p>
+
+        <p>火のオーラが足りていないことで、<br>
+        ・前向きな気持ちが持ちにくい<br>
+        ・言葉にできず、思いを表現できない</p>
+
+        <p>つまり、彼に連絡できずにいるのは、<br>
+        あなたの気持ちが足りないからでも、<br>
+        努力が足りないからでもない。</p>
+
+        <p><strong>木と火のオーラが足りていないから</strong>。</p>
+
+        <p>逆に言えば、木と火のオーラさえ整えば、<br>
+        霧は晴れ始めます。</p>
+
+        <p>あなたの魂には、<br>
+        深く理解したいという知的な性質と、<br>
+        責任感が強く誠実な性質があります。</p>
+
+        <p>相手のことを想いすぎて、<br>
+        自分の気持ちを後回しにしてしまう。<br>
+        「これ以上言ったら嫌われる」<br>
+        と抑え込んでしまう。</p>
+
+        <p>それは弱さではない。相手を想う、<br>
+        あなたの優しさです。</p>
+
+        <p>そして今、あなたは<br>
+        <strong>リセット期</strong>に入っています。</p>
+
+        <p>今までのパターンを手放し、<br>
+        新しい関係性を築く転換期。</p>
+
+        <p>全ては大きな流れの一部</p>
+
+        <p>木と火を補い、水を鎮めれば。<br>
+        本来のあなたの輝きが戻ります。</p>
+    </div>
+
+    <h3>【お相手のオーラと本質】</h3>
+
+    <div class="aura-section aura-wood">
+        <p>草花のようにしなやかな緑。<br>
+        強い風が吹いても、折れない。</p>
+
+        <p>彼の魂には、<br>
+        争いを避けて穏やかに生きたい<br>
+        という気持ちが根っこにある。</p>
+
+        <p>マイペースで、楽しみたい、<br>
+        人を楽しませたい性質。</p>
+
+        <p>でも、本音を隠して、<br>
+        楽観的に流してしまう。</p>
+
+        <p>プレッシャーを感じると距離を置く。<br>
+        草の様に柔らかく、<br>
+        風の様に掴みどころがない。</p>
+
+        <p>そして、彼にも足りていないオーラがあります。</p>
+
+        <p>それは金のオーラ。</p>
+
+        <p>決断できない、<br>
+        区切りをつける力が少し苦手。</p>
+
+        <p>だから、<br>
+        「別れる、別れないの話ではない」<br>
+        と曖昧にする。</p>
+
+        <p>はっきり決めず、風の流れに任せ<br>
+        距離を置くことで整理しようとする。</p>
+
+        <p>彼は今、デリケートで傷つきやすく、<br>
+        静かにしたい時期。</p>
+
+        <p>さらに、今年は火のオーラが強い年。<br>
+        彼にとって、火のプレッシャーが理性を<br>
+        溶かしてしまう時期なんです。</p>
+
+        <p>だから、彼は距離を置いて冷やしたい。<br>
+        押されると引く。</p>
+
+        <p>閉じている時期だから、<br>
+        強く押すと閉じる。</p>
+    </div>
+
+    <h3>【彼の目に映る「あなた」】</h3>
+
+    <p>今、彼の目には<br>
+    強いエネルギーにあふれるあなたが<br>
+    少しだけ怖い。</p>
+
+    <p>荒れ狂う海が恐ろしい⋯<br>
+    それと同じ感覚なんです。</p>
+
+    <p>でも、水を抑えて、<br>
+    木のオーラと火のオーラを整えたあなたは、<br>
+    彼の目に全く違う印象で映るようになります</p>
+
+    <p>柔軟に対応できて、前向きで明るいあなた。<br>
+    彼が「<strong>一緒にいて楽だな</strong>」と思える、<br>
+    自然体のあなた。</p>
+
+    <p>さらに、<br>
+    あなたが変われば、彼も変わり始める。</p>
+
+    <p>あなたの水のオーラは、彼の緑を育てる相性<br>
+    本質的な相性はとてもいいんです。</p>
+
+    <p>だから悲観的にならないでください。</p>
+
+    <h2>🔮 彼の心を動かす道筋</h2>
+
+    <p>ここからは、<br>
+    彼の心を動かすための<br>
+    具体的な言葉と行動をお伝えします。</p>
+
+    <p>接触のタイミングは、<br>
+    <strong>5月後半から6月初旬</strong>。</p>
+
+    <p>この時期、あなたに木のオーラが巡り、<br>
+    柔軟性が戻る。</p>
+
+    <p>彼には土のオーラが巡り、<br>
+    安定を求める時期。</p>
+
+    <p>彼が「<strong>安定した関係</strong>」を求めるタイミングで<br>
+    あなたが柔軟に接することができる。</p>
+
+    <p>彼にはこんな言葉を<br>
+    投げかけてみてください。</p>
+
+    <p>「元気にしてる？」</p>
+
+    <p>「あの時はごめんね。あなたの言う通り、<br>
+    無理のない範囲で、<br>
+    お互いのペースでいきたいと思ってる」</p>
+
+    <p>ただそれだけ。重い話はしない。<br>
+    彼の趣味や仕事の話を軽く聞く。</p>
+
+    <p>「私のこと好き？」など感情を問うのは避け、<br>
+    彼はマイペースで楽しむ性質なのを<br>
+    覚えておいてください。</p>
+
+    <p>重い話より軽い話題が響くので、<br>
+    彼のペースを尊重する姿勢を見せる。</p>
+
+    <p>言うと効く言葉は</p>
+
+    <p>「<strong>一緒にいると楽しい</strong>」<br>
+    「<strong>あなたのペースでいいよ</strong>」<br>
+    「<strong>無理しないでね</strong>」</p>
+
+    <p>マイペースを尊重する姿勢が<br>
+    安心感を与えます。</p>
+
+    <p>今は疲れやすく閉じこもる時期だから、<br>
+    労わる言葉がじーんと響くんです。</p>
+
+    <p>絶対に言ってはいけない言葉。</p>
+
+    <p>「もっと会いたい」「もっと連絡して」<br>
+    → プレッシャーになる。</p>
+
+    <p>「私のこと好き？」「どう思ってるの？」<br>
+    → 問い詰められると逃げる。</p>
+
+    <p>「別れたいの？」「終わりにするの？」<br>
+    → 今は静寂の時期だから、</p>
+
+    <p>「終わり」を突きつけると本当に終わる。</p>
+
+    <h3>【大切な注意点】</h3>
+
+    <p>ただし、一つだけ<br>
+    知っておいてほしいことがあります。</p>
+
+    <p>これらの言葉や行動は、<br>
+    あなたのオーラが整った状態で初めて、<br>
+    本来の力を発揮します。</p>
+
+    <p>今のまま、<br>
+    木と火が足りていない状態で動くと<br>
+    言葉が上滑りしてしまったり、<br>
+    タイミングを逃してしまう可能性がある。</p>
+
+    <p>だから、<strong>まずはオーラを整えること</strong>。<br>
+    それが、全ての土台になります。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <p>(ここは先程の振り返りです)<br>
+    今、あなたは<br>
+    <strong>リセット期</strong>という時期に入っています。</p>
+
+    <p>今までのパターンを手放し、<br>
+    ゼロから始められる時期。</p>
+
+    <p>さらに、2026年は火のオーラが強い年。<br>
+    あなたに足りない火が巡るから、<br>
+    <strong>決断力が湧く転換期</strong>なんです。</p>
+
+    <p>リセット期は終わりではない。<br>
+    次への準備。執着を手放し、<br>
+    新しい関係性を築く転換期です。</p>
+
+    <h3>【彼の運命の転換期】</h3>
+
+    <p>そして、彼の運命も視ました。</p>
+
+    <p>彼は今、繊細な時期に入っています。<br>
+    デリケートで傷つきやすく、<br>
+    静かにしたい時期。</p>
+
+    <p>今年は火のオーラが強い年だから、<br>
+    彼は火のプレッシャーで溶かされている。<br>
+    だから距離を置いて冷やしたい。</p>
+
+    <h3>【二人の運命が交わる時】</h3>
+
+    <p>ここからが重要、<br>
+    あなたと彼、二人の運命が最も近づく時期。<br>
+    それが<strong>6月</strong>です。</p>
+
+    <p>この月、<br>
+    あなたには優しい緑のオーラが巡り、<br>
+    柔軟に対応できるようになります。<br>
+    彼には土のオーラが巡り、<br>
+    安定を求める心が芽生えます。</p>
+
+    <p>二人の波長が合い、<br>
+    自然に「<strong>また会いたいな</strong>」と思える時期です。</p>
+
+    <h3>【これから半年の流れ】</h3>
+
+    <p><strong>5月（準備の月）</strong></p>
+
+    <p>火のオーラが巡り始める月です。<br>
+    朝起きた時、「今日は何しよう」って、<br>
+    ワクワクする気持ちが戻ってくる。</p>
+
+    <p>自分の楽しみを見つけられるようになります</p>
+
+    <p>この月は、まだ動かない。<br>
+    ただ、自分を整える。</p>
+
+    <p>赤い服を着て、太陽を浴びて、笑顔を増やす<br>
+    そうすることで、火のオーラが満ちていく。</p>
+
+    <p>「<strong>6月になったら連絡してみよう</strong>」と<br>
+    決心が固まってくる月です。</p>
+
+    <p><strong>6月（運命の扉が開く月）</strong></p>
+
+    <p>緑のオーラがあなたを包みます。<br>
+    心に余裕が生まれて、彼のことを考えても<br>
+    不安で胸が締め付けられることがなくなる</p>
+
+    <p>5月の最終週、勇気を出して。<br>
+    「元気にしてる？」と、何気ない言葉で<br>
+    彼に声をかけてみてください。</p>
+
+    <p>返事が返ってきたら、過去には触れない。<br>
+    年末のことは、一切蒸し返さない。</p>
+
+    <p>今の彼の話を聞く。<br>
+    彼の趣味、仕事、最近あった出来事。<br>
+    軽やかに、楽しく。</p>
+
+    <p>彼は、あなたの軽やかさに、<br>
+    ホッとします。</p>
+
+    <p>「ああ、真衣さん、変わったな」って。<br>
+    そして、「<strong>また話したいな</strong>」って思われる</p>
+
+    <p><strong>7月（関係が動き始める月）</strong></p>
+
+    <p>6月に種を蒔いたなら、<br>
+    この月に芽が出ます。</p>
+
+    <p>彼から「<strong>久しぶりにご飯でも</strong>」と<br>
+    誘いが来るかもしれない。</p>
+
+    <p>来なくても、焦らない。</p>
+
+    <p>あなた自身が輝いているから、<br>
+    彼がどうであれ、あなたは楽しく過ごせる</p>
+
+    <p>もし会えたら。重い話はしない。<br>
+    楽しい時間を過ごす。それだけで、十分。</p>
+
+    <p><strong>8月（安定を確認する月）</strong></p>
+
+    <p>関係が続いているなら、<br>
+    この月で「<strong>無理のない範囲</strong>」の<br>
+    ペースが見えてきます。</p>
+
+    <p>会う頻度、連絡の取り方。<br>
+    お互いに心地いい距離感が、<br>
+    自然と定まっていきます。</p>
+
+    <p>土のオーラが巡り<br>
+    、焦る気持ちが落ち着きます。<br>
+    「<strong>これでいいんだ</strong>」って、安心できる。</p>
+
+    <p><strong>9月（整理の月）</strong></p>
+
+    <p>金のオーラが巡る月です。</p>
+
+    <p>冷静に、関係を見つめ直せる時期。<br>
+    「このまま続けていくのか」<br>
+    「それとも別の道を選ぶのか」<br>
+    「この先何を望むのか」<br>
+    「どこが幸せの最終地点なのか」</p>
+
+    <p>でも、この時期の決断は、<br>
+    不安からではなく、<br>
+    冷静な判断からできます。</p>
+
+    <p><strong>10月（次のステップへ）</strong></p>
+
+    <p>引き続き金のオーラが巡ります。<br>
+    自分を律する力がついて、<br>
+    彼との距離感を保つことができる。</p>
+
+    <p>「<strong>無理のない範囲で続ける</strong>」という<br>
+    彼の言葉の意味が、<br>
+    ようやく腑に落ちる。</p>
+
+    <p>この月から新しいステージに入ります。</p>
+
+    <h3>【1年後のあなた】</h3>
+
+    <p>あなたは、今よりずっと軽やかになっている<br>
+    不安で押しつぶされることがなくなり、<br>
+    「<strong>私は私でいい</strong>」って思えている。</p>
+
+    <p>その状態のあなたなら、<br>
+    彼と穏やかに続けていくこともできるし、<br>
+    もし彼が離れても、<br>
+    新しい道を笑顔で歩ける。</p>
+
+    <h2>🔮 今日から始める、オーラの整え方</h2>
+
+    <h3>【朝、目覚めたら】</h3>
+
+    <p>窓を開けて、朝日を3分だけ浴びてください。</p>
+
+    <p>火のオーラが少しずつ満ちて、<br>
+    「<strong>今日も楽しもう</strong>」という気持ちが<br>
+    自然と湧き上がってきます。</p>
+
+    <p>緑か赤の服を選ぶ。<br>
+    緑なら柔軟性が、赤なら前向きさが戻ってくる。</p>
+
+    <h3>【日中、ふと彼を思い出したら】</h3>
+
+    <p>深呼吸を3回。吸って、吐いて。<br>
+    水のオーラを鎮めてください。</p>
+
+    <p>「<strong>大丈夫</strong>」って、自分に言い聞かせる。<br>
+    彼のことを考えるのは悪いことではない。<br>
+    ただ、溺れなければいい。</p>
+
+    <p>激流をあなたはコントロールできます。</p>
+
+    <h3>【夜になったら】</h3>
+
+    <p>お風呂に浸かりながら、<br>
+    今日あった小さな楽しいことを<br>
+    3つ思い出してください。</p>
+
+    <p>どんなに小さくてもいい。<br>
+    コーヒーが美味しかったでもOK</p>
+
+    <p>「<strong>今日も頑張った</strong>」と自分を褒める。<br>
+    この内側からの輝きが<br>
+    彼をぐっと引き寄せます。</p>
+
+    <h3>【やってはいけないこと】</h3>
+
+    <p>逆に</p>
+
+    <p>彼のSNSを頻繁にチェックする<br>
+    昔を思い出して自分を責める<br>
+    良くない未来を想像することはやめてください。</p>
+
+    <p>悪い考えは悪いオーラを引き寄せます。</p>
+
+    <p>ただ、<br>
+    <strong>絶対にダメというわけではありません</strong>。<br>
+    重要なのはコントロールすること。</p>
+
+    <p>感情の激流を操ってください。</p>
+
+    <h3>【それでも、限界がある】</h3>
+
+    <p>ここまでお伝えしたことを続ければ、<br>
+    少しずつ、心は軽くなります。</p>
+
+    <p>でも、正直に言います。</p>
+
+    <p>木と火が完全に足りていない場合、<br>
+    日常の調整だけでは、<br>
+    6月までに十分に整えることは難しいです⋯</p>
+
+    <p>本気で6月の扉を開きたいなら、<br>
+    もう一つ、お伝えしたい方法があります。</p>
+
+    <h2>🔑 オーラを本格的に満たす方法</h2>
+
+    <p>ここまで視てきた通り、<br>
+    真衣様のオーラには木と火が足りていません。</p>
+
+    <p>これが、彼に連絡できず<br>
+    不安で押しつぶされる理由です。</p>
+
+    <p>でも、逆に言えば。<br>
+    <strong>木と火さえ満たせば、全てが変わる</strong>。</p>
+
+    <h3>【パワーストーンという選択肢】</h3>
+
+    <p>日常の調整に加えて、<br>
+    本格的にオーラを満たす方法。</p>
+
+    <p>それが、パワーストーンです。</p>
+
+    <p>真衣様のオーラに合わせて、<br>
+    三つのプランをご用意しました。</p>
+
+    <div class="important-box">
+        <p><strong>●松プラン: 6月の扉を確実に開きたい方へ</strong><br>
+        木・火を補う石＋水を鎮める石の組み合わせ<br>
+        5月後半、彼にLINEを送る時、手が震えない<br>
+        返信が来なくても「<strong>まぁいいか</strong>」と思える<br>
+        会えた時、自然体で笑える。<br>
+        彼から「<strong>真衣さん、変わったね</strong>」と言われる</p>
+
+        <p><strong>●竹プラン: まずは心を安定させたい方へ</strong><br>
+        木・火を補う石の組み合わせ<br>
+        朝起きた時、「<strong>今日も楽しもう</strong>」って思える<br>
+        考えても、不安で胸が苦しくならない</p>
+
+        <p><strong>●梅プラン: 小さな一歩から始めたい方へ</strong><br>
+        最も必要な石を1つ<br>
+        「<strong>連絡してみようかな</strong>」と思えるようになる</p>
+
+        <p>多くの方が、<strong>松プラン</strong>を選ばれています。<br>
+        6月まであと1ヶ月。</p>
+
+        <p>今から整え始めれば、<br>
+        扉が開く時、あなたは準備ができています。</p>
+
+        <p>興味がありましたら、<br>
+        「<strong>詳細希望</strong>」とだけ送ってください。<br>
+        真衣様専用の石の組み合わせをお伝えします</p>
+    </div>
+
+    <h2>最後に</h2>
+
+    <p>真衣様、ここまで読んでくださって、<br>
+    本当にありがとうございます。</p>
+
+    <p>今、あなたには二つの道が視えています。</p>
+
+    <p>一つは、「このまま待つ」道。<br>
+    彼から連絡が来るのを待ち続ける。<br>
+    不安で押しつぶされながら、毎日スマホを見る</p>
+
+    <p>でも、連絡は来ない。<br>
+    そして、気づいたら半年が経っている。</p>
+
+    <p>もう一つは、「自分から動く」道。<br>
+    オーラを整えて、6月に軽く声をかける。<br>
+    彼が返事をくれる。また会える。<br>
+    「<strong>無理のない範囲で</strong>」続けられる。</p>
+
+    <p>どちらを選んでも、<br>
+    間違いではありません。</p>
+
+    <p>でも、一つだけ、覚えておいてほしい。</p>
+
+    <p>彼は、あなたからの連絡を待っています。<br>
+    自分からは動けないけど、<br>
+    あなたが声をかけてくれたら、ホッとする。</p>
+
+    <p>「ああ、真衣さんはまだ俺のこと、<br>
+    覚えててくれたんだ」って。</p>
+
+    <p>その未来は、あなたが作れる。</p>
+
+    <p>私には視えています。</p>
+
+    <p>6月のある日。<br>
+    「<strong>元気だよ。</strong>」というメッセージを<br>
+    笑顔で受け取るあなたの姿が、</p>
+
+    <p>そして、久しぶりに会った時、<br>
+    彼が「なんか、真衣さん変わったね」と言い、<br>
+    あなたは「そうかな」と笑う。</p>
+
+    <p>その時のあなたは、軽やか。<br>
+    彼に執着していない。<br>
+    一緒にいて本当に楽しい。<br>
+    彼も、リラックスしている。</p>
+
+    <p>その未来への扉は、もうすぐそこ。</p>
+
+    <p>鍵を作るのは、あなた。</p>
+
+    <p>応援しています。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>
