@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>笹田真衣様専用鑑定書</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
 
@@ -129,6 +130,7 @@
             margin-bottom: 40px;
             padding-bottom: 15px;
             border-bottom: 2px solid #e8d5b7;
+            text-align: center;
         }
 
         h3 {
@@ -137,11 +139,12 @@
             color: #8b6f9c;
             margin-top: 40px;
             margin-bottom: 25px;
+            text-align: center;
         }
 
         p {
             margin-bottom: 25px;
-            text-align: justify;
+            text-align: center;
         }
 
         hr {
@@ -198,6 +201,46 @@
 
         .aura-water::before {
             background-image: url('../強い水.png');
+        }
+
+        /* ===== レーダーチャート ===== */
+        .aura-chart-container {
+            width: 280px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            margin: 30px auto;
+        }
+
+        .aura-chart-title {
+            text-align: center;
+            font-size: 16px;
+            color: #8b6f9c;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .aura-result-box {
+            background: linear-gradient(135deg, #f9f3ff 0%, #fff5fb 100%);
+            border: 2px solid #c9a0dc;
+            border-radius: 15px;
+            padding: 30px 35px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .aura-result-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .aura-result-box > p:last-child {
+            font-size: 17px;
+            line-height: 2.2;
+            margin-bottom: 0;
         }
 
         /* ===== ボックス装飾 ===== */
@@ -317,6 +360,11 @@
                 padding: 25px 20px;
                 margin: 20px 0;
             }
+
+            .aura-chart-container {
+                width: 100%;
+                max-width: 280px;
+            }
         }
     </style>
 </head>
@@ -376,54 +424,72 @@
 
         <p>人の心に寄り添って、包んで、<br>
         とても美しいオーラを持ってる。</p>
-
-        <p>そして、<br>
-        あなたのオーラをさらに深く視ると、<br>
-        大切なことが視えてきました。</p>
-
-        <p>あなたのオーラには、<br>
-        <strong>木と火が足りていません</strong>。</p>
-
-        <p>木のオーラが足りていないことで、<br>
-        ・新しい一歩を踏み出す勇気が出ない<br>
-        ・柔軟に対応できず、不安に固まってしまう</p>
-
-        <p>火のオーラが足りていないことで、<br>
-        ・前向きな気持ちが持ちにくい<br>
-        ・言葉にできず、思いを表現できない</p>
-
-        <p>つまり、彼に連絡できずにいるのは、<br>
-        あなたの気持ちが足りないからでも、<br>
-        努力が足りないからでもない。</p>
-
-        <p><strong>木と火のオーラが足りていないから</strong>。</p>
-
-        <p>逆に言えば、木と火のオーラさえ整えば、<br>
-        霧は晴れ始めます。</p>
-
-        <p>あなたの魂には、<br>
-        深く理解したいという知的な性質と、<br>
-        責任感が強く誠実な性質があります。</p>
-
-        <p>相手のことを想いすぎて、<br>
-        自分の気持ちを後回しにしてしまう。<br>
-        「これ以上言ったら嫌われる」<br>
-        と抑え込んでしまう。</p>
-
-        <p>それは弱さではない。相手を想う、<br>
-        あなたの優しさです。</p>
-
-        <p>そして今、あなたは<br>
-        <strong>リセット期</strong>に入っています。</p>
-
-        <p>今までのパターンを手放し、<br>
-        新しい関係性を築く転換期。</p>
-
-        <p>全ては大きな流れの一部</p>
-
-        <p>木と火を補い、水を鎮めれば。<br>
-        本来のあなたの輝きが戻ります。</p>
     </div>
+
+    <p>そして、<br>
+    あなたのオーラをさらに深く視ると、<br>
+    大切なことが視えてきました。</p>
+
+    <p>あなたのオーラには、<br>
+    <strong>木と火が足りていません</strong>。</p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">真衣様の現状のオーラ</div>
+        <canvas id="auraChartYou"></canvas>
+    </div>
+
+    <p>木のオーラが足りていないことで、<br>
+    ・新しい一歩を踏み出す勇気が出ない<br>
+    ・柔軟に対応できず、不安に固まってしまう</p>
+
+    <p>火のオーラが足りていないことで、<br>
+    ・前向きな気持ちが持ちにくい<br>
+    ・言葉にできず、思いを表現できない</p>
+
+    <p>つまり、彼に連絡できずにいるのは、<br>
+    あなたの気持ちが足りないからでも、<br>
+    努力が足りないからでもない。</p>
+
+    <p><strong>木と火のオーラが足りていないから</strong>。</p>
+
+    <p>逆に言えば、木と火のオーラさえ整えば、<br>
+    霧は晴れ始めます。</p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">木と火を補った後のオーラ</div>
+        <canvas id="auraChartYouFixed"></canvas>
+    </div>
+
+    <div class="aura-result-box">
+        <p class="aura-result-title">木と火のオーラを補うと…</p>
+        <p>新しい一歩を踏み出す勇気が湧いてきて、<br>
+        前向きな気持ちで彼に接することができる。<br>
+        「このタイミングで連絡してみよう」と<br>
+        自然に思えるようになる。</p>
+    </div>
+
+    <p>あなたの魂には、<br>
+    深く理解したいという知的な性質と、<br>
+    責任感が強く誠実な性質があります。</p>
+
+    <p>相手のことを想いすぎて、<br>
+    自分の気持ちを後回しにしてしまう。<br>
+    「これ以上言ったら嫌われる」<br>
+    と抑え込んでしまう。</p>
+
+    <p>それは弱さではない。相手を想う、<br>
+    あなたの優しさです。</p>
+
+    <p>そして今、あなたは<br>
+    <strong>リセット期</strong>に入っています。</p>
+
+    <p>今までのパターンを手放し、<br>
+    新しい関係性を築く転換期。</p>
+
+    <p>全ては大きな流れの一部</p>
+
+    <p>木と火を補い、水を鎮めれば。<br>
+    本来のあなたの輝きが戻ります。</p>
 
     <h3>【お相手のオーラと本質】</h3>
 
@@ -444,33 +510,51 @@
         <p>プレッシャーを感じると距離を置く。<br>
         草の様に柔らかく、<br>
         風の様に掴みどころがない。</p>
+    </div>
 
-        <p>そして、彼にも足りていないオーラがあります。</p>
+    <p>そして、彼にも足りていないオーラがあります。</p>
 
-        <p>それは金のオーラ。</p>
+    <p>それは金のオーラ。</p>
 
-        <p>決断できない、<br>
-        区切りをつける力が少し苦手。</p>
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">彼の現状のオーラ</div>
+        <canvas id="auraChartPartner"></canvas>
+    </div>
 
-        <p>だから、<br>
-        「別れる、別れないの話ではない」<br>
-        と曖昧にする。</p>
+    <p>決断できない、<br>
+    区切りをつける力が少し苦手。</p>
 
-        <p>はっきり決めず、風の流れに任せ<br>
-        距離を置くことで整理しようとする。</p>
+    <p>だから、<br>
+    「別れる、別れないの話ではない」<br>
+    と曖昧にする。</p>
 
-        <p>彼は今、デリケートで傷つきやすく、<br>
-        静かにしたい時期。</p>
+    <p>はっきり決めず、風の流れに任せ<br>
+    距離を置くことで整理しようとする。</p>
 
-        <p>さらに、今年は火のオーラが強い年。<br>
-        彼にとって、火のプレッシャーが理性を<br>
-        溶かしてしまう時期なんです。</p>
+    <p>彼は今、デリケートで傷つきやすく、<br>
+    静かにしたい時期。</p>
 
-        <p>だから、彼は距離を置いて冷やしたい。<br>
-        押されると引く。</p>
+    <p>さらに、今年は火のオーラが強い年。<br>
+    彼にとって、火のプレッシャーが理性を<br>
+    溶かしてしまう時期なんです。</p>
 
-        <p>閉じている時期だから、<br>
-        強く押すと閉じる。</p>
+    <p>だから、彼は距離を置いて冷やしたい。<br>
+    押されると引く。</p>
+
+    <p>閉じている時期だから、<br>
+    強く押すと閉じる。</p>
+
+    <div class="aura-chart-container">
+        <div class="aura-chart-title">金を補った後のオーラ</div>
+        <canvas id="auraChartPartnerFixed"></canvas>
+    </div>
+
+    <div class="aura-result-box">
+        <p class="aura-result-title">でも、金のオーラを補うと…</p>
+        <p>決断力が芽生えて、<br>
+        「真衣さんと、もう一度ちゃんと話したい」と<br>
+        自分の気持ちに向き合えるようになる。<br>
+        曖昧だった関係を整理できる。</p>
     </div>
 
     <h3>【彼の目に映る「あなた」】</h3>
@@ -906,6 +990,132 @@
     </div>
 
 </div>
+
+<script>
+// チャート共通設定
+const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: {
+        legend: { display: false }
+    },
+    scales: {
+        r: {
+            beginAtZero: true,
+            max: 3,
+            min: 0,
+            ticks: {
+                stepSize: 1,
+                display: false
+            },
+            pointLabels: {
+                font: { size: 14, family: 'Noto Serif JP' },
+                color: '#2d2d2d'
+            },
+            grid: { color: 'rgba(201, 160, 93, 0.3)' },
+            angleLines: { color: 'rgba(201, 160, 93, 0.3)' }
+        }
+    }
+};
+
+// 真衣様の現状のオーラ（木0, 火0, 土1, 金2, 水3）
+new Chart(document.getElementById('auraChartYou'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [{
+            data: [0, 0, 1, 2, 3],
+            backgroundColor: 'rgba(201, 160, 93, 0.3)',
+            borderColor: '#c9a05d',
+            borderWidth: 2,
+            pointBackgroundColor: '#c9a05d',
+            pointBorderColor: '#fff',
+            pointRadius: 5
+        }]
+    },
+    options: chartOptions
+});
+
+// 真衣様の補った後のオーラ（木2, 火2を補う）
+new Chart(document.getElementById('auraChartYouFixed'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [
+            {
+                // 補う部分（緑）
+                data: [2, 2, 1, 0, 3],
+                backgroundColor: 'rgba(100, 180, 100, 0.4)',
+                borderColor: '#5a9a5a',
+                borderWidth: 2,
+                pointBackgroundColor: '#5a9a5a',
+                pointBorderColor: '#fff',
+                pointRadius: 6
+            },
+            {
+                // 元のオーラ（ゴールド）
+                data: [0, 0, 1, 2, 3],
+                backgroundColor: 'rgba(201, 160, 93, 0.3)',
+                borderColor: '#c9a05d',
+                borderWidth: 2,
+                pointBackgroundColor: '#c9a05d',
+                pointBorderColor: '#fff',
+                pointRadius: 5
+            }
+        ]
+    },
+    options: chartOptions
+});
+
+// 彼の現状のオーラ（木2, 火1, 土1, 金0, 水2）
+new Chart(document.getElementById('auraChartPartner'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [{
+            data: [2, 1, 1, 0, 2],
+            backgroundColor: 'rgba(139, 111, 156, 0.3)',
+            borderColor: '#8b6f9c',
+            borderWidth: 2,
+            pointBackgroundColor: '#8b6f9c',
+            pointBorderColor: '#fff',
+            pointRadius: 5
+        }]
+    },
+    options: chartOptions
+});
+
+// 彼の補った後のオーラ（金2を補う）
+new Chart(document.getElementById('auraChartPartnerFixed'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [
+            {
+                // 補う部分（緑）
+                data: [0, 0, 1, 2, 2],
+                backgroundColor: 'rgba(100, 180, 100, 0.4)',
+                borderColor: '#5a9a5a',
+                borderWidth: 2,
+                pointBackgroundColor: '#5a9a5a',
+                pointBorderColor: '#fff',
+                pointRadius: 6
+            },
+            {
+                // 元のオーラ（紫）
+                data: [2, 1, 1, 0, 2],
+                backgroundColor: 'rgba(139, 111, 156, 0.3)',
+                borderColor: '#8b6f9c',
+                borderWidth: 2,
+                pointBackgroundColor: '#8b6f9c',
+                pointBorderColor: '#fff',
+                pointRadius: 5
+            }
+        ]
+    },
+    options: chartOptions
+});
+</script>
 
 </body>
 </html>
