@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【本式守護鑑定】ちひろ様</title>
+    <title>ちひろ様　本式守護鑑定</title>
     <style>
         * {
             margin: 0;
@@ -50,11 +50,49 @@
             letter-spacing: 0.05em;
         }
 
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
         .section {
             margin: 30px 0;
             padding: 20px;
             background: rgba(30, 30, 70, 0.3);
             border-radius: 10px;
+            text-align: center;
         }
 
         .emoji-header {
@@ -64,10 +102,36 @@
             text-align: left;
         }
 
-        p {
-            margin: 15px 0;
+        .guardian {
             text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
             font-size: 1.1em;
+            line-height: 2;
         }
 
         .signature {
@@ -75,6 +139,65 @@
             font-size: 1.3em;
             color: #c8d0ff;
             margin-top: 30px;
+        }
+
+        /* 表紙のスタイル */
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 30px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
         }
 
         @media (max-width: 768px) {
@@ -95,17 +218,47 @@
                 font-size: 1.2em;
             }
 
+            .oracle-message,
             .section {
                 padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>【本式守護鑑定】ちひろ様</h1>
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">新しい人生への道</h2>
+            <p class="cover-name">ちひろ様</p>
+        </div>
+    </div>
 
-        <div class="section">
+    <!-- 本文 -->
+    <div class="container">
+        <div class="oracle-message">
             <p style="margin-bottom: 30px;">ちひろ様、</p>
             <p style="margin-bottom: 30px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
             <p style="margin-bottom: 30px;">あなたの魂が、<br>本気で変わろうとしている。</p>
@@ -114,247 +267,242 @@
         </div>
 
         <h2>【あなたの未来に視えるもの】</h2>
-
         <div class="section">
-            <p style="margin-bottom: 30px;">視えています。</p>
-            <p style="margin-bottom: 30px;">子供たちが、<br>あなたの手を握って笑っている。</p>
-            <p style="margin-bottom: 30px;">新しい住まいで、<br>穏やかな朝を迎えている。</p>
-            <p style="margin-bottom: 30px;">そして──</p>
-            <p style="margin-bottom: 30px;">あなたの心から、<br>恐怖が消えている。</p>
-            <p style="margin-bottom: 30px;">「あの時、決断してよかった」</p>
-            <p style="margin-bottom: 30px;">そう、心から思っている。</p>
-            <p style="margin-bottom: 30px;">それは、<br>2026年の秋。</p>
-            <p style="margin-bottom: 30px;">金木犀の香りが漂う頃、<br>あなたは新しい人生を始めます。</p>
-            <p style="margin-bottom: 30px;">モラハラの傷も、不安も、<br>すべて過去のものになっている。</p>
-            <p style="margin-bottom: 30px;">その瞬間、<br>あなたの心に溢れるのは、<br>安堵と希望と、深い感謝。</p>
-            <p style="margin-bottom: 30px;">「ここから、私の人生が始まるんだ」</p>
-            <p style="margin-bottom: 30px;">そう感じる未来が、<br>はっきりと視えています。</p>
-            <p style="margin-bottom: 30px;">ただし──</p>
-            <p style="margin-bottom: 30px;">そこへ至るまでの道のりは、<br>何もせずに待つだけでは<br>辿り着けません。</p>
-            <p style="margin-bottom: 30px;">あなた自身が、今この瞬間から<br>動く必要がある。</p>
-            <p style="margin-bottom: 30px;">でも、大丈夫です。</p>
-            <p style="margin-bottom: 30px;">あなたには、<br>それを乗り越える力がある。</p>
+            <p style="margin-bottom: 30px;">守護神が、<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 30px;">あなたと子どもたちが、<br>笑顔で朝を迎えている姿。</p>
+            <p style="margin-bottom: 30px;">もう、怖いものは何もない。<br>モラハラの傷も、不安も癒えている。</p>
+            <p style="margin-bottom: 30px;">そして、<br>新しい誰かが、<br>そっとあなたを支えてくれている。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">それは、<br>2027年の春。</p>
+            <p style="margin-bottom: 30px;">桜が咲き始める頃、<br>あなたは新しい人生を歩み始めている。</p>
+            <p style="margin-bottom: 30px;">その未来の兆しが、<br>強く感じられます。</p>
+            <p style="margin-bottom: 30px;">そこに至るまでの道のりは、<br>決して平坦ではありません。</p>
+            <p style="margin-bottom: 30px;">離婚調停、<br>子どもたちの生活、<br>気になる相手との関係。</p>
+            <p style="margin-bottom: 30px;">一つ一つが、<br>あなたの肩に重くのしかかっている。</p>
+            <p style="margin-bottom: 30px;">でも──<br>あなたには、それを乗り越える力がある。</p>
+            <p style="margin-bottom: 30px;"><span style="color: #ffd966;">建御雷神</span>が、<br>あなたを守っています。</p>
         </div>
 
-        <h2 class="emoji-header">⛩️ 離婚が成立する日</h2>
-
+        <h2 class="emoji-header">⛩️ 離婚が成立する時期</h2>
         <div class="section">
-            <p style="margin-bottom: 30px;">ちひろ様、</p>
-            <p style="margin-bottom: 30px;">離婚調停中の今、<br>こんな不安がありませんか？</p>
-            <p style="margin-bottom: 30px;">「本当に終わるのか」</p>
-            <p style="margin-bottom: 30px;">「いつまでこの状態が続くのか」</p>
-            <p style="margin-bottom: 30px;">「条件面で不利にならないか」</p>
-            <p style="margin-bottom: 30px;">その不安、よく分かります。</p>
-            <p style="margin-bottom: 30px;">でも──</p>
-            <p style="margin-bottom: 30px;">離婚は、成立します。</p>
-            <p style="margin-bottom: 30px;">それも、あなたにとって良い条件で。</p>
-            <p style="margin-bottom: 30px;">あなたを守る神様は、<br>建御雷神。</p>
-            <p style="margin-bottom: 30px;">最強の武の神、雷を司る神様です。</p>
-            <p style="margin-bottom: 30px;">あなたには、決断が速く、<br>迷わず動く力がある。</p>
-            <p style="margin-bottom: 30px;">そして、<br>子供たちを守るために、<br>離婚という決断をした強さがある。</p>
-            <p style="margin-bottom: 30px;">その強さが、これから先、<br>すべてを切り開いていきます。</p>
-            <p style="margin-bottom: 30px;">今年、2026年は、火が強い年。</p>
-            <p style="margin-bottom: 30px;">あなたの銀色のオーラは、<br>火に炙られ、<br>精錬されている最中です。</p>
-            <p style="margin-bottom: 30px;">精錬とは、不純物を取り除き、<br>純粋な金を取り出すこと。</p>
-            <p style="margin-bottom: 30px;">モラハラという不純物を、<br>今、燃やし尽くしている。</p>
-            <p style="margin-bottom: 30px;">そして──</p>
-            <p style="margin-bottom: 30px;">2026年9月、秋が来る頃。<br>あなたの力が、最も強くなります。</p>
-            <p style="margin-bottom: 30px;">秋は、金の季節。</p>
-            <p style="margin-bottom: 30px;">銀色のオーラが、最も輝く季節です。</p>
-            <p style="margin-bottom: 30px;">その時、離婚が正式に成立します。</p>
-            <p style="margin-bottom: 30px;">視えているのは、9月中旬から下旬。</p>
-            <p style="margin-bottom: 30px;">金木犀の香りが街に漂い始める頃。</p>
-            <p style="margin-bottom: 30px;">調停が終わり、<br>正式な書類にサインをする。</p>
-            <p style="margin-bottom: 30px;">その瞬間、あなたの心に<br>安堵が広がります。</p>
-            <p style="margin-bottom: 30px;">「終わった」</p>
-            <p style="margin-bottom: 30px;">「これで、新しい人生が始まる」</p>
-            <p style="margin-bottom: 30px;">そう感じるはずです。</p>
-            <p style="margin-bottom: 30px;">そこへ至るまでの<br>道のりを、<br>月ごとにお伝えします。</p>
-
-            <p style="margin-bottom: 20px; margin-top: 40px; font-weight: bold; color: #c8d0ff;">7月は、<br>調停が本格的に動き始める月。</p>
-            <p style="margin-bottom: 30px;">条件面での話し合いが<br>具体的に進みます。</p>
-            <p style="margin-bottom: 30px;">この月、<br>あなたがすべきことは、<br>感情に流されないこと。</p>
-            <p style="margin-bottom: 30px;">冷静に、鋭く、現実を見極める。</p>
-            <p style="margin-bottom: 30px;">あなたの銀色のオーラは、<br>刀のように鋭い。</p>
-            <p style="margin-bottom: 30px;">その鋭さを、この月に使います。</p>
-
-            <p style="margin-bottom: 20px; margin-top: 40px; font-weight: bold; color: #c8d0ff;">8月は、<br>少し苦しい月です。</p>
-            <p style="margin-bottom: 30px;">夏の暑さと火の強さで、<br>疲れやすくなります。</p>
-            <p style="margin-bottom: 30px;">調停が難航したり、<br>相手が感情的になったり。</p>
-            <p style="margin-bottom: 30px;">でも、あと少しです。</p>
-            <p style="margin-bottom: 30px;">この月は、無理をしすぎないこと。</p>
-            <p style="margin-bottom: 30px;">子供たちと休む時間を作り、<br>体調を整えてください。</p>
-
-            <p style="margin-bottom: 20px; margin-top: 40px; font-weight: bold; color: #c8d0ff;">そして──<br>9月、<br>秋が来ます。</p>
-            <p style="margin-bottom: 30px;">空気が澄み、<br>金木犀の香りが漂い始める。</p>
-            <p style="margin-bottom: 30px;">あなたの力が、最も強くなる季節。</p>
-            <p style="margin-bottom: 30px;">この月、離婚が正式に成立する<br>確率が一番高いです。</p>
-            <p style="margin-bottom: 30px;">9月中旬から下旬、<br>話し合いが終わり、<br>すべてが決まります。</p>
-            <p style="margin-bottom: 30px;">子供たちのこと、生活のこと、<br>住まいのこと。</p>
-            <p style="margin-bottom: 30px;">すべてが、あなたにとって<br>良い形で決まる。</p>
-            <p style="margin-bottom: 30px;">その日、<br>あなたは深く息を吐いて、<br>こう思うでしょう。</p>
-            <p style="margin-bottom: 30px;">「ここから、新しい人生が始まる」</p>
+            <p style="margin-bottom: 30px;">まず、<br>あなたの性格について、<br>視えていることがあります。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">あなたは、<br>決断が速く迷わない人です。</p>
+            <p style="margin-bottom: 30px;">一度決めたら全力で動く。<br>恐れを知らない勇者のような強さがある。</p>
+            <p style="margin-bottom: 30px;">そして、<br>子どもたちを守るために、<br>離婚という決断をした。</p>
+            <p style="margin-bottom: 30px;">その強さは、<br>誰にでもあるものではありません。</p>
+            <p style="margin-bottom: 30px;">でも今は、<br>モラハラの影響で、<br>少しだけ鈍っている。</p>
+            <p style="margin-bottom: 30px;">本来の鋭さが、<br>曇ってしまっている。</p>
+            <p style="margin-bottom: 30px;">人の機微に敏感になりすぎて、<br>「今、何を思ってるんだろう」と不安になる。</p>
+            <p style="margin-bottom: 30px;">楽しめなくなった。</p>
+            <p style="margin-bottom: 30px;">それは、<br>あなたが弱くなったのではありません。</p>
+            <p style="margin-bottom: 30px;">傷ついた刀が、<br>もう戦えないと思っているだけ。</p>
+            <p style="margin-bottom: 30px;">正しい防衛反応です。</p>
+            <p style="margin-bottom: 30px;">でも──<br>砥げばもう一度鋭さを取り戻します。</p>
+            <p style="margin-bottom: 30px;">もう大丈夫です。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">離婚が成立する時期が、<br>3つのタイミングで視えています。</p>
         </div>
 
-        <h2 class="emoji-header">⛩️ 気になる相手のこと</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">一つ目は、<br>2026年の秋。</p>
+            <p style="margin-bottom: 30px;">9月から11月にかけて、<br>離婚が成立する最初の流れが来ます。</p>
+            <p style="margin-bottom: 30px;">夏の暑さが去り、<br>秋の涼しさが訪れる頃。</p>
+            <p style="margin-bottom: 30px;">あなたの本来の力が、<br>戻ってくる時期です。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">調停がスムーズに進めば、<br>この時期に決着がつく可能性が高い。</p>
+        </div>
 
         <div class="section">
-            <p style="margin-bottom: 30px;">ちひろ様、</p>
-            <p style="margin-bottom: 30px;">気になる相手のこと、<br>正直にお伝えします。</p>
-            <p style="margin-bottom: 30px;">彼はあなたを、大切に思っています。</p>
-            <p style="margin-bottom: 30px;">辛い時に支えてくれたこと、<br>好意を伝えてくれたこと。</p>
-            <p style="margin-bottom: 30px;">それは、<br>すべて本当の気持ちです。</p>
-            <p style="margin-bottom: 30px;">でも──</p>
-            <p style="margin-bottom: 30px;">彼は今、戸惑っています。</p>
-            <p style="margin-bottom: 30px;">「離婚調停中」<br>「子供が2人いる」</p>
-            <p style="margin-bottom: 30px;">その現実の重さに、<br>正直、どう向き合えばいいか<br>分からなくなっている。</p>
-            <p style="margin-bottom: 30px;">連絡が減ったのは、<br>あなたを嫌いになったからでも、<br>引いたからでもありません。</p>
-            <p style="margin-bottom: 30px;">「どうすればいいか分からない」</p>
-            <p style="margin-bottom: 30px;">その戸惑いです。</p>
-            <p style="margin-bottom: 30px;">彼は今、28歳。</p>
-            <p style="margin-bottom: 30px;">人生の中で、<br>友人関係や自由を楽しむ時期。</p>
-            <p style="margin-bottom: 30px;">本格的に<br>結婚や家庭を考える時期は、まだ先です。</p>
-            <p style="margin-bottom: 30px;">彼が結婚を意識するのは、<br>30代半ば以降。</p>
-            <p style="margin-bottom: 30px;">今から7年後です。</p>
-            <p style="margin-bottom: 30px;">そして──</p>
-            <p style="margin-bottom: 30px;">あなたと彼の関係は、<br>金が水を生む関係。</p>
-            <p style="margin-bottom: 30px;">あなたが与える側、<br>彼が受け取る側。</p>
-            <p style="margin-bottom: 30px;">今のあなたには、<br>与えるエネルギーの余裕がありません。</p>
-            <p style="margin-bottom: 30px;">むしろ、<br>あなた自身が癒される必要がある。</p>
-            <p style="margin-bottom: 30px;">だからこそ、<br>今、彼に期待しすぎないこと。</p>
-            <p style="margin-bottom: 30px;">彼は、<br>あなたの辛い時期に<br>現れた「守護者」のような存在。</p>
-            <p style="margin-bottom: 30px;">精神的な支えとして、そばにいてくれた。</p>
-            <p style="margin-bottom: 30px;">でも──</p>
-            <p style="margin-bottom: 30px;">彼はあなたの人生の<br>「通過点」であって、<br>「ゴール」ではありません。</p>
-            <p style="margin-bottom: 30px;">2026年秋から2027年春にかけて、<br>会える可能性はあります。</p>
-            <p style="margin-bottom: 30px;">でも、その先に本格的な恋愛が<br>待っているかは、分かりません。</p>
-            <p style="margin-bottom: 30px;">彼はまだ、<br>家庭を持つ準備ができていない。</p>
-            <p style="margin-bottom: 30px;">だからこそ、<br>今、あなたがすべきことは、<br>彼への執着を手放すこと。</p>
-            <p style="margin-bottom: 30px;">「会えたら嬉しい、<br>会えなくても大丈夫」</p>
-            <p style="margin-bottom: 30px;">そんな軽い気持ちで。</p>
-            <p style="margin-bottom: 30px;">彼に感謝しつつ、<br>今は自分と子供たちに集中してください。</p>
-            <p style="margin-bottom: 30px;">本当のパートナーは、<br>あなたが癒され、整った後に現れます。</p>
-            <p style="margin-bottom: 30px;">それは、<br>2027年から2028年。</p>
-            <p style="margin-bottom: 30px;">離婚が成立し、<br>新しい生活が落ち着いた頃。</p>
-            <p style="margin-bottom: 30px;">あなたの銀色のオーラが<br>本来の輝きを取り戻した時。</p>
-            <p style="margin-bottom: 30px;">その時、新しい出会いが訪れます。</p>
-            <p style="margin-bottom: 30px;">相手はあなたを守り、<br>子供たちを受け入れてくれる。</p>
-            <p style="margin-bottom: 30px;">そんな優しくて強い人です。</p>
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">二つ目は、<br>2027年の春から初夏。</p>
+            <p style="margin-bottom: 30px;">3月から6月にかけて、<br>新しい年度が始まる時期。</p>
+            <p style="margin-bottom: 30px;">桜が咲き、<br>新しい生活が始まる季節。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">もし2026年秋に成立しなくても、<br>この時期が次のチャンスです。</p>
+            <p style="margin-bottom: 30px;">子どもの新学期に合わせた<br>区切りとしても良い時期。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">三つ目は、<br>2027年の秋から2028年の新年。</p>
+            <p style="margin-bottom: 30px;">9月から翌年1月にかけて、<br>完全な決着の時期。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">どんなに難航していても、<br>この時期には必ず決着がつく流れが来ます。</p>
+            <p style="margin-bottom: 30px;">最後のチャンス、<br>そして最も確実な時期です。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 30px;">離婚の条件も、<br>思ったよりも悪くありません。</p>
+            <p style="margin-bottom: 30px;">子どもたちの養育費、<br>財産分与について、<br>法的に正しい判断が下されます。</p>
+            <p style="margin-bottom: 30px;">夫がどれだけ粘っても、<br>最後は、<br>あなたに有利な条件で決まる。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">焦らないでください。</p>
+            <p style="margin-bottom: 30px;">一つ目のタイミングを逃しても、<br>二つ目、三つ目がある。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">大切なのは、<br>無理に急ぐことではなく、<br>流れに任せること。</p>
+            <p style="margin-bottom: 30px;">そのために、<br>今すべきことがあります。</p>
+            <p style="margin-bottom: 30px;">まず、<br>2026年6月から8月にかけて、<br>調停の準備を進めてください。</p>
+            <p style="margin-bottom: 30px;">弁護士と相談し、<br>譲れない条件を明確にする。</p>
+            <p style="margin-bottom: 30px;">そして、<br>秋の訪れとともに、<br>最初の一押しをする。</p>
+            <p style="margin-bottom: 30px;">もしその時期に決まらなくても、<br>次のタイミングが必ず来ます。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">運命は、<br>あなたの味方です。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ 気になる相手との未来</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">次に、<br>気になる相手のことを<br>正直にお伝えします。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">相手の本当の気持ちは、<br>「あなたを守りたい」<br>「支えたい」です。</p>
+            <p style="margin-bottom: 30px;">連絡が減ったのは、<br>引かれたからではありません。</p>
+            <p style="margin-bottom: 30px;">相手自身が今、<br>整理をしている時期だからです。</p>
+            <p style="margin-bottom: 30px;">あなたの現状を知って、<br>「本当に自分が支えられるのか」<br>「ちゃんと力になれるのか」<br>そう自問している。</p>
+            <p style="margin-bottom: 30px;">相手も今、<br>変化の時期にいます。</p>
+            <p style="margin-bottom: 30px;">何かを終わらせて、<br>新しいものを始めようとしている。</p>
+            <p style="margin-bottom: 30px;">あなたと同じように。</p>
+            <p style="margin-bottom: 30px;">だからこそ、<br>少し距離を置いて、<br>自分の気持ちを整理している。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">でもそれは、<br>「諦めた」のではなく、<br>「ちゃんと向き合おうとしている」証拠です。</p>
+            <p style="margin-bottom: 30px;">そして、<br>会える流れが視えています。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">2026年の秋。</p>
+            <p style="margin-bottom: 30px;">あなたが離婚に向けて進み、<br>気持ちが少しずつ安定してきた頃。</p>
+            <p style="margin-bottom: 30px;">相手も決心がつきます。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">2027年の春から夏にかけて、<br>初めて会える可能性が高い。</p>
+            <p style="margin-bottom: 30px;">桜が咲く頃、<br>または初夏の青空の下。</p>
+            <p style="margin-bottom: 30px;">二人が顔を合わせる日が、<br>静かに近づいています。</p>
+            <p style="margin-bottom: 30px;">ただし、<br>焦らないでください。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">今、最も大切なのは、<br>あなた自身の生活を整えること。</p>
+            <p style="margin-bottom: 30px;">離婚を成立させ、<br>子どもたちとの生活を安定させる。</p>
+            <p style="margin-bottom: 30px;">その土台ができたとき、<br>相手も安心して一歩踏み出せます。</p>
+            <p style="margin-bottom: 30px;">逆に、<br>今の不安定な状態で無理に進めようとすると、<br>相手も、あなた自身も、<br>どちらも苦しくなってしまう。</p>
+            <p style="margin-bottom: 30px;">だから、<br>まずは自分を整える。</p>
+            <p style="margin-bottom: 30px;">そして、<br>相手との未来は、<br>自然に訪れます。</p>
         </div>
 
         <h2 class="emoji-header">⛩️ 心の傷を癒す方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">最後に、<br>あなたの心の傷を癒す方法を<br>お伝えします。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">あなたは本来、<br>刀のように鋭い白銀、<br>研ぎ澄まされた銀色のオーラを持つ人。</p>
+            <p style="margin-bottom: 30px;">鋭い判断力と決断力を持つ人。</p>
+            <p style="margin-bottom: 30px;">でも今は、<br>モラハラの影響で、<br>そのオーラが少し曇っている。</p>
+            <p style="margin-bottom: 30px;">火のような攻撃を受け続けた結果、<br>刀が黒ずんでしまっている。</p>
+            <p style="margin-bottom: 30px;">でも──<br>本来の光が消えたわけではありません。</p>
+            <p style="margin-bottom: 30px;">少し曇っているだけです。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">そして、<br>これから磨き直せます。</p>
+        </div>
 
         <div class="section">
-            <p style="margin-bottom: 30px;">ちひろ様、</p>
-            <p style="margin-bottom: 30px;">あなたは今、<br>心に深い傷を負っています。</p>
-            <p style="margin-bottom: 30px;">モラハラの影響で、<br>「人の機微に敏感」になりすぎている。</p>
-            <p style="margin-bottom: 30px;">誰かがイライラしていると、<br>「私が何かしたのか」と<br>怖くなってしまう。</p>
-            <p style="margin-bottom: 30px;">気になる相手と話していても、<br>「どう思ってるんだろう」と<br>楽しめなくなってしまう。</p>
-            <p style="margin-bottom: 30px;">それは、あなたのせいではありません。</p>
-            <p style="margin-bottom: 30px;">「相手の感情を読む訓練」を<br>させられたからです。</p>
-            <p style="margin-bottom: 30px;">夫の機嫌を損ねないように、<br>常に気を張って、<br>相手の顔色を伺っていた。</p>
-            <p style="margin-bottom: 30px;">その影響が今も残っている。</p>
-            <p style="margin-bottom: 30px;">でもそれは今から手放せます。</p>
-            <p style="margin-bottom: 30px;">まず知ってください。</p>
-            <p style="margin-bottom: 30px;">「他人の感情は、<br>私の責任ではない」</p>
-            <p style="margin-bottom: 30px;">誰かがイライラしていても、<br>それはあなたのせいではない。</p>
-            <p style="margin-bottom: 30px;">あなたが何かを<br>間違えたわけでもない。</p>
-            <p style="margin-bottom: 30px;">相手の感情は相手のもの。</p>
-            <p style="margin-bottom: 30px;">あなたが背負う必要は、<br>ありません。</p>
-            <p style="margin-bottom: 30px;">そして──</p>
-            <p style="margin-bottom: 30px;">あなたの銀色のオーラを、<br>取り戻していきます。</p>
-            <p style="margin-bottom: 30px;">あなたの本来のオーラは、<br>刀のように鋭い白銀。</p>
-            <p style="margin-bottom: 30px;">研ぎ澄まされた美しい銀色です。</p>
-            <p style="margin-bottom: 30px;">でも今は、少し曇っている。</p>
-            <p style="margin-bottom: 30px;">その曇りを取り除くために、<br>今すぐできることがあります。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">まず、<br>水を取り入れてください。</p>
+            <p style="margin-bottom: 30px;">あなたに最も欠けているのは、<br>水のエネルギー。</p>
+            <p style="margin-bottom: 30px;">感情の潤い、癒し、<br>柔軟性。</p>
+            <p style="margin-bottom: 30px;">それを取り戻すために、<br>水を飲む習慣を作ってください。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">朝起きたら、<br>白湯を一杯。</p>
+            <p style="margin-bottom: 30px;">それだけで、<br>内側から潤い始めます。</p>
+            <p style="margin-bottom: 30px;">そして、<br>お風呂にゆっくり浸かる。</p>
+            <p style="margin-bottom: 30px;">疲れた日は、<br>塩をひとつまみ入れたお風呂に。</p>
+            <p style="margin-bottom: 30px;">モラハラのネガティブなエネルギーが、<br>水とともに流れていきます。</p>
+            <p style="margin-bottom: 30px;">もし余裕があれば、<br>水辺に行ってみてください。</p>
+            <p style="margin-bottom: 30px;">川、湖、海。</p>
+            <p style="margin-bottom: 30px;">水のそばにいるだけで、<br>心が落ち着いていきます。</p>
+        </div>
 
-            <p style="margin-bottom: 20px; margin-top: 40px; font-weight: bold; color: #c8d0ff;">【朝のルーティン】</p>
-            <p style="margin-bottom: 30px;">毎朝、鏡を見て、<br>自分に言い聞かせてください。</p>
-            <p style="margin-bottom: 30px;">「私は強い」<br>「私は守られている」<br>「私は決断できる」</p>
-            <p style="margin-bottom: 30px;">建御雷神の力を、<br>あなたに宿します。</p>
+        <div class="section">
+            <p style="margin-bottom: 30px; font-weight: bold;">次に、<br>秋を待ってください。</p>
+            <p style="margin-bottom: 30px;">2026年の9月以降、<br>あなたの本来の力が戻ってきます。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">秋は、<br>あなたにとって最も輝く季節。</p>
+            <p style="margin-bottom: 30px;">この時期に<br>刀が再び研ぎ澄まされます。</p>
+            <p style="margin-bottom: 30px;">そして、<br>白や銀色のものを身につけてください。</p>
+            <p style="margin-bottom: 30px;">白いシャツ、<br>銀のアクセサリー。</p>
+            <p style="margin-bottom: 30px;">それだけで、<br>オーラが整い始めます。</p>
+        </div>
 
-            <p style="margin-bottom: 20px; margin-top: 40px; font-weight: bold; color: #c8d0ff;">【塩で浄化する】</p>
-            <p style="margin-bottom: 30px;">週に一度、<br>塩を入れた塩風呂に入ってください。</p>
-            <p style="margin-bottom: 30px;">ネガティブなエネルギーを<br>洗い流します。</p>
-            <p style="margin-bottom: 30px;">湯船に浸かりながら、<br>「過去を手放します」<br>「私は悪くない」<br>と心の中で唱えてください。</p>
+        <h2 class="emoji-header">⛩️ 守護を受け取る方法</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 30px;">でも大丈夫です。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">あなたを深く視たとき、<br>特別な守護の力を奥底においてきました。</p>
+            <p style="margin-bottom: 30px;">それは<span style="color: #ffd966;">建御雷神</span>の力。</p>
+            <p style="margin-bottom: 30px;">この力は、<br>古いものを壊し、<br>新しいものを作る流れを整えていきます。</p>
+            <p style="margin-bottom: 30px;">今この文を読んでいる間にも、<br>胸が少し温かくなる、<br>肩が軽くなる、<br>ふっと安心する。</p>
+            <p style="margin-bottom: 30px;">もしそのような感覚があれば、<br>すでに守護の力が届き始めている証です。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">これは何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">ただ受け取るだけで大丈夫です。</p>
+        </div>
 
-            <p style="margin-bottom: 20px; margin-top: 40px; font-weight: bold; color: #c8d0ff;">【水のエネルギーを取り入れる】</p>
-            <p style="margin-bottom: 30px;">あなたには、<br>水のエネルギーが不足しています。</p>
-            <p style="margin-bottom: 30px;">水は、<br>金を洗い流し、<br>輝かせる力を持っています。</p>
-            <p style="margin-bottom: 30px;">水で手を洗ったり、<br>川や海を見に行ったり、<br>水晶を持ったり。</p>
-            <p style="margin-bottom: 30px;">水のエネルギーを<br>日常に取り入れてください。</p>
+        <div class="section">
+            <p style="margin-bottom: 30px;">もし今、少しだけ時間があれば、<br>一度だけ静かに目を閉じてください。</p>
+            <p style="margin-bottom: 30px;">右手を胸の中央に当て、<br>左手をお腹に添えて、<br>ゆっくり三度呼吸をしてください。</p>
+            <p style="margin-bottom: 30px;">そして心の中で、</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #ffd966;">「私は守られている」<br>「私は新しい人生へ導かれている」<br>「私の未来には幸せが流れている」</p>
+            <p style="margin-bottom: 30px;">そう唱えてみてください。</p>
+            <p style="margin-bottom: 30px;">今もし、<br>胸のあたりが少し温かくなる、<br>手がじんわりする、<br>眠くなる、<br>安心感が広がる。</p>
+            <p style="margin-bottom: 30px;">その感覚があれば、<br>すでに守護のエネルギーが流れ始めています。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;"><span style="color: #ffd966;">建御雷神</span>の力は、<br>今この瞬間にも、<br>あなたへ静かに注がれています。</p>
+        </div>
 
-            <p style="margin-bottom: 20px; margin-top: 40px; font-weight: bold; color: #c8d0ff;">【白・銀・金色を身につける】</p>
-            <p style="margin-bottom: 30px;">白い服、<br>銀のアクセサリー、<br>金色の小物。</p>
-            <p style="margin-bottom: 30px;">これらは、<br>あなたの銀色のオーラを<br>強める色です。</p>
-            <p style="margin-bottom: 30px;">特に、<br>調停や大事な場面では、<br>白か銀色の何かを<br>身につけてください。</p>
+        <h2>【今後の流れ】</h2>
+        <div class="section">
+            <p style="margin-bottom: 30px;">ここから、<br>特に重要な3つの時期を<br>お伝えします。</p>
+        </div>
 
-            <p style="margin-bottom: 20px; margin-top: 40px; font-weight: bold; color: #c8d0ff;">【子供たちと笑う時間を作る】</p>
-            <p style="margin-bottom: 30px;">子供たちは、<br>あなたの癒しであり、力の源です。</p>
-            <p style="margin-bottom: 30px;">一緒に笑う時間を、<br>毎日少しでも作ってください。</p>
-            <p style="margin-bottom: 30px;">それが、<br>あなたのオーラを最も輝かせます。</p>
+        <div class="section">
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年9月：第一の決断</p>
+            <p style="margin-bottom: 30px;">9月は、最初のチャンスの月。</p>
+            <p style="margin-bottom: 30px;">秋の訪れとともに、<br>離婚が成立する第一の流れが来ます。</p>
+            <p style="margin-bottom: 30px;">あなたの本来の力が戻ってくる時期です。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">断捨離をしてください。<br>不要なものを手放すことで、<br>新しい人生のスペースが生まれます。</p>
+        </div>
 
-            <p style="margin-bottom: 20px; margin-top: 40px; font-weight: bold; color: #c8d0ff;">【自分を責めない】</p>
-            <p style="margin-bottom: 30px;">自分を責める癖がついています。</p>
-            <p style="margin-bottom: 30px;">「私が悪かったのでは」<br>「私のせいで」</p>
-            <p style="margin-bottom: 30px;">そう思ってしまう。</p>
-            <p style="margin-bottom: 30px;">でも──</p>
-            <p style="margin-bottom: 30px;">あなたは悪くありません。</p>
-            <p style="margin-bottom: 30px;">あなたは間違っていません。</p>
-            <p style="margin-bottom: 30px;">毎日、<br>自分に言い聞かせてください。</p>
-            <p style="margin-bottom: 30px;">「私は悪くない」<br>「私は間違っていない」</p>
-            <p style="margin-bottom: 30px;">それを、<br>何度も何度も。</p>
-            <p style="margin-bottom: 30px;">心が信じるまで。</p>
+        <div class="section">
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年3月：第二の決断、または新しい始まり</p>
+            <p style="margin-bottom: 30px;">3月は、二つの可能性がある月。</p>
+            <p style="margin-bottom: 30px;">もし2026年秋に離婚が成立していれば、<br>気になる相手と会える予兆が現れます。</p>
+            <p style="margin-bottom: 30px;">まだ成立していなければ、<br>この時期が第二のチャンス。</p>
+            <p style="margin-bottom: 30px;">桜が咲き始める頃、<br>新しい年度の区切りとともに、<br>決着がつく流れが来ます。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">美しいものに触れてください。<br>心が動く美しいものを、<br>一つだけ見つけてください。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年9月～2028年1月：完全な決着</p>
+            <p style="margin-bottom: 30px;">この時期は、<br>すべてが決まる時期。</p>
+            <p style="margin-bottom: 30px;">まだ離婚が成立していなければ、<br>この時期に必ず決着がつきます。</p>
+            <p style="margin-bottom: 30px;">すでに成立していれば、<br>新しい人生が完全に軌道に乗る時期。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">気になる相手との関係も、<br>はっきりとした形になります。</p>
         </div>
 
         <h2 class="emoji-header">⛩️ あなたを支えるパワーストーン</h2>
-
         <div class="section">
             <p style="margin-bottom: 30px;">最後に、あなたを支える<br>パワーストーンをお伝えします。</p>
             <p style="margin-bottom: 30px;">パワーストーンは、<br>ただの石ではありません。</p>
             <p style="margin-bottom: 30px;">長い年月をかけて<br>地球の中で育まれた石には、<br>強いエネルギーが宿っています。</p>
             <p style="margin-bottom: 30px;">そのエネルギーが、<br>あなたのオーラを安定させ、<br>運気を高めてくれます。</p>
             <p style="margin-bottom: 30px;">特に、人生の転換期にある今、<br>パワーストーンは<br>あなたの強い味方になります。</p>
-            <p style="margin-bottom: 30px;">傷を癒し、<br>本来の銀色のオーラを取り戻し、<br>新しい人生を歩む。</p>
+            <p style="margin-bottom: 30px;">離婚を成立させ、<br>新しい人生を始める力。</p>
+            <p style="margin-bottom: 30px;">傷ついた心を癒し、<br>本来の輝きを取り戻す力。</p>
             <p style="margin-bottom: 30px;">それらを、<br>石が静かに後押ししてくれます。</p>
+        </div>
 
-            <p style="margin-bottom: 20px; margin-top: 40px; font-weight: bold; color: #ffd966;">1. 水晶（クリアクォーツ）</p>
-            <p style="margin-bottom: 30px;">浄化と保護、エネルギーの増幅。<br>浄化を促進し、<br>本来のオーラを取り戻します。<br>水のエネルギーを持ち、<br>あなたの不足を補います。</p>
+        <ul style="margin-bottom: 30px;">
+            <li><span style="color: #ffd966; font-weight: bold;">1. アクアマリン（藍玉）</span><br>心の傷を癒し、穏やかさをもたらす。<br>水のエネルギーを補い、潤いを与えます。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">2. ムーンストーン（月長石）</span><br>新しい始まり、女性の守護石。<br>モラハラから解放され、新しい人生を始めるあなたを守ります。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">3. クリアクォーツ（水晶）</span><br>浄化と保護、すべてを清める石。<br>ネガティブなエネルギーを払い、本来の輝きを取り戻します。</li>
+        </ul>
 
-            <p style="margin-bottom: 20px; margin-top: 40px; font-weight: bold; color: #ffd966;">2. ヘマタイト（銀色の石）</p>
-            <p style="margin-bottom: 30px;">グラウンディングと決断力、<br>保護の石。</p>
-            <p style="margin-bottom: 30px;">銀色の輝きが、<br>あなたの銀色のオーラと共鳴します。<br>「私は強い」という意志を保ちます。</p>
-
-            <p style="margin-bottom: 20px; margin-top: 40px; font-weight: bold; color: #ffd966;">3. ムーンストーン（月長石）</p>
-            <p style="margin-bottom: 30px;">癒しと女性性、<br>新しい始まりを象徴する石。<br>傷ついた心を優しく癒します。</p>
-            <p style="margin-bottom: 30px;">新月から満月へ、<br>新しいサイクルの始まりを象徴します。</p>
-
-            <p style="margin-bottom: 30px; margin-top: 40px;">この3つの石を組み合わせたブレスレットを、<br>私が作成してお送りします。</p>
+        <div class="section">
+            <p style="margin-bottom: 30px;">この3つの石を組み合わせたブレスレットを、<br>私が作成してお送りします。</p>
             <p style="margin-bottom: 30px;">ご希望の場合は<br>「詳細希望」と<br>メッセージをお送りください。</p>
         </div>
 
         <h2>【結びの言葉】</h2>
-
-        <div class="section">
+        <div class="closing">
             <p style="margin-bottom: 30px;">ちひろ様、</p>
-            <p style="margin-bottom: 30px;">視えています。</p>
-            <p style="margin-bottom: 30px;">2026年の秋、<br>あなたが子供たちと笑っている姿が。</p>
-            <p style="margin-bottom: 30px;">2027年、<br>新しい住まいで<br>穏やかな朝を迎えている姿が。</p>
-            <p style="margin-bottom: 30px;">その未来は、<br>もう動き始めています。</p>
-            <p style="margin-bottom: 30px;">あなたがすべきことは、</p>
-            <p style="margin-bottom: 30px;">不安に囚われることではなく、<br>前を向くこと。</p>
-            <p style="margin-bottom: 30px;">他人に期待することではなく、<br>自分を信じること。</p>
-            <p style="margin-bottom: 30px;">過去を悔やむことではなく、<br>未来を選ぶこと。</p>
-            <p style="margin-bottom: 30px;">離婚は成立します。<br>傷も癒えます。</p>
-            <p style="margin-bottom: 30px;">あなたの銀色のオーラは、<br>必ず輝きを取り戻します。</p>
-            <p style="margin-bottom: 30px;">そして──</p>
-            <p style="margin-bottom: 30px;">新しい人生が、<br>必ず始まります。</p>
-            <p style="margin-bottom: 30px;">私は、<br>あなたの背中を押します。</p>
-            <p style="margin-bottom: 30px;">遠隔で守護祈祷を行い、<br>あなたと子供たちに<br>光のエネルギーをお送りします。</p>
-            <p style="margin-bottom: 30px;">大丈夫です。</p>
-            <p style="margin-bottom: 30px;">あなたの未来は、<br>明るく輝いています。</p>
-            <p style="margin-bottom: 30px;">その光を、<br>一緒に掴みましょう。</p>
-
+            <p style="margin-bottom: 30px;">あなたの未来には、<br>子どもたちと笑顔で過ごす日々へと続く道が<br>視えています。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">2026年の秋、<br>または2027年の春、<br>遅くとも2027年の秋までには、<br>離婚が成立している。</p>
+            <p style="margin-bottom: 30px;">生活が安定し、<br>新しい誰かと穏やかに過ごしている。</p>
+            <p style="margin-bottom: 30px;">そして、<br>「あの時、決断してよかった」と<br>心から思っている。</p>
+            <p style="margin-bottom: 30px;">今は、<br>不安の中にあるかもしれない。</p>
+            <p style="margin-bottom: 30px;">「このままで良いのか」と<br>迷っているかもしれない。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">でもそれはあなたの魂が、<br>「新しい人生を求めている」証拠。</p>
+            <p style="margin-bottom: 30px;">正しい感覚です。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">あなたは、<br>決断する力を持つ人。</p>
+            <p style="margin-bottom: 30px;">一度決めたら、<br>全力で進む人。</p>
+            <p style="margin-bottom: 30px;">その力を、<br>もう一度信じてください。</p>
+            <p style="margin-bottom: 30px;">子どもたち2人を守りながら、<br>新しい人生を切り開いていく。</p>
+            <p style="margin-bottom: 30px;">それが、<br>あなたの幸せへの道。</p>
+            <p style="margin-bottom: 30px;"><span style="color: #ffd966;">建御雷神</span>が、<br>あなたを守っています。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">あなたは、<br>幸せになっていい。</p>
+            <p style="margin-bottom: 30px;">自分を大切にしていい。</p>
+            <p style="margin-bottom: 30px;">守られている。</p>
+            <p style="margin-bottom: 30px;">その事実を、<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 30px;">本日より、<br>遠隔守護祈祷を行い、<br>あなたの幸せを願います。</p>
+            <p style="margin-bottom: 30px;">あなたの未来に、<br>光が満ちますように。</p>
             <div class="signature">深雪</div>
         </div>
 
