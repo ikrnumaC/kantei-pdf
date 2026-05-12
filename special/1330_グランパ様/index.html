@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グランパ様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", serif;
+            line-height: 2;
+            background: linear-gradient(180deg, #fdfcfa 0%, #f8f6f1 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        .recipient {
+            font-size: 28px;
+            font-weight: 300;
+            color: #8b7355;
+            letter-spacing: 10px;
+        }
+
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        h2 {
+            font-size: 17px;
+            font-weight: 500;
+            color: #8b7355;
+            letter-spacing: 2px;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 66px;
+            font-weight: 300;
+            color: #444;
+        }
+
+        strong {
+            color: #8b7355;
+            font-weight: 500;
+        }
+
+        .highlight {
+            color: #a67c94;
+        }
+
+        .yellow-text {
+            color: #d4a574;
+            font-weight: 500;
+        }
+
+        .intro {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(139, 115, 85, 0.04);
+            border-radius: 4px;
+            margin-bottom: 130px;
+        }
+
+        .intro p {
+            font-size: 16px;
+            line-height: 2.3;
+        }
+
+        /* オーラ画像 + テキストオーバーレイ */
+        .aura-visual {
+            margin: 30px -30px;
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+        }
+
+        .aura-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 中央オーバーレイ */
+        .aura-overlay-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: center;
+            padding: 30px;
+            width: 100%;
+        }
+
+        .aura-overlay-center p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        /* C案: 黒文字 + 画像の透明度 + 極太 */
+        .aura-visual.style-c::after {
+            display: none;
+        }
+        .aura-visual.style-c img {
+            opacity: 0.4;
+        }
+        .aura-visual.style-c .aura-overlay-center p {
+            color: #333;
+            font-weight: 900;
+            -webkit-text-stroke: 0.5px #333;
+        }
+        .aura-visual.style-c .aura-overlay-center strong {
+            color: #333;
+            -webkit-text-stroke: 0.5px #333;
+        }
+
+        /* 木: 緑 */
+        .aura-visual.aura-wood .aura-overlay-center strong {
+            color: #1b5e20;
+            -webkit-text-stroke: 0.5px #1b5e20;
+        }
+
+        /* F案: 暗いオーバーレイ（明るい画像用） */
+        .aura-visual.style-f::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+        }
+        .aura-visual.style-f .aura-overlay-center p {
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.9);
+        }
+        .aura-visual.style-f .aura-overlay-center strong {
+            color: #ffd700;
+        }
+
+        /* 本鑑定 */
+        .cta-item {
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        .cta-item:last-child {
+            border-bottom: none;
+        }
+
+        .cta-item .title {
+            font-size: 18px;
+            color: #8b7355;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .cta-item .desc {
+            font-size: inherit;
+            color: #444;
+            font-weight: 300;
+            line-height: 2;
+        }
+
+        /* 24時間 */
+        .urgent {
+            text-align: center;
+            padding: 50px 20px;
+            margin: 130px -30px 30px;
+            background: #fff;
+            border-top: 1px solid #e5e0d5;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        .urgent-title {
+            font-size: 15px;
+            color: #8b7355;
+            margin-bottom: 25px;
+        }
+
+        .price-old {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .price-new {
+            font-size: 32px;
+            font-weight: 400;
+            color: #8b7355;
+            margin: 10px 0 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #8b7355;
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 45px;
+            border-radius: 2px;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .note {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .vision {
+            text-align: center;
+            padding: 60px 20px;
+            font-style: italic;
+            color: #666;
+            margin-top: 130px;
+        }
+
+        .sign {
+            text-align: right;
+            padding-top: 30px;
+            color: #8b7355;
+            font-size: 17px;
+            letter-spacing: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header class="header">
+        <div class="recipient">グランパ様</div>
+    </header>
+
+    <div class="intro">
+        <p>私が霊視した結果、</p>
+
+
+
+
+        <p><span class="yellow-text">あなたと奥様が、<br>
+        穏やかに過ごしている映像が視える。</span></p>
+
+
+
+
+        <p>健康に気をつけながら、<br>
+        日々を大切に生きている。</p>
+
+
+
+
+        <p>経済的にも安定していて、<br>
+        家族に負担をかけることなく、<br>
+        二人で支え合いながら過ごしている。</p>
+
+
+
+
+        <p>子どもたちも安心して、<br>
+        「二人とも元気でよかった」と笑顔を見せてる。</p>
+
+
+
+
+        <p>あなたも奥様も、<br>
+        この先を安心して歩んでいける。</p>
+
+
+
+
+        <p>そんな未来が、視えました。</p>
+
+
+
+
+        <p>今は不安で、この先どうなるんかなと思ってるかもしれない。<br>
+        でも、<span class="yellow-text">穏やかな未来はきますし、<br>
+        想像している絶望はやってきません。</span></p>
+    </div>
+
+    <section>
+        <h2>🔮 あなたのオーラ</h2>
+
+        <div class="aura-visual style-c aura-wood">
+            <img src="../image/weak_wood.png" alt="木のオーラ">
+            <div class="aura-overlay-center">
+                <p>霊視した瞬間、<br>
+                <strong>柔らかく揺れる優しい緑のオーラ</strong>が視えた。</p>
+
+
+
+
+                <p>草花のようにしなやかな緑。</p>
+            </div>
+        </div>
+
+        <p>誠実で、人を大切にする、<br>
+        とても美しいオーラを持ってる。</p>
+
+
+
+
+        <p>ただ、先のことを心配しすぎてしまう。<br>
+        家族に負担をかけへんように、<br>
+        我慢してしまう。</p>
+
+
+
+
+        <p>それは、欠点ではありません。<br>
+        家族を思う、あなたの優しさです。</p>
+
+
+
+
+        <p>今この状況にいるのは、あなたのせいやない。<br>
+        <strong>"ある理由"</strong>でオーラが弱くなってるだけ。</p>
+
+
+
+
+        <p>でも安心してください。<br>
+        ここさえ整えば、<br>
+        <span class="yellow-text">本来のあなたの魅力が覚醒して<br>
+        望む未来が近づいてきます。</span></p>
+    </section>
+
+    <section>
+        <h2>🔮 あなたの魂が求めている道</h2>
+
+        <p>あなたの魂は、<br>
+        穏やかで、家族に負担をかけない生き方を求めている。</p>
+
+
+
+
+        <p>奥様のほうがどちらかというとエネルギーが強く、<br>
+        少し鋭い意見があるので、<br>
+        より心配な気持ちが沸き上がってきていること、</p>
+
+
+
+
+        <p>健康状態も、経済状況も、<br>
+        全て視えています。</p>
+
+
+
+
+        <p>この先どう過ごせば、<br>
+        家族に迷惑をかけずに、<br>
+        安心して終えることができるのか。<br>
+        いつ、何に気をつけるべきか。<br>
+        その答えは、本鑑定でお伝えします。</p>
+
+
+
+
+        <p>ただ一つだけ、ここで言えることがある。</p>
+
+
+
+
+        <p><span class="yellow-text">今感じてる不安は、<br>
+        現実になるものやない。<br>
+        あなたの魂は、ちゃんと守られている。</span></p>
+
+
+
+
+        <p><span class="yellow-text">そこだけは、はっきり視えてます。</span></p>
+    </section>
+
+    <section>
+        <h2>🔮 二つの未来</h2>
+
+        <div class="aura-visual style-f">
+            <img src="../image/way.png" alt="二つの未来">
+            <div class="aura-overlay-center">
+                <p>このまま不安を抱えたまま時間が過ぎると、<br>
+                心配ばかりして、<br>
+                日々を楽しめなくなってしまう。</p>
+
+
+
+
+                <p>でも、<strong>ここで流れを変えたら。</strong></p>
+
+
+
+
+                <p>健康に気をつけながら、<br>
+                奥様と穏やかに過ごせる未来が開ける。</p>
+
+
+
+
+                <p>どちらの未来になるかは、<br>
+                <strong>あなたが変えられます。</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>✨ グランパ様が「答え」を見つけるための道筋</h2>
+
+        <p>ここまでの鑑定で、<br>
+        今視えた事をお伝えしました。</p>
+
+
+
+
+        <p>でも、一番大事なのはここから。</p>
+
+
+
+
+        <p><strong>「じゃあ、具体的にどうすればいいのか」</strong></p>
+
+
+
+
+        <p>本鑑定では、<br>
+        あなたが実際に動ける<br>
+        <strong>"具体的な道筋"</strong>を視ていきます。</p>
+
+
+
+
+        <p style="margin-bottom: 35px;"><strong>本鑑定で視ること</strong></p>
+
+        <div style="margin-bottom: 66px;">
+            <div class="cta-item">
+                <div class="title">この先の健康状態と注意すべき時期</div>
+                <div class="desc">いつ、何に気をつけるべきか。健康を保つために必要なこと、霊視で視えたことを明らかにします。</div>
+            </div>
+
+            <div class="cta-item">
+                <div class="title">経済状況とこの先の安定</div>
+                <div class="desc">今の状態がこの先どうなるのか。家族に負担をかけずに済む方法を視ていきます。</div>
+            </div>
+
+            <div class="cta-item">
+                <div class="title">家族に迷惑をかけずに終えるための道筋</div>
+                <div class="desc">この先をどう過ごせば、安心して終えることができるのか。魂が進むべき道をお伝えします。</div>
+            </div>
+        </div>
+
+        <p style="text-align: center;">このまま分からないまま過ごすか、<br>
+        具体的な道筋を知った上で動くか。<br>
+        <strong>どちらを選ぶかは、あなた次第です。</strong></p>
+    </section>
+
+    <div class="urgent">
+        <div class="urgent-title">運命が動く24時間</div>
+
+        <p>今、あなたの運命は<br>
+        少しだけ前に動いています。</p>
+
+
+
+
+        <p>この鑑定書を読んで、<br>
+        「どうしよう」と考え始めたから。</p>
+
+
+
+
+        <p>でも、この流れはずっと続きません。<br>
+        何もせず元の生活に戻れば<br>
+        運命は動きを止めてしまいます。</p>
+
+
+
+
+        <p><strong>今から24時間。</strong><br>
+        ここで決断すれば、<br>
+        運命は一番スムーズに動きます。</p>
+
+
+
+
+        <div class="price-old">通常 20,000円</div>
+        <div class="price-new">¥9,800</div>
+
+        <p>「ちゃんと知った上で決めたい」<br>
+        そう感じた方だけ、進んでください。</p>
+
+
+
+
+        <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/68f73496c774eb3958b2ea5f" class="btn">本鑑定に進む</a>
+
+        <p class="note">お申し込み後、<br>
+        購入時のお名前をお知らせください。<br>
+        2日以内に、<br>
+        あなただけの鑑定書をお届けします。</p>
+    </div>
+
+    <div class="vision">
+        <p>私には視えてます。</p>
+
+
+
+
+        <p>あなたが本来の力を取り戻して、<br>
+        安心して日々を過ごせるようになったとき。</p>
+
+
+
+
+        <p>「心配しすぎやったな」と<br>
+        穏やかに笑っている姿が。</p>
+
+
+
+
+        <p><span class="yellow-text">その未来への道、私が照らしますね。</span></p>
+    </div>
+
+    <div class="sign">
+        かな
+    </div>
+
+</div>
+
+</body>
+</html>
