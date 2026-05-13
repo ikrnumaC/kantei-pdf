@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ちえみ様 守護神鑑定書</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 1.8;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #f0e6d2;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            line-height: 1.8;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            border-left: 4px solid #8b5cf6;
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 0 15px 15px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .oracle-message::before {
+            content: '⛩️';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 40px;
+            opacity: 0.3;
+        }
+
+        .guardian-section {
+            text-align: center;
+            margin: 60px 0;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 193, 7, 0.05) 100%);
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .guardian-image {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .guardian-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .guardian-name {
+            font-size: 28px;
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #ffd700;
+            margin: 60px 0 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            letter-spacing: 0.1em;
+        }
+
+        p {
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .color-boxes {
+            margin: 80px 0;
+            position: relative;
+            padding: 60px 0;
+        }
+
+        .color-box {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+        }
+
+        .box-yellow {
+            top: 0;
+            left: 0;
+            background: rgba(255, 215, 0, 0.6);
+        }
+
+        .box-red {
+            top: 0;
+            right: 0;
+            background: rgba(220, 38, 38, 0.6);
+        }
+
+        .box-green {
+            bottom: 0;
+            left: 0;
+            background: rgba(34, 197, 94, 0.6);
+        }
+
+        .box-blue {
+            bottom: 0;
+            right: 0;
+            background: rgba(59, 130, 246, 0.6);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%);
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 80px 0;
+            border: 2px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .cta-title {
+            font-size: 26px;
+            color: #ffd700;
+            margin-bottom: 30px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+        }
+
+        .price-box {
+            margin: 30px 0;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+        }
+
+        .original-price {
+            font-size: 18px;
+            color: #9ca3af;
+            text-decoration: line-through;
+            margin-bottom: 10px;
+        }
+
+        .special-price {
+            font-size: 36px;
+            color: #ffd700;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+            color: white;
+            padding: 20px 60px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 30px 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(139, 92, 246, 0.6);
+        }
+
+        .closing-section {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        .signature {
+            margin-top: 40px;
+            font-size: 24px;
+            color: #ffd700;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 40px 25px;
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 26px;
+                margin-bottom: 40px;
+            }
+
+            .guardian-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .guardian-name {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 20px;
+                margin: 40px 0 20px;
+            }
+
+            .oracle-message {
+                padding: 20px;
+                margin: 30px 0;
+            }
+
+            .oracle-message::before {
+                font-size: 30px;
+                top: 15px;
+                right: 15px;
+            }
+
+            .color-box {
+                width: 40px;
+                height: 40px;
+            }
+
+            .cta-section {
+                padding: 35px 25px;
+                margin: 60px 0;
+            }
+
+            .cta-title {
+                font-size: 22px;
+            }
+
+            .special-price {
+                font-size: 30px;
+            }
+
+            .cta-button {
+                padding: 18px 40px;
+                font-size: 18px;
+            }
+
+            .closing-section {
+                margin-top: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ちえみ様<br>守護神鑑定書</h1>
+
+        <p style="margin-bottom: 90px;">ちえみ様、</p>
+
+        <p style="margin-bottom: 90px;">あなたを守る神様が、<br>体調が整い、<br>元気にバリバリと介護の現場で働き、<br>笑顔で利用者さんと接している姿を<br>そっと見せてくれました。</p>
+
+        <p style="margin-bottom: 90px;">夜勤も無理なくこなせる。</p>
+
+        <p style="margin-bottom: 90px;">若い人たちとも楽しく働ける。</p>
+
+        <p style="margin-bottom: 90px;">そんな活き活きとした日々が、<br>ちゃんとあなたを待っています。</p>
+
+        <p style="margin-bottom: 90px;">今は更年期気味で体がついていかず、<br>夜勤が辛く感じているかもしれない。</p>
+
+        <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">でも、その状態は変わります。</p>
+
+        <p style="margin-bottom: 90px;">体調が整い、元気にバリバリ働ける未来が、<br>すぐそこまで来ています。</p>
+
+        <div class="guardian-section">
+            <div class="guardian-image">
+                <img src="../images/三宝荒神.png" alt="三宝荒神">
+            </div>
+            <div class="guardian-name">三宝荒神<br>(さんぼうこうじん)</div>
+            <p style="margin-bottom: 90px;">あなたを守っているのは、<br>三宝荒神(さんぼうこうじん)。</p>
+            <p style="margin-bottom: 90px;">火と清浄を守る厳しい神様です。</p>
+        </div>
+
+        <p style="margin-bottom: 90px;">清潔感と潔癖さを持ち、不浄なものを<br>許せない正義感がある、怒らせると怖いが<br>普段は守り神の加護を受けているので、<br>介護という人を守る仕事に誇りを持ち、<br>利用者さんを大切にする強い責任感が<br>あるんです。</p>
+
+        <p style="margin-bottom: 90px;">でも今は、<br>体がついていかず、<br>元気に働きたいのに働けない自分に、<br>少しだけ、焦りと無力感を感じている。</p>
+
+        <p style="margin-bottom: 90px;">あなたの運命の流れを視ると、<br>情熱が強く、<br>頑張りすぎて自分を燃やしてしまっている<br>状態。</p>
+
+        <p style="margin-bottom: 90px;">これほど強い守護を受けているのに、<br>今あなたの心は揺れ、<br>オーラも少し乱れています。</p>
+
+        <div class="section-title">⛩️ なぜ今、流れが滞っているのか</div>
+
+        <p style="margin-bottom: 90px;">最近、<br>こんな感覚がありませんでしたか？</p>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">体が思うように動かず、<br>昔はできたことができなくなっている。</p>
+            <p style="margin-bottom: 90px;">若い人についていけない自分が<br>情けなく感じてしまう。</p>
+            <p style="margin-bottom: 90px;">このままでは続けられないのではないか、<br>でも仕事は好きだから辞めたくない。</p>
+            <p style="margin-bottom: 30px;">その間で心が揺れている。</p>
+        </div>
+
+        <p style="margin-bottom: 90px;">本来のあなたなら、<br>こんなことで立ち止まらない。</p>
+
+        <p style="margin-bottom: 90px;">でも今は、<br>元気にバリバリ働きたいのに<br>体がついていかないことに<br>焦りと不安を感じている。</p>
+
+        <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">それが、<br>あなたの流れを止めています。</p>
+
+        <p style="margin-bottom: 90px;">そして、心が揺らぐことで、<br>オーラも乱れ、<br>守護の力も届きにくくなっています。</p>
+
+        <p style="margin-bottom: 90px;">ただ、<br>守護の力が消えたわけではありません。</p>
+
+        <p style="margin-bottom: 90px;">私がオーラの鎮め方、<br>あなたの行く先、やるべき事を<br>霊視してお伝えするので、<br>安心してください。</p>
+
+        <div class="color-boxes">
+            <div class="color-box box-yellow"></div>
+            <div class="color-box box-red"></div>
+            <div class="color-box box-green"></div>
+            <div class="color-box box-blue"></div>
+        </div>
+
+        <div class="section-title">⛩️ ここから先の流れ</div>
+
+        <p style="margin-bottom: 90px;">このまま問題を放っておけば<br>今までと同じように<br>体調不良を抱え、焦りながら<br>毎日を過ごすことになります。</p>
+
+        <p style="margin-bottom: 90px;">でも、<br>具体的なタイミング、<br>なにをすればいいのか<br>どういうことが起こるのかが<br>分かれば</p>
+
+        <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">あとは自分を整えて待つだけで<br>望む未来がやってきます。</p>
+
+        <p style="margin-bottom: 90px;">大事なのは、<br>自分で幸せを掴みにいくと<br>心に決めること。</p>
+
+        <p style="margin-bottom: 90px;">あなたの選択が、<br>あなたの未来を作っていくんです。</p>
+
+        <div class="section-title">⛩️ 本式守護鑑定</div>
+
+        <p style="margin-bottom: 90px;">ここまでの鑑定で、<br>あなたを守る神様の存在と、<br>今なぜ流れが滞っているのかを<br>お伝えしました。</p>
+
+        <p style="margin-bottom: 90px;">でも、本当に大切なのはここから。</p>
+
+        <p style="margin-bottom: 90px;">あなたが理想の未来を<br>手に入れるために<br>以下の事を霊視して、お伝えします。</p>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 30px;"><strong>⛩️ 体調が整い、元気に働ける時期</strong><br>更年期の症状が落ち着き、<br>元気にバリバリ働けるように<br>なる流れとタイミングを視ます。</p>
+        </div>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 30px;"><strong>⛩️ 介護の仕事を続けていけるのか</strong><br>このまま介護職を続けられるのか。<br><br>無理なく働ける環境や働き方を<br>お伝えします。</p>
+        </div>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 30px;"><strong>⛩️ 元気を取り戻す方法</strong><br>あなたのオーラを整え、<br>体調を整えて活き活きと働ける力を<br>引き出す具体的な方法をお伝えします。</p>
+        </div>
+
+        <p style="margin-bottom: 90px;">さらに、<br>本式守護鑑定を受けてくださった方には、<br>遠隔で守護祈祷を行い、<br>あなたの背中をそっと押す力を<br>お送りします。</p>
+
+        <div class="cta-section">
+            <div class="cta-title">【運命が動く24時間】</div>
+
+            <p style="margin-bottom: 90px;">今、<br>あなたを守る存在の気配が、<br>いつもより強く近くにあります。</p>
+
+            <p style="margin-bottom: 90px;">この鑑定に目を留めたことも、<br>偶然ではありません。</p>
+
+            <p style="margin-bottom: 90px;">あなたの魂が、<br>このままではいけない、<br>流れを変えたい、<br>そう動き始めた合図です。</p>
+
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">ここから24時間。</p>
+
+            <p style="margin-bottom: 90px;">この間に一歩踏み出した決断は、<br>止まっていた運命を、<br>静かに動かし始めます。</p>
+
+            <p style="margin-bottom: 90px;">進むべき道を知りたい。</p>
+
+            <p style="margin-bottom: 90px;">そう感じた方だけ、<br>この先へ進んでください。</p>
+
+            <div class="price-box">
+                <div class="original-price">通常 9,800円</div>
+                <div class="special-price">特別価格 4,980円</div>
+            </div>
+
+            <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/69eb763d23b5d0e88f9854e9" class="cta-button">▼ 本式守護鑑定はこちら</a>
+
+            <p style="margin-bottom: 90px;">お申し込み後、<br>購入時のお名前を<br>お知らせください。</p>
+
+            <p style="margin-bottom: 30px;">1日以内に、あなただけの鑑定書を<br>お届けします。</p>
+        </div>
+
+        <div class="closing-section">
+            <p style="margin-bottom: 90px;">私には視えています。</p>
+
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">元気にバリバリ働き、<br>笑顔で利用者さんと接しているあなたを。</p>
+
+            <p style="margin-bottom: 90px;">今感じている焦りも、<br>決して無駄ではありません。</p>
+
+            <p style="margin-bottom: 90px;">この経験があったからこそ<br>辿り着ける元気があります。</p>
+
+            <p style="margin-bottom: 90px;">その未来へ続く扉を、<br>私は守護の声を<br>受け取りながら、<br>丁寧に開いていきますね。</p>
+
+            <div class="signature">深雪</div>
+        </div>
+    </div>
+</body>
+</html>
