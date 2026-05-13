@@ -315,11 +315,56 @@ ul li {
 - 価格（ゴールド）: `#ffd700`
 - 限定バッジ（赤）: `#ff4444`
 
-**背景アクセント色（4つの項目用）:**
+**背景アクセント色（3〜4色ボックス用）:**
 1. 黄色: `rgba(255, 215, 0, 0.7)` opacity: 0.3
 2. 赤: `rgba(255, 69, 58, 0.7)` opacity: 0.3
 3. 緑: `rgba(52, 199, 89, 0.7)` opacity: 0.3
-4. 青: `rgba(0, 122, 255, 0.7)` opacity: 0.3
+4. 青: `rgba(0, 122, 255, 0.7)` opacity: 0.3（4項目の場合のみ）
+
+---
+
+## 黄色文字の使い方ガイド
+
+鑑定書の中で特に強調したい部分に黄色文字（`#ffd966`）を使用します。具体的な文言ではなく、**パート・雰囲気**で判断してください。
+
+**黄色文字を使う箇所（パート・雰囲気別）**:
+
+1. ✨ **未来のビジョン・希望的な展開**
+   - 例: 「彼からずっと気になっていましたと告白され〜」「両思いになり、愛されているあなたを感じられる日々が〜」
+   - 守護神が見せてくれた幸せな未来の場面
+
+2. 💫 **本質的な魅力・才能**
+   - 例: 「あなたが笑うだけで、その場の空気が柔らかくなる。」
+   - その人の持つ才能や魅力を端的に表現する部分
+
+3. 🔔 **問いかけ・気づきを促す**
+   - 例: 「最近、こんな感覚がありませんでしたか？」
+   - 相手に気づきを促す質問形式の部分
+
+4. 💝 **肯定・励まし・安心**
+   - 例: 「安心してください。」「今感じている不安も、決して無駄ではありません。」
+   - 不安を和らげ、相手を温かく肯定する雰囲気の文章
+
+5. ⚠️ **問題点・現状の課題**
+   - 例: 「本来のあなたなら、こんなことで立ち止まらない。」「心が揺らぐことで、オーラも乱れ〜」
+   - 本来の姿との対比で現状の課題を指摘する部分
+
+6. 🎯 **重要な決意・行動を促す**
+   - 例: 「自分で幸せを掴みにいくと心に決めること。」「このままではいけない、流れを変えたい」
+   - 決断や行動を強く促す部分
+
+7. 🛡️ **守護・サポートの約束**
+   - 例: 「あなたの背中をそっと押す力をお送りします。」
+   - 守護やサポートを約束する部分
+
+8. ⭐ **運命・必然性・転換点**
+   - 例: 「偶然ではありません。」「止まっていた運命を、静かに動かし始めます。」
+   - 必然性や運命の転換点を示す部分
+
+**CSS指定**:
+```html
+<p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">テキスト</p>
+```
 
 ---
 
@@ -330,20 +375,27 @@ ul li {
 ```html
 <body>
     <div class="container">
-        <h1>【名前】様　守護神鑑定書</h1>
+        <h1>【名前】様<br>守護神鑑定書</h1>
 ```
+
+**重要**: タイトルは必ず改行を入れる
 
 ### 2. 神託メッセージセクション（守護神画像含む）
 
 ```html
 <div class="oracle-message">
-    <p style="margin-bottom: 30px;">りーママ様、</p>
-    <p style="margin-bottom: 30px;">視えました。</p>
-    <p class="guardian" style="margin-bottom: 30px;">あなたを守っているのは、<br>大山祇神(おおやまつみのかみ)。</p>
-    <p>山を司る偉大な神様です。</p>
-    <img src="../鑑定画像/大山祇神.png" alt="大山祇神" class="guardian-image">
+    <p style="margin-bottom: 90px;">金野様、</p>
+    <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">あなたを守る神様が<br>彼からずっと気になっていましたと告白され<br>二人で笑い合いながら食事をしている姿を<br>そっと見せてくれました。</p>
+    <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">彼と両思いになり、<br>愛されているあなたを感じられる日々が<br>すぐそこまで来ています。</p>
+    <p class="guardian" style="margin-bottom: 90px;">あなたを守っているのは、<br>市杵嶋姫命(いちきしまひめのみこと)。</p>
+    <p>水の女神、宗像三女神の一柱です。</p>
+    <img src="../鑑定画像/市杵嶋姫命.png" alt="市杵嶋姫命" class="guardian-image">
 </div>
 ```
+
+**黄色文字にする箇所（雰囲気で判断）**:
+- ✨ **未来のビジョン**: 守護神が見せてくれた幸せな未来の場面
+- 💫 **希望的な展開**: 両思いになる、愛される日々など、明るい未来を示す部分
 
 **重要**:
 - 画像は相対パス `../鑑定画像/守護神名.png` で参照
@@ -353,94 +405,73 @@ ul li {
 
 ```html
 <div class="section">
-    <p style="margin-bottom: 30px;">あなたのオーラは、深い森の緑。<br>力強く、どっしりとした生命力を<br>持っています。</p>
-    <p style="margin-bottom: 30px;">大山祇神に守られる人は、<br>どっしりと構えた大きな器を持ち、<br>周囲を守る力がある頼られる存在。</p>
-    <p style="margin-bottom: 30px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">家族を包み込む、揺るがない愛。<br>それがあなたの本質です。</p>
-    <p style="margin-bottom: 30px;">これほど強い守護神に<br>守られているのに、今、<br>流れが悪くなっている…</p>
-    <p>その原因をお伝えします。</p>
+    <p style="margin-bottom: 90px;">水面に映る月のような美しさと<br>深い愛情の加護を受けているので、繊細で純粋、<br>愛されるオーラを持っているんです。</p>
+    <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">あなたが笑うだけで、<br>その場の空気が柔らかくなる。</p>
+    <p style="margin-bottom: 90px;">そして、<br>彼のことを想うその一途な気持ちが、<br>あなたの魅力を何倍にも輝かせている。</p>
+    <p style="margin-bottom: 90px;">これほど強い守護を受けているのに、<br>今あなたの心は揺れ、<br>オーラも少し乱れています。</p>
 </div>
 ```
 
-**重要**: 本質の部分は必ず黄色強調にする
+**黄色文字にする箇所（雰囲気で判断）**:
+- 💝 **本質的な魅力**: その人の持つ才能や魅力を端的に表現する部分
+- ✨ **肯定・励まし**: 相手を温かく肯定する雰囲気の文章
 
-### 4. お悩みセクション
+### 4. なぜ今、流れが滞っているのか
 
 ```html
-<h2 class="emoji-header">⛩️お悩みについて</h2>
+<h2 class="emoji-header">⛩️なぜ今、流れが滞っているのか</h2>
 <div class="section">
-    <p style="margin-bottom: 30px;">【お悩みの内容】</p>
-    <p style="margin-bottom: 30px;">【現状の説明】</p>
-    <p style="margin-bottom: 30px;">この問題は、実はあなたが<br>悪いわけではありません。</p>
-    <p style="font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">オーラを整え、守護神からのエネルギーを<br>正しく受け取れば、お金の流れも、<br>お子さんとの関係も、精神状態も、<br>必ず変わります。</p>
+    <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">最近、<br>こんな感覚がありませんでしたか？</p>
+    <p style="margin-bottom: 90px;">このままでいいのかという不安が消えない。<br>彼に嫌われたくないと思うほど、<br>何も言えなくなってしまう。</p>
+    <p style="margin-bottom: 90px;">進んでいいのか、待つべきなのか、<br>答えが分からず、心が落ち着かない。</p>
+    <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">本来のあなたなら、<br>こんなことで立ち止まらない。</p>
+    <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">そして、心が揺らぐことで、<br>オーラも乱れ、<br>守護の力も届きにくくなっています。</p>
+    <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">安心してください。</p>
 </div>
 ```
 
-**重要**:
-- 最後の段落は必ず白強調にする
+**黄色文字にする箇所（雰囲気で判断）**:
+- 🔔 **問いかけ**: 気づきを促す質問形式の部分
+- 💫 **本質の指摘**: 「本来のあなたなら」など、本来の姿を示す部分
+- ⚠️ **問題点の指摘**: オーラの乱れなど、現状の課題を示す部分
+- 💝 **安心・励まし**: 不安を和らげる肯定的なメッセージ
 
-### 5. なぜ今、悪いものを引き寄せているのか
+### 5. ここから先の流れ
 
 ```html
-<h2 class="emoji-header">⛩️なぜ今、<br>　悪いものを引き寄せているのか</h2>
+<h2 class="emoji-header">⛩️ここから先の流れ</h2>
 <div class="section">
-    <p style="margin-bottom: 20px;">去年の秋。<br>こんなことがありませんでしたか?</p>
-    <ul style="margin-bottom: 30px;">
-        <li>頑張っているのに、<br>報われない気がして<br>焦りが強くなった</li>
-        <li>周囲に頼れず、<br>一人で抱え込んで孤独を感じた</li>
-        <li>前向きになれず、<br>心から笑えない日が続いた</li>
-    </ul>
-    <p style="margin-bottom: 30px;">それらは、守護神の力が弱まり、<br>あなたを守るオーラが<br>少なくなってしまったことで<br>起こっているのです。</p>
-    <p style="margin-bottom: 30px;">あなたは本来、<br>山のような包容力を持つ人。<br>家族を包み込み、<br>安心させる力がある。</p>
-    <p style="margin-bottom: 30px;">これまで、あなたは家族のために<br>懸命に頑張ってきた。<br>母として、妻として、<br>しっかりと守ろうとしてきた。</p>
-    <p style="margin-bottom: 30px;">でも今、守護の力が<br>弱くなってきている…</p>
-    <p>だから、心に余裕を持つこともできず、<br>明るく笑うこともできず、<br>お金の流れも<br>滞ってしまっているのです。</p>
+    <p style="margin-bottom: 90px;">このまま問題を放っておけば<br>今までと同じように<br>不安を抱え、迷い、立ち止まりながら<br>毎日を過ごすことになります。</p>
+    <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">あとは自分を整えて待つだけで望む未来がやってきます。</p>
+    <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">自分で幸せを掴みにいくと<br>心に決めること。</p>
 </div>
 ```
 
-**重要**: リストは自動的に黄色太字になる
+**黄色文字にする箇所（雰囲気で判断）**:
+- 🎯 **重要な決意・行動**: 自分で幸せを掴む、心に決めるなど行動を促す部分
+- ✨ **希望的な展開**: 望む未来がやってくるなど、明るい結果を示す部分
 
-### 6. 二つの道
+### 6. 本式守護鑑定（導入）
 
 ```html
-<h2 class="emoji-header">⛩️二つの道</h2>
+<h2 class="emoji-header">⛩️本式守護鑑定</h2>
 <div class="section">
-    <p style="margin-bottom: 30px;">このまま、オーラが乱れたままだと、<br>お金の不安は消えず、<br>家族の雰囲気も暗くなり、<br>精神的に限界を迎えてしまう。<br>誰も笑えない日々が続いてしまう。</p>
-    <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">でも、ここで流れを変えたら。</p>
-    <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">オーラが整い、守護の力を<br>受け取れるようになり、<br>お金の流れが良くなり、<br>家族みんなが笑顔で食卓を囲む。<br>あなたが心から安心して、<br>穏やかに過ごせる日々が訪れる。</p>
-    <p>どちらの道を歩むかは、まだ今なら、<br>あなた自身で選べます。</p>
+    <p style="margin-bottom: 90px;">ここまでの鑑定で、<br>あなたを守る神様の存在と、<br>今なぜ流れが<br>滞っているのかをお伝えしました。</p>
+    <p style="margin-bottom: 90px;">でも、本当に大切なのはここから。<br>あなたが理想の未来を手に入れるために<br>以下の事を霊視して、お伝えします。</p>
 </div>
 ```
 
-**重要**: 「でも、ここで流れを変えたら。」と良い未来の部分は白強調にする
-
-### 7. 守護の方法
-
-```html
-<h2 class="emoji-header">⛩️守護の方法</h2>
-<div class="section">
-    <p style="margin-bottom: 30px;">ここまでの鑑定で、<br>あなたの守護神とオーラの状態と、<br>なぜ今のような状況なのかを<br>お伝えしました。</p>
-    <p style="margin-bottom: 30px;">でも、一番大事なのはここから、</p>
-    <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">「じゃあ、具体的にどうすれば<br>良くなるのか」<br>「理想の未来を手に入れるためには、<br>何をすればいいのか」<br>ということですよね。</p>
-    <p style="margin-bottom: 30px;"><span style="font-size: 1.4em; font-weight: bold; color: #c8d0ff;">【本式守護鑑定】</span>では、<br>あなたが実際に守護を受け取るための<br>"具体的な方法"</p>
-    <p>そして、未来が明るく広がるタイミングを<br>お伝えいたします。</p>
-</div>
-```
-
-**重要**: 質問部分は白強調、【本式守護鑑定】は大きく強調、
-
-### 8. 本式守護鑑定でお伝えすること（4色ボックス）
+### 7. 本式守護鑑定でお伝えすること（3色ボックス）
 
 ```html
 <div style="padding: 40px 0; margin: 40px 0;">
-    <h2 style="text-align: center; color: #c8d0ff; font-size: 1.3em; margin-bottom: 50px; border: none; text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);">🔮 本式守護鑑定でお伝えすること</h2>
-
     <div style="margin: 30px 0; text-align: center;">
         <!-- 項目1: 黄色背景 -->
         <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
             <div style="position: relative; z-index: 1;">
-                <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ あなたの運命が動き出す転機</h3>
-                <p>【説明文 - テキストから抽出】</p>
+                <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 彼の本当の気持ち</h3>
+                <p>今、彼があなたをどう思っているのか。<br>言葉にしていない本音を視ます。</p>
             </div>
         </div>
 
@@ -448,8 +479,8 @@ ul li {
         <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
             <div style="position: relative; z-index: 1;">
-                <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 守護神から守護を<br>受け取る方法</h3>
-                <p>【説明文 - テキストから抽出】</p>
+                <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 二人の関係が動く時期</h3>
+                <p>流れが変わるタイミングと、<br>その時あなたがすべきことをお伝えします。</p>
             </div>
         </div>
 
@@ -457,44 +488,38 @@ ul li {
         <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
             <div style="position: relative; z-index: 1;">
-                <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 守護の力を手に入れた<br>あなたの未来</h3>
-                <p>【説明文 - テキストから抽出】</p>
-            </div>
-        </div>
-
-        <!-- 項目4: 青背景 -->
-        <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
-            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 122, 255, 0.7); opacity: 0.3;"></div>
-            <div style="position: relative; z-index: 1;">
-                <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 私の守護の力をあなたに</h3>
-                <p>【説明文 - テキストから抽出】</p>
+                <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 愛される流れを<br>引き寄せる方法</h3>
+                <p>あなたのオーラを整え、<br>彼の心を開く具体的な方法をお伝えします。</p>
             </div>
         </div>
     </div>
 
-    <p style="margin-top: 30px; text-align: center;">このまま方法を知らずに過ごすか、<br>守護を受け取る道を選ぶか。<br>決めるのは、あなたです。</p>
+    <p style="margin-top: 90px; margin-bottom: 90px; text-align: center; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">あなたの背中を<br>そっと押す力をお送りします。</p>
 </div>
 ```
 
-**注意**: 4色ボックスの各タイトルには改行が入ることがあります
+**黄色文字にする箇所（雰囲気で判断）**:
+- 🛡️ **守護・サポートの約束**: 「背中をそっと押す力をお送りします」など、守護やサポートを約束する部分
+
+**注意**: 鑑定内容によって項目数は変わる（3項目または4項目）
 
 **重要**:
-- 4つの項目は必ず黄・赤・緑・青の順
+- 項目は黄・赤・緑（・青）の順
 - `margin-bottom: 0` で隙間なく配置
 - 角は四角（border-radiusなし）
 
-### 9. 購入CTAセクション
+### 8. 購入CTAセクション
 
 ```html
 <div class="cta">
     <h2>【運命が動く24時間】</h2>
 
-    <p style="margin-bottom: 30px;">今、あなたの守護神、守護霊は、<br>あなたがこの鑑定を読んだことに<br>気づいています。</p>
-    <p style="margin-bottom: 30px; font-size: 1.15em; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">「この人は、守護を求めている」<br>「力を貸してあげたい」<br>「運命を動かす手助けを<br>してあげたい」</p>
-    <p style="margin-bottom: 30px;">でも、この流れは長く続きません。</p>
-    <p style="margin-bottom: 30px;">何もしなければ、<br>今の延長線上の未来が待っています。</p>
-    <p style="margin-bottom: 30px; font-weight: bold;">ただ、今から24時間。<br>この間に決断すれば、<br>運命はスムーズに好転し始めます。</p>
-    <p style="margin-bottom: 30px;">「ちゃんと守護を受け取りたい」<br>そう感じた方だけ、進んでください。</p>
+    <p style="margin-bottom: 90px;">今、<br>あなたを守る存在の気配が、<br>いつもより強く近くにあります。</p>
+    <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">偶然ではありません。</p>
+    <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">このままではいけない、<br>流れを変えたい、</p>
+    <p style="margin-bottom: 90px;">ここから24時間。</p>
+    <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">止まっていた運命を、<br>静かに動かし始めます。</p>
+    <p style="margin-bottom: 90px;">進むべき道を知りたい。<br><br>そう感じた方だけ、<br>この先へ進んでください。</p>
 
     <div class="price">
         <span class="original-price">通常9,800円</span><br>
@@ -504,24 +529,27 @@ ul li {
 
     <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/69eb763d23b5d0e88f9854e9" class="cta-button" target="_blank">本式守護鑑定を受ける▼</a>
 
-    <p style="margin-top: 30px;">お申し込み後、<br>購入時のお名前をお知らせください。<br>1日以内に、あなただけの<br>鑑定書をお届けします。</p>
+    <p style="margin-top: 90px;">お申し込み後、<br>購入時のお名前をお知らせください。<br>1日以内に、<br>あなただけの鑑定書をお届けします。</p>
 </div>
 ```
 
+**黄色文字にする箇所（雰囲気で判断）**:
+- ⭐ **運命・必然性**: 「偶然ではありません」など、必然性を示す部分
+- 🎯 **決意・転換点**: 「このままではいけない、流れを変えたい」など、決断を促す部分
+- ✨ **運命の転換**: 「止まっていた運命を静かに動かし始めます」など、転換点を示す部分
+
 **重要**:
-- 守護霊の声は太字・大きめ・白強調
-- 「ただ、今から24時間」は太字のみ
 - 価格は`.special-price`でゴールド
 - 限定バッジは`.limited-badge`で赤
 
-### 10. クロージングセクション
+### 9. クロージングセクション
 
 ```html
 <div class="closing">
-    <p style="margin-bottom: 30px;">私には視えています。</p>
-    <p style="margin-bottom: 30px;">あなたのオーラが整い、<br>守護神からのエネルギーを<br>受け取ったとき。</p>
-    <p style="margin-bottom: 30px; font-weight: bold;">家族みんなが笑顔で食卓を囲み、<br>温かな会話が弾んでいる場面が。<br>お金の不安から解放され、<br>あなたが穏やかに微笑んでいる姿が。<br>お子さんたちが安心した表情で、<br>あなたに甘えている未来が。</p>
-    <p style="margin-bottom: 40px;">その未来へ、私がお連れしますね。</p>
+    <p style="margin-bottom: 90px;">私には視えています。</p>
+    <p style="margin-bottom: 90px;">彼と結ばれて、<br>愛されているあなたの姿を。</p>
+    <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">今感じている不安も、<br>決して無駄ではありません。</p>
+    <p style="margin-bottom: 90px;">その未来へ続く扉を、<br>私は守護の声を受け取りながら、<br>丁寧に開いていきますね。</p>
 
     <div class="signature">深雪</div>
 </div>
@@ -531,8 +559,10 @@ ul li {
 </html>
 ```
 
+**黄色文字にする箇所（雰囲気で判断）**:
+- 💝 **肯定・励まし**: 「今感じている不安も、決して無駄ではありません」など、不安を肯定し励ます部分
+
 **重要**:
-- ビジョン部分は太字
 - 署名は必ず「深雪」（テキストが深幸でも変更する）
 
 ---
@@ -557,29 +587,30 @@ ul li {
    - ビジョン内容
    - 署名（深雪に統一）
 
-4. **改行を確認**
+4. **改行とmargin-bottomを確認**
    - 段落間は`<p>`で分ける
    - 段落内は`<br>`で改行
+   - 基本的に`margin-bottom: 90px`を使用（3改行相当）
 
    **改行の処理フロー**:
    1. まず全文を<br>なしで並べる
-   3. その直前の読点(、)や助詞の後で改行を入れる
+   2. 読みやすい長さ（12〜15文字程度）になるよう、読点(、)や助詞の後で改行を入れる
 
    **例**:
    ```html
    <!-- ❌ ダメ: 無駄に細切れ -->
-   <p>力強く、<br>どっしりとした<br>生命力を<br>持っています。</p>
+   <p style="margin-bottom: 90px;">力強く、<br>どっしりとした<br>生命力を<br>持っています。</p>
 
-   <p>力強く、どっしりとした<br>生命力を持っています。</p>
+   <!-- ⭕ 良い: 適切な長さで改行 -->
+   <p style="margin-bottom: 90px;">力強く、どっしりとした<br>生命力を持っています。</p>
    <!-- 「力強く、どっしりとした」(13文字) + 「生命力を持っています。」(12文字) -->
    ```
 
 5. **強調箇所を確認**
-   - 本質: 黄色強調
-   - オーラを整え〜: 白強調
-   - でも、ここで流れを変えたら: 白強調
-   - 質問部分: 白強調
-   - リスト: 自動的に黄色太字
+   - **黄色文字**: 上記「黄色文字の使い方ガイド」を参照し、雰囲気・パートで判断
+     - 未来のビジョン、本質の魅力、問いかけ、励まし、問題点、決意促進、守護の約束、運命の転換点など
+   - **白強調**: 特に重要な問いかけや呼びかけ（使用頻度は低め）
+   - タイトルは必ず改行: `【名前】様<br>守護神鑑定書`
 
 ---
 
@@ -589,28 +620,23 @@ ul li {
 
 - [ ] フォルダ名が`miyuki/連番_名前様M/`形式になっている
 - [ ] HTMLファイル名が`index.html`になっている
-- [ ] タイトルに正しい名前が入っている
+- [ ] タイトルが`【名前】様<br>守護神鑑定書`形式で改行が入っている
 - [ ] 守護神名が正しく設定されている
 - [ ] 画像パスが`../鑑定画像/守護神名.png`になっている
 - [ ] oracle-message::beforeが`content: ''`になっている（✨なし）
 - [ ] bodyに`font-size: 17px`が設定されている（PC表示）
 - [ ] スマホ用メディアクエリで`font-size: 15px`が設定されている
+- [ ] 段落の`margin-bottom`が基本的に`90px`になっている（3改行相当）
 - [ ] ctaのpaddingが`40px 25px`になっている
 - [ ] closingのpaddingが`30px 15px`になっている
 - [ ] スマホ用メディアクエリでctaのpaddingが`40px 15px`になっている
 - [ ] スマホ用メディアクエリでclosingのpaddingが`30px 10px`になっている
-- [ ] 「本式守護鑑定でお伝えすること」のfont-sizeが`1.3em`になっている
-- [ ] 「⛩️なぜ今、<br>　悪いものを引き寄せているのか」に改行と全角スペースが入っている
-- [ ] 4つの項目が黄・赤・緑・青の順で配置されている
-- [ ] 4つの項目のmargin-bottomが0になっている（隙間なし）
-- [ ] 「守護神から守護を<br>受け取る方法」に改行が入っている
-- [ ] 「守護の力を手に入れた<br>あなたの未来」に改行が入っている
-- [ ] 「私の守護の力をあなたに」（、なし）になっている
+- [ ] 色付きボックスの項目数が正しい（3項目または4項目）
+- [ ] 色付きボックスが黄・赤・緑（・青）の順で配置されている
+- [ ] 色付きボックスのmargin-bottomが0になっている（隙間なし）
 - [ ] STORES URLが`https://lnuwhrs3tncycy5pf0r3.stores.jp/items/69eb763d23b5d0e88f9854e9`になっている
-- [ ] 強調すべき箇所が正しく強調されている
-- [ ] リスト項目が`<ul><li>`で記述されている
-- [ ] 本質の部分が黄色強調になっている
-- [ ] ビジョン部分が太字になっている
+- [ ] 黄色強調すべき箇所（未来のビジョン、本質の魅力、問いかけ、励まし、問題点、決意促進、守護の約束、運命の転換点など）が正しく強調されている
+- [ ] 署名が「深雪」になっている
 
 ---
 
@@ -618,23 +644,25 @@ ul li {
 
 ### 段落（通常）
 ```html
-<p style="margin-bottom: 30px;">テキスト</p>
+<p style="margin-bottom: 90px;">テキスト</p>
 ```
 
 ### 段落（強調・白）
 ```html
-<p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">テキスト</p>
+<p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">テキスト</p>
 ```
 
-### 段落（強調・黄色）- 本質部分に使用
+### 段落（強調・黄色）- 黄色文字の箇所に使用
 ```html
-<p style="margin-bottom: 30px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">テキスト</p>
+<p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">テキスト</p>
 ```
 
 ### 段落（太字のみ）- ビジョン部分に使用
 ```html
-<p style="margin-bottom: 30px; font-weight: bold;">テキスト</p>
+<p style="margin-bottom: 90px; font-weight: bold;">テキスト</p>
 ```
+
+**重要**: 基本的に段落間は`margin-bottom: 90px`を使用（3改行相当）
 
 ### インラインで【本式守護鑑定】を強調
 ```html
@@ -775,42 +803,6 @@ ul li {
 }
 ```
 
-### モバイル対応チェックポイント
-
-新規作成時は以下を確認してください：
-
-**フォントサイズ:**
-- [ ] bodyに`font-size: 17px`が設定されている（PC表示）
-- [ ] スマホ用メディアクエリでbodyに`font-size: 15px`が設定されている
-- [ ] 「本式守護鑑定でお伝えすること」が`font-size: 1.3em`になっている
-
-**横幅・padding:**
-- [ ] `.special-price` に `white-space: nowrap` が含まれている
-- [ ] ctaのpaddingが`40px 25px`になっている（PC）
-- [ ] closingのpaddingが`30px 15px`になっている（PC）
-- [ ] **重要**: スマホ用メディアクエリで`body`, `.container`, `.oracle-message`, `.section`の左右paddingが10pxになっている
-- [ ] **重要**: スマホ用メディアクエリでctaのpaddingが`40px 15px`になっている
-- [ ] **重要**: スマホ用メディアクエリでclosingのpaddingが`30px 10px`になっている
-
-**表示確認:**
-- [ ] 実際のスマートフォンまたはブラウザのデベロッパーツールで表示確認済み
-- [ ] 価格が1行で表示される
-- [ ] 文章の改行が自然で、変な位置で自動改行されていない
-- [ ] ボタンが適切なサイズで表示される
-- [ ] CTAカードと閉じカードの文字が横幅に収まっている
-
-### テスト方法
-
-1. **Chrome DevTools**
-   - F12でデベロッパーツールを開く
-   - デバイスツールバー（Ctrl+Shift+M / Cmd+Shift+M）を有効化
-   - iPhone SEやiPhone 12 Proなどのプリセットで確認
-
-2. **実機テスト**
-   - Cloudflare Pagesにデプロイ後、実際のスマートフォンで確認
-   - 特に価格表示と文章の改行を重点的にチェック
-
----
 
 ## 重要なポイントまとめ
 
@@ -827,137 +819,3 @@ ul li {
   - body, container, oracle-message, section: 左右`10px`
   - cta: `padding: 40px 15px`
   - closing: `padding: 30px 10px`
-
-### 改行ルール
-
-
-2. **推奨ルール**: 意味の区切り、感情の区切りで改行してもOK
-3. **禁止事項**: 文節の途中での改行は絶対NG
-
-#### 優先順位
-
-   - 意味の区切り（テーマが変わる）
-   - 感情の区切り（問いかけ→答え、ネガティブ→ポジティブ）
-   - リズムや間を作りたい場合
-3. ただし1行が5文字未満にならないよう注意
-
-### 特殊な改行
-- 「⛩️なぜ今、<br>　悪いものを引き寄せているのか」← 2行目に全角スペース
-- 「守護神から守護を<br>受け取る方法」
-- 「守護の力を手に入れた<br>あなたの未来」
-- 「私の守護の力をあなたに」← 、なし
-
----
-
-
-
-### 改行位置の優先順位
-
-改行は以下の位置で行います：
-
-1. **読点(、)の直後** - 最優先
-2. **句点(。)の直後** - 文の区切り
-3. **助詞の直後** - は、が、を、に、も、で、と
-4. **接続詞の直後** - でも、しかし、そして、など
-
-**絶対にやってはいけないこと**:
-- 文節の途中で改行（例: 「家族を」で改行して「包み込む」が次の行）
-
-### 具体例
-
-#### ❌ ダメな例1: 無駄に細切れ
-
-```html
-<p>お金のこと、<br>お子さんのこと、<br>精神状態。</p>
-```
-
-
-#### ❌ ダメな例2: 文節の途中で改行
-
-```html
-<p>力強く、<br>どっしりとした<br>生命力を<br>持っています。</p>
-```
-- 「どっしりとした」と「生命力を」は一緒にすべき
-
-#### ✅ 良い例2: 自然な区切り
-
-```html
-<p>力強く、どっしりとした生命力を<br>持っています。</p>
-```
-- 1行目: 17文字
-- 2行目: 8文字
-
-#### ❌ ダメな例3: 細切れすぎる強調文
-
-```html
-<p style="font-weight: bold; color: #f0f0ff;">オーラを整え、<br>守護神からのエネルギーを<br>正しく受け取れば、<br>お金の流れも、<br>お子さんとの関係も、<br>精神状態も、<br>必ず変わります。</p>
-```
-- それぞれの行が8〜13文字で短すぎる
-
-#### ✅ 良い例3: できるだけ長く
-
-```html
-<p style="font-weight: bold; color: #f0f0ff;">オーラを整え、守護神からのエネルギーを<br>正しく受け取れば、お金の流れも、<br>お子さんとの関係も、精神状態も、<br>必ず変わります。</p>
-```
-- 1行目: 19文字
-- 2行目: 18文字
-- 3行目: 18文字
-- 4行目: 8文字
-
-#### ✅ 良い例4: 見出しの改行
-
-```html
-<h2 class="emoji-header">⛩️なぜ今、<br>　悪いものを引き寄せているのか</h2>
-```
-- 長い見出しは改行して、2行目に全角スペースでインデント
-
-#### ✅ 許容範囲: 意味の区切りで改行
-
-```html
-<p>この2年間。<br>こんなことがありませんでしたか?</p>
-```
-- 全体で24文字だが、「この2年間。」で時系列を提示し、「こんなことが〜」で問いかけに入る
-- 意味の区切りとして改行は自然で読みやすい
-
-```html
-<p>それらは、<br>守護神の力が弱まり、<br>あなたを守るオーラが<br>少なくなってしまったことで<br>起こっているのです。</p>
-```
-- 1行目「それらは、」(5文字)は短いが、主語として独立
-- その後、原因を複数行で展開する構造なので許容範囲
-
-```html
-<li>考えすぎて、<br>動けなくなった</li>
-```
-- 「考えすぎて、」(7文字)で状態を示し、「動けなくなった」(8文字)で結果を示す
-- 原因→結果の流れで改行は自然
-
-**注意**: ただし1行が5文字未満になる場合は、できるだけ前後の文と繋げることを検討する
-
-### AIに修正させる場合の指示
-
-AIに改行を修正させる場合は、以下のように指示してください：
-
-```
-改行位置は必ず以下のいずれかにすること:
-- 読点(、)の直後
-- 句点(。)の直後
-- 助詞(は、が、を、に、も、で、と)の直後
-- 接続詞の直後
-
-
-```
-
-### 処理フロー（プログラム的に考える場合）
-
-#### 手動で修正する場合
-
-1. **テキストをまず長く繋げる**
-   - 既存の`<br>`を全て削除
-   - 読点(、)や句点(。)で繋げて、できるだけ長い文章にする
-
-
-
-#### AIに指示する場合
-
-```
-以下のHTMLファイルの改行を修正してください。
