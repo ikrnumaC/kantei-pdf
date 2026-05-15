@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>のりこ様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../images/曼荼羅.png');
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 75px;
+            text-align: center;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before  { background-image: url('../images/強い火.png'); }
+        .aura-wood::before  { background-image: url('../images/強い木.png'); }
+        .aura-earth::before { background-image: url('../images/強い土.png'); }
+        .aura-metal::before { background-image: url('../images/強い金.png'); }
+        .aura-water::before { background-image: url('../images/強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+        }
+
+        strong {
+            color: #c9a05d;
+            font-weight: 600;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 { font-size: 24px; letter-spacing: 2px; }
+            h2 { font-size: 22px; margin-top: 50px; margin-bottom: 30px; }
+            h3 { font-size: 18px; margin-top: 30px; margin-bottom: 20px; }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 75px;
+            }
+
+            .subtitle { font-size: 14px; margin-bottom: 30px; }
+
+            .aura-section,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-page">
+        <div class="cover-recipient">のりこ様</div>
+        <div class="cover-title">専用鑑定書</div>
+        <div class="cover-subtitle">Premium Spiritual Reading</div>
+        <div class="cover-appraiser">鑑定師：かな</div>
+    </div>
+
+    <div class="container">
+        <h1>のりこ様の本鑑定書</h1>
+        <p class="subtitle">Premium Spiritual Reading</p>
+
+        <p>のりこ様</p>
+
+        <p>この度は本鑑定にお進みいただき、<br>
+        心より感謝申し上げます。</p>
+
+        <p>「どちらを選んでいいのか、<br>
+        ずっと迷ったまま時間だけが過ぎていく」</p>
+
+        <p>「正しい選択をしたいのに、<br>
+        何が正しいのかわからない」</p>
+
+        <p>「このまま、どちらとも<br>
+        中途半端に終わってしまうのだろうか」</p>
+
+        <p>その想い、痛いほど<strong>伝わってきます</strong>。</p>
+
+        <p>感じる力は誰より豊かなのに、<br>
+        それを言葉にできなくて、<br>
+        動けなくて、</p>
+
+        <p>決められない自分に<br>
+        苦しんできたんじゃないかと思います。</p>
+
+        <p>まず、のりこ様が一番知りたいこと。<br>
+        はっきりお伝えします。</p>
+
+        <p>結論から言います。<br>
+        あなたの<strong>魂</strong>が自然と<br>
+        引き寄せられているのは、<br>
+        <strong>1992年生まれの方</strong>です。</p>
+
+        <p>あなたのオーラは<br>
+        透明な水のように静かで深い。<br>
+        そのオーラは、草花のように<br>
+        柔らかな緑のオーラを持つ彼のことを、<br>
+        自然と育て、支えようとする。</p>
+
+        <p>押しつけがましさがなく、<br>
+        ただ傍にいるだけで、<br>
+        彼の<strong>魂</strong>が静かに満たされていく。</p>
+
+        <p>この二人の関係は、無理がない。<br>
+        穏やかで、自然。</p>
+
+        <p>そして<strong>今年</strong>が、<br>
+        動ける最高のタイミングです。</p>
+
+        <p>その理由は、<br>
+        あなたのオーラに視えています。<br>
+        次で、詳しくお伝えしますね。</p>
+
+
+        <h2>🔮 二人の相性が教えてくれたこと</h2>
+
+        <div class="aura-section aura-water">
+            <p>のりこ様のオーラは、透明。<br>
+            雨のように優しく、<br>
+            静かに染み込む水のオーラです。</p>
+
+            <p>感じる力が豊かで、<br>
+            相手の気持ちを深いところで理解できる。<br>
+            信頼できる人には、<br>
+            誠実にとことん向き合う。</p>
+
+            <p>あなたはずっとそういう人でした。</p>
+
+            <p>でも、一つだけ正直に<br>
+            お伝えしたいことがあります。</p>
+
+            <p>ずっと「決められない」自分が<br>
+            嫌だったんじゃないかと思います。</p>
+
+            <p>「なんで踏み出せないんだろう」<br>
+            「なんで言葉にならないんだろう」</p>
+
+            <p>そうやって、何度も<br>
+            自分を責めてきたんじゃないでしょうか。</p>
+
+            <p>聞いてください。</p>
+
+            <p>それは<strong>弱さじゃなかった</strong>。</p>
+
+            <p>あなたのオーラには、<br>
+            木が大きく足りていません。</p>
+
+            <p>これが、ずっと迷い続けてきた<br>
+            根っこの原因です。</p>
+
+            <p>木のオーラが足りていないことで、<br>
+            ・「どうせ変わらない」と諦めやすく、<br>
+            　自分から流れを変えるのが苦手になる</p>
+
+            <p>・どちらを選ぶかずっと固まったまま、<br>
+            動くきっかけが掴めない</p>
+
+            <p>・「一歩踏み出してみよう」という<br>
+            前向きな力が、なかなか湧いてこない</p>
+
+            <p>つまり、のりこ様が決められなかったのは<br>
+            意志が弱かったからじゃない。<br>
+            感受性が足りなかったからでもない。</p>
+
+            <p>木のオーラが足りていなかったから、<br>
+            一歩が出てこなかっただけ。</p>
+
+            <p>あなたの内側にあった想いは、<br>
+            ずっと<strong>本物</strong>だった。</p>
+
+            <p>ただ、それを動かす力が<br>
+            足りていなかっただけです。</p>
+
+            <p>逆に言えば、木のオーラさえ整えば、<br>
+            「動こう」という自然な気持ちが、<br>
+            スッと出てくるようになります。</p>
+        </div>
+
+        <h3>【1989年生まれの方のオーラと本質】</h3>
+
+        <div class="aura-section aura-metal">
+            <p>1989年生まれの方のオーラは、銀色。<br>
+            刀のように鋭く光る、力強い<strong>魂</strong>です。</p>
+
+            <p>知的で深く考える力を持ち、<br>
+            自分の価値観を<br>
+            しっかり持っています。</p>
+
+            <p>ただ、今の彼の内側は荒れています。</p>
+
+            <p>彼のオーラには火が強くなりすぎていて、<br>
+            感情が揺れやすく、<br>
+            衝動的になりやすい時期に入っています。</p>
+
+            <p>今の彼は、自分自身のことで<br>
+            手いっぱいな状態。</p>
+
+            <p>のりこ様との関係を丁寧に育てる余裕が、<br>
+            今はない。</p>
+        </div>
+
+        <h3>【1992年生まれの方のオーラと本質】</h3>
+
+        <div class="aura-section aura-wood">
+            <p>1992年生まれの方のオーラは、<br>
+            優しい緑。</p>
+
+            <p>草花のように柔らかく揺れる、<br>
+            穏やかな<strong>魂</strong>です。</p>
+
+            <p>独自の感性と直感を持ち、<br>
+            感覚的に「合う」と感じた相手に<br>
+            自然に近づいていく。</p>
+
+            <p>そして今、彼の中に<br>
+            情熱が灯り始めています。</p>
+
+            <p>これまで足りていなかった<br>
+            火のオーラが、</p>
+
+            <p>今の大きな流れの中で<br>
+            一気に補われています。</p>
+
+            <p>静かに内省しながら、<br>
+            「本当に大切なものを選びたい」と<br>
+            感じている時期。</p>
+
+            <p>今の彼は、新しい関係に<br>
+            素直に向き合える状態になっています。</p>
+
+            <p>のりこ様の透明な水のオーラは、<br>
+            彼の優しい緑を自然に育てます。</p>
+
+            <p>押しつけがましさがなく、<br>
+            そばにいるだけで、<br>
+            彼の<strong>魂</strong>がじわじわと満たされていく。</p>
+
+            <p>あなたが変われば、彼も動き始めます。</p>
+        </div>
+
+
+        <h2>🔮 縁を育てる道筋</h2>
+
+        <p>ここからは、1992年生まれの方の心に届く<br>
+        具体的な言葉と行動をお伝えします。</p>
+
+        <p><strong>6月</strong>に入る前から、<br>
+        少しずつ連絡を温めておく。<br>
+        最初の一言は、軽くていい。</p>
+
+        <div class="magic-word-box">
+            <p>「最近どんな感じ？」</p>
+        </div>
+
+        <p>理由を並べなくていい。<br>
+        「なんとなく話したくなった」という<br>
+        自然な感覚の言葉が<br>
+        彼の直感に一番響きます。</p>
+
+        <p>返信があったら、<br>
+        こんな言葉も届けてみてください。</p>
+
+        <div class="magic-word-box">
+            <p>「あなたと話すといつも面白いんだよね」</p>
+        </div>
+
+        <p>「あなただから話したい」という<br>
+        特別感が自然に伝わる言葉です。</p>
+
+        <p>自分の独自性を認めてくれる人に、<br>
+        彼の心は開きやすい。</p>
+
+        <p>会えた時は、<br>
+        落ち着いた静かな場所でゆっくりと。</p>
+
+        <p>賑やかな場所より、<br>
+        二人の本音が出やすい空間を選ぶ。</p>
+
+        <p>言うと効く言葉：</p>
+
+        <div class="magic-word-box">
+            <p>「一緒にいると、<br>
+            自然体でいられる気がする」<br>
+            彼の存在そのものへの肯定になる。<br>
+            感謝を添えることで、<br>
+            プレッシャーなく気持ちが伝わる。</p>
+
+            <p>「あなたのこと、<br>
+            いつも面白いなって思ってる」<br>
+            独自の感性を認める言葉。<br>
+            自分らしさを大切にされると、<br>
+            彼の心は自然と開く。</p>
+
+            <p>「なんか、あなたになら<br>
+            なんでも話せちゃう」<br>
+            特別感を自然に伝えられ、<br>
+            新しい関係への扉を静かに開ける言葉。</p>
+        </div>
+
+        <p>絶対に言ってはいけない言葉：</p>
+
+        <p>・「もっとはっきりしてほしい」<br>
+        急かされると、彼は閉じてしまう。<br>
+        プレッシャーを与えると関係が止まる。</p>
+
+        <p>・「なんで連絡くれないの」<br>
+        束縛に敏感な彼に、詰問は逆効果。<br>
+        独自のペースを守ることで、信頼が育まれる</p>
+
+        <p>・「他の人もいるから」<br>
+        焦りが伝わり、関係が壊れる可能性がある。</p>
+
+        <h3>【大切な注意点】</h3>
+
+        <p>ただし、一つだけ<br>
+        知っておいてほしいことがあります。</p>
+
+        <p>これらの言葉や行動は、<br>
+        あなたのオーラが整った状態で初めて、<br>
+        本来の力を発揮します。</p>
+
+        <p>木のオーラが足りていない状態では、<br>
+        言葉に「前向きさ」が<br>
+        なかなか乗りきらない。</p>
+
+        <p>まずはオーラを整えること。<br>
+        それが、全ての土台になります。</p>
+
+
+        <h2>🔮 運命の転機</h2>
+
+        <p>今、あなたは大きな<strong>転換点</strong>を迎えています。</p>
+
+        <p>長い間、じっくりと<br>
+        内側に蓄えてきた時間がありました。</p>
+
+        <p>感じることはたくさんあった。<br>
+        でも、言葉にならなかった。動けなかった。</p>
+
+        <p>その時間は、無駄じゃなかった。</p>
+
+        <p>蓄えてきたものが、<br>
+        今年の火のエネルギーで溶け出します。</p>
+
+        <p>「もう動いてもいい」という合図が、<br>
+        今年あなたに届いています。</p>
+
+        <p>さらに<strong>2026年</strong>は、情熱の火が強い年。<br>
+        その火が、ずっと内側にあった気持ちを<br>
+        外へ溢れ出させる力になります。</p>
+
+        <p>今年が、あなたにとっての「<strong>決める年</strong>」です</p>
+
+        <h3>【1992年生まれの方の今の時期】</h3>
+
+        <p>彼は今、静かに内側を見つめながら、<br>
+        「本当に大切なものを選び直したい」<br>
+        という時期にいます。</p>
+
+        <p>そして今年、これまで<br>
+        足りていなかった情熱が一気に灯っている。</p>
+
+        <p>なかなか感情を前に出せなかった彼が、<br>
+        素直に受け取れる状態になっています。</p>
+
+        <h3>【二人の運命が交わる時】</h3>
+
+        <p>あなたと彼の<strong>運命</strong>が最も近づく時期。<br>
+        それが<strong>6月</strong>です。</p>
+
+        <p>この月、あなたには<br>
+        「前に進む」オーラが巡り、</p>
+
+        <p>彼には「情熱と受け取る力」の<br>
+        オーラが巡ります。</p>
+
+        <p>二人のオーラが、<br>
+        初めて本当に噛み合う特別な月。</p>
+
+        <p>あなたが素直に気持ちを動かせば、<br>
+        彼の<strong>魂</strong>がそれを静かに受け取ります。</p>
+
+        <h3>【これから半年の流れ】</h3>
+
+        <p>5月（今月・準備の月）</p>
+
+        <p>今月は内側を整える月。<br>
+        まだ動かなくていい。</p>
+
+        <p>緑のものを身につけ始めて、<br>
+        木のオーラを少しずつ補い始める。</p>
+
+        <p>「<strong>6月</strong>に一歩動く」と静かに決める。<br>
+        それだけで十分です。</p>
+
+        <p>★<strong>6月（運命の扉が開く月）</strong></p>
+
+        <p>この月が、半年で<strong>最も大切な月</strong>です。</p>
+
+        <p>あなたには「動こう」という<br>
+        自然な一歩が生まれる。</p>
+
+        <p>彼には「受け取る情熱」が灯っている。</p>
+
+        <p>この二人のエネルギーが重なる月は、<br>
+        今年の中でここだけです。</p>
+
+        <p>7月（6月の流れを育てる月）</p>
+
+        <p><strong>6月</strong>に動いた一歩を、丁寧に続ける月。<br>
+        会う機会や連絡が自然と増えていきます。<br>
+        焦らず、のりこ様のペースで<br>
+        関係を育てていく。</p>
+
+        <p>8月（冷静に保つ月）</p>
+
+        <p>少し理性が先行しやすくなる月。<br>
+        感情が出にくくなるかもしれませんが、<br>
+        <strong>6月</strong>・7月の流れを大切にしながら、<br>
+        連絡を途切らせないことだけ意識する。</p>
+
+        <p>9月（焦らず続ける月）</p>
+
+        <p>引き続き落ち着いた月。<br>
+        大きな動きより、<br>
+        二人の会話を途切らせないことを優先する。</p>
+
+        <p>10月（関係の基盤を固める月）</p>
+
+        <p>安定した空気が流れる月。<br>
+        じっくり二人の時間を大切にする。<br>
+        関係の深まりを、<br>
+        ゆっくり育てていく時期です。</p>
+
+        <h3>【1年後のあなた】</h3>
+
+        <p><strong>2027年</strong>、「どちらを選べばいいの」<br>
+        という迷いは、もうありません。</p>
+
+        <p>1992年生まれの方との間に、<br>
+        穏やかな日々が育まれている。<br>
+        お互いの存在が当たり前になっていく温かさ。<br>
+        その未来が、視えています。</p>
+
+        <h3>【大切なこと】</h3>
+
+        <p><strong>6月</strong>が最大のチャンスです。<br>
+        木のオーラが足りていない状態で<br>
+        <strong>6月</strong>を迎えると、<br>
+        その一歩が踏み出しにくくなってしまう。</p>
+
+        <p><strong>6月</strong>までに、木のオーラを整えておくこと。<br>
+        これが、この半年で<strong>最も大切なこと</strong>です。</p>
+
+
+        <h2>🔮 今からできること</h2>
+
+        <p>まず、今日からできることをお伝えしますね。</p>
+
+        <p>1. 木のオーラを補う<br>
+        ・緑色の服やアクセサリーを<br>
+        　意識して身につける（毎日でもOK）<br>
+        ・観葉植物や花を部屋に飾る、<br>
+        　植物を育てる<br>
+        ・公園や緑の多い場所をゆっくり散歩する<br>
+        　（週1回以上）</p>
+
+        <p>2. 火のオーラも少し補う<br>
+        ・赤やオレンジの小物、<br>
+        　アクセサリーをプラスする<br>
+        ・日当たりの良い場所で<br>
+        　朝の光を浴びる習慣をつける</p>
+
+        <h3>【日常の実践】</h3>
+
+        <p>朝、緑のカップでお茶を飲む。<br>
+        「今日、一つ素直な気持ちを伝えよう」<br>
+        と決めて一日を始める。</p>
+
+        <p>夜、今日感じたことを<br>
+        3行だけ手帳に書き出す。</p>
+
+        <p>溜め込んできたものを、<br>
+        言葉にして流す習慣をつける。</p>
+
+        <h3>【気をつけてほしいこと】</h3>
+
+        <p>・「正しい答え」を探しすぎない<br>
+        「自分が心地よいと感じる選択」を優先する</p>
+
+        <p>・考えすぎたら、一度体を動かして外に出る</p>
+
+        <p>・1989年生まれの方との関係は今は深めない<br>
+        今の彼には余裕がなく、傷つきやすくなる時期</p>
+
+        <h3>【正直にお伝えしたいこと】</h3>
+
+        <p>ここまでお伝えした調整法で、<br>
+        少しずつオーラは整い始めます。</p>
+
+        <p>ただ、正直に言うと、<br>
+        木が大きく足りない場合、<br>
+        日常の調整だけでは<br>
+        補いきれない部分があります。</p>
+
+        <p>緑を身につける、植物に触れる。<br>
+        これらは「維持する力」にはなりますが、<br>
+        ゼロから補う力としては、<br>
+        どうしても限界がある。</p>
+
+        <p>もし本気でオーラを整えたいなら、<br>
+        もう一つ、お伝えしたい方法があります。</p>
+
+
+        <h2>🔑 心を守るサポート</h2>
+
+        <p>ここまでお伝えしてきた通り、<br>
+        のりこ様のオーラには<br>
+        木が大きく足りていません。</p>
+
+        <p>これが「ずっと迷い続けてきた」<br>
+        根っこの原因であり、<br>
+        <strong>6月</strong>のチャンスを掴むために、<br>
+        最も整えるべき部分です。</p>
+
+        <p>木のオーラが整うと、<br>
+        ・「彼に連絡してみよう」と<br>
+        　自然に踏み出せるようになる<br>
+        ・「どうせ変わらない」という<br>
+        　諦めの感覚が消えていく<br>
+        ・1992年生まれの方と向き合う時、<br>
+        　自然体で言葉が出てくるようになる<br>
+        ・「私はこちらを選ぶ」という<br>
+        　迷いのない決断ができるようになる<br>
+        ・霊視で視えた「穏やかに笑い合う未来」に<br>
+        　自分から近づいていける</p>
+
+        <p>日常の調整法に加えて、<br>
+        本格的にオーラを補うために、<br>
+        パワーストーンを<br>
+        お守りとして取り入れる方法があります。</p>
+
+        <p>のりこ様のオーラに合わせて、<br>
+        <strong>三つのプラン</strong>をご用意しました。</p>
+
+        <div class="important-box">
+            <p><strong>●松</strong>プラン：<strong>6月</strong>の扉を確実に開きたい方へ<br>
+            木・火を本格的に補う石の組み合わせ<br>
+            ・「今動こう」という自然な一歩が、<br>
+            　<strong>6月</strong>に出てくる<br>
+            ・1992年生まれの方に連絡する時、<br>
+            　迷いより前向きな気持ちが先に立つ<br>
+            ・「私はこちらを選ぶ」という決断が、<br>
+            　静かに定まる</p>
+
+            <p><strong>●竹</strong>プラン：まずは迷いを手放したい方へ<br>
+            木を補う石の組み合わせ<br>
+            ・「どうせ変わらない」という諦めが、<br>
+            少しずつ和らいでいく</p>
+
+            <p><strong>●梅</strong>プラン：小さな一歩から始めたい方へ<br>
+            最も必要な石を1つ<br>
+            ・「動いてみようかな」と<br>
+            　自然に思えるようになる</p>
+
+            <p>多くの方が<strong>●松</strong>プランを選ばれています。<br>
+            <strong>6月</strong>に向けて今から整え始めることで、<br>
+            最も効果的なタイミングでオーラが整います</p>
+        </div>
+
+        <p>もし興味がありましたら、<br>
+        「詳細希望」とだけ送っていただければ、<br>
+        のりこ様専用の<br>
+        石の組み合わせをお伝えしますね。</p>
+
+
+        <h2>最後に</h2>
+
+        <p>のりこ様、ここまで読んでくださって、<br>
+        本当にありがとうございます。</p>
+
+        <p>一つだけ、伝えさせてください。</p>
+
+        <p>ずっと迷い続けてきた自分を、<br>
+        どこかで責めてきたんじゃないかと思います</p>
+
+        <p>「なんで決められないんだろう」<br>
+        「感じているのに、<br>
+        　なんで動けないんだろう」<br>
+        「このまま、どちらも失ってしまうのかな」</p>
+
+        <p>でも、違うんです。</p>
+
+        <p>決められなかったのは、<br>
+        あなたが弱かったからじゃない。</p>
+
+        <p>木のオーラが足りていなかったから、<br>
+        一歩が出てこなかっただけ。</p>
+
+        <p>あなたの内側にあった想いは、<br>
+        ずっと<strong>本物</strong>だった。</p>
+
+        <p>ただ、それを動かす力が<br>
+        足りていなかっただけです。</p>
+
+        <p>そして今年、その力が流れ込んでいる。<br>
+        ずっと蓄えてきたものが、<br>
+        <strong>6月</strong>に溶け出します。</p>
+
+        <p><strong>6月</strong>のある日。<br>
+        あなたが彼に、そっと言葉を伝えた時。<br>
+        彼がゆっくり振り返って、柔らかく笑う。</p>
+
+        <p>「一緒にいると、なんか落ち着く」</p>
+
+        <p>そんな言葉が、<br>
+        静かに二人の間に生まれる瞬間が、<br>
+        私には視えています。</p>
+
+        <p>あなたの気持ちは、<strong>届きます</strong>。<br>
+        あとは、木のオーラを整えて、<br>
+        <strong>6月</strong>を待つだけ。</p>
+
+        <p>応援しています。</p>
+
+        <div class="sign-box">
+            <p>心からの愛と光を込めて。<br>かな</p>
+        </div>
+    </div>
+</body>
+</html>

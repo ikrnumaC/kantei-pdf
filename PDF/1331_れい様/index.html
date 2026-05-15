@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>れい様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../images/曼荼羅.png');
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 75px;
+            text-align: center;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before  { background-image: url('../images/強い火.png'); }
+        .aura-wood::before  { background-image: url('../images/強い木.png'); }
+        .aura-earth::before { background-image: url('../images/強い土.png'); }
+        .aura-metal::before { background-image: url('../images/強い金.png'); }
+        .aura-water::before { background-image: url('../images/強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+        }
+
+        strong {
+            color: #c9a05d;
+            font-weight: 600;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 { font-size: 24px; letter-spacing: 2px; }
+            h2 { font-size: 22px; margin-top: 50px; margin-bottom: 30px; }
+            h3 { font-size: 18px; margin-top: 30px; margin-bottom: 20px; }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 75px;
+            }
+
+            .subtitle { font-size: 14px; margin-bottom: 30px; }
+
+            .aura-section,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-page">
+        <div class="cover-recipient">れい様</div>
+        <div class="cover-title">専用鑑定書</div>
+        <div class="cover-subtitle">Premium Spiritual Reading</div>
+        <div class="cover-appraiser">鑑定師：かな</div>
+    </div>
+
+    <div class="container">
+        <h1>れい様の本鑑定書</h1>
+        <p class="subtitle">Premium Spiritual Reading</p>
+
+        <h2>🔮 はじめに</h2>
+
+        <p>れい様</p>
+
+        <p>この度は本鑑定にお進みいただき、<br>
+        心より感謝申し上げます。</p>
+
+        <p>「どうしてこんなに想っているのに、<br>
+        伝わらないんだろう」</p>
+
+        <p>「また感情的になってしまった。<br>
+        なんで落ち着けないんだろう」</p>
+
+        <p>「いつまで待ち続ければいいのか、<br>
+        もうわからなくなってきた」</p>
+
+        <p>そのお気持ち、全部受け取りました。</p>
+
+        <p>想い続けることの喜びと、<br>
+        伝わらないことへの痛みが<br>
+        同時に存在している、<br>
+        あの複雑な重さ。</p>
+
+        <p>その中で、<br>
+        自分を責め続けてきたことも、<br>
+        視えています。</p>
+
+        <p>まず、れい様が一番知りたいことを、<br>
+        はっきりお伝えします。</p>
+
+        <p>彼の<strong>魂</strong>の奥底に、<br>
+        あなたへの想いは<strong>確かに存在しています</strong>。</p>
+
+        <p>彼のオーラは大海のように深く静かで、<br>
+        一度大切にしたものを<br>
+        絶対に手放せない性質を持っています。</p>
+
+        <p>あなたを「大切にしたい」という気持ちは<br>
+        今も彼の深いところに<br>
+        しっかりと沈んでいる。</p>
+
+        <p>ただ、彼は今「動けない状態」にあります。</p>
+
+        <p>それはあなたへの想いが<br>
+        薄いからではありません。</p>
+
+        <p>今の彼のオーラは<br>
+        全てが内へ内へと向かっていて、<br>
+        自分から動くことが<strong>極めて</strong>難しい状態にある</p>
+
+        <p>そして、もう一つ。<br>
+        これまでれい様が<br>
+        感情的になってしまったこと、<br>
+        伝えようとするほど届かなかったこと。</p>
+
+        <p>その繰り返しには、<br>
+        はっきりとした理由があります。</p>
+
+        <p>れい様のオーラに、<br>
+        その答えが視えています。</p>
+
+
+        <h2>🔮 あなたのオーラと、ずっと抱えてきた苦しみの正体</h2>
+
+        <div class="aura-section aura-fire">
+            <p>れい様のオーラは、<br>
+            真っ赤な太陽の炎です。</p>
+
+            <p>燃え上がる情熱、まっすぐな意志、<br>
+            自然体で人を楽しませる温かさ、<br>
+            他の誰にも見えていないものを<br>
+            感じ取る独自の感性——</p>
+
+            <p>それがれい様の本質であり、<br>
+            誰にも真似できない<strong>魂</strong>の輝きです。</p>
+
+            <p>ただ、れい様のオーラには<br>
+            金と水が大きく足りていません。</p>
+
+            <p>金のオーラは、気持ちを整理して<br>
+            「言葉」にするための力です。</p>
+
+            <p>水のオーラは、感情をいったん流して、<br>
+            落ち着いて届けるための力です。</p>
+
+            <p>この二つが足りていないと、<br>
+            何が起きるか。</p>
+
+            <p>気持ちはある。伝えたい。<br>
+            でも言葉にしようとすると<br>
+            感情があふれてしまう。</p>
+
+            <p>不安と焦りが流れないまま積み重なって、<br>
+            「もうこれ以上待てない」と訴えてしまう</p>
+
+            <p>届けたいのに届かない。<br>
+            その繰り返しの中で、<br>
+            感情的になった自分を責め続けてきた。</p>
+
+            <p>れい様。聞いてください。</p>
+
+            <p>それは、あなたが<br>
+            <strong>弱かったからじゃありません</strong>。</p>
+
+            <p>太陽のように情熱が<br>
+            燃え上がるオーラを持ちながら、</p>
+
+            <p>金と水が足りていなかった——<br>
+            ただ、それだけです。</p>
+
+            <p>「なぜこんなに好きなのに<br>
+            伝わらないんだろう」と<br>
+            苦しんできたあの時間。</p>
+
+            <p>感情的になった後、<br>
+            ベッドの中で自分を責めた夜。</p>
+
+            <p>それは弱さじゃなかった。<br>
+            オーラが足りていない状態で、<br>
+            太陽の全力をぶつけ続けてきたから。</p>
+
+            <p>これが、れい様の苦しみの<br>
+            根っこにあった<strong>本当の原因</strong>です。</p>
+        </div>
+
+        <div class="aura-section aura-water">
+            <p>彼のオーラは深い青の大海です。<br>
+            感情はある。<br>
+            ただ、出せない——それが彼の本質です。</p>
+
+            <p>一度大切にしたものを<br>
+            決して手放せない深さを、<br>
+            内側にひっそりと秘めています。</p>
+
+            <p>さらに今の時期、<br>
+            彼のオーラは「内にこもる」が<br>
+            最大化しています。</p>
+
+            <p>元々内側へ閉じやすい性質を持つ彼が、<br>
+            今の運気によってさらに深く閉じている。</p>
+
+            <p>プレッシャーをかけるほど、<br>
+            彼の海は深く沈みます。</p>
+
+            <p>逆に言えば、今の彼に必要なのは<br>
+            「動くエネルギー」ではなく、<br>
+            「ここにいていい」という温もりだけです。</p>
+
+            <p>彼の足りないオーラを視ると、<br>
+            木（成長力・柔軟性）と<br>
+            火（情熱・前向きさ）が<br>
+            大きく足りていません。</p>
+
+            <p>れい様が持っている火と木は、<br>
+            彼に本来欠けているものです。</p>
+
+            <p>だからこそ、<br>
+            れい様の存在が彼の内側を動かせる。</p>
+
+            <p>ただし、届け方の温度が全てを決めます。</p>
+        </div>
+
+        <p>今のれい様のオーラを整えること——<br>
+        これが全ての入り口です。</p>
+
+
+        <h2>🔮 彼の心を動かす道筋</h2>
+
+        <p>彼の心を動かすのに、<br>
+        必要なことは三つだけです。</p>
+
+        <p>「<strong>急かさない</strong>」<br>
+        「<strong>答えを求めない</strong>」<br>
+        「<strong>焦らない</strong>」。</p>
+
+        <p>これは諦めではなく、<br>
+        唯一機能する戦略です。</p>
+
+        <p>彼は責任感が非常に強い<strong>魂</strong>を持っています。</p>
+
+        <p>「すべきこと」を何より優先する。</p>
+
+        <p>だからこそ「決めてほしい」<br>
+        「選んでほしい」という言葉は、<br>
+        彼の最も重い部分に圧力をかけ、<br>
+        完全に閉じさせてしまう。</p>
+
+        <p>逆に、彼のオーラが最も開くのは、<br>
+        誠実さを認められた瞬間です。</p>
+
+        <p>プレッシャーのない場所に、<br>
+        大海はゆっくりと向かってくる——<br>
+        彼の本質はそういう構造になっています。</p>
+
+        <div class="magic-word-box">
+            <p>「〇〇のことで迷ってて、<br>
+            あなたに聞いてみたかった」</p>
+
+            <p>責任感が強く、<br>
+            誰かの力になることに<br>
+            喜びを感じる彼の<strong>魂</strong>に、<br>
+            直接届く言葉です。<br>
+            「頼られた」という感覚が、<br>
+            彼を自然に動かします。</p>
+
+            <p>「この前話してた〇〇、<br>
+            今日思い出したよ」</p>
+
+            <p>彼の話をちゃんと覚えていることが<strong>伝わります</strong>。<br>
+            「この人は自分のことをちゃんと見ている」<br>
+            という特別感が、<br>
+            じわじわと積み重なります。</p>
+
+            <p>「これ絶対あなたが好きそうと思って」</p>
+
+            <p>日常の中で彼のことを考えていることが、<br>
+            さらっと届く言葉です。<br>
+            重さがなく、<br>
+            でも「あなたのことを思っている」が<br>
+            自然に伝わります。</p>
+        </div>
+
+        <p>会った時の接し方です。</p>
+
+        <p>「ここだけが本音を出せる場所」と<br>
+        彼が感じる時間を、<br>
+        少しずつ作ってください。</p>
+
+        <p>仕事の本音、誰にも言えない気持ち、<br>
+        日常の中でふと浮かんだこと——<br>
+        それをれい様だけに話せる関係を<br>
+        育てることです。</p>
+
+        <p>大海のオーラを持つ彼は、<br>
+        「この人の前でだけ、正直になれる」<br>
+        と感じた相手を<strong>決して手放せません</strong>。</p>
+
+        <p>彼が疲れていたり、<br>
+        重い空気を持ってきた時は、<br>
+        「大変だったね」と<br>
+        一言だけ受け止めてください。</p>
+
+        <p>解決しようとしない、アドバイスしない、<br>
+        ただそこにある重さを受け取るだけです。</p>
+
+        <p>責任感の強い彼にとって、<br>
+        「何も求めずに受け止めてくれる場所」は、<br>
+        人生でなかなか出会えないものです。</p>
+
+        <p>別れ際は、<strong>必ず</strong>笑顔で終わらせることです。</p>
+
+        <p>「会えてよかった」<br>
+        それだけ伝えて、すっと離れる。</p>
+
+        <p>「もう少しいたかった」という余韻を<br>
+        彼の中に残すことが、<br>
+        次へ引き寄せる力になります。</p>
+
+        <h3>言うと効く言葉</h3>
+
+        <div class="magic-word-box">
+            <p>「あなたって、すごく誠実な人だと思う」<br>
+            責任感を<strong>魂</strong>の核に持つ彼は、<br>
+            誠実さを認められた瞬間に深く心が開きます<br>
+            これが彼の一番の喜びです。</p>
+
+            <p>「あなたといると、落ち着くんだよね」<br>
+            大海のオーラは、<br>
+            誰かを深く安心させたいと思っています。<br>
+            「落ち着く」という言葉でその本質を肯定することで、<br>
+            彼の中に「この人といていい」という<br>
+            感覚が生まれます。</p>
+
+            <p>「無理しなくていいよ、<br>
+            あなたのペースでいい」<br>
+            内にこもって動けない彼への<br>
+            最大の贈り物です。<br>
+            プレッシャーのない言葉が、<br>
+            大海を少しずつ動かします。</p>
+        </div>
+
+        <h3>言ってはいけない言葉</h3>
+
+        <p>「奥さんとどうするの」<br>
+        「私を選んでほしい」<br>
+        これだけは禁止です。</p>
+
+        <p>責任感が強い彼にとって、<br>
+        これ以上の重さはありません。</p>
+
+        <p>「なんで連絡くれないの」<br>
+        「あなたのせいで辛い」<br>
+        罪悪感が逃げる理由になります。</p>
+
+        <p>感情的に泣いて訴えること<br>
+        大海のオーラは、強い火の感情を<br>
+        そのまま消す方向に動きます。</p>
+
+        <p>一つだけ、<br>
+        大切なことをお伝えします。</p>
+
+        <p>これらの言葉と行動は、<br>
+        れい様のオーラが整った状態で初めて、<br>
+        本来の力を発揮します。</p>
+
+        <p>金と水が足りていない状態のまま動くと<br>
+        どれだけ正しい言葉でも上滑りしてしまう。</p>
+
+        <p>まず土台を整えること。<br>
+        それが全ての前提です。</p>
+
+
+        <h2>🔮 運命の転機</h2>
+
+        <p>今、れい様は大きな問いの中にいます。</p>
+
+        <p>2024年の春から、れい様の運気に<br>
+        「一度手放して、リセットする」<br>
+        流れが巡り始めました。</p>
+
+        <p>太陽のように力強い本来の輝きの中に、<br>
+        「執着を手放し、<br>
+        新しい自分へ向かう準備をする」<br>
+        エネルギーが入ってきています。</p>
+
+        <p>これは次の輝きへの準備です。</p>
+
+        <p>そして今年<strong>2026年</strong>は、<br>
+        火のオーラが強い年です。</p>
+
+        <p>その火がれい様の<br>
+        本来の情熱を呼び起こし、<br>
+        「このままでいいのか」という問いを<br>
+        突きつけています。</p>
+
+        <p>今年は「何を手放して、何を選ぶか」<br>
+        れい様が自分に正直に向き合う年です。</p>
+
+        <p>彼の運気を視ると、<br>
+        今は「内にこもる」が最大化しています。</p>
+
+        <p>これは永遠には続きません。<br>
+        でも今の彼に届くのは、温もりだけです。</p>
+
+        <p>この半年で<strong>最も重要な月が、8月</strong>です。</p>
+
+        <p>この月、れい様のオーラに<br>
+        「金」が巡ってきます。</p>
+
+        <p>普段足りていない金——<br>
+        決断力と落ち着きの力が補われる月です。</p>
+
+        <p>感情が整理されて、<br>
+        言葉が彼の海に届く形になる。</p>
+
+        <p>焦りが静まって、<br>
+        穏やかな自分のままでいられる。</p>
+
+        <p>これがれい様に起きる変化です。</p>
+
+        <p>同時に彼のオーラにも<br>
+        「火」が補われます。</p>
+
+        <p>内側にこもっていた部分に、<br>
+        小さな「動きたい」気持ちが<br>
+        <strong>芽生える</strong>月です。</p>
+
+        <p>れい様が落ち着いた言葉で静かに届けた時、<br>
+        彼の海の底がじわりと動き始める——<br>
+        それが<strong>8月</strong>に起きることです。</p>
+
+        <h3>やるべきこと</h3>
+
+        <p>・「短く・温かく・答えを求めない」文面で<br>
+        　彼へ連絡を送る</p>
+
+        <p>・軽い言葉から、一歩踏み出す</p>
+
+        <p>・返事が来たら「嬉しい、ありがとう」の<br>
+        　シンプルな言葉だけで返す</p>
+
+        <h3>やってはいけないこと</h3>
+
+        <p>・「答えを出してほしい」<br>
+        　という方向の言葉</p>
+
+        <p>・良い反応を過信して、重い話に踏み込む</p>
+
+        <h3>1年後の見通し</h3>
+
+        <p>6月は情熱が高まりやすい月です。<br>
+        「<strong>8月</strong>まで待つ」と決めて、<br>
+        軽いトーンを維持してください。</p>
+
+        <p>7月は内側の準備の月。<br>
+        「急かさない・焦らない」を<br>
+        体に馴染ませる期間として使いましょう。</p>
+
+        <p><strong>8月</strong>から始まった小さな動きが、<br>
+        少しずつ形を持ち始める時期が来ます。</p>
+
+        <p>彼の海の底で揺れ動いているものが、<br>
+        表面へと浮かび上がり始める——<br>
+        その流れが視えています。</p>
+
+        <p>「もう少し一緒にいたい」という<br>
+        彼の気持ちが、<br>
+        行動として現れてくる時期です。</p>
+
+        <p>9月も金と火のオーラが続きます。<br>
+        <strong>8月</strong>に温まり始めた彼の海を、<br>
+        焦らず丁寧に育てる月です。</p>
+
+        <p><strong>8月</strong>のチャンスを掴むために、<br>
+        最も大切なことがあります。</p>
+
+        <p>金と水が足りていない状態のまま<br>
+        <strong>8月</strong>を迎えると、</p>
+
+        <p>せっかくの<strong>転機</strong>を<br>
+        素通りしてしまう可能性があります。</p>
+
+        <p><strong>8月</strong>までに、<br>
+        オーラを整えておくことが大事です。</p>
+
+
+        <h2>🔮 今からできること</h2>
+
+        <p>まず、今日からできることをお伝えします。</p>
+
+        <p>金のオーラを補うために<br>
+        白・銀色の服や<br>
+        アクセサリーを意識して身につけてください</p>
+
+        <p>朝、白いカップで<br>
+        温かいものを飲む習慣も、<br>
+        金のオーラを取り込む方法です。</p>
+
+        <p>整理整頓や断捨離も、<br>
+        金のオーラを呼び込みます。</p>
+
+        <p>感情が揺れた時<br>
+        すぐに行動せず、<br>
+        水を一杯飲んでから判断してください。</p>
+
+        <p>感情を流してから動く、<br>
+        この小さな習慣が積み重なっていきます。</p>
+
+        <p>朝の一言<br>
+        鏡を見て<br>
+        「今日は焦らない」と声に出すだけです。</p>
+
+        <p>太陽のような強さを<br>
+        「落ち着き」に変える、小さな儀式です。</p>
+
+        <p>正直にお伝えしたいことがあります。</p>
+
+        <p>これらの調整法で、<br>
+        少しずつオーラは整い始めます。</p>
+
+        <p>でも、金と水が<br>
+        大きく足りていない状態は、<br>
+        日常の調整だけでは<br>
+        補いきれない部分があります。</p>
+
+        <p>白を着る、水を飲む——<br>
+        これらは「維持する力」にはなります。</p>
+
+        <p>ただ、ゼロから本格的に補う力としては<br>
+        どうしても限界がある。</p>
+
+        <p><strong>8月</strong>のチャンスを<br>
+        最高の状態で迎えるために、<br>
+        もう一つ、お伝えしたい方法があります。</p>
+
+
+        <h2>🔑 心を守るサポート</h2>
+
+        <p>ここまでお伝えしてきた通り、<br>
+        れい様のオーラには<br>
+        金と水が大きく足りていません。</p>
+
+        <p>これが「感情が溢れてしまう」<br>
+        「届け方がズレてしまう」<br>
+        すべての根っこにある原因であり、<br>
+        <strong>8月</strong>のチャンスを掴むために<br>
+        最も整えるべき部分です。</p>
+
+        <p>金と水のオーラが整うと</p>
+
+        <p>・彼に連絡したくなった瞬間、<br>
+        　「この言葉は彼の海に届くか」と<br>
+        　一度立ち止まれるようになる</p>
+
+        <p>・<strong>8月</strong>に落ち着いた自分のまま、<br>
+        　温かく彼へ届けられるようになる</p>
+
+        <p>・返事を待つ時間を、<br>
+        　不安ではなく<br>
+        　自分を磨く時間として過ごせるようになる</p>
+
+        <p>・焦りや不安が整理されて、<br>
+        太陽のような本来の魅力が自然と輝き始める</p>
+
+        <p>日常の調整に加えて、<br>
+        本格的にオーラを補うために、<br>
+        パワーストーンをお守りとして<br>
+        取り入れる方法があります。</p>
+
+        <p>れい様のオーラに合わせて、<br>
+        <strong>三つのプラン</strong>をご用意しました。</p>
+
+        <div class="important-box">
+            <p><strong>●松</strong>プラン<br>
+            <strong>8月</strong>に最高の状態で臨みたい方向け</p>
+
+            <p>金と水を本格的に補う石と、<br>
+            流れすぎる感情を整える石の組み合わせです。</p>
+
+            <p>・「また感情的になってしまった」<br>
+            　というループから抜け出せる</p>
+
+            <p>・彼の返信を穏やかな気持ちで<br>
+            　待ち続けられるようになる</p>
+
+            <p>・本来持っている太陽の魅力が、<br>
+            　自然と輝き始める</p>
+
+            <p><strong>●竹</strong>プラン<br>
+            まず心を安定させたい方向け</p>
+
+            <p>金を中心に補う石の組み合わせです。<br>
+            ・「急かしたい」という衝動が静まり、<br>
+            　待てる強さが戻ってくる</p>
+
+            <p><strong>●梅</strong>プラン<br>
+            今の不安を手放すことから始めたい方向け</p>
+
+            <p>最も必要な石を一つです。<br>
+            ・今すぐの焦りが和らいで<br>
+            　一歩ずつ整えていける</p>
+
+            <p>多くの方が<strong>●松</strong>プランを選ばれています。</p>
+
+            <p><strong>8月</strong>に向けて今から整え始めることで、<br>
+            最も効果的なタイミングで<br>
+            オーラが整います。</p>
+        </div>
+
+        <p>「詳細希望」とだけ送っていただければ、<br>
+        れい様専用の石の組み合わせを<br>
+        お伝えしますね。</p>
+
+
+        <h2>最後に</h2>
+
+        <p>れい様、全部読んでくださって<br>
+        ありがとうございます。</p>
+
+        <p>このまま、<br>
+        感情のまま動き続けるか。</p>
+
+        <p>それとも根っこにある<br>
+        金と水のオーラを整えて、</p>
+
+        <p>ただそこにいるだけで彼の大海が温まる<br>
+        落ち着いた太陽になるか。</p>
+
+        <p>その岐路に、<br>
+        今、れい様は立っています。</p>
+
+        <p>何度伝えても届かなかったあの時間。</p>
+
+        <p>あの苦しかった夜々が、<br>
+        弱さの証拠だと思っていたなら、<br>
+        今日それを手放してください。</p>
+
+        <p>金と水が足りていないまま、<br>
+        太陽の全力でぶつかり続けてきた——<br>
+        その一途さです。</p>
+
+        <p>その一途さが、今も彼の大海の底を<br>
+        揺らし続けています。</p>
+
+        <p><strong>8月</strong>が来ます。<br>
+        オーラが整ったれい様が、<br>
+        静かに温かく「ここにいるよ」と伝えた時</p>
+
+        <p>「あなたといると落ち着く」という言葉が<br>
+        自然に口から出てきた時</p>
+
+        <p>彼の海の底が動き始める未来が、<br>
+        視えています。</p>
+
+        <div class="sign-box">
+            <p>心からの愛と光を込めて。<br>かな</p>
+        </div>
+    </div>
+</body>
+</html>
