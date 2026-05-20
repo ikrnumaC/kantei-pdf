@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>江川由美様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", serif;
+            line-height: 2;
+            background: linear-gradient(180deg, #fdfcfa 0%, #f8f6f1 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        .recipient {
+            font-size: 28px;
+            font-weight: 300;
+            color: #8b7355;
+            letter-spacing: 10px;
+        }
+
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        h2 {
+            font-size: 17px;
+            font-weight: 500;
+            color: #8b7355;
+            letter-spacing: 2px;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 66px;
+            font-weight: 300;
+            color: #444;
+            text-align: center;
+        }
+
+        strong {
+            color: #8b7355;
+            font-weight: 500;
+        }
+
+        .yellow-text {
+            color: #d4a574;
+            font-weight: 500;
+        }
+
+        .intro {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(139, 115, 85, 0.04);
+            border-radius: 4px;
+            margin-bottom: 130px;
+        }
+
+        .intro p {
+            font-size: 16px;
+            line-height: 2.3;
+        }
+
+        /* オーラ画像 + テキストオーバーレイ */
+        .aura-visual {
+            margin: 30px -30px;
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+        }
+
+        .aura-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 中央オーバーレイ */
+        .aura-overlay-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: center;
+            padding: 30px;
+            width: 100%;
+        }
+
+        .aura-overlay-center p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        /* C案: 黒文字 + 画像の透明度 + 極太 */
+        .aura-visual.style-c::after {
+            display: none;
+        }
+        .aura-visual.style-c img {
+            opacity: 0.4;
+        }
+        .aura-visual.style-c .aura-overlay-center p {
+            color: #333;
+            font-weight: 900;
+            -webkit-text-stroke: 0.5px #333;
+        }
+        .aura-visual.style-c .aura-overlay-center strong {
+            color: #333;
+            -webkit-text-stroke: 0.5px #333;
+        }
+
+        /* 火: 赤 */
+        .aura-visual.aura-fire .aura-overlay-center strong {
+            color: #c62828;
+            -webkit-text-stroke: 0.5px #c62828;
+        }
+        /* 土: 茶色 */
+        .aura-visual.aura-earth .aura-overlay-center strong {
+            color: #5d4037;
+            -webkit-text-stroke: 0.5px #5d4037;
+        }
+
+        /* F案: 暗いオーバーレイ（明るい画像用） */
+        .aura-visual.style-f::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+        }
+        .aura-visual.style-f .aura-overlay-center p {
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.9);
+        }
+        .aura-visual.style-f .aura-overlay-center strong {
+            color: #ffd700;
+        }
+
+        /* 本鑑定 */
+        .cta-item {
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        .cta-item:last-child {
+            border-bottom: none;
+        }
+
+        .cta-item .title {
+            font-size: 18px;
+            color: #8b7355;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .cta-item .desc {
+            font-size: inherit;
+            color: #444;
+            font-weight: 300;
+            line-height: 2;
+        }
+
+        /* 24時間 */
+        .urgent {
+            text-align: center;
+            padding: 50px 20px;
+            margin: 130px -30px 30px;
+            background: #fff;
+            border-top: 1px solid #e5e0d5;
+            border-bottom: 1px solid #e5e0d5;
+        }
+
+        .urgent-title {
+            font-size: 15px;
+            color: #8b7355;
+            margin-bottom: 25px;
+        }
+
+        .price-old {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .price-new {
+            font-size: 32px;
+            font-weight: 400;
+            color: #8b7355;
+            margin: 10px 0 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #8b7355;
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 45px;
+            border-radius: 2px;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .note {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .vision {
+            text-align: center;
+            padding: 60px 20px;
+            font-style: italic;
+            color: #666;
+            margin-top: 130px;
+        }
+
+        .sign {
+            text-align: right;
+            padding-top: 30px;
+            color: #8b7355;
+            font-size: 17px;
+            letter-spacing: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header class="header">
+        <div class="recipient">江川由美様</div>
+    </header>
+
+    <div class="intro">
+        <p>由美さんが、美容の仕事場に立って、<br>
+        自分の力を思い切り使っている。</p>
+
+
+
+
+        <p>隣には、あなたの話をちゃんと聞いてくれる人がいて、<br>
+        <span class="yellow-text">「そばにいてくれてよかった」と<br>
+        自然に言い合える関係がある。</span></p>
+
+
+
+
+        <p>借金の重さも、仕事の不安も、もうない。<br>
+        <span class="yellow-text">「あの時、自分を大切にすることを選んでよかった」と、</span><br>
+        涙じゃなく、笑顔でそう思っている、</p>
+
+
+
+
+        <p>そんな由美さんの姿が、<br>
+        霊視で視えてきました。</p>
+
+
+
+
+        <p>今はどこに向かえばいいか、<br>
+        分からへんかもしれない。</p>
+
+
+
+
+        <p>でも、<span class="yellow-text">素敵な未来は<br>
+        もうすぐそこまで来てます。</span></p>
+    </div>
+
+    <section>
+        <h2>🔮 あなたのオーラ</h2>
+
+        <div class="aura-visual style-c aura-fire">
+            <img src="../image/strong_fire.png" alt="火のオーラ">
+            <div class="aura-overlay-center">
+                <p>霊視した瞬間、<br>
+                <strong>燃え上がる真っ赤な火のオーラ</strong>が視えた。</p>
+
+
+
+
+                <p>太陽みたいに明るくて、<br>
+                見ている人を自然に照らしてしまう炎。</p>
+
+
+
+
+                <p>どんな状況でも諦めへん強さと、<br>
+                相手の寂しさを分かろうとする深い優しさ。<br>
+                とても美しいオーラを持ってる。</p>
+            </div>
+        </div>
+
+        <p>ただ、その火を<br>
+        ずっと自分以外のために燃やし続けてきた。<br>
+        我慢して、合わせて、演じ続けてきた。</p>
+
+
+
+
+        <p><span class="yellow-text">それは、弱さではありません。<br>
+        どんな状況でも人を温めようとしてきた、あなたの愛情です。</span></p>
+
+
+
+
+        <p>今この状況にいるのは、あなたのせいやない。<br>
+        <strong>"ある理由"</strong>でオーラが弱くなってるだけ。</p>
+
+
+
+
+        <p>でも安心してください。<br>
+        ここさえ整えば、<br>
+        <span class="yellow-text">本来のあなたの魅力が覚醒して<br>
+        望む未来が手に入ります。</span></p>
+    </section>
+
+    <section>
+        <h2>🔮 二人の彼のオーラ</h2>
+
+        <p>まず社長の彼を霊視した瞬間、<br>
+        <strong>どっしりとしたアンバーのオーラ</strong>が視えた。</p>
+
+        <div class="aura-visual style-c aura-earth">
+            <img src="../image/strong_earth.png" alt="土のオーラ">
+            <div class="aura-overlay-center">
+                <p>山のように動じない、圧倒的な存在感。<br>
+                でも、その山は自分のルールで動いていて、<br>
+                誰かに合わせるつもりはない。</p>
+
+
+
+
+                <p>彼の魂には、<br>
+                支配と享楽が深く刻まれている。</p>
+            </div>
+        </div>
+
+        <p>「家族みたい」という言葉も、<br>
+        あなたをつなぎとめるための言葉になってる。</p>
+
+
+
+
+        <p>次に同い年の彼を霊視した。<br>
+        あなたと同じ、<strong>燃え上がる火のオーラ</strong>が視えた。</p>
+
+        <div class="aura-visual style-c aura-fire">
+            <img src="../image/strong_fire.png" alt="火のオーラ">
+            <div class="aura-overlay-center">
+                <p>「大事にしたい」というその言葉には、<br>
+                本物の感情がちゃんと乗っている。</p>
+            </div>
+        </div>
+
+        <p>ここからは無料鑑定の範囲では<br>
+        お伝えしきれへん内容やから、<br>
+        本鑑定で丁寧にお伝えしたいです。</p>
+
+
+
+
+        <p>ただ一つだけ、ここで言えることがある。</p>
+
+
+
+
+        <p><span class="yellow-text">あなたが「物分かりのいい女」を<br>
+        演じなくていい関係は、<br>
+        もうすでにそこにある。</span></p>
+
+
+
+
+        <p>そこだけは、はっきり視えてます。</p>
+    </section>
+
+    <section>
+        <h2>🔮 二つの未来</h2>
+
+        <div class="aura-visual style-f">
+            <img src="../image/way.png" alt="二つの未来">
+            <div class="aura-overlay-center">
+                <p>このまま今の状況が続くと、<br>
+                由美さんはずっと自分の本音を抑えたまま<br>
+                疲れ果ててしまう。</p>
+
+
+
+
+                <p>でも、<strong>ここで流れを変えたら。</strong></p>
+
+
+
+
+                <p><strong>本来の火のエネルギーが目覚めて、<br>
+                自分を大切にしてくれる縁と<br>
+                自分らしく輝ける場所が、両方手に入る。</strong></p>
+
+
+
+
+                <p>どちらの未来になるかは、<br>
+                <strong>あなたが変えられます。</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>✨ 由美様が「答え」を見つけるための道筋</h2>
+
+        <p>ここまでの鑑定で、<br>
+        今視えた事をお伝えしました。</p>
+
+
+
+
+        <p>でも、一番大事なのはここから。</p>
+
+
+
+
+        <p><strong>「じゃあ、具体的にどうすればいいのか」</strong></p>
+
+
+
+
+        <p>本鑑定では、<br>
+        あなたが実際に動ける<br>
+        <strong>"具体的な道筋"</strong>を視ていきます。</p>
+
+
+
+
+        <p style="margin-bottom: 35px;"><strong>本鑑定で視ること</strong></p>
+
+        <div style="margin-bottom: 66px;">
+            <div class="cta-item">
+                <div class="title">社長の彼との6年間に、区切りをつけていいのか</div>
+                <div class="desc">「家族みたい」という関係が、由美さんにとって本当に必要なものか。終わらせた先に何が待っているか、視ていきます。</div>
+            </div>
+
+            <div class="cta-item">
+                <div class="title">同い年の彼の「大事にしたい」は本気か、この縁がどこへ向かうか</div>
+                <div class="desc">二人の相性と、この縁が本物かどうか。運命が動くタイミングを明らかにします。</div>
+            </div>
+
+            <div class="cta-item">
+                <div class="title">美容へのシフトチェンジが、いつ・どう動けば一番うまくいくか</div>
+                <div class="desc">由美さんの魂が向かうべき道と、最初の一歩を踏み出すタイミングを視ていきます。</div>
+            </div>
+        </div>
+
+        <p>このまま分からないまま過ごすか、<br>
+        具体的な道筋を知った上で動くか。<br>
+        <strong>どちらを選ぶかは、あなた次第です。</strong></p>
+    </section>
+
+    <div class="urgent">
+        <div class="urgent-title">運命が動く24時間</div>
+
+        <p>今、あなたの運命は<br>
+        少しだけ前に動いています。</p>
+
+
+
+
+        <p>この鑑定書を読んで、<br>
+        「どうしよう」と考え始めたから。</p>
+
+
+
+
+        <p>でも、この流れはずっと続きません。<br>
+        何もせず元の生活に戻れば<br>
+        運命は動きを止めてしまいます。</p>
+
+
+
+
+        <p><strong>今から24時間。</strong><br>
+        ここで決断すれば、<br>
+        運命は一番スムーズに動きます。</p>
+
+
+
+
+        <div class="price-old">通常 20,000円</div>
+        <div class="price-new">¥9,800</div>
+
+        <p>「ちゃんと知った上で決めたい」<br>
+        そう感じた方だけ、進んでください。</p>
+
+
+
+
+        <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/68f73496c774eb3958b2ea5f" class="btn">本鑑定に進む</a>
+
+        <p class="note">お申し込み後、<br>
+        購入時のお名前をお知らせください。<br>
+        2日以内に、<br>
+        あなただけの鑑定書をお届けします。</p>
+    </div>
+
+    <div class="vision">
+        <p>私には視えてます。</p>
+
+
+
+
+        <p>あなたの濁りが取れて、<br>
+        本来の輝きを取り戻したとき。</p>
+
+
+
+
+        <p>彼が、あなたの目を見つめながら<br>
+        <span class="yellow-text"><strong>「ちゃんと話したい」</strong><br>
+        そう言っている場面が。</span></p>
+
+
+
+
+        <p>その未来への道、私が照らしますね。</p>
+    </div>
+
+    <div class="sign">
+        かな
+    </div>
+
+</div>
+
+</body>
+</html>
