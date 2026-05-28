@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【フミエ】様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        /* 表紙のスタイル */
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">静かに動く縁の道</h2>
+            <p class="cover-name">フミエ様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">フミエ様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂が、<br>本気で向き合おうとしている。</p>
+            <p style="margin-bottom: 90px;">その誠実さが、<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 90px;">ここから先、<br>あなたが本当に知るべきことを、<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <h2>【あなたの未来に視えるもの】</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が、<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px;">あなたと元上司の方が、<br>同じ方向を向いて仕事をしている姿。</p>
+            <p style="margin-bottom: 90px;">言葉は多くない。<br>でも、確かに通じ合っている。</p>
+            <p style="margin-bottom: 90px;">あの頃の「仲間」という感覚が、<br>新しい形で戻ってくる可能性が、<br>強く感じられます。</p>
+            <p style="margin-bottom: 90px;">ただし──</p>
+            <p style="margin-bottom: 90px;">それは「元通り」ではありません。</p>
+            <p style="margin-bottom: 90px;">一度、形が変わった縁が<br>再び動き始める時、<br>そこには必ず「新しい色」が加わります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">前と同じではないけれど、<br>前より深い縁。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その兆しが、<br><span style="color: #ffd966;">今年2026年</span>に視えています。</p>
+            <p style="margin-bottom: 90px;">そこに至るまでの道のりは、<br>決して平坦ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">でも──<br>あなたには、それを静かに待つ力があります。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ あの方の「沈黙」に隠されていたこと</h2>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">まず、<br>あなたの性格について、<br>視えていることをお伝えします。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>言葉を大切にする人です。</p>
+            <p style="margin-bottom: 90px;">「伝えなかった」という後悔を残したくない。<br>だから、勇気を出して言葉にする。<br>丁寧に、誠実に、届けようとする。</p>
+            <p style="margin-bottom: 90px;">ごまかさない。<br>自分の気持ちを飲み込んだまま終わることが、<br>どうしても受け入れられない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そういう人です。</p>
+            <p style="margin-bottom: 90px;">だから、<br>あの沈黙が深く刺さった。</p>
+            <p style="margin-bottom: 90px;">「私の言葉は、届いていたのか」</p>
+            <p style="margin-bottom: 90px;">その問いが、<br>今もあなたの中に残っているはずです。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">正直にお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あの方の沈黙は、<br>「なかったことにしたい」からではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">メッセージは、届いていました。</p>
+            <p style="margin-bottom: 90px;">ただ──<br>あの方の中で、何かが揺れた。</p>
+            <p style="margin-bottom: 90px;">どう返せばいいか、<br>何が正しいのか、<br>わからなくなってしまった。</p>
+            <p style="margin-bottom: 90px;">揺れたまま、時間が経ってしまった。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それが、あの沈黙の正体です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたへの否定ではなく、<br>あの方自身の迷い。</p>
+        </div>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">そしてもう一つ、<br>お伝えしなければならないことがあります。</p>
+            <p style="margin-bottom: 90px;">あなたには、<br>「想いが届くのに時間がかかる」という<br>特別な性質があります。</p>
+            <p style="margin-bottom: 90px;">これは弱さではありません。</p>
+            <p style="margin-bottom: 90px;">ただ──<br>正面から力を込めて届けようとするほど、<br>不思議と届きにくくなってしまう。</p>
+            <p style="margin-bottom: 90px;">あなたの縁は、<br>静かに、じわりと、<br>時間をかけて動く縁です。</p>
+            <p style="margin-bottom: 90px;">焦って届けようとした時ほど、<br>相手との間に透明な壁ができてしまう。</p>
+            <p style="margin-bottom: 90px;">伝わらなかった、<br>わかってもらえなかった、<br>という経験がこれまでも<br>積み重なってきたのではないでしょうか。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">でも──<br>それはあなたの誠実さが<br>間違っていたわけではない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">縁の動き方が、<br>あなたには独特の形がある<br>というだけのことです。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ この縁が持つ本当の意味</h2>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">元上司の方との縁を、<br>深く視ました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">この縁は、<br>消えていません。</p>
+            <p style="margin-bottom: 90px;">あなたの中に、<br>この縁はちゃんと<br>「大切な縁・意味のある縁」として<br>刻まれています。</p>
+            <p style="margin-bottom: 90px;">ただ──<br>この縁には、もともと<br>「思った形では進みにくい」という性質があります。</p>
+            <p style="margin-bottom: 90px;">直接届けようとしても、すれ違う。<br>力を入れて動かそうとするほど、<br>止まってしまう。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でもそれは、<br>縁が消えたということではない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">縁は、生きています。</p>
+            <p style="margin-bottom: 90px;">ただ、この縁の動き方は、<br>あなたが力を込めて動かすより、<br>流れに乗って静かに進む時に<br>最もなめらかに動くのです。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">「追い出されたのでは」という疑念について、<br>正直にお伝えします。</p>
+            <p style="margin-bottom: 90px;">あなたには、<br>「組織の中での立ち位置が一度リセットされる」<br>という流れが刻まれています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">それは誰かの悪意ではなく、<br>あなたの運命の流れが必要とした変化です。</p>
+            <p style="margin-bottom: 90px;">一度、形を変えること。<br>その先に、新しい縁が動き出す配置になっている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あの方があなたを遠ざけようとしたのではなく、<br>あなたとあの方の縁は、<br>一度形を変えることで<br>次のステージへ向かう流れにあった。</p>
+            <p style="margin-bottom: 90px;">そう視えています。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ 縁が動く時期と、あなたが持つ力</h2>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px; font-weight: bold;"><span style="color: #ffd966;">今年2026年</span>は、<br>あなたにとって縁が大きく動きやすい年です。</p>
+            <p style="margin-bottom: 90px;">守護神が、<br>この年にあなたの縁の扉が開くと<br>見せてくれています。</p>
+            <p style="margin-bottom: 90px;">ただし──<br>その動き方は、劇的ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">静かに、じわりと。</p>
+            <p style="margin-bottom: 90px;">仕事の場での何気ない一言。<br>廊下ですれ違ったときの自然な笑顔。<br>いつもと変わらないあなたの存在感。</p>
+            <p style="margin-bottom: 90px;">そういう小さな接点が、<br>今年の縁を動かしていきます。</p>
+            <p style="margin-bottom: 90px;">あなたには、<br>誰かと同じ方向を向いて<br>「変えたい、良くしたい」と動ける場所で<br>一番力が輝くという本質があります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その力は、今も変わっていません。</p>
+            <p style="margin-bottom: 90px;">今の部署で誠実に輝いているあなたの姿が、<br>遠くから、あの方の目に届いています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「届けよう」とする言葉より、<br>「輝いているあなた」の方が、<br>ずっと遠くまで届く。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それが、今あなたに必要なことです。</p>
+        </div>
+
+        <h2>【今後の流れ】</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年6月：手放し</p>
+            <p style="margin-bottom: 90px;">6月は、静かな気づきの月。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「届けよう」という力みが、<br>少し手放せてくる時期です。</p>
+            <p style="margin-bottom: 90px;">関係を修復しようと力まず、<br>今いる場所で、<br>自分らしく輝くことだけを考えてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">それが縁を動かす第一歩です。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年8月：接点</p>
+            <p style="margin-bottom: 90px;">8月は、自然な接点が生まれやすい月。</p>
+            <p style="margin-bottom: 90px;">仕事で関わる機会があれば、<br>気負わず、普通に接してください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">挨拶、ひと言の言葉交わし、それで十分です。<br>あなたが普通にそこにいること──<br>それ自体が、縁を育てます。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年秋：動き出し</p>
+            <p style="margin-bottom: 90px;">秋に向けて、縁がじわりと動き始めます。</p>
+            <p style="margin-bottom: 90px;">何かが変わる瞬間は、<br>あなたが予期していない形でやってきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">力まず、焦らず、<br>ただ今を丁寧に生きてください。</p>
+            <p style="margin-bottom: 90px;">その先に、縁が動く兆しが視えています。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ 守護を受け取る方法</h2>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">ここから、<br>あなたの守護についてお伝えします。</p>
+            <p style="margin-bottom: 90px;">あなたを守っているのは、<br><span style="color: #ffd966;">罔象女神（みつはのめのかみ）</span>。</p>
+            <p style="margin-bottom: 90px;">清水と知恵を司る、静かで深い女神です。</p>
+            <p style="margin-bottom: 90px;">表面には出ないが<br>本質だけを見抜く鋭い洞察力を、<br>あなたに与えてくれている守護神。</p>
+            <p style="margin-bottom: 90px;">あなたがこれまでも、<br>人の言葉の奥にある本当の気持ちを<br>静かに読んでこれたのは、<br>この守護神の力があったからです。</p>
+            <p style="margin-bottom: 90px;">そして今回、<br>あなたのことを深く霊視した際、<br>特別な守護の力を<br>あなたの奥底においてきました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは<span style="color: #ffd966;">罔象女神の和魂の力</span>。</p>
+            <p style="margin-bottom: 90px;">この力は、<br>乱れた感情を静め、<br>言葉が届く流れを整え、<br>縁が動くタイミングをそっと引き寄せます。</p>
+            <p style="margin-bottom: 90px;">今この文を読んでいる間にも、<br>胸が少し温かくなる、<br>肩がふっと軽くなる、<br>静かな安心感が広がる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もしそのような感覚があれば、<br>すでに守護の力が届き始めている証です。</p>
+            <p style="margin-bottom: 90px;">何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">ただ受け取るだけで大丈夫です。</p>
+            <p style="margin-bottom: 90px;">もし余裕がある時だけ、<br>以下のことを試してみてください。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【清らかな水に触れる】</p>
+            <p style="margin-bottom: 90px;">コップ一杯の水を、<br>ゆっくりと飲んでください。</p>
+            <p style="margin-bottom: 90px;">「この縁は、静かに流れている」<br>そう心の中で感じながら。</p>
+            <p style="margin-bottom: 90px;">罔象女神は水の神。<br>清水に触れることで、<br>守護がより深く届きます。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【静かな場所で深呼吸をする】</p>
+            <p style="margin-bottom: 90px;">疲れた日は、<br>一人になれる場所で、<br>ゆっくり三度だけ呼吸してください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それだけで、乱れた縁の流れが整います。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ あなたを支えるパワーストーン</h2>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">守護の力は、<br>すでにあなたの中に流れ始めています。</p>
+            <p style="margin-bottom: 90px;">さらに多くの力を受け取り、<br>縁の流れをより早く整えたい方に、<br>今回特別な依代をご用意しました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;"><span style="color: #ffd966;">罔象女神</span>の力と深く共鳴する3つの石。</p>
+            <p style="margin-bottom: 90px;">この石を身につけることで、<br>守護の力が増幅され、<br>縁が動き出す流れが加速します。</p>
+        </div>
+
+        <ul style="margin-bottom: 90px;">
+            <li><span style="color: #ffd966; font-weight: bold;">1. アクアマリン</span><br>清澄な海の色の石。<br>コミュニケーションの縁を整え、<br>言葉が自然に届く流れを作ります。<br>あなたの静かで深いオーラと最もよく共鳴します。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">2. ムーンストーン</span><br>月の光のような柔らかい石。<br>感情の揺れを静め、縁を引き寄せる力があります。<br>罔象女神（水・月の守護神）と特に深く共鳴します。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">3. アメジスト</span><br>精神を清め、守護を強める石。<br>あなたの高い精神性を守り、<br>縁の流れを引き寄せる力を高めます。</li>
+        </ul>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">この3つの石を組み合わせたブレスレットを、<br>私が作成してお送りします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ご希望の場合は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <h2>【結びの言葉】</h2>
+
+        <div class="closing">
+            <p style="margin-bottom: 90px;">フミエ様、</p>
+            <p style="margin-bottom: 90px;">あなたの未来には、<br>誰かと肩を並べて仕事をしている景色へと<br>続く道が視えています。</p>
+            <p style="margin-bottom: 90px;">言葉が多くなくても、<br>確かに通じ合っている。</p>
+            <p style="margin-bottom: 90px;">あの「仲間」という感覚が、<br>新しい形で戻ってくる可能性が、<br>強く感じられます。</p>
+            <p style="margin-bottom: 90px;">今は、<br>届かなかったと感じているかもしれない。</p>
+            <p style="margin-bottom: 90px;">あの沈黙が、今もどこかに引っかかっているかもしれない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">でもそれは、<br>あなたの誠実さが間違っていたわけではありません。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>静かに、じわりと縁が動く人です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">力を込めて届けようとするより、<br>今いる場所で輝いている時に、<br>縁が最もなめらかに動く。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">焦らなくていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">力まなくていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたらしく、今の場所で誠実に輝いていてください。</p>
+            <p style="margin-bottom: 90px;">それが、あなたの縁を動かす道。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">罔象女神</span>が、<br>あなたを守っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたは、<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">大切な縁と、<br>もう一度つながっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">守られている。</p>
+            <p style="margin-bottom: 90px;">その事実を、<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より、<br>遠隔守護祈祷を行い、<br>あなたの幸せを願います。</p>
+            <p style="margin-bottom: 90px;">あなたの未来に、<br>温かな縁が満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>

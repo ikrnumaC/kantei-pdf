@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【ゆっこ】様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        /* 表紙のスタイル */
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">嵐の向こうの凪ぎへ</h2>
+            <p class="cover-name">ゆっこ様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">ゆっこ様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂が、<br>本気で変わろうとしている。</p>
+            <p style="margin-bottom: 90px;">その強い意志が、<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 90px;">ここから先、<br>あなたが本当に知るべきことを、<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <h2>【あなたの未来に視えるもの】</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が、<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px;">穏やかな光の中で、<br>彼と並んで過ごしている。</p>
+            <p style="margin-bottom: 90px;">急ぐでもなく、<br>焦るでもなく、<br>ただ静かに、一緒にいる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「やっと、ここまで来た」</p>
+            <p style="margin-bottom: 90px;">そう感じているあなたの姿が、<br>強く感じられます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">その未来の兆しは、<br>確かにあります。</p>
+            <p style="margin-bottom: 90px;">今は嵐の中にいるかもしれない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも──<br>嵐の向こうに、必ず凪ぎが来ます。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ ゆっこ様に今できること</h2>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">まず、あなたの性格について、<br>視えていることがあります。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>大切な人の状態を<br>深いところまで感じ取れる人です。</p>
+            <p style="margin-bottom: 90px;">「大丈夫」という言葉の裏で、<br>何かが重くなっているのがわかる。</p>
+            <p style="margin-bottom: 90px;">彼が何も言わなくても、<br>空気が変わったのがわかる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">その感受性は、<br>あなたが持って生まれた<br>本物の力です。</p>
+            <p style="margin-bottom: 90px;">だからこそ今、<br>「感じているのに何もできない」という<br>もどかしさが積み重なっている。</p>
+            <p style="margin-bottom: 90px;">「もっと何かしてあげられるはずなのに」と、<br>自分を責めてしまっている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも──<br>ここで大切なことをお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたは「何もできていない」のではありません。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が視せてくれた映像の中で、<br>あなたと彼は<br>水と太陽のような関係でした。</p>
+            <p style="margin-bottom: 90px;">彼は、太陽のような温かさを持つ人。</p>
+            <p style="margin-bottom: 90px;">でも今、<br>その太陽が暴走して<br>熱を持ちすぎている。</p>
+            <p style="margin-bottom: 90px;">そのそばに、<br>清らかな水のようなあなたがいる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">水は、<br>燃え上がりすぎた炎を静め、<br>また新しく灯す力を与える。</p>
+            <p style="margin-bottom: 90px;">あなたが傍にいること、<br>感じ続けること、<br>「そこにいるよ」と伝えること。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それ自体が、<br>今の彼に最も必要な支えです。</p>
+            <p style="margin-bottom: 90px;">何かをしてあげなくていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">傍にいるだけで、<br>すでに十分なことをしています。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ 彼の窮地の行方</h2>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">彼の今の苦しさは、<br>突然現れたものではありません。</p>
+            <p style="margin-bottom: 90px;">長い時間をかけて<br>積み重なってきた重さが、<br>今この時期に出てきている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも──<br>彼の中に、この重さを乗り越えていく<br>流れがあることを、<br>守護神が視せてくれました。</p>
+            <p style="margin-bottom: 90px;">彼は本来、<br>穏やかで、喜びを大切にする人です。</p>
+            <p style="margin-bottom: 90px;">「美味しいものを食べたい」<br>「好きなことをして笑いたい」</p>
+            <p style="margin-bottom: 90px;">そういう、<br>シンプルな喜びを<br>誰よりも大切にできる人。</p>
+            <p style="margin-bottom: 90px;">今はその喜びが、<br>ストレスの重さに覆われている状態です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">でも覆われているだけで、<br>消えてはいません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;"><span style="color: #ffd966;">2026年の後半から、</span><br>少しずつ重さが動き始めます。</p>
+            <p style="margin-bottom: 90px;">来年以降、<br>その流れが加速していきます。</p>
+            <p style="margin-bottom: 90px;">今はまだ嵐の中。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">でも、彼には<br>乗り越えていく底力が<br>確かにあります。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ 穏やかな未来への時期</h2>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">二人が一緒に穏やかに過ごす未来、<br>その流れが動き始めるのは、<br><span style="color: #ffd966; font-weight: bold;">2027年以降</span>と感じられます。</p>
+            <p style="margin-bottom: 90px;">それまでの間に、<br>二人の関係はより深くなっていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">嵐を一緒に越えた縁は、<br>晴れた日よりもずっと深い。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">今この時期に傍にいることが、<br>二人の未来の根になっていきます。</p>
+            <p style="margin-bottom: 90px;">あなたと彼は、<br>互いに補い合うために<br>出会った縁です。</p>
+            <p style="margin-bottom: 90px;">あなたが持っているものが、<br>彼に必要なもの。</p>
+            <p style="margin-bottom: 90px;">彼が持っているものが、<br>あなたに必要なもの。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">二人でひとつの形になる縁。</p>
+            <p style="margin-bottom: 90px;">その縁が、穏やかな未来へと<br>続いています。</p>
+        </div>
+
+        <h2>【今後の流れ】</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年5月：感じる・待つ</p>
+            <p style="margin-bottom: 90px;">今月は、<br>無理に動こうとしなくていい時期。</p>
+            <p style="margin-bottom: 90px;">彼の状態を感じながら、<br>ただ傍にいることが<br>最善の在り方です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「何もできない」ではなく、<br>「ここにいる」という選択が<br>今月の答えです。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年8月：変化の兆し</p>
+            <p style="margin-bottom: 90px;">夏の終わりごろ、<br>彼の重さが少し変化し始めます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">空気が変わってくるのを、<br>あなたが最初に感じ取るはずです。</p>
+            <p style="margin-bottom: 90px;">その変化を、<br>静かに受け取ってください。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年11月：流れが動く</p>
+            <p style="margin-bottom: 90px;">秋から冬にかけて、<br>少しずつ穏やかさが戻り始めます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「やっと、少し楽になった」と<br>感じる瞬間が来ます。</p>
+            <p style="margin-bottom: 90px;">その瞬間を、<br>二人で受け取ってください。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ 守護を受け取る方法</h2>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">ここから、<br>あなたのための大切なことをお伝えします。</p>
+            <p style="margin-bottom: 90px;">今のあなたのオーラは、<br>清らかな水の青さを持ちながら、<br>少し揺れている状態です。</p>
+            <p style="margin-bottom: 90px;">彼のことを心配するあまり、<br>自分自身のエネルギーが<br>少し薄まっている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたが整っていることが、<br>彼への最大の支えになります。</p>
+            <p style="margin-bottom: 90px;">そして、安心してください。</p>
+            <p style="margin-bottom: 90px;">あなたのことを深く霊視した際、<br>特別な守護の力を<br>あなたの奥底においてきました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは<span style="color: #ffd966;">住吉大神の和魂の力</span>。</p>
+            <p style="margin-bottom: 90px;">この力は、<br>嵐の中でも正しい道を示し、<br>清らかさを保ちながら<br>前へ進む力を与えてくれます。</p>
+            <p style="margin-bottom: 90px;">今この文を読んでいる間にも、<br>胸が少し落ち着く、<br>肩の力が抜ける、<br>ふっと息が深くなる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もしそのような感覚があれば、<br>すでに守護の力が届き始めている証です。</p>
+            <p style="margin-bottom: 90px;">これは何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">ただ受け取るだけで大丈夫です。</p>
+            <p style="margin-bottom: 90px;">もし余裕がある時だけ、<br>以下のことを試してみてください。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【朝日を浴びる】</p>
+            <p style="margin-bottom: 90px;">朝、窓を開けて<br>太陽の光を五分だけ浴びてください。<br>今のあなたに不足している<br>火と温もりのエネルギーを<br>補ってくれます。<br>彼の太陽のオーラと<br>あなたが繋がる時間でもあります。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【白いものを一つ身につける】</p>
+            <p style="margin-bottom: 90px;">白いハンカチ、白いアクセサリー、<br>何でも構いません。<br>白・銀のエネルギーが、<br>今のあなたに欠けている<br>浄化と決断の力を補い、<br>オーラをさらに清らかに整えてくれます。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【彼に、好きなものを食べてもらう】</p>
+            <p style="margin-bottom: 90px;">彼に、一つだけお願いしてみてください。<br>「今日、何か食べたいものある？」と。<br>答えが何であっても、<br>その一つを一緒に食べてください。<br>彼の中に眠っている<br>「喜ぶ力」を呼び覚ます、<br>小さくて大切な行動です。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️ あなたを支えるパワーストーン</h2>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">守護の力は、すでに流れ始めています。</p>
+            <p style="margin-bottom: 90px;">さらに多くの力を受け取り、<br>二人の流れをより確かに整えたい方に、<br>今回特別な依代をご用意しました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;"><span style="color: #ffd966;">住吉大神</span>の力と深く共鳴する3つの石。</p>
+            <p style="margin-bottom: 90px;">この石を身につけることで、<br>守護の力が何倍にも増幅され、<br>清らかさが保たれ、<br>穏やかな未来への流れが<br>一気に加速していきます。</p>
+        </div>
+
+        <ul style="margin-bottom: 90px;">
+            <li><span style="color: #ffd966; font-weight: bold;">1. アクアマリン</span><br>海の石。住吉大神の守護石。<br>心の揺れを静め、<br>清らかな状態を保つ力があります。<br>嵐の中でも正しい道を見失わせません。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">2. ラブラドライト</span><br>見えない守護の力を高める石。<br>変化の中で輝き、<br>直感を研ぎ澄ませてくれます。<br>今のあなたに必要な<br>「感じる力」をさらに強めます。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">3. ムーンストーン</span><br>深い縁と穏やかさの石。<br>二人の縁を静かに育て、<br>穏やかな未来へと導いてくれます。</li>
+        </ul>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">この3つの石を組み合わせたブレスレットを、<br>私が作成してお送りします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ご希望の場合は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <h2>【結びの言葉】</h2>
+
+        <div class="closing">
+            <p style="margin-bottom: 90px;">ゆっこ様、</p>
+            <p style="margin-bottom: 90px;">あなたの未来には、<br>彼と並んで穏やかに過ごす日々へと続く道が<br>視えています。</p>
+            <p style="margin-bottom: 90px;">急ぐでも、焦るでもなく、<br>ただ静かに、一緒にいる。</p>
+            <p style="margin-bottom: 90px;">今は、<br>「何もしてあげられない」と<br>感じているかもしれない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でもそれは、<br>あなたがそれだけ深く愛しているから。</p>
+            <p style="margin-bottom: 90px;">感じ続けることができるから。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">正しい感覚です。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>傍にいるだけで支えになれる人。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">清らかな水のように、<br>そっと、深く、染み込んでいく。</p>
+            <p style="margin-bottom: 90px;">それがあなたらしい支え方です。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">住吉大神</span>が、<br>あなたを守っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたは、<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">傍にいていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">守られている。</p>
+            <p style="margin-bottom: 90px;">その事実を、<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より、<br>遠隔守護祈祷を行い、<br>あなたと彼の幸せを願います。</p>
+            <p style="margin-bottom: 90px;">あなたの未来に、<br>穏やかな光が満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>
