@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宮田様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #2a4a7c 80%, #3d5a9e 100%);
+            color: #e8e8e8;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../images/曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #ffd700;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #9b7dff;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #b8b8b8;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(22, 33, 62, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #ffd700;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #9b7dff;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #9b7dff;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: rgba(155, 125, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.25;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../images/強い火.png'); }
+        .aura-wood::before { background-image: url('../images/強い木.png'); }
+        .aura-earth::before { background-image: url('../images/強い土.png'); }
+        .aura-metal::before { background-image: url('../images/強い金.png'); }
+        .aura-water::before { background-image: url('../images/強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .important-box {
+            background: rgba(255, 215, 0, 0.08);
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .magic-word-box {
+            background: rgba(155, 125, 255, 0.15);
+            border: 2px dashed rgba(155, 125, 255, 0.5);
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        strong {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 8px 0;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 24px 14px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 75px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 20px 14px;
+                margin: 16px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cover-page">
+    <div class="cover-recipient">宮田様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>宮田様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <h2>🔮 はじめに</h2>
+    <p>宮田様</p>
+    <p>この度は本鑑定にお進みいただき、<br>
+    ありがとうございます。</p>
+    <p>「この縁は、本物なんだろうか」</p>
+    <p>「年の差もある。<br>
+    こんなに想っていていいのか、<br>
+    自分でも分からなくなってきた」</p>
+    <p>「ただ、どこかで感じている。<br>
+    この縁には意味があると」</p>
+    <p>その静かな確信と、<br>
+    消えない問いを<br>
+    ずっと一人で抱えてこられたこと、<br>
+    全部受け取りました。</p>
+    <p>まず、宮田様が一番知りたいことを<br>
+    はっきりお伝えします。</p>
+    <p>二人の縁は、偶然ではありません。</p>
+    <p>霊視した瞬間から、<br>
+    その縁の色がはっきりと視えました。</p>
+    <p>宮田様の炎が<br>
+    彼女の大地を温めるために<br>
+    引き寄せられた縁です。</p>
+    <p>ただ、今の彼女は<br>
+    自分自身のことで頭がいっぱいな時期にいます。</p>
+    <p>それは拒絶ではなく、<br>
+    彼女の魂が今置かれている状態です。</p>
+    <p>そして今の宮田様は、<br>
+    この縁を動かすために<br>
+    最もふさわしい時期に入っています。</p>
+    <p>今日の鑑定で、<br>
+    その全てをお伝えします。</p>
+    <h2>🔮 あなたのオーラ</h2>
+    <div class="aura-section aura-fire">
+    <p>霊視した瞬間、<br>
+    静かに揺れるオレンジの炎が視えました。</p>
+    <p>ろうそくの火のように、<br>
+    揺れながらも決して消えない。</p>
+    <p>内側に確かな熱を持っている。</p>
+    <p>宮田様、あなたは<br>
+    深く感じて、じっくりと物事を温める<br>
+    とても美しいオーラを持っています。</p>
+    <p>人脈を広げ、<br>
+    様々な人と自然に関われる器用さ。</p>
+    <p>「自分でなんとかしなければ」と<br>
+    決断して動ける力。</p>
+    <p>これがあなたの本質的な強みです。</p>
+    <p>ただ、あなたのオーラには<br>
+    一つの特徴があります。</p>
+    <p>内側にたくさんのものを蓄えている。</p>
+    <p>でも、それを外に出すのが難しい。</p>
+    <p>「伝えたい。でも出せない」<br>
+    「動きたい。でも踏み出せない」</p>
+    <p>そのもどかしさを、<br>
+    長い間一人で静かに抱えてこられた<br>
+    のが視えます。</p>
+    <p>これはあなたが弱いからではありません。</p>
+    <p>あなたの魂の性質として、<br>
+    深く蓄えるほどに<br>
+    「本当に大切なものだから、慎重に」<br>
+    という力が働くのです。</p>
+    <p>その慎重さが、<br>
+    誠実さであり、<br>
+    誠実さが、あなたの一番の輝きです。</p>
+    <p>でも今、その炎を<br>
+    外に出すタイミングが来ています。</p>
+    <p>今の時期、あなたのオーラには<br>
+    人との縁を動かす星が<br>
+    最も強く巡っています。</p>
+    <p>これまでの人生で、<br>
+    今が最も人との縁に恵まれる時期。</p>
+    <p>10年に一度の、<br>
+    縁の黄金期の中にあなたはいます。</p>
+    <p>その黄金期に、<br>
+    この縁が現れているのは<br>
+    偶然ではありません。</p>
+    </div>
+    <h2>🔮 彼女のオーラ</h2>
+    <div class="aura-section aura-earth">
+    <p>彼女を霊視した瞬間、<br>
+    柔らかなアンバーの光が広がりました。</p>
+    <p>畑のように温かく、<br>
+    人を受け入れる深い土のオーラ。</p>
+    <p>彼女の魂には、<br>
+    信頼できる人には深く繋がり、<br>
+    コツコツと関係を積み上げる<br>
+    誠実さがあります。</p>
+    <p>一度「<strong>この人は大丈夫だ</strong>」と感じたら、<br>
+    深く繋がることができる。</p>
+    <p>それが彼女の本質です。</p>
+    <p>ただ、彼女のオーラを視ると、<br>
+    大切なものが二つ、欠けています。</p>
+    <p>「<strong>前に進む力</strong>」と<br>
+    「<strong>情熱を感じる力</strong>」です。</p>
+    <p>変化が怖い。</p>
+    <p>新しい流れに乗ることへの<br>
+    躊躇いが強い。</p>
+    <p>「<strong>どうせ無理だ</strong>」<br>
+    「<strong>今は動けない</strong>」<br>
+    「<strong>重くなりたくない</strong>」</p>
+    <p>そういう言葉が、<br>
+    彼女の内側で静かに繰り返されてきた<br>
+    のが視えます。</p>
+    <p>これは彼女の弱さではなく、<br>
+    彼女のオーラの構造です。</p>
+    <p>そしてここが重要なことです。</p>
+    <p>宮田様が持っているオーラは、<br>
+    まさに彼女に欠けているものです。</p>
+    <p>あなたの炎が、<br>
+    彼女の大地に届いた瞬間、<br>
+    彼女の中で止まっていたものが<br>
+    動き始めます。</p>
+    <p>あなたの存在が<br>
+    彼女の魂に火を灯せる。</p>
+    <p>それがこの縁の本質です。</p>
+    <p>さらに今年の彼女を視ると、<br>
+    年上の存在から<br>
+    光と豊かさが届く流れが来ています。</p>
+    <p>これは今年だからこその特別な流れです。</p>
+    <p>あなたが彼女の前に現れることに、<br>
+    今年だからこその意味がある。</p>
+    <p>霊視ではっきりと視えています。</p>
+    </div>
+    <h2>🔮 二人のオーラが示す縁の意味</h2>
+    <p>宮田様のオーラは、オレンジの炎。</p>
+    <p>彼女のオーラは、アンバーの大地。</p>
+    <p>炎が大地を温める。</p>
+    <p>大地が炎の熱を受け取る。</p>
+    <p>これがお二人の縁の構造です。</p>
+    <p>宮田様が与え、彼女が受け取る。</p>
+    <p>あなたの存在が彼女に必要なものを補い、<br>
+    彼女の魂が動き始める。</p>
+    <p>これは偶然で結ばれた縁ではありません。</p>
+    <p>魂のレベルで引き寄せられた縁です。</p>
+    <p>宮田様の縁を深く視ると、<br>
+    「<strong>守り合う縁</strong>」という言葉が降りてきます。</p>
+    <p>簡単には結ばれない。</p>
+    <p>でも一度結ばれたら、<br>
+    魂レベルの絆になる。</p>
+    <p>その縁には試練が伴います。</p>
+    <p>年齢差もある。タイミングの難しさもある。</p>
+    <p>でもその試練こそが、<br>
+    二人の縁を本物にしていくものです。</p>
+    <p>この縁に「<strong>意味がある</strong>」と<br>
+    宮田様が感じてきたのは、<br>
+    正しい直感です。</p>
+    <p>その直感を信じていい。</p>
+    <p>霊視でもはっきり視えています。</p>
+    <h2>🔮 彼女の心を動かす道筋</h2>
+    <p>では、具体的にどう動けばいいか。</p>
+    <p>まず、大切なことを一つ。</p>
+    <p>彼女は今、自分のことで<br>
+    精いっぱいの時期にいます。</p>
+    <p>仕事のこと、お金のこと、<br>
+    頭の中でいろいろなことが<br>
+    渦巻いている状態。</p>
+    <p>だから今の彼女に必要なのは<br>
+    「<strong>決断させること</strong>」ではなく、<br>
+    「<strong>ここにいていい</strong>」という<br>
+    安心感だけです。</p>
+    <p>これは諦めではなく、<br>
+    今の彼女に唯一機能する方法です。</p>
+    <p>彼女のオーラは土の性質。</p>
+    <p>急かされると固まり、<br>
+    動けなくなります。</p>
+    <p>逆に、「<strong>急かされない</strong>」と感じた瞬間、<br>
+    土はゆっくりと柔らかくなっていきます。</p>
+    <p>3つのことを守れば、<br>
+    縁は<strong>必ず</strong>前に進みます。</p>
+    <p>「<strong>急かさない</strong>」<br>
+    「<strong>答えを求めない</strong>」<br>
+    「<strong>焦らない</strong>」</p>
+    <p>これがすべてです。</p>
+    <p>まず、心の持ち方を整えてください。</p>
+    <p>「<strong>結果を出そう</strong>」ではなく、<br>
+    「一緒にいる時間を心地よくしよう」<br>
+    という意識に切り替えること。</p>
+    <p>これだけで、あなたから出るオーラが変わります。</p>
+    <p>彼女のオーラは土の性質。</p>
+    <p>急かす空気、焦りの空気を<br>
+    敏感に感じ取ります。</p>
+    <p>逆に言えば、<br>
+    あなたが穏やかでいるだけで、<br>
+    彼女のオーラは自然にほぐれていきます。</p>
+    <p>次に、「<strong>小さな日常の共有</strong>」を大切にしてください。</p>
+    <p>特別なことをしなくていい。</p>
+    <p>何気ない場面で「これ、〇〇さんが好きそうだな」と思ったことを<br>
+    さりげなく伝える。</p>
+    <p>季節の話、日常の小さな出来事。</p>
+    <p>「あなたのことを日常の中で思っている」<br>
+    という事実が、<br>
+    彼女の心に静かに積み重なっていきます。</p>
+    <p>土のオーラは、<br>
+    派手な表現より<br>
+    積み重ねに動く魂です。</p>
+    <p>そして、「<strong>自分自身を満たすこと</strong>」を最優先にしてください。</p>
+    <p>縁を引き寄せる最大の行動は、<br>
+    宮田様自身が輝いていることです。</p>
+    <p>好きなことに時間を使う。</p>
+    <p>体を整える。</p>
+    <p>笑顔でいる時間を増やす。</p>
+    <p>あなたが満たされているほど、<br>
+    あなたのオーラが強くなり、<br>
+    彼女を自然に引き寄せます。</p>
+    <p>「<strong>縁のために何かをする</strong>」より、<br>
+    「<strong>自分を整える</strong>」ことの方が<br>
+    はるかに縁に直結しています。</p>
+    <p>そして、もう一つ。</p>
+    <p>今この時期の宮田様には、<br>
+    様々な出会いや経験を積むことも<br>
+    一つの道として視えています。</p>
+    <p>女性との関わりの中で、<br>
+    自分の気持ちを確かめる。</p>
+    <p>自分の魅力に気づいていく。</p>
+    <p>自分が何を求めているか、深く知っていく。</p>
+    <p>その経験が、<br>
+    あなたの炎をさらに大きく育てます。</p>
+    <p>「あの人ではないかもしれない」<br>
+    「<strong>やっぱりあの人だ</strong>」</p>
+    <p>どちらに辿り着いたとしても、<br>
+    それは無駄ではありません。</p>
+    <p>様々な縁を経た上で<br>
+    もう一度この縁に向き合う時、<br>
+    あなたの炎は今より何倍も強くなっています。</p>
+    <p>深みを増した宮田様が戻ってくることで、<br>
+    彼女の大地は初めて本当に動きます。</p>
+    <p>焦らず、広く生きてください。</p>
+    <p>その豊かさが、<br>
+    最終的にこの縁を本物にする土台になります。</p>
+    <p>会った時に、ぜひ意識してほしいことが3つあります。</p>
+    <p>穏やかで安心できる空間をつくること。</p>
+    <p>彼女は安定・安心を最も求めています。</p>
+    <p>焦らず落ち着いた雰囲気が<br>
+    相手の心を開かせます。</p>
+    <p>彼女の話をじっくり聞くこと。</p>
+    <p>「この人は自分の話をちゃんと聞いてくれる」<br>
+    という信頼が積み重なることで、<br>
+    彼女の心が深く開いていきます。</p>
+    <p>宮田様自身の温かさ・笑顔を意識すること。</p>
+    <p>あなたの炎が<br>
+    相手の大地を自然に温めます。</p>
+    <p>特別なことをする必要はない。</p>
+    <p>あなたが笑顔でいるだけで、<br>
+    彼女の欠けたものが補われていきます。</p>
+    <p>言うと響く言葉をお伝えします。</p>
+    <p>「あなたのペースで全然いい」</p>
+    <p>これが彼女にとって最大の安心感です。</p>
+    <p>「<strong>急かされない</strong>」という感覚が、<br>
+    凍っていた心をゆっくりと溶かします。</p>
+    <p>「<strong>一緒にいると落ち着く</strong>」</p>
+    <p>彼女は誰かを安心させたいという気持ちを<br>
+    魂の奥に持っています。</p>
+    <p>この言葉が届いた瞬間、<br>
+    「<strong>この人といていい</strong>」という感覚が生まれます。</p>
+    <p>「<strong>頼ってくれていいよ</strong>」</p>
+    <p>「<strong>迷惑をかけたくない</strong>」という遠慮が強い彼女が、<br>
+    初めて心を開ける言葉です。</p>
+    <p>この言葉を受け取った彼女は、<br>
+    初めて本音を見せてくれます。</p>
+    <p>逆に、言ってはいけない言葉も<br>
+    はっきりお伝えします。</p>
+    <p>「なんでもっと早く言ってくれないの」</p>
+    <p>彼女の「<strong>迷惑かけたくない</strong>」という<br>
+    誠実さを否定する言葉です。</p>
+    <p>深く傷つき、閉じてしまいます。</p>
+    <p>「どうせ私のことは好きじゃないんでしょ」</p>
+    <p>土のオーラは感情の圧力に最も弱い。</p>
+    <p>諦めムードを出すと<br>
+    本当に離れてしまいます。</p>
+    <p>「<strong>私たち、どうなるの？</strong>」（急かす形で）</p>
+    <p>結論を迫られると<br>
+    土のエネルギーが固まり、<br>
+    動けなくなります。</p>
+    <h2>🔮 運命の転機</h2>
+    <p>今、宮田様の運命は<br>
+    大きく動き始めています。</p>
+    <p>これまでの人生の中で、<br>
+    今が最も縁に恵まれる黄金の時期に<br>
+    あなたはいます。</p>
+    <p>内側にずっと蓄えてきた温かさ、<br>
+    外に出したかった感情、<br>
+    正直になりたかった気持ち——</p>
+    <p>それらがいよいよ<br>
+    外へ出ようとしています。</p>
+    <p>さらに今年2026年は、<br>
+    炎のオーラが二重に重なる年。</p>
+    <p>あなたの本質（炎のオーラ）が、<br>
+    今年最も強く輝きます。</p>
+    <p>精神的な充実感、<br>
+    喜び、幸福感が高まる年。</p>
+    <p>「<strong>輝きを取り戻す年</strong>」</p>
+    <p>これが2026年の宮田様に<br>
+    与えられているテーマです。</p>
+    <p>この半年で<strong>最も重要</strong>な月が<br>
+    今月6月です。</p>
+    <p>この月、宮田様のオーラに<br>
+    成長と情熱の力が巡ってきます。</p>
+    <p>内側にこもりがちだった気持ちが<br>
+    外に出やすくなる。</p>
+    <p>言えなかった言葉が<br>
+    自然に口から出てくる。</p>
+    <p>そして同時に、<br>
+    彼女のオーラにも<br>
+    長らく欠けていた「<strong>柔軟さ</strong>」と<br>
+    「<strong>前向きさ</strong>」が補われます。</p>
+    <p>お互いのオーラが共鳴する<br>
+    稀な月。</p>
+    <p>今月動けば、<br>
+    凍っていた関係に流れが生まれます。</p>
+    <p>「<strong>いつか動こう</strong>」ではなく、<br>
+    「<strong>今動く</strong>」ことが<br>
+    運命を変えます。</p>
+    <p>やるべきこと</p>
+    <p>・勇気を出して相手に連絡してみる<br>
+    　（内容は軽いものでOK）</p>
+    <p>・赤・オレンジ色を身につけて、<br>
+    　自分のオーラを整えてから動く</p>
+    <p>・「<strong>一緒にいると楽しい</strong>」という空気を<br>
+    　自然に伝える</p>
+    <p>やってはいけないこと</p>
+    <p>・結論を急ぐ・将来の話を持ち出す</p>
+    <p>・感情的になる・焦りを見せる</p>
+    <p>もう一つ、重要な月が9月です。</p>
+    <p>この月、宮田様の本来の自分らしさが<br>
+    最も全開になります。</p>
+    <p>6月に動き出した流れを<br>
+    丁寧に育てる月。</p>
+    <p>自分の思いを<br>
+    少しずつ正直に伝えてみてください。</p>
+    <p>相手との関係が一歩前に進む<br>
+    動きが起きやすい時期です。</p>
+    <p>7月は関係を温める準備の月。</p>
+    <p>急がず、連絡を絶やさずに。</p>
+    <p>8月は表現力が高まる月。</p>
+    <p>会う・話す機会があれば積極的に。</p>
+    <p>10月は二人の誕生月。</p>
+    <p>焦らず見守ることが大切な時期。</p>
+    <p>11月は内面を見つめる月。</p>
+    <p>関係の深化より、自分自身と向き合う時期。</p>
+    <p>1年後から3年後の流れもお伝えします。</p>
+    <p>2026年は「<strong>輝きを取り戻す年</strong>」。</p>
+    <p>長年抑えていた気持ちが溢れ出て、<br>
+    縁に関する大きな動きが生まれます。</p>
+    <p>2027年は「<strong>縁が形になる年</strong>」。</p>
+    <p>この年は宮田様の魂と同じオーラの年。</p>
+    <p>自分らしさが全開になる最高の年。</p>
+    <p>2026年に動き出した縁が<br>
+    具体的な形を帯びてきます。</p>
+    <p>2028年は「決断と新しいステージへの年」。</p>
+    <p>動いてきた縁・状況を整理し、<br>
+    次のステージへ向かう決断をする年。</p>
+    <p>今ここで動き出すことが、<br>
+    この3年間の流れを<br>
+    最良のものにします。</p>
+    <h2>🔮 あなたの仕事と健康</h2>
+    <p>仕事について視ると、<br>
+    宮田様の魂には<br>
+    変化の流れを読む力と<br>
+    感性・芸術的な才能があります。</p>
+    <p>固定された場所ではなく、<br>
+    流れの中で輝く魂。</p>
+    <p>今の時期は<br>
+    人との縁が仕事にも大きく影響します。</p>
+    <p>人脈・人との繋がりを大切にすることで、<br>
+    新しい流れが仕事にも生まれてきます。</p>
+    <p>健康について視ると、<br>
+    今の時期は感受性が高まっており、<br>
+    精神的な揺れを感じやすい状態です。</p>
+    <p>「<strong>感じすぎて疲弊する</strong>」ことへの注意が必要。</p>
+    <p>自分への投資<br>
+    心を満たすこと、休むことを<br>
+    後回しにしないでください。</p>
+    <p>あなたが満たされていることが、<br>
+    縁を引き寄せる最大の土台になります。</p>
+    <h2>🔮 今からできること</h2>
+    <p>宮田様のオーラを整えるために、<br>
+    今日から始められることをお伝えします。</p>
+    <p>まず、炎のオーラを育てることが最優先です。</p>
+    <p>赤・オレンジ色を身につけてください。</p>
+    <p>服でも、アクセサリーでも、<br>
+    小物一つでも。</p>
+    <p>毎朝5〜10分、<br>
+    日光を意識して浴びる習慣を。</p>
+    <p>夜、キャンドルを一本灯してください。</p>
+    <p>あなたの内なる炎と共鳴して、<br>
+    オーラが整っていきます。</p>
+    <p>温かい飲み物・食事を意識する。</p>
+    <p>体の内側から炎を灯すことが<strong>できます</strong>。</p>
+    <p>緑色を取り入れる・植物を育てることも。</p>
+    <p>木の力が炎を育て、<br>
+    オーラに成長の流れをつくります。</p>
+    <p>自分に厳しくしすぎる傾向を<br>
+    少しずつ手放してみてください。</p>
+    <p>「<strong>完璧にやらなくていい</strong>」<br>
+    「<strong>感じていい</strong>」<br>
+    「<strong>動いていい</strong>」</p>
+    <p>その許可を、<br>
+    毎朝自分に与えてください。</p>
+    <p>今日感じたことを<br>
+    夜に3行だけ書き出す習慣も<br>
+    オーラを整える力があります。</p>
+    <p>内にこもりがちなエネルギーを<br>
+    外に出すことで、<br>
+    魂が軽くなっていきます。</p>
+    <p>ここまでお伝えした調整法で、<br>
+    少しずつオーラは整い始めます。</p>
+    <p>ただ、正直に言うと、<br>
+    木のオーラが完全に欠けている場合、<br>
+    日常の調整だけでは補いきれない部分があります。</p>
+    <p>色を取り入れる、植物に触れる。</p>
+    <p>これらは「<strong>維持する力</strong>」にはなりますが、<br>
+    ゼロから補う力としては、どうしても限界がある。</p>
+    <p>もし本気でオーラを整えたいなら、<br>
+    もう一つ、お伝えしたい方法があります。</p>
+    <h2>🔑 心を守るサポート</h2>
+    <p>ここまでお伝えしてきた通り、<br>
+    宮田様のオーラには木のオーラが欠けています。</p>
+    <p>これが今の状況の根っこにある原因であり、<br>
+    6月のチャンスを掴むために、最も整えるべき部分です。</p>
+    <p>木のオーラが整うと、</p>
+    <p>・彼女と会った時、内側の温かさが自然に外へ出せるようになる<br>
+    ・「<strong>伝えたい</strong>」という気持ちが、言葉として素直に出てくるようになる<br>
+    ・彼女が「<strong>この人は何か違う</strong>」と感じる瞬間が生まれやすくなる<br>
+    ・年齢差や躊躇いが気にならなくなり、自然体で関われる<br>
+    ・踏み出せなかった一歩が、自然と軽くなる</p>
+    <p>日常の調整法に加えて、<br>
+    本格的にオーラを補うために、<br>
+    パワーストーンをお守りとして取り入れる方法があります。</p>
+    <p>宮田様のオーラに合わせて、<br>
+    三つのプランをご用意しました。</p>
+    <div class="important-box">
+    <p><strong>松プラン</strong>: 縁を本気で動かしたい方向け<br>
+    木のオーラを補うグリーントルマリン・翡翠に加え、<br>
+    炎のオーラをさらに強化するガーネット・ルビーの組み合わせ。</p>
+    <p>・6月の<strong>転機</strong>を全力で掴む力が整う<br>
+    ・彼女への一歩が自然と出てくる<br>
+    ・自分の輝きと魅力が最大限に引き出される</p>
+    <p><strong>竹プラン</strong>: まず縁の流れを整えたい方向け<br>
+    木のオーラを補うグリーントルマリン・翡翠の組み合わせ。</p>
+    <p>・内側の気持ちが少しずつ外に出やすくなる<br>
+    ・彼女との縁が動き始める流れができる</p>
+    <p><strong>梅プラン</strong>: まず自分の土台を固めたい方向け<br>
+    木のオーラを補うグリーントルマリンを一つ。</p>
+    <p>・内側で止まっていたものが動き始める</p>
+    <p>多くの方が<strong>松プラン</strong>を選ばれています。</p>
+    <p>6月に向けて今から整え始めることで、<br>
+    最も効果的なタイミングでオーラが整います。</p>
+    <p>もし興味がありましたら、<br>
+    「<strong>詳細希望</strong>」とだけ送っていただければ、<br>
+    宮田様専用の石の組み合わせをお伝えしますね。</p>
+    </div>
+    <h2>最後に</h2>
+    <p>今、宮田様の前には二つの道があります。</p>
+    <p>「<strong>もう少し時間をおいて</strong>」と<br>
+    自分に言い続ける道。</p>
+    <p>それとも、炎のオーラを整えて、<br>
+    6月という<strong>転機</strong>を全力で掴みにいく道。</p>
+    <p>どちらを選んでも、あなたの想いは本物です。</p>
+    <p>「<strong>この縁には意味がある</strong>」</p>
+    <p>その直感は、正しかった。</p>
+    <p>霊視でもはっきりと視えています。</p>
+    <p>木のオーラが整い、<br>
+    自分らしい温かさを纏った宮田様が<br>
+    自然な笑顔で彼女の前に立つ瞬間、<br>
+    彼女の大地の奥で、<br>
+    止まっていたものが動き始めます。</p>
+    <p>「あなたといると、なんか落ち着く」</p>
+    <p>そんな言葉が彼女の口から出てくる未来が、<br>
+    視えています。</p>
+    <p>その未来へ向けて、<br>
+    全力でサポートしています。</p>
+    <div class="sign-box">
+    <p>心からの愛と光を込めて。</p>
+    <p>かな</p>
+    </div>
+    <p>━━━━━━━━━━━━━━━━━━━━━━</p>
+
+</div>
+</body>
+</html>

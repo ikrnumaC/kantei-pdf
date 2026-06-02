@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ひろ様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before   { background-image: url('../強い火.png'); }
+        .aura-wood::before   { background-image: url('../強い木.png'); }
+        .aura-earth::before  { background-image: url('../強い土.png'); }
+        .aura-metal::before  { background-image: url('../強い金.png'); }
+        .aura-water::before  { background-image: url('../強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+        }
+
+        strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 75px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">ひろ様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>ひろ様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>ひろ様</p>
+
+    <p>この度は本鑑定にお進みいただき、<br>
+    心より感謝申し上げます。</p>
+
+    <p>「彼と顔を合わせるたびに、何かが違うと感じてしまう」<br>
+    「年に数回しか会えないのに、なぜこんなに気になるのだろう」<br>
+    「プライベートも何も知らない。難しいかもしれないのに」</p>
+
+    <p>その想い、全部届いています。</p>
+
+    <p>4年間、答えのないまま、<br>
+    それでも感じ続けてきた「この縁には何かある」という直感。<br>
+    その静かな確信を、一人で大切に抱えてこられたこと。<br>
+    全部受け取りました。</p>
+
+    <p>まず、ひろ様が一番知りたいこと。<br>
+    はっきりお伝えします。</p>
+
+    <p>結論から言います。<br>
+    彼はひろ様と接した時、確かに「<strong>特別な何か</strong>」を感じています。</p>
+
+    <p>ただ、今日視えてきたのはそれよりも大切なことです。</p>
+
+    <p>4年間、この縁を実は止めてきたのは<br>
+    ひろ様自身の内側にある声でした。</p>
+
+    <p>「難しいかもしれない」<br>
+    「プライベートもわからないから」<br>
+    「年に数回しか会えないし」</p>
+
+    <p>その声の正体が、霊視でくっきりと視えました。<br>
+    これはひろ様の弱さではありません。<br>
+    あなたのオーラの状態からきているものです。</p>
+
+    <p>なぜそうなるのか、<br>
+    そしてその声をどう手放すか、<br>
+    今日全部お伝えします。</p>
+
+    <h2>🔮 あなたのオーラと縁の形</h2>
+
+    <p>霊視した瞬間、<br>
+    冷たく美しい金色の光が視えました。</p>
+
+    <p>宝石のように研ぎ澄まされていて、<br>
+    静かに、でも確かに輝いている。</p>
+
+    <p>ひろ様、あなたは本来、<br>
+    周りを照らし温める太陽のような<strong>魂</strong>の持ち主です。</p>
+
+    <p>人と自然に繋がり、縁を深く大切に育てる力。<br>
+    一度心を向けたものを長く丁寧に守り続ける誠実さ。<br>
+    それがあなたの本質です。</p>
+
+    <p>でも今のあなたのオーラには、<br>
+    一つ大切なものが<strong>完全に</strong>欠けています。</p>
+
+    <p>「火のオーラ」です。</p>
+
+    <p>火のオーラが欠けていることで、<br>
+    感じていても言葉にする前に頭が止めてしまう。<br>
+    一歩踏み出す前に「難しいかもしれない」と先に結論を出してしまう。<br>
+    情熱はあるのに、それが外へ出てこない。</p>
+
+    <p>これが今の状況の根っこにある原因です。</p>
+
+    <p>縁が薄いのでもなく、<br>
+    気持ちが足りないのでもない。<br>
+    火のオーラが欠けているから、踏み出せていないだけです。</p>
+
+    <p>逆に言えば、火のオーラが整えば、<br>
+    4年間頭で止めてきた気持ちが自然に外へ出られるようになります。</p>
+
+    <p>さらに、あなたの金のオーラは3つ重なっており、<br>
+    「考えすぎる・完璧なタイミングを待ちすぎる」という形で出ています。<br>
+    感情より頭が先に動いて、<br>
+    「本当にいいのか」と分析し続けているうちに<br>
+    機会が流れていく。</p>
+
+    <p>これも火のオーラが欠けているから起きることです。</p>
+
+    <p>あなたの縁を霊視すると、<br>
+    とても深く、穏やかで安心できる縁の形が視えます。</p>
+
+    <p>ただし、その縁には試練が伴います。<br>
+    「あと一歩なのに届かない」<br>
+    「タイミングが合わない」<br>
+    そういう経験をされてきたかもしれません。</p>
+
+    <p>でも、それは縁が偽物だからではありません。<br>
+    試練を超えた先にある縁だからこそ、本物になる。</p>
+
+    <p>そして今のひろ様のオーラには、<br>
+    恋愛の縁が人との繋がりの中から動く特別な星が巡っています。<br>
+    これは今の10年間に与えられた特別な流れです。</p>
+
+    <p>4年間、静かに温めてきた想いが外へ出る<strong>転機</strong>が、今年来ています。</p>
+
+    <h2>🔮 縁を前に進める道筋</h2>
+
+    <p>相手のプライベートが分からなくても、<br>
+    縁の質はひろ様側から動かすことができます。</p>
+
+    <p>次に彼と顔を合わせる機会が、最大のチャンスです。</p>
+
+    <p>最初の一言は、重くならなくていい。</p>
+
+    <div class="magic-word-box">「いつもご縁があって嬉しいです。
+またゆっくりお話できると嬉しいな」</div>
+
+    <p>これだけで十分です。<br>
+    「<strong>嬉しい</strong>」という感情を素直に出すこと自体が、<br>
+    金のオーラを緩める練習になります。</p>
+
+    <p>会った後に自然に伝えるなら、</p>
+
+    <div class="magic-word-box">「今日もお会いできてよかったです。
+お話してるといつも元気もらえます」</div>
+
+    <p>重さがなく、でも「あなたのことを大切に感じている」が<br>
+    自然に届きます。</p>
+
+    <p>もう少し関係を深めたい時は、</p>
+
+    <div class="magic-word-box">「いつか時間がある時、ゆっくりお話できたら嬉しいです」</div>
+
+    <p>相手のペースを尊重しながら<br>
+    「二人の時間」への意志をそっと伝える言葉です。</p>
+
+    <p>会う機会には、三つのことを意識してください。</p>
+
+    <p>笑顔を意識すること。<br>
+    火のオーラが整ったひろ様の笑顔は、<br>
+    本来の太陽の輝きそのものです。<br>
+    特別なことを言おうとしなくていい。<br>
+    あなたが笑顔でいるだけで、伝わるものがあります。</p>
+
+    <p>相手の話をじっくり聞くこと。<br>
+    「この人は自分のことをちゃんと見ている」という感覚が、<br>
+    縁を深める一番の近道です。</p>
+
+    <p>「<strong>嬉しい</strong>・<strong>楽しい</strong>」を少しずつ素直に出すこと。<br>
+    小さな感情から言葉にする練習をしてみてください。<br>
+    それが金の過剰を緩める、最も効果的な行動です。</p>
+
+    <p>逆にやってはいけないことが三つ。</p>
+
+    <p>「難しいかもしれない」と先に決めてから会うこと。<br>
+    その思考がオーラに出て、相手に距離を感じさせます。</p>
+
+    <p>完璧な言葉・完璧なタイミングを待ち続けること。<br>
+    金の強いオーラが「今は完璧ではない」と<br>
+    ずっとあなたを止め続けます。</p>
+
+    <p>「年に数回しか会えないから」と縁に壁を作ること。<br>
+    頻度より質です。<br>
+    一回一回の縁の深さが本物をつくります。</p>
+
+    <p>ただ、一つだけ知っておいてほしいことがあります。</p>
+
+    <p>これらの言葉も行動も、<br>
+    あなたのオーラが整った状態で初めて、本来の力を発揮します。</p>
+
+    <p>火のオーラが欠けたまま動くと、<br>
+    言葉が上滑りしてしまったり、<br>
+    せっかくの機会を緊張で逃してしまう可能性がある。</p>
+
+    <p><strong>まずはオーラを整えること。</strong><br>
+    それが全ての土台になります。</p>
+
+    <h2>🔮 健康・金運・幸福について</h2>
+
+    <p>恋愛以外のことも、<br>
+    霊視で視えてきたことをお伝えします。</p>
+
+    <p>まず、健康について。</p>
+
+    <p>ひろ様を視ると、<br>
+    健康に関わる強い星が集中しています。</p>
+
+    <p>感情を溜め込みすぎると<br>
+    真っ先に体に出やすい構造をしています。</p>
+
+    <p>「言いたいことを飲み込んだ」<br>
+    「感じていたのに出せなかった」</p>
+
+    <p>そういう日が続くと、<br>
+    じわじわと体が消耗していきます。</p>
+
+    <p>火のオーラを整えて感情を外に出す練習をすること。<br>
+    これは恋愛のためだけでなく、<br>
+    ひろ様の健康を守るためにも<strong>必要なこと</strong>です。</p>
+
+    <p>次に、金運について。</p>
+
+    <p>ひろ様の豊かさの流れを視ると、<br>
+    一人で抱えて頑張る時よりも、<br>
+    人との繋がりの中で動く時に<br>
+    豊かさの扉が自然に開いていきます。</p>
+
+    <p>感性や芸術的なもの、<br>
+    人を喜ばせることと<br>
+    お金が繋がりやすい流れも視えます。</p>
+
+    <p>「誰かの役に立つこと」が<br>
+    豊かさへの最短経路になっている<strong>魂</strong>です。</p>
+
+    <p>そして、幸福について。</p>
+
+    <p>ひろ様の幸福感の根っこを視ると、<br>
+    一言でこう視えます。</p>
+
+    <p>「深い信頼関係に触れた時、<br>
+    あなたは最も満たされる」</p>
+
+    <p>表面的な繋がりではなく、<br>
+    <strong>魂</strong>の奥まで分かり合える関係。<br>
+    学び合い、共に成長できる縁。</p>
+
+    <p>4年間、この男性に惹かれ続けているのは<br>
+    単なる好意ではありません。</p>
+
+    <p>あなたが本来求めている幸福の形と、<br>
+    この縁が重なっているからです。</p>
+
+    <p>その直感は、<strong>本物</strong>です。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <p>今年2026年は、ひろ様の人生において特別な意味を持つ年です。</p>
+
+    <p>長年欠けていた火のオーラが二重に補われる、<br>
+    今年だけに与えられた流れ。</p>
+
+    <p>そして今年は、環境と生活基盤に<br>
+    大きな変化をもたらす強い力も流れ込んでいます。</p>
+
+    <p>動かないでいると、その流れが通り過ぎてしまいます。</p>
+
+    <p>この半年で最も重要な月は、<strong>8月</strong>です。</p>
+
+    <p>この月、ひろ様のオーラに<br>
+    情熱と輝きのエネルギーが最高潮に達します。</p>
+
+    <p>欠けていた火のオーラが流れ込み、<br>
+    金のオーラと共鳴して<br>
+    宝石のような本来の輝きが全開になる月。</p>
+
+    <p>考えすぎが自然と和らいで、<br>
+    自分らしい笑顔と言葉が<br>
+    すっと出てくるようになります。</p>
+
+    <p>彼と顔を合わせる機会がこの月に来るなら、<br>
+    これまでとは全く違う自分でいられます。</p>
+
+    <p><strong>8月</strong>に向けてやるべきことは三つ。<br>
+    彼と会える可能性のある機会の情報を、自然に手に入れておくこと。<br>
+    「難しいかもしれない」という思考が出たら一旦横に置く練習を今から始めること。<br>
+    この月は笑顔と「<strong>嬉しい</strong>」という感情を素直に出すことだけを意識すること。</p>
+
+    <p>やってはいけないことも二つだけ。<br>
+    完璧なタイミングを待ちすぎること。<br>
+    頭で先に結論を出してしまうこと。<br>
+    この二つだけ、手放してください。</p>
+
+    <p><strong>9月</strong>はひろ様の誕生月。<br>
+    火のオーラが引き続き流れ、<br>
+    自分自身を肯定できる力が高まる月です。</p>
+
+    <p><strong>8月</strong>に動き出したことを丁寧に育てながら、<br>
+    誕生日という節目に<br>
+    気持ちを一言だけ自然に伝えてみる勇気が生まれてきます。</p>
+
+    <p>6〜7月は準備の月。<br>
+    赤・オレンジを日常に取り入れながら、<br>
+    内側を静かに整えていく時期です。</p>
+
+    <p>10〜11月は育てる月。<br>
+    8〜9月に動き出したことを<br>
+    焦らず丁寧に育てていく流れになります。</p>
+
+    <p>1年後を視ると、<br>
+    自然に気持ちを伝えられる自分と、<br>
+    彼との間に温かい空気が流れている姿が視えます。</p>
+
+    <p>今年動き出すことが、その未来への扉を開きます。</p>
+
+    <p><strong>8月</strong>が、最大のチャンスです。<br>
+    火のオーラを整えた状態でこの月を迎えること。<br>
+    これが今のひろ様にとって<strong>最も大切なこと</strong>です。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <p>まず今日から始められることをお伝えします。</p>
+
+    <p>火のオーラを補うために——</p>
+
+    <p>赤・オレンジ色を一つ、日常に取り入れてください。<br>
+    服でも、アクセサリーでも、小物一つでも。</p>
+
+    <p>毎朝、窓を開けて5分だけ日光を浴びる習慣を。</p>
+
+    <p>夜、キャンドルを一本灯してみてください。<br>
+    内なる火と共鳴して、オーラが静かに整っていきます。</p>
+
+    <p>笑顔の練習も、火のオーラへの大切な投資です。<br>
+    誰かに「嬉しかった・楽しかった」を一言素直に伝える日を<br>
+    少しずつ増やしてみてください。</p>
+
+    <p>金のオーラを緩めるために——</p>
+
+    <p>「難しいかもしれない」という考えが浮かんだら、<br>
+    一旦止めて「でも今日だけは感じてみよう」と言い直す練習を。</p>
+
+    <p>夜、今日感じたことを3行だけ書き出す。<br>
+    内側に溜まりがちなエネルギーを外に出すことで、<br>
+    <strong>魂</strong>が軽くなっていきます。</p>
+
+    <p>「今日の自分で十分よかった」<br>
+    この一言を、眠る前に毎日自分に言ってあげてください。</p>
+
+    <p>ここまでお伝えした調整法で、<br>
+    少しずつオーラは整い始めます。</p>
+
+    <p>ただ、正直に言うと、<br>
+    火のオーラが<strong>完全に</strong>欠けている場合、<br>
+    日常の調整だけでは補いきれない部分があります。</p>
+
+    <p>色を身につける、日光を浴びる。<br>
+    これらは「維持する力」にはなりますが、<br>
+    ゼロから補う力としては、どうしても限界がある。</p>
+
+    <p>もし本気でオーラを整えて<strong>8月</strong>の転機に備えたいなら、<br>
+    もう一つお伝えしたい方法があります。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>ここまでお伝えしてきた通り、<br>
+    ひろ様のオーラには火のオーラが<strong>完全に</strong>欠けています。</p>
+
+    <p>これが4年間、踏み出せなかったすべての原因であり、<br>
+    <strong>8月</strong>のチャンスを掴むために最も整えるべき部分です。</p>
+
+    <p>火のオーラが整うと、<br>
+    ・次に彼と顔を合わせた瞬間、自然な笑顔が出るようになる<br>
+    ・「<strong>嬉しい</strong>」という言葉が頭より先に口から出てくるようになる<br>
+    ・「難しいかもしれない」という声が静まり、その場の空気を楽しめるようになる<br>
+    ・彼のことでぐるぐると考え込む時間が減り、自分らしさが戻ってくる<br>
+    ・「伝えたい」と感じた瞬間に、自然に動けるようになる</p>
+
+    <p>日常の調整法に加えて、<br>
+    本格的にオーラを補うために、<br>
+    パワーストーンをお守りとして取り入れる方法があります。</p>
+
+    <div class="important-box">
+        <p>ひろ様のオーラに合わせて、<br>
+        三つのプランをご用意しました。</p>
+
+        <p><strong>松プラン：8月の転機に本気で備えたい方向け</strong><br>
+        火のオーラを本格的に補う石と、金のオーラを緩める石の組み合わせ<br>
+        ・考えすぎが和らぎ、感じたことがそのまま言葉になって出てくる<br>
+        ・彼の前でも自然体でいられる、本来の宝石のような輝きが戻ってくる<br>
+        ・縁を引き寄せる力が本格的に高まる</p>
+
+        <p><strong>竹プラン：まず情熱の火を灯したい方向け</strong><br>
+        火のオーラを補う石の組み合わせ<br>
+        ・踏み出す勇気と前向きさが自然に湧いてくる</p>
+
+        <p><strong>梅プラン：まず内側を落ち着かせたい方向け</strong><br>
+        最も必要な石を一つ<br>
+        ・「難しいかもしれない」という声が静まり、心が落ち着く</p>
+
+        <p>多くの方が松プランを選ばれています。<br>
+        <strong>8月</strong>に向けて今から整え始めることで、<br>
+        最も効果的なタイミングでオーラが整います。</p>
+
+        <p>もし興味があれば、<br>
+        「詳細希望」とだけ送っていただければ、<br>
+        ひろ様専用の石の組み合わせをお伝えしますね。</p>
+    </div>
+
+    <h2>最後に</h2>
+
+    <p>ひろ様、最後に一つだけ。</p>
+
+    <p>このまま「難しいかもしれない」という声を<br>
+    聞き続けていく道と、</p>
+
+    <p>今年、火のオーラを整えて<br>
+    本来の輝きで彼の前に立つ道と——</p>
+
+    <p>岐路に立っています。</p>
+
+    <p>4年間、諦めずに感じ続けてきたこと。<br>
+    「この縁には意味がある」という直感。</p>
+
+    <p>それは正しかった。<br>
+    霊視でも、オーラでも、はっきりそう視えています。</p>
+
+    <p><strong>8月</strong>のある日、彼とふと目が合う瞬間があったとして。<br>
+    火のオーラを取り戻したひろ様が、<br>
+    本来の宝石のような輝きのまま自然に笑えたなら——</p>
+
+    <p>「今日のひろさん、<br>
+    なんかいつもと雰囲気が違いますね。<br>
+    今度ゆっくりお話できますか」</p>
+
+    <p>その未来が視えています。</p>
+
+    <p>4年間温めてきた想いに、<br>
+    答えを出す時期が来ています。</p>
+
+    <p>全力で、ひろ様の縁を照らしていきます。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>
