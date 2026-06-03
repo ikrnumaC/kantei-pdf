@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>みわ様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        /* 表紙のスタイル */
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">道が開く時へ</h2>
+            <p class="cover-name">みわ様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 冒頭 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">みわ様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂が、<br>本気で知ろうとしている。</p>
+            <p style="margin-bottom: 90px;">その真剣な気持ちが、<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先、<br>あなたが本当に知るべきことを、<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2>【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が、<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px;">あなたが、<br>前を向いて歩いています。</p>
+            <p style="margin-bottom: 90px;">迷いではなく、<br>「この道だ」という感覚を持って。</p>
+            <p style="margin-bottom: 90px;">その顔には、<br>今とは違う静けさがある。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、2027年の春。</p>
+            <p style="margin-bottom: 90px;">今年は、まだ<br>感情の波の中にいる。</p>
+            <p style="margin-bottom: 90px;">「この人への気持ちはどこへ向かうのか」<br>「自分はどこへ進めばいいのか」</p>
+            <p style="margin-bottom: 90px;">その問いが、<br>胸の奥にある。</p>
+            <p style="margin-bottom: 90px;">でもその問いは、<br>無駄ではありません。</p>
+            <p style="margin-bottom: 90px;">その問いを経たからこそ、<br>2027年に扉が開く。</p>
+            <p style="margin-bottom: 90px;">その未来の兆しが、<br>強くあります。</p>
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは、<br><span style="color: #ffd966;">猿田彦命（さるたひこのみこと）</span>。</p>
+            <p style="margin-bottom: 90px;">天地が開かれた時、<br>神々が地上へ降りようとしていたのに、<br>誰も道が分からず立ち尽くしていた。</p>
+            <p style="margin-bottom: 90px;">そこへ現れたのが、<span style="color: #ffd966;">猿田彦命</span>。</p>
+            <p style="margin-bottom: 90px;">巨大な体で炎のように輝きながら、<br>先頭に立って道を切り開いた。</p>
+            <p style="margin-bottom: 90px;">「こちらへ」と示し、<br>誰もが迷っていた霧の中に、<br>一本の道を生み出した。</p>
+            <p style="margin-bottom: 0;">「迷う人の前に道を作る神様」として、<br>今も三重の椿大神社に祀られています。</p>
+        </div>
+
+        <!-- みわ様という人 -->
+        <h2 class="emoji-header">⛩️ みわ様という人</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">まず、<br>あなたの本質について、<br>視えていることがあります。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>人に与える力が非常に強い人です。</p>
+            <p style="margin-bottom: 90px;">話を聴くだけで、<br>他人の心が落ち着く。</p>
+            <p style="margin-bottom: 90px;">そばにいるだけで、<br>場の空気が和らぐ。</p>
+            <p style="margin-bottom: 90px;">「この人に話せば楽になる」<br>そう感じてそばに来る人が多い。</p>
+            <p style="margin-bottom: 90px;">それはあなたが、<br>「安定」を体ごと持っているから。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">揺れない。動じない。<br>大きな大地のような力が、<br>あなたには生まれつき備わっています。</p>
+            <p style="margin-bottom: 90px;">でも──<br>あなた自身は知っています。</p>
+            <p style="margin-bottom: 90px;">その安定の裏に、<br>「自分のことはどうすればいいんだろう」<br>という問いが、<br>静かにくすぶっていることを。</p>
+            <p style="margin-bottom: 90px;">周りを支えるのは得意なのに、<br>自分自身の「これでいいのか」には、<br>なかなか答えが出ない。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ、<br>あなたには<br>「普通じゃない何かに静かに惹かれる」<br>という性質があります。</p>
+            <p style="margin-bottom: 90px;">規格通りの道よりも、<br>誰かが歩いていない場所。<br>そこに自分の本当の何かが<br>あるような気がする。</p>
+            <p style="margin-bottom: 90px;">霊的なもの、見えないもの、<br>感じること。</p>
+            <p style="margin-bottom: 90px;">あなたにはそういうものへの感性が、<br>ごく自然に備わっています。</p>
+            <p style="margin-bottom: 90px;">それが「守護を知りたい」という気持ちになって<br>表れています。</p>
+            <p style="margin-bottom: 90px;">仕事や才能の面では、<br>あなたはこの先3年から5年で<br>大きく動いていく流れが<br>すでに始まっています。</p>
+            <p style="margin-bottom: 90px;">あなたがもつ「与える」<br>「表現する」という力は、<br>最もつよい力で、あなたの中にいます。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">その力が社会に向かって<br>動き始める時期が、<br>まさに今。</p>
+        </div>
+
+        <!-- みわ様に宿る守護の力 -->
+        <h2 class="emoji-header">⛩️ みわ様に宿る守護の力</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">あなたを守っているのは、<br><span style="color: #ffd966;">猿田彦命</span>。</p>
+            <p style="margin-bottom: 90px;">道を開く神様の加護を受けているということは、</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたは<br>「迷っていても、いつか必ず道が見えてくる人」<br>だということです。</p>
+            <p style="margin-bottom: 90px;">こんな経験はありませんでしたか？</p>
+            <p style="margin-bottom: 90px;">「どっちへ進めばいいか分からない」<br>「もう無理かもしれない」</p>
+            <p style="margin-bottom: 90px;">そう感じた瞬間に、<br>ふっと答えが降りてくる。</p>
+            <p style="margin-bottom: 90px;">あるいは、<br>思いがけない人が現れて<br>「こっちですよ」と示してくれる。</p>
+            <p style="margin-bottom: 90px;">その感覚は、<br><span style="color: #ffd966;">猿田彦命</span>がそばで<br>静かに道を作っていたからです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは「迷う力」を持っています。</p>
+            <p style="margin-bottom: 90px;">これは弱さではありません。</p>
+            <p style="margin-bottom: 90px;">迷わない人は、<br>一本道しか見えない人です。</p>
+            <p style="margin-bottom: 90px;">あなたはたくさんの道が見えるから、<br>迷う。</p>
+            <p style="margin-bottom: 90px;">でもそれは、<br>あなたに「選べる力」があるから。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">猿田彦命</span>の加護を受けた人は、<br>最終的に必ず<br>「自分の道」にたどり着きます。</p>
+            <p style="margin-bottom: 0;">遠回りに見えても、<br>結果的に最も正しい道を歩くことになる。</p>
+        </div>
+
+        <!-- 好きな方との縁の真実 -->
+        <h2 class="emoji-header">⛩️ 好きな方との縁の真実</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">正直にお伝えします。</p>
+            <p style="margin-bottom: 90px;">今、好きな方への気持ちは本物です。</p>
+            <p style="margin-bottom: 90px;">あなたが感じているその感覚は、<br>嘘ではない。</p>
+            <p style="margin-bottom: 90px;">思い込みでも、<br>勘違いでもない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その方にとっても、<br>あなたへの気持ちは本物です。</p>
+            <p style="margin-bottom: 90px;">あなたのそばにいると、<br>本当に穏やかになれる。</p>
+            <p style="margin-bottom: 90px;">才能を感じる。<br>もっと知りたいと思う。</p>
+            <p style="margin-bottom: 90px;">そういう感情が、その方にある。</p>
+            <p style="margin-bottom: 90px;">今の状況は、確かに複雑です。</p>
+            <p style="margin-bottom: 90px;">でも──</p>
+            <p style="margin-bottom: 90px;">この縁を視ていると、<br>「終わりに向かっている縁」ではなく、<br>「まだ動いていない縁」だと感じます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">時期が来ていない、ということです。</p>
+            <p style="margin-bottom: 90px;">今のその方の内側を視ると、<br>現在の場所で満たされていない感覚があります。</p>
+            <p style="margin-bottom: 90px;">「ここが自分の本当の場所ではない」<br>という気配が、その方の中にある。</p>
+            <p style="margin-bottom: 90px;">だから、まだ動けずにいる。</p>
+            <p style="margin-bottom: 90px;">ではあなたは、どうすればいいのか。</p>
+            <p style="margin-bottom: 90px;">まず、一番やってはいけないことをお伝えします。</p>
+            <p style="margin-bottom: 90px;">「好きだと伝えること」<br>「どうするつもりか、問い詰めること」<br>「ずっと待っていると示すこと」</p>
+            <p style="margin-bottom: 90px;">これをやると、<br>その方の中で<br>あなたが「重たい存在」になってしまいます。</p>
+            <p style="margin-bottom: 90px;">その方は今、<br>現在の関係の中でもプレッシャーを感じている。</p>
+            <p style="margin-bottom: 90px;">そこへ別の「責任」が加わると、<br>逃げたくなる。</p>
+            <p style="margin-bottom: 90px;">ではどうするか。</p>
+            <p style="margin-bottom: 90px;">その方はあなたのそばで<br><br>穏やかになれる。<br>才能を感じる。<br>もっと知識をつけたいと思える</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、その方にとって<br>「この人と話すと、なぜか自分が前向きになれる」<br>という特別な存在なのです。</p>
+            <p style="margin-bottom: 90px;">だとすれば、<br>あなたがすべきことは一つ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなた自身が、<br>充実している状態でいること。</p>
+            <p style="margin-bottom: 90px;">仕事でも、趣味でも、<br>「今、こんな面白いことをやっている」<br>「最近こういうことに気がついた」</p>
+            <p style="margin-bottom: 90px;">そういう話が自然にできる状態。</p>
+            <p style="margin-bottom: 90px;">連絡を待ちながら沈んでいるより、<br>自分の毎日を動いている姿。</p>
+            <p style="margin-bottom: 90px;">それを見せた時に、<br>その方は「この人のそばにいたい」と感じます。</p>
+            <p style="margin-bottom: 90px;">逆に、<br>「あなたのことばかり考えていた」<br>「ずっと待っていた」という状態を見せると、</p>
+            <p style="margin-bottom: 90px;">その方の中で<br>あなたが「重さ」になってしまう。</p>
+            <p style="margin-bottom: 90px;">あなたを大切に思っているから、<br>その重さが苦しくなる。</p>
+            <p style="margin-bottom: 90px;">それはどちらにとっても、<br>もったいない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、2027年。</p>
+            <p style="margin-bottom: 90px;">その方の周りに<br>大きな変化の流れが来ます。</p>
+            <p style="margin-bottom: 90px;">今の状況が、動き始める。</p>
+            <p style="margin-bottom: 90px;">その時に、<br>「最近のみわさんは変わったな。<br>どこか生き生きしている」</p>
+            <p style="margin-bottom: 90px;">そう思わせることができたら、<br>その方の気持ちは自然に動いていきます。</p>
+            <p style="margin-bottom: 90px;">待つのではなく、<br>自分の毎日を丁寧に生きながら、<br>その時を迎える。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">それが、<br>この縁にとって最も良い流れです。</p>
+        </div>
+
+        <!-- 道が開く瞬間 -->
+        <h2 class="emoji-header">⛩️ 道が開く瞬間</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">今年（2026年）は、<br>感情の波が大きい年です。</p>
+            <p style="margin-bottom: 90px;">好きな方への想いが、<br>最も強く揺れる年。</p>
+            <p style="margin-bottom: 90px;">「どうすればいいのか」<br>「このままでいいのか」</p>
+            <p style="margin-bottom: 90px;">その問いが<br>何度も来るかもしれません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それでいい。</p>
+            <p style="margin-bottom: 90px;">今年は答えを出す年ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">感じ切る年です。</p>
+            <p style="margin-bottom: 90px;">そして──<br>2027年の春。</p>
+            <p style="margin-bottom: 90px;">何かが変わります。</p>
+            <p style="margin-bottom: 90px;">あなたの中で、<br>「次はここへ向かいたい」という感覚が<br>自然に湧いてくる。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">猿田彦命</span>が、<br>「こちらですよ」と示してくれる。</p>
+            <p style="margin-bottom: 90px;">その方向は、<br>今のあなたには<br>まだ見えていないかもしれません。</p>
+            <p style="margin-bottom: 90px;">でも、必ず見えてきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたには<br>「動くことで道が開く」力がある。</p>
+            <p style="margin-bottom: 90px;">踏み出した先に、<br>縁も才能も待っています。</p>
+            <p style="margin-bottom: 90px;">2027年から動き始めた流れは、<br>2028年にかけて<br>具体的な形になっていきます。</p>
+            <p style="margin-bottom: 90px;">「与える力・表現する力」が<br>誰かの心を動かす。</p>
+            <p style="margin-bottom: 90px;">その縁が、<br>みわ様の本来の場所へ<br>つないでくれます。</p>
+            <p style="margin-bottom: 90px;">焦らなくていい。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">あなたは「迷っていても必ず道が見える人」。<br><span style="color: #ffd966;">猿田彦命</span>が、<br>今もそばで<br>道を作り続けています。</p>
+        </div>
+
+        <!-- 今後の流れ -->
+        <h2>【今後の流れ】</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年8月：感情の頂点を越える月</p>
+            <p style="margin-bottom: 90px;">今年の夏、<br>この想いが最も大きく揺れる時期があります。</p>
+            <p style="margin-bottom: 90px;">「もう決めなければ」<br>「どちらかを選ばなければ」</p>
+            <p style="margin-bottom: 90px;">そう感じるかもしれない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも、今は決断しなくていい。</p>
+            <p style="margin-bottom: 0;">ただ、自分の気持ちに正直でいてください。<br>誰かのためではなく、<br>みわ様が「心地よい」と感じる方向へ。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年11月：手放しと整理の月</p>
+            <p style="margin-bottom: 90px;">秋の深まりと共に、<br>感情が少しずつ落ち着いていきます。</p>
+            <p style="margin-bottom: 90px;">「これでよかったのかもしれない」<br>という静けさが訪れる。</p>
+            <p style="margin-bottom: 90px;">この時期、<br>自分自身に戻るための何かを始めてみてください。<br>学びでも、表現でも、体を動かすことでも。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">みわ様の「与える力」を、<br>自分自身に向ける時期です。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年3月：猿田彦命の力が特に流れ込む月</p>
+            <p style="margin-bottom: 90px;">この月が、<br>守護神の力が最も大きく届く時期です。</p>
+            <p style="margin-bottom: 90px;">「こちらへ」という感覚が来る。</p>
+            <p style="margin-bottom: 90px;">それは出会いかもしれないし、<br>仕事の話かもしれないし、<br>ふとした決断かもしれない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その感覚を、見逃さないでください。</p>
+            <p style="margin-bottom: 0;"><span style="color: #ffd966;">猿田彦命</span>は「霧の中に道を作る神様」。<br>今まで見えなかったものが、<br>突然くっきりと見えてくる瞬間が<br>この頃に訪れます。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年6月：縁が動く月</p>
+            <p style="margin-bottom: 90px;">春から動き始めたエネルギーが、<br>具体的な縁・出来事として現れてくる頃。</p>
+            <p style="margin-bottom: 90px;">人との出会いが変わる。<br>あなたの「与える力」を<br>受け取ってくれる人が現れる。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">その縁を、受け取ってください。<br>それが、みわ様の道の始まりです。</p>
+        </div>
+
+        <!-- 守護を受け取る方法 -->
+        <h2 class="emoji-header">⛩️ 守護を受け取る方法</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">そして、安心してください。</p>
+            <p style="margin-bottom: 90px;">あなたのことを深く霊視した際、<br>特別な守護の力を<br>あなたの奥底においてきました。</p>
+            <p style="margin-bottom: 90px;">それは<span style="color: #ffd966;">猿田彦命</span>の和魂の力。</p>
+            <p style="margin-bottom: 90px;">迷いを静め、<br>「こちらだ」という感覚を<br>研ぎ澄ませてくれる力。</p>
+            <p style="margin-bottom: 90px;">霧の中でも、<br>進むべき方向が感じられるようになります。</p>
+            <p style="margin-bottom: 90px;">今この文を読んでいる間にも、<br>胸が少し温かくなる、<br>ふっと安心する、<br>深く息が吸えるような感覚。</p>
+            <p style="margin-bottom: 90px;">もしそのような感覚があれば、<br>すでに守護の力が届き始めている証です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">これは何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">ただ受け取るだけで大丈夫です。</p>
+            <p style="margin-bottom: 90px;">もし余裕がある時だけ、<br>以下のことを試してみてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">【守護神の神社へ行く】</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">猿田彦命</span>が祀られている神社は、<br>三重の椿大神社が総本社です。</p>
+            <p style="margin-bottom: 90px;">遠い場合は、お近くで<br>猿田彦命・道祖神を祀る神社、</p>
+            <p style="margin-bottom: 90px;">猿田彦神社（柏崎市柳橋町4-3）がございます。<br>こちらに参拝してみてください。</p>
+            <p style="margin-bottom: 90px;">参拝の際は、心の中でこう伝えてください。</p>
+            <p style="margin-bottom: 90px;">「私は自分の道へ向かいます。どうか示してください」</p>
+            <p style="margin-bottom: 90px;">「祓え給い、清め給え、神ながら守り給い、幸え給え」<br>（はらえたまい、きよめたまえ、かむながらまもりたまえ、さきわえたまえ）</p>
+            <p style="margin-bottom: 90px;">こちらの祝詞も、<br>心の中でそっと唱えてみてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">お願いではなく、宣言を。<br>その姿勢が、守護神との縁を深くします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">【迷った時に空を見上げる】</p>
+            <p style="margin-bottom: 90px;">何かを迷っている時、<br>一度だけ空を見上げてください。</p>
+            <p style="margin-bottom: 90px;">そして、<br>「どちらへ向かえばいいですか」と<br>心の中で問いかける。</p>
+            <p style="margin-bottom: 90px;">答えはすぐには来ないかもしれません。</p>
+            <p style="margin-bottom: 0;">でも必ず、<br>何かのサインとして届きます。</p>
+        </div>
+
+        <!-- パワーストーン -->
+        <h2 class="emoji-header">⛩️ あなたを支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">あなたには、守護神のご縁をお伝えし、<br>その力をあなたの奥底に置いてきました。</p>
+            <p style="margin-bottom: 90px;">また、守護神と縁のある神社と、<br>守護を深める方法もお伝えしました。</p>
+            <p style="margin-bottom: 90px;">基本的には、これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ、守護の力は何もしなければ、<br>少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">なかなか時間が取れない、<br>神社が遠くて頻繁には行けない、<br>という方もいらっしゃると思います。</p>
+            <p style="margin-bottom: 90px;">そのような方に、<br>ぜひお勧めしたいのが<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px;">守護神の力を石に宿し、<br>常に身近に持ち歩くことができるようになります。</p>
+            <p style="margin-bottom: 90px;">ただ、どんな石でもよいわけではありません。</p>
+            <p style="margin-bottom: 90px;">あなたのエネルギーと守護神が共鳴しやすい石を、<br>3つお伝えします。</p>
+        </div>
+
+        <ul style="margin-bottom: 90px;">
+            <li><span style="color: #ffd966; font-weight: bold;">1. タイガーアイ</span><br>道を切り開く力・決断力を高める石。<br><span style="color: #ffd966;">猿田彦命</span>の「先導する力」と深く共鳴し、<br>迷いの中でも進む方向が感じられるようになります。<br>あなたが持つ「動くことで運が開く」力を後押しします。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">2. ロードナイト</span><br>感情を癒し、自己愛を育て、新しい縁への扉を開く石。<br>今の感情の波を穏やかにしながら、<br>本来の縁を引き寄せる力を整えてくれます。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">3. アクアマリン</span><br>感情の流れを浄化し、直感力を高める石。<br>「こちらだ」という感覚を研ぎ澄ませ、<br>停滞した流れを静かに動かしていきます。</li>
+        </ul>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">この中から、あなたのエネルギーと<br>最もバランスが取れる組み合わせを<br>私が選び、1つずつ手作りで仕上げます。</p>
+            <p style="margin-bottom: 0;">ご希望の方は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <h2>【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">みわ様、</p>
+            <p style="margin-bottom: 90px;">あなたの未来には、<br>「この道だ」と感じながら歩いている姿へと<br>続く道が視えています。</p>
+            <p style="margin-bottom: 90px;">今感じている想いも、<br>迷いも、<br>問いも、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">全部があなたの道の一部です。</p>
+            <p style="margin-bottom: 90px;">今は、<br>まだその答えが見えないかもしれない。</p>
+            <p style="margin-bottom: 90px;">「本当にこれでいいのか」と<br>揺れているかもしれない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でもそれは、<br>あなたの感性が<br>正しく働いている証。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">正しい感覚です。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>動くことで道が開く人。</p>
+            <p style="margin-bottom: 90px;">迷っていても、<br>一歩踏み出せば<br><span style="color: #ffd966;">猿田彦命</span>が「こちらです」と示してくれる。</p>
+            <p style="margin-bottom: 90px;">その力が、<br>あなたには宿っています。</p>
+            <p style="margin-bottom: 90px;">今年の感情の波が落ち着いた先に、<br>あなたが向かいたい方向が<br>見えてきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その感覚を、<br>信じてください。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">猿田彦命</span>が、<br>あなたを守っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">大切にされていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">守られている。</p>
+            <p style="margin-bottom: 90px;">その事実を、<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より、<br>遠隔守護祈祷を行い、<br>あなたの幸せを願います。</p>
+            <p style="margin-bottom: 30px;">あなたの未来に、<br>愛と光が満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>
