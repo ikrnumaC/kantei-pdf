@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>好江様専用鑑定書</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../images/曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before {
+            background-image: url('../images/強い火.png');
+        }
+
+        .aura-wood::before {
+            background-image: url('../images/強い木.png');
+        }
+
+        .aura-earth::before {
+            background-image: url('../images/強い土.png');
+        }
+
+        .aura-metal::before {
+            background-image: url('../images/強い金.png');
+        }
+
+        .aura-water::before {
+            background-image: url('../images/強い水.png');
+        }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            text-align: center;
+            white-space: pre-line;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+        }
+
+        strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* ===== レーダーチャート ===== */
+        .aura-chart-container {
+            width: 280px;
+            max-width: 100%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            margin: 20px auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .aura-chart-title {
+            text-align: center;
+            font-size: 16px;
+            color: #8b6f9c;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== 結果ボックス ===== */
+        .aura-result-box {
+            background: linear-gradient(135deg, #f9f3ff 0%, #fff5fb 100%);
+            border: 2px solid #c9a0dc;
+            border-radius: 15px;
+            padding: 30px 35px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .aura-result-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .aura-result-box > p:last-child {
+            font-size: 17px;
+            line-height: 2.2;
+            margin-bottom: 0;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 75px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+
+            .aura-result-box {
+                padding: 20px 16px;
+                margin: 20px 0;
+            }
+
+            .aura-result-title {
+                font-size: 18px;
+            }
+
+            .aura-chart-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cover-page">
+        <div class="cover-recipient">好江様</div>
+        <div class="cover-title">専用鑑定書</div>
+        <div class="cover-subtitle">Premium Spiritual Reading</div>
+        <div class="cover-appraiser">鑑定師：かな</div>
+    </div>
+
+    <div class="container">
+        <h1>好江様の本鑑定書</h1>
+        <p class="subtitle">Premium Spiritual Reading</p>
+
+        <p>吉田好江様</p>
+
+        <p>この度は本鑑定にお進みいただき、<br>
+        心より感謝申し上げます。</p>
+
+        <p>「なんで会ってくれないんだろう」<br>
+        「彼は本当に私のことを想ってくれているのかな」<br>
+        「どうすれば2人の時間を作れるんだろう」</p>
+
+        <p>その想い、ちゃんと届いています。</p>
+
+        <p>夫の介護をしながら、<br>
+        一人でこの気持ちを抱えてきた。</p>
+
+        <p>誰にも話せない、でも彼への想いは本物。</p>
+
+        <p>そのずっしりとした重さ、<br>
+        好江様がどれだけの覚悟でここにいるか、<br>
+        伝わっています。</p>
+
+        <p>まず、好江様が一番知りたいこと。<br>
+        はっきりお伝えします。</p>
+
+        <p>彼が会えないのは、<br>
+        あなたへの気持ちが薄れたからではありません。</p>
+
+        <p>彼のオーラを視ると、<br>
+        今の彼は外の世界に強いプレッシャーがかかっています。</p>
+
+        <p>奥さんの目、周囲の視線、<br>
+        外に出ること自体が今の彼には怖い状態。</p>
+
+        <p>怯えて、縮こまって、動けない。<br>
+        それが今の彼の本質です。</p>
+
+        <p>でも、今年の好江様のオーラには<br>
+        縁が動く喜びの星が巡っています。</p>
+
+        <p>2人の縁が動く流れは、<strong>確かにある</strong>。<br>
+        そしてその流れを最大限に活かすための方法が、あります。</p>
+
+        <p>なぜこうなっているのか。<br>
+        その答えは、2人のオーラの中に視えています。</p>
+
+
+        <h2>🔮 あなたのオーラに視えた真相</h2>
+
+        <div class="aura-section aura-earth">
+            <p>好江様のオーラを視ると、<br>
+            大地のように広がるアンバーの光が視えます。</p>
+
+            <p>柔らかく、どっしりとして、<br>
+            どんなものでも包み込む温かさ。</p>
+
+            <p>深く理解する知性と、本質を見抜く感性。<br>
+            それが好江様の<strong>本質</strong>です。</p>
+        </div>
+
+        <p>ただ、あなたのオーラをさらに深く視ると、<br>
+        大切なことが視えてきました。</p>
+
+        <p>好江様のオーラには、<br>
+        感情を「流す」オーラが<strong>完全に</strong>欠けています。</p>
+
+        <p>これが今の状況の根っこにある原因です。</p>
+
+        <div class="aura-chart-container">
+            <div class="aura-chart-title">好江様の現在のオーラ</div>
+            <canvas id="auraChartYou"></canvas>
+        </div>
+
+        <p>このオーラが欠けていることで、<br>
+        こんなことが起きています。</p>
+
+        <p>・想いがあるのに、言葉が出てこない</p>
+
+        <p>・伝えたいタイミングを掴みにくい</p>
+
+        <p>・「どうせ難しい」と先に自分を止めてしまう</p>
+
+        <p>・動きたいのに動けない、という状態が続く</p>
+
+        <p>つまり、2人の時間が増えないのは、<br>
+        あなたの想いが足りないからでも、<br>
+        努力が足りないからでもない。</p>
+
+        <p>感情を流すオーラが欠けているから、<br>
+        縁を動かす力が内側で止まってしまっているのです。</p>
+
+        <p>逆に言えば、<br>
+        このオーラさえ整えれば、霧は晴れ始めます。</p>
+
+        <div class="aura-chart-container">
+            <div class="aura-chart-title">水のオーラを補った後</div>
+            <canvas id="auraChartYouFixed"></canvas>
+        </div>
+
+        <div class="aura-result-box">
+            <p class="aura-result-title">水のオーラを補うと…</p>
+            <p>感情が自然と流れ始めて、<br>
+            伝えたかった言葉がするりと口から出てくるようになる。<br>
+            縁を動かす力が内側から溢れ出し、<br>
+            好江様本来の温かさが彼にそのまま届く。</p>
+        </div>
+
+
+        <h2>🔮 彼のオーラに視えたこと</h2>
+
+        <div class="aura-section aura-metal">
+            <p>彼のオーラを視ると、<br>
+            繊細に輝く宝石の金色が視えます。</p>
+
+            <p>穏やかで誠実で、<br>
+            人を和ませる温かさを持っている。</p>
+        </div>
+
+        <p>でも今の彼のオーラには、<br>
+        新しい一歩を踏み出す力が<strong>完全に</strong>欠けています。</p>
+
+        <div class="aura-chart-container">
+            <div class="aura-chart-title">彼の現在のオーラ</div>
+            <canvas id="auraChartPartner"></canvas>
+        </div>
+
+        <p>「動けない、怖い」という状態が続いているのは、<br>
+        自分でもどうにかしたいと思っているのに、<br>
+        踏み出す勇気が出てこないから。</p>
+
+        <p>さらに今の彼は、<br>
+        外の関係に強いプレッシャーがかかる時期に入っています。</p>
+
+        <p>奥さんへの恐れだけではなく、<br>
+        彼のオーラ自体が「外に出られない」状態にある。</p>
+
+        <p>それが今の沈黙の正体です。</p>
+
+        <div class="aura-chart-container">
+            <div class="aura-chart-title">木のオーラを補った後</div>
+            <canvas id="auraChartPartnerFixed"></canvas>
+        </div>
+
+        <div class="aura-result-box">
+            <p class="aura-result-title">でも、木のオーラを補うと…</p>
+            <p>踏み出す勇気が少しずつ補われ、<br>
+            「外に出られない」という状態が和らいでいく。<br>
+            好江様の大地の温かさを受け取る余裕が生まれ、<br>
+            2人の縁が少しずつ動き始める。</p>
+        </div>
+
+        <p>好江様の大地のような包容力は、<br>
+        繊細な宝石の彼を育て、支える力を持っています。</p>
+
+        <p>好江様がいることで彼は安心し、<br>
+        本来の輝きが出やすくなる。</p>
+
+        <p>これが2人の縁の本質です。</p>
+
+        <p>だからこそ、<br>
+        「安心できる場所を好江様が作る」という姿勢が<br>
+        今の最大の武器になります。</p>
+
+        <p>彼のオーラに霧がかかっている今、<br>
+        好江様が変わることで、<br>
+        彼の目に映るあなたが全く違う印象になっていきます。</p>
+
+
+        <h2>🔮 彼への道筋</h2>
+
+        <p>今すぐ距離を縮めようと急くのは逆効果です。</p>
+
+        <p>今の彼には<br>
+        「ここにいると安心だ」と感じさせることが、<br>
+        最も心に届くアプローチです。</p>
+
+        <p>まず最初の一言は、重さゼロで。</p>
+
+        <p>「仕事どう？お疲れ様」</p>
+
+        <p>これだけで十分です。</p>
+
+        <p>彼は重い言葉に萎縮してしまう。<br>
+        仕事という共通の話題で、自然に存在を感じさせる。</p>
+
+        <p>プレッシャーのない接触だからこそ、<br>
+        受け取ってもらえます。</p>
+
+        <p>少し距離が縮まったら、</p>
+
+        <p>「たまには2人でゆっくり話せたらいいなって思って。<br>
+        都合いい時でいいから」</p>
+
+        <p>「都合いい時でいい」という一言が大切です。</p>
+
+        <p>彼のペースを尊重する姿勢が伝わることで、<br>
+        プレッシャーなく受け取れる言葉になります。</p>
+
+
+        <h2>🔮 会えた時にやるべきこと</h2>
+
+        <p>三つあります。</p>
+
+        <p>「ここは安全だ」と感じさせる<br>
+        穏やかな雰囲気を作ること。</p>
+
+        <p>彼の仕事や近況をたっぷり聞くこと。</p>
+
+        <p>楽しく、軽やかな時間を一緒に作ること。</p>
+
+        <p>彼は自分の話を静かに聞いてもらえる空間に、<br>
+        少しずつ心を開いていきます。</p>
+
+
+        <h2>🔮 絶対に言ってはいけない言葉</h2>
+
+        <p>「もっと会いたい」「もっと連絡してほしい」と急かすのは<strong>絶対に</strong>禁止です。</p>
+
+        <p>奥さんのことに触れるのも、<br>
+        将来や関係の方向性を問うのも、<br>
+        今の彼には重すぎる。</p>
+
+        <p>その瞬間に、彼のオーラが<strong>完全に</strong>閉じてしまいます。</p>
+
+        <p>逆に効く言葉は、</p>
+
+        <p>「仕事がんばってるね、すごいと思う」</p>
+
+        <p>「あなたといる時間が好き」</p>
+
+        <p>「無理しなくていい」</p>
+
+        <p>今の彼が最も必要としているのは、<br>
+        認められること、プレッシャーを外してもらうこと。</p>
+
+        <p>その言葉が、彼の心を少しずつほどいていきます。</p>
+
+        <p>ただし、一つだけ知っておいてほしいことがあります。</p>
+
+        <p>これらの言葉も行動も、<br>
+        あなたのオーラが整った状態で初めて本来の力を発揮します。</p>
+
+        <p>感情を流すオーラが欠けたままでは、<br>
+        言葉がうまく届かなかったり、<br>
+        タイミングを逃してしまうことがある。</p>
+
+        <p>まずはオーラを整えること。<br>
+        それが全ての土台です。</p>
+
+
+        <h2>🔮 運命の転機</h2>
+
+        <p>今年の好江様のオーラを視ると、<br>
+        太陽のような輝きと喜びの縁の流れが巡っています。</p>
+
+        <p>縁が動く星、豊かさの星、喜びの星。</p>
+
+        <p>これが重なるのは数年に一度のことです。</p>
+
+        <p>今年、好江様の存在感が最大限に輝く流れが来ています。</p>
+
+        <p>そして、あなたと彼の縁が最も動きやすい時期。<br>
+        それが<strong>11月</strong>です。</p>
+
+        <p>これから半年の流れを、詳しくお伝えします。</p>
+
+
+        <h2>🔮 2026年6月 ─ 入口の月</h2>
+
+        <p>縁の流れを前に動かす力が補われ始める時期です。</p>
+
+        <p>今月から青・黒を日常に取り入れる習慣を始めてください。</p>
+
+
+        <h2>🔮 2026年7月〜10月 ─ 準備の月</h2>
+
+        <p><strong>11月</strong>に向けて静かに整え続ける期間。</p>
+
+        <p>特に<strong>10月</strong>は好江様の包容力が最大化する月ですが、<br>
+        動くより内側を整えることを優先してください。</p>
+
+
+        <h2>🔮 2026年11月 ─ 最重要月</h2>
+
+        <p>これが最大のチャンスです。</p>
+
+        <p>この月、好江様に感情を流すオーラが初めて補われます。</p>
+
+        <p>今まで内側に止まっていた言葉や気持ちが、<br>
+        自然と外に流れ出す。</p>
+
+        <p>「なんであの時言えなかったんだろう」と思うくらい、<br>
+        自然体で気持ちを伝えられる状態になります。</p>
+
+        <p>同時に彼にも少し柔軟さが補われ、<br>
+        2人の間の縁の流れが最も活性化する月です。</p>
+
+        <p>この月にやるべきこと。</p>
+
+        <p>・青・黒を身につけて感情のオーラを整えた状態で過ごす<br>
+        ・彼への連絡は「軽く・温かく・プレッシャーなし」で届ける<br>
+        ・「2人だけのゆっくりした時間」を自然な形でそっと提案する</p>
+
+        <p>やってはいけないこと。</p>
+
+        <p>・将来や関係の確認を求める<br>
+        ・感情的になって重さを出す</p>
+
+        <p>好江様の大地の包容力が彼に届いているこの月に、<br>
+        焦りは最大の邪魔になります。</p>
+
+        <p>大切なこと。</p>
+
+        <p><strong>11月</strong>が、最大のチャンスです。</p>
+
+        <p>感情のオーラが欠けたままこの月を迎えると、<br>
+        せっかくの流れを素通りしてしまうことがある。</p>
+
+        <p>今から整え始めること。<br>
+        これがこの半年で最も大切なことです。</p>
+
+
+        <h2>🔮 今からできること</h2>
+
+        <p>感情を流すオーラを補うために、<br>
+        今日からできることをお伝えします。</p>
+
+        <p>・青・黒・紺色を身につける（服・アクセサリー・バッグなど）<br>
+        ・毎日コップ1杯の水を意識して飲む<br>
+        ・お風呂にゆっくり浸かる時間を作る<br>
+        ・水辺を歩く、海や川のそばに行く<br>
+        ・流れる水の音を聞く時間を作る</p>
+
+        <p>土と金のオーラを鎮めるためには、</p>
+
+        <p>・「どうせ難しい」という思考が出たら水を一口飲んでリセットすること<br>
+        ・緑色（植物・公園の木々）を日常に取り入れること<br>
+        ・感情が動いたら、分析より先に「感じる」時間を作ること</p>
+
+        <p>毎朝、こう心に言ってみてください。</p>
+
+        <div class="magic-word-box">
+            <p>「今日は感情を流していい」</p>
+        </div>
+
+        <p>溜まっていたもの、<br>
+        重くのしかかっているものが<br>
+        この言葉だけで流れていきます。</p>
+
+        <p>ただ、<br>
+        正直にお伝えしたいことがあります。</p>
+
+        <p>水のオーラが<strong>完全に</strong>欠けている場合、<br>
+        日常の調整だけでは補いきれない部分があります。</p>
+
+        <p>青を身につける、水を飲む。<br>
+        これらは「維持する力」にはなりますが、<br>
+        ゼロから補う力としてはどうしても限界がある。</p>
+
+        <p><strong>11月</strong>までに<strong>確実に</strong>整えたいなら、<br>
+        もう一つの方法があります。</p>
+
+
+        <h2>🔑 心を守るサポート</h2>
+
+        <p>ここまでお伝えしてきた通り、<br>
+        好江様のオーラには感情を流すオーラが<strong>完全に</strong>欠けています。</p>
+
+        <p>これが<br>
+        「伝えたいのに言葉が出てこない」<br>
+        「動きたいのに動けない」という<br>
+        状況の根っこにある原因であり、<br>
+        <strong>11月</strong>のチャンスを掴むために最も整えるべき部分です。</p>
+
+        <p>オーラが整うと、こう変わります。</p>
+
+        <p>・彼に<br>
+        「たまに2人でゆっくり話せたら」という言葉が、<br>
+        自然と口から出てくるようになる</p>
+
+        <p>・彼と会った時、<br>
+        重さのない笑顔と温かい言葉が自然に出てくる</p>
+
+        <p>・「どうせ難しい」という先読みが和らぎ、<br>
+        縁の流れに乗って動けるようになる</p>
+
+        <p>・今年巡っている喜びの縁の流れを、<br>
+        最大限に活かせる状態が整う</p>
+
+        <p>・好江様本来の大地のような包容力が、<br>
+        彼に「ここは安心だ」という安らぎとして届くようになる</p>
+
+        <p>日常の調整法に加えて、<br>
+        本格的にオーラを補うために、<br>
+        パワーストーンをお守りとして取り入れる方法があります。</p>
+
+        <p>好江様のオーラに合わせて、三つのプランをご用意しました。</p>
+
+        <div class="important-box">
+            <p><strong>松プラン</strong>：<strong>11月</strong>のチャンスを全力で活かしたい方向け<br>
+            アクアマリン＋ラピスラズリ＋グリーントルマリン<br>
+            （感情のオーラを本格的に補い、考えすぎを整える組み合わせ）</p>
+
+            <p>・水のオーラが整い、好江様の言葉と感情が自然に外に流れ出す<br>
+            ・彼に安心感として届く包容力が、最大限に輝く状態になる<br>
+            ・<strong>11月</strong>のタイミングを逃さず、縁を動かせる状態が整う</p>
+
+            <p><strong>竹プラン</strong>：まず感情のオーラを補いたい方向け<br>
+            アクアマリン＋ラピスラズリ</p>
+
+            <p>・言葉が出てくる、伝えやすくなる。縁の流れが動き始める</p>
+
+            <p><strong>梅プラン</strong>：まずは一歩踏み出したい方向け<br>
+            アクアマリン（1点）</p>
+
+            <p>・「動けない」という感覚が和らぎ、小さな一歩が踏み出せるようになる</p>
+
+            <p>多くの方が<strong>松プラン</strong>を選ばれています。</p>
+        </div>
+
+        <p><strong>11月</strong>に向けて今から整え始めることで、<br>
+        最も効果的なタイミングでオーラが整います。</p>
+
+        <p>もし興味がありましたら、<br>
+        「<strong>詳細希望</strong>」とだけ送っていただければ、<br>
+        好江様専用の石の組み合わせをお伝えしますね。</p>
+
+
+        <h2>最後に</h2>
+
+        <p>このまま待ち続けるか、動き始めるか。<br>
+        今、好江様はその岐路に立っています。</p>
+
+        <p>彼への想いは本物です。</p>
+
+        <p>介護をしながら、一人で抱えながら、<br>
+        それでも誰かに温もりを求めたいと願う。</p>
+
+        <p>その気持ちは、弱さではありません。</p>
+
+        <p>好江様が本来持っている、<br>
+        大地のような包容力と生命力の表れです。</p>
+
+        <p>感情のオーラが整った好江様が、<br>
+        <strong>11月</strong>に彼と自然に話せる場面が視えています。</p>
+
+        <p>重さのない笑顔で、</p>
+
+        <div class="magic-word-box">
+            <p>「たまには2人でゆっくり話せたらいいな」</p>
+        </div>
+
+        <p>その言葉が届いた時、<br>
+        縮こまっていた彼のオーラが、少しほどけ始める。</p>
+
+        <p>その未来が視えています。</p>
+
+        <p>いつでも、そばにいます。</p>
+
+        <div class="sign-box">
+            <p>心からの愛と光を込めて。<br>かな</p>
+        </div>
+
+    </div>
+
+    <script>
+        const chartOptions = {
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    max: 3,
+                    min: 0,
+                    ticks: {
+                        stepSize: 1,
+                        display: false
+                    },
+                    pointLabels: {
+                        font: { size: 14, family: 'Noto Serif JP' },
+                        color: '#2d2d2d'
+                    },
+                    grid: { color: 'rgba(201, 160, 93, 0.3)' },
+                    angleLines: { color: 'rgba(201, 160, 93, 0.3)' }
+                }
+            }
+        };
+
+        // 好江様の現状: 木1, 火1, 土2, 金2, 水0
+        new Chart(document.getElementById('auraChartYou'), {
+            type: 'radar',
+            data: {
+                labels: ['木', '火', '土', '金', '水'],
+                datasets: [{
+                    data: [1, 1, 2, 2, 0],
+                    backgroundColor: 'rgba(201, 160, 93, 0.3)',
+                    borderColor: '#c9a05d',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#c9a05d',
+                    pointBorderColor: '#fff',
+                    pointRadius: 5
+                }]
+            },
+            options: chartOptions
+        });
+
+        // 好江様の補った後: 水を補う（水2、隣接:金2,木1）
+        new Chart(document.getElementById('auraChartYouFixed'), {
+            type: 'radar',
+            data: {
+                labels: ['木', '火', '土', '金', '水'],
+                datasets: [
+                    {
+                        // 補う部分（緑）先に描画
+                        data: [1, 0, 0, 2, 2],
+                        backgroundColor: 'rgba(100, 180, 100, 0.4)',
+                        borderColor: '#5a9a5a',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#5a9a5a',
+                        pointBorderColor: '#fff',
+                        pointRadius: 6
+                    },
+                    {
+                        // 元のオーラ（ゴールド）後に描画
+                        data: [1, 1, 2, 2, 0],
+                        backgroundColor: 'rgba(201, 160, 93, 0.3)',
+                        borderColor: '#c9a05d',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#c9a05d',
+                        pointBorderColor: '#fff',
+                        pointRadius: 5
+                    }
+                ]
+            },
+            options: chartOptions
+        });
+
+        // 彼の現状: 木0, 火2, 土1, 金2, 水1
+        new Chart(document.getElementById('auraChartPartner'), {
+            type: 'radar',
+            data: {
+                labels: ['木', '火', '土', '金', '水'],
+                datasets: [{
+                    data: [0, 2, 1, 2, 1],
+                    backgroundColor: 'rgba(139, 111, 156, 0.3)',
+                    borderColor: '#8b6f9c',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#8b6f9c',
+                    pointBorderColor: '#fff',
+                    pointRadius: 5
+                }]
+            },
+            options: chartOptions
+        });
+
+        // 彼の補った後: 木を補う（木2、隣接:火2,水1）
+        new Chart(document.getElementById('auraChartPartnerFixed'), {
+            type: 'radar',
+            data: {
+                labels: ['木', '火', '土', '金', '水'],
+                datasets: [
+                    {
+                        // 補う部分（緑）先に描画
+                        data: [2, 2, 0, 0, 1],
+                        backgroundColor: 'rgba(100, 180, 100, 0.4)',
+                        borderColor: '#5a9a5a',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#5a9a5a',
+                        pointBorderColor: '#fff',
+                        pointRadius: 6
+                    },
+                    {
+                        // 元のオーラ（紫）後に描画
+                        data: [0, 2, 1, 2, 1],
+                        backgroundColor: 'rgba(139, 111, 156, 0.3)',
+                        borderColor: '#8b6f9c',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#8b6f9c',
+                        pointBorderColor: '#fff',
+                        pointRadius: 5
+                    }
+                ]
+            },
+            options: chartOptions
+        });
+    </script>
+
+</body>
+</html>

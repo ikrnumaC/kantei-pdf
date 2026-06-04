@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>綾乃様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../images/曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before {
+            background-image: url('../images/強い火.png');
+        }
+
+        .aura-wood::before {
+            background-image: url('../images/強い木.png');
+        }
+
+        .aura-earth::before {
+            background-image: url('../images/強い土.png');
+        }
+
+        .aura-metal::before {
+            background-image: url('../images/強い金.png');
+        }
+
+        .aura-water::before {
+            background-image: url('../images/強い水.png');
+        }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            text-align: center;
+            white-space: pre-line;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+        }
+
+        strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 75px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cover-page">
+        <div class="cover-recipient">綾乃様</div>
+        <div class="cover-title">専用鑑定書</div>
+        <div class="cover-subtitle">Premium Spiritual Reading</div>
+        <div class="cover-appraiser">鑑定師：かな</div>
+    </div>
+
+    <div class="container">
+        <h1>綾乃様の本鑑定書</h1>
+        <p class="subtitle">Premium Spiritual Reading</p>
+
+        <p>辻本綾乃様</p>
+
+        <p>この度は本鑑定にお進みいただき、<br>
+        心より感謝申し上げます。</p>
+
+        <p>「なんで急に距離を置かれてしまったんだろう」<br>
+        「このまま離れていくのかな」<br>
+        「他に好きな人ができたのかも」</p>
+
+        <p>その不安、ちゃんと届いています。</p>
+
+        <p>自分なりにケアしようとして、<br>
+        友達と過ごして、<br>
+        ゲームして、自然に触れてみた。</p>
+
+        <p>それでも翔吾様のことが頭から離れない。</p>
+
+        <p>何も知れないまま時間だけが過ぎていく苦しさ。</p>
+
+        <p>「考えて整理して、相手の事情を優先して、感情を押し込む」<br>
+        そのパターンまで、ご自身でちゃんと分かっている。</p>
+
+        <p>その誠実さと、<br>
+        一人で抱えてきた重さを、<br>
+        しっかり感じています。</p>
+
+        <p>まず、綾乃様が一番知りたいこと。<br>
+        はっきりお伝えします。</p>
+
+        <p>翔吾様に、<br>
+        他に好きな人はいません。</p>
+
+        <p>距離を置こうとしているのも、<br>
+        インスタを見られなくしたのも、<br>
+        あなたへの気持ちが冷めたからではない。</p>
+
+        <p>今の翔吾様は、<br>
+        自分自身の内側に、<strong>完全に</strong>向いています。</p>
+
+        <p>彼のオーラを視ると、<br>
+        「一度全部リセットして、自分を作り直している」段階にいます。</p>
+
+        <p>仕事、将来、<br>
+        自分という存在そのもの。</p>
+
+        <p>外の縁よりも、<br>
+        内側の再構築が今の彼の全て。</p>
+
+        <p>だから外に向かうエネルギーが出てこない。</p>
+
+        <p>あなたを無視したいわけでも、<br>
+        嫌いになったわけでもない。</p>
+
+        <p>今の翔吾様に、<br>
+        「外を向く余裕がない」のです。</p>
+
+        <p>この状態はずっとは続きません。<br>
+        今年の後半。</p>
+
+        <p>その時期に、彼の中で<br>
+        止まっていた感情が動き始めます。</p>
+
+        <p>なぜこうなったのか。<br>
+        その答えは、<br>
+        あなたと翔吾様のオーラの中に視えています。</p>
+
+
+        <h2>🔮 あなたのオーラに視えた真相</h2>
+
+        <div class="aura-section aura-fire">
+            <p>無料鑑定でもお伝えした通り、<br>
+            綾乃様のオーラは静かに揺れるろうそくの炎。</p>
+
+            <p>消えることなく、温かく、<br>
+            やさしく人を包み込む光です。</p>
+
+            <p>感性が鋭く、<br>
+            言葉や雰囲気で自然に人の心を動かせる。<br>
+            深く感じ取る力がある。</p>
+
+            <p>それがあなたの<strong>本質</strong>です。</p>
+        </div>
+
+        <p>そして、<br>
+        あなたのオーラをさらに深く視ると、<br>
+        大切なことが視えてきました。</p>
+
+        <p>あなたのオーラには、<br>
+        考えるオーラがやや強めに出ています。</p>
+
+        <p>これが今の状況の根っこにある原因です。</p>
+
+        <p>考えるオーラが強すぎることで、<br>
+        こんなことが起きています。</p>
+
+        <p>・感情が動いた瞬間に<br>
+        「どうせ難しいかも」と先に結論を出してしまう</p>
+
+        <p>・伝えたい言葉を頭の中で整理しすぎて、出す前に押し込んでしまう</p>
+
+        <p>・「なんか言えない」「自然に動けない」という状態が続く</p>
+
+        <p>つまり、2人の縁が動かないのは、<br>
+        あなたの気持ちが足りないからでも、<br>
+        努力が足りないからでもない。</p>
+
+        <p>考えすぎのオーラが<br>
+        強くなりすぎているから、</p>
+
+        <p>ろうそくの温かさが<br>
+        相手に届く前に止まってしまっているのです。</p>
+
+        <p>逆に言えば、<br>
+        このオーラさえ整えれば、<br>
+        あなたの本来の温かさが、<br>
+        そのまま翔吾様に届くようになります。</p>
+
+
+        <h2>🔮 翔吾様のオーラに視えたこと</h2>
+
+        <div class="aura-section aura-metal">
+            <p>翔吾様のオーラを視ると、<br>
+            鋭く光る刀の銀色が視えます。</p>
+
+            <p>静かで、<br>
+            研ぎ澄まされていて、<br>
+            自分の世界を持つ人。</p>
+
+            <p>本来は穏やかで、<br>
+            人を楽しませる優しさもある。</p>
+        </div>
+
+        <p>でも今の翔吾様のオーラには、<br>
+        情熱や感情を外に出す力が<strong>完全に</strong>欠けています。</p>
+
+        <p>「<strong>好きだ</strong>」「<strong>会いたい</strong>」という<br>
+        言葉がなかなか出てこないのは、</p>
+
+        <p>内側でどんなに想っていても、<br>
+        それを外に向かわせる回路が<br>
+        そもそも弱いから。</p>
+
+        <p>さらに今の翔吾様は、<br>
+        自分自身をリセットして<br>
+        再構築する時期に入っています。</p>
+
+        <p>仕事に集中して内側を固めている。<br>
+        その内省の深さが、<br>
+        外への無関心に見えているだけです。</p>
+
+        <p>あなたのろうそくの温かさは、<br>
+        翔吾様の銀色の刀を<br>
+        溶かしてしまうことがある。</p>
+
+        <p>感情的に近づくほど彼が引いてしまう構図、<br>
+        思い当たることがあるかもしれません。</p>
+
+        <p>だからこそ、<br>
+        あなたが「整った状態」で<br>
+        動くことが大切なのです。</p>
+
+        <p>あなたのオーラが整ったとき、<br>
+        翔吾様の目に映るあなたは<br>
+        今とは全く違う印象に変わっていきます。</p>
+
+
+        <h2>🔮 翔吾様への道筋</h2>
+
+        <p>翔吾様は、重さを感じた瞬間に<br>
+        すっと内側へ閉じてしまう人です。</p>
+
+        <p>だから、あなたが意識してほしいのは<br>
+        「想いの重さを出さない」こと。</p>
+
+        <p>感情をぶつけたり、<br>
+        結論を急いだりするのではなく、<br>
+        まず「一緒にいると楽だな」と感じてもらうことが出発点です。</p>
+
+        <p>翔吾様にとって心地よい空間は<br>
+        「プレッシャーのない場所」。</p>
+
+        <p>あなたのろうそくのオーラが<br>
+        ゆらゆらと温かく灯っているだけで、<br>
+        それは自然と伝わっていきます。</p>
+
+        <p>言葉よりも、雰囲気。<br>
+        追うよりも、在る。</p>
+
+        <p>そのスタンスが、翔吾様の心を開く<br>
+        最も確実な道です。</p>
+
+        <p>翔吾様の心が動くのは<br>
+        「安心できる人だ」と感じた瞬間です。</p>
+
+        <p>焦らず、ゆっくり、<br>
+        その場所にい続けてください。</p>
+
+
+        <h2>🔮 会った時の接し方で大切なこと</h2>
+
+        <p>明るく、軽く、笑顔でいてください。</p>
+
+        <p>翔吾様は暗さ・重さに最も弱いタイプです。<br>
+        ろうそくの温かさが自然に伝わる状態が最良。</p>
+
+        <p>自分の近況を少し楽しそうに話すこと。</p>
+
+        <p>「元気そうな綾乃様」を見せることで、<br>
+        翔吾様の中の「<strong>気になる</strong>」が動き始めます。</p>
+
+        <p>そして、翔吾様が話し始めたら、たっぷり聞くこと。</p>
+
+        <p>翔吾様は自分の話を静かに受け取ってもらえる空間に、<br>
+        少しずつ心を開いていきます。</p>
+
+
+        <h2>🔮 絶対に言ってはいけない言葉</h2>
+
+        <p>「なんで連絡くれなかったの？」</p>
+
+        <p>これは<strong>絶対に</strong>禁止です。</p>
+
+        <p>追い詰められると消えてしまうのが翔吾様の性質。<br>
+        この瞬間に、彼のオーラが<strong>完全に</strong>閉じます。</p>
+
+        <p>「好きな人できたの？」</p>
+
+        <p>翔吾様の内側に直接刺さる言葉です。<br>
+        今の状態では答えを返せません。</p>
+
+        <p>「ちゃんとしてほしい」</p>
+
+        <p>自分のペースを何より大切にする翔吾様には、<br>
+        この言葉で<strong>完全に</strong>閉じてしまいます。</p>
+
+        <p>代わりに、こう言ってください。</p>
+
+        <p>「仕事がんばってるね」</p>
+
+        <p>翔吾様が今最も大切にしている仕事を認める言葉。<br>
+        これが一番、彼の心に響きます。</p>
+
+        <p>「あなたのペースでいい」</p>
+
+        <p>追わない姿勢を見せる言葉。<br>
+        翔吾様の「追われると引く」性質に、最も効きます。</p>
+
+        <p>「また話せてよかった」</p>
+
+        <p>重さがなく、でも気持ちが自然に届く言葉です。</p>
+
+        <p>ただし、一つだけ知っておいてほしいことがあります。</p>
+
+        <p>これらの言葉も行動も、<br>
+        あなたのオーラが整った状態で初めて本来の力を発揮します。</p>
+
+        <p>今のまま考えすぎのオーラが強い状態で動くと、<br>
+        言葉が上滑りしてしまったり、<br>
+        タイミングを逃してしまうことがある。</p>
+
+        <p>まずはオーラを整えること。<br>
+        それが全ての土台になります。</p>
+
+
+        <h2>🔮 運命の転機</h2>
+
+        <p>今年の綾乃様には、<br>
+        情熱と表現力のオーラが二重に補われています。</p>
+
+        <p>「考えすぎて動けない」から「自然に動ける」状態に<br>
+        変わっていく一年。</p>
+
+        <p>これは数年に一度の大きな流れです。</p>
+
+        <p>そして、あなたと翔吾様の<strong>運命</strong>が最も近づく時期。<br>
+        それが<strong>8月</strong>です。</p>
+
+        <p>この月、あなたに情熱と表現力のオーラが最高潮に巡ります。</p>
+
+        <p>同時に、情熱のオーラが<strong>完全に</strong>欠けていた翔吾様にも、<br>
+        感情が少しずつ補われ始める。</p>
+
+        <p>二人のエネルギーが初めて同じ方向を向く月です。</p>
+
+        <p>これから半年の流れを、詳しくお伝えします。</p>
+
+
+        <h2>🔮 2026年6月・7月 ─ 準備の月</h2>
+
+        <p>今は動かず、自分を整える時期です。</p>
+
+        <p>赤・オレンジを日常に取り入れながら、<br>
+        <strong>8月</strong>に向けてオーラを育てていく期間と思ってください。</p>
+
+        <p>「どうせうまくいかないかも」という思考が出たら、<br>
+        一旦止めて、感じる時間を先に作ること。</p>
+
+
+        <h2>🔮 2026年8月 ─ 最重要月</h2>
+
+        <p>これが最大のチャンスです。</p>
+
+        <p>この月、あなたには情熱と表現力のオーラが最高潮に巡り、<br>
+        翔吾様（情熱のオーラが欠けていた彼）にも、<br>
+        感情が少し外に向き始める。</p>
+
+        <p>二人のエネルギーが初めて同じ方向を向く月です。</p>
+
+        <p>この月に起こること。</p>
+
+        <p>翔吾様から何らかの<br>
+        リアクションがあります。<br>
+        または、綾乃様が自然体で動ける状態になり、<br>
+        良いタイミングが訪れます。</p>
+
+        <p>この月にやるべきこと。</p>
+
+        <p>・赤・オレンジのアイテムを身につけてオーラを整えた状態で過ごす<br>
+        ・「考えすぎない」を意識して、感じたままシンプルに動く<br>
+        ・翔吾様への連絡は「軽く・短く・重さなし」で届ける</p>
+
+        <p>やってはいけないこと。</p>
+
+        <p>・感情的・重い言葉で押し込む（逆効果になります）<br>
+        ・「<strong>今しかない</strong>」と焦って急く</p>
+
+
+        <h2>🔮 2026年9月 ─ 重要月</h2>
+
+        <p>引き続き情熱のオーラが流れます。</p>
+
+        <p><strong>8月</strong>に動き出した縁に深まりが生まれやすい時期。</p>
+
+        <p>自分の誕生月（10月）を前に、<br>
+        「<strong>私でいい</strong>」と自分を肯定する時間を少し作ってみてください。</p>
+
+        <p>大切なこと。</p>
+
+        <p><strong>8月</strong>が、最大のチャンスです。</p>
+
+        <p>翔吾様との<strong>運命</strong>が最も近づくこの瞬間を逃さないために、<br>
+        今からオーラを整えた状態で迎えること。</p>
+
+        <p>考えすぎのオーラが強いまま<strong>8月</strong>を迎えると、<br>
+        せっかくの<strong>転機</strong>を素通りしてしまう可能性があります。</p>
+
+        <p><strong>8月</strong>までにオーラを整えておくこと。<br>
+        これがこの半年で最も大切なことです。</p>
+
+
+        <h2>🔮 今からできること</h2>
+
+        <p>情熱と表現力のオーラを補うために、<br>
+        今日からできることをお伝えします。</p>
+
+        <p>・赤・オレンジ色を身につける（服・アクセサリー・スマホケースなど）<br>
+        ・毎朝5〜10分、日光を意識して浴びる<br>
+        ・夜はキャンドルを灯して過ごす<br>
+        ・温かいものを飲む・食べることを日課にする</p>
+
+        <p>考えすぎを鎮めるためには、</p>
+
+        <p>・感情が動いた瞬間に、分析より先に「感じる」時間を作ること<br>
+        ・完璧なタイミングや完璧な言葉を待つのをやめること</p>
+
+        <p>毎朝、こう心に言ってみてください。</p>
+
+        <div class="magic-word-box">
+            <p>「今日は自分の温かさを信じて動いていい」</p>
+        </div>
+
+        <p>正直にお伝えしたいことがあります。</p>
+
+        <p>ここまでお伝えした調整法で、<br>
+        少しずつオーラは変わり始めます。</p>
+
+        <p>でも、情熱のオーラが弱くなっている部分を<br>
+        日常の工夫だけで<strong>確実に</strong>補おうとすると、<br>
+        どうしても時間がかかります。</p>
+
+        <p><strong>8月</strong>までにしっかり整えたいなら、<br>
+        もう一つの方法があります。</p>
+
+
+        <h2>🔑 心を守るサポート</h2>
+
+        <p>ここまでお伝えしてきた通り、<br>
+        綾乃様のオーラには情熱・表現力のオーラが不足しており、<br>
+        考えすぎのオーラがやや強い状態です。</p>
+
+        <p>これが「伝えたいのに動けない」「言葉が届かない」という<br>
+        状況の根っこにある原因であり、<br>
+        <strong>8月</strong>のチャンスを掴むために最も整えるべき部分です。</p>
+
+        <p>オーラが整うと、こう変わります。</p>
+
+        <p>・考えすぎていた頭が自然と静まり、<br>
+        翔吾様に笑顔で話しかけられるようになる</p>
+
+        <p>・重さのない一言が、<br>
+        するりと口から出てくるようになる</p>
+
+        <p>・<strong>8月</strong>に翔吾様から何か進展があった時、<br>
+        焦らず自然体でいられる</p>
+
+        <p>・「どうせ難しいかも」という先読みが和らぎ、<br>
+        ろうそくの温かさがそのまま翔吾様に届くようになる</p>
+
+        <p>・翔吾様の目に映るあなたが、<br>
+        今とは全く違う印象に変わっていく</p>
+
+        <p>日常の調整法に加えて、<br>
+        本格的にオーラを補うために、<br>
+        パワーストーンをお守りとして取り入れる方法があります。</p>
+
+        <p>綾乃様のオーラに合わせて、三つのプランをご用意しました。</p>
+
+        <div class="important-box">
+            <p><strong>松プラン</strong>：<strong>8月</strong>のチャンスを全力で活かしたい方向け<br>
+            ガーネット＋カーネリアン＋グリーントルマリン<br>
+            （情熱のオーラを本格的に補い、考えすぎを整える組み合わせ）</p>
+
+            <p>・ろうそくの本来の輝きが戻り、<br>
+            自然体で翔吾様に接することができるようになる<br>
+            ・「<strong>久しぶり</strong>」の一言を、迷わず送れるようになる<br>
+            ・<strong>8月</strong>のタイミングを最大限に活かせるオーラの状態が整う</p>
+
+            <p><strong>竹プラン</strong>：まず情熱のオーラを補いたい方向け<br>
+            ガーネット＋カーネリアン</p>
+
+            <p>・表現力・前向きさが補われ、動ける自分に変わり始める</p>
+
+            <p><strong>梅プラン</strong>：まずは一歩踏み出したい方向け<br>
+            カーネリアン（1点）</p>
+
+            <p>・行動への不安が和らぎ、前向きさが少しずつ戻ってくる</p>
+
+            <p>多くの方が<strong>松プラン</strong>を選ばれています。</p>
+        </div>
+
+        <p><strong>8月</strong>に向けて今から整え始めることで、<br>
+        最も効果的なタイミングでオーラが整います。</p>
+
+        <p>もし興味がありましたら、<br>
+        「<strong>詳細希望</strong>」とだけ送っていただければ、<br>
+        綾乃様専用の石の組み合わせをお伝えしますね。</p>
+
+
+        <h2>最後に</h2>
+
+        <p>変えるか、このまま待ち続けるか。<br>
+        今、綾乃様はその岐路に立っています。</p>
+
+        <p>翔吾様への想いは本物です。</p>
+
+        <p>「曖昧にしたくない」「ちゃんとした関係でいたい」。<br>
+        その誠実さがあるから、こんなにも苦しい。</p>
+
+        <p>でもその誠実さこそが、二人の縁を本物にする力です。</p>
+
+        <p>オーラが整った綾乃様が、<br>
+        <strong>8月</strong>に翔吾様と自然に話せる場面が視えています。</p>
+
+        <p>重さのない笑顔で、<br>
+        話しかけられる。</p>
+
+        <p>その言葉が届いた時、<br>
+        翔吾様の中で止まっていたものが、少し動き始める。</p>
+
+        <p>その未来が視えています。</p>
+
+        <p>いつでも、そばにいます。</p>
+
+        <div class="sign-box">
+            <p>心からの愛と光を込めて。<br>かな</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
