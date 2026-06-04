@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ともこ様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        /* 表紙のスタイル */
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">縁の流れを変える年へ</h2>
+            <p class="cover-name">ともこ様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 冒頭 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">ともこ様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂が、<br>本気で変わろうとしている。</p>
+            <p style="margin-bottom: 90px;">その強い意志が、<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先、<br>あなたが本当に知るべきことを、<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2>【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が、<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px;">あなたと彼が、<br>穏やかな場所で<br>同じ方向を向いている姿。</p>
+            <p style="margin-bottom: 90px;">「やっと、ここまで来た」と<br>感じているような、<br>静かで温かい時間。</p>
+            <p style="margin-bottom: 90px;">その景色が、<br>強く感じられます。</p>
+            <p style="margin-bottom: 90px;">ただし──</p>
+            <p style="margin-bottom: 90px;">そこに至るまでに、<br>越えなければならないものがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">今年2026年は、<br>あなたにとって<br>「流れを変える年」です。</p>
+            <p style="margin-bottom: 90px;">今年中に何かが動き始めなければ、<br>彼の状況は少しずつ<br>別の方向へ固まっていきます。</p>
+            <p style="margin-bottom: 90px;">でも大丈夫です。<br>その流れの変え方を、<br>あなたを守る神様が、<br>ちゃんと視せてくれています。</p>
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは、<br><span style="color: #ffd966;">大己貴命（おおなむちのみこと）</span>。</p>
+            <p style="margin-bottom: 90px;">多くの困難を乗り越えながら<br>この国の縁と土台を作り上げた神様です。</p>
+            <p style="margin-bottom: 90px;">どんな人も受け入れ、<br>包み込み、<br>離れた縁でも再び引き寄せる。</p>
+            <p style="margin-bottom: 0;">「縁を育て、守り続ける神様」として、<br>今も全国の神社に祀られています。</p>
+        </div>
+
+        <!-- あなたという人について -->
+        <h2>【あなたという人について】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">深く霊視してみると、<br>あなたの内側に<br>どっしりとした大地のような安定感を感じます。</p>
+            <p style="margin-bottom: 90px;">周りにいるだけで人が安心する。<br>誰かのそばで静かに支える。</p>
+            <p style="margin-bottom: 90px;">そういう力を、<br>あなたは本来持っています。</p>
+            <p style="margin-bottom: 90px;">だから周りからは、<br>「そばにいてくれると落ち着く」<br>と感じられてきたはずです。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>表の安定感とは裏腹に、<br>あなたの内側は<br>人一倍、深く燃えています。</p>
+            <p style="margin-bottom: 90px;">普通の縁では<br>どこか物足りない感覚。</p>
+            <p style="margin-bottom: 90px;">「この人」と思ったら、<br>深く、深く関わっていく。</p>
+            <p style="margin-bottom: 90px;">その引力を、<br>自分でも断ち切れない。</p>
+            <p style="margin-bottom: 90px;">それはあなたの弱さではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの内側にある<br>強い生命力と、<br>深く愛する力の表れです。</p>
+            <p style="margin-bottom: 90px;">「安定したい自分」と<br>「この縁を手放せない自分」が<br>ずっとぶつかってきた。</p>
+            <p style="margin-bottom: 90px;">そのぶつかりの深さが、<br>あなたがどれだけ本気かを<br>物語っています。</p>
+            <p style="margin-bottom: 90px;">体のことについても触れておきます。</p>
+            <p style="margin-bottom: 90px;">今のあなたは、<br>心と体が深くつながっている状態にあります。</p>
+            <p style="margin-bottom: 90px;">精神的な消耗が<br>そのまま体に出やすい。</p>
+            <p style="margin-bottom: 90px;">「不安なとき、体も重くなる」<br>「安心できると、体も楽になる」</p>
+            <p style="margin-bottom: 90px;">そういうことが、<br>これまでも繰り返されてきたのではないでしょうか。</p>
+            <p style="margin-bottom: 90px;">これは体が弱いのではなく、<br>あなたが感受性の深い人だから起きることです。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">心が整うとき、<br>体も一緒に整っていきます。</p>
+        </div>
+
+        <!-- 彼の本音と、今の気持ち -->
+        <h2 class="emoji-header">⛩️彼の本音と、今の気持ち</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">彼の内側について、<br>正直にお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">彼の中で、<br>あなたへの気持ちは本物です。</p>
+            <p style="margin-bottom: 90px;">「本物でないなら、こんなに続かない」<br>そう感じるほどの縁が、<br>二人の間に視えています。</p>
+            <p style="margin-bottom: 90px;">ただ──</p>
+            <p style="margin-bottom: 90px;">彼は、<br>動けない構造の中にいます。</p>
+            <p style="margin-bottom: 90px;">それは、気持ちが薄いからではありません。</p>
+            <p style="margin-bottom: 90px;">彼の内側には、<br>家族への責任感と、<br>「今の安定を壊すことへの恐れ」が<br>深く根を張っています。</p>
+            <p style="margin-bottom: 90px;">その重さが、<br>あなたへの気持ちと<br>引っ張り合っている状態です。</p>
+            <p style="margin-bottom: 90px;">「嫌いになったわけではないのに、<br>なぜか動かない」</p>
+            <p style="margin-bottom: 90px;">それは正しい感覚です。</p>
+            <p style="margin-bottom: 90px;">彼は今、<br>外側では穏やかに見えながら、<br>内側では揺れています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">今年2026年は、<br>彼の内側が最も揺れる年です。</p>
+            <p style="margin-bottom: 90px;">縁を大切にしたい気持ちと、<br>守らなければならないものの重さが、<br>最も大きくぶつかっている。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">この揺れの中で、<br>あなたの「揺れない存在感」が<br>彼の中で光るかどうか。<br>それが、今年の分岐点になります。</p>
+        </div>
+
+        <!-- 関係が動く時期 -->
+        <h2 class="emoji-header">⛩️関係が動く時期</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">停滞している縁が動き始めるのは、<br>いつか。</p>
+            <p style="margin-bottom: 90px;">これを、<br>正直にお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">今年2026年の秋──<br>特に9月から10月が、<br>最も縁が動きやすい時期です。</p>
+            <p style="margin-bottom: 90px;">この時期、<br>彼の内側の揺れが<br>最高潮に達します。</p>
+            <p style="margin-bottom: 90px;">縁を引き寄せる力が高まり、<br>「何かを決断したい」という<br>衝動が彼に訪れます。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">大己貴命</span>の力が<br>最も流れ込んでくる月です。</p>
+            <p style="margin-bottom: 90px;">ただし──</p>
+            <p style="margin-bottom: 90px;">あなたが今と同じように<br>受け身のままでいると、<br>その波はあなたの前を通り過ぎてしまいます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">動くのは、あなたからです。</p>
+            <p style="margin-bottom: 90px;">彼を追い詰めるのではなく、<br>責めるのでもなく──</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私はここにいる」という<br>静かで揺れない存在感を<br>見せること。</p>
+            <p style="margin-bottom: 90px;">それが、<br>今のあなたに最も有効な一手です。</p>
+            <p style="margin-bottom: 90px;">大地のような安定感。</p>
+            <p style="margin-bottom: 90px;">それがあなたの本来の魅力であり、<br>彼が最も引き寄せられるものです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">焦らず、揺れず、<br>ただそこにいること。</p>
+            <p style="margin-bottom: 90px;">そして、<br>言葉より行動で見せること。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私には私の人生がある」という<br>自立した姿が、<br>今の彼には最も刺さります。</p>
+            <p style="margin-bottom: 90px;">また、<br>2026年の秋以降も、<br>彼の状況が簡単に動くとは限りません。</p>
+            <p style="margin-bottom: 90px;">しかし──</p>
+            <p style="margin-bottom: 90px;">今年中に何らかの変化の兆しが起きれば、<br>2027年以降の流れは大きく変わっていきます。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">その兆しを、今年の秋に作ること。<br>これが、二人の縁が次のステージへ向かうための<br>最も重要な一手です。</p>
+        </div>
+
+        <!-- 体と心の流れ -->
+        <h2 class="emoji-header">⛩️体と心の流れ</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">今のあなたの体について、<br>視えていることをお伝えします。</p>
+            <p style="margin-bottom: 90px;">今のあなたの体は、<br>心の状態と深くつながっています。</p>
+            <p style="margin-bottom: 90px;">精神的なプレッシャーが続くと、<br>体にも信号が出やすい。</p>
+            <p style="margin-bottom: 90px;">経過観察の状況も、<br>そういう体の性質から来ている部分があります。</p>
+            <p style="margin-bottom: 90px;">これは体が壊れているのではなく、<br>「心のサインを体で受け取っている」状態です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたの体には、<br>本来、強い回復力があります。</p>
+            <p style="margin-bottom: 90px;">不安が続くとき、<br>体も重くなる。</p>
+            <p style="margin-bottom: 90px;">でも──</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">心が安定してくると、<br>体も一緒に整っていきます。</p>
+            <p style="margin-bottom: 90px;">これはこれまでも、<br>繰り返し経験してきたことではないでしょうか。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">今年2026年は、<br>「自分自身と向き合う年」です。</p>
+            <p style="margin-bottom: 90px;">「彼がどうするか」ではなく、<br>「自分はどうしたいか」を<br>問い直す年。</p>
+            <p style="margin-bottom: 90px;">この問いに正直に向き合うことで、<br>精神的な消耗が少しずつ解けていきます。</p>
+            <p style="margin-bottom: 90px;">精神的な平和が生まれると、<br>体の状態も連動して好転していく。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">大己貴命</span>は、<br>あなたの体と心の両方を<br>守っています。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">一人で抱え込まなくて大丈夫です。</p>
+        </div>
+
+        <!-- 今後の流れ -->
+        <h2>【今後の流れ】</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年7月：準備の月</p>
+            <p style="margin-bottom: 90px;">内側で「何かが変わりそうだ」という<br>感覚が生まれてくる時期です。</p>
+            <p style="margin-bottom: 90px;">焦らず、<br>ただ自分の気持ちを<br>整えていく月です。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">「自分はどうしたいか」を<br>静かに確認する時間を取ってください。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年9月：縁が動き始める月</p>
+            <p style="margin-bottom: 90px;">この月から、<br>縁の空気が変わり始めます。</p>
+            <p style="margin-bottom: 90px;">何かのきっかけで、<br>彼との間に<br>「いつもと違う空気」が生まれる可能性があります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたが「揺れない存在感」を<br>最も見せるべき時期です。</p>
+            <p style="margin-bottom: 0;">言葉より姿勢で、<br>「私はここにいる」と伝えてください。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年10月〜11月：守護神の力が最も流れ込む月</p>
+            <p style="margin-bottom: 90px;">この時期、<br><span style="color: #ffd966;">大己貴命</span>の力が<br>特に強く流れ込んできます。</p>
+            <p style="margin-bottom: 90px;">縁を引き寄せる力が<br>最高潮に高まる月です。</p>
+            <p style="margin-bottom: 90px;">この月に、<br>何らかの形で<br>彼との間に変化が生まれる可能性が<br>最も濃くなります。</p>
+            <p style="margin-bottom: 0;">あなた自身も、<br>この時期は体が整い始めを<br>感じられるかもしれません。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年2月：次の章が始まる月</p>
+            <p style="margin-bottom: 90px;">2026年に動き始めた流れが、<br>具体的な形になってくる時期です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「あの時動いて正解だった」と<br>感じられる瞬間が来ます。</p>
+            <p style="margin-bottom: 90px;">今年2026年は、<br>あなたにとって<br>「縁の流れを変える年」です。</p>
+            <p style="margin-bottom: 90px;">来年2027年は、<br>その変化が<br>少しずつ形になっていく年。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">今年中に種を蒔くことが、<br>すべての出発点になります。</p>
+        </div>
+
+        <!-- 守護を受け取る方法 -->
+        <h2 class="emoji-header">⛩️守護を受け取る方法</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">そして、安心してください。</p>
+            <p style="margin-bottom: 90px;">あなたのことを深く霊視した際、<br>特別な守護の力を<br>あなたの奥底に置いてきました。</p>
+            <p style="margin-bottom: 90px;">それは<span style="color: #ffd966;">大己貴命</span>の和魂の力。</p>
+            <p style="margin-bottom: 90px;">この力は、<br>乱れた感情を静め、<br>本来のあなたの安定感と魅力を引き出し、<br>必要なご縁を静かに引き寄せる流れを<br>整えていきます。</p>
+            <p style="margin-bottom: 90px;">今この文を読んでいる間にも、<br>胸のあたりが少し温かくなる、<br>肩が軽くなる、<br>ふっと安心する感覚があれば、</p>
+            <p style="margin-bottom: 90px;">すでに守護の力が届き始めている証です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">これは何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">ただ受け取るだけで大丈夫です。</p>
+            <p style="margin-bottom: 90px;">もし余裕がある時だけ、<br>以下のことを試してみてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">【守護神の神社へ行く】</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">大己貴命</span>が祀られている神社に<br>足を運んでみてください。</p>
+            <p style="margin-bottom: 90px;">お近くでは、<br>大己貴神社（新潟県新潟市西蒲区間瀬）、<br>または大国主神社（新潟県新発田市御幸町）が<br>ご縁のある神社です。</p>
+            <p style="margin-bottom: 90px;">参拝の際は、<br>心の中でこう唱えてください。</p>
+            <p style="margin-bottom: 90px;">「祓え給い、清め給え、神ながら守り給い、幸え給え」<br>（はらえたまい、きよめたまえ、かむながらまもりたまい、さきわえたまえ）</p>
+            <p style="margin-bottom: 90px;">そして、願いを叶えてもらうのではなく、<br>「私は◯◯をします。どうか見守っていてください」<br>という形で伝えてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その姿勢が、<br>守護神との縁をより深くします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">【朝、空を見上げる】</p>
+            <p style="margin-bottom: 90px;">朝、空を見上げて深呼吸を一度。</p>
+            <p style="margin-bottom: 0;">それだけで守護の巡りは<br>さらに深くなります。</p>
+        </div>
+
+        <!-- パワーストーン -->
+        <h2 class="emoji-header">⛩️あなたを支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">あなたには守護神のご縁をお伝えし、<br>その力をあなたの奥底に置いてきました。</p>
+            <p style="margin-bottom: 90px;">また、守護神と縁のある神社と、<br>参拝の際に力を取り入れる方法も<br>お伝えしました。</p>
+            <p style="margin-bottom: 90px;">基本的には、これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ、守護の力は何もしなければ、<br>少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">なかなか時間が取れない、<br>神社が遠くて頻繁には行けない、<br>という方もいらっしゃると思います。</p>
+            <p style="margin-bottom: 90px;">そのような方に、<br>ぜひお勧めしたいのが<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px;">守護神の力を石に宿し、<br>常に身近に持ち歩くことができるようになります。</p>
+            <p style="margin-bottom: 90px;">ただ、どんな石でもよいわけではありません。</p>
+            <p style="margin-bottom: 90px;">あなたのエネルギーと、<br>守護神が共鳴しやすい石で<br>お作りする必要があります。</p>
+            <p style="margin-bottom: 90px;">あなたのエネルギーと<br><span style="color: #ffd966;">大己貴命</span>が共鳴しやすい石を、<br>3つお伝えします。</p>
+        </div>
+
+        <ul style="margin-bottom: 90px;">
+            <li><span style="color: #ffd966; font-weight: bold;">1. ローズクォーツ</span><br>愛と縁を引き寄せる石。<br>「ここにいる」というあなたの静かな存在感と魅力を外に向けて広げてくれます。<br><span style="color: #ffd966;">大己貴命</span>の縁結びの力と最も深く共鳴する石です。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">2. ムーンストーン</span><br>感情を安定させ、女性本来の力を引き出す石。<br>揺れやすい内側を静め、本来のどっしりとした安定感を取り戻させてくれます。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">3. アメジスト</span><br>精神的な守護と直感の石。<br>「正しい選択」への直感を高め、心の消耗を和らげてくれます。<br>体と心が連動しやすいあなたに特に合っている石です。</li>
+        </ul>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">この中から、あなたのエネルギーと<br>最もバランスが取れる組み合わせを<br>私が選び、1つずつ手作りで仕上げます。</p>
+            <p style="margin-bottom: 0;">ご希望の方は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <h2>【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">ともこ様、</p>
+            <p style="margin-bottom: 90px;">あなたの未来には、<br>彼と穏やかな場所で<br>同じ方向を向いている姿へと続く道が<br>視えています。</p>
+            <p style="margin-bottom: 90px;">「やっと、ここまで来た」と<br>感じるような、<br>静かで温かい時間。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その道は、<br>今年2026年の秋に<br>最初の扉が開きます。</p>
+            <p style="margin-bottom: 90px;">今は、<br>「このままでいいのか」と<br>不安の中にあるかもしれない。</p>
+            <p style="margin-bottom: 90px;">体のこともあって、<br>一人でいくつもの重さを<br>抱えているかもしれない。</p>
+            <p style="margin-bottom: 90px;">でも──</p>
+            <p style="margin-bottom: 90px;">それはあなたの魂が、<br>「もう変わりたい」と<br>叫んでいる声です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">正しい感覚です。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>深く愛することができる人。</p>
+            <p style="margin-bottom: 90px;">誰かのそばで安定した土台になれる人。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その力は、<br>本物です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">焦らず、揺れず、<br>ただそこにいてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私はここにいる」という<br>静かな存在感が、<br>今のあなたの最大の力です。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">大己貴命</span>が、<br>あなたを守っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">自分の気持ちを大切にしていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">守られている。</p>
+            <p style="margin-bottom: 90px;">その事実を、<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より、<br>遠隔守護祈祷を行い、<br>あなたの幸せを願います。</p>
+            <p style="margin-bottom: 30px;">あなたの未来に、<br>愛と光が満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>
