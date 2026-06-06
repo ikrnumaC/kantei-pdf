@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>しーちゃん様　守護神鑑定書</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+    background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+    color: #e8e8f0;
+    line-height: 1.8;
+    padding: 20px;
+    min-height: 100vh;
+    font-size: 17px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(15, 15, 46, 0.7);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                inset 0 0 60px rgba(100, 100, 200, 0.05);
+    border: 1px solid rgba(200, 200, 255, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #a8b8ff;
+    font-size: 2em;
+    margin-bottom: 30px;
+    text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+    letter-spacing: 0.1em;
+}
+
+h2 {
+    color: #c8d0ff;
+    font-size: 1.5em;
+    margin: 40px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+    letter-spacing: 0.05em;
+}
+
+.oracle-message {
+    background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+    border: 2px solid rgba(168, 184, 255, 0.3);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 30px 0;
+    box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+    position: relative;
+}
+
+.oracle-message::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    background: #1a1a3e;
+    padding: 0 15px;
+}
+
+.guardian-image {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    margin: 30px auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+}
+
+.oracle-message p {
+    margin: 15px 0;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.section {
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(30, 30, 70, 0.3);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.emoji-header {
+    font-size: 1.8em;
+    margin: 40px 0 20px;
+    color: #c8d0ff;
+    text-align: left;
+}
+
+.guardian {
+    text-align: center;
+    font-size: 1.3em;
+    color: #a8b8ff;
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(168, 184, 255, 0.1);
+    border-radius: 10px;
+    text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+}
+
+ul {
+    list-style: none;
+    margin: 20px 0;
+}
+
+ul li {
+    margin: 10px 0;
+    font-weight: bold;
+    color: #ffd966;
+    text-shadow: 0 0 10px rgba(255, 217, 102, 0.3);
+}
+
+.cta {
+    background: rgba(30, 30, 70, 0.5);
+    border: 1px solid rgba(168, 184, 255, 0.2);
+    border-radius: 15px;
+    padding: 40px 25px;
+    margin: 40px 0;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+}
+
+.cta h2 {
+    border: none;
+    margin: 20px 0;
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #4a5a9a, #6a7aca);
+    color: white;
+    text-decoration: none;
+    padding: 20px 50px;
+    border-radius: 35px;
+    margin: 20px 0;
+    font-size: 1.3em;
+    font-weight: bold;
+    box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(168, 184, 255, 0.5);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(106, 122, 202, 0.9);
+    background: linear-gradient(135deg, #5a6aaa, #7a8aca);
+}
+
+.price {
+    font-size: 1.8em;
+    color: #e8e8f0;
+    margin: 20px 0 5px 0;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 1em;
+}
+
+.special-price {
+    font-size: 2em;
+    color: #ffd700;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    white-space: nowrap;
+}
+
+.limited-badge {
+    color: #ff4444;
+    font-weight: bold;
+    font-size: 0.95em;
+    margin: 10px 0;
+}
+
+.closing {
+    text-align: center;
+    margin: 40px 0;
+    padding: 30px 15px;
+    background: rgba(60, 60, 120, 0.2);
+    border-radius: 15px;
+    font-size: 1.1em;
+    line-height: 2;
+}
+
+.signature {
+    text-align: right;
+    font-size: 1.3em;
+    color: #c8d0ff;
+    margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    .container {
+        padding: 20px 10px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .emoji-header {
+        font-size: 1.3em;
+    }
+
+    .oracle-message,
+    .section {
+        padding: 15px 10px;
+    }
+
+    .oracle-message p {
+        font-size: 1em;
+    }
+
+    .guardian {
+        font-size: 1.1em;
+        padding: 15px;
+    }
+
+    .price {
+        font-size: 1.5em;
+    }
+
+    .special-price {
+        font-size: 1.8em;
+    }
+
+    .cta {
+        padding: 40px 15px;
+    }
+
+    .closing {
+        padding: 30px 10px;
+    }
+
+    .cta-button {
+        font-size: 1.1em;
+        padding: 15px 30px;
+    }
+
+    .guardian-image {
+        max-width: 100%;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>しーちゃん様<br>守護神鑑定書</h1>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">しーちゃん様、</p>
+            <p style="margin-bottom: 90px;">霊視して、<br>少し驚きました。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">これほど太陽のように<br>明るく、黄金に輝く<br>紅のオーラを纏った方は、<br>なかなかいらっしゃいません。</p>
+            <p style="margin-bottom: 90px;">守護神からの守護も<br>とても強いです。</p>
+            <p class="guardian" style="margin-bottom: 90px;">あなたを守っているのは、<br>高御産巣日神(たかみむすびのかみ)。</p>
+            <p>創造と生産を司る神様です。</p>
+            <img src="../鑑定画像/高御産巣日神.png" alt="高御産巣日神" class="guardian-image">
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">本来、あなたは<br>そこにいるだけで<br>周りを明るくできる方です。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">笑顔ひとつで、<br>場の空気が<br>ぱっと変わる。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">落ち込んでいる人にも、<br>うまく言葉にできない人にも、<br>あなたの存在が<br>そっと光を届けてきた。</p>
+            <p style="margin-bottom: 90px;">そういう温かさと<br>存在感を、<br>生まれつき<br>持った方だと思います。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️なぜ今、流れが滞っているのか</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">ただ、あなたには<br>もう一つ、<br>誰かと比べてしまう、<br>誰かの輝きと<br>自分を並べて見てしまう、<br>そういう性質があります。</p>
+            <p style="margin-bottom: 90px;">あの人はもう<br>進んでいるのに。</p>
+            <p style="margin-bottom: 90px;">あの人はちゃんと<br>答えを持っているのに。</p>
+            <p style="margin-bottom: 90px;">それなのに自分は、<br>これから何を<br>していけばいいのか<br>分からない。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">太陽は、<br>本来は他の星と<br>比べる必要のない<br>存在です。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">それなのに、<br>比べる癖が<br>あなたの光を<br>小さく見せてしまっている。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">だから今、<br>「本当はもっと輝けるはずの自分」と、<br>「比べて足りない気がする自分」が、<br>心の中でぶつかって、<br>答えが見えなくなっているのだと<br>思います。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">でも大丈夫です。</p>
+            <p style="margin-bottom: 90px;">これから先の道を、<br>あなたを守る神様が、<br>ちゃんと視せてくれています。</p>
+            <p style="margin-bottom: 90px;">アイデアが尽きず、<br>新しいものを<br>次々に形にしていく<br>力を持つ神様の<br>加護を受けているので、</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">あなたはこれまでも、<br>自分でも気づかないうちに<br>たくさんのものを<br>生み出してきたはずです。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️しーちゃん様のこれからの流れ</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">霊視してみると、<br>しーちゃん様のオーラの周りに、<br>新しい役割の光が、<br>ゆっくりと<br>近づいています。</p>
+            <p style="margin-bottom: 90px;">それは、<br>今まで歩いてきた道の<br>延長線上にありながら、<br>少しだけ<br>形が変わったものです。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">しーちゃん様の<br>太陽のような明るさが、<br>誰かのために<br>ちゃんと届く場所が<br>これから整っていきます。</p>
+            <p style="margin-bottom: 90px;">その場所が<br>どんな顔をしているのか。</p>
+            <p style="margin-bottom: 90px;">そして、いつ頃から<br>扉が開き始めるのか。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">私には視えています。</p>
+            <p style="margin-bottom: 90px;">ただ、これは<br>守護神からお預かりしている、<br>しーちゃん様のこれからを動かす<br>大切な言葉です。</p>
+            <p style="margin-bottom: 90px;">本式守護霊視鑑定の場で、<br>丁寧にお伝えさせていただきますね。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️本式守護鑑定</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">しーちゃん様のこれからの道は、<br>何もしなくても<br>ちゃんと開けるもの、<br>ではありません。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">このまま<br>比べる癖を抱えたまま<br>日々を過ごすと、<br>太陽のオーラに<br>だんだん雲がかかり、<br>本来の輝きが<br>小さく見え始めます。</p>
+            <p style="margin-bottom: 90px;">そうなる前に、<br>あなたにちゃんと<br>知っていただきたいことが、<br>私には視えています。</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定で、<br>あなたにお渡しするのは、</p>
+        </div>
+
+        <div style="padding: 40px 0; margin: 40px 0;">
+            <div style="margin: 30px 0; text-align: center;">
+                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ これから訪れる人生の節目</h3>
+                        <p>これからの人生に<br>訪れる大きな節目と<br>そのタイミングを、<br>丁寧にお伝えします。</p>
+                    </div>
+                </div>
+                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ しーちゃん様の太陽の活かし方</h3>
+                        <p>本来の明るさを<br>どこに、どう<br>注いでいけばいいのか。<br>しーちゃん様だけの<br>輝かせ方を、<br>ひとつひとつ<br>お伝えします。</p>
+                    </div>
+                </div>
+                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 高御産巣日神が示す、<br>次の役割</h3>
+                        <p>これからしーちゃん様に<br>用意されている<br>新しい役割と、<br>そこへ向かう一歩目を、<br>しーちゃん様だけのために<br>お渡しします。</p>
+                    </div>
+                </div>
+            </div>
+
+        <div style="padding: 0 0 40px 0; margin: 0 0 40px 0;">
+            <p style="margin-top: 90px; margin-bottom: 90px; text-align: center; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">しーちゃん様ご自身の手で<br>未来を選び取るための<br>鑑定です。</p>
+            <p style="margin-bottom: 90px; text-align: center;">その一歩を、<br>ここから踏み出してください。</p>
+        </div>
+
+        <div class="cta">
+            <h2>【運命の扉が開く24時間】</h2>
+
+            <p style="margin-bottom: 90px;">今、しーちゃん様のために、<br>運命の扉は最も大きく<br>開かれています。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">この巡り合わせは、<br>残念ながら永遠ではありません。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">私からのこのお手紙を<br>受け取ってから<br>24時間以内に一歩踏み出すと、<br>止まっていた運命は、<br>最もなめらかに動き始めます。</p>
+            <p style="margin-bottom: 90px;">ご自身の手で<br>最高の未来を選び取りたいと<br>心から願うしーちゃん様へ。</p>
+
+            <div class="price">
+                <span class="original-price">通常9,800円</span><br>
+                <span class="limited-badge">24時間限定の特別価格</span><br>
+                <span class="special-price">4,980円</span>
+            </div>
+
+            <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/69eb763d23b5d0e88f9854e9" class="cta-button" target="_blank">本式守護鑑定を受ける▼</a>
+
+            <p style="margin-top: 90px;">1日限定3名までしか<br>お受けできません。<br>リンク先が表示されない場合<br>本日分は締切ですので<br>ご了承ください。</p>
+        </div>
+
+        <div class="closing">
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">しーちゃん様の物語が、<br>しーちゃん様らしい結末を<br>迎えることを、<br>私は守護の声を通して、<br>すでに知っています。</p>
+            <p style="margin-bottom: 90px;">ご縁に、<br>心から感謝を込めて。</p>
+
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>
