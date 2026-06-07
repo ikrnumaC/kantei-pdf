@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>みほ様　守護神鑑定書</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+    background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+    color: #e8e8f0;
+    line-height: 1.8;
+    padding: 20px;
+    min-height: 100vh;
+    font-size: 17px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(15, 15, 46, 0.7);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                inset 0 0 60px rgba(100, 100, 200, 0.05);
+    border: 1px solid rgba(200, 200, 255, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #a8b8ff;
+    font-size: 2em;
+    margin-bottom: 30px;
+    text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+    letter-spacing: 0.1em;
+}
+
+h2 {
+    color: #c8d0ff;
+    font-size: 1.5em;
+    margin: 40px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+    letter-spacing: 0.05em;
+}
+
+.oracle-message {
+    background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+    border: 2px solid rgba(168, 184, 255, 0.3);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 30px 0;
+    box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+    position: relative;
+}
+
+.oracle-message::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    background: #1a1a3e;
+    padding: 0 15px;
+}
+
+.guardian-image {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    margin: 30px auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+}
+
+.oracle-message p {
+    margin: 15px 0;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.section {
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(30, 30, 70, 0.3);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.emoji-header {
+    font-size: 1.8em;
+    margin: 40px 0 20px;
+    color: #c8d0ff;
+    text-align: left;
+}
+
+.guardian {
+    text-align: center;
+    font-size: 1.3em;
+    color: #a8b8ff;
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(168, 184, 255, 0.1);
+    border-radius: 10px;
+    text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+}
+
+ul {
+    list-style: none;
+    margin: 20px 0;
+}
+
+ul li {
+    margin: 10px 0;
+    font-weight: bold;
+    color: #ffd966;
+    text-shadow: 0 0 10px rgba(255, 217, 102, 0.3);
+}
+
+.cta {
+    background: rgba(30, 30, 70, 0.5);
+    border: 1px solid rgba(168, 184, 255, 0.2);
+    border-radius: 15px;
+    padding: 40px 25px;
+    margin: 40px 0;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+}
+
+.cta h2 {
+    border: none;
+    margin: 20px 0;
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #4a5a9a, #6a7aca);
+    color: white;
+    text-decoration: none;
+    padding: 20px 50px;
+    border-radius: 35px;
+    margin: 20px 0;
+    font-size: 1.3em;
+    font-weight: bold;
+    box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(168, 184, 255, 0.5);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(106, 122, 202, 0.9);
+    background: linear-gradient(135deg, #5a6aaa, #7a8aca);
+}
+
+.price {
+    font-size: 1.8em;
+    color: #e8e8f0;
+    margin: 20px 0 5px 0;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 1em;
+}
+
+.special-price {
+    font-size: 2em;
+    color: #ffd700;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    white-space: nowrap;
+}
+
+.limited-badge {
+    color: #ff4444;
+    font-weight: bold;
+    font-size: 0.95em;
+    margin: 10px 0;
+}
+
+.closing {
+    text-align: center;
+    margin: 40px 0;
+    padding: 30px 15px;
+    background: rgba(60, 60, 120, 0.2);
+    border-radius: 15px;
+    font-size: 1.1em;
+    line-height: 2;
+}
+
+.signature {
+    text-align: right;
+    font-size: 1.3em;
+    color: #c8d0ff;
+    margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    .container {
+        padding: 20px 10px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .emoji-header {
+        font-size: 1.3em;
+    }
+
+    .oracle-message,
+    .section {
+        padding: 15px 10px;
+    }
+
+    .oracle-message p {
+        font-size: 1em;
+    }
+
+    .guardian {
+        font-size: 1.1em;
+        padding: 15px;
+    }
+
+    .price {
+        font-size: 1.5em;
+    }
+
+    .special-price {
+        font-size: 1.8em;
+    }
+
+    .cta {
+        padding: 40px 15px;
+    }
+
+    .closing {
+        padding: 30px 10px;
+    }
+
+    .cta-button {
+        font-size: 1.1em;
+        padding: 15px 30px;
+    }
+
+    .guardian-image {
+        max-width: 100%;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>みほ様<br>守護神鑑定書</h1>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">みほ様、</p>
+            <p style="margin-bottom: 90px;">霊視して、<br>少し驚きました。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">これほど澄んだ、<br>深く静かに流れる<br>青のオーラを<br>纏った女性は、<br>なかなか<br>いらっしゃいません。</p>
+            <p style="margin-bottom: 90px;">守護神からの守護も<br>とても強いです。</p>
+            <p class="guardian" style="margin-bottom: 90px;">あなたを守っているのは、<br>龍樹菩薩(りゅうじゅぼさつ)。</p>
+            <p>水底の真理を知る、<br>仏教の菩薩です。</p>
+            <img src="../鑑定画像/龍樹菩薩.png" alt="龍樹菩薩" class="guardian-image">
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">みほ様は本来、<br>表に出さないだけで、<br>人よりずっと深いところまで<br>ものごとを<br>視ている方ですよね。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">人の表情の<br>ちょっとした変化や、<br>言葉にならない空気を、<br>驚くほど細かく<br>拾ってしまう。</p>
+            <p style="margin-bottom: 90px;">だからこそ、<br>まわりからは<br>「落ち着いている人」<br>「優しい人」<br>そう見えているはずです。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️なぜ今、流れが滞っているのか</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">それなのに、<br>ご自分の中では<br>ちっとも<br>落ち着いていない。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">夜になると<br>頭の中だけが<br>ぐるぐると動き続けて、<br>朝になっても<br>うまく止まってくれない。<br>そんな日が、<br>増えてはいませんか。</p>
+            <p style="margin-bottom: 90px;">それなのに、<br>なぜみほ様の毎日だけは、<br>こんなにスッキリ<br>穏やかに<br>なってくれないのか。</p>
+            <p style="margin-bottom: 90px;">ただ、みほ様には<br>もう一つ、<br>ご自分の中の流れを<br>「止めてくれる場所」が、<br>とても少ない、<br>という性質があります。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">水のように<br>すべてを感じ取れる方なのに、<br>その水を受け止めてくれる<br>器が小さい。</p>
+            <p style="margin-bottom: 90px;">人の感情も、<br>ご自分の感情も、<br>全部受け取ってしまうのに、<br>どこにも置く場所がなくて、<br>ご自分の中だけで<br>ぐるぐるして<br>しまうんです。</p>
+            <p style="margin-bottom: 90px;">だから今、<br>「ちゃんと穏やかでいたい自分」と、<br>「いつの間にか<br>心が忙しくなってしまう自分」が、<br>みほ様の中で<br>ぶつかって、<br>答えを<br>出させてくれないんです。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">大丈夫です。</p>
+            <p style="margin-bottom: 90px;">その答えの出し方を、<br>あなたを守る神様が、<br>ちゃんと視せてくれています。</p>
+            <p style="margin-bottom: 90px;">表面のさざ波には惑わされず、<br>本質だけを見る力を持つ<br>神様の<br>加護を受けているので、</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">みほ様はこれまでも、<br>人生の大事な場面で、<br>誰にも言わないまま、<br>ご自分の中で<br>ちゃんと答えを<br>見つけてこられたはずです。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️みほ様のオーラに、今起きていること</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">みほ様のオーラを<br>視ていると、<br>水の流れが、<br>ご自分の容量を<br>超えて<br>広がってしまっている景色が<br>視えます。</p>
+            <p style="margin-bottom: 90px;">仕事のこと。<br>身近な人のこと。<br>ニュースの中の景色。<br>SNSの誰かの言葉。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">ぜんぶがみほ様の中に<br>入ってきて、<br>ぜんぶを少しずつ<br>感じてしまう。<br>ご自分の感情なのか、<br>他人の感情なのか、<br>だんだん境目が<br>あいまいになってきている。</p>
+            <p style="margin-bottom: 90px;">それが<br>「穏やかでない」の<br>正体だと、<br>私には視えています。</p>
+            <p style="margin-bottom: 90px;">どこに<br>「自分の流れを止める場所」を<br>作るのか。<br>どの感情を入れて、<br>どの感情は流すのか。</p>
+            <p style="margin-bottom: 90px;">ただ、これは<br>守護神からお預かりしている、<br>みほ様のこれからを動かす<br>大切な言葉です。</p>
+            <p style="margin-bottom: 90px;">本式守護霊視鑑定の場で、<br>丁寧にお伝えさせていただきますね。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️本式守護鑑定</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">みほ様の中で起きている<br>心の忙しさは、<br>時間が経てば自然に<br>片付くもの、ではありません。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">このまま頭の中の流れを<br>止められないまま、<br>春を越え、夏を越えた時。<br>朝の自分が、<br>「今日もちゃんと<br>穏やかでいられる自分」で<br>いられるか、<br>「結局、何にも<br>変えられなかった自分」で<br>いるか。</p>
+            <p style="margin-bottom: 90px;">ご自分の中でも、<br>「穏やかな日常」という<br>言葉は<br>少しずつ、<br>「いつかそうなれたら<br>いい遠い夢」として、<br>日常の景色に<br>馴染んでいきます。</p>
+            <p style="margin-bottom: 90px;">そうなる前に、<br>みほ様にちゃんと<br>知っていただきたいことが、<br>私には視えています。</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定で、<br>みほ様にお渡しするのは、</p>
+        </div>
+
+        <div style="padding: 40px 0; margin: 40px 0;">
+            <div style="margin: 30px 0; text-align: center;">
+                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 心が忙しくなる<br>本当の理由</h3>
+                        <p>みほ様のオーラの中で<br>「穏やかさ」を<br>奪っているものが<br>何なのか。<br>ひとつひとつ視て、<br>お伝えします。</p>
+                    </div>
+                </div>
+                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 流れが整う瞬間</h3>
+                        <p>これからの一年の間に、<br>みほ様の毎日が<br>穏やかに整っていく<br>流れが訪れます。<br>その時期と、<br>みほ様が取るべき過ごし方を、<br>丁寧にお伝えします。</p>
+                    </div>
+                </div>
+                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ みほ様らしい<br>毎日の作り方</h3>
+                        <p>「自分の手で」<br>未来を選び取るために、<br>今日からみほ様に<br>できることを、<br>みほ様だけのために<br>お渡しします。</p>
+                    </div>
+                </div>
+            </div>
+
+        <div style="padding: 0 0 40px 0; margin: 0 0 40px 0;">
+            <p style="margin-top: 90px; margin-bottom: 90px; text-align: center; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">みほ様ご自身の手で<br>未来を選び取るための<br>鑑定です。</p>
+            <p style="margin-bottom: 90px; text-align: center;">その一歩を、<br>ここから踏み出してください。</p>
+        </div>
+
+        <div class="cta">
+            <h2>【運命の扉が開く24時間】</h2>
+
+            <p style="margin-bottom: 90px;">今、みほ様のために、<br>運命の扉は最も大きく<br>開かれています。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">この巡り合わせは、<br>残念ながら<br>永遠ではありません。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">私からのこのお手紙を<br>受け取ってから<br>24時間以内に<br>一歩踏み出すと、<br>止まっていた運命は、<br>最もなめらかに<br>動き始めます。</p>
+            <p style="margin-bottom: 90px;">ご自身の手で<br>最高の未来を<br>選び取りたいと<br>心から願う<br>みほ様へ。</p>
+
+            <div class="price">
+                <span class="original-price">通常9,800円</span><br>
+                <span class="limited-badge">24時間限定の特別価格</span><br>
+                <span class="special-price">4,980円</span>
+            </div>
+
+            <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/69eb763d23b5d0e88f9854e9" class="cta-button" target="_blank">本式守護鑑定を受ける▼</a>
+
+            <p style="margin-top: 90px;">1日限定3名までしか<br>お受けできません。<br>リンク先が表示されない場合<br>本日分は締切ですので<br>ご了承ください。</p>
+        </div>
+
+        <div class="closing">
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">みほ様の物語が、<br>みほ様らしい結末を<br>迎えることを、<br>私は守護の声を通して、<br>すでに知っています。</p>
+            <p style="margin-bottom: 90px;">ご縁に、<br>心から感謝を込めて。</p>
+
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>

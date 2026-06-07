@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>まゆ様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        /* 表紙のスタイル */
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">ふたりで灯す温かい日々</h2>
+            <p class="cover-name">まゆ様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 冒頭 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">まゆ様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂が、<br>本気でご夫婦の形を<br>取り戻そうとしている。</p>
+            <p style="margin-bottom: 90px;">その強い意志が、<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先、<br>あなたが本当に知るべきことを、<br>一つひとつ、<br>丁寧にお伝えしていきます。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2>【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が、<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>2026年の冬のはじまり。</p>
+            <p style="margin-bottom: 90px;">11月の風が冷たくなり、<br>夕暮れの空が<br>少し早く染まり始める頃。</p>
+            <p style="margin-bottom: 90px;">リビングで、<br>あなたと旦那様が<br>湯気の立つお茶を挟んで、<br>ふっと笑い合っている景色。</p>
+            <p style="margin-bottom: 90px;">何か特別なことを話したわけではない。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>旦那様が言葉にできなかった気持ちを、<br>あなたが<br>やわらかく受け取ることができる瞬間。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「今日、よかったね」</p>
+            <p style="margin-bottom: 90px;">そんな短いひと言が、<br>お二人の間に<br>自然に流れている。</p>
+            <p style="margin-bottom: 90px;">その未来の兆しが、<br>強く感じられます。</p>
+            <p style="margin-bottom: 90px;">ただ──</p>
+            <p style="margin-bottom: 90px;">その景色に至るまでに、<br>あなたが越えるべき<br>小さな扉が一つだけあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>旦那様の外側ではなく、<br>あなた自身の中の<br>「楽しむ火」を<br>もう一度灯し直すこと。</p>
+            <p style="margin-bottom: 90px;">でも大丈夫です。</p>
+            <p style="margin-bottom: 90px;">その火を灯すための薪は、<br>すでにあなたを守る神様が、<br>あなたの胸の奥に<br>そっと用意してくださっています。</p>
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは、<br><span style="color: #ffd966;">吒枳尼天（だきにてん）</span>。</p>
+            <p style="margin-bottom: 90px;">インドで生まれ、<br>ダーキニーという名で<br>生きとし生けるものを見つめていた女神。</p>
+            <p style="margin-bottom: 90px;">やがて海を渡り、<br>日本の稲穂の上に<br>姿を変えて舞い降りた。</p>
+            <p style="margin-bottom: 90px;">そこから、<br>日本中の田畑に豊かさを運び、<br>人々が本気で願った願いを、<br>時間をかけてでも<br>形にしてくださる神様となりました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;"><span style="color: #ffd966;">吒枳尼天</span>は、<br>「強く願ったものを、<br>必ず叶える」神様。</p>
+            <p style="margin-bottom: 90px;">ただし、<br>中途半端な願いではなく、<br>本気で欲しいと願ったもの。</p>
+            <p style="margin-bottom: 90px;">その本気の願いを、<br>何年かけてでも<br>ちゃんと届ける力を持っています。</p>
+            <p style="margin-bottom: 90px;">今もなお、<br>愛知の豊川稲荷、<br>岡山の最上稲荷などに、<br>そのお姿が祀られています。</p>
+            <p style="margin-bottom: 0;">「本気で守るものを、<br>時間をかけてでも手に入れる女神」として、<br>今あなたに<br>加護を与えてくださっています。</p>
+        </div>
+
+        <!-- あなたという人の本質 -->
+        <h2 class="emoji-header">⛩️あなたという人の本質</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">あなたの魂の奥を、<br>深く視させていただきました。</p>
+            <p style="margin-bottom: 90px;">そこに刻まれていたものを、<br>ここでお伝えしていきます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">まず一つ目。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>柔らかなオーラに包まれた、<br>肥沃な大地のような人。</p>
+            <p style="margin-bottom: 90px;">種を蒔けば芽が出る、<br>雨が降れば栄養を蓄える、<br>そういう<br>「受け止めて、育てる」<br>深い力を持っています。</p>
+            <p style="margin-bottom: 90px;">旦那様の小さな機嫌の揺れ、<br>家の中のちょっとした空気の変化、<br>言葉になっていない不満や疲れ。</p>
+            <p style="margin-bottom: 90px;">そういうものを、<br>他の人が気づかないくらい<br>細部まで察知できる人です。</p>
+            <p style="margin-bottom: 90px;">「気が利く」「優しい」と<br>昔から言われてきたはずです。</p>
+            <p style="margin-bottom: 90px;">でも、それは<br>ただの優しさではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">相手の見えない部分を<br>そっと感じ取れる<br>深い感受性のあらわれです。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">二つ目。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>本当は<br>「分かち合うこと」が<br>人一倍好きな人です。</p>
+            <p style="margin-bottom: 90px;">おいしいものを一緒に食べる、<br>くだらないことで笑い合う、<br>日常の小さな喜びを<br>誰かと共有する。</p>
+            <p style="margin-bottom: 90px;">そういう時間に、<br>あなたの本来の輝きが<br>灯る人です。</p>
+            <p style="margin-bottom: 90px;">胸の奥のどこかで、<br>ずっとそう感じてきたのでは<br>ないでしょうか。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「本当はもっと、<br>ふたりで自由に笑っていたい」</p>
+            <p style="margin-bottom: 90px;">その声が、あなたの中に<br>響いている。</p>
+            <p style="margin-bottom: 90px;">それは、<br>わがままなのではありません。</p>
+            <p style="margin-bottom: 90px;">受け止めるだけでなく、<br>疲れ果ててしまった魂が<br>唯一回復する方法。</p>
+            <p style="margin-bottom: 90px;">気持ちを受け止め続ける機会が多いと<br>つかれてしまうのは、<br>分かち合いがたりないから。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">三つ目。</p>
+            <p style="margin-bottom: 90px;">これは、あなた自身も<br>気づいているかどうか分からない、<br>深い部分のお話です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの内側には、<br>今、<br>「楽しむための火」が<br>細くなっています。</p>
+            <p style="margin-bottom: 90px;">頭では「楽しみたい」「笑い合いたい」と<br>願っているのに、<br>心のどこかが<br>「私が楽しんでいる場合ではない」<br>「先に旦那様を整えなくては」と、<br>ささやいてくる。</p>
+            <p style="margin-bottom: 90px;">特に、<br>旦那様の機嫌が良くないとき、<br>家の中の空気が重いとき、<br>「私が整えなくては」と<br>無意識に動いてしまう。</p>
+            <p style="margin-bottom: 90px;">あなたが大地のような人だから、<br>自分よりも先に<br>周りを潤すことが<br>体に染みついている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、<br>その「自分の楽しみを後回しにするクセ」こそが、<br>今あなたが<br>「再構築したい良い夫婦の形」を<br>一番遠ざけてしまっているんです。</p>
+            <p style="margin-bottom: 90px;">外の状況ではなく、<br>あなたの内側で<br>細くなっている火。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">ここを灯し直していけば、<br>ご夫婦の流れは、<br>自然と動き始めます。</p>
+        </div>
+
+        <!-- 旦那様の本音と、お二人の本当の縁 -->
+        <h2 class="emoji-header">⛩️旦那様の本音と、お二人の本当の縁</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">ここからは、<br>お二人の本当の縁について、<br>霊視で視えていることを<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">まず、結論からお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">旦那様の魂の奥には、<br>あなたという存在が、<br>深く深く根を下ろしています。</p>
+            <p style="margin-bottom: 90px;">人生の大きな基盤、<br>替えの効かない存在<br>魂が結びついている。</p>
+            <p style="margin-bottom: 90px;">ここまでのパートナーとは<br>なかなか出会えません。</p>
+            <p style="margin-bottom: 90px;">普通のご夫婦の場合、<br>パートナーは<br>「大切な相手」のひとりとして<br>心の中にあります。</p>
+            <p style="margin-bottom: 90px;">ところがあなたの場合は、<br>旦那様にとって<br>「あなたがいなくなったら、<br>人生の土台が崩れる」<br>というレベルで、<br>深く絶対的に大事にされています。</p>
+            <p style="margin-bottom: 90px;">これは、<br>あなた自身の感覚としては<br>あまり伝わってきていないかもしれない。</p>
+            <p style="margin-bottom: 90px;">なぜなら、<br>旦那様は<br>「言葉にして伝える」ということが<br>生まれつき<br>本当に苦手な方だから。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「察してほしい」のではなく、<br>「察するしかできない」人。</p>
+            <p style="margin-bottom: 90px;">胸の中には<br>あなたへの感謝も愛情も<br>ちゃんと満ちている。</p>
+            <p style="margin-bottom: 90px;">ただ、それを<br>言葉にして渡すための回路が、<br>旦那様の中には<br>ほとんどありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">だから、<br>あなたが感じている<br>「本音が見えない」「冷たく感じる」は、<br>本当は<br>「愛情がない」のではなく、<br>「愛情はあるのに、出し方が分からない」<br>ということなのです。</p>
+            <p style="margin-bottom: 90px;">そして、ここからが<br>さらに大事なところ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">お二人は、<br>互いに無いものを<br>完璧に補い合うご縁を持っています。</p>
+            <p style="margin-bottom: 90px;">あなたの中に細くなっている火、<br>楽しむ力、温かさ。</p>
+            <p style="margin-bottom: 90px;">実はそれは<br>旦那様の中に沢山あります。</p>
+            <p style="margin-bottom: 90px;">逆に、<br>旦那様に欠けている<br>冷静さ、流れを読む力、<br>潤いとなる優しさ。</p>
+            <p style="margin-bottom: 90px;">それは、<br>あなたが豊かに持っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ふたりで初めて、<br>一つの完全な大地になる。</p>
+            <p style="margin-bottom: 90px;">そういうご縁です。</p>
+            <p style="margin-bottom: 90px;">さらに──</p>
+            <p style="margin-bottom: 90px;">お二人の魂の奥には、<br>「ふたりが手を取り合ったとき、<br>そこから新しい芽が出る」<br>という運命が刻まれています。</p>
+            <p style="margin-bottom: 90px;">それぞれ一人では、<br>芽は出ない。</p>
+            <p style="margin-bottom: 90px;">でも、<br>ふたりが本気で寄り添ったとき、<br>そこから<br>人生の新しい緑が<br>育ち始める。</p>
+            <p style="margin-bottom: 90px;">それが、<br><span style="color: #ffd966;">吒枳尼天</span>があなたに見せている、<br>お二人の本当の縁の形です。</p>
+            <p style="margin-bottom: 90px;">旦那様の本音を一言でいうなら──</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「言葉にできないけれど、<br>あなたがいてくれるから、<br>僕は立っていられる」</p>
+            <p style="margin-bottom: 0;">これが、<br>旦那様が魂の奥で<br>ずっと感じていることです。</p>
+        </div>
+
+        <!-- お二人の関係が動く時期と、あなたが取るべき態度 -->
+        <h2 class="emoji-header">⛩️お二人の関係が動く時期と、あなたが取るべき態度</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここからは、<br>お二人の流れが<br>本格的に動き始める時期と、<br>そのときあなたに<br>取っていただきたい態度を<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">霊視で視えているのは、<br>2026年、2027年が<br>お二人にとって<br>特別な年になる、ということ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">夫婦の絆がより一層太くなる。</p>
+            <p style="margin-bottom: 90px;">あなたが稲沢のおうちを<br>このタイミングで選んだことには、<br>深い意味があります。</p>
+            <p style="margin-bottom: 90px;">ご夫婦の根っこを<br>作り直すための一年が<br>2026年。</p>
+            <p style="margin-bottom: 90px;">その流れの中で、<br>特に大きく動く月が<br>四つあります。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">最初に動き始めるのは、<br>2026年6月。</p>
+            <p style="margin-bottom: 90px;">夏の光が<br>だんだん強くなる頃。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この月、<br>あなたの中の細くなっていた火が、<br>ふっと<br>温度を取り戻し始めます。</p>
+            <p style="margin-bottom: 90px;">「あ、私、最近笑ってなかったな」<br>「ちょっと楽しいことしたいな」</p>
+            <p style="margin-bottom: 90px;">そんな感覚が、<br>朝の光の中で<br>ふっと胸に降りてくる瞬間が<br>訪れます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その感覚を、<br>我慢しないでください。</p>
+            <p style="margin-bottom: 90px;">小さくていい。</p>
+            <p style="margin-bottom: 90px;">おいしいお茶を淹れる、<br>好きな音楽をかける、<br>一人で笑える時間を作る。</p>
+            <p style="margin-bottom: 90px;">そういう、<br>「あなた自身の火」を<br>小さく点けてあげてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それが、<br>ご夫婦の流れを動かす<br>最初のスイッチになります。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">次が、<br>2026年7月。</p>
+            <p style="margin-bottom: 90px;">夏の真ん中。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この月は、<br>旦那様の中で<br>何かが少し動き始める月。</p>
+            <p style="margin-bottom: 90px;">具体的には、<br>家のこと、暮らしのこと、<br>将来のことについて、<br>旦那様の中で<br>「ちゃんと向き合わなきゃ」という感覚が<br>じわっと立ち上がってきます。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>旦那様は言葉にすることが<br>本当に苦手なので、<br>そのサインは<br>とても小さく出てきます。</p>
+            <p style="margin-bottom: 90px;">「いつもより少し家にいる」<br>「テレビを見ながら、ふっとあなたを見る」<br>「何でもない話を、いつもより長くする」</p>
+            <p style="margin-bottom: 90px;">そういう、<br>小さな小さな変化として現れます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その変化に気づいたら、<br>何かを問いただしたり、<br>深く話そうとせず、<br>ただ<br>「今日、ちょっと早かったね」<br>「一緒にお茶飲もうか」<br>くらいの軽さで<br>受け止めてあげてください。</p>
+            <p style="margin-bottom: 90px;">旦那様にとって、<br>言葉にせずに<br>受け止めてもらえる時間が、<br>何よりの安心になります。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">そして、<br>2026年9月。</p>
+            <p style="margin-bottom: 90px;">秋の風が<br>少し冷たくなり始める頃。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この月は、<br>あなたと旦那様の<br>お金や暮らしの形について、<br>小さな見直しが動き始める月。</p>
+            <p style="margin-bottom: 90px;">新しいおうちでの暮らしが<br>少しずつ落ち着き、<br>「これからどう暮らしていこうか」という話が、<br>自然に出てくる時期です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここで大切なのは、<br>あなたの意見を<br>飲み込まないこと。</p>
+            <p style="margin-bottom: 90px;">「私はこうしたい」を、<br>柔らかい言葉で<br>ちゃんと旦那様に<br>渡してあげてください。</p>
+            <p style="margin-bottom: 90px;">旦那様は、<br>あなたの本音を<br>正面から受け取ることで、<br>やっと<br>「自分も向き合わなきゃ」と<br>動けるようになります。</p>
+            <p style="margin-bottom: 90px;">そして──</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年11月。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここが、<br>お二人にとって<br>最も大きな転換月です。</p>
+            <p style="margin-bottom: 90px;">冬のはじまり。</p>
+            <p style="margin-bottom: 90px;">夕暮れの空が<br>少し早く染まり始める頃。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">この月、<br>あなたの守護神である<span style="color: #ffd966;">吒枳尼天</span>の力が、<br>お二人の真ん中に<br>最も強く流れ込んできます。</p>
+            <p style="margin-bottom: 90px;">それまで動かなかった<br>旦那様の心の奥が、<br>この月、ふっと<br>あなたの方へ向きを変えます。</p>
+            <p style="margin-bottom: 90px;">何か劇的なきっかけがあるわけではない。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>旦那様がふっと</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「あなたがいてくれてよかった」と</p>
+            <p style="margin-bottom: 90px;">言葉にできないまま<br>見つめる瞬間が<br>訪れます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その瞬間を、<br>逃さないでください。</p>
+            <p style="margin-bottom: 90px;">何か特別なことを言う必要はありません。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>そこで一緒に笑ってあげる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それだけで、<br>ご夫婦の根っこが<br>ぐっと太くなります。</p>
+            <p style="margin-bottom: 90px;">11月のこの瞬間が、<br>これから先の<br>お二人の数十年を<br>形作っていきます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">今年（2026年）全体について──</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2026年は、<br>「家とご夫婦の土台が、<br>深く根を張り直す年」です。</p>
+            <p style="margin-bottom: 90px;">新しいおうち、<br>新しい暮らしの形、<br>そして<br>お二人の関係そのもの。</p>
+            <p style="margin-bottom: 90px;">すべての根っこが、<br>この一年で<br>作り直されていきます。</p>
+            <p style="margin-bottom: 90px;">すぐに大きな変化が見えるというより、<br>じっくりと、<br>冬を越して春に芽吹くような、<br>静かな深い変化の年。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">来年（2027年）全体について──</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2027年は、<br>「2026年に張り直した根から、<br>新しい芽が出始める年」です。</p>
+            <p style="margin-bottom: 90px;">笑いが増える。<br>会話が増える。<br>ふたりで決めていくことが増える。</p>
+            <p style="margin-bottom: 0;">そういう<br>「目に見える変化」が、<br>2027年の春から夏にかけて<br>少しずつ立ち上がってきます。</p>
+        </div>
+
+        <!-- あなたの大地と火の活かし方 -->
+        <h2 class="emoji-header">⛩️あなたの大地と火の活かし方</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">ここからは、<br>あなたが本来持っている<br>大地の力と、<br>これから灯し直していく<br>火の活かし方について<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">ここは、<br>これからの<br>ご夫婦の根幹に<br>関わるお話です。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">まず、<br>あなたの大地について。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの大地は、<br>ただ受け止めるだけの土ではありません。</p>
+            <p style="margin-bottom: 90px;">種を蒔けば芽が出る、<br>そして<br>育てたものが<br>ちゃんと実を結ぶ──</p>
+            <p style="margin-bottom: 90px;">そういう、<br>「育てる力」を持った<br>肥沃な大地です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ「受け止める」と<br>「育てる」は違います。</p>
+            <p style="margin-bottom: 90px;">受け止めるだけだと、<br>雨が降っても、<br>水が溜まるだけで、<br>何も生まれない。</p>
+            <p style="margin-bottom: 90px;">育てる力があると<br>あなたが<br>「これを大事にしたい」と思ったものが、<br>ちゃんと形になって<br>返ってきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これからのご夫婦の中で、<br>あなたに大切にしていただきたいのは、</p>
+            <p style="margin-bottom: 90px;">受け身で旦那様の機嫌や状態に<br>反応するのをやめて、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私はこういうふたりになりたい」と、<br>あなたの側から<br>種を選んで蒔いていくことです。</p>
+            <p style="margin-bottom: 90px;">「今日は一緒に<br>〇〇を食べたいな」<br>「今度の休みは<br>これがしたい」<br>「こういう暮らしをしたい」</p>
+            <p style="margin-bottom: 90px;">その小さな種を、<br>あなたの側から<br>旦那様に手渡してあげる。</p>
+            <p style="margin-bottom: 90px;">旦那様は<br>言葉にすることが苦手な方なので、<br>あなたが種を蒔いてくれることを<br>心の奥で本当に喜びます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">そして、<br>あなたの火について。</p>
+            <p style="margin-bottom: 90px;">あなたの中の火は、<br>今、<br>細くなっています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも、<br>消えてはいません。</p>
+            <p style="margin-bottom: 90px;">火は、自分一人で<br>燃やそうとすると、<br>本当にしんどい。</p>
+            <p style="margin-bottom: 90px;">でも、あなたには<br>旦那様という存在がいます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">旦那様の中には、<br>温かい火がたっぷり眠っています。</p>
+            <p style="margin-bottom: 90px;">それは<br>言葉になっていないだけで、<br>確かにそこにあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これからの数年で、<br>あなたが意識していただきたいのは、<br>あなたの火を<br>旦那様と一緒に育てていくこと。</p>
+            <p style="margin-bottom: 90px;">ふたりで笑う時間を、<br>意識的に作る。</p>
+            <p style="margin-bottom: 90px;">家の中に<br>温かい光を増やす。</p>
+            <p style="margin-bottom: 90px;">夕暮れに<br>オレンジ色の灯りを灯す。</p>
+            <p style="margin-bottom: 90px;">冷たい飲み物より、<br>湯気の立つお茶を選ぶ。</p>
+            <p style="margin-bottom: 90px;">そういう<br>小さな「温度」を、<br>おうちの中に<br>ひとつずつ<br>増やしていってください。</p>
+            <p style="margin-bottom: 90px;">それが、<br>あなたの火を灯し、<br>旦那様の火を引き出し、<br>ご夫婦の真ん中に<br>ひとつの温かい場を<br>作っていきます。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">吒枳尼天</span>は、<br>豊かさを稲穂に変えて<br>人々に届けてくださる神様。</p>
+            <p style="margin-bottom: 90px;">その力は、<br>家の中の<br>温かい食卓、温かい灯り、<br>温かい会話、そういう場所に<br>最もよく宿ります。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">あなたが<br>自分の火を灯し、<br>旦那様と分かち合っていく<br>その時間に、<br><span style="color: #ffd966;">吒枳尼天</span>は<br>最も強く力を注いでくださいます。</p>
+        </div>
+
+        <!-- 稲沢のおうちと土地の縁 -->
+        <h2 class="emoji-header">⛩️稲沢のおうちと土地の縁</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここで、<br>新しく購入された<br>稲沢のおうちについて、<br>霊視で視えていることを<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">結論からお伝えすると、<br>稲沢という土地と、<br>あなたとのご縁は、<br>本当に深いものです。</p>
+            <p style="margin-bottom: 90px;">これは、<br>偶然たどり着いた土地ではありません。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">吒枳尼天</span>は、<br>稲穂の上に降り立った<br>稲荷信仰の神様。</p>
+            <p style="margin-bottom: 90px;">「稲」を司る女神です。</p>
+            <p style="margin-bottom: 90px;">そしてあなたが選ばれた土地の名前は、<br>稲沢。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">文字通り、<br>「稲」の土地。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">これは、<br>あなたの守護神が<br>土地の名前そのものに<br>宿っている、ということです。</p>
+            <p style="margin-bottom: 90px;">こういう一致は、<br>めったに起きません。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">吒枳尼天</span>の力が、<br>土地そのものに<br>息づいている場所。</p>
+            <p style="margin-bottom: 90px;">そこに、<br>あなたが家を建てる流れが<br>2026年に重なった。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これは、<br>偶然ではなく、<br>守護神の導きです。</p>
+            <p style="margin-bottom: 90px;">さらにもう一つ、<br>大切なことをお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">稲沢には、<br>国府宮神社という、<br>尾張国の総鎮守がいらっしゃいます。</p>
+            <p style="margin-bottom: 90px;">この神社は、<br>土地全体を見守る、<br>とても大きな力を持つお宮です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">新しいおうちでの暮らしを始めるにあたって、<br>一度、<br>国府宮神社にご挨拶に<br>行かれてみてください。</p>
+            <p style="margin-bottom: 90px;">「ここで暮らさせていただきます。<br>どうかこの土地と、<br>私たちの暮らしを<br>見守ってください」</p>
+            <p style="margin-bottom: 90px;">そう、<br>心の中でお伝えしてあげてください。</p>
+            <p style="margin-bottom: 90px;">それだけで、<br>土地の神様と<br>お二人の暮らしの根が<br>深く結ばれていきます。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>ひとつだけ</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">稲沢の土地は、<br>「土の気」が<br>とても強い土地です。</p>
+            <p style="margin-bottom: 90px;">そこに、<br>あなたと旦那様の<br>やわらかい大地的なエネルギーが<br>重なります。</p>
+            <p style="margin-bottom: 90px;">土ばかりが<br>重なりすぎると、<br>動きが止まりやすくなります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ですので、<br>おうちの中には、<br>意識的に<br>「動き」を生むものを<br>取り入れてあげてください。</p>
+            <p style="margin-bottom: 90px;">リビングの中に、<br>緑の観葉植物を一つか二つ。</p>
+            <p style="margin-bottom: 90px;">暖色の灯りを<br>夕方から灯す。</p>
+            <p style="margin-bottom: 90px;">水回りは<br>いつも清潔に、<br>水の流れを止めない。</p>
+            <p style="margin-bottom: 0;">それだけで、<br>土地の強い土の力と、<br>お二人の大地の力が、<br>ちゃんと<br>動く流れに変わります。</p>
+        </div>
+
+        <!-- 守護を受け取る方法 -->
+        <h2 class="emoji-header">⛩️守護を受け取る方法</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px; font-weight: bold;">安心してください。</p>
+            <p style="margin-bottom: 90px;">あなたを深く霊視した際、<br>特別な守護の力を<br>あなたの奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">それは<span style="color: #ffd966;">吒枳尼天</span>の和魂の力。</p>
+            <p style="margin-bottom: 90px;">この力は、<br>「楽しんでいい」<br>「自分の火を灯していい」<br>「旦那様と分かち合っていい」と、</p>
+            <p style="margin-bottom: 90px;">あなたの中の<br>細くなっていた火を<br>そっと温め直してくれます。</p>
+            <p style="margin-bottom: 90px;">今この文を読んでいる間にも、<br>胸の奥が少し温かくなる、<br>肩の力がふっと抜ける、<br>眠気を感じる、<br>呼吸が深くなる。</p>
+            <p style="margin-bottom: 90px;">もしそのような感覚があれば、<br>すでに<span style="color: #ffd966;">吒枳尼天</span>の神気が<br>あなたの中に<br>届き始めている証です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これは、<br>何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ受け取るだけで大丈夫です。</p>
+            <p style="margin-bottom: 0;">ただ、<br>余裕がある時だけ、<br>試してみていただきたいことが<br>いくつかあります。</p>
+        </div>
+
+        <h2 class="emoji-header">【吒枳尼天と縁のあるお社へ】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">まず、<br>新しいおうちの土地の鎮守、<br>稲沢の国府宮神社に<br>ご挨拶をしてください。</p>
+            <p style="margin-bottom: 90px;">そして、<br><span style="color: #ffd966;">吒枳尼天</span>そのものに<br>直接お参りされたい時は、<br>愛知県豊川市の<br>豊川稲荷へ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">豊川稲荷は、<br>吒枳尼真天が本尊として<br>祀られている、<br>愛知の中で<br>最も力強いお寺です。</p>
+            <p style="margin-bottom: 90px;">稲沢から<br>日帰りで足を運べる距離です。</p>
+            <p style="margin-bottom: 90px;">参拝の際は、<br>心の中で次の祝詞を<br>唱えてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">祓え給い、清め給え、<br>神ながら守り給い、幸え給え<br>（はらえたまい、きよめたまえ、<br>かむながらまもりたまい、さきわえたまえ）</p>
+            <p style="margin-bottom: 90px;">そして、<br>お願い事を唱えるのではなく、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私は、<br>旦那様と本気で<br>良いふたりになっていきます。<br>どうか見守っていてください」</p>
+            <p style="margin-bottom: 90px;">という形で伝えてください。</p>
+            <p style="margin-bottom: 90px;">神様へのお願いは、<br>願望を叶えてもらうのではなく、<br>自分が進む道を宣言し、<br>その歩みを助けていただくもの。</p>
+            <p style="margin-bottom: 0;">その姿勢が、<br><span style="color: #ffd966;">吒枳尼天</span>とのご縁を<br>深くしてくれます。</p>
+        </div>
+
+        <h2 class="emoji-header">【夕暮れに灯りを灯す】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">吒枳尼天</span>は、<br>温かい光と豊かさを<br>家に運んでくださる神様。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">夕方、<br>日が暮れ始めたら、<br>リビングの灯りを<br>オレンジ色の温かい光に<br>切り替えてみてください。</p>
+            <p style="margin-bottom: 0;">それだけで、<br>あなたの中の細くなった火に、<br><span style="color: #ffd966;">吒枳尼天</span>の温度が<br>そっと注がれていきます。</p>
+        </div>
+
+        <h2 class="emoji-header">【ふたりで湯気の立つものを口にする】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">おうちの中で、<br>旦那様と一緒に、<br>温かい飲み物を口にする時間を、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">一日のどこかに<br>ひとつだけ<br>作ってみてください。</p>
+            <p style="margin-bottom: 90px;">朝のお茶でも、<br>夜の白湯でも、<br>何でもいい。</p>
+            <p style="margin-bottom: 0;">湯気が立っているものを<br>ふたりで囲む時間が、<br>ご夫婦の真ん中に<br><span style="color: #ffd966;">吒枳尼天</span>の温かさを<br>そっと運んでくれます。</p>
+        </div>
+
+        <!-- パワーストーン -->
+        <h2 class="emoji-header">⛩️あなたを支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">あなたには、<br>守護神とのご縁をお伝えし、<br><span style="color: #ffd966;">吒枳尼天</span>の和魂の力を<br>あなたの奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px;">また、<br>国府宮神社、<br>豊川稲荷、<br>夕暮れの灯り、<br>湯気のある時間も<br>お伝えしました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">基本的には、<br>これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>守護の力は、<br>何もしなければ、<br>少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">新しい暮らしの中で、<br>日々のことに追われて、<br>神社に行く時間が<br>取れない日もある。</p>
+            <p style="margin-bottom: 90px;">旦那様のことや<br>家のことで、<br>自分の火を<br>すっかり忘れてしまう日もある。</p>
+            <p style="margin-bottom: 90px;">そういう日々の中でも、<br><span style="color: #ffd966;">吒枳尼天</span>の力を<br>身近に留めておくために、<br>パワーストーンの依代を<br>ぜひご用意されることを、<br>お勧めしたいのです。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">吒枳尼天</span>の力を石に宿し、<br>身近に持ち歩くことで、<br>日常の中で<br>神気を保ち続けることができます。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>どんな石でもいいわけではありません。</p>
+            <p style="margin-bottom: 90px;">あなたが持つ<br>独特のエネルギー──<br>肥沃な大地のような受容力、<br>細やかに察する感受性、<br>旦那様と完璧に補い合うご縁の構造。</p>
+            <p style="margin-bottom: 90px;">これらと、<br><span style="color: #ffd966;">吒枳尼天</span>が<br>共鳴しやすい石で<br>お作りする必要があります。</p>
+            <p style="margin-bottom: 0;">あなたのエネルギーと<br><span style="color: #ffd966;">吒枳尼天</span>が共鳴しやすい石を、<br>四つお伝えします。</p>
+        </div>
+
+        <ul style="margin-bottom: 90px;">
+            <li><span style="color: #ffd966; font-weight: bold;">1. シトリン（黄水晶）</span><br>太陽のような<br>やわらかい黄金色の石。<br>吒枳尼天の豊かさと<br>最も深く共鳴する石です。<br>稲穂の色と同じ温かい黄金が、<br>あなたの大地に<br>豊かさを呼び込んでくれます。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">2. カーネリアン</span><br>夕焼けのような<br>温かいオレンジの石。<br>あなたの中で細くなった<br>「楽しむ火」を<br>そっと灯し直してくれます。<br>胸の奥の温度を取り戻したい時期の<br>あなたにぴったり寄り添う石です。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">3. ペリドット</span><br>やわらかな黄緑色の石。<br>ご夫婦の真ん中に<br>「新しい芽」を育てる力を持ちます。<br>お二人の縁の中に刻まれた<br>「ふたりで初めて出る芽」を、<br>日々の中でそっと育ててくれる石です。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">4. ローズクォーツ</span><br>やさしいピンクの石。<br>旦那様との関係の中の<br>やわらかさ、あたたかさ、<br>言葉にならない愛情を<br>そっと整えてくれます。<br>旦那様が言葉にできない気持ちを、<br>あなたが受け取れる感性を、<br>さらに研ぎ澄ましてくれる石です。</li>
+        </ul>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">この中から、<br>あなたのエネルギーと<br>最もバランスが取れる組み合わせを、<br>私が選び、<br>一つひとつ手作りで<br>仕上げます。</p>
+            <p style="margin-bottom: 0;">ご希望の方は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <h2>【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">まゆ様、</p>
+            <p style="margin-bottom: 90px;">あなたの未来には、<br>稲沢の新しいおうちで、<br>旦那様とふたり、<br>湯気の立つお茶を挟んで<br>笑い合っている日々へと続く道が<br>視えています。</p>
+            <p style="margin-bottom: 90px;">特別な言葉を交わさなくても、<br>ふたりの間に<br>やわらかい温度が<br>ちゃんと流れている。</p>
+            <p style="margin-bottom: 90px;">夕暮れの灯りの下で、<br>今日あった<br>小さな出来事を分かち合いながら、<br>お互いの存在を<br>そっと味わう日々。</p>
+            <p style="margin-bottom: 90px;">そういう未来の景色が、<br>強く感じられます。</p>
+            <p style="margin-bottom: 90px;">今は、<br>「再構築したいのに、<br>自分の楽しい火が消えそう」と、<br>内側で<br>ぶつかりを感じているかもしれない。</p>
+            <p style="margin-bottom: 90px;">でも、それは<br>あなたの魂が<br>「本当の自分を取り戻して、<br>ふたりで歩き直したい」と<br>願っている合図です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">正しい感覚です。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>受け止めるだけでなく、<br>「育てる」側に立てる人。</p>
+            <p style="margin-bottom: 90px;">旦那様の言葉にならない気持ちを<br>受け取りながら、<br>あなた自身の火を<br>一緒に灯していける人。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、<br>あなたと旦那様は、<br>ふたりで初めて<br>新しい芽が出るご縁を<br>持っている。</p>
+            <p style="margin-bottom: 90px;">それぞれ一人では出ない芽が、<br>ふたりで寄り添ったとき、<br>ちゃんと地面から顔を出します。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">だから、<br>どうか<br>あなた自身の楽しみを<br>我慢しないでください。</p>
+            <p style="margin-bottom: 90px;">あなたが笑うことが、<br>旦那様の中の<br>言葉にならない温度を<br>引き出します。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それが、<br>あなたの幸せへの道。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">吒枳尼天</span>が、<br>あなたを守っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>楽しんでいい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ふたりで笑い合っていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">自分の火を、<br>ちゃんと灯していい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">守られている。</p>
+            <p style="margin-bottom: 90px;">その事実を、<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より、<br>遠隔守護祈祷を行い、<br>あなたとご家族の幸せを願います。</p>
+            <p style="margin-bottom: 30px;">あなたの未来に、<br>夕暮れの灯りのような<br>温かい豊かさが<br>満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>
