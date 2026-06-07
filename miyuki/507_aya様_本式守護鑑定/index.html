@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aya様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        /* 表紙のスタイル */
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">美と豊かさが満ちる日々へ</h2>
+            <p class="cover-name">aya様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 冒頭 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">aya様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂が、<br>本気で自分の生き方を<br>選び取ろうとしている。</p>
+            <p style="margin-bottom: 90px;">その強い意志が、<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先、<br>あなたが本当に知るべきことを、<br>一つひとつ、<br>丁寧にお伝えしていきます。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2>【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が、<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>2027年の初夏。</p>
+            <p style="margin-bottom: 90px;">緑が深く色づき始める頃。</p>
+            <p style="margin-bottom: 90px;">やわらかい光の差し込む空間の中で、<br>あなたが目の前のお客様と<br>やさしく笑い合っている姿。</p>
+            <p style="margin-bottom: 90px;">その人の表情が、<br>施術を受ける前と後とで、<br>はっきりと違う。</p>
+            <p style="margin-bottom: 90px;">肩から力が抜けて、<br>目の奥に光が戻っている。</p>
+            <p style="margin-bottom: 90px;">「ここに来てよかった」と、<br>帰り際に微笑む声が<br>聞こえてきます。</p>
+            <p style="margin-bottom: 90px;">そして、その光景の少し奥に──</p>
+            <p style="margin-bottom: 90px;">お子様たちが、<br>あなたの仕事の世界に<br>自然に溶け込んで過ごしている時間。</p>
+            <p style="margin-bottom: 90px;">仕事と家庭の境目が、<br>あなたらしい形で<br>やわらかく溶けている。</p>
+            <p style="margin-bottom: 90px;">その未来の兆しが、<br>強く感じられます。</p>
+            <p style="margin-bottom: 90px;">ただ──</p>
+            <p style="margin-bottom: 90px;">その景色に至るまでに、<br>あなたが越えるべき小さな壁が、<br>一つだけあります。</p>
+            <p style="margin-bottom: 90px;">それは、<br>他の誰でもない、<br>あなた自身の内側にあるもの。</p>
+            <p style="margin-bottom: 90px;">でも大丈夫です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その壁を、<br>あなたは越えられる。</p>
+            <p style="margin-bottom: 90px;">なぜなら、<br>あなたを守る神様が、<br>すでにあなたの中に、<br>それを越えるための光を<br>置いてくださっているからです。</p>
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは、<br><span style="color: #ffd966;">吉祥天（きちじょうてん）</span>。</p>
+            <p style="margin-bottom: 90px;">はるか昔、<br>吉祥天は乳の海から<br>生まれました。</p>
+            <p style="margin-bottom: 90px;">その美しさと幸福のエネルギーは、<br>神々さえも見惚れるほど。</p>
+            <p style="margin-bottom: 90px;">吉祥天はやがて、<br>毘沙門天の妻となり、<br>人々に「美」「豊かさ」「幸福」を<br>もたらす女神となったのです。</p>
+            <p style="margin-bottom: 90px;">吉祥天がいる場所には、<br>自然と豊かさが集まる。</p>
+            <p style="margin-bottom: 90px;">人が惹きつけられ、<br>花が咲き、<br>喜びが生まれる。</p>
+            <p style="margin-bottom: 90px;">そういう力を持つ神様です。</p>
+            <p style="margin-bottom: 90px;">今もなお、<br>京都の浄瑠璃寺、<br>奈良の薬師寺などに、<br>その美しいお姿が祀られています。</p>
+            <p style="margin-bottom: 0;">「美と豊かさで人を幸福に導く女神」として、<br>今あなたに<br>加護を与えてくださっています。</p>
+        </div>
+
+        <!-- あなたという人の本質 -->
+        <h2 class="emoji-header">⛩️あなたという人の本質</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">あなたの魂の奥を、<br>深く視させていただきました。</p>
+            <p style="margin-bottom: 90px;">そこに刻まれていたものを、<br>ここでお伝えしていきます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">まず一つ目。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>鋭く磨かれた感性を持つ人。</p>
+            <p style="margin-bottom: 90px;">色のわずかな違い、<br>質感の差、<br>人の表情の小さな揺れ。</p>
+            <p style="margin-bottom: 90px;">そういったものを、<br>他の人が見過ごす細部まで、<br>きちんと感じ取れる人です。</p>
+            <p style="margin-bottom: 90px;">「センスがいい」と<br>周りから言われてきたはずです。</p>
+            <p style="margin-bottom: 90px;">でも、それは<br>ただの感覚ではありません。</p>
+            <p style="margin-bottom: 90px;">あなたの中には、<br>美しいものとそうでないものを、<br>切れ味鋭く見分ける眼があります。</p>
+            <p style="margin-bottom: 90px;">だから、<br>妥協ができない。</p>
+            <p style="margin-bottom: 90px;">「これでいい」と思えないものを、<br>無理に「これでいい」と<br>飲み込むことができない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは欠点ではなく、<br>あなたが本物だからこそ持っている、<br>本物の感覚です。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">二つ目。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>誰かの作った型に<br>自分を合わせて生きられない人です。</p>
+            <p style="margin-bottom: 90px;">会社の決まった時間、<br>誰かが決めた働き方、<br>「みんながやっているから」という理由。</p>
+            <p style="margin-bottom: 90px;">そういうものに、<br>自分の人生を委ねられない。</p>
+            <p style="margin-bottom: 90px;">胸の奥のどこかで、<br>ずっとそう感じてきたのでは<br>ないでしょうか。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私は私のやり方で生きていきたい」</p>
+            <p style="margin-bottom: 90px;">その声が、<br>あなたの中に<br>確かに響いている。</p>
+            <p style="margin-bottom: 90px;">それは、<br>わがままなのではありません。</p>
+            <p style="margin-bottom: 90px;">あなたの魂は最初から、<br>「自分の感覚で道を作っていく人」として<br>この世に降りてきている。</p>
+            <p style="margin-bottom: 90px;">普通の働き方に違和感を持つのは、<br>そういう設計だからです。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">三つ目。</p>
+            <p style="margin-bottom: 90px;">これは、あなた自身も<br>気づいているかどうか分からない、<br>深い部分のお話です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの内側には、<br>「楽しんで生きていいのか」<br>「自分の好きなように<br>お金を稼いでいいのか」と、<br>無意識のうちに<br>自分にブレーキをかけてしまう<br>癖があります。</p>
+            <p style="margin-bottom: 90px;">頭では「楽しんで稼ぎたい」と<br>願っているのに、<br>心のどこかが<br>「でも、それは贅沢なのでは」<br>「もっと頑張らないと<br>許されないのでは」と、<br>ささやいてくる。</p>
+            <p style="margin-bottom: 90px;">特に、お金の話になると、<br>「これでいいのか」<br>「もっとやらなくては」と<br>ぐるぐる考えてしまう。</p>
+            <p style="margin-bottom: 90px;">それは、<br>あなたの欠点ではありません。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>あなたの魂が<br>そういう「ブレーキ」を<br>最初から持っている、<br>というだけのこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、<br>そのブレーキこそが、<br>今あなたが<br>「向いている仕事は他にあるのか」<br>「このままでいいのか」と<br>考えさせているんです。</p>
+            <p style="margin-bottom: 90px;">外の状況ではなく、<br>あなた自身の内側で<br>鳴っているブレーキ。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">ここを整えていけば、<br>あなたの本来の流れは、<br>自然と動き始めます。</p>
+        </div>
+
+        <!-- サロンが繁栄していく流れと、最初の一手 -->
+        <h2 class="emoji-header">⛩️サロンが繁栄していく流れと、最初の一手</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">これからのサロンワークについて、<br>霊視で視えていることを<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">まずお伝えしたいこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたの「働き方」は<br>「あなたが中心の場」が<br>豊かさを呼ぶという構造が<br>一番よくお金が回ります。</p>
+            <p style="margin-bottom: 90px;">これは、<br>とても珍しい設計です。</p>
+            <p style="margin-bottom: 90px;">普通人は、<br>「動くことで豊かになる」<br>「人脈で豊かになる」<br>「才能で豊かになる」<br>など、いろいろなパターンがあります。</p>
+            <p style="margin-bottom: 90px;">ところがあなたの場合は、<br>「あなたがいる場所、<br>あなたが整えた空間そのものが、<br>豊かさを呼ぶ磁場になる」</p>
+            <p style="margin-bottom: 90px;">そういう設計です。</p>
+            <p style="margin-bottom: 90px;">これはつまり──</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「向いている仕事は他にあるのか」<br>というあなたの問いへの、<br>神様からの答えでもあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">向いている仕事は、<br>まさに今のような仕事です。</p>
+            <p style="margin-bottom: 90px;">今のサロンワークの「形」が、<br>これから少しずつ<br>いい方向に変わっていく。</p>
+            <p style="margin-bottom: 90px;">そういう流れに、<br>あなたは既に巻き込まれています。</p>
+            <p style="margin-bottom: 90px;">具体的にいうと──</p>
+            <p style="margin-bottom: 90px;">サロンの世界観、<br>空気、香り、<br>光の入り方、<br>お客様との時間の流れ方。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そういう「場の総体」を<br>あなたらしく磨いていくこと。</p>
+            <p style="margin-bottom: 90px;">それが、<br>あなたに豊かさが<br>最も大きく流れ込む形です。</p>
+            <p style="margin-bottom: 90px;">サロンを大きく拡げる、<br>店舗を増やす、<br>スタッフをたくさん雇う。</p>
+            <p style="margin-bottom: 90px;">そういう方向ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたがそこにいる場所そのものを、<br>あなたの世界として<br>深く磨いていく。</p>
+            <p style="margin-bottom: 90px;">その磨きの先で、<br>お客様が<br>「ここでなければ」と<br>集まってくる。</p>
+            <p style="margin-bottom: 90px;">それが、<br><span style="color: #ffd966;">吉祥天</span>があなたに見せている、<br>サロン繁栄の形です。</p>
+            <p style="margin-bottom: 90px;">そして、<br>最初の一手の時期が<br>視えています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2026年の夏。<br>7月、8月。</p>
+            <p style="margin-bottom: 90px;">ここが、<br>あなたの世界観を<br>形にしていく最初のタイミングです。</p>
+            <p style="margin-bottom: 90px;">夏の光が一番強くなる頃。</p>
+            <p style="margin-bottom: 90px;">その時期、<br>あなたの中で<br>「こうしたい」という形が<br>急にクリアになる瞬間が<br>訪れます。</p>
+            <p style="margin-bottom: 90px;">それまでぼんやりしていたものが、<br>ある日ふと、<br>頭の中で輪郭を持つ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「あ、私はこういうサロンにしたい」</p>
+            <p style="margin-bottom: 90px;">そんな感覚が、<br>夏の風と共に<br>降りてきます。</p>
+            <p style="margin-bottom: 90px;">その感覚を、<br>そのままにせず、<br>小さくていいので<br>形にしてください。</p>
+            <p style="margin-bottom: 90px;">サロンの中の何かを変える、<br>発信の言葉を整える、<br>お客様との接し方の<br>ひとつを変える。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そういう小さな一手が、<br>そこから秋の収穫期に向かって、<br>あなたの豊かさを<br>ぐっと引き寄せていきます。</p>
+            <p style="margin-bottom: 90px;">9月、10月になると、<br>今度はお金の流れが<br>具体的に動き始めます。</p>
+            <p style="margin-bottom: 90px;">新しいお客様、<br>特に──<br>紹介や口コミでつながる<br>女性のお客様の流れが、<br>秋の風と共にやってきます。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">ここが、<br>2026年の最初の繁栄のうねりです。</p>
+        </div>
+
+        <!-- あなたに合う働き方の形 -->
+        <h2 class="emoji-header">⛩️あなたに合う働き方の形</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">子供たちとの時間と、<br>好きなことで稼ぐこと。</p>
+            <p style="margin-bottom: 90px;">その両立について、<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">ここで、<br>あなたに知っていただきたい<br>大切なことがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたの魂の奥には、<br>「家」と「仕事」と「豊かさ」が<br>三つで一つに結ばれている<br>場所があります。</p>
+            <p style="margin-bottom: 90px;">普通の人は、<br>仕事は仕事、<br>家は家、<br>それぞれ別の場所で<br>別のエネルギーが動きます。</p>
+            <p style="margin-bottom: 90px;">でも、あなたは違う。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの場合は、<br>「家を中心とした空間」に<br>仕事の豊かさが<br>流れ込む構造になっています。</p>
+            <p style="margin-bottom: 90px;">つまり──</p>
+            <p style="margin-bottom: 90px;">子供との時間を確保するために<br>仕事を犠牲にするのではなく、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">家を拠点にすることが、<br>むしろあなたに豊かさを<br>最も大きく呼び込む。</p>
+            <p style="margin-bottom: 90px;">そういう流れになっています。</p>
+            <p style="margin-bottom: 90px;">もしあなたが今、<br>サロンを家から遠く離れた場所に作って、<br>朝から晩まで通って働く形を<br>取ろうとしているなら、<br>うまくいかない可能性が高い。</p>
+            <p style="margin-bottom: 90px;">そうではなく、<br>家を拠点にした形。</p>
+            <p style="margin-bottom: 90px;">例えば──</p>
+            <p style="margin-bottom: 90px;">自宅の一室を整えた空間にする、<br>家から近い距離でサロンを開く、<br>家での発信と<br>施術の場を組み合わせる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そういう形が、<br>あなたに一番ぴったり合います。</p>
+            <p style="margin-bottom: 90px;">そして、<br>これから視えているのは──</p>
+            <p style="margin-bottom: 90px;">施術が終わった後、<br>お客様がやわらかい表情で<br>お帰りになる。</p>
+            <p style="margin-bottom: 90px;">そのあと、<br>お子様たちが学校から帰ってくる。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>さっきまでお客様のためにあった<br>その同じ空間で、<br>今度はお子様たちと<br>おやつの時間を過ごせる。</p>
+            <p style="margin-bottom: 90px;">仕事と家庭の境目が<br>ふわっと溶けている。</p>
+            <p style="margin-bottom: 90px;">そういう、<br>あなたらしい働き方の景色が<br>視えています。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>ここで一つだけ、<br>お伝えしておくこと。</p>
+            <p style="margin-bottom: 90px;">あなたの中の<br>あのブレーキ、<br>「楽しんで稼いでいいのか」という<br>内側の声が、<br>ここで一番強く効いてきます。</p>
+            <p style="margin-bottom: 90px;">家を拠点にして、<br>好きなことで稼ぐ。</p>
+            <p style="margin-bottom: 90px;">それを「楽しい」と感じる瞬間が<br>増えてくる。</p>
+            <p style="margin-bottom: 90px;">すると、あなたの中で<br>「これは贅沢ではないか」<br>「もっと苦労しなければ<br>本物ではないのではないか」と、<br>無意識のささやきが<br>聞こえてくる時があります。</p>
+            <p style="margin-bottom: 90px;">そのささやきが、<br>あなたを「もっと頑張らねば」と<br>焦らせる。</p>
+            <p style="margin-bottom: 90px;">そして、せっかく<br>家を拠点にした働き方を<br>選ぼうとしているのに、<br>わざわざ<br>苦労する道を選んでしまう。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これが、<br>あなたの運命に刻まれた<br>唯一の落とし穴です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">このブレーキに気づいて、<br>「楽しんでいい」<br>「家で稼いでいい」<br>「子供と一緒の時間を持っていい」と、<br>自分に許可を出すこと。</p>
+            <p style="margin-bottom: 90px;">これが、<br>あなたの働き方の形を<br>本当に動かす鍵です。</p>
+            <p style="margin-bottom: 90px;">そして、<br><span style="color: #ffd966;">吉祥天</span>は、<br>このブレーキを和らげる力を<br>持つ神様です。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">「美と楽しみと豊かさを、<br>ためらいなく受け取っていい」と、<br>吉祥天はあなたに<br>伝えています。</p>
+        </div>
+
+        <!-- 豊かさの流れと、これから訪れる未来 -->
+        <h2 class="emoji-header">⛩️豊かさの流れと、これから訪れる未来</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">豊かさが流れてくる時期と、<br>これから先の未来について<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">ここは、<br>時間軸でお伝えしていきます。</p>
+            <p style="margin-bottom: 90px;">まず、近い未来から。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年の秋。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここで、<br>最初の豊かさのうねりが訪れます。</p>
+            <p style="margin-bottom: 90px;">夏に整えたサロンの世界観に、<br>秋の風と共に<br>新しいお客様の流れが届く。</p>
+            <p style="margin-bottom: 90px;">特に、<br>あなたの世界観に共鳴する女性のお客様。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その方たちの中に、<br>あなたの仕事を大きく押し上げてくれる方が<br>一人、混じっています。</p>
+            <p style="margin-bottom: 90px;">その方は、<br>たまたまあなたのサロンに来た<br>というよりは、<br><span style="color: #ffd966;">吉祥天</span>があなたのもとに<br>そっと運んでくる流れの中の方。</p>
+            <p style="margin-bottom: 90px;">その方との出会いが、<br>口コミ、紹介、発信の広がり──<br>そういう形で、<br>あなたの仕事の輪を<br>じんわり広げ始めます。</p>
+            <p style="margin-bottom: 90px;">次に、<br>2027年。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この年、<br>あなたのサロンの「形」が<br>言葉になります。</p>
+            <p style="margin-bottom: 90px;">それまで<br>「なんとなくこういう感じ」だったものが、<br>「私のサロンはこういう世界」と、<br>あなた自身の言葉で<br>語れるようになる年。</p>
+            <p style="margin-bottom: 90px;">世界観が言葉になると、<br>そこに惹かれる人が<br>さらに自然に集まってきます。</p>
+            <p style="margin-bottom: 90px;">桜が散って新緑の頃、<br>お客様の予約表が<br>気づけば先まで<br>埋まっている。</p>
+            <p style="margin-bottom: 90px;">そういう光景が、<br>2027年の春から夏にかけて<br>視えています。</p>
+            <p style="margin-bottom: 90px;">そして──</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2028年から2029年。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここで、<br>あなたが本当に望んでいた<br>「安定した豊かさ」<br>「子供との時間」<br>「楽しんで稼ぐ感覚」が、<br>日常になります。</p>
+            <p style="margin-bottom: 90px;">サロンに来てくださるお客様が、<br>あなたの世界観のファンとして<br>定着している。</p>
+            <p style="margin-bottom: 90px;">月の収入の流れが、<br>ようやくあなたが<br>安心して呼吸できる<br>形になっている。</p>
+            <p style="margin-bottom: 90px;">子供たちとの時間も、<br>無理せず取れている。</p>
+            <p style="margin-bottom: 90px;">朝、お子様たちを送り出して、</p>
+            <p style="margin-bottom: 90px;">お昼に、<br>丁寧に淹れたお茶を一杯。</p>
+            <p style="margin-bottom: 90px;">午後にお客様を見送って、<br>夕方、<br>お子様たちが帰ってくる頃には、<br>もう仕事着のまま<br>キッチンに立っている。</p>
+            <p style="margin-bottom: 90px;">そういう「整った日常」が、<br>2028〜2029年に<br>形になっていきます。</p>
+            <p style="margin-bottom: 90px;">ここまでが、<br>近い未来のお話。</p>
+            <p style="margin-bottom: 90px;">ここからは、<br>もう少し先の未来をお伝えします。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2030年。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここで、<br>人生の大きな扉が<br>もう一つ開きます。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">吉祥天</span>が見せてくれているのは──</p>
+            <p style="margin-bottom: 90px;">あなたが、<br>自分のサロンだけでなく、<br>「教える側」「導く側」に立っている姿。</p>
+            <p style="margin-bottom: 90px;">サロンワークを学びたい<br>若い女性たちが、<br>あなたのもとに<br>集まっている景色。</p>
+            <p style="margin-bottom: 90px;">あるいは、<br>あなたの言葉や世界観が、<br>本やSNSや何らかの形で<br>広く届いている姿。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ひとりのサロンオーナーから、<br>「美と豊かさを伝える人」へと、<br>役割が一段大きく<br>変わっていきます。</p>
+            <p style="margin-bottom: 90px;">そして──<br>これが大事なところです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここに至るまでに、<br>あなたが積み上げてきた豊かさが、<br>ようやく<br>「子供たちへの投資」という形で<br>動き始めます。</p>
+            <p style="margin-bottom: 90px;">子供たちの夢、学び、進路。</p>
+            <p style="margin-bottom: 90px;">そういうものに、<br>あなたが<br>「お金の心配なく」<br>注いであげられる時期が、<br>2030年代に入ってから<br>本格的に動いていきます。</p>
+            <p style="margin-bottom: 90px;">つまり──</p>
+            <p style="margin-bottom: 90px;">「子供にお金を投資したい」<br>というあなたの願いは、<br>今すぐ全て叶うわけではありません。</p>
+            <p style="margin-bottom: 90px;">今すぐ大きく動かそうとすると、<br>かえって流れがちぐはぐになります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2026〜2029年の数年間で、<br>家を拠点にした働き方と<br>あなたの世界観を整え、<br>土台を作る。</p>
+            <p style="margin-bottom: 90px;">その土台の上に、<br>2030年代の大きな流れが<br>やってきて、<br>そこで子供たちへの投資が<br>本格的に動き出す。</p>
+            <p style="margin-bottom: 90px;">これが、<br><span style="color: #ffd966;">吉祥天</span>が見せてくださっている、<br>あなたの豊かさの本当の流れです。</p>
+            <p style="margin-bottom: 90px;">「他に向いている仕事は」<br>という問いの答えは──</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">今のあなたが立っている道、<br>そこがベストです。</p>
+            <p style="margin-bottom: 90px;">その「形」が、<br>これから少しずつ<br>あなたらしく変わっていく。</p>
+            <p style="margin-bottom: 0;">それだけのことなのです。</p>
+        </div>
+
+        <!-- 今後の流れ -->
+        <h2 class="emoji-header">⛩️今後の流れ</h2>
+        <div class="section">
+            <p style="margin-bottom: 0;">これから訪れる<br>重要な四つの月を、<br>お伝えします。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年7月：守護神の力が最も流れ込む月</p>
+            <p style="margin-bottom: 90px;">これは、<br>あなたにとって<br>特別な月です。</p>
+            <p style="margin-bottom: 90px;">夏の光が最も濃く、<br>草木が一斉に<br>生命力を膨らませる時期。</p>
+            <p style="margin-bottom: 90px;">この月、<br>あなたの守護神である<span style="color: #ffd966;">吉祥天</span>の力が、<br>あなたの中に<br>最も強く流れ込んできます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この月、<br>ふとした瞬間に、<br>「あ、私はこういうサロンにしたい」<br>「こういう世界観を作りたい」と、<br>頭の中で輪郭が<br>急にクリアになる瞬間が訪れます。</p>
+            <p style="margin-bottom: 90px;">通勤の途中、<br>洗い物をしている最中、<br>夜、子供たちが寝た後の<br>静かな時間。</p>
+            <p style="margin-bottom: 90px;">何気ない瞬間に、<br>ふっとそれが<br>降りてきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その瞬間を、<br>逃さないでください。</p>
+            <p style="margin-bottom: 90px;">メモを取る、<br>誰かに話す、<br>小さなノートに書き留める。</p>
+            <p style="margin-bottom: 90px;">形は何でもいい。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>その瞬間に降りてきた感覚を、<br>形に残してあげてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それが、<br>これから三年間の<br>あなたの豊かさの種になります。</p>
+            <p style="margin-bottom: 90px;">そしてこの月、<br>できれば──</p>
+            <p style="margin-bottom: 90px;">朝、<br>窓を開けて<br>夏の空気を一度<br>胸の奥まで吸い込んでください。</p>
+            <p style="margin-bottom: 90px;">吉祥天は、<br>夏の光と共に動く神様。</p>
+            <p style="margin-bottom: 0;">朝の光と空気を取り込むだけで、<br>あなたの中に<br>吉祥天の神気が<br>そっと宿り始めます。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年8月：流れが動き始める月</p>
+            <p style="margin-bottom: 90px;">7月に芽吹いた感覚が、<br>8月にかたちを取り始めます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この月は、<br>お金の流れが<br>少しずつ動き始める月。</p>
+            <p style="margin-bottom: 90px;">新しいお客様、<br>新しい予約、<br>新しい問い合わせ。</p>
+            <p style="margin-bottom: 90px;">そういう「動き」が、<br>8月から少しずつ<br>増えていくのを感じるはずです。</p>
+            <p style="margin-bottom: 90px;">ここで大切なのは、<br>「焦らない」こと。</p>
+            <p style="margin-bottom: 90px;">8月に大きな結果を求めず、<br>動き始めた小さな流れを<br>丁寧に受け取ること。</p>
+            <p style="margin-bottom: 90px;">「動きが見えてきた、<br>でもまだ静かに整え続けよう」</p>
+            <p style="margin-bottom: 0; font-weight: bold;">そういう姿勢が、<br>秋の大きな流れに<br>つながっていきます。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年10月：土台が固まる月</p>
+            <p style="margin-bottom: 90px;">秋の風が冷たくなり始める頃。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この月は、<br>あなたの「土台」が固まる月です。</p>
+            <p style="margin-bottom: 90px;">夏に思い描いた世界観、<br>8月に動き始めた流れが、<br>10月になって<br>「これが私のサロンだ」と<br>あなた自身の中で<br>腑に落ちる感覚が訪れます。</p>
+            <p style="margin-bottom: 90px;">そして、<br>この月以降、<br>お客様の中に<br>あなたの世界を<br>広く伝えてくれる方が<br>姿を現します。</p>
+            <p style="margin-bottom: 90px;">紹介を生む方、<br>あなたの言葉に共鳴する方、<br>あるいは<br>人生で長く付き合う深いお客様。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">その方との出会いを、<br>逃さないでください。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年3月：流れが大きく動き出す月</p>
+            <p style="margin-bottom: 90px;">桜が咲き始める頃。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここが、<br>2026年の流れが<br>来年に持ち越されて<br>さらに大きく動き出す月です。</p>
+            <p style="margin-bottom: 90px;">サロンの形、<br>お客様との関係、<br>収入の流れ。</p>
+            <p style="margin-bottom: 90px;">すべてが少し前進する月。</p>
+            <p style="margin-bottom: 90px;">桜が満開になる頃、<br>あなたの予約表が<br>気づけば春の予定で埋まっている。</p>
+            <p style="margin-bottom: 0;">そういう景色が、<br>視えています。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">今年（2026年）全体について</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2026年は、<br>「準備と種まきの年」です。</p>
+            <p style="margin-bottom: 90px;">すぐに大きな成果が出るというより、<br>これから三年間の<br>土台を作る年。</p>
+            <p style="margin-bottom: 90px;">焦らずに、<br>夏の光を受け取り、<br>秋の風を聴いて、<br>冬に向けて根を伸ばす。</p>
+            <p style="margin-bottom: 0;">そういう静かな積み重ねが、<br>来年以降、<br>大きな花を咲かせます。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">来年（2027年）全体について</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2027年は、<br>「世界観が形になる年」です。</p>
+            <p style="margin-bottom: 90px;">あなたが「こういうサロンにしたい」と<br>ぼんやり感じていたものが、<br>言葉になり、<br>形になり、<br>お客様の口から<br>「あなたのサロンはこういう世界よね」と<br>返ってくる年。</p>
+            <p style="margin-bottom: 0;">ここで、<br>あなたのサロンの個性が<br>くっきりと立ち上がります。</p>
+        </div>
+
+        <!-- 守護を受け取る方法 -->
+        <h2 class="emoji-header">⛩️守護を受け取る方法</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">安心してください。</p>
+            <p style="margin-bottom: 90px;">あなたを深く霊視した際、<br>特別な守護の力を<br>あなたの奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px;">それは<span style="color: #ffd966;">吉祥天</span>の和魂の力。</p>
+            <p style="margin-bottom: 90px;">この力は、<br>「楽しんで豊かになっていい」<br>「美しいものに囲まれていい」<br>「あなたの世界観をそのまま広げていい」と、<br>あなたの中の<br>あのブレーキを<br>ゆっくりと和らげていきます。</p>
+            <p style="margin-bottom: 90px;">今この文を読んでいる間にも、<br>胸の奥が少し温かくなる、<br>肩の力がふっと抜ける、<br>眠気を感じる、<br>呼吸が深くなる。</p>
+            <p style="margin-bottom: 90px;">もしそのような感覚があれば、<br>すでに吉祥天の神気が<br>あなたの中に<br>届き始めている証です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">これは、<br>何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">ただ受け取るだけで大丈夫です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>余裕がある時だけ、<br>試してみていただきたいことが、<br>いくつかあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">【吉祥天と縁のある寺院へ】</p>
+            <p style="margin-bottom: 90px;">最も有名な吉祥天像は、<br>京都の浄瑠璃寺、<br>奈良の薬師寺などに<br>祀られています。</p>
+            <p style="margin-bottom: 90px;">ただ、関西は<br>気軽に行ける距離では<br>ないかもしれません。</p>
+            <p style="margin-bottom: 90px;">東京の中で<br>吉祥天を直接お祀りしている<br>お寺を、二つお伝えします。</p>
+            <p style="margin-bottom: 90px;">ひとつめは──<br><span style="color: #ffd966;">清土鬼子母神堂（せいどきしもじんどう）</span>。<br>東京都文京区目白台。</p>
+            <p style="margin-bottom: 90px;">雑司ヶ谷七福神の一柱として、<br>吉祥天が祀られています。<br>都心からも訪ねやすい<br>落ち着いたお堂です。</p>
+            <p style="margin-bottom: 90px;">ふたつめは──<br><span style="color: #ffd966;">深川不動堂<br>（成田山東京別院）</span>。<br>東京都江東区富岡。</p>
+            <p style="margin-bottom: 90px;">内仏殿の二階に、<br>吉祥天像が静かに<br>安置されています。</p>
+            <p style="margin-bottom: 90px;">府中からは少し距離がありますが、<br>ご縁を感じるほうへ、<br>一度足を運んでみてください。</p>
+            <p style="margin-bottom: 90px;">参拝の際は、<br>心の中で次の祝詞を<br>唱えてください。</p>
+            <p style="margin-bottom: 90px;">「祓え給い、清め給え、<br>神ながら守り給い、幸え給え」<br>（はらえたまい、きよめたまえ、<br>かむながらまもりたまい、さきわえたまえ）</p>
+            <p style="margin-bottom: 90px;">そして、<br>お願い事を唱えるのではなく、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私は私の世界観で<br>サロンを育てていきます。<br>どうか見守っていてください」</p>
+            <p style="margin-bottom: 90px;">という形で伝えてください。</p>
+            <p style="margin-bottom: 90px;">神様へのお願いは、<br>願望を叶えてもらうのではなく、<br>自分が進む道を宣言し、<br>その歩みを助けていただくもの。</p>
+            <p style="margin-bottom: 90px;">その姿勢が、<br>吉祥天とのご縁を<br>深くしてくれます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">【朝の光を取り込む】</p>
+            <p style="margin-bottom: 90px;">吉祥天は、<br>朝の光と共に動く神様です。</p>
+            <p style="margin-bottom: 90px;">朝、<br>窓を開けて<br>一度だけ、<br>胸の奥まで深く呼吸をしてください。</p>
+            <p style="margin-bottom: 90px;">それだけで、<br>あなたの中に<br>吉祥天の神気が<br>すっと流れ込んできます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">【美しいものに触れる】</p>
+            <p style="margin-bottom: 90px;">あなたの魂は、<br>美しいものに触れることで<br>整います。</p>
+            <p style="margin-bottom: 90px;">花を一輪、<br>お気に入りの香り、<br>丁寧に淹れたお茶。</p>
+            <p style="margin-bottom: 90px;">「贅沢かな」と感じるような<br>小さな美しさを、<br>日常の中に<br>ひとつだけ<br>取り入れてみてください。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">それが、<br>あなたの中の<br>楽しんで稼ぐ火を<br>育てていきます。</p>
+        </div>
+
+        <!-- パワーストーン -->
+        <h2 class="emoji-header">⛩️あなたを支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">あなたには、<br>守護神とのご縁をお伝えし、<br><span style="color: #ffd966;">吉祥天</span>の和魂の力を<br>あなたの奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px;">また、<br>吉祥天と縁のある寺院、<br>朝の光、<br>美しいものに触れる時間も<br>お伝えしました。</p>
+            <p style="margin-bottom: 90px;">基本的には、<br>これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>守護の力は、<br>何もしなければ、<br>少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">毎日サロンで動いていると、<br>朝の光を浴びる時間が取れない日もある。</p>
+            <p style="margin-bottom: 90px;">お子様たちのお世話で、<br>お寺に足を運ぶ余裕がない時もある。</p>
+            <p style="margin-bottom: 90px;">そういう方に、<br>ぜひお勧めしたいのが<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px;">吉祥天の力を石に宿し、<br>身近に持ち歩くことで、<br>日常の中で<br>神気を保ち続けることができます。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>どんな石でもいいわけではありません。</p>
+            <p style="margin-bottom: 90px;">あなたが持つ<br>独特のエネルギー──<br>美を生み出す力、<br>鋭く磨かれた感性、<br>家を拠点にする豊かさの構造。</p>
+            <p style="margin-bottom: 90px;">これらと、<br>吉祥天が共鳴しやすい石で<br>お作りする必要があります。</p>
+            <p style="margin-bottom: 0;">あなたのエネルギーと<br><span style="color: #ffd966;">吉祥天</span>が共鳴しやすい石を、<br>四つお伝えします。</p>
+        </div>
+
+        <ul style="margin-bottom: 90px;">
+            <li><span style="color: #ffd966; font-weight: bold;">1. シトリン（黄水晶）</span><br>太陽の光のような<br>やわらかい黄金色の石。<br>吉祥天の豊かさのエネルギーと深く共鳴します。<br>あなたの「家を拠点にした豊かさ」の流れを、<br>さらに強く呼び込んでくれる石です。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">2. ローズクォーツ</span><br>やわらかなピンクの石。<br>人と人の縁を整え、<br>新しいお客様、特に女性のお客様との縁を引き寄せます。<br>2026年秋に訪れる新しいお客様との出会いを、<br>あなたのもとへそっと運んでくれる石です。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">3. ルチルクォーツ</span><br>水晶の中に<br>金色の針が走る石。<br>動くお金の流れを整える石です。<br>あなたの星筋にある「動きながら豊かさが流れる」<br>お金のエネルギーと共鳴して、<br>収入の流れを具体的に動かす力を持ちます。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">4. ムーンストーン</span><br>月のような乳白色の石。<br>あなたの中にある<br>「楽しんで稼いでいいのか」というブレーキを、<br>ゆっくりと溶かしていく石です。<br>子供との時間と仕事の両立への迷いを、<br>やわらかく整えてくれます。</li>
+        </ul>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">この中から、<br>あなたのエネルギーと<br>最もバランスが取れる組み合わせを、<br>私が選び、<br>一つひとつ手作りで<br>仕上げます。</p>
+            <p style="margin-bottom: 0;">ご希望の方は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <h2>【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">aya様、</p>
+            <p style="margin-bottom: 90px;">あなたの未来には、<br>ご自身の世界観で整えた空間の中で、<br>お客様と笑い合い、<br>子供たちとの時間も<br>ゆったりと取れる日々へと続く道が<br>視えています。</p>
+            <p style="margin-bottom: 90px;">夏の光のような豊かさが<br>家の中に満ち、<br>子供たちの笑い声が<br>仕事の時間と<br>やわらかく重なっている。</p>
+            <p style="margin-bottom: 90px;">そういう未来の景色が、<br>強く感じられます。</p>
+            <p style="margin-bottom: 90px;">今は、<br>「向いている仕事は他にあるのか」<br>「このままでいいのか」と<br>迷っているかもしれない。</p>
+            <p style="margin-bottom: 90px;">でも、それは<br>あなたの魂が<br>「次の形に動こうとしている」<br>合図です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">正しい感覚です。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>自分の世界観でしか<br>本当の豊かさを呼べない人。</p>
+            <p style="margin-bottom: 90px;">誰かの作った型に<br>合わせて生きるのではなく、<br>自分の感覚で<br>自分の場を整えていくことが、<br>あなたの幸せへの道です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「楽しんでいい」<br>「家で稼いでいい」<br>「子供と一緒の時間を持っていい」</p>
+            <p style="margin-bottom: 90px;">その許可を、<br>ご自分に<br>出してあげてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それが、<br>あなたの幸せへの道。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">吉祥天</span>が、<br>あなたを守っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>豊かになっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">楽しんで生きていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">美しいものに<br>囲まれていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">守られている。</p>
+            <p style="margin-bottom: 90px;">その事実を、<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より、<br>遠隔守護祈祷を行い、<br>あなたの幸せを願います。</p>
+            <p style="margin-bottom: 30px;">あなたの未来に、<br>夏の光のような豊かさが<br>満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>
