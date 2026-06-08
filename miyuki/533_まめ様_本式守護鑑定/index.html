@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>まめ様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">息子たちの自立と<br>新しい人生</h2>
+            <p class="cover-name">まめ様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 冒頭 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">まめ様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">息子さんお二人の人生を、<br>深いところで見つめ続けてこられた<br>その想いの強さが、<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先、<br>あなたが本当に知るべきことを、<br>一つひとつ、<br>丁寧にお伝えしていきます。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2>【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が、<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>2027年の春。</p>
+            <p style="margin-bottom: 90px;">加子母の山に新しい芽が<br>ひらき始める頃。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">長男様が、<br>ご自分で選んだ仕事の場で、<br>迷いなく立っている姿。</p>
+            <p style="margin-bottom: 90px;">その隣には、<br>彼を必要としてくれる人がいる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして次男様は、<br>あなたの家のすぐ近くで、<br>ご自分にしかできない役割を<br>静かに果たしている。</p>
+            <p style="margin-bottom: 90px;">朝、家を出ていく息子さんの背中を、<br>あなたは玄関先で見送っている。</p>
+            <p style="margin-bottom: 90px;">「行ってらっしゃい」<br>と声をかけたあと、<br>胸の中に、<br>ふっと軽さが広がる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「もう、私が全部抱えなくていい」</p>
+            <p style="margin-bottom: 90px;">そう気づいた瞬間の、<br>肩の力が抜けた、<br>あなた自身の表情。</p>
+            <p style="margin-bottom: 90px;">その未来の兆しが、<br>強く感じられます。</p>
+            <p style="margin-bottom: 90px;">ただ──</p>
+            <p style="margin-bottom: 90px;">その景色に至るまでに、<br>あなたが越えるべき一つの境目が<br>あります。</p>
+            <p style="margin-bottom: 90px;">それは、<br>息子さんお二人ではなく、<br>あなた自身の内側にあるもの。</p>
+            <p style="margin-bottom: 90px;">でも大丈夫です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その境目は、<br>あなたを守る神様が、<br>すでに越えるための光を<br>あなたの奥に置いてくださっています。</p>
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは、<br><span style="color: #ffd966;">住吉大神（すみよしのおおかみ）</span>。</p>
+            <p style="margin-bottom: 90px;">はるか昔、<br>神功皇后という女性が<br>海を渡って遠い国へ向かったとき。</p>
+            <p style="margin-bottom: 90px;">荒波の中で、<br>皇后の船を導いたのが<br>住吉大神でした。</p>
+            <p style="margin-bottom: 90px;">底筒男命（そこつつのおのみこと）、<br>中筒男命（なかつつのおのみこと）、<br>表筒男命（うわつつのおのみこと）。</p>
+            <p style="margin-bottom: 90px;">海の深いところから<br>海面までを司る三柱の神様が、<br>どんなに荒れた海でも<br>正しい方向だけを照らし続けた。</p>
+            <p style="margin-bottom: 90px;">その光が、<br>船を無事に導いた。</p>
+            <p style="margin-bottom: 90px;">「進む方向を間違えないように<br>見守り続ける神様」として、<br>今も大阪の住吉大社に<br>祀られています。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">まめ様の中にある<br>深い水の優しさと、<br>住吉大神の海は、<br>同じ場所でつながっています。</p>
+        </div>
+
+        <!-- あなたという人について -->
+        <h2 class="emoji-header">⛩️あなたという人について</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここで、<br>あなたの本質について、<br>視えていることを<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>人や場の流れを<br>肌で感じ取る人。</p>
+            <p style="margin-bottom: 90px;">部屋に入った瞬間、<br>誰が何を抱えているか、<br>言葉になる前に分かってしまう。</p>
+            <p style="margin-bottom: 90px;">息子さんが家に帰ってきた時の、<br>玄関の音だけで、<br>今日があの子にとって<br>どんな一日だったか、<br>察しがついてしまう。</p>
+            <p style="margin-bottom: 90px;">そういうことが、<br>ずっとありませんでしたか。</p>
+            <p style="margin-bottom: 90px;">それは、<br>あなたの中に<br>深く広い水があるからです。</p>
+            <p style="margin-bottom: 90px;">海のように<br>全部を受け止める器がある。</p>
+            <p style="margin-bottom: 90px;">人の言葉にならない感情も、<br>場の空気の歪みも、<br>水が物の形に沿うように、<br>すっと取り込んでしまう。</p>
+            <p style="margin-bottom: 90px;">そして、<br>取り込んだものを、<br>誰かのために動く力に<br>変えてきた。</p>
+            <p style="margin-bottom: 90px;">「あの子のために」<br>「家族のために」<br>「夫のために」</p>
+            <p style="margin-bottom: 90px;">気がつくと、<br>あなたが先に動いている。</p>
+            <p style="margin-bottom: 90px;">頼まれる前に整えている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>あなたの優しさが<br>強かったということです。</p>
+            <p style="margin-bottom: 90px;">決して、<br>やりすぎたわけではありません。</p>
+            <p style="margin-bottom: 90px;">そうやって動くことで、<br>ご家族の流れが整ってきた。</p>
+            <p style="margin-bottom: 90px;">その積み重ねが、<br>今のご家族の形を<br>作ってきたのは事実です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>ここに来て、<br>あなたの中で<br>ある葛藤が起き始めている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「全部やってあげたい自分」と、<br>「ふと一歩引きたくなる自分」が、<br>ぶつかっている。</p>
+            <p style="margin-bottom: 90px;">息子さんに手を伸ばしかけて、<br>途中で止まる瞬間がある。</p>
+            <p style="margin-bottom: 90px;">「これは、<br>私がやらない方がいいのかもしれない」</p>
+            <p style="margin-bottom: 90px;">そう感じる回数が、<br>最近、少しずつ増えてきた。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その感覚は、<br>正しいものです。</p>
+            <p style="margin-bottom: 90px;">あなたが間違っているのではなく、<br>あなたの中の流れが、<br>次のフェーズに入り始めている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">55歳を目前にして、<br>これからの10年は、<br>あなたにとって<br>「人との関わり方を<br>作り直す10年」になります。</p>
+            <p style="margin-bottom: 90px;">それは<br>息子さんとの関係も含みます。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">つまり、<br>今あなたが感じている<br>「引きたい自分」は、<br>これから始まる<br>新しいあなたの人生の<br>最初の兆しなのです。</p>
+        </div>
+
+        <!-- 1. 息子さんお二人それぞれの将来 -->
+        <h2 class="emoji-header">⛩️1. 息子さんお二人それぞれの将来</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">ここから、<br>息子さんお二人の道について、<br>霊視で視えていることを、<br>一人ずつ<br>深くお伝えしていきます。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【長男様について】</p>
+            <p style="margin-bottom: 90px;">まず、<br>長男様の本質から<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">霊視で視えているのは、<br>彼の中に<br>「自分の感覚を絶対に曲げない」<br>強い芯がある、ということ。</p>
+            <p style="margin-bottom: 90px;">それは<br>反抗的というのとは<br>違います。</p>
+            <p style="margin-bottom: 90px;">誰かに逆らいたいのではなく、<br>ご自分の内側にある<br>正しさのものさしが、<br>他の人よりずっと細かい。</p>
+            <p style="margin-bottom: 90px;">だから、<br>納得できないことに<br>妥協できない。</p>
+            <p style="margin-bottom: 90px;">中学・高校の頃から、<br>「なぜ?」という疑問を<br>口に出さずに<br>飲み込んでいた瞬間が、<br>何度もあったはずです。</p>
+            <p style="margin-bottom: 90px;">先生の指導、<br>学校のルール、<br>周りの「普通」、</p>
+            <p style="margin-bottom: 90px;">そういうものに対して、<br>ご自分の中で<br>「違う気がする」と<br>感じていたけれど、<br>言葉にせずに<br>胸の奥に<br>しまい込んできた。</p>
+            <p style="margin-bottom: 90px;">そういう子です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、<br>長男様の中には<br>「自分にしかできない表現」を<br>形にしたい、<br>という強い欲求があります。</p>
+            <p style="margin-bottom: 90px;">それは、<br>何かを作る仕事かもしれない。</p>
+            <p style="margin-bottom: 90px;">絵か、<br>言葉か、<br>モノづくりか、<br>映像か、<br>プログラムか、<br>音楽か、</p>
+            <p style="margin-bottom: 90px;">具体的な形は<br>これから決まっていきますが、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「自分から生まれたもの」を<br>世に出す、<br>という方向の人生です。</p>
+            <p style="margin-bottom: 90px;">霊視で視えているのは、<br>彼が3歳・5歳の頃から、<br>何かを「作る」遊び方を<br>していた瞬間です。</p>
+            <p style="margin-bottom: 90px;">ブロック、絵、<br>組み立てるもの、<br>順番を決めるもの、</p>
+            <p style="margin-bottom: 90px;">そういうものに<br>他の子よりも長く<br>集中していた時間が<br>あったはずです。</p>
+            <p style="margin-bottom: 90px;">それは、<br>今も彼の中で<br>形を変えて<br>生き続けています。</p>
+            <p style="margin-bottom: 90px;">外から見ると、<br>長男様は今、<br>少し迷っているように<br>見えるかもしれません。</p>
+            <p style="margin-bottom: 90px;">「やりたいことが<br>はっきりしていない」<br>ように見える。</p>
+            <p style="margin-bottom: 90px;">「同年代より少し<br>ゆっくり動いている」<br>ように感じる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも、<br>霊視で視えているのは、<br>彼は迷っているのではなく、<br>「自分の感性を<br>社会のどこに置けば<br>形になるのか」を<br>探している時期だ、<br>ということ。</p>
+            <p style="margin-bottom: 90px;">23歳の今は、<br>彼の人生の中で<br>最も内側に集中する<br>10年の真ん中です。</p>
+            <p style="margin-bottom: 90px;">20代前半から30代前半までの<br>この10年は、<br>「外で派手に動く」<br>時期ではなく、<br>「内側を深く育てる」<br>時期。</p>
+            <p style="margin-bottom: 90px;">土の中で<br>根を伸ばしている植物のように、<br>地上からは<br>動きが見えないけれど、<br>土の中では<br>ものすごい動きがある。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">だから今は、<br>焦らなくていい。</p>
+            <p style="margin-bottom: 90px;">そして、<br>あなたが<br>「あの子、大丈夫かな」と<br>感じているのは、<br>あなたの不安ではなく、<br>うごきが<br>「目に見えにくい時期」<br>だからです。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【次男様について】</p>
+            <p style="margin-bottom: 90px;">次に、<br>次男様について<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">霊視で視えているのは、<br>次男様の本質は、<br>長男様とは<br>全く違う方向にある、<br>ということ。</p>
+            <p style="margin-bottom: 90px;">長男様が<br>「外に向かって自分を形にしていく人」<br>だとすれば、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">次男様は<br>「内側に世界を作って深めていく人」<br>です。</p>
+            <p style="margin-bottom: 90px;">次男様の中には、<br>とても繊細で、<br>とても豊かな<br>内面世界があります。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>それを<br>人に見せることが<br>あまりありません。</p>
+            <p style="margin-bottom: 90px;">外から見ると、<br>次男様は<br>おとなしく、<br>穏やかで、<br>家族にも友人にも<br>合わせるタイプに<br>見えるはずです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも、<br>彼の中には、<br>誰にも見せていない<br>「もう一人の自分」が<br>います。</p>
+            <p style="margin-bottom: 90px;">絵を描いていたり、<br>音楽を聴いていたり、<br>本を読んでいたり、<br>何かを観察していたり、</p>
+            <p style="margin-bottom: 90px;">そういう静かな時間の中に、<br>彼の本当の世界が<br>広がっています。</p>
+            <p style="margin-bottom: 90px;">霊視で視えているのは、<br>次男様が<br>小さい頃から、<br>一人で何かに<br>没頭する時間を<br>大切にしてきたこと。</p>
+            <p style="margin-bottom: 90px;">それは<br>寂しさからではなく、<br>内側に深く入ることが<br>彼にとって<br>心地よいから。</p>
+            <p style="margin-bottom: 90px;">そういう方です。</p>
+            <p style="margin-bottom: 90px;">そして、<br>あなたに<br>知っておいてほしい<br>内面の癖があります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">自分のことを<br>過小評価しやすい。</p>
+            <p style="margin-bottom: 90px;">「自分なんて」<br>「兄に比べて」<br>「自分にはたいしたものがない」</p>
+            <p style="margin-bottom: 90px;">そういう感覚を、<br>本人も<br>気づかないところで<br>抱えている時があります。</p>
+            <p style="margin-bottom: 90px;">霊視で視えているのは、<br>それは性格ではなく、<br>彼の星筋に最初から<br>書き込まれているもの。</p>
+            <p style="margin-bottom: 90px;">つまり、<br>何かがあったから<br>そうなったのではなく、<br>生まれた時から<br>彼の中に<br>「自分を低く見積もる癖」が<br>あります。</p>
+            <p style="margin-bottom: 90px;">それは、<br>長男様という<br>強い個性の兄が<br>身近にいることで、<br>さらに<br>強まっています。</p>
+            <p style="margin-bottom: 90px;">「兄のように<br>自分を形にできない」<br>「兄のように<br>強くなれない」</p>
+            <p style="margin-bottom: 90px;">そういう<br>比較の中で<br>育ってきた瞬間が、<br>彼の中に<br>たくさんあります。</p>
+            <p style="margin-bottom: 90px;">でも、<br>霊視で<br>はっきりと<br>視えていることが<br>あります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">次男様は、<br>長男様より「下」<br>ではありません。</p>
+            <p style="margin-bottom: 90px;">彼は、<br>長男様とは<br>違う方向の力を<br>持っているだけ。</p>
+            <p style="margin-bottom: 90px;">長男様が<br>「広い世界に<br>自分を形にしていく力」<br>だとすれば、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">次男様は<br>「狭く深く<br>世界を掘っていく力」。</p>
+            <p style="margin-bottom: 90px;">両方ともに、<br>かけがえのない力です。</p>
+            <p style="margin-bottom: 90px;">そして、<br>霊視で視えているのは、<br>30代以降の次男様には、<br>彼にしか持てない<br>「専門性の深さ」が<br>育っていく<br>未来の姿です。</p>
+            <p style="margin-bottom: 90px;">それは、<br>何かの職人かもしれない、<br>何かの研究者かもしれない、<br>何かの専門職かもしれない、<br>あるいは<br>家業に近い形で<br>土地と結びついた仕事か、</p>
+            <p style="margin-bottom: 90px;">具体的な形は<br>これから決まっていきますが、</p>
+            <p style="margin-bottom: 0; font-weight: bold;">「これ以上は<br>他の人にはできない」<br>という深さに<br>たどり着く道です。</p>
+        </div>
+
+        <!-- 2. お二人それぞれへの、関わり方の違い -->
+        <h2 class="emoji-header">⛩️2. お二人それぞれへの、関わり方の違い</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">無料鑑定で<br>お約束した、<br>「順番と距離感」について<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">霊視で視えているのは、<br>長男様と次男様では、<br>あなたとの関わり方の<br>方向が真逆だということ。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">長男様への関わり方は、<br>「水を引く」こと。</p>
+            <p style="margin-bottom: 90px;">長男様は、<br>ご自分で考え、<br>ご自分で選び、<br>ご自分で形にしたい人。</p>
+            <p style="margin-bottom: 90px;">あなたが先に<br>答えを示してしまうと、<br>「自分で考える力」が<br>育つ時間がなくなります。</p>
+            <p style="margin-bottom: 90px;">具体的にお伝えすると、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「大丈夫?」<br>「ちゃんと食べてる?」<br>「仕事はどう?」</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">このような言葉の<br>頻度を、<br>半分にしてみてください。</p>
+            <p style="margin-bottom: 90px;">代わりに、<br>連絡が来た時だけ、<br>深く話を聴く。</p>
+            <p style="margin-bottom: 90px;">来ない時は、<br>信じて待つ。</p>
+            <p style="margin-bottom: 90px;">それだけで、<br>長男様の中の<br>自立の流れは<br>動き始めます。</p>
+            <p style="margin-bottom: 90px;">経済的なサポートも、<br>段階的に<br>減らしていって大丈夫です。</p>
+            <p style="margin-bottom: 90px;">形にして稼いでいく力が<br>最初から備わっています。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">次男様への関わり方は、<br>逆方向。<br>「役割を渡す」こと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">次男様には、<br>家の中で<br>次男様に任せきる領域を<br>一つ、<br>作ってみてください。</p>
+            <p style="margin-bottom: 90px;">家計の一部、<br>季節の行事の準備、<br>家の何かの管理、<br>買い物の判断、</p>
+            <p style="margin-bottom: 90px;">何でも構いません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「これはあなたに任せる」<br>と渡す。</p>
+            <p style="margin-bottom: 90px;">そして、<br>やってくれた時に、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「ありがとう」<br>「助かった」<br>「あなたがいてくれてよかった」</p>
+            <p style="margin-bottom: 90px;">そういう言葉を、<br>何度も<br>かけてあげてください。</p>
+            <p style="margin-bottom: 90px;">次男様の中の<br>「自分なんて」という感覚に、<br>その言葉が<br>直接届きます。</p>
+            <p style="margin-bottom: 90px;">物理的に<br>家を出ていく必要は<br>ありません。</p>
+            <p style="margin-bottom: 90px;">役割の中で、<br>責任の中で、<br>自然と自立は<br>育っていきます。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>ここで一つだけ<br>お伝えしなければならないことが<br>あります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>これまでのあなたが<br>やってきたことを、<br>急に全部やめる必要はない、<br>ということ。</p>
+            <p style="margin-bottom: 90px;">霊視で視えているのは、<br>あなたが「全部やる」を<br>急にやめてしまうと、<br>ご自分の中の方が<br>先に揺れてしまう。</p>
+            <p style="margin-bottom: 90px;">「私は何のためにいるんだろう」</p>
+            <p style="margin-bottom: 90px;">そういう感覚が<br>立ち上がってしまうことが<br>ある。</p>
+            <p style="margin-bottom: 90px;">だから、<br>減らしていくのは<br>ゆっくりで構いません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">長男様への声かけを<br>半分に。<br>次男様に<br>役割を一つ渡す。</p>
+            <p style="margin-bottom: 90px;">まずはこの二つから<br>始めてみてください。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">それだけで、<br>息子さんお二人の運気は、<br>あなたの想像よりも早く<br>動き始めます。</p>
+        </div>
+
+        <!-- 3. 流れが動き出す時期と、最初の一歩 -->
+        <h2 class="emoji-header">⛩️3. 流れが動き出す時期と、最初の一歩</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">ここで、<br>時期について<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">まず、<br>正直にお伝えしなければ<br>ならないことが<br>あります。</p>
+            <p style="margin-bottom: 90px;">「手放す」という言葉は、<br>あなたの中で<br>重く響いているはずです。</p>
+            <p style="margin-bottom: 90px;">息子さんを手放すなんて、<br>冷たい母親みたいで嫌だ。</p>
+            <p style="margin-bottom: 90px;">そう感じる気持ちが、<br>心のどこかにある。</p>
+            <p style="margin-bottom: 90px;">その感覚は、<br>否定する必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたが手放すのは、<br>「息子さんという存在」ではなく、<br>「息子さんの課題を<br>あなたが背負う部分」だけ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">存在としての母親は、<br>最後まで手放さなくていい。</p>
+            <p style="margin-bottom: 90px;">霊視で視えているのは、<br>あなたが<br>「いる」ということそのものが、<br>息子さんお二人の<br>人生の土台になっている、<br>ということ。</p>
+            <p style="margin-bottom: 90px;">それは<br>これからも変わりません。</p>
+            <p style="margin-bottom: 90px;">その上で、<br>時期をお伝えします。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年は、<br>あなたにとって、<br>そして息子さんお二人にとって、<br>人生の流れが<br>大きく動く年になります。</p>
+            <p style="margin-bottom: 90px;">霊視で視えているのは、<br>この年、<br>あなたと長男様と次男様の<br>三人の星の運びが、<br>同時に動き出すという珍しい配置。</p>
+            <p style="margin-bottom: 90px;">これは、<br>偶然ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「親子三人で、<br>次のフェーズへ入っていく年」が<br>来た、ということ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">最初の一歩は、<br>2026年の7月までに。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">次男様に、<br>役割を一つ渡してみてください。</p>
+            <p style="margin-bottom: 90px;">これは、<br>長男様への手放しよりも<br>ずっと始めやすいはずです。</p>
+            <p style="margin-bottom: 90px;">「やめる」ことは<br>意志の力が要りますが、<br>「渡す」ことは<br>能動的な動き。</p>
+            <p style="margin-bottom: 90px;">そして、<br>次男様への役割が<br>家の中に生まれると、<br>あなたの意識が<br>自然と次男様にも分散します。</p>
+            <p style="margin-bottom: 90px;">すると、<br>長男様への<br>先回りの優しさも、<br>気がつくと<br>少しずつ<br>緩んでいる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">連鎖的に、<br>流れが動き始めます。</p>
+            <p style="margin-bottom: 90px;">2026年の秋以降は、<br>あなたの内側に、<br>深い静けさが<br>訪れる時期です。</p>
+            <p style="margin-bottom: 90px;">息子さんへの心配が<br>少しずつ薄れ、<br>代わりに、<br>ご自分の人生に<br>意識が向き始める。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私は、<br>これから何をして生きていこう」</p>
+            <p style="margin-bottom: 90px;">そういう問いが、<br>自然と立ち上がってきます。</p>
+            <p style="margin-bottom: 90px;">その問いは、<br>寂しさからではなく、<br>新しい始まりとして<br>立ち上がってくるもの。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">そして2027年。</p>
+            <p style="margin-bottom: 90px;">息子さんお二人それぞれが、<br>ご自分の道を<br>歩み始めている姿が<br>視えています。</p>
+            <p style="margin-bottom: 90px;">長男様は<br>ご自分の仕事の形を<br>作り始め、</p>
+            <p style="margin-bottom: 90px;">次男様は<br>身近な世界での役割を<br>深め始めている。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">そしてあなたの中には、<br>これまでにない<br>軽さが広がっている。</p>
+        </div>
+
+        <!-- 今後、特に重要な4つの月 -->
+        <h2>【今後、特に重要な4つの月】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年7月</p>
+            <p style="margin-bottom: 90px;">母としての役割が、<br>深いところで問われる月。</p>
+            <p style="margin-bottom: 90px;">「これまで通り」と<br>「新しい関わり」の間で、<br>心が揺れる時期です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この月に、<br>次男様への役割渡しを<br>始めてみてください。</p>
+            <p style="margin-bottom: 90px;">それが、<br>すべての流れの<br>最初の一押しになります。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年8月</p>
+            <p style="margin-bottom: 90px;">長男様の運気が、<br>具体的な形になって<br>動き出す月。</p>
+            <p style="margin-bottom: 90px;">仕事・進路・人間関係の<br>どこかで、<br>何かが決まる兆しがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この月のあなたの役目は、<br>「黙って見守る」こと。</p>
+            <p style="margin-bottom: 90px;">声をかけたくなっても、<br>向こうから来るまで、<br>待つ。</p>
+            <p style="margin-bottom: 90px;">それが<br>最大の応援になります。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年11月</p>
+            <p style="margin-bottom: 90px;">人生の土台が<br>静かに揺れる月。</p>
+            <p style="margin-bottom: 90px;">これまで当たり前だと<br>思っていたことが、<br>ふと違って見える瞬間がある。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この月に、<br>住吉神社へ<br>参拝に行ってみてください。</p>
+            <p style="margin-bottom: 90px;">加子母から行ける範囲で<br>構いません。</p>
+            <p style="margin-bottom: 90px;">水のそばで<br>手を合わせるだけでも、<br>あなたの中の流れが<br>整っていきます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年2月</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これが、<br>4ヶ月の中で<br>最も大切な月です。</p>
+            <p style="margin-bottom: 90px;">住吉大神の力が、<br>あなたへ<br>特に強く流れ込む月。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">水のオーラが深いあなたに、<br>春の新しい木が<br>立ち上がる時期です。</p>
+        </div>
+
+        <!-- 今年と来年について -->
+        <h2>【今年と来年について】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-weight: bold;">今年2026年は、<br>あなたにとって、<br>動き出しと<br>手放しの年です。</p>
+            <p style="margin-bottom: 90px;">ご自分の中の<br>「これまでの母としての形」を、<br>ゆっくり置き直していく年。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">来年2027年は、<br>動きを定着させ、<br>新しい配置を<br>形にしていく年。</p>
+            <p style="margin-bottom: 0;">息子さんお二人との<br>新しい距離感が、<br>このリズムの中で<br>自然と整っていきます。</p>
+        </div>
+
+        <!-- 守護を受け取る方法 -->
+        <h2 class="emoji-header">⛩️守護を受け取る方法</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">そして、<br>安心してください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたを深く視たとき、<br>住吉大神の特別な守護の力を、<br>あなたの奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px;">それは、<br>進む方向を間違えないように<br>見守り続ける力。</p>
+            <p style="margin-bottom: 90px;">「全部抱えなくていい」<br>と感じた時、<br>胸の奥がふっと<br>温かくなる感覚があれば、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>すでに守護の力が<br>届き始めている証です。</p>
+            <p style="margin-bottom: 90px;">これは何かを<br>頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ受け取るだけで<br>大丈夫です。</p>
+            <p style="margin-bottom: 90px;">もし余裕がある時だけ、<br>試してみてほしいことが<br>あります。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">朝、空と水に手を合わせる</p>
+            <p style="margin-bottom: 90px;">朝、加子母の空気の中で<br>空を一度見上げ、<br>深呼吸を一つ。</p>
+            <p style="margin-bottom: 90px;">それだけで、<br>住吉大神の気が<br>あなたの中に<br>流れ込んできます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">住吉神社への参拝</p>
+            <p style="margin-bottom: 90px;">近くの住吉神社、<br>または2027年2月に<br>大阪の住吉大社へ。</p>
+            <p style="margin-bottom: 90px;">参拝の際は、<br>心の中で<br>こう唱えてみてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">祓え給い、清め給え、<br>神ながら守り給い、<br>幸え給え。</p>
+            <p style="margin-bottom: 90px;">そしてお願い事ではなく、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私は、<br>息子たちを信じて<br>見守ります。<br>どうか、<br>私たち三人を<br>正しい方向へ<br>導いてください」</p>
+            <p style="margin-bottom: 90px;">このように<br>伝えてみてください。</p>
+            <p style="margin-bottom: 0;">それだけで、<br>住吉大神とのご縁は<br>さらに深まります。</p>
+        </div>
+
+        <!-- あなたを支えるパワーストーン -->
+        <h2 class="emoji-header">⛩️あなたを支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">住吉大神のご縁を<br>お伝えし、<br>その力を<br>あなたの奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px;">神社と参拝の方法も<br>お伝えしました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">基本的には、<br>これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>守護の力は<br>何もしなければ、<br>少しずつ<br>薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">加子母から<br>住吉神社までは<br>距離があり、<br>頻繁には<br>行けない方も<br>多いと思います。</p>
+            <p style="margin-bottom: 90px;">そのような時、<br>ぜひお勧めしたいのが<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">住吉大神の力を石に宿し、<br>常に身近に<br>持ち歩くことができます。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>どんな石でも<br>よいわけではありません。</p>
+            <p style="margin-bottom: 90px;">あなたの星の運びと、<br>住吉大神が共鳴しやすい石で<br>お作りする必要があります。</p>
+            <p style="margin-bottom: 90px;">あなたのエネルギーと<br>住吉大神が共鳴しやすい石を、<br>4つお伝えします。</p>
+            <ul style="margin-bottom: 90px;">
+                <li><span style="color: #ffd966; font-weight: bold;">1. アクアマリン</span><br>住吉大神と最も深く共鳴する石。<br>海の三柱の神様の気を最も受けやすく、<br>あなたの中の深い水を、<br>澄んだ流れる水へと整えていきます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">2. タイガーアイ</span><br>「ここまで」と境目を引く力を持つ石。<br>先回りしたくなる時、胸の前で握るだけで、<br>胆力が静かに戻ってきます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">3. グリーンアベンチュリン</span><br>母の気持ちを柔らかく整える石。<br>次男様への言葉が柔らかくなり、<br>家の中の空気を育てる方向へ向けてくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">4. スモーキークォーツ</span><br>不安を吸い込む石。<br>眠れない夜、息子さんのことが気になる朝、<br>過剰な心配を静かに地に降ろしてくれます。</li>
+            </ul>
+            <p style="margin-bottom: 90px;">この4つの中から、<br>あなたのエネルギーと<br>最もバランスが取れる<br>組み合わせを<br>私が選び、<br>一つずつ<br>手作りで仕上げます。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">ご希望の方は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <h2>【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">まめ様、</p>
+            <p style="margin-bottom: 90px;">あなたの未来には、<br>息子さんお二人がそれぞれの道で<br>立っている姿と、</p>
+            <p style="margin-bottom: 90px;">その光景を<br>ふっと軽くなった胸で<br>見つめている<br>あなた自身の姿が<br>視えています。</p>
+            <p style="margin-bottom: 90px;">玄関先で<br>息子さんの背中を見送ったあと、<br>あなたの中に<br>新しい時間が<br>広がり始める。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私は、<br>ここから何をしようかな」</p>
+            <p style="margin-bottom: 90px;">そう静かに<br>問いかける時の、<br>あなたの目の中に<br>ある光。</p>
+            <p style="margin-bottom: 90px;">その未来の兆しが、<br>はっきりと<br>あります。</p>
+            <p style="margin-bottom: 90px;">今は、<br>「全部抱えたい自分」と<br>「引きたい自分」の間で、<br>揺れているかもしれない。</p>
+            <p style="margin-bottom: 90px;">でもそれは、<br>あなたが間違っているのではなく、<br>あなたの中の流れが、<br>次の章へ進もうとしている<br>合図です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">正しい感覚です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>水のように<br>深く広く受け止められる人。</p>
+            <p style="margin-bottom: 90px;">そして、<br>受け止めるだけでなく、<br>これからは、<br>ご自分の人生の方向にも<br>その水を流していい人。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">息子さんお二人には、<br>あなたが手を離しても、<br>必ず誰かが<br>手を差し伸べてくれる守護が<br>最初から備わっています。</p>
+            <p style="margin-bottom: 90px;">あなたが<br>全部抱えなくていいのです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">長男様への声かけを<br>少し減らす。<br>次男様に<br>役割を一つ渡す。</p>
+            <p style="margin-bottom: 90px;">その小さな一歩から、<br>親子三人それぞれの<br>新しい人生が<br>始まります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それが、<br>あなたの幸せへの道。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">住吉大神</span>が、<br>あなたを<br>守っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px;">ご自分の人生を、<br>ここから歩み始めていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">守られている。</p>
+            <p style="margin-bottom: 90px;">その事実を、<br>どうか<br>受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より、<br>遠隔守護祈祷を行い、<br>あなたとご家族の幸せを<br>願います。</p>
+            <p style="margin-bottom: 90px;">あなたの未来に、<br>静かで深い豊かさが<br>満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>
