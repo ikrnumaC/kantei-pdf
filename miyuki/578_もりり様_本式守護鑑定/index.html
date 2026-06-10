@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>もりり様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        /* 表紙のスタイル */
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">平和な暮らしへの道</h2>
+            <p class="cover-name">もりり様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 冒頭 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">もりり様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「病気につけこまれて、<br>詐欺に遭ってしまった。<br>今、借金を抱えている。<br>解決して、平和に暮らしたい」</p>
+            <p style="margin-bottom: 90px;">この短い言葉の中に、<br>どれほどの重さがあったか。</p>
+            <p style="margin-bottom: 90px;">どれほどの時間、<br>ご自身を責めてこられたか。</p>
+            <p style="margin-bottom: 90px;">そして、<br>それでも今、<br>「平和な暮らしを取り戻したい」と<br>こうして<br>手を伸ばしてくださった<br>その強さが、私のもとへまっすぐに<br>届きました。</p>
+            <p style="margin-bottom: 90px;">ここから先、<br>もりり様の魂の奥に<br>刻まれているものを、<br>ひとつひとつ、<br>丁寧にお伝えしていきます。</p>
+            <p style="margin-bottom: 90px;">まず最初に、<br>これだけはお伝えさせてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">今のこの状況は、<br>もりり様が悪いから<br>起きたことではありません。</p>
+            <p style="margin-bottom: 90px;">「気づけなかった自分が情けない」<br>「人を信じてしまった自分が悪い」</p>
+            <p style="margin-bottom: 90px;">そう、<br>ご自身を責めてこられた時間は、<br>ここで一度、<br>手放していただきたいのです。</p>
+            <p style="margin-bottom: 90px;">なぜそう言い切れるのか。</p>
+            <p style="margin-bottom: 0;">その理由を、<br>これからお伝えしていきます。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2>【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が、<br>ひとつの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>2027年の夏。</p>
+            <p style="margin-bottom: 90px;">朝の光が台所の窓から<br>やわらかく差し込む頃。</p>
+            <p style="margin-bottom: 90px;">もりり様が、<br>温かいお茶を一杯<br>ゆっくりと淹れて、<br>窓の外を眺めている景色。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">肩の力が、すっかり抜けている。</p>
+            <p style="margin-bottom: 90px;">胸の中に<br>重たい石のように<br>ずっとあったものが、<br>もうそこにはない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「ああ、やっとここまで来た」</p>
+            <p style="margin-bottom: 90px;">声には出ないそのひと言が、<br>朝の光と一緒に<br>胸の中で静かに響いている。</p>
+            <p style="margin-bottom: 90px;">その未来の兆しが、<br>強く感じられます。</p>
+            <p style="margin-bottom: 90px;">そして、<br>そこに至るまでの動きは、<br>すでに始まっています。</p>
+            <p style="margin-bottom: 90px;">表面上は、<br>何も動いていないように<br>見えるかもしれない。</p>
+            <p style="margin-bottom: 90px;">借金の重さは、<br>今もそこにあるかもしれない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">でも、<br>もりり様のオーラの奥では、<br>すでに「解決の方向」へと、<br>たしかに流れが動き始めています。</p>
+            <p style="margin-bottom: 90px;">ただし、<br>その流れに正しく乗るためには、<br>ひとつだけ、<br>越えていただきたいことがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>「一人で抱え込まない」と、<br>今、ご自身に許可を出すこと。</p>
+            <p style="margin-bottom: 90px;">これまで<br>ずっとお一人で、<br>ご自身を責めながら抱えてこられた重さ。</p>
+            <p style="margin-bottom: 90px;">そこから、<br>そっと手を離していい。</p>
+            <p style="margin-bottom: 90px;">その手放し方を、<br>もりり様を守る神様が、<br>ちゃんと視せてくれています。</p>
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは、<br><span style="color: #ffd966;">大己貴命<br>（おおなむちのみこと）</span>。</p>
+            <p style="margin-bottom: 90px;">ずっと昔。</p>
+            <p style="margin-bottom: 90px;">兄弟神たちにいじめられ、<br>何度も命を奪われそうになった<br>若き神様がいました。</p>
+            <p style="margin-bottom: 90px;">それが<span style="color: #ffd966;">大己貴命</span>です。</p>
+            <p style="margin-bottom: 90px;">旅の途中で、皮を剥がれて<br>泣いていた小さな白兎に出会いました。</p>
+            <p style="margin-bottom: 90px;">世間では「因幡の白兎」と<br>呼ばれている神話です。</p>
+            <p style="margin-bottom: 90px;">兄弟神たちは、<br>泣いている白兎を<br>さらにからかいました。</p>
+            <p style="margin-bottom: 90px;">でも<span style="color: #ffd966;">大己貴命</span>だけは、<br>傷ついた白兎にそっと近づき、<br>真水で身を洗い、<br>蒲（がま）の穂を敷いて、<br>その上に寝かせてあげた。</p>
+            <p style="margin-bottom: 90px;">白兎の傷は癒え、<br>やがて元気を取り戻した。</p>
+            <p style="margin-bottom: 90px;">この優しさを見た<br>お母様や女性に助けられ、<br>何度も蘇られました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「傷ついた者をそっと救い、<br>癒していく神様」として、<br><span style="color: #ffd966;">大己貴命</span>は今も、<br>出雲の地で人々を見守り続けています。</p>
+            <p style="margin-bottom: 90px;">縁結びの神様としても<br>有名な方ですが、<br>その本質は、<br>「傷ついた者を癒し、<br>本物の縁を結び直す力」を<br>お持ちの神様です。</p>
+            <p style="margin-bottom: 90px;">もりり様、<br>お分かりになるかと思います。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">今、<br>皮を剥がれて泣いていた<br>あの白兎の姿と、<br>もりり様の姿が、<br>重なっているのです。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">そして、<br>そっと近づいて救ってくださる<br><span style="color: #ffd966;">大己貴命</span>の力が、<br>今この瞬間も、もりり様のために<br>たしかに動いています。</p>
+        </div>
+
+        <!-- もりり様の魂の輪郭 -->
+        <h2>【もりり様の魂の輪郭】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから、<br>もりり様の本質について<br>お伝えしていきます。</p>
+            <p style="margin-bottom: 90px;">普通の鑑定では<br>お伝えしないところまで、<br>深く視ていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">まず、<br>もりり様の魂の中心には、<br>広く、深い「大地」が<br>横たわっています。</p>
+            <p style="margin-bottom: 90px;">水を含んだ豊かな土、<br>春の大地、<br>何かを生み出す土台になる大地。</p>
+            <p style="margin-bottom: 90px;">これが、<br>もりり様の本質です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">大地のオーラを<br>お持ちの方は、<br>人や物事を受け止める器の大きさが、<br>他の方とは桁違いです。</p>
+            <p style="margin-bottom: 90px;">人の重たい話、<br>人の困りごと、<br>人の感情。</p>
+            <p style="margin-bottom: 90px;">そういうものを、<br>無意識のうちに<br>受け止めてしまわれる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「困っているなら、助けたい」</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私が我慢すれば、丸く収まる」</p>
+            <p style="margin-bottom: 90px;">そういう気持ちが、<br>頭で考える前に、<br>自然と<br>出てきてしまわれる方だと思います。</p>
+            <p style="margin-bottom: 90px;">ご自身でも、<br>心当たりがおありかと思います。</p>
+            <p style="margin-bottom: 90px;">これは、弱さではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">大地のオーラを持つ方の<br>本来の優しさです。</p>
+            <p style="margin-bottom: 90px;">そして、<br>もりり様の魂の奥には、<br>責任を引き受けようとする光が、<br>普通の方の何倍も深く<br>宿っていらっしゃいます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「人の事情を、<br>自分の事情として引き受ける」</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「役割を、<br>重く受け止める」</p>
+            <p style="margin-bottom: 90px;">そういう性質が、<br>もりり様の中には、<br>生まれつき<br>強く備わっているのです。</p>
+            <p style="margin-bottom: 90px;">だから、<br>ご自身のキャパシティを<br>超えてまで、<br>人の重たいものを<br>背負ってこられた時間が、<br>これまでに<br>たくさんあったかと思います。</p>
+            <p style="margin-bottom: 90px;">そしてここから、<br>お伝えしたい<br>大切なことがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もりり様の魂の中には、<br>ひとつだけ、<br>決定的に<br>不足している気の流れがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">それは、<br>「自分を内側から温める火」。</p>
+            <p style="margin-bottom: 90px;">人を見抜く目、<br>危険を察知する直感、<br>怪しいものを<br>怪しいと感じる内側の灯。</p>
+            <p style="margin-bottom: 90px;">そういう「火の力」が、<br>もりり様の魂の中には、<br>生まれつき<br>ほとんど備わっていないのです。</p>
+            <p style="margin-bottom: 90px;">そして、<br>ここがとても大切な部分です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">火が少ない方は、<br>人の言葉を、<br>そのまま真に受けてしまいます。</p>
+            <p style="margin-bottom: 90px;">相手の表情の裏、<br>言葉の奥に隠されているもの、<br>本当の意図。</p>
+            <p style="margin-bottom: 90px;">そういうものを、<br>見抜くことが苦手なのです。</p>
+            <p style="margin-bottom: 90px;">「この人は、<br>本当のことを言っているのだろう」</p>
+            <p style="margin-bottom: 90px;">「困っているなら、助けたい」</p>
+            <p style="margin-bottom: 90px;">そう、自然と信じてしまわれる。</p>
+            <p style="margin-bottom: 90px;">これと、<br>責任を引き受けすぎる魂の癖と、<br>人の重たいものを<br>受け止める大地のオーラが、<br>重なった時。</p>
+            <p style="margin-bottom: 90px;">残念ながら、<br>悪い意図を持った人にとって、<br>もりり様のような方は、<br>近づきやすい方として<br>映ってしまうのです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">これは、<br>もりり様の魂の質が<br>「優しすぎる」からこそ<br>起きた現象であって、<br>もりり様が<br>「愚かだったから」では<br>絶対にありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここを、どうか<br>深く受け取ってください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ご自身を<br>責めることを今日でもう<br>終わりにしていただきたいのです。</p>
+            <p style="margin-bottom: 90px;">そしてもうひとつ、<br>お伝えしたいことがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もりり様の魂のまわりには、<br>人生の核心で<br>必ず助けの手が差し伸べられる光が、<br>幾重にも寄り添っていらっしゃいます。</p>
+            <p style="margin-bottom: 90px;">それも、<br>普通の方の魂にはひとつあるかどうか、<br>という稀有な守りの神気が、<br>もりり様の場合は、<br>幾重にも重なって<br>宿っていらっしゃるのです。</p>
+            <p style="margin-bottom: 90px;">人生の根本を、<br>深いところで支えてくださる<br>大きな光。</p>
+            <p style="margin-bottom: 90px;">苦しい時に、<br>社会の中から<br>そっと手を差し伸べてくださる<br>女性の神気。</p>
+            <p style="margin-bottom: 90px;">ひとりで立てなくなりそうな時、<br>背中にそっと触れて<br>支えてくださるやわらかな光。</p>
+            <p style="margin-bottom: 90px;">それらが、<br>何重にも重なって、<br>もりり様の魂を、<br>今この瞬間も<br>包んでくださっています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">つまり、<br>もりり様は、<br>「絶対に見捨てられない命」を<br>生きていらっしゃるのです。</p>
+            <p style="margin-bottom: 90px;">今はご自身がそのことを、<br>信じられないかもしれない。</p>
+            <p style="margin-bottom: 90px;">「こんな目に遭っているのに、<br>守られているなんて思えない」と、<br>感じておられるかもしれない。</p>
+            <p style="margin-bottom: 90px;">でも、これは<br>私の主観ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もりり様の魂の奥に<br>深く息づいている、<br>動かしようのない真実なのです。</p>
+            <p style="margin-bottom: 90px;">ここまで重たい状況にも関わらず、<br>もりり様が今もこうして<br>ご自身の足で立って、<br>平和な暮らしを<br>取り戻したいと願えていること。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それ自体が、<br>すでに大きな守護が<br>入っている証です。</p>
+            <p style="margin-bottom: 90px;">普通の方であれば、<br>ここまでの状況の中で、<br>立ち上がる気力を<br>失っていらっしゃいます。</p>
+            <p style="margin-bottom: 90px;">もりり様が<br>それでもこうして手を伸ばせている。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">これは、<br><span style="color: #ffd966;">大己貴命</span>の力が、<br>すでにもりり様を<br>支え始めている証拠です。</p>
+        </div>
+
+        <!-- もりり様の大地の活かし方 -->
+        <h2 class="emoji-header">⛩️1. もりり様の大地の活かし方</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">ここから、<br>具体的にお伝えしていきます。</p>
+            <p style="margin-bottom: 90px;">もりり様の中に本来ある、<br>重たいものを受け止める大地の力。</p>
+            <p style="margin-bottom: 90px;">これは、<br>これからの暮らしの中で、<br>どう守りながら使えばよいのか。</p>
+            <p style="margin-bottom: 90px;">結論からお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">大地はこれからは<br>「人の重たいもの」を<br>受け止めるためのものでは<br>ありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">これからのもりり様の大地は、<br>「ご自身の暮らし」を<br>支えるためにあります。</p>
+            <p style="margin-bottom: 90px;">これまでの人生でもりり様は<br>人の重たい話、人の事情、<br>人の困りごとを、<br>たくさん受け止めてこられたと思います。</p>
+            <p style="margin-bottom: 90px;">そういう「人の重さ」を、<br>ご自身の大地の上に<br>置きすぎてこられた。</p>
+            <p style="margin-bottom: 90px;">それが、<br>もりり様の大地を少しずつ<br>疲れさせてきました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これからは、<br>何を大地の上に置くか、<br>ご自身で選んでください。</p>
+            <p style="margin-bottom: 90px;">他人の事情は、他人の事情として受け取る。</p>
+            <p style="margin-bottom: 90px;">他人の感情は他人の感情として、<br>ご本人にお返しする。</p>
+            <p style="margin-bottom: 90px;">「困っているなら助けたい」<br>という気持ちが出てきた時、<br>一度だけ立ち止まって、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「これは私が引き受けるべきものか」と、</p>
+            <p style="margin-bottom: 90px;">ご自身に問いかけてみてください。</p>
+            <p style="margin-bottom: 90px;">そして、<br>魂の中に不足している<br>「火の力」。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これは、<br>日々の暮らしの中で、<br>外から取り入れることができます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">朝、<br>カーテンを開けて、<br>一分だけ太陽の光を<br>顔に当ててください。</p>
+            <p style="margin-bottom: 90px;">それだけで体の奥に<br>火が灯ります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">温かい白湯を、<br>一日に何度かゆっくりと飲んでください。</p>
+            <p style="margin-bottom: 90px;">体の中に<br>火を入れる最も簡単な方法です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、<br>何かを決める時には、<br>即答しないでください。</p>
+            <p style="margin-bottom: 90px;">電話で何かを勧められた時。</p>
+            <p style="margin-bottom: 90px;">知らない人から<br>何かを言われた時。</p>
+            <p style="margin-bottom: 90px;">「いい話だ」と言われた時。</p>
+            <p style="margin-bottom: 90px;">その場で<br>「はい」と答えないでください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「考えさせてください」と、<br>一度だけ口にしてください。</p>
+            <p style="margin-bottom: 90px;">そして一晩<br>時間を置いてください。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">火の少ないもりり様にとって、<br>この「一晩置く」が、<br>ご自身を守る最も大切な<br>お守りになります。</p>
+        </div>
+
+        <!-- 解決への道筋 -->
+        <h2 class="emoji-header">⛩️2. 解決への道筋</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここからは、<br>今の借金の問題が<br>どう動いていくのか、<br>具体的にお伝えしていきます。</p>
+            <p style="margin-bottom: 90px;">もりり様ひとつだけ<br>お約束していただきたいことがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">これからお伝えする道筋は、<br>お一人で歩く道ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">必ず、<br>「女性の専門家」と<br>一緒に<br>歩いていただきたいのです。</p>
+            <p style="margin-bottom: 90px;">これは、<br>私の勘ではありません。</p>
+            <p style="margin-bottom: 90px;">もりり様の魂のまわりには、<br>やわらかな女性の光が<br>幾筋も寄り添っていらっしゃいます。</p>
+            <p style="margin-bottom: 90px;">苦しい時、迷う時、<br>お一人では立てなくなりそうな時。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その光が、<br>必ず人の姿を借りて、<br>もりり様のもとへ<br>助けにきてくださる流れが<br>できているのです。</p>
+            <p style="margin-bottom: 90px;">特に、<br>社会的な場所、公的な場所、<br>専門の場所。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そういう「外の世界」で、<br>女性の助け手が<br>もりり様を<br>救いに来てくださいます。</p>
+            <p style="margin-bottom: 90px;">具体的に<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">まず、<br>お住まいの市区町村の、<br>無料の法律相談を<br>利用してください。</p>
+            <p style="margin-bottom: 90px;">多くの自治体で、<br>弁護士による無料相談が<br>月に何度か開かれています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その時、<br>できれば女性の弁護士を<br>選んでください。</p>
+            <p style="margin-bottom: 90px;">もりり様と<br>特に縁が深いのは、<br>女性の専門家です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、<br>社会福祉協議会。</p>
+            <p style="margin-bottom: 90px;">ここには、<br>生活困窮者自立支援の<br>窓口があります。</p>
+            <p style="margin-bottom: 90px;">借金の問題と、<br>これからの暮らしの<br>両方を丸ごと相談できる場所です。</p>
+            <p style="margin-bottom: 90px;">行政の支援、<br>法的な手続き、<br>そしてこれからの生活設計。</p>
+            <p style="margin-bottom: 90px;">それぞれに専門の方が<br>いらっしゃいます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私の問題は私が解決しなければ」<br>という思い込みを全部おろして、<br>女性に相談をしてみてください。</p>
+            <p style="margin-bottom: 90px;">これらの窓口で、<br>もりり様の事情をお話しになる時、<br>ひとつだけ<br>意識していただきたいことがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「自分が悪かった」と<br>最初におっしゃらないでください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「病気の時に、<br>こういう話があって、<br>信じて契約してしまった」</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">事実だけを、<br>順番にお伝えしてください。</p>
+            <p style="margin-bottom: 90px;">専門の方々は、<br>事実を聞けばすぐに<br>状況を判断してくださいます。</p>
+            <p style="margin-bottom: 0;">もしそれが自分の役にたたなくても<br>その行動を<span style="color: #ffd966;">大己貴命</span>が見て<br>新しい縁を授けてくださいます。</p>
+        </div>
+
+        <!-- 流れが動く瞬間 -->
+        <h2 class="emoji-header">⛩️3. 流れが動く瞬間</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">これからの一年の間に、<br>状況が動く瞬間が訪れます。</p>
+            <p style="margin-bottom: 90px;">その時期と、<br>もりり様が取るべき態度を、<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年12月:兆しが届く月</p>
+            <p style="margin-bottom: 90px;">年の終わりに近づく頃。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もりり様の運気の中に、<br>「縁の喜び」を運んでくる光が<br>動いてきます。</p>
+            <p style="margin-bottom: 90px;">思いがけない<br>助けの声がふっと届く月です。</p>
+            <p style="margin-bottom: 90px;">それは、<br>知人からの小さなひと言かもしれない。</p>
+            <p style="margin-bottom: 90px;">新聞や広告で<br>目に入った相談窓口の案内かもしれない。</p>
+            <p style="margin-bottom: 90px;">久しぶりに会った方の<br>何気ない言葉かもしれない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「あ、これは私のために<br>届いた声かもしれない」</p>
+            <p style="margin-bottom: 90px;">そう感じる瞬間が<br>あったら逃さないでください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もりり様がすべきことは<br>閉じないこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「困っている」と、<br>一度だけ信頼できる方に<br>口にしてみる。</p>
+            <p style="margin-bottom: 90px;">それだけで流れが動き始めます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年1月:守護神の力が流れ込む月(最重要)</p>
+            <p style="margin-bottom: 90px;">年が明けて、<br>新しい流れが動き出す月。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">大己貴命</span>は、<br>縁結びと和合を司る神様です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">新年の縁が動く1月は、<br><span style="color: #ffd966;">大己貴命</span>の力が特に強く<br>もりり様に流れ込んでくる月です。</p>
+            <p style="margin-bottom: 90px;">そして、<br>もりり様の魂の流れと、<br>1月の気の流れが、<br>深く支え合うように<br>重なり合っていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これまで動けなかった状況に、<br>最初の風が<br>ふっと吹き始める月です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もりり様が<br>すべきこと──</p>
+            <p style="margin-bottom: 90px;">ひとつ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;"><span style="color: #ffd966;">大己貴命</span>をお祀りする神社、<br>またはお近くの<br>出雲系の神社に、<br>足を運んでください。</p>
+            <p style="margin-bottom: 90px;">その場で、<br>神様にお願いをするのではなく、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私は、平和な暮らしを<br>自分の手で取り戻します。<br>どうか見守っていてください」と、<br>ご自身の決意を<br>お伝えしてください。</p>
+            <p style="margin-bottom: 90px;">もうひとつ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">法律相談の窓口に、<br>電話を一本入れてみてください。</p>
+            <p style="margin-bottom: 90px;">予約だけでも構いません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「相談したいことがあるので、<br>予約を取りたい」</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そのひと言で、<br>止まっていた運命が動き始めます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年3月～4月:相談が動く月</p>
+            <p style="margin-bottom: 90px;">立春が過ぎ、<br>本格的な春が近づく頃。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もりり様の運気の流れが、<br>大きく変わり始めます。</p>
+            <p style="margin-bottom: 90px;">具体的な動きが<br>始まる時期です。</p>
+            <p style="margin-bottom: 90px;">今後の方針ややるべきこと<br>問題解決に向けて、</p>
+            <p style="margin-bottom: 90px;">ひとつひとつのことが、<br>具体的に進み始めます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もりり様がすべきこと──</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ご自身ですべてを<br>判断しようとしないこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">専門の方のお話をよく聞くこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「分からないことは分からない」と、<br>正直に伝えること。</p>
+            <p style="margin-bottom: 90px;">火の少ないもりり様には、<br>専門の方の火を<br>お借りする時期です。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年7月～8月:道筋が見える月</p>
+            <p style="margin-bottom: 90px;">夏が来る頃。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これまでの動きが、<br>具体的な形になり始めます。</p>
+            <p style="margin-bottom: 90px;">借金の整理の道筋が、<br>ようやく見えてくる時期です。</p>
+            <p style="margin-bottom: 90px;">完全な解決には、<br>まだもう少し時間がかかります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも、<br>「先が見える」という<br>安心感が、もりり様の中に<br>戻ってくる月です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もりり様がすべきこと──</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">専門の方を信頼すること。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">そして、<br>ご自身の暮らしをできる範囲で<br>丁寧に整えていくこと。</p>
+        </div>
+
+        <!-- 今年と来年の大きな流れ -->
+        <h2>【今年と来年の大きな流れ】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-weight: bold;">今年・2026年は、<br>もりり様にとって、<br>「内側の重さがピークに達する年」です。</p>
+            <p style="margin-bottom: 90px;">ずっと抱えてこられたものが、<br>内側で一番重く感じられる時期。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でもだからこそ、<br>「救いの兆し」が<br>たしかに動く年でもあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">来年・2027年は、<br>「救いが本格的に入る年」。</p>
+            <p style="margin-bottom: 90px;">もりり様の運気の中に、<br>庇護の光、<br>女性の助け手の神気が、<br>強く動いてくる年です。</p>
+            <p style="margin-bottom: 90px;">社会的な助け、専門家の力、<br>公的な支援を通して、<br>状況が本格的に動き始めます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、<br>2028年には、<br>ひとつの大きな区切りが訪れます。</p>
+            <p style="margin-bottom: 0;">それまでの間、焦らず<br>お一人で抱えず、<br>専門の方々と一緒に<br>歩いていただきたいのです。</p>
+        </div>
+
+        <!-- もりり様らしい選び方 -->
+        <h2 class="emoji-header">⛩️ もりり様らしい選び方</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">これからのもりり様らしい<br>選び方をお伝えします。</p>
+            <p style="margin-bottom: 90px;">これは、<br>今日からできることです。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">まず、ひとつ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「全部を引き受けない」と<br>決めてください。</p>
+            <p style="margin-bottom: 90px;">人の話を聞いた時、<br>心の中で一度だけ立ち止まって、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「これは<br>私が引き受けるべきことか」</p>
+            <p style="margin-bottom: 90px;">そう、ご自身に<br>問いかけてください。</p>
+            <p style="margin-bottom: 90px;">ご家族のことでも、<br>ご友人のことでも、<br>ご近所のことでも、<br>同じです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">優しさと引き受けることは、<br>別のものです。</p>
+            <p style="margin-bottom: 90px;">聞いて差し上げる。</p>
+            <p style="margin-bottom: 90px;">寄り添って差し上げる。</p>
+            <p style="margin-bottom: 90px;">それだけで、<br>十分なのです。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">ふたつ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「火を取り入れる」を、<br>日々の習慣にしてください。</p>
+            <p style="margin-bottom: 90px;">朝、<br>太陽を浴びる。</p>
+            <p style="margin-bottom: 90px;">温かいものを飲む。</p>
+            <p style="margin-bottom: 90px;">お風呂でゆっくり温まる。</p>
+            <p style="margin-bottom: 90px;">お線香や、<br>ろうそくの火を眺める時間を持つ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これらすべてが、<br>もりり様の中に不足している<br>「判断の火」を育ててくれます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">みっつ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「即答しない」を、<br>徹底してください。</p>
+            <p style="margin-bottom: 90px;">知らない番号からの電話。</p>
+            <p style="margin-bottom: 90px;">知らない人からのお誘い。</p>
+            <p style="margin-bottom: 90px;">うまい話。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これらすべてに、<br>その場で「はい」と<br>答えないでください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「考えさせてください」</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">このひと言を、<br>お守りのように持ち歩いてください。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">そして、よっつめ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これが<br>一番大切なことです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「自分を責めない」と、<br>今日から決めてください。</p>
+            <p style="margin-bottom: 90px;">「気づけなかった自分」を<br>責める時間は、<br>もう終わりにしていい。</p>
+            <p style="margin-bottom: 90px;">ご自身を責めることは、<br>何の解決も生みません。</p>
+            <p style="margin-bottom: 90px;">それどころか、<br>もりり様の大地の上に、<br>新しい重さを<br>積み上げてしまいます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これからは、<br>ご自身を責める時間を、<br>ご自身を労わる時間に変えてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私は、よくここまで頑張ってきた」</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私は、これからも<br>ちゃんと立ち直れる」</p>
+            <p style="margin-bottom: 0;">そう、心の中でご自身に<br>声をかけてあげてください。</p>
+        </div>
+
+        <!-- 守護を受け取る方法 -->
+        <h2 class="emoji-header">⛩️ 守護を受け取る方法</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">ここから、<br>もりり様の心と体を<br>守るためのお話をしていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、安心してください。</p>
+            <p style="margin-bottom: 90px;">もりり様の事を<br>深く霊視した際、<br>特別な守護の力を、<br>もりり様の奥底においてきました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">それは、<br><span style="color: #ffd966;">大己貴命</span>の和魂の力。</p>
+            <p style="margin-bottom: 90px;">傷ついた白兎を癒したように、<br>今、もりり様の中に<br>溜まってしまった傷と疲れを、<br>ゆっくりと癒していく力です。</p>
+            <p style="margin-bottom: 90px;">胸の中の重たい石を<br>少しずつ溶かしていく力。</p>
+            <p style="margin-bottom: 90px;">「自分が悪かった」という<br>自責の念を、<br>やわらかくほどいていく力。</p>
+            <p style="margin-bottom: 90px;">「もう、大丈夫」と、<br>体の奥から感じさせてくれる力。</p>
+            <p style="margin-bottom: 90px;">今この文を<br>読んでいる間にも、<br>胸の中央がほんのり温かくなる、<br>肩の力がふっと抜ける、<br>深いため息が出る、<br>目の奥が潤んでくる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もしそのような感覚があれば、<br>すでに守護の力が<br>届き始めている証です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これは、<br>何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ受け取るだけで大丈夫です。</p>
+            <p style="margin-bottom: 90px;">もし、<br>少しだけ時間があれば、<br>一度だけ静かに目を閉じてください。</p>
+            <p style="margin-bottom: 90px;">両手を、<br>胸の中央に重ねて当ててください。</p>
+            <p style="margin-bottom: 90px;">ゆっくり三度、<br>呼吸をしてください。</p>
+            <p style="margin-bottom: 90px;">そして心の中で、</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私は、よく頑張ってきた」</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私は、ここから<br>ちゃんと立ち直る」</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私はひとりではない」</p>
+            <p style="margin-bottom: 90px;">そう、<br>静かに唱えてみてください。</p>
+            <p style="margin-bottom: 90px;">胸のあたりが<br>じんわり温かくなる。</p>
+            <p style="margin-bottom: 90px;">涙がふっと込み上げてくる。</p>
+            <p style="margin-bottom: 90px;">肩から重たいものが<br>すっと降りていく感覚。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その感覚があれば、<br>すでに<span style="color: #ffd966;">大己貴命</span>の御神気が、<br>もりり様の中で動き始めています。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>今のもりり様は、<br>受け取る器が、<br>少し疲れていらっしゃいます。</p>
+            <p style="margin-bottom: 90px;">長く、<br>重たいものを<br>抱えてこられたために、<br>新しく流れ込んでくる神気を、<br>そのままでは<br>留めきれない状態になっています。</p>
+            <p style="margin-bottom: 0;">その器を整えるために、<br>特別に波動を<br>定着させる依代を<br>ご用意しています。<br>その話は、少しあとで<br>お伝えしますね。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 0;">もし、<br>余裕がある時だけ、<br>以下のことを<br>試してみてください。</p>
+        </div>
+
+        <h2 class="emoji-header">【大己貴命のお社へ足を運ぶ】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">大己貴命</span>を主祭神として<br>お祀りしているのは、<br>島根県の出雲大社、<br>そして奈良県の大神神社。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">このふたつが、<br>古来より<span style="color: #ffd966;">大己貴命</span>の<br>本宮とされてきた場所です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>遠方まで足を運ばなくても<br>大丈夫です。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">大己貴命</span>は、<br>全国各地の出雲系の神社で<br>お祀りされています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">お近くであれば<br>山王神社(神奈川県藤沢市大鋸3丁目2-29)<br>子聖神社(神奈川県藤沢市獺郷799)<br>に足を運んでみてください。</p>
+            <p style="margin-bottom: 90px;">参拝の際は、<br>心の中で<br>この祝詞を唱えてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">祓え給い、清め給え、<br>神ながら<br>守り給い、幸え給え</p>
+            <p style="margin-bottom: 90px;">(はらえたまい、<br>きよめたまえ、<br>かむながら<br>まもりたまい、<br>さきわえたまえ)</p>
+            <p style="margin-bottom: 90px;">そして、<br>お願いを唱えるのではなく、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私は、平和な暮らしを<br>自分の手で取り戻していきます。<br>どうか、見守っていてください」</p>
+            <p style="margin-bottom: 90px;">そう、<br>ご自身の決意を<br>神様にお伝えしてください。</p>
+            <p style="margin-bottom: 90px;">願望を叶えてもらうものではなく、<br>自分がこう生きると宣言し、<br>その歩みを助けてもらうもの。</p>
+            <p style="margin-bottom: 0;">その姿勢が、<br><span style="color: #ffd966;">大己貴命</span>との縁を<br>より深くしてくれます。</p>
+        </div>
+
+        <h2 class="emoji-header">【朝の太陽を浴びる】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-weight: bold;">朝起きたら、<br>カーテンを開けて、<br>一分だけ太陽の光を<br>顔と胸に当ててください。</p>
+            <p style="margin-bottom: 90px;">それだけで、もりり様の中に<br>不足している「火」が、<br>日々入っていきます。</p>
+            <p style="margin-bottom: 0;">天気の悪い日は、<br>窓のそばに立つだけで<br>大丈夫です。</p>
+        </div>
+
+        <h2 class="emoji-header">【温かいものを体に入れる】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-weight: bold;">朝昼夜、タイミングは<br>いつでも大丈夫なので<br>温かいものを<br>ゆっくり飲んでください。</p>
+            <p style="margin-bottom: 90px;">白湯、お茶、お味噌汁。</p>
+            <p style="margin-bottom: 90px;">何でも構いません。</p>
+            <p style="margin-bottom: 0;">これが、<br>もりり様の体と心を、<br>内側から守ってくれます。</p>
+        </div>
+
+        <!-- パワーストーン -->
+        <h2 class="emoji-header">⛩️ もりり様を支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">もりり様には、<br><span style="color: #ffd966;">大己貴命</span>という<br>癒しと縁結びの神様の<br>ご縁をお伝えしました。</p>
+            <p style="margin-bottom: 90px;">その力を、<br>もりり様の奥底にもおいてきました。</p>
+            <p style="margin-bottom: 90px;">そして、<br>神社への参拝と、<br>日々の処方もお伝えしました。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>守護の力は何もしなければ、<br>少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">もりり様は今<br>重たい状況の中に<br>いらっしゃいます。</p>
+            <p style="margin-bottom: 90px;">これからの数年は、<br>日々の暮らしの中で、<br>不安がふっと湧く瞬間が、<br>何度も訪れます。</p>
+            <p style="margin-bottom: 90px;">その時に神社まで<br>足を運ぶことが難しい瞬間も、<br>たくさんあるかと思います。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そういう方に、<br>ぜひお勧めしたいのが、<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">大己貴命</span>の力を、<br>もりり様の身近な石に宿し、<br>日々身に着けることが<br>できるようにします。</p>
+            <p style="margin-bottom: 90px;">ただ、どんな石でも<br>よいわけではありません。</p>
+            <p style="margin-bottom: 90px;">もりり様が<br>本来持っている<br>大地のエネルギーと、<br>今の魂に不足している<br>火のエネルギー、</p>
+            <p style="margin-bottom: 90px;">そして<span style="color: #ffd966;">大己貴命</span>の癒しの力が、<br>共鳴しやすい石で、<br>お作りする必要があります。</p>
+            <p style="margin-bottom: 0;">もりり様のエネルギーと<br><span style="color: #ffd966;">大己貴命</span>が<br>共鳴しやすい石を、<br>3つお伝えします。</p>
+        </div>
+
+        <ul style="margin-bottom: 90px;">
+            <li><span style="color: #ffd966; font-weight: bold;">1. タイガーアイ</span><br>虎の目のような<br>金茶色の光を<br>内に秘めた石です。<br>「判断の目」を育てる石として、<br>古くから大切にされてきました。<br>もりり様の魂に不足している<br>「火の力」、「人を見抜く目」を、<br>やさしく補ってくれます。<br>そして、お金の流れを整える力も<br>強く持っています。<br>もりり様にとって、<br>最も必要な石です。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">2. オニキス</span><br>深い黒の光沢を<br>持つ石です。<br>邪気を払い、悪縁を断ち切る石として、<br>古くからお守りに<br>用いられてきました。<br>もりり様の周りに残っている<br>詐欺の流れ、不誠実な縁、<br>重たいエネルギー。<br>そういうものを、<br>静かに断ち切ってくれる力を<br>持っています。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">3. ガーネット</span><br>深い赤の光を持つ石です。<br>体の中に温かい火を灯し、<br>自分自身を取り戻す力を持つ石です。<br>もりり様の魂に不足している「火」を、<br>最も直接的に補ってくれます。</li>
+        </ul>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">この3つの中から、<br>もりり様のエネルギーと<br>最もバランスが取れる<br>組み合わせを私が選び、<br>一つずつ手作りで仕上げます。</p>
+            <p style="margin-bottom: 0;">「詳細希望」と<br>メッセージを<br>お送りください。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <h2>【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">もりり様、</p>
+            <p style="margin-bottom: 90px;">あなたの未来には、<br>平和な暮らしを<br>ご自身の手で<br>取り戻していく日々へと続く道が、<br>たしかに視えています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2027年の夏。</p>
+            <p style="margin-bottom: 90px;">朝の光が台所の窓から<br>やわらかく差し込む頃。</p>
+            <p style="margin-bottom: 90px;">ゆっくりと<br>温かいお茶を淹れている景色。</p>
+            <p style="margin-bottom: 90px;">胸の中の重たい石が、<br>もうそこにはない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「ああ、やっとここまで来た」と、<br>静かに微笑む、<br>もりり様のお姿。</p>
+            <p style="margin-bottom: 90px;">その未来の兆しが、<br>強く感じられます。</p>
+            <p style="margin-bottom: 90px;">今は、<br>ご自身を責めながら、<br>苦しい時間の中に<br>いらっしゃるかもしれない。</p>
+            <p style="margin-bottom: 90px;">「どうして自分が」<br>「なぜあの時、気づけなかったのか」と、<br>何度もご自身を<br>責めてこられたかもしれない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でもこれらは<br>もりり様が悪かったから<br>起きたことではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もりり様の魂の質が<br>「優しすぎる」からこそ起きたことです。</p>
+            <p style="margin-bottom: 90px;">そして、<br>もりり様の魂のまわりには、<br>必ず救いの手が差し伸べられる光が、<br>何重にも寄り添っていらっしゃいます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">絶対に見捨てられない魂を、<br>もりり様は生きていらっしゃるのです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>よくここまで頑張ってこられた。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、<br>これからもちゃんと立ち直れる人です。</p>
+            <p style="margin-bottom: 90px;">大地のオーラを持つ<br>もりり様は、<br>一度根を張り直せば、<br>何度でもご自身の暮らしを<br>立て直していける力を<br>持っていらっしゃるのです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これからは、<br>お一人で<br>背負わないでください。</p>
+            <p style="margin-bottom: 90px;">女性の助け手の光が、<br>専門の方の中に、<br>窓口の中に、<br>たしかに寄り添ってくださいます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">電話を一本かけるだけで、<br>そのご縁が動き始めます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それが、あなたの幸せへの道。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">大己貴命</span>が、<br>あなたを守っています。</p>
+            <p style="margin-bottom: 90px;">傷ついた白兎を<br>そっと癒したあの神様が、<br>今この瞬間も、もりり様のために<br>動いてくださっています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">平和な暮らしを、<br>取り戻していい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ご自身を<br>責めることを、<br>もうやめていい。</p>
+            <p style="margin-bottom: 90px;">これからの大地は、<br>人の重たいものではなく、<br>あなたご自身の<br>穏やかな暮らしを、<br>支えるためにあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">守られている。</p>
+            <p style="margin-bottom: 90px;">その事実を、<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より、<br>遠隔守護祈祷を行い、<br>もりり様の幸せを願います。</p>
+            <p style="margin-bottom: 30px;">もりり様の未来に、<br>平和と穏やかな日々が<br>満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>

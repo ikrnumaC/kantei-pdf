@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>酒井仁美様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        /* 表紙のスタイル */
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">静かに通う深い絆</h2>
+            <p class="cover-name">酒井仁美様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 冒頭 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">仁美様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「離婚して欲しいわけではない。<br>ただ、彼の心の隙間を埋めるような<br>存在でいたい。<br>彼が私をどう思っているのか、<br>深く知りたい」</p>
+            <p style="margin-bottom: 90px;">そう書いてくださった<br>仁美様のお気持ちを、<br>何度も読み返しました。</p>
+            <p style="margin-bottom: 90px;">その短い言葉の奥にある、<br>言葉にならないままの想いの深さが、<br>私のもとへまっすぐに届きました。</p>
+            <p style="margin-bottom: 0;">ここから先、<br>仁美様の魂の奥に刻まれているものを、<br>ひとつひとつ、<br>丁寧にお伝えしていきます。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2>【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が、<br>ひとつの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>2027年の春。</p>
+            <p style="margin-bottom: 90px;">雪解けの水が、<br>福井の山々から<br>静かに流れ始める頃。</p>
+            <p style="margin-bottom: 90px;">仁美様とあの方が、<br>何気ない会話の中で<br>ふっと目を合わせる瞬間。</p>
+            <p style="margin-bottom: 90px;">特別な言葉を<br>交わしたわけではない。</p>
+            <p style="margin-bottom: 90px;">ただ──<br>あの方の瞳の奥に、<br>これまで見せなかった<br>やわらかい光が<br>たしかに灯っている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「ここに居てくれて、<br>ありがとう」</p>
+            <p style="margin-bottom: 90px;">声には出されない、<br>そのひと言が、<br>ふたりの間に<br>たしかに流れている。</p>
+            <p style="margin-bottom: 90px;">その未来の兆しが、<br>強く感じられます。</p>
+            <p style="margin-bottom: 90px;">派手な告白でも、<br>形のある約束でもない。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>「言葉にされていなかったもの」が、<br>仁美様にだけ<br>わかる形で、<br>そっと姿を現す瞬間。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>仁美様がずっと<br>心の真ん中で願ってこられた<br>「気持ちが通じ合えるだけでいい」という<br>その願いの、<br>そのままの形です。</p>
+            <p style="margin-bottom: 90px;">そこに至るまでの道のりは、<br>決して、<br>何もない平らな道では<br>ありません。</p>
+            <p style="margin-bottom: 90px;">途中で、<br>言葉にしてしまいたくなる夜が<br>何度も訪れます。</p>
+            <p style="margin-bottom: 90px;">確かめてしまいたくなる衝動が<br>何度も湧きます。</p>
+            <p style="margin-bottom: 90px;">でも大丈夫です。</p>
+            <p style="margin-bottom: 90px;">その揺らぎを越える歩き方を、<br>仁美様を守る神様が、<br>ちゃんと視せてくれています。</p>
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは、<br><span style="color: #ffd966;">罔象女神<br>（みつはのめのかみ）</span>。</p>
+            <p style="margin-bottom: 90px;">ずっと昔、<br>火の神が生まれた時、<br>その熱で苦しんでいた<br>伊邪那美命の身体の中から、<br>そっと生まれた女神様です。</p>
+            <p style="margin-bottom: 90px;">地上に降り立った<span style="color: #ffd966;">罔象女神</span>は、<br>人の目には見えない場所、<br>地の底、井戸の奥、<br>山の岩のすき間。</p>
+            <p style="margin-bottom: 90px;">そういう深く、<br>暗く、静かな場所で、<br>今もずっと水を湧かせ続けています。</p>
+            <p style="margin-bottom: 90px;">派手に表に出ることはない。</p>
+            <p style="margin-bottom: 90px;">でも、<br>その水がなければ<br>人も大地も生きてはいけない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「表に出ないところで、<br>本当に大切なものを支える女神」として、<br>今も全国の水源地や<br>井戸のそばに祀られています。</p>
+            <p style="margin-bottom: 90px;">福井の土地には、<br>湧き水と井戸の文化が<br>深く根付いています。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">仁美様が住まわれている福井の地は、<br><span style="color: #ffd966;">罔象女神</span>の力が<br>特に深く流れている土地のひとつなのです。</p>
+        </div>
+
+        <!-- 仁美様の魂の輪郭 -->
+        <h2>【仁美様の魂の輪郭】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから、<br>仁美様の本質について<br>お伝えしていきます。</p>
+            <p style="margin-bottom: 90px;">普通の鑑定では<br>お伝えしないところまで、<br>深く視ていきます。</p>
+            <p style="margin-bottom: 90px;">まず最初に<br>お伝えしたいこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様は、<br>表に見える静けさの内側に、<br>「自分の道は自分で決めたい」という<br>とても強い魂を<br>お持ちです。</p>
+            <p style="margin-bottom: 90px;">人に流されることに、<br>本当は耐えられない。</p>
+            <p style="margin-bottom: 90px;">「みんながこう言うから」<br>「世間がそう言うから」で<br>動くことが、<br>心の底から苦手な方です。</p>
+            <p style="margin-bottom: 90px;">そう言われて、<br>心当たりがおありかと思います。</p>
+            <p style="margin-bottom: 90px;">表ではおとなしく<br>合わせているように見えても、<br>内側ではいつも、<br>「本当に自分はこれでいいのか」を<br>問い続けてこられたはずです。</p>
+            <p style="margin-bottom: 90px;">これは弱さでも、<br>頑固さでもありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">仁美様の魂の中心に、<br>「自分で選び取る」という<br>気高い軸が<br>通っているからです。</p>
+            <p style="margin-bottom: 90px;">そして同時に、<br>仁美様の内側には、<br>とても繊細で、<br>気品のある月のような輝きが<br>眠っています。</p>
+            <p style="margin-bottom: 90px;">仁美様が部屋に入った瞬間、<br>場の空気がふっと<br>静かに整う。</p>
+            <p style="margin-bottom: 90px;">仁美様が話し始めると、<br>周りの人がなぜか<br>口を閉じて聴いてしまう。</p>
+            <p style="margin-bottom: 90px;">そういう体験を、<br>人生のどこかで<br>されてきたはずです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>仁美様の内側にある<br>「気高さ」が、<br>言葉にされなくても<br>周りに伝わるからです。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>仁美様はその気高さを<br>表に出すことを<br>ずっとためらってこられました。</p>
+            <p style="margin-bottom: 90px;">「私なんて」<br>「私が出るほどのことではない」と、<br>ご自身を一歩、<br>後ろに置く癖がついていらっしゃる。</p>
+            <p style="margin-bottom: 90px;">それは、<br>人生の中で<br>「深く感じすぎてしまう自分」を、<br>持て余してこられたからです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様は<br>言葉にされる前のものを、<br>読み取ってしまう方です。</p>
+            <p style="margin-bottom: 90px;">相手の表情、<br>小さな言葉の選び方、<br>気配の温度。</p>
+            <p style="margin-bottom: 90px;">そういうものを、<br>他の人の何倍も深く、<br>受け取ってしまわれる。</p>
+            <p style="margin-bottom: 90px;">その分、<br>冷たさや、<br>言葉にされない壁を、<br>他の人より深く傷として<br>受け取ってしまわれる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「本当はもっと近づきたいのに」</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「本当はもっと話したいのに」</p>
+            <p style="margin-bottom: 90px;">そう繰り返し<br>心の中で考えてきた時間が、<br>仁美様の人生には、<br>たくさんあったはずです。</p>
+            <p style="margin-bottom: 90px;">そして仁美様には、<br>もうひとつ<br>大切な性質があります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「形にならないもの」を<br>心の真ん中で<br>大切に育てる力です。</p>
+            <p style="margin-bottom: 90px;">普通の人は、<br>形のないものを<br>不安に感じます。</p>
+            <p style="margin-bottom: 90px;">確かめたくなる。<br>証拠が欲しくなる。<br>言葉にして安心したくなる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも仁美様は、<br>形にしなくても、<br>心の真ん中で<br>そのまま育てていける方です。</p>
+            <p style="margin-bottom: 90px;">これは、<br>誰にでもできることではありません。</p>
+            <p style="margin-bottom: 90px;">仁美様の魂の質が、<br>そういう「静かな育て方」を<br>できる作りに<br>なっているからです。</p>
+            <p style="margin-bottom: 90px;">仕事の上でも、<br>仁美様は<br>派手な成果よりも、<br>じっくり積み重ねていく形で<br>これまで歩んでこられた方だと<br>視えています。</p>
+            <p style="margin-bottom: 90px;">派手なお金の流れというよりは、<br>ご縁の中で、<br>ふっと助けが入る形。</p>
+            <p style="margin-bottom: 90px;">人との縁が、<br>最終的に仁美様の豊かさに<br>繋がっていく流れを<br>持っていらっしゃいます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これからの十年は、<br>仁美様にとって<br>「これまでの形を見直し、<br>新しい形を作り直していく」<br>時期に入っています。</p>
+            <p style="margin-bottom: 90px;">50歳という今のお年は、<br>その10年の真ん中。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">最も大きく<br>流れが動く時期です。</p>
+            <p style="margin-bottom: 90px;">仕事のことでも、<br>人間関係でも、<br>これまでの「当たり前」を<br>ひとつずつ手放して、<br>仁美様の本当の魂に<br>合った形に<br>組み直していく流れに<br>入っていらっしゃいます。</p>
+            <p style="margin-bottom: 90px;">その中で今、<br>あの方とのご縁が<br>こうして<br>仁美様の心の真ん中を捉えている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これは、<br>偶然ではありません。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">仁美様の魂が<br>組み直しの時期に入った今だからこそ、<br>本当に必要なご縁が<br>こうして姿を現しているのです。</p>
+        </div>
+
+        <!-- 仁美様の深さの活かし方 -->
+        <h2 class="emoji-header">⛩️1. 仁美様の深さの活かし方</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">ここから、<br>具体的にお伝えしていきます。</p>
+            <p style="margin-bottom: 90px;">仁美様にとって、<br>このご縁の中で<br>何よりも大切なこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>「言葉数」ではなく、<br>「存在の質」で<br>あの方の前に在ることです。</p>
+            <p style="margin-bottom: 90px;">仁美様の中には、<br>ご自身でも気づいていない<br>深い気品があります。</p>
+            <p style="margin-bottom: 90px;">その気品は、<br>何かを「する」ことで<br>発揮されるものではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様がただ<br>「整った状態」でそこに在るだけで、<br>自然に伝わるものです。</p>
+            <p style="margin-bottom: 90px;">具体的に<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">頻繁に連絡を取る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">毎日何かを返さなくていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">無理に話を盛り上げなくていい。</p>
+            <p style="margin-bottom: 90px;">仁美様が、<br>ご自身の内側を静かに整えた状態で、<br>月に一度でも、<br>週に一度でも、<br>あの方と言葉を交わす時間を持つ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">その時の仁美様の<br>「整った気配」が、<br>あの方の心の隙間に、<br>そのまま流れ込みます。</p>
+            <p style="margin-bottom: 90px;">これは、<br>仁美様にしかできないことです。</p>
+            <p style="margin-bottom: 90px;">頻度を増やしても、<br>言葉を増やしても、<br>質は上がりません。</p>
+            <p style="margin-bottom: 90px;">むしろ、<br>仁美様が<br>ご自身を疲弊させてしまうと、<br>その疲れまであの方に伝わってしまう。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様の魂の質は、<br>「整った時間」の中で<br>最も強く輝きます。</p>
+            <p style="margin-bottom: 90px;">朝の白湯を飲む時間。</p>
+            <p style="margin-bottom: 90px;">窓を開けて<br>空気を入れ替える時間。</p>
+            <p style="margin-bottom: 90px;">ひとり静かに<br>本を読む時間。</p>
+            <p style="margin-bottom: 90px;">そういう、<br>ご自身を整える時間を<br>丁寧に持つこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それが<br>このご縁の中で<br>仁美様がすべき唯一のことです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「何かをして近づこう」と<br>動かないでください。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">「整った自分でいる」ことだけが、<br>このご縁を深めていく<br>本当の道です。</p>
+        </div>
+
+        <!-- あの方の本音 -->
+        <h2 class="emoji-header">⛩️2. あの方の本音</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここからは、<br>あの方について<br>深くお伝えしていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あの方は、仁美様と同じ<br>水のオーラを持っています。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>仁美様の水が井戸の奥で<br>静かに湧く水だとすれば、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あの方の水は、<br>大河の底をゆっくり流れる水。</p>
+            <p style="margin-bottom: 90px;">その水は、<br>表からは<br>どこに向かって流れているのか、</p>
+            <p style="margin-bottom: 90px;">何を考えているのか、<br>ほとんど読み取れません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それくらい、<br>あの方は本当の気持ちを<br>表に出さない方です。</p>
+            <p style="margin-bottom: 90px;">無関心に見える瞬間。</p>
+            <p style="margin-bottom: 90px;">冷たく感じる瞬間。</p>
+            <p style="margin-bottom: 90px;">突き放されたように<br>感じる瞬間。</p>
+            <p style="margin-bottom: 90px;">そういう時のあの方の内側で、<br>実は全く別のものが、<br>ゆっくり動いていらっしゃる<br>可能性が高いです。</p>
+            <p style="margin-bottom: 90px;">ここから、<br>私が霊視で視えていることを<br>そのままお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あの方の内側には、<br>今、誰にも見せていない<br>深い疲れがあります。</p>
+            <p style="margin-bottom: 90px;">それは、<br>ご家庭の問題というよりも、<br>社会の中での<br>立場のようなもの。</p>
+            <p style="margin-bottom: 90px;">外に出ていく場で、<br>あの方は<br>「強くあらねばならない自分」を<br>ずっと演じてこられました。</p>
+            <p style="margin-bottom: 90px;">冷静に、合理的に、<br>強く判断する自分。</p>
+            <p style="margin-bottom: 90px;">その姿を維持し続けることに、<br>あの方は本当のところ、<br>深く疲れていらっしゃいます。</p>
+            <p style="margin-bottom: 90px;">そして、<br>ご家庭の中でも、<br>完全に休めているわけではない。</p>
+            <p style="margin-bottom: 90px;">奥様は、<br>強く、しっかりとした方です。</p>
+            <p style="margin-bottom: 90px;">家庭を支える柱として、<br>立派に立っていらっしゃる方です。</p>
+            <p style="margin-bottom: 90px;">ただ、強さの中には時に<br>火花のような激しさもある。</p>
+            <p style="margin-bottom: 90px;">家の中で、<br>小さな摩擦や言葉のすれ違いが、<br>あの方の心を<br>削ってきた時間も<br>たしかにあります。</p>
+            <p style="margin-bottom: 90px;">これは、<br>奥様が悪いという話ではありません。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>あの方が「完全に休める場所」を、<br>ご家庭の中だけで手に入れることが、<br>難しい時間が<br>あったということです。</p>
+            <p style="margin-bottom: 90px;">そんな中で、<br>仁美様の存在があの方の内側に<br>ふっと<br>入ってこられた。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様の前では、<br>あの方は<br>強がらなくていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">冷静でいなくていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">合理的でなくていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ、<br>そこに「居ていい」と<br>感じられる。</p>
+            <p style="margin-bottom: 90px;">それは、<br>他の誰の前でも<br>味わえない感覚なのです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">仁美様は、<br>ご自身が思っていらっしゃる以上に、<br>あの方の魂にとって<br>特別な存在になっています。</p>
+            <p style="margin-bottom: 90px;">「一方通行」だと<br>思っていらっしゃいますね。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも、<br>本当はそうではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あの方の側にも、<br>言葉にされていない形で、<br>仁美様への深い想いが、<br>たしかに眠っています。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>あの方の性質として、<br>それを自分から形にすることは<br>ほとんどないです。</p>
+            <p style="margin-bottom: 90px;">動き出すまでに、<br>時間がかかる方です。</p>
+            <p style="margin-bottom: 90px;">これは、<br>仁美様への気持ちが<br>浅いからではありません。</p>
+            <p style="margin-bottom: 90px;">あの方の魂の作りが、<br>そういう動き方をする<br>作りになっているからです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">深く感じれば感じるほど、<br>表に出すまでに時間がかかる。</p>
+            <p style="margin-bottom: 90px;">慎重に、ゆっくり、<br>内側で育てていく方なのです。</p>
+            <p style="margin-bottom: 90px;">仁美様が<br>「一方通行かもしれない」と<br>感じてこられた時間。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">実は、<br>その同じ時間の中で、<br>あの方の内側でも、<br>言葉にされない<br>仁美様への想いが、<br>深く深く育っています。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">それを私は今、<br>はっきりと視ています。</p>
+        </div>
+
+        <!-- 心が通う瞬間 -->
+        <h2 class="emoji-header">⛩️3. 心が通う瞬間</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから、<br>具体的な時期を<br>お伝えしていきます。</p>
+            <p style="margin-bottom: 90px;">仁美様とあの方の気持ちが、<br>言葉にされない形で<br>たしかに通い合う瞬間。</p>
+            <p style="margin-bottom: 90px;">それが訪れる時期が、<br>私には視えています。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">最初の動きは、<br>2026年12月。</p>
+            <p style="margin-bottom: 90px;">年の終わりに近づく頃。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これまでとは違う温度の<br>「気配」が、<br>あの方から仁美様へ<br>ふっと届く瞬間があります。</p>
+            <p style="margin-bottom: 90px;">それは<br>何気ない一言かもしれない。</p>
+            <p style="margin-bottom: 90px;">ふとした視線の長さかもしれない。</p>
+            <p style="margin-bottom: 90px;">会話の終わりに、<br>少しだけ続いた沈黙かもしれない。</p>
+            <p style="margin-bottom: 90px;">仁美様にだけ<br>わかる小さな変化です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここで仁美様が<br>すべきことは、<br>「応えようとしすぎない」こと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ静かに、<br>受け取るだけで大丈夫です。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">そして年が明けて、<br>2027年1月。</p>
+            <p style="margin-bottom: 90px;">仁美様の内側で、<br>何かがゆっくり<br>温まり始める月です。</p>
+            <p style="margin-bottom: 90px;">具体的な動きはまだ<br>ありません。</p>
+            <p style="margin-bottom: 90px;">でも、<br>仁美様の中で、<br>このご縁に対する迷いが、<br>少しずつ落ち着いていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「これでいいのだ」という<br>静かな確信が、<br>内側で熟成していく月です。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">そして、<br>2027年2月。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この月が、<br>仁美様にとって<br>最も大きな転機の月になります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;"><span style="color: #ffd966;">罔象女神</span>の力が、<br>最も深く<br>流れ込んでくる月。</p>
+            <p style="margin-bottom: 90px;">水を司る神様の月、<br>旧暦の正月の頃。</p>
+            <p style="margin-bottom: 90px;">この月、<br>動けなかった気持ちが、<br>ふっと静かに<br>整理されていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様の中で、<br>「自分はこのご縁を<br>こう大切にしていく」という形が、<br>言葉にならないまま、<br>たしかに定まる月です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして<br>あの方の側でも、<br>仁美様への想いが、<br>内側でひとつ<br>形を取り始めます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年4月。</p>
+            <p style="margin-bottom: 90px;">雪解けが進み、<br>山々に新緑が広がり始める頃。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様の運気が、<br>内面の喜びを司る場所に<br>本格的に入ってきます。</p>
+            <p style="margin-bottom: 90px;">この時期、<br>仁美様とあの方の間で、<br>これまでと違う質の<br>ふとした瞬間が訪れます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>何かが「変わる」<br>というよりも、<br>「これまでずっとあったものに、<br>お互いが気づく」という<br>形の瞬間です。</p>
+            <p style="margin-bottom: 90px;">派手な言葉はありません。</p>
+            <p style="margin-bottom: 90px;">劇的な展開もありません。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>ふと目が合った瞬間に、<br>お互いの瞳の奥に、<br>これまで見せなかった<br>やわらかい光が<br>たしかに灯っている。</p>
+            <p style="margin-bottom: 90px;">それを、<br>言葉にしなくても<br>わかってしまう瞬間が訪れます。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">それが、<br>仁美様がずっと願ってこられた<br>「気持ちが通じ合うだけでいい」の、<br>そのままの形です。</p>
+        </div>
+
+        <!-- 仁美様らしい選び方 -->
+        <h2 class="emoji-header">⛩️4. 仁美様らしい選び方</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px; font-weight: bold;">ここが<br>最も大切なお話になります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様は本来、<br>「自分で選び取る」型の魂を<br>持っていらっしゃいます。</p>
+            <p style="margin-bottom: 90px;">流されることに<br>耐えられない方です。</p>
+            <p style="margin-bottom: 90px;">ということは、<br>このご縁も、<br>「片想いをしている」<br>「彼に選ばれるのを待っている」という<br>形のままでは、<br>仁美様の魂はずっと苦しみ続けます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そうではなく、<br>仁美様ご自身が、<br>「私は、この静かなご縁を<br>大切にすると決めた」と、<br>内側で選び取ること。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それが、<br>このご縁を仁美様の幸せに<br>繋げていく大切な道です。</p>
+            <p style="margin-bottom: 90px;">これは、<br>形を変えるという話では<br>ありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">関係の形は、<br>今のままで大丈夫です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ、<br>仁美様の内側の「立ち位置」を<br>変えていただきたいのです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「彼に選ばれるのを待つ私」から、</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「この静かなご縁を、<br>自分で選んだ私」へ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">たったそれだけのことで、<br>仁美様の魂の在り方が、<br>完全に変わります。</p>
+            <p style="margin-bottom: 90px;">待つ側にいる時、<br>人は弱くなります。</p>
+            <p style="margin-bottom: 90px;">確かめたくなる。</p>
+            <p style="margin-bottom: 90px;">言葉にして欲しくなる。</p>
+            <p style="margin-bottom: 90px;">形が欲しくなる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも、<br>自分で選んだ側にいる時、<br>人は静かに強くなります。</p>
+            <p style="margin-bottom: 90px;">確かめなくてよくなります。</p>
+            <p style="margin-bottom: 90px;">言葉にされなくてよくなります。</p>
+            <p style="margin-bottom: 90px;">形がなくても、<br>大丈夫になります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">なぜなら、<br>すでに自分の内側で<br>選び取っているからです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これが、<br>仁美様の魂を<br>本当に守る道です。</p>
+            <p style="margin-bottom: 90px;">そして、<br>このご縁の中で<br>気をつけていただきたいことを、<br>ひとつだけお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様の性質の中に、<br>「言葉にしないまま、<br>ずっと待ち続けてしまう」<br>という罠があります。</p>
+            <p style="margin-bottom: 90px;">待つことは<br>美徳に見えます。</p>
+            <p style="margin-bottom: 90px;">でも、<br>仁美様の場合、待ち続けると<br>内側で想いが<br>発酵していきます。</p>
+            <p style="margin-bottom: 90px;">それは、<br>体に出ます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">特に、<br>体の中の水の流れ、<br>女性としての場所、<br>心の重さ。</p>
+            <p style="margin-bottom: 90px;">そういうところに、<br>言葉にされなかった<br>想いが溜まっていく性質を<br>持っていらっしゃいます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">だからこそ、<br>「自分で選び取る」ことが、<br>仁美様の体と心を守るための<br>処方になります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">待つのではなく、<br>選ぶ。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">これを、<br>今日から、<br>仁美様の中で<br>始めていただきたいのです。</p>
+        </div>
+
+        <!-- 今後の流れ -->
+        <h2>【今後の流れ】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここまでお伝えしてきたことを、<br>時期ごとに<br>整理しておきます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年12月:気配が動く月</p>
+            <p style="margin-bottom: 90px;">年の終わりに、あの方から<br>これまでとは違う温度の<br>気配が届きます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様が<br>すべきこと──<br>受け取るだけ。<br>応えようとしすぎないこと。</p>
+            <p style="margin-bottom: 90px;">無理に解釈しなくて大丈夫です。</p>
+            <p style="margin-bottom: 90px;">「ああ、何か届いたな」と、<br>心の中で受け取るだけで十分です。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年1月:内側が温まる月</p>
+            <p style="margin-bottom: 90px;">具体的な動きは<br>まだありません。</p>
+            <p style="margin-bottom: 90px;">でも、<br>仁美様の内側で、<br>このご縁への迷いが、<br>ゆっくり落ち着いていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様が<br>すべきこと──<br>ご自身の内側を整える時間を持つ。</p>
+            <p style="margin-bottom: 90px;">朝、<br>白湯を飲みながら<br>窓の外を眺める時間。</p>
+            <p style="margin-bottom: 90px;">夜、<br>ゆっくり湯船に浸かる時間。</p>
+            <p style="margin-bottom: 90px;">そういう小さな時間を、<br>意識して持ってください。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年2月:守護神の月(最重要)</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;"><span style="color: #ffd966;">罔象女神</span>の力が、<br>最も深く<br>流れ込んでくる月。</p>
+            <p style="margin-bottom: 90px;">山の雪解け水が<br>最初に流れ始める頃。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様の中で、<br>「自分はこのご縁を<br>こう大切にしていく」という形が、<br>言葉にならないまま、<br>たしかに定まる月です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様が<br>すべきこと──<br><span style="color: #ffd966;">罔象女神</span>を祀る神社、<br>または水のそばに、<br>一度足を運ぶ。</p>
+            <p style="margin-bottom: 90px;">水のそばで、<br>深く呼吸を整える。</p>
+            <p style="margin-bottom: 90px;">それだけで、<br>この月の流れが、<br>仁美様の魂に<br>深く根を下ろします。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年4月:静かに通う月</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様の運気が、<br>内面の喜びを司る場所に<br>本格的に入ります。</p>
+            <p style="margin-bottom: 90px;">雪解けが進み、<br>福井に新緑が広がる頃。</p>
+            <p style="margin-bottom: 90px;">仁美様とあの方の間で、<br>これまでと違う質の<br>ふとした瞬間が訪れます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様が<br>すべきこと──<br>特別なことは何もしなくて大丈夫です。</p>
+            <p style="margin-bottom: 0;">ただ、<br>ふと訪れたその瞬間に、<br>心の中で<br>「ありがとうございます」と<br>静かにとなえてください。</p>
+        </div>
+
+        <!-- 今年と来年の大きな流れ -->
+        <h2>【今年と来年の大きな流れ】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-weight: bold;">今年・2026年は、<br>仁美様にとって、<br>「形にならないものが、<br>内側で深く動いていく年」です。</p>
+            <p style="margin-bottom: 90px;">派手な動きはありません。</p>
+            <p style="margin-bottom: 90px;">でも、水面下で<br>たくさんのものが動いていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">来年・2027年は、<br>「内側で熟成したものが、<br>ふっと表に<br>姿を見せ始める年」です。</p>
+            <p style="margin-bottom: 0;">特に春と秋に、<br>仁美様の内面の喜びが<br>深く満たされる流れが訪れます。</p>
+        </div>
+
+        <!-- 守護を受け取る方法 -->
+        <h2 class="emoji-header">⛩️守護を受け取る方法</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">ここから、<br>仁美様の心と体を<br>守るためのお話をしていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、安心してください。</p>
+            <p style="margin-bottom: 90px;">仁美様の事を<br>深く霊視した際、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">特別な守護の力を仁美様の奥底に<br>おいてきました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">それは、<br><span style="color: #ffd966;">罔象女神</span>の和魂の力。</p>
+            <p style="margin-bottom: 90px;">地の底、<br>井戸の奥、<br>水の流れる<br>深い場所で、<br>静かに湧き続ける水の力。</p>
+            <p style="margin-bottom: 90px;">この力は、<br>仁美様の中に溜まっていた<br>言葉にならない想いを、<br>ゆっくりと浄化していきます。</p>
+            <p style="margin-bottom: 90px;">体に溜まっていた重さも、<br>心に溜まっていた<br>小さな傷も、<br>水の流れに乗せて、<br>そっと流していきます。</p>
+            <p style="margin-bottom: 90px;">今この文を<br>読んでいる間にも、<br>胸の奥が少し温かくなる、<br>肩がふっと軽くなる、<br>眠気を感じる、<br>喉の奥が潤うような感覚がある。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もしそのような感覚があれば、<br>すでに守護の力が<br>届き始めている証です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これは、<br>何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ受け取るだけで<br>大丈夫です。</p>
+            <p style="margin-bottom: 90px;">もし、<br>少しだけ時間があれば、<br>静かに目を閉じて、</p>
+            <p style="margin-bottom: 90px;">右手を胸の中央に当て、<br>左手をお腹の下に添えて、<br>ゆっくり三度<br>呼吸をしてください。</p>
+            <p style="margin-bottom: 90px;">そして心の中で、</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私は守られている」</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私はこのご縁を、<br>自分で選び取る」</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私はすでに通じ合っている」</p>
+            <p style="margin-bottom: 90px;">そう、<br>静かに<br>唱えてみてください。</p>
+            <p style="margin-bottom: 0;"><span style="color: #ffd966;">罔象女神</span>の御神気が、<br>感じられる様になります。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 0;">もし、<br>余裕があれば<br>以下のことを<br>試してみてください。</p>
+        </div>
+
+        <h2 class="emoji-header">【守護神の神社に足を運ぶ】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">罔象女神</span>を<br>主祭神としてお祀りしているのは、<br>奈良県の丹生川上神社、<br>そして京都の貴船神社。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">このふたつが、<br>古来より<br><span style="color: #ffd966;">罔象女神</span>の本宮とされてきた<br>場所です。</p>
+            <p style="margin-bottom: 90px;">ただ、<span style="color: #ffd966;">罔象女神</span>は<br>水のあるところすべてに、<br>気配を留めてくださる女神様。</p>
+            <p style="margin-bottom: 90px;">遠方まで<br>足を運ばなくても、<br>仁美様の暮らしの近くにも、<br><span style="color: #ffd966;">罔象女神</span>の力が<br>深く流れている場所が<br>ちゃんとあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様に<br>特におすすめしたいのは、<br>大野市の御清水<br>(おしょうず)。</p>
+            <p style="margin-bottom: 90px;">名水百選にも選ばれた<br>湧き水で、<br>地元の方々が代々、<br>水神様への感謝とともに<br>大切に守り継いできた場所です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">お近くであれば<br>高木神社(福井県福井市高木町73-38)<br>岡太神社・大瀧神社(福井県越前市大滝町13-1)<br>に足を運んでください。</p>
+            <p style="margin-bottom: 90px;">高木神社には<span style="color: #ffd966;">罔象女神</span>をお産みになった<br>伊弉册尊(いざなみのみこと)が<br>祀られています。</p>
+            <p style="margin-bottom: 90px;">参拝の際は、<br>心の中で<br>この祝詞を唱えてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">祓え給い、清め給え、神ながら<br>守り給い、幸え給え</p>
+            <p style="margin-bottom: 90px;">(はらえたまい、<br>きよめたまえ、<br>かむながら<br>まもりたまい、<br>さきわえたまえ)</p>
+            <p style="margin-bottom: 90px;">そして、<br>お願いを唱えるのではなく、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私は、このご縁を<br>静かに大切にしていきます。<br>どうか、見守っていてください」</p>
+            <p style="margin-bottom: 90px;">と、ご自身の決意を<br>神様に<br>お伝えしてください。</p>
+            <p style="margin-bottom: 90px;">お願いは、<br>願望を叶えてもらうものではなく、<br>自分がこう生きると宣言し、<br>その歩みを助けてもらうもの。</p>
+            <p style="margin-bottom: 0;">その姿勢が、<br><span style="color: #ffd966;">罔象女神</span>との縁を<br>より深くしてくれます。</p>
+        </div>
+
+        <h2 class="emoji-header">【朝、水に触れる】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">朝、<br>顔を洗う時、手を洗う時、<br>白湯を飲む時。</p>
+            <p style="margin-bottom: 90px;">その水に、<br>一瞬だけ意識を向けてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「この水が、<br>私の中の重たいものを<br>流してくれる」</p>
+            <p style="margin-bottom: 90px;">そう、心の中で静かに思うだけ。</p>
+            <p style="margin-bottom: 0;">それだけで、<br><span style="color: #ffd966;">罔象女神</span>の流れが、<br>仁美様の体に日々入っていきます。</p>
+        </div>
+
+        <h2 class="emoji-header">【夜、湯船に浸かる】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">体の重さを感じる夜は、<br>ゆっくり湯船に<br>浸かってください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">肩までしっかり浸かって、<br>「水に溶かしていく」イメージで、<br>ゆっくり呼吸をしてみてください。</p>
+            <p style="margin-bottom: 0;">仁美様の体に<br>溜まりやすい<br>言葉にされなかった想いが、<br>水の流れに乗って、<br>そっと出ていきます。</p>
+        </div>
+
+        <!-- パワーストーン -->
+        <h2 class="emoji-header">⛩️仁美様を支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">罔象女神</span>という<br>水の女神のご縁を<br>お伝えしました。</p>
+            <p style="margin-bottom: 90px;">その力を、<br>仁美様の奥底にもおいてきました。</p>
+            <p style="margin-bottom: 90px;">そして、<br>神社への参拝と、<br>日々の水のワークも<br>お伝えしました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">基本的には、これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>守護の力は何もしなければ、<br>少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">仁美様は、<br>普段のお仕事や<br>日々の暮らしの中で、<br>人の感情や言葉にされないものを<br>深く受け取ってしまわれる方。</p>
+            <p style="margin-bottom: 90px;">その中で、日々<br>神社に行ける方は<br>少ないかと思います。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そういう方に、<br>ぜひお勧めしたいのが、<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">罔象女神</span>の力を、<br>仁美様の身近な石に宿し、<br>日々身に着けることが<br>できるようにします。</p>
+            <p style="margin-bottom: 90px;">ただ、どんな石でも<br>よいわけではありません。</p>
+            <p style="margin-bottom: 90px;">仁美様が持つ<br>深い水のエネルギーと、<br><span style="color: #ffd966;">罔象女神</span>が<br>共鳴しやすい石で、<br>お作りする必要があります。</p>
+            <p style="margin-bottom: 0;">仁美様のエネルギーと<br><span style="color: #ffd966;">罔象女神</span>が共鳴しやすい石を、<br>3つお伝えします。</p>
+        </div>
+
+        <ul style="margin-bottom: 90px;">
+            <li><span style="color: #ffd966; font-weight: bold;">1. アクアマリン</span><br>海の底の青を<br>そのまま閉じ込めたような<br>透明な水色の石です。<br>感情をやさしく整え、<br>言葉にならない想いを、<br>深く浄化していきます。<br>仁美様の中に溜まりやすい<br>「言葉にされなかった想い」を、<br>静かに流してくれる石です。<br>罔象女神の水のエネルギーと、<br>最も深く共鳴します。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">2. ムーンストーン</span><br>月の光を<br>そのまま石にしたような<br>白く優しく輝く石です。<br>仁美様の内側に眠る<br>気高い月の輝きを、<br>やさしく引き出してくれます。<br>直感を磨き、<br>言葉にされる前のものを、<br>正しく受け取る力を高めます。<br>仁美様の内側にある<br>深い気高さを、<br>表に届ける役割を<br>持つ石です。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">3. ラリマー</span><br>カリブの海の色を<br>封じ込めたような<br>やわらかい水色の石です。<br>愛情をやさしく安定させ、<br>穏やかな繋がりを<br>支える石です。<br>仁美様の<br>「気持ちが通じ合うだけでいい」という<br>願いを、そのまま支えてくれる力を<br>持っています。<br>水の女神に深く愛される<br>石でもあります。</li>
+        </ul>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">この3つの中から、<br>仁美様のエネルギーと<br>最もバランスが取れる<br>組み合わせを私が選び<br>一つずつ手作りで仕上げます。</p>
+            <p style="margin-bottom: 0;">「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <h2>【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">仁美様、</p>
+            <p style="margin-bottom: 90px;">あなたの未来には、<br>言葉にされないままに、<br>あの方と静かに繋がっていく<br>日々へと続く道が、<br>たしかに視えています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">雪解けの水が<br>山から流れ始める<br>2027年の春。</p>
+            <p style="margin-bottom: 90px;">あの方の瞳の奥に<br>これまで見せなかった<br>やわらかい光が灯る瞬間。</p>
+            <p style="margin-bottom: 90px;">仁美様にだけ<br>わかる形で、<br>「ここに居てくれて、<br>ありがとう」が、<br>たしかに届く。</p>
+            <p style="margin-bottom: 90px;">その未来の兆しが、<br>強く感じられます。</p>
+            <p style="margin-bottom: 90px;">今は、<br>「一方通行かもしれない」と<br>感じていらっしゃるかもしれない。</p>
+            <p style="margin-bottom: 90px;">「私だけが想っているのではないか」と<br>迷っていらっしゃるかもしれない。</p>
+            <p style="margin-bottom: 90px;">でもそれは、<br>仁美様が<br>深く感じすぎてしまう<br>魂をお持ちだから。</p>
+            <p style="margin-bottom: 90px;">そして、<br>あの方が<br>ご自身の想いを表に出すまでに<br>時間がかかる方だから、<br>ということなのです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様の感じ取っていらっしゃる<br>静かなご縁の手応えは、<br>正しい感覚です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様は、<br>言葉にしなくても繋がれる人。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">形がなくても育てていける人。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">確かめなくても<br>持っていられる人。</p>
+            <p style="margin-bottom: 90px;">これは、<br>誰にでもできることではありません。</p>
+            <p style="margin-bottom: 90px;">仁美様の魂の質が、<br>そういう深い愛し方が<br>できる作りになっているからです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">だから、<br>どうか「待つ」のではなく、<br>「選び取る」と、<br>今ご自身の内側で<br>決めてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私は、<br>この静かなご縁を自分で選んだ」と、<br>心の真ん中で<br>頷いてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それが、<br>仁美様の幸せへの道。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">罔象女神</span>が、<br>あなたを守っています。</p>
+            <p style="margin-bottom: 90px;">地の底で、<br>井戸の奥で、<br>山の清水の流れの中で、<br>今この瞬間も、<br>仁美様のために<br>湧き続けてくださっています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">仁美様は、<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ご自身の内側を大切にしていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ご自身の願いを、<br>言葉にしていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">形がなくても、<br>繋がっていていい。</p>
+            <p style="margin-bottom: 90px;">その全てを、<br>許可してくださっている女神様が、<br>仁美様の奥底に、<br>たしかにおられます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">守られている。</p>
+            <p style="margin-bottom: 90px;">その事実を、<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より、<br>遠隔守護祈祷を行い、<br>仁美様の幸せを願います。</p>
+            <p style="margin-bottom: 30px;">仁美様の未来に、<br>静かな、深い本物の繋がりが<br>満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>
