@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>パワーストーンブレスレット | 深雪</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d0d1a;
+      color: #ddd9cc;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 2;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* 区切り */
+    .divider {
+      border: none;
+      border-top: 1px solid #222238;
+      margin: 32px 0;
+    }
+
+    /* 本文エリア */
+    .body {
+      padding: 36px 28px 48px;
+    }
+
+    /* 段落 */
+    p {
+      margin-bottom: 0;
+    }
+
+    /* セクションタイトル */
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1rem;
+      color: #c8a86b;
+      letter-spacing: 0.12em;
+      margin: 40px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #2a2a44;
+    }
+
+    /* 石見出し */
+    .stone-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem;
+      color: #e8e4d8;
+      letter-spacing: 0.1em;
+      margin: 36px 0 6px;
+    }
+
+    /* 石の画像 */
+    .stone-img {
+      width: 100%;
+      margin: 16px 0 20px;
+      display: block;
+    }
+
+    /* 石どうしの区切り */
+    .stone-divider {
+      border: none;
+      text-align: center;
+      color: #2a2a44;
+      font-size: 1rem;
+      margin: 32px 0;
+    }
+    .stone-divider::before { content: '— — —'; letter-spacing: 0.3em; }
+
+    /* 価格ボックス */
+    .price-box {
+      border: 1px solid #c8a86b;
+      padding: 28px 24px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .price-label {
+      font-size: 0.78rem;
+      color: #c8a86b;
+      letter-spacing: 0.2em;
+      margin-bottom: 10px;
+    }
+    .price-num {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 2rem;
+      color: #e8e4d8;
+      letter-spacing: 0.05em;
+    }
+    .price-tax {
+      font-size: 0.72rem;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    /* インフォリスト */
+    .info-list {
+      margin: 8px 0 0;
+      padding: 0;
+    }
+    .info-list li {
+      list-style: none;
+      padding-left: 1em;
+      position: relative;
+      color: #b8b4a6;
+      font-size: 0.88rem;
+    }
+    .info-list li::before {
+      content: '・';
+      position: absolute;
+      left: 0;
+      color: #c8a86b;
+    }
+
+    /* 特典 */
+    .tokuten {
+      border-left: 2px solid #c8a86b;
+      padding: 14px 18px;
+      margin: 12px 0;
+      background: rgba(200,168,107,0.04);
+      font-size: 0.88rem;
+      color: #b8b4a6;
+    }
+    .tokuten li {
+      list-style: none;
+      padding-left: 1.5em;
+      position: relative;
+    }
+    .tokuten li::before {
+      content: attr(data-num) '.';
+      position: absolute;
+      left: 0;
+      color: #c8a86b;
+    }
+
+    /* 締め */
+    .closing {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid #222238;
+    }
+    .closing-sign {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.1rem;
+      color: #c8a86b;
+      letter-spacing: 0.15em;
+      margin-top: 16px;
+    }
+
+    /* CTAボタン */
+    .cta-button {
+      display: block;
+      text-align: center;
+      background: linear-gradient(135deg, #c8a86b 0%, #d4b878 100%);
+      color: #0d0d1a;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      padding: 20px 24px;
+      margin: 28px 0 12px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: opacity 0.2s;
+    }
+    .cta-button:hover {
+      opacity: 0.88;
+    }
+    .cta-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: #888;
+      margin-bottom: 24px;
+    }
+
+    /* フッター */
+    .footer {
+      padding: 24px;
+      text-align: center;
+      font-size: 0.72rem;
+      color: #444;
+      border-top: 1px solid #1a1a30;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="body">
+
+    <!-- 冒頭 -->
+    <p>mamo!様</p>
+    <br>
+    <p>詳細のご希望、ありがとうございます。</p>
+    <br>
+    <p>mamo!様のために選んだ石について、<br>詳しくお伝えしますね。</p>
+
+    <hr class="divider">
+
+    <!-- 専用PSについて -->
+    <div class="section-title">💎 mamo!様専用パワーストーンについて</div>
+
+    <p>mamo!様の命の流れを視させていただき、<br>今のmamo!様に最も必要な石を3つ選びました。</p>
+    <br>
+    <p>mamo!様は、真昼の真南で<br>一番強く輝いている、<br>最大級の太陽そのもののような方です。</p>
+    <br>
+    <p>ただそこに居るだけで<br>周りが明るくなる、<br>光源そのもののような方。</p>
+    <br>
+    <p>でも──<br>「もう少し近づきたい」<br>「早く返事がほしい」と、<br>強い温度がふっと顔を出して<br>押してしまいそうになる感覚が<br>繰り返されやすい流れがあります。</p>
+    <br>
+    <p>2026年7月から、<br>mamo!様と彼女様の真ん中に<br>高御産巣日神の「結び直す力」が<br>最も強く流れ込む流れが<br>すでに動き始めています。</p>
+    <br>
+    <p>その流れを最大限に活かすために、<br>mamo!様のエネルギーと<br>高御産巣日神（たかみむすびのかみ）が<br>深く共鳴する3つの石を選びました。</p>
+
+    <hr class="divider">
+
+    <!-- 3つの石 -->
+    <div class="section-title">🪨 3つの石について</div>
+
+    <!-- シトリン -->
+    <div class="stone-title">シトリン</div>
+
+    <img src="../素材/シトリン.png" class="stone-img" alt="シトリン">
+
+    <p>太陽のような黄金色の石です。</p>
+    <br>
+    <p>mamo!様の「最大級の太陽」のエネルギーと<br>最も深く共鳴します。</p>
+    <br>
+    <p>稲穂と同じ温かい黄金が、<br>焼く光ではなく、<br>人を温める光に整えてくれます。</p>
+    <br>
+    <p>mamo!様の「いるだけで人が集まる」という魅力を、<br>力を抜いて自然に出せるようにする、<br>そういう石です。</p>
+    <br>
+    <p>「頑張って届けようとするほど炎になってしまう」感覚を、<br>この石がそっと緩めてくれます。</p>
+
+    <div class="stone-divider"></div>
+
+    <!-- アクアマリン -->
+    <div class="stone-title">アクアマリン</div>
+
+    <img src="../素材/アクアマリン.png" class="stone-img" alt="アクアマリン">
+
+    <p>高御産巣日神と最も共鳴が強い石です。</p>
+    <br>
+    <p>澄んだ青の光で、<br>「過去の縁」と「これからの縁」を、<br>ていねいに分けて流す力があります。</p>
+    <br>
+    <p>mamo!様の命の流れには、<br>「古い形をいったん溶かして、<br>新しい形に結び直していく」という運びが<br>刻まれています。</p>
+    <br>
+    <p>アクアマリンは、その守護を日常の中で<br>ずっとそばに置いておける石です。</p>
+    <br>
+    <p>彼女様との未来と、<br>これまで出会ってきた大切な人たちとの縁を、<br>ひとつひとつ新しい役割の中に<br>おさめ直していけるようになります。</p>
+
+    <div class="stone-divider"></div>
+
+    <!-- アメジスト -->
+    <div class="stone-title">アメジスト</div>
+
+    <img src="../素材/アメジスト.png" class="stone-img" alt="アメジスト">
+
+    <p>深い紫の石です。</p>
+    <br>
+    <p>mamo!様が「もう少し近づきたい」<br>「早く返事がほしい」と<br>内側でぶつかりを感じるとき、</p>
+    <br>
+    <p>この石が、そのループを静かにほどいてくれます。</p>
+    <br>
+    <p>水の力をほとんど持たないmamo!様の中に、<br>クールダウンの力をそっと足してくれます。</p>
+    <br>
+    <p>押す力を止めるのではなく、<br>それを「照らす力」へと<br>整えてくれる石です。</p>
+
+    <hr class="divider">
+
+    <!-- 価格 -->
+    <div class="section-title">✨ mamo!様専用ブレスレット</div>
+
+    <div class="price-box">
+      <div class="price-label">mamo!様専用ブレスレット</div>
+      <div class="price-num">¥19,800</div>
+      <div class="price-tax">（税込）</div>
+    </div>
+
+    <p>シトリン・アクアマリン・アメジスト。<br>この3つをmamo!様専用に組み合わせて、<br>一つひとつ手作りで仕上げます。</p>
+    <br>
+    <p>高御産巣日神への祈祷とエネルギーチャージを込めて、<br>mamo!様のもとへお届けします。</p>
+    <br>
+    <p>身につけていくうちに、<br>「押すのではなく、照らす」<br>「詰めるのではなく、待つ」という感覚が<br>少しずつ戻ってきます。</p>
+    <br>
+    <p>「もう少し近づきたい」と感じた夜、<br>石が静かにそのループをほどいてくれる。</p>
+    <br>
+    <p>日常の中で、守護がそばにある。</p>
+    <br>
+    <p>そして2026年7月に向けて──<br>最初の一歩を踏み出すその瞬間に、<br>エネルギーが整った状態で<br>臨めるようになります。</p>
+
+    <hr class="divider">
+
+    <!-- タイミング -->
+    <div class="section-title">⏰ タイミングについて</div>
+
+    <p>mamo!様の場合、<br>2026年7月から、<br>彼女様との関係が動き始める流れがあります。</p>
+    <br>
+    <p>パワーストーンのエネルギーが<br>しっかりと馴染むまでには、<br>通常2〜3週間ほどかかります。</p>
+    <br>
+    <p>今から始めることで、<br>ちょうど2026年7月の<br>動き出しの時期に<br>エネルギーが整った状態になります。</p>
+    <br>
+    <p>そして2027年2月、<br>高御産巣日神の「結び直す力」が<br>一年の中で最も強くなる月に、<br>mamo!様の魂に守護が<br>深く根を下ろした状態で迎えていただけます。</p>
+
+    <hr class="divider">
+
+    <!-- お届け -->
+    <div class="section-title">📦 お届けについて</div>
+
+    <ul class="info-list">
+      <li>ご注文から7〜10日以内に発送</li>
+      <li>追跡番号付きで安心</li>
+      <li>専用の浄化・エネルギーチャージ済みでお届けします</li>
+    </ul>
+
+    <hr class="divider">
+
+    <!-- 特典 -->
+    <div class="section-title">🎁 ご購入特典</div>
+
+    <p>今回ご購入いただいた方には：</p>
+    <br>
+    <div class="tokuten">
+      <ul>
+        <li data-num="1">パワーストーンの取扱い・浄化方法のご案内</li>
+        <li data-num="2">ご購入から3ヶ月間、気になることがあればいつでもご相談いただけます</li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <!-- CTA -->
+    <p>ご希望の方は、下のボタンよりお進みください。</p>
+    <br>
+    <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/6a28ffdd2a10e43b163effbc" class="cta-button" target="_blank" rel="noopener">ブレスレットを希望する</a>
+    <p class="cta-note">※ 別ウィンドウで購入ページが開きます</p>
+
+    <p>ご不明な点があれば、<br>お気軽にお尋ねくださいね。</p>
+
+    <!-- 締め -->
+    <div class="closing">
+      <p>mamo!様が、<br>押す力ではなく照らす力で<br>最初の一歩を踏み出されたその時、<br>彼女様の鋼の心は、<br>あなたの光にゆっくりと<br>形を変えていきます。</p>
+      <br>
+      <p>どうか、あなたの太陽の<br>ちょうどよい温度を、<br>ご自身で大切にしてくださいね。</p>
+      <div class="closing-sign">深雪</div>
+    </div>
+
+  </div>
+
+  <div class="footer">© 深雪 MIYUKI</div>
+
+</body>
+</html>
