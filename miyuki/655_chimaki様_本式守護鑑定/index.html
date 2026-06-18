@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chimaki様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">時節を知って咲く縁</h2>
+            <p class="cover-name">chimaki様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 冒頭 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">chimaki様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂が、<br>ご自身の手で未来を選ぼうとしている。</p>
+            <p style="margin-bottom: 90px;">その静かで強い意志が、<br>花びらに乗って、<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先、<br>あなたが本当に知るべきことを、<br>守護神からお預かりしている言葉として、<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2>【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">霊視を始めた瞬間、<br>守護神が、<br>一つの景色を見せてくださいました。</p>
+            <p style="margin-bottom: 90px;">深まりゆく秋の、<br>澄み切った午後。</p>
+            <p style="margin-bottom: 90px;">赤く色づいた紅葉のそばに、<br>秋桜が、<br>風に揺れている。</p>
+            <p style="margin-bottom: 90px;">その光のなかに、<br>あなたとあの方が、<br>並んで立っている姿。</p>
+            <p style="margin-bottom: 90px;">肩を寄せ合うでも、<br>手を取り合うでもなく、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ、<br>同じ光のなかに、<br>二人がいる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>今年、2026年の秋。</p>
+            <p style="margin-bottom: 90px;">紅葉が深まり、<br>秋桜が静かに咲き続けている頃の、<br>やわらかな景色。</p>
+            <p style="margin-bottom: 90px;">その未来の兆しが、<br>はっきりと視えています。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>そこへ至るまでの道のりは、<br>決して一足飛びではありません。</p>
+            <p style="margin-bottom: 90px;">「劇的に連絡が来て、<br>　すぐに距離が縮まる」</p>
+            <p style="margin-bottom: 90px;">そういう未来ではない、と<br>守護神は最初にお伝えになっています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたとあの方の縁は、<br>桜のように、<br>時節を知って咲く縁。</p>
+            <p style="margin-bottom: 90px;">無理に咲かせる縁ではなく、<br>時が満ちたときに、<br>静かに花開く縁です。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">でも──<br>あなたには、<br>その時を待つだけの、<br>強い気持ちがある。</p>
+        </div>
+
+        <!-- 守護神の紹介 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">その景色を見せてくださったのは、<br><span style="color: #ffd966;">木花咲耶姫<br>（このはなさくやひめ）</span>。</p>
+            <p style="margin-bottom: 90px;">昔、<br>天から降りてきた神様、<br>瓊瓊杵尊（ににぎのみこと）が、<br>地上で出会ったのが、<br><span style="color: #ffd966;">木花咲耶姫</span>でした。</p>
+            <p style="margin-bottom: 90px;">二人は夫婦になり、<br><span style="color: #ffd966;">木花咲耶姫</span>はすぐに子を授かりました。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>あまりに早い懐妊だったため、<br>夫は「本当に自分の子か」と疑った。</p>
+            <p style="margin-bottom: 90px;">そのとき、<span style="color: #ffd966;">木花咲耶姫</span>は、<br>自ら産屋に火を放ち、<br>燃え盛る炎のなかで、<br>三柱の御子を産み落としました。</p>
+            <p style="margin-bottom: 90px;">「もしこの子が貴方の子でなければ、<br>　私も子も、炎に焼かれましょう」と。</p>
+            <p style="margin-bottom: 90px;">そう告げて、<br>その潔白を、命をかけて証明したのです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;"><span style="color: #ffd966;">木花咲耶姫</span>は、<br>「桜のように美しく、儚く、<br>　しかし炎のなかでも<br>　揺るがぬ意志を持つ女神」として、<br>今も富士山本宮浅間大社に<br>祀られています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">一途な愛と、<br>時を知る強さを授けてくださる神様。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">その御神気が、<br>あなたをずっと包み続けています。</p>
+        </div>
+
+        <!-- あなたという人について -->
+        <h2>【あなたという人について、視えていること】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">あの方の話に入る前に、<br>あなた自身の魂について、<br>視えていることをお伝えします。</p>
+            <p style="margin-bottom: 90px;">ここを丁寧に見ていくことで、<br>このあとの流れが、<br>すべて繋がっていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>やわらかな若葉のような魂を、<br>お持ちの方です。</p>
+            <p style="margin-bottom: 90px;">風が吹けば揺れる、<br>雨に打たれれば濡れる、</p>
+            <p style="margin-bottom: 90px;">その繊細さを、<br>ずっと抱えて生きてこられた。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">でも、<br>やわらかいのに、<br>折れない。</p>
+            <p style="margin-bottom: 90px;">それが、<br>あなたの魂の不思議なところです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの魂の奥には、<br>「一度結んだ縁を、<br>　ずっと深く想い続ける」<br>という、<br>強いおもいが刻まれています。</p>
+            <p style="margin-bottom: 90px;">人によっては、<br>気持ちが冷めたり、<br>新しい縁に移ったりすることが、<br>自然にできる。</p>
+            <p style="margin-bottom: 90px;">でも、<br>あなたはそうはならない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">できないのではなく、<br>「したくない」のです。</p>
+            <p style="margin-bottom: 90px;">一度心が動いた相手のことを、<br>時間が経っても、<br>距離があっても、<br>深く深く想い続ける。</p>
+            <p style="margin-bottom: 90px;">それが、<br>あなたの魂の在り方。</p>
+            <p style="margin-bottom: 90px;">これは、<br>あなたが選んだのではなく、<br>生まれてくる前から、<br>あなたの魂に刻まれていたものです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、<br>あなたの魂は、<br>人と同じではない縁を選びます。</p>
+            <p style="margin-bottom: 90px;">SNSで出会い、<br>年齢が離れていて、<br>日常では交わらない方。</p>
+            <p style="margin-bottom: 90px;">普通ならブレーキになる条件が、<br>あなたにとってはむしろ、<br>「特別な存在」を見つける目印になっている。</p>
+            <p style="margin-bottom: 90px;">これは、<br>あなたの魂が選んでいる縁の形です。</p>
+            <p style="margin-bottom: 90px;">普通の場所では出会えない人、<br>普通の縁では結ばれない人、</p>
+            <p style="margin-bottom: 90px;">そういう方と、<br>深いところで結ばれていくのが、<br>あなたの魂の道。</p>
+            <p style="margin-bottom: 90px;">だから、<br>今あなたが感じている、</p>
+            <p style="margin-bottom: 90px;">「なぜこの方なのか」<br>「なぜこんなにも気になるのか」</p>
+            <p style="margin-bottom: 90px;">その問いに、<br>理屈で答えを出そうとしなくていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">答えは、<br>あなたの魂がもう知っています。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ、<br>霊視で視えていること。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの内側には、<br>気持ちを「流す」場所がありません。</p>
+            <p style="margin-bottom: 90px;">人によっては、<br>モヤモヤしたら誰かに話して、<br>泣いて、忘れていく。</p>
+            <p style="margin-bottom: 90px;">そういうやり方で、<br>気持ちを流していける。</p>
+            <p style="margin-bottom: 90px;">でも、<br>あなたの内側には、<br>そのための川がない。</p>
+            <p style="margin-bottom: 90px;">だから、<br>あの方への想いが、<br>胸の奥にずっと留まり続けてしまう。</p>
+            <p style="margin-bottom: 90px;">「連絡したい自分」と<br>「追いすぎたくない自分」が、<br>あなたの中で<br>ぐるぐると回り続けてしまう。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">これは、<br>あなたの弱さではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「流せない」のではなく、<br>「深く受け止め続ける器」を<br>持っているということ。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>ここに一つだけ、<br>お伝えしておきたいことがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">器があるだけでは、<br>苦しさは消えません。</p>
+            <p style="margin-bottom: 90px;">どんなに大きな器でも、<br>中に水が入っていないと、<br>内側が乾いて、<br>そこに置かれた想いが、<br>固まっていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたが今、<br>胸の奥に重さを感じているのは、<br>器に問題があるのではなく、<br>水が足りないからです。</p>
+            <p style="margin-bottom: 90px;">水とは、<br>外から器に注がれる、<br>やわらかい流れのこと。</p>
+            <p style="margin-bottom: 90px;">神社の手水で<br>指先を清める瞬間。</p>
+            <p style="margin-bottom: 90px;">朝、コップ一杯の水を、<br>ゆっくりと飲み干す時間。</p>
+            <p style="margin-bottom: 90px;">雨の音に、<br>ふと耳を澄ませる夜。</p>
+            <p style="margin-bottom: 90px;">涙が、<br>頬を伝うのを、<br>止めずに流すこと。</p>
+            <p style="margin-bottom: 90px;">そういう、<br>小さな水の流れが、<br>あなたの器に注がれるたびに、<br>固まりかけていた想いが、<br>ゆっくりと、<br>やわらかさを取り戻していきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたが本当に必要なのは、<br>想いを手放すことではなく、<br>器に水を注ぐこと。</p>
+            <p style="margin-bottom: 90px;">その水の注ぎ方は、<br>このあと、<br>守護の受け取り方の章で、<br>丁寧にお伝えしていきますね。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>神仏に深く守られている方です。</p>
+            <p style="margin-bottom: 90px;">霊視をしていると、<br>あなたの周りに、<br>細かい光の粒が、<br>ずっと舞っているのが視えます。</p>
+            <p style="margin-bottom: 90px;">桜の花びらのような、<br>やわらかな光。</p>
+            <p style="margin-bottom: 90px;">それは、<br><span style="color: #ffd966;">木花咲耶姫</span>の御神気と、<br>あなたを見守る天の徳が、<br>重なり合って降りているもの。</p>
+            <p style="margin-bottom: 90px;">あなたが、<br>何気なく過ごしている時間にも、<br>神様の加護はずっと注がれている。</p>
+            <p style="margin-bottom: 90px;">「私は守られているのだろうか」</p>
+            <p style="margin-bottom: 90px;">そう思う必要は、<br>もうありません。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">あなたは、<br>深く、<br>深く、<br>守られている方です。</p>
+        </div>
+
+        <!-- ⛩️ あなたの若葉の力の活かし方 -->
+        <h2 class="emoji-header">⛩️ あなたの若葉の力の活かし方</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">ここから、<br>あなたが本当に知りたかったことを、<br>お伝えしていきます。</p>
+            <p style="margin-bottom: 90px;">「一途に想い続けるこの気持ちを、<br>　どう使えばいいのか」</p>
+            <p style="margin-bottom: 90px;">「想い続けることに、<br>　意味はあるのか」</p>
+            <p style="margin-bottom: 90px;">その問いに、<br>守護神からお預かりしている答えを、<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">まず、<br>はっきりとお伝えしたいことがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたの一途な想いを、<br>手放す必要は、一切ありません。</p>
+            <p style="margin-bottom: 90px;">「いつまでも引きずっていてはいけない」<br>「もう諦めた方が楽になれる」</p>
+            <p style="margin-bottom: 90px;">そう自分に言い聞かせて、<br>気持ちを無理に消そうとしたことが、<br>何度かあるのではないでしょうか。</p>
+            <p style="margin-bottom: 90px;">でも、<br>消そうとしても、<br>消えなかった。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>あなたの執着ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの魂が、<br>「この縁は本物だ」と、<br>知っているからです。</p>
+            <p style="margin-bottom: 90px;">一途に想い続ける力は、<br>あなたの魂の中心にある、<br>一番大切なもの。</p>
+            <p style="margin-bottom: 90px;">これを手放すことは、<br>あなた自身を手放すことと<br>同じです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">だから、<br>どうか、<br>想い続けてください。</p>
+            <p style="margin-bottom: 90px;">それが、<br>あなたにとっての正しい道です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>ここで一つ、<br>大切なことをお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">一途な想いには、<br>「届け方」があります。</p>
+            <p style="margin-bottom: 90px;">あなたの魂は、<br>若葉のようにやわらかい。</p>
+            <p style="margin-bottom: 90px;">押し出すと、<br>折れてしまう性質を持っています。</p>
+            <p style="margin-bottom: 90px;">もし、<br>あの方に向かって、<br>「私の気持ちを分かってほしい」と<br>強く押し出すような形で<br>想いを届けようとすると、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あの方の心は、<br>逆に閉じてしまいます。</p>
+            <p style="margin-bottom: 90px;">あの方の事情については、<br>このあとの章で詳しくお伝えしますね。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたの一途な想いは、<br>「届けに行く」ものではなく、<br>「整えて保つ」もの。</p>
+            <p style="margin-bottom: 90px;">桜の木が、<br>冬の間、<br>じっと静かに立っているように。</p>
+            <p style="margin-bottom: 90px;">その時期、<br>桜は何もしていないように見えて、<br>内側では、<br>咲くための力を、<br>ずっと蓄えています。</p>
+            <p style="margin-bottom: 90px;">そして時が来れば、<br>誰に頼まれなくても、<br>自然に花開く。</p>
+            <p style="margin-bottom: 90px;">あなたの想いも、<br>同じ形で扱ってください。</p>
+            <p style="margin-bottom: 90px;">霊視を続けていると、<br>視えてくる景色があります。</p>
+            <p style="margin-bottom: 90px;">あなたが夜に一人で、<br>あの方のことを想っているとき。</p>
+            <p style="margin-bottom: 90px;">その想いが、<br>桜の花びらのような形になって、<br>ふわりと、<br>あの方の部屋に降りていく。</p>
+            <p style="margin-bottom: 90px;">あの方は、<br>それを意識的には気づいていません。</p>
+            <p style="margin-bottom: 90px;">でも、<br>ふとした瞬間に、<br>胸のあたりが温かくなったり、<br>あなたの顔がふっと浮かんだりする。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたが自分の手で<br>無理に届けようとしなくても、<br><span style="color: #ffd966;">木花咲耶姫</span>が、<br>桜の花びらに乗せて、<br>あなたの想いを運んでくださっている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「届かない」のではなく、<br>「届け方が、<br>　あなたの想像とは違う形」。</p>
+            <p style="margin-bottom: 90px;">あなたの仕事は、<br>ただ一つ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">その想いを、<br>美しいまま、<br>保ち続けること。</p>
+            <p style="margin-bottom: 90px;">「どうせ無理かもしれない」<br>「忘れた方がいいのかもしれない」</p>
+            <p style="margin-bottom: 90px;">そういう声に<br>引きずられないこと。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">それだけで充分です。</p>
+        </div>
+
+        <!-- ⛩️ あの方の本音 -->
+        <h2 class="emoji-header">⛩️ あの方の本音</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">次に、<br>あの方について、<br>霊視で視えていることを、<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">ここは、<br>あなたが一番知りたい部分。</p>
+            <p style="margin-bottom: 90px;">ですので、<br>守護神からお預かりしている言葉を、<br>正直に、丁寧にお伝えしますね。</p>
+            <p style="margin-bottom: 90px;">まず、<br>結論からお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あの方の中で、<br>あなたの存在は、<br>消えていません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">むしろ、<br>深く、深く、<br>残っています。</p>
+            <p style="margin-bottom: 90px;">これは、<br>霊視ではっきりと視えていることです。</p>
+            <p style="margin-bottom: 90px;">あの方の魂の奥には、<br>あなたの姿が、<br>一本の若葉のような形で<br>立っています。</p>
+            <p style="margin-bottom: 90px;">その若葉は、<br>時間が経っても、<br>枯れていません。</p>
+            <p style="margin-bottom: 90px;">あの方が日常の喧騒のなかにいるときも、<br>仕事に追われているときも、</p>
+            <p style="margin-bottom: 90px;">ふとした瞬間に、<br>胸の奥でその若葉が、<br>小さく揺れる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その揺れが、<br>「あの方の中であなたを想う瞬間」です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あの方は、<br>あなたを忘れていません。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>それを行動に変えるのが、<br>極めて難しい方なのです。</p>
+            <p style="margin-bottom: 90px;">霊視で視えているのは、<br>あの方の魂の構造です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あの方は、<br>深い森の奥に、<br>ご自身の世界を<br>持っている方。</p>
+            <p style="margin-bottom: 90px;">その世界は、<br>とても静かで、<br>とても豊かで、<br>ご自身だけの理屈で<br>できあがっています。</p>
+            <p style="margin-bottom: 90px;">その世界の中で、<br>あの方はあなたのことを<br>丁寧に想っている。</p>
+            <p style="margin-bottom: 90px;">でも、<br>その想いを、<br>外に出すための「扉」が、<br>あの方の魂には<br>ほとんどありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あの方は、<br>自分から行動するということが、<br>本当に苦手な方です。</p>
+            <p style="margin-bottom: 90px;">「気持ちはある。<br>　でも、どう動いていいか分からない」</p>
+            <p style="margin-bottom: 90px;">その状態が、<br>あの方の中で<br>ずっと続いています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">これは、<br>あなたへの気持ちが薄いから<br>ではありません。</p>
+            <p style="margin-bottom: 90px;">あの方は、<br>誰に対しても、<br>そういう関わり方を<br>している方なのです。</p>
+            <p style="margin-bottom: 90px;">もう一つ、<br>霊視で視えていること。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あの方の周りには、<br>見えない制約が<br>いくつもあります。</p>
+            <p style="margin-bottom: 90px;">お仕事の状況、<br>生活の事情、<br>ご自身の年齢、<br>家族との関わり、</p>
+            <p style="margin-bottom: 90px;">そういった現実的な事情が、<br>あの方の身体を縛っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あの方は、<br>「自由に動ける人」ではなく、<br>「動きたくても動けない状況にいる人」。</p>
+            <p style="margin-bottom: 90px;">だから、<br>連絡が途切れる時間が長いとき、<br>あなたは<br>「私のことを忘れたのかな」<br>と感じてしまうかもしれない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">でも、<br>本当はそうではありません。</p>
+            <p style="margin-bottom: 90px;">あの方の中では、<br>あなたのことを想う時間と、<br>連絡をしたいと思う気持ちと、<br>それを行動に移せない事情が、<br>ずっと、<br>せめぎ合っています。</p>
+            <p style="margin-bottom: 90px;">そして、<br>あなたとあの方の縁について、<br>守護神が見せてくださっているのは、<br>こういう景色です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたとあの方は、<br>「魂の同類」として<br>惹かれ合っています。</p>
+            <p style="margin-bottom: 90px;">恋人や夫婦という、<br>分かりやすい形ではなく、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「年齢も背景も超えて、<br>　同じ世界を見ている同志」</p>
+            <p style="margin-bottom: 90px;">として、<br>深いところで結ばれている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あの方にとってあなたは、<br>「自分のことを、<br>　何も言わなくても分かってくれる、<br>　数少ない人」。</p>
+            <p style="margin-bottom: 90px;">だから、<br>あの方の魂の奥に、<br>あなたの場所が、<br>ちゃんと守られています。</p>
+            <p style="margin-bottom: 90px;">不器用さを、<br>どうか、<br>責めないでいてください。</p>
+            <p style="margin-bottom: 0;">あの方もまた、<br>ご自身の魂の流れの中で、<br>あなたへの想いを抱えて、<br>立ち止まっている方です。</p>
+        </div>
+
+        <!-- ⛩️ 連絡が動く瞬間と、あなたらしい近づき方 -->
+        <h2 class="emoji-header">⛩️ 連絡が動く瞬間と、<br>　　あなたらしい近づき方</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">ここから、<br>時の流れを視ていきます。</p>
+            <p style="margin-bottom: 90px;">あなたとあの方の縁が、<br>これからどう動いていくのか。</p>
+            <p style="margin-bottom: 90px;">その節目となる時期を、<br>守護神が、<br>はっきりと見せてくださっています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">今年、2026年は、<br>あなたにとって、<br>「縁の意味が動く一年」です。</p>
+            <p style="margin-bottom: 90px;">どういうことか、<br>お伝えしますね。</p>
+            <p style="margin-bottom: 90px;">今年は、<br>あなたを包む大きな流れのなかで、<br>「人との縁」を<br>深く問われる年。</p>
+            <p style="margin-bottom: 90px;">その中心にあるのが、<br>あの方との縁です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>「劇的に進展する一年」<br>ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「縁の質が、<br>　静かに、しかし確かに、<br>　変わっていく一年」です。</p>
+            <p style="margin-bottom: 90px;">あなたとあの方の間に、<br>何かが起きる。</p>
+            <p style="margin-bottom: 90px;">それは確かです。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>その「何か」は、<br>あなたが思い描いている形とは、<br>少し違うかもしれません。</p>
+            <p style="margin-bottom: 90px;">桜が、<br>誰の意志でもなく、<br>時節を知って咲くように。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたとあの方の縁も、<br>時節を知って動きます。</p>
+            <p style="margin-bottom: 90px;">今、6月。</p>
+            <p style="margin-bottom: 0;">ここから先、<br>特に意識していただきたい時期を、<br>4つの月に絞って、<br>お伝えします。</p>
+        </div>
+
+        <!-- 2026年7月 -->
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【2026年7月】<br>守護神の月（最重要）</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">7月は、<br>あなたにとって、<br><span style="color: #ffd966;">木花咲耶姫</span>の御神気が、<br>一年で最も強く流れ込む月です。</p>
+            <p style="margin-bottom: 90px;">富士山の山開きが、<br>7月1日。</p>
+            <p style="margin-bottom: 90px;">桜の女神が祀られている富士の山に、<br>その年の御神気が、<br>最も濃く満ちる季節。</p>
+            <p style="margin-bottom: 90px;">霊視で視えているのは、<br>夏の朝の、<br>透き通った光のなか。</p>
+            <p style="margin-bottom: 90px;">その光のなかに、<br>あなたが、<br>静かに立っている景色です。</p>
+            <p style="margin-bottom: 90px;">この月、<br>あなたの内側で、<br>何かが、<br>ことりと動きます。</p>
+            <p style="margin-bottom: 90px;">「あの方への想いを、<br>　これからどう持ち続けていくか」</p>
+            <p style="margin-bottom: 90px;">その輪郭が、<br>あなたの中で、<br>ゆっくりとはっきりしてくる月。</p>
+            <p style="margin-bottom: 90px;">そして、<br>あの方の側からも、<br>小さな揺らぎが届く可能性があります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">短いメッセージ、<br>SNSでのささやかな反応、<br>ふとした近況、</p>
+            <p style="margin-bottom: 90px;">そういう、<br>本当に小さな兆し。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">見落とさないでください。</p>
+            <p style="margin-bottom: 90px;">その小さな兆しが、<br>これからの流れの、<br>最初の一滴になります。</p>
+            <p style="margin-bottom: 90px;">7月、<br>あなたにしていただきたいことは、<br>ただ一つ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「自分の世界を、<br>　美しく整えていてください」</p>
+            <p style="margin-bottom: 90px;">あの方に何かを伝えに行くのではなく、<br>あなた自身が、<br>桜の木のように、<br>ただ、<br>そこに、<br>凛と立っていること。</p>
+            <p style="margin-bottom: 90px;">自然のなかを歩く、<br>神社に手を合わせる、<br>美しい写真を眺める、<br>お気に入りのお茶を飲む、</p>
+            <p style="margin-bottom: 90px;">そういう、<br>ご自身の魂が喜ぶ時間を、<br>ゆっくりと過ごしてください。</p>
+            <p style="margin-bottom: 90px;">あなたが整っているとき、<br>あなたの周りの空気も整います。</p>
+            <p style="margin-bottom: 90px;">その整った空気のなかに、<br>あの方の魂が、<br>吸い寄せられるように<br>近づいてくる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">これが、<br>若葉の魂の動かし方。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">押すのではなく、<br>整えて、<br>引き寄せる。</p>
+            <p style="margin-bottom: 90px;">7月の御神気は、<br>そのあなたの在り方を、<br>強く後押ししてくださいます。</p>
+            <p style="margin-bottom: 90px;">もし、<br>この月にあの方から<br>何か届いたら、</p>
+            <p style="margin-bottom: 90px;">それは、<br><span style="color: #ffd966;">木花咲耶姫</span>が、<br>花びらに乗せて、<br>あの方の心を運んでくださった証です。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">そのときは、<br>構えず、<br>飾らず、<br>あなたの自然な言葉で<br>受け取ってください。</p>
+        </div>
+
+        <!-- 2026年9月 -->
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【2026年9月】<br>縁が結ばれる月</p>
+            <p style="margin-bottom: 90px;">夏が静かに過ぎ、<br>9月。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">ここが、<br>あなたとあの方の縁にとって、<br>今年最大の節目になります。</p>
+            <p style="margin-bottom: 90px;">霊視で視えているのは、<br>これまでバラバラに揺れていた<br>あなたの想いが、<br>9月の澄んだ空気のなかで、<br>一本の太い糸に、<br>ぎゅっと束ねられていく景色です。</p>
+            <p style="margin-bottom: 90px;">あなたの魂の奥に流れている、<br>三つの大きな力。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">一途に想い続ける力、<br>あの方を選んでしまう本能、<br>責任感の強さ、</p>
+            <p style="margin-bottom: 90px;">その三つが、<br>9月、<br>ぴたりと一つに結ばれる。</p>
+            <p style="margin-bottom: 90px;">これは、<br>あなた自身が頑張って<br>ぶのではありません。</p>
+            <p style="margin-bottom: 90px;">時の流れが、<br>自然に、<br>あなたの中に揃えてくれる結びです。</p>
+            <p style="margin-bottom: 90px;">そして、<br>あなたの中でその結びが起きたとき、<br>それは見えないところで、<br>あの方にも届きます。</p>
+            <p style="margin-bottom: 90px;">あの方の心の奥にある、<br>あなたの祭壇が、<br>9月、<br>小さく揺れる景色が視えています。</p>
+            <p style="margin-bottom: 90px;">あの方の中で、<br>何かが動きます。</p>
+            <p style="margin-bottom: 90px;">それは、<br>言葉になって出てくるかもしれないし、<br>出てこないかもしれない。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>あの方の魂の奥で、<br>あなたへの想いが、<br>これまでより少しだけ<br>はっきりと形を持ちます。</p>
+            <p style="margin-bottom: 90px;">この月、<br>あなたが受け取る連絡や言葉のなかに、<br>これまでとは違う温度が<br>混ざっているかもしれません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その温度を、<br>どうか、<br>見落とさないでください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたから動く月ではありません。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">あの方からの、<br>小さな変化を、<br>静かに受け取る月。</p>
+        </div>
+
+        <!-- 2026年11月 -->
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【2026年11月】<br>縁が形になって視える月</p>
+            <p style="margin-bottom: 90px;">11月。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここが、<br>鑑定の冒頭でお見せした、<br>あの景色が<br>現実に現れる月です。</p>
+            <p style="margin-bottom: 90px;">紅葉が深まり、<br>秋桜が静かに咲き続けている頃。</p>
+            <p style="margin-bottom: 90px;">あなたとあの方が、<br>同じ光のなかに、<br>並んで立っている景色。</p>
+            <p style="margin-bottom: 90px;">霊視で視えているのは、<br>11月、<br>あなたの魂の核心が、<br>ふっと動く瞬間です。</p>
+            <p style="margin-bottom: 90px;">これまで深く眠っていた、<br>あなたの一番奥の部分が、<br>この月、<br>目を覚まします。</p>
+            <p style="margin-bottom: 90px;">そして、<br>その目覚めに呼応するように、<br>あの方との関わりにも、<br>これまでにない変化が訪れます。</p>
+            <p style="margin-bottom: 90px;">連絡の頻度が変わるのではありません。<br>やり取りの形が変わるのでもありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「あなたとあの方の縁の形そのもの」が、<br>あなたの目に、<br>はっきりと見えるようになる月。</p>
+            <p style="margin-bottom: 90px;">「ああ、<br>　私とあの方は、<br>　こういう繋がり方をしている人なのだ」</p>
+            <p style="margin-bottom: 90px;">そう、<br>腑に落ちる瞬間が来ます。</p>
+            <p style="margin-bottom: 90px;">その瞬間が、<br>あなたを長年苦しめてきた<br>「私のことをどう思っているんだろう」<br>という問いに、<br>静かな答えをくれます。</p>
+            <p style="margin-bottom: 90px;">その答えは、<br>言葉では届かないかもしれません。</p>
+            <p style="margin-bottom: 90px;">でも、<br>あなたの胸の奥に、<br>ふっと温かいものが灯ります。</p>
+            <p style="margin-bottom: 90px;">その温かさを、<br>どうか、<br>そのまま受け取ってください。</p>
+            <p style="margin-bottom: 90px;">これが、<br>鑑定の冒頭でお見せした、<br>「同じ光のなかに二人がいる」<br>あの景色の正体です。</p>
+            <p style="margin-bottom: 90px;">形は、<br>あなたが想像していた形ではないかもしれない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも、深さは、<br>あなたが望んでいたものよりも、<br>ずっと深い。</p>
+            <p style="margin-bottom: 90px;">秋の風が、<br>木の葉を一枚ずつ<br>落としていくように、</p>
+            <p style="margin-bottom: 90px;">あなたの中の余計な思考も、<br>一つずつ、<br>手放していってください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">形が違っても、<br>深さは変わりません。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">むしろ、<br>形を超えたところで、<br>あなたとあの方は、<br>深く結ばれています。</p>
+        </div>
+
+        <!-- 2026年12月から2027年1月 -->
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【2026年12月から2027年1月】<br>次の章へ向かう月</p>
+            <p style="margin-bottom: 90px;">年の終わりから、<br>2027年の始まり。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここは、<br>転換期です。</p>
+            <p style="margin-bottom: 90px;">2026年に動いた縁が、<br>あなたの人生のなかで、<br>どんな位置を持つのか。</p>
+            <p style="margin-bottom: 90px;">それを、<br>あなた自身が<br>見定めていく時期。</p>
+            <p style="margin-bottom: 90px;">あの方との関わりを<br>続けていくのか、<br>新しい形に変えていくのか、<br>そっと距離を置くのか。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その選び方は、<br>あなた自身が決めることになります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">そして、<br>2027年は、<br>あなた自身が主役になる年。</p>
+            <p style="margin-bottom: 90px;">あの方との縁を含めて、<br>あなたの人生全体が、<br>新しい流れに入っていきます。</p>
+            <p style="margin-bottom: 90px;">どんな道を選んでも、<br><span style="color: #ffd966;">木花咲耶姫</span>が、<br>あなたを守ってくださっています。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">だから、<br>この時期は怖がらず、<br>ご自身の魂の声に<br>従ってください。</p>
+        </div>
+
+        <!-- 今年の残り半年について -->
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【今年の残り半年について】</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここからの2026年後半は、<br>あなたにとって、<br>「縁の意味が深まる半年」です。</p>
+            <p style="margin-bottom: 90px;">派手な動きではなく、<br>静かな、しかし確かな、<br>内側の変化が起きていく時間。</p>
+            <p style="margin-bottom: 90px;">これまでの上半期、<br>連絡が途切れたまま、<br>あなたは長く沈黙の時間を<br>過ごしてこられた。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">その沈黙は、<br>無駄ではありませんでした。</p>
+            <p style="margin-bottom: 90px;">ここまでの時間は、<br>あなたの根を、<br>深く、深く、<br>育てるための時間。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして7月から、<br>ようやく、<br>その根から芽が出始めます。</p>
+            <p style="margin-bottom: 0;">焦らず、比べず、<br><span style="color: #ffd966;">木花咲耶姫</span>の御神気の流れに<br>身を任せてください。</p>
+        </div>
+
+        <!-- 2027年について -->
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【2027年について】</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">来年は、<br>あなた自身が主役になる年。</p>
+            <p style="margin-bottom: 90px;">2026年で動いた縁を、<br>あなたの人生に<br>どう組み込んでいくか。</p>
+            <p style="margin-bottom: 90px;">それを、<br>あなたの手で<br>選び取っていく一年です。</p>
+            <p style="margin-bottom: 90px;">新しい場所、<br>新しい人、<br>新しい役割が、<br>あなたを呼ぶかもしれません。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">その呼び声に、<br>素直に耳を澄ませてください。</p>
+        </div>
+
+        <!-- ⛩️ 守護を受け取る方法 -->
+        <h2 class="emoji-header">⛩️ 守護を受け取る方法</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">ここから、<br>あなたが日々、<br>守護の力を受け取っていく方法を、<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">そして、<br>安心していてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたを深く霊視した際、<br>特別な守護の力を、<br>あなたの魂の奥底に<br>お置きしてきました。</p>
+            <p style="margin-bottom: 90px;">それは、<br><span style="color: #ffd966;">木花咲耶姫</span>の和魂の力。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">桜のようにやわらかく、<br>揺るがない、<br>一途な愛の力。</p>
+            <p style="margin-bottom: 90px;">この力は、<br>あなたの内側に渦巻く<br>迷いと焦りを静め、<br>時節通りに縁を動かす流れを、<br>静かに整えていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">何かを頑張る必要はありません。<br>ただ、受け取るだけで大丈夫です。</p>
+            <p style="margin-bottom: 90px;">もし、<br>今、少しでも時間があれば、<br>一度だけ、<br>静かに目を閉じてみてください。</p>
+            <p style="margin-bottom: 90px;">右手を胸の中央に当て、<br>左手をお腹に添えて、<br>ゆっくりと、<br>三度、<br>深く呼吸をしてください。</p>
+            <p style="margin-bottom: 90px;">そして、<br>心の中で、<br>こう唱えてみてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私の想いは、<br>　すでに、神様が運んでくださっている」</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私は、桜の女神に守られている」</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私の縁は、時節通りに、整っていく」</p>
+            <p style="margin-bottom: 90px;">そう唱えてみてください。</p>
+            <p style="margin-bottom: 90px;">胸のあたりが<br>ふんわりと温かくなる、<br>手のひらが<br>じんわりとしてくる、<br>頭の奥が<br>すうっと静かになる、</p>
+            <p style="margin-bottom: 90px;">その感覚があれば、<br><span style="color: #ffd966;">木花咲耶姫</span>の御神気が、<br>あなたの中に<br>静かに流れ込んでいます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これだけで、<br>あなたの守護は、<br>日々、<br>深まっていきます。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>今のあなたは、<br>受け取る器に、<br>少しだけ揺らぎがあります。</p>
+            <p style="margin-bottom: 90px;">長く一人で抱え込んできた想い、<br>流せずに溜め込んできた感情、</p>
+            <p style="margin-bottom: 90px;">それらが、<br>あなたの内側に<br>渦のように残っていて、</p>
+            <p style="margin-bottom: 90px;">せっかく流れてきた守護の力も、<br>留めておく器が<br>不安定だと、<br>少しずつ流れ出てしまう。</p>
+            <p style="margin-bottom: 90px;">その器を安定させ、<br>御神気を留めておくための依代として、<br>このあと、<br>パワーストーンの話を<br>させていただきます。</p>
+            <p style="margin-bottom: 90px;">そして、<br>もし余裕があれば、<br>日々の暮らしのなかで、<br>試していただきたいことが、<br>いくつかあります。</p>
+            <p style="margin-bottom: 0;">無理にではなく、<br>心が向くときだけで<br>構いません。</p>
+        </div>
+
+        <!-- 守護神の神社へ参拝する -->
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【守護神の神社へ参拝する】</p>
+            <p style="margin-bottom: 90px;">埼玉県内、<br>あなたのお住まいから<br>比較的近い場所に、<br>浅間神社がいくつかございます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">糀谷八幡神社（埼玉県所沢市糀谷78）<br>糀谷八幡神社（埼玉県所沢市糀谷78）<br>佐山神社（埼玉県飯能市上直竹下分300）<br>子安浅間神社（埼玉県飯能市小瀬戸230）</p>
+            <p style="margin-bottom: 90px;">ご縁を感じる神社へ、<br>一度、<br>足を運んでみてください。</p>
+            <p style="margin-bottom: 90px;">お賽銭を入れ、<br>二礼二拍手の後、<br>心の中で、<br>こう唱えてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">祓え給い、清め給え、<br>神ながら守り給い、<br>幸え給え</p>
+            <p style="margin-bottom: 90px;">（はらえたまい、きよめたまえ、<br>　かむながらまもりたまい、<br>　さきわえたまえ）</p>
+            <p style="margin-bottom: 90px;">そして、<br>お願い事をするのではなく、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私は、自分の魂を整えて生きていきます。<br>　どうか、見守っていてください」</p>
+            <p style="margin-bottom: 90px;">そう伝えてください。</p>
+            <p style="margin-bottom: 90px;">神様への願いは、<br>願望を叶えていただくものではなく、<br>ご自身の歩みを、<br>共に歩んでいただくもの。</p>
+            <p style="margin-bottom: 0;">その姿勢が、<br><span style="color: #ffd966;">木花咲耶姫</span>との縁を、<br>さらに深くしてくれます。</p>
+        </div>
+
+        <!-- 朝、空を見上げる -->
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【朝、空を見上げる】</p>
+            <p style="margin-bottom: 90px;">朝、起きたら、<br>窓の外の空を、<br>ほんの少しだけ<br>見上げてみてください。</p>
+            <p style="margin-bottom: 90px;">深呼吸を一度。</p>
+            <p style="margin-bottom: 90px;">それだけで、<br>若葉の魂は、<br>朝の光を吸い込んで、<br>ふくらんでいきます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂は、<br>朝の光と相性が良い。</p>
+            <p style="margin-bottom: 0;">これは、<br>日々の小さなお守りになります。</p>
+        </div>
+
+        <!-- 朝、一杯の水を、ゆっくり飲む -->
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【朝、一杯の水を、<br>　ゆっくり飲む】</p>
+            <p style="margin-bottom: 90px;">朝、空を見上げたあとに、<br>コップ一杯の水を、<br>ゆっくりと飲み干してください。</p>
+            <p style="margin-bottom: 90px;">冷たすぎない、<br>常温のお水が、<br>あなたの器には<br>よく馴染みます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの命の中には、<br>水の気が、<br>ほとんど巡っていません。</p>
+            <p style="margin-bottom: 0;">だからこそ、<br>外から、<br>意識して、<br>やわらかい水を<br>注いであげる必要があります。</p>
+        </div>
+
+        <!-- 雨の音に、耳を澄ませる -->
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【雨の音に、耳を澄ませる】</p>
+            <p style="margin-bottom: 90px;">雨の降る日、<br>ほんの少しでいいので、<br>窓辺で、<br>雨の音に、<br>耳を澄ませてください。</p>
+            <p style="margin-bottom: 90px;">何かをするわけではありません。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>雨音を、<br>聴くだけ。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">雨の音は、<br><span style="color: #ffd966;">木花咲耶姫</span>の御神気と<br>深く響き合います。</p>
+        </div>
+
+        <!-- ⛩️ あなたを支えるパワーストーン -->
+        <h2 class="emoji-header">⛩️ あなたを支えるパワーストーン</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">あなたには、<br><span style="color: #ffd966;">木花咲耶姫</span>の御神気をお伝えし、<br>その力を、<br>あなたの魂の奥に<br>お置きしてきました。</p>
+            <p style="margin-bottom: 90px;">また、<br>神社への参拝の作法も、<br>お伝えしました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">基本的には、<br>これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>守護の力は、<br>何もしなければ、<br>日々の暮らしのなかで、<br>少しずつ薄れていくもの。</p>
+            <p style="margin-bottom: 90px;">なかなか時間が取れない、<br>神社が遠くて頻繁には行けない、<br>そういう方も、<br>いらっしゃると思います。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そういう方に、<br>ぜひお勧めしたいのが、<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;"><span style="color: #ffd966;">木花咲耶姫</span>の御神気を石に宿し、<br>常にあなたの身近に、<br>持ち歩くことができるようになります。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>どんな石でも<br>よいわけではありません。</p>
+            <p style="margin-bottom: 90px;">あなたが持つ、<br>やわらかく繊細な若葉のエネルギーと、<br><span style="color: #ffd966;">木花咲耶姫</span>の桜の御神気が、<br>最もよく共鳴する石で、<br>お作りする必要があります。</p>
+            <p style="margin-bottom: 0;">あなたの魂と、<br><span style="color: #ffd966;">木花咲耶姫</span>が<br>共鳴しやすい石を、<br>4つお伝えします。</p>
+        </div>
+
+        <ul style="margin-bottom: 90px;">
+            <li><span style="color: #ffd966; font-weight: bold;">1. ローズクォーツ</span><br>桜色の石。<br><span style="color: #ffd966;">木花咲耶姫</span>の象徴に、<br>最も近い石です。<br><br>一途な愛を、<br>美しいまま保つ力を持ち、<br>やわらかな縁を、<br>時節通りに動かしていく石。<br><br>あなたの一途な想いを、<br>桜色の光で包み、<br>重くならずに、<br>美しく届ける働きをしてくれます。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">2. アクアマリン</span><br>海と水の色を持つ石。<br><br>あなたの内側にない「水」を、<br>そっと補ってくれる石です。<br><br>溜め込んだ想いを、<br>川のように静かに流し、<br>気持ちを切り替える力を授けてくれます。<br><br>胸の奥にこびりついた焦りや不安を、<br>水で洗い流してくれる石。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">3. ペリドット</span><br>若草色に、<br>光をひと粒、<br>閉じ込めたような石。<br><br>あなたの魂の本質、<br>若葉の力と、<br>深く共鳴します。<br><br>古来より、<br>ネガティブな想念から<br>持ち主を守る、<br>お守りの石として<br>大切にされてきました。<br><br>連絡が途切れる静かな時間に、<br>「どうせ無理かもしれない」<br>「忘れた方がいいのかもしれない」<br>そんな声が<br>胸の奥に差し込んできても、<br><br>あなたの一途な想いを、<br>若葉のまま、<br>やわらかく、<br>美しく保ち続けてくれます。<br><br>夜のなかにも<br>光を持つ石なので、<br>連絡を待つ静かな夜の、<br>心強い味方になってくれます。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">4. ムーンストーン</span><br>月の光を宿す、<br>乳白色の石。<br><br>女性的な感性と、<br>直感の力を引き出し、<br>縁を時節通りに導いてくれます。<br><br>「いつ、何をすればいいか」<br>その時を知らせてくれる石。</li>
+        </ul>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">この4つの中から、<br>あなたのエネルギーと<br><span style="color: #ffd966;">木花咲耶姫</span>の御神気が、<br>最もバランスよく整う組み合わせを、<br>私が選び、<br>一つずつ、手作りで仕上げます。</p>
+            <p style="margin-bottom: 90px;">ご希望される場合は</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #ffd966;">「詳細希望」</p>
+            <p style="margin-bottom: 90px;">と、<br>メッセージをお送りください。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">あなたのために、<br>心を込めて、<br>お作りいたします。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <h2>【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">chimaki様、</p>
+            <p style="margin-bottom: 90px;">あなたの未来には、<br>紅葉と秋桜が揺れる光のなかに、<br>あの方と並んで立っている、<br>やわらかな景色が<br>視えています。</p>
+            <p style="margin-bottom: 90px;">肩を寄せ合うでも、<br>手を取り合うでもなく、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ、<br>同じ光のなかに、<br>二人がいる。</p>
+            <p style="margin-bottom: 90px;">そういう、<br>静かで、深い縁の景色。</p>
+            <p style="margin-bottom: 90px;">今は、<br>連絡が途切れる時間が、<br>胸に重くのしかかっているかもしれない。</p>
+            <p style="margin-bottom: 90px;">「あの方は私のことをどう思っているのだろう」<br>「私は、想い続けていてもいいのだろうか」</p>
+            <p style="margin-bottom: 90px;">その問いが、<br>夜になるたびに、<br>胸の奥で繰り返されているかもしれない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">でも、<br>それは、<br>あなたの魂が、<br>本気でこの縁と向き合っている証拠。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">正しい感覚です。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>一途に想い続ける力を、<br>生まれながらに持っている方。</p>
+            <p style="margin-bottom: 90px;">その力は、<br>あなたの欠点ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたが、<br>神様から授かった、<br>最も大切な才能です。</p>
+            <p style="margin-bottom: 90px;">どうか、<br>その想いを、<br>手放さないでください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「届けに行く」のではなく、<br>「整えて保つ」。</p>
+            <p style="margin-bottom: 90px;">秋桜が、<br>夏の終わりを越えて<br>深い秋まで咲き続けるように、<br>あなたの想いも、<br>時節を知って、<br>静かに花開きます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あの方は、<br>あなたを忘れていません。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>動き方が分からないだけ。</p>
+            <p style="margin-bottom: 90px;">あの方の魂の奥には、<br>あなたの場所が、<br>ちゃんと守られています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それが、<br>あなたの幸せへの道。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">木花咲耶姫</span>が、<br>あなたを守ってくださっています。</p>
+            <p style="margin-bottom: 90px;">桜の女神は、<br>時を知る神様。</p>
+            <p style="margin-bottom: 90px;">「いつ咲き、<br>　いつ散るか」を<br>知っている女神です。</p>
+            <p style="margin-bottom: 90px;">その女神が、<br>あなたの縁の時節を、<br>ちゃんと整えてくださっている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">だから、<br>焦らないでください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">比べないでください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ご自身の魂の声を、<br>信じていてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたは、<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">一途に想い続けるその姿のまま、<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>深く、<br>深く、<br>守られています。</p>
+            <p style="margin-bottom: 90px;">その事実を、<br>どうか、<br>受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より、<br>遠隔守護祈祷を行い、<br>あなたの幸せを、<br>心からお祈りいたします。</p>
+            <p style="margin-bottom: 90px;">あなたの未来に、<br>秋の光のなかで花が咲くような、<br>静かで確かな喜びが<br>満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>

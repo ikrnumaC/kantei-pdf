@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゆう様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../images/曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+            page-break-before: always;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 25px;
+            text-align: justify;
+            page-break-inside: avoid;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background: #f9f3ff;
+            border: 2px solid #e8d5b7;
+            position: relative;
+            page-break-inside: avoid;
+        }
+
+        .aura-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .aura-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .aura-fire::before { background-image: url('../images/強い火.png'); }
+        .aura-wood::before { background-image: url('../images/強い木.png'); }
+        .aura-earth::before { background-image: url('../images/強い土.png'); }
+        .aura-metal::before { background-image: url('../images/強い金.png'); }
+        .aura-water::before { background-image: url('../images/強い水.png'); }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+            page-break-inside: avoid;
+        }
+
+        .sign-box {
+            text-align: right;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+            page-break-inside: avoid;
+        }
+
+        strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* ===== PDF印刷用設定 ===== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%) !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cover-page {
+                padding: 40mm 20mm;
+            }
+
+            .cover-page::before {
+                width: 300px;
+                height: 300px;
+                opacity: 0.2;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+                background: #ffffff !important;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .aura-section::before {
+                opacity: 0.15;
+            }
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 25px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">ゆう様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>ゆう様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <p>ゆう様</p>
+
+    <p>この度は本鑑定にお進みいただき、<br>
+    心より感謝申し上げます。</p>
+
+    <p>「彼は、本当に私のことを<br>
+    想ってくれているんだろうか」</p>
+
+    <p>「もう二度と、あんな喧嘩はしたくない」</p>
+
+    <p>「いつか、二人で穏やかに<br>
+    笑い合える日は来るんだろうか」</p>
+
+    <p>その想い、痛いほど伝わってきます。</p>
+
+    <p>我慢できずに嫉妬を<br>
+    伝えてしまった夜のこと。<br>
+    仲直りしたはずなのに、<br>
+    何かが元には戻らない感じ。</p>
+
+    <p>彼が漏らした<br>
+    「俺じゃない」という一言が、<br>
+    ずっと心の奥でひっかかっている。</p>
+
+    <p>その全部を、ゆう様は誰にも言えずに<br>
+    ひとり胸の中で抱えてこられました。</p>
+
+    <p>まず、ゆう様が一番知りたいこと。<br>
+    はっきりお伝えします。</p>
+
+    <p><strong>彼との縁は、<br>
+    まだしっかり生きています。</strong></p>
+
+    <p><strong>そして、偽りなく愛し合える未来も、<br>
+    ちゃんと視えています。</strong></p>
+
+    <p>霊視で見えたものの中には、<br>
+    彼の心の真ん中に、ゆう様の姿が<br>
+    今もきちんと残っていました。</p>
+
+    <p>「人に愛されてるのは私で俺じゃない」</p>
+
+    <p>あの言葉は、<br>
+    ゆう様を突き放したんやありません。<br>
+    あれは、彼が必死にこぼした本音です。</p>
+
+    <p>「俺は、君にちゃんと<br>
+    愛されているんだろうか」</p>
+
+    <p>そう確かめたい気持ちが、<br>
+    ねじれた形で言葉になっただけ。</p>
+
+    <p>未来を考えていない人からは、<br>
+    あんな言葉は絶対に出てきません。</p>
+
+    <p>ただ、その未来が形になるタイミングは<br>
+    今年でも来年でもありません。<br>
+    <strong>本当の動きは、<br>
+    2028年に視えています。</strong></p>
+
+    <p>そして、<br>
+    なぜ今こんなにすれ違ってしまうのか。<br>
+    その原因も、はっきり視えました。</p>
+
+    <p>ゆう様のオーラに、<br>
+    今、霧がかかっています。</p>
+
+    <p>その霧の正体を、次にお伝えしますね。</p>
+
+    <h2>🔮 視えたオーラと、すれ違いの根っこ</h2>
+
+    <div class="aura-section aura-fire">
+        <p>ゆう様のオーラを視ると、<br>
+        <strong>ろうそくの灯りのような<br>
+        温かなオレンジ色</strong>が静かに揺れています。</p>
+
+        <p>無料鑑定でもお伝えしましたが、<br>
+        ゆう様の本来のオーラは、<br>
+        近くにいる人の心を、<br>
+        すっと安らがせる温度を持っている。</p>
+
+        <p>それは間違いありません。</p>
+
+        <p>ただ、もう一段深く視ると、<br>
+        今のゆう様のオーラには、<br>
+        ある<strong>「大きな不足」</strong>が視えました。</p>
+
+        <p>それが、<br>
+        <strong>金のオーラ</strong>と、<strong>木のオーラ</strong>です。</p>
+
+        <p>このふたつが<br>
+        かなり少ないです。</p>
+    </div>
+
+    <p><strong>金のオーラ</strong>は、<br>
+    感情に流されない冷静さ、<br>
+    自分を律する力、<br>
+    迷いを断ち切る決断力を司ります。</p>
+
+    <p><strong>木のオーラ</strong>は、<br>
+    柔らかく受け流す力、<br>
+    相手のペースを尊重するゆとり、<br>
+    新しい流れを受け入れる柔軟さを司ります。</p>
+
+    <p>このふたつが足りていない。</p>
+
+    <p>だから今、ゆう様の中では<br>
+    何が起こっているか。</p>
+
+    <p>彼の一言ひとことに心が引っ張られて、<br>
+    冷静でいられない。</p>
+
+    <p>嫉妬や焦りを、自分の中で<br>
+    留めておくことができない。<br>
+    彼が望むペースで待つ、<br>
+    そのゆとりが持てない。</p>
+
+    <p>つまり、あの夜に<br>
+    嫉妬を抑えきれずに伝えてしまったのは、<br>
+    <strong>ゆう様の愛が薄いからやない。<br>
+    むしろ、深すぎるからこそ起きたこと。</strong></p>
+
+    <p>ただ、それを受け止める器<br>
+    （金と木のオーラ）が、<br>
+    今すくないまま<br>
+    放置されているんです。</p>
+
+    <p>これが、今のすれ違いの根っこです。</p>
+
+    <p>そしてもう一つ。<br>
+    ゆう様のオーラには、<br>
+    <strong>火が強く出すぎています。</strong></p>
+
+    <p>火が強すぎると、<br>
+    感情の温度が一気に上がってしまい、<br>
+    燃え上がった後、急に内にこもる。</p>
+
+    <p>喧嘩のあとに沈み込んでしまうのは、<br>
+    このせいなんです。</p>
+
+    <p>逆に言えば、<br>
+    <strong>金と木を補い、火を少し鎮めれば、<br>
+    霧は必ず晴れ始めます。</strong></p>
+
+    <p>ゆう様本来の、<br>
+    あの静かで温かい灯りが戻れば、<br>
+    彼の見ているゆう様の姿そのものが<br>
+    変わっていくんです。</p>
+
+    <h2>🔮 彼の魂と、今の彼の時期</h2>
+
+    <div class="aura-section aura-fire">
+        <p>彼を視ると、<br>
+        <strong>真っ赤に燃え上がる太陽のような<br>
+        火のオーラ</strong>が灯っていました。</p>
+
+        <p>外では誰よりも目立つ光を放ち、<br>
+        人を惹きつける魅力を持っている人。</p>
+
+        <p>ただ、その内側は意外と繊細で、<br>
+        <strong>「自分は本当に愛されているか」</strong>を<br>
+        人一倍気にしてしまう魂です。</p>
+    </div>
+
+    <p>彼の魂には、<br>
+    鋭い感性で本音をストレートに出す性質と、<br>
+    強い責任感で重いものを背負う性質、<br>
+    そして内側では穏やかさを求める性質が<br>
+    同居しています。</p>
+
+    <p>だから、「俺じゃない」と漏らしてしまう。<br>
+    本当は受け止めてほしいだけなのに、<br>
+    鋭い形で出てしまう。</p>
+
+    <p>そんな彼が今、どんな時期にいるか。</p>
+
+    <p>彼は今、<br>
+    <strong>「守りに入る10年」</strong>の真っ只中にいます。</p>
+
+    <p>土のオーラが重たくなる時期で、<br>
+    新しい変化よりも、<br>
+    今あるものを丁寧に固めたい欲求が強い。</p>
+
+    <p>つまり、急かされると固まる。<br>
+    追い詰められると黙る。<br>
+    反対に、安心できる場所には<br>
+    自然と心を寄せていく。</p>
+
+    <p>そんな時期です。</p>
+
+    <p>今、彼の目には、<br>
+    霧のかかったゆう様の姿が映っています。</p>
+
+    <p>焦りや嫉妬で揺れているゆう様。</p>
+
+    <p>でも、金と木のオーラを整えたゆう様は、<br>
+    彼の目には全く違う姿で映ります。</p>
+
+    <p>静かで、揺らがず、<br>
+    それでいて温かい。<br>
+    彼が「ここなら安心できる」と<br>
+    無意識で感じてしまう存在。</p>
+
+    <p>そして彼自身も<br>
+    <strong>「築き直す10年」</strong>に入っているからこそ、<br>
+    ゆう様が変われば、<br>
+    自然と動き出すんです。</p>
+
+    <h2>🔮 彼の心を動かす、具体的な道筋</h2>
+
+    <p>ここからは、<br>
+    彼の心をゆっくり開くための<br>
+    具体的な言葉と行動をお伝えします。</p>
+
+    <p>まず、<strong>今すぐに踏み込まないこと。</strong><br>
+    焦って動くと、<br>
+    彼の守りのスイッチを押してしまいます。</p>
+
+    <p>7月から8月は、<br>
+    意識して「軽い接触」に留めてください。</p>
+
+    <p>その時のLINEのトーンは、<br>
+    こんな感じで送ってみてください。</p>
+
+    <h3>パターン1（気遣いの一言）</h3>
+
+    <div class="magic-word-box">「最近どう？　無理してない？」</div>
+
+    <p>たったこれだけで十分です。</p>
+
+    <p>彼は今、内面で<br>
+    「自分を気にかけてくれているか」を<br>
+    ずっと探っています。</p>
+
+    <p>問い詰める言葉でも、<br>
+    気持ちを確かめる言葉でもなく、<br>
+    ただ彼の状態をふっと気遣う一言。</p>
+
+    <p>これが、彼の繊細な部分を<br>
+    そっと撫でてくれます。</p>
+
+    <h3>パターン2（共通の話題で繋ぐ）</h3>
+
+    <div class="magic-word-box">「この前話してた○○、
+私もちょっと気になって調べてみたよ」</div>
+
+    <p>なぜこの言葉が効くのか。<br>
+    彼の心の中に<br>
+    <strong>「自分の話を覚えていてくれた」</strong><br>
+    という温度が残ります。<br>
+    責めでも問いでもない、<br>
+    ただ繋がりを思い出させるだけの一言が、<br>
+    今の彼にはちょうどいいんです。</p>
+
+    <h3>パターン3（素直に自分を認める）</h3>
+
+    <div class="magic-word-box">「この前は私も
+感情的になりすぎてごめんね。
+あなたが大切だから、
+つい余計に揺れちゃう」</div>
+
+    <p>これは、<strong>9月が近づいてきた頃に<br>
+    一度だけ</strong>送ってください。</p>
+
+    <p>彼の鋭い感性は、<br>
+    取り繕った言葉を見抜きます。<br>
+    逆に、自分の弱さを<br>
+    そのまま見せる素直さには、<br>
+    心の奥が反応します。</p>
+
+    <p>「自分が必要とされている」<br>
+    その実感が、ふっと胸に灯る。<br>
+    そんな効果を持つ言葉です。</p>
+
+    <p>会った時には、<br>
+    彼の話を最後まで遮らずに聞くこと。</p>
+
+    <p>そして、ふとした瞬間に<br>
+    <strong>「あなたが必要」</strong>と<br>
+    言葉と態度で伝えてあげてください。</p>
+
+    <p>彼の魂は、<br>
+    「必要とされている」確認だけで<br>
+    不安が静まります。</p>
+
+    <p>逆に、<strong>絶対に言ってはいけない言葉。</strong></p>
+
+    <div class="important-box">
+        <p>「奥さんとどっちが大事？」<br>
+        「いつ離婚するの？」<br>
+        「私のこと本当に好き？」</p>
+    </div>
+
+    <p>このどれもが、<br>
+    彼の傷つきやすい部分と、<br>
+    守りに入っている時期を直撃します。</p>
+
+    <p>確かめたくなる気持ち、<br>
+    痛いほど分かります。</p>
+
+    <p>でも、確認するほど<br>
+    彼は固まってしまうんです。</p>
+
+    <p>そして、これらの言葉や行動が<br>
+    本当に効くためには、<br>
+    ひとつだけ、絶対の条件があります。</p>
+
+    <p>それは、<strong>ゆう様のオーラが<br>
+    整った状態であること。</strong></p>
+
+    <p>金と木が足りないまま動くと、<br>
+    同じ言葉を伝えても、<br>
+    焦りの色がにじんで上滑りしてしまう。</p>
+
+    <p>だからまずは、<br>
+    自分を整えること。<br>
+    それが全ての土台になります。</p>
+
+    <h2>🔮 運命の転機</h2>
+
+    <p>今、ゆう様は<br>
+    <strong>「リセットの10年」</strong>に入っています。</p>
+
+    <p>過去の執着や、握りしめてきた形を<br>
+    そっと手放し、<br>
+    新しい関係性を築き直していく時期。</p>
+
+    <p>土と水のオーラが巡るこの10年は、<br>
+    本来「整える」ためにある時間です。</p>
+
+    <p>2026年は、火のオーラが強く巡る年。<br>
+    ゆう様の中の火と、外からの火が重なって、<br>
+    感情が大きく揺れやすい1年です。</p>
+
+    <p>だからこそ、整える価値があるんです。</p>
+
+    <p>そして彼。<br>
+    彼は<strong>「築き直しの10年」</strong>に入っています。<br>
+    土のオーラが厚く巡るこの時期、<br>
+    彼にとっては<br>
+    <strong>「安心できる場所」</strong>が<br>
+    何より必要になっています。</p>
+
+    <p>二人の運命が、最も近づく時期。<br>
+    <strong>それが、2026年9月です。</strong></p>
+
+    <p>この月、ゆう様には<br>
+    ろうそくの灯りそのもののオーラが<br>
+    最大限に巡ります。<br>
+    そして足りなかった金のオーラも、<br>
+    強く流れ込んでくる。</p>
+
+    <p>同じ月、彼には<br>
+    「自分にとって何が一番大切か」を<br>
+    深く見つめ直すオーラが巡ります。</p>
+
+    <p>つまり9月は、<br>
+    ゆう様が本来の温度を取り戻し、<br>
+    彼が大切なものを思い出す、<br>
+    その奇跡的な交差点です。</p>
+
+    <p>この月、彼はふと、<br>
+    本音を漏らしやすくなります。</p>
+
+    <h3>★最重要月 2026年9月</h3>
+
+    <p>巡るオーラは、<strong>火と金</strong>。<br>
+    この月にゆう様がやるべきこと、<br>
+    それは<strong>「整った姿で会うこと」</strong>です。</p>
+
+    <p>具体的には、こうしてください。</p>
+
+    <p><strong>ひとつ。</strong><br>
+    会う場所は、人の多い騒がしい店ではなく、<br>
+    二人だけで静かに話せる空間を選ぶこと。<br>
+    彼の守りの時期には、<br>
+    落ち着いた環境そのものが、<br>
+    心を開く下地になります。</p>
+
+    <p><strong>ふたつ。</strong><br>
+    彼が話し始めたら、<br>
+    途中で口を挟まず、<br>
+    最後まで聞ききること。<br>
+    そして、ふとした合間に<br>
+    「あなたが必要」と<br>
+    言葉と態度で伝えてあげてください。</p>
+
+    <p><strong>みっつ。</strong><br>
+    別れ際にひとことだけ、<br>
+    「無理しなくていいよ、<br>
+    あなたのままが好き」と伝えること。</p>
+
+    <p>これだけで、彼の心は動きます。</p>
+
+    <p>逆にやってはいけないこと。<br>
+    未来の確認を詰めること。<br>
+    過去の喧嘩を蒸し返すこと。<br>
+    このふたつだけは、絶対に避けてください。</p>
+
+    <h3>◎重要月 2026年12月</h3>
+
+    <p>巡るオーラは、<strong>金と水</strong>。<br>
+    1年を静かに振り返り、<br>
+    冷静に二人の関係を見つめる月です。</p>
+
+    <p>この月にやるべきこと。<br>
+    感情ではなく、事実で関係を見ること。<br>
+    そして、自分の生活や楽しみを<br>
+    改めて整えておくこと。</p>
+
+    <p>ここでの整いが、<br>
+    2027年以降の流れを作ります。</p>
+
+    <h3>その他の月</h3>
+
+    <p><strong>7月</strong>は、木のオーラが少し巡る月。<br>
+    柔軟性を意識して、<br>
+    彼のペースを尊重する月。</p>
+
+    <p><strong>8月</strong>は、火と金が交差する月。<br>
+    9月の準備として、<br>
+    自分を整える期間に。</p>
+
+    <p><strong>10月</strong>は、土が極端に強まる月。<br>
+    彼が最も守りに入る時期なので、<br>
+    無理にアプローチせず静かに待つこと。</p>
+
+    <p><strong>11月</strong>は、土と水で内省の月。<br>
+    次の流れに向けて静かに準備を。</p>
+
+    <h3>そして、2027年から2028年へ</h3>
+
+    <p>2027年は、<br>
+    土台がじわじわ整っていく年。<br>
+    彼の家庭の中にも、変化の兆しが<br>
+    小さく現れ始めます。</p>
+
+    <p>そして<strong>2028年</strong>。<br>
+    ここが、本当の意味での転換点です。<br>
+    土のオーラが重なり、<br>
+    関係が現実的に動き出す年。</p>
+
+    <p>二人の未来が、<br>
+    ここで形を持ち始めます。</p>
+
+    <p>ただし、9月という最大のチャンスを<br>
+    逃さないために、<br>
+    <strong>8月までに、金と木のオーラを<br>
+    整え終えていること。</strong></p>
+
+    <p>これが、この半年で<br>
+    最も大切な条件です。</p>
+
+    <h2>🔮 今からできること</h2>
+
+    <p>まず、今日からできることを<br>
+    お伝えしますね。</p>
+
+    <h3>ひとつ目：金のオーラを補う</h3>
+
+    <p>足りない金のオーラを補うために、<br>
+    <strong>白色や銀色のアクセサリー</strong>を<br>
+    ひとつ身につけてください。</p>
+
+    <p>ピアスでも、ネックレスでも構いません。</p>
+
+    <p>そして、引き出しや<br>
+    クローゼットの整理整頓を適度に。<br>
+    これも金のオーラを呼び込みます。</p>
+
+    <h3>ふたつ目：木のオーラを補う</h3>
+
+    <p>木のオーラを補うために、<br>
+    <strong>5分でも歩くこと</strong>を習慣に。</p>
+
+    <p>木々のある公園を、<br>
+    ゆっくり10分歩ければベスト。</p>
+
+    <p>家の窓から木をじっとみる。<br>
+    それだけでも大丈夫です。</p>
+
+    <p>緑色のスカーフや小物も、<br>
+    意識的に取り入れてください。</p>
+
+    <h3>みっつ目：強すぎる火を鎮める</h3>
+
+    <p>強すぎる火のオーラを鎮めるために、<br>
+    <strong>紺色や青色のアイテム</strong>を身近に。</p>
+
+    <p>水を意識して飲み、<br>
+    夜は15分以上、湯船に浸かること。</p>
+
+    <p>毎朝、鏡をみて<br>
+    心の中でこう唱えてみてください。</p>
+
+    <div class="magic-word-box">「私は、整った灯りでいる」
+「焦らずに、待てる私でいる」</div>
+
+    <h3>逆に、気をつけてほしいこと</h3>
+
+    <p>彼からの連絡を待ち続けて<br>
+    他のことが手につかなくなること。</p>
+
+    <p>これが続くと火がさらに燃え上がります。<br>
+    自分の予定で一日を満たしてください。</p>
+
+    <p>SNSで彼や周りを過剰に見てしまうこと。<br>
+    情報は火を煽ります。<br>
+    9月までは、少し距離を取って。</p>
+
+    <p>そして、嫉妬を感じた瞬間に<br>
+    すぐLINEを送ってしまうこと。</p>
+
+    <p>3回深呼吸、水をひと口飲んでから、<br>
+    本当に必要かを問い直してください。</p>
+
+    <p>ここまでお伝えした調整法で、<br>
+    少しずつオーラは整い始めます。</p>
+
+    <p>ただ、正直にお伝えします。</p>
+
+    <p>金と木のオーラが<br>
+    かなり足りていない場合、<br>
+    日常の調整だけでは<br>
+    補いきれない部分があります。</p>
+
+    <p>色を身につけ、水を飲み、<br>
+    散歩を続けること。<br>
+    これは「維持する力」にはなります。<br>
+    でも、ゼロから補う力としては、<br>
+    どうしても限界があるんです。</p>
+
+    <p>もし本気で、9月の交差点を<br>
+    最高の状態で迎えたいなら。</p>
+
+    <p>もう一つ、お伝えしたい方法があります。</p>
+
+    <h2>🔑 心を守るサポート</h2>
+
+    <p>ここまでお伝えしてきた通り、<br>
+    ゆう様のオーラには<br>
+    <strong>金と木がかなり足りていません。</strong></p>
+
+    <p>これが今のすれ違いの根っこであり、<br>
+    <strong>2026年9月のチャンス</strong>を掴むために、<br>
+    最も整えるべき部分です。</p>
+
+    <p>金と木のオーラが整うと、</p>
+
+    <p>彼から連絡が来ない夜も、<br>
+    心が揺れず穏やかに眠れるようになり、</p>
+
+    <p>会った時、嫉妬を出さず<br>
+    ふっと微笑んで彼の話を<br>
+    最後まで聞ける自分になる。</p>
+
+    <p>「無理しなくていいよ」を、<br>
+    焦りなしで、心からの温度で<br>
+    伝えられるようになる。</p>
+
+    <p>「俺じゃない」と彼が漏らした時、<br>
+    言葉に揺さぶられず、<br>
+    そっと手を添えて返せる余裕が生まれる。</p>
+
+    <p>そして、9月にふたりで会った夜、<br>
+    帰り際に彼から<strong>「ちゃんと話したい」</strong>と<br>
+    自然に言葉が漏れる場面が<br>
+    訪れるようになります。</p>
+
+    <p>日常の調整法に加えて、<br>
+    本格的にオーラを補うために、</p>
+
+    <p><strong>パワーストーンをお守りとして<br>
+    取り入れる方法</strong>があります。</p>
+
+    <p>ゆう様のオーラに合わせて、<br>
+    三つのプランをご用意しました。</p>
+
+    <div class="important-box">
+        <h3>松プラン</h3>
+        <p>本気で9月の転機を掴みたい方へ。<br>
+        金のオーラを本格的に補う石と、<br>
+        木のオーラを呼び込む石、<br>
+        そして強すぎる火を鎮める石の<br>
+        三層の組み合わせ。</p>
+
+        <p>・感情に流されず、<br>
+        　彼の言葉を冷静に受け止められる<br>
+        ・自分を律する芯が育ち、<br>
+        　待つ時間も穏やかに過ごせる<br>
+        ・柔らかい器が広がり、<br>
+        　彼のペースを尊重できる</p>
+
+        <h3>竹プラン</h3>
+        <p>まずは心を安定させたい方へ。<br>
+        金と木のオーラを補う石の組み合わせ。</p>
+
+        <p>・嫉妬の波が静まり、<br>
+        　夜も穏やかに過ごせる</p>
+
+        <h3>梅プラン</h3>
+        <p>不安をまず和らげたい方へ。<br>
+        最も必要な金のオーラを補う石を一つ。</p>
+
+        <p>・焦りに支配される頻度が減る</p>
+    </div>
+
+    <p>多くの方が<strong>松プラン</strong>を選ばれています。<br>
+    9月の交差点に向けて、<br>
+    今から整え始めることで、<br>
+    最も効果的なタイミングで<br>
+    オーラが整います。</p>
+
+    <p>もし興味がありましたら、<br>
+    「詳細希望」とだけ送っていただければ、<br>
+    ゆう様専用の石の組み合わせを<br>
+    お伝えしますね。</p>
+
+    <h2>最後に</h2>
+
+    <p>今、ゆう様は岐路に立っています。</p>
+
+    <p>このまま焦りを抱えたまま9月を迎えるか。<br>
+    それとも、整った灯りで<br>
+    あの交差点を迎えるか。</p>
+
+    <p>そう遠くない未来に、<br>
+    彼と偽りなく愛し合いたい。<br>
+    お互い離婚をして、<br>
+    穏やかに寄り添える日々がほしい。</p>
+
+    <p>その想いは、<strong>本物</strong>です。</p>
+
+    <p>ろうそくの灯りのように静かに、<br>
+    でも何年も消えずに燃え続けてきた<br>
+    ゆう様の本気の愛。</p>
+
+    <p>それは、私には視えています。</p>
+
+    <p>整ったゆう様が9月、<br>
+    彼と向かい合って座っている場面。</p>
+
+    <p>彼が静かに目を伏せて、<br>
+    <strong>「ちゃんと話したいことがあるんだ」</strong><br>
+    そう言葉を選びながら口を開く。</p>
+
+    <p>ゆう様は焦らず、<br>
+    微笑んで「うん、聞かせて」と返す。</p>
+
+    <p>その瞬間、二人の間に<br>
+    今までになかった<br>
+    新しい温度の流れが生まれている。</p>
+
+    <p>その未来への道、<br>
+    私が照らします。</p>
+
+    <p>最後まで読んでくださり、<br>
+    ありがとうございました。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>
