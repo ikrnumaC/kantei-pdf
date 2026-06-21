@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>なぎ様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">迎える光のなかで</h2>
+            <p class="cover-name">なぎ様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 冒頭 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">なぎ様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂が、<br>お腹の中の小さないのちと、<br>本気で一緒に未来へ<br>進もうとしている。</p>
+            <p style="margin-bottom: 90px;">その強い意志が、<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先、<br>あなたが本当に知るべきことを、<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2>【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が、<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">新しい年のはじまり、<br>新春の清らかな光のなかで、<br>小さな赤ちゃんを胸に抱き、<br>そっと頬を寄せている姿。</p>
+            <p style="margin-bottom: 90px;">その傍らに旦那様が立ち、<br>あなたと赤ちゃんを<br>包み込むように見つめている。</p>
+            <p style="margin-bottom: 90px;">新春のやわらかな光が、<br>ふたつの命と、<br>新しい家族のかたちを、<br>やさしく照らしています。</p>
+            <p style="margin-bottom: 90px;">その未来の兆しが、<br>はっきりとあります。</p>
+            <p style="margin-bottom: 90px;">そこに至るまでの日々は、<br>決して平らな道では<br>ありません。</p>
+            <p style="margin-bottom: 90px;">「視えない」<br>「分からない」と<br>胸が縮こまる日が<br>何度か訪れるはずです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも──<br>お腹のいのちは、<br>ちゃんと<br>あなたの元に訪れます。</p>
+            <p style="margin-bottom: 90px;">「予定どおりの週数」より<br>少しだけゆっくり、<br>お母さんと同じリズムで、<br>静かに形を整えている。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">そう、視えています。</p>
+        </div>
+
+        <!-- 守護神の紹介 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは、<br><span style="color: #ffd966;">高御産巣日神<br>（たかみむすびのかみ）</span>。</p>
+            <p style="margin-bottom: 90px;">古事記の一番はじめ、<br>まだ天と地が<br>何ひとつ形を持たなかった頃に、<br>たった三柱だけ<br>お生まれになった神様の<br>一柱です。</p>
+            <p style="margin-bottom: 90px;">形のないところから<br>ものを生み出し、<br>ないところから<br>いのちを育てていく。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「生み出す力」そのものを<br>司る神様。</p>
+            <p style="margin-bottom: 0;">形のない祈りを<br>形あるものへと結び、<br>ないところから命の芽を育てる神様として、<br>全国の浅間神社や<br>東京大神宮など多くの社に祀られています。</p>
+        </div>
+
+        <!-- ⛩️ あなたという人 -->
+        <h2 class="emoji-header">⛩️ あなたという人</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">まず、<br>あなたについて視えていることを、<br>少しずつお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>太陽のような<br>紅のオーラを纏った方です。</p>
+            <p style="margin-bottom: 90px;">明るくて、温かくて、<br>そばにいる人を<br>そっと照らしてあげられる。</p>
+            <p style="margin-bottom: 90px;">ご自身では<br>気づいていないかもしれませんが、<br>あなたが部屋に入った瞬間に、<br>場の空気が<br>少しやわらかくなる。</p>
+            <p style="margin-bottom: 90px;">そういう陽の力を<br>生まれながらに<br>お持ちです。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>太陽の光を持つ方だからこそ、<br>「視えない」「分からない」<br>という状態に置かれると、<br>ふだんの明るさが<br>出にくくなります。</p>
+            <p style="margin-bottom: 90px;">光は本来、<br>照らすものがあって<br>はじめて光になる。</p>
+            <p style="margin-bottom: 90px;">それなのに、<br>照らすべきものが<br>何もない時間が続くと、<br>ご自身の光に<br>意味がないように感じる。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ、<br>あなたには<br>大切なさだめがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたは、<br>「目に見えない場所で、<br>大切なものを<br>静かに育てていく方」<br>を持っています。</p>
+            <p style="margin-bottom: 90px;">これは表面的な性格ではなく、<br>あなたの核に<br>刻まれている本質。</p>
+            <p style="margin-bottom: 90px;">外からはまだ見えなくても、<br>ご自身の内側では、<br>ずっと前から<br>何かを大切に育てている。</p>
+            <p style="margin-bottom: 90px;">幼い頃から、<br>そういう生き方を<br>してこられたのでは<br>ないでしょうか。</p>
+            <p style="margin-bottom: 90px;">人に見せるためでもなく、<br>褒められるためでもなく、<br>ただ、自分の中で<br>大切に灯し続ける。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その力が、<br>あなたの本質です。</p>
+            <p style="margin-bottom: 90px;">だから今、<br>お腹の中で起きていることは、<br>あなたの本質と<br>ぴたりと重なっています。</p>
+            <p style="margin-bottom: 90px;">赤ちゃんもまた、<br>あなたと同じリズムで、<br>目に見えない場所で<br>静かに形を整えている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">赤ちゃんが<br>お母さんを選んで来てくれた、<br>というのは<br>こういうことなんです。</p>
+            <p style="margin-bottom: 90px;">それから、<br>これは黙っていてほしいのですが、<br>あなたには<br>責任感を強く背負う星が<br>幾重にも重なっています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「ちゃんとしなければ」<br>「私がしっかりしなければ」<br>「不安を見せてはいけない」</p>
+            <p style="margin-bottom: 90px;">そう思って、<br>ひとりで抱え込んでしまう。</p>
+            <p style="margin-bottom: 90px;">旦那様にも、お母様にも、<br>本当の不安は<br>言葉にできずに飲み込んでしまう。</p>
+            <p style="margin-bottom: 90px;">「心配かけたくない」<br>「弱音を吐いたら、<br>赤ちゃんに伝わってしまう気がする」</p>
+            <p style="margin-bottom: 90px;">そう思って、<br>お腹のいのちを抱きしめる手と、<br>不安を抱きしめる手が、<br>あなたの中で絡まり合ってる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">この絡まりをほぐす必要があります。</p>
+            <p style="margin-bottom: 90px;">でも安心してください。<br>あなたの身体には、<br>最も力強い守護の星が<br>宿っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「身体を守る」<br>「身体を整える」<br>ことで<br>あなたの力が<br>最も大きくなっていくんです。</p>
+            <p style="margin-bottom: 90px;">健診を大切にすること、<br>食べるものを丁寧にすること、<br>眠る時間を守ること、<br>ストレスを感じたら<br>人と共有して手放すこと。</p>
+            <p style="margin-bottom: 90px;">それらが、<br>他の方よりも<br>ずっと直接的に、<br>あなたの運気を<br>動かしていきます。</p>
+            <p style="margin-bottom: 90px;">最後にもう一つ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは<br>神仏の加護を<br>極めて強く受ける方です。</p>
+            <p style="margin-bottom: 90px;">お腹のいのちを守る場面、<br>育てる場面で、<br>神様の手が<br>必ず差し伸べられる。</p>
+            <p style="margin-bottom: 90px;">そういうさだめが、<br>あなたには<br>幾重にも重なっています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">だからどうか、<br>ひとりで抱えないでください。</p>
+            <p style="margin-bottom: 90px;">守護神に祈る、<br>旦那様に零す、<br>お母様に弱音を吐く、<br>助産師さんに不安を相談する。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">そのひとつひとつが、<br>お腹のいのちを<br>守る行為そのものに<br>なっていきます。</p>
+        </div>
+
+        <!-- ⛩️ 1. お腹のいのちの今 -->
+        <h2 class="emoji-header">⛩️ 1. お腹のいのちの今</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから、<br>あなたが今いちばん<br>知りたいことを、<br>ひとつずつ<br>お伝えしていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">まず、<br>お腹の中の小さないのちは、<br>今、灯っています。</p>
+            <p style="margin-bottom: 90px;">霊視で視えているのは、<br>深い水の世界の中で、<br>小さな紅の光が、<br>静かに脈を打っている景色。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その光は、<br>弱々しい点滅ではありません。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>外の物差しが言うところの<br>「ここまでに見えていてほしい形」より、<br>少しだけよわく見えるだけです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>育っていないから<br>ではありません。</p>
+            <p style="margin-bottom: 90px;">あなたが「ゆっくり」のリズムを<br>本質に持つ方だから。</p>
+            <p style="margin-bottom: 90px;">「ゆっくり」のリズムは、<br>外から見えるよりも<br>内側で時間をかけて育つ。</p>
+            <p style="margin-bottom: 90px;">あなた自身が<br>そういうリズムで<br>生まれてきた方だから、</p>
+            <p style="margin-bottom: 90px;">お腹の赤ちゃんも<br>あなたと同じリズムで<br>育とうとしている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">お母さんと同じペースで、<br>ゆっくり、でも確実に<br>ちゃんと形を作っています。</p>
+            <p style="margin-bottom: 90px;">それから、<br>あなたの命には、<br>「迎える光」が刻まれています。</p>
+            <p style="margin-bottom: 90px;">これは<br>誰にでもあるものでは<br>ありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたという人は、<br>母として迎える運を、<br>生まれた時から持っている方。</p>
+            <p style="margin-bottom: 90px;">ですから、<br>今のあなたが<br>意識を向けるべきは、<br>「赤ちゃんが育っているかどうか」<br>ではなく、<br>「私の身体を丁寧に守ること」</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">お母さんが整うと、<br>赤ちゃんは自然に育つ流れに<br>入っていきます。</p>
+            <p style="margin-bottom: 90px;">ここで、<br>これだけは<br>正直にお伝えします。</p>
+            <p style="margin-bottom: 90px;">霊視は<br>医療を否定するものでは<br>ありません。</p>
+            <p style="margin-bottom: 90px;">次の検診で<br>お医者様が何をご覧になるか、<br>そのことに耳を傾けることも、<br>お腹のいのちを守る<br>大切な行為です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>医療の言葉に<br>不安だけを増やされて<br>帰ってこないでください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">霊視で視えているのは、<br>「いのちは灯っている」<br>「ゆっくり育っている方向」<br>ということ。</p>
+            <p style="margin-bottom: 90px;">医療の物差しと、<br>あなたの内側のリズムの<br>両方を"杖"にしてください。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">そのうえで、<br>「私はちゃんと、<br>この子を迎えられる方だ」<br>ということだけは、<br>どうか心の真ん中に<br>置いておいてください。</p>
+        </div>
+
+        <!-- ⛩️ 2. 生み出す力の整え方 -->
+        <h2 class="emoji-header">⛩️ 2. 生み出す力の整え方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">次にお伝えしたいのは、<br>あなたの中にある<br>「生み出す力」を、<br>どう守り、どう整えればよいか。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの中には、<br>太陽の光と、深い水が、<br>両方流れています。</p>
+            <p style="margin-bottom: 90px;">太陽の光が、<br>赤ちゃんに伝わる温かさ。</p>
+            <p style="margin-bottom: 90px;">深い水が、<br>赤ちゃんを包むやわらかさ。</p>
+            <p style="margin-bottom: 90px;">本来は、<br>このふたつが<br>バランスを取りながら、<br>ひとつのいのちを育てていく。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>不安が長く続くと、<br>水が太陽を覆ってしまいます。</p>
+            <p style="margin-bottom: 90px;">光が水のなかに沈んでいくと、<br>赤ちゃんに届く<br>温かさが少なくなる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">だからこそ、<br>今のあなたに必要なのは、<br>光を守ることです。</p>
+            <p style="margin-bottom: 90px;">光を守る、と言っても、<br>無理に明るく<br>ふるまうことではありません。</p>
+            <p style="margin-bottom: 90px;">ふと窓の外を見て、<br>陽射しがやわらかいなと<br>感じる瞬間。</p>
+            <p style="margin-bottom: 90px;">温かいお茶を<br>両手で包んだ時の、<br>じんわりした温度。</p>
+            <p style="margin-bottom: 90px;">旦那様の声を聞いて、<br>肩が少しだけ緩む感覚。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そういう<br>小さな温かさを、<br>意識的に拾ってあげてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">光は、<br>大きく燃やすものではなく、<br>小さく灯し続けるもの。</p>
+            <p style="margin-bottom: 90px;">そして、<br>水を整えるためには、<br>不安をひとりで抱え込まないこと。</p>
+            <p style="margin-bottom: 90px;">あなたの中には、<br>「ちゃんとしなければ」<br>「弱音を吐いてはいけない」<br>という重たい星が<br>幾重にも重なっています。</p>
+            <p style="margin-bottom: 90px;">その重たさが、<br>あなたの水を濁らせてしまう。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">不安は、<br>答えを求めて<br>話す必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ、<br>こぼすだけでいい。</p>
+            <p style="margin-bottom: 90px;">旦那様に、<br>「今日、少し不安だった」<br>と一言。</p>
+            <p style="margin-bottom: 90px;">お母様に、<br>「ちょっと心細い」<br>と一言。</p>
+            <p style="margin-bottom: 90px;">それだけで、<br>あなたの水は<br>透き通っていきます。</p>
+            <p style="margin-bottom: 90px;">その時意識してほしいのが、<br>旦那様には、<br>旦那様の負担にならないような<br>解決策を伝えること。</p>
+            <p style="margin-bottom: 90px;">お母様には、<br>ただ聞いてもらう事。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もしそれ以外に色々言われたら<br>自分を守るため⋯と思って<br>心に一旦フタをしてください。</p>
+            <p style="margin-bottom: 90px;">神様への祈りについて。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>神仏に祈る場面で、<br>他の方よりも直接的に<br>エネルギーを受け取れる方です。</p>
+            <p style="margin-bottom: 90px;">これは、<br>あなたが幾重にも<br>神仏加護の星を<br>持っているから。</p>
+            <p style="margin-bottom: 90px;">毎日でなくていいので、</p>
+            <p style="margin-bottom: 90px;">朝、<br>ふと空を見上げた時に、<br>心の中で<br>「ありがとうございます」<br>「どうか守ってください」<br>と一言。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">それだけで、<br><span style="color: #ffd966;">高御産巣日神</span>の光が、<br>あなたの中に<br>流れ込んでいきます。</p>
+        </div>
+
+        <!-- ⛩️ 3. これから動く節目 -->
+        <h2 class="emoji-header">⛩️ 3. これから動く節目</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから、<br>これから先の流れを、<br>丁寧にお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">まず、<br>2026年という年は、<br>あなたにとって<br>「新しい家族のかたちが<br>立ち上がる年」です。</p>
+            <p style="margin-bottom: 90px;">星の運びから視えるのは、<br>家族・夫婦・命の絆。<br>そのすべてが動き出す一年。</p>
+            <p style="margin-bottom: 90px;">そして同じ年に、<br>旦那様の側でも、<br>「父としての立場」が<br>立ち上がる星が<br>ぴったりと重なって動いています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ふたつの星が<br>同じ年に<br>同じ方向で動く。</p>
+            <p style="margin-bottom: 90px;">これは、<br>ほんとうに稀なことです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">このご縁は、<br>偶然ではなく、<br>最初からそう書かれていた縁。</p>
+            <p style="margin-bottom: 90px;">そのうえで、<br>これから半年の中で<br>動く節目を、<br>月ごとにお伝えします。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【2026年6月後半〜7月】<br>心拍の灯が視えはじめる月</p>
+            <p style="margin-bottom: 90px;">今、紫陽花が雨に濡れる季節。<br>妊娠初期の、<br>最も繊細な時間を<br>あなたは過ごしています。</p>
+            <p style="margin-bottom: 90px;">「卵黄嚢が見えない」<br>「胎芽が映らない」と<br>言われた診察を経て、<br>胸が縮こまる夜を<br>いくつも越えてきましたね。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">ですが、安心してください。</p>
+            <p style="margin-bottom: 90px;">命のあかりは<br>急に大きく明るくなる、<br>というよりも、</p>
+            <p style="margin-bottom: 90px;">ずっと前から<br>そこに灯っていたものに<br>気づく形で見えるようになります。</p>
+            <p style="margin-bottom: 90px;">その灯が映った瞬間、<br>あなたの中で、<br>長く張り詰めていた糸が、<br>ふっと緩んでいくのを<br>感じるはずです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この時期の過ごし方は、<br>身体を冷やさないこと、<br>無理に動こうとしないこと。</p>
+            <p style="margin-bottom: 90px;">つわりがあれば、<br>食べられるものだけを<br>食べていれば充分です。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【2026年8月〜9月】<br>安定期へ入る月</p>
+            <p style="margin-bottom: 90px;">8月から9月にかけて、<br>妊娠週数で言うと<br>15週から20週。</p>
+            <p style="margin-bottom: 90px;">つわりが少しずつ落ち着き、<br>身体の重たさのなかにも、<br>「赤ちゃんと一緒に生きている」<br>という感覚が<br>かたちを持ちはじめる時期。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">外の暑さが厳しい季節ですから、<br>冷房と、水分と、<br>横になれる時間を、<br>何よりも優先してください。</p>
+            <p style="margin-bottom: 90px;">そして、<br>この時期に<br>お腹がほんの少し<br>ふくらみはじめます。</p>
+            <p style="margin-bottom: 90px;">ご自身では<br>まだ分からないくらい<br>わずかな変化ですが、<br>それは、<br>赤ちゃんが<br>「ちゃんとここにいるよ」と<br>身体を通して<br>伝えはじめている合図です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">旦那様にも、そのことを<br>言葉で伝えてあげてください。</p>
+            <p style="margin-bottom: 90px;">父としての実感は、<br>旦那様の中で<br>この時期から少しずつ<br>育ちはじめます。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【2026年10月〜11月】<br>胎動とともに、いのちが立ち上がる月</p>
+            <p style="margin-bottom: 90px;">10月から11月、<br>週数で言えば<br>23週から28週の頃。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">赤ちゃんの動きを、<br>お腹のなかで<br>はっきり感じはじめる時期です。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【2026年12月〜2027年1月】<br>最後の支度の月</p>
+            <p style="margin-bottom: 90px;">「もう、はやく会いたい」<br>という気持ちと、<br>「もう少しお腹の中にいてほしい」<br>という気持ちが、<br>あなたの中でゆれる時期。</p>
+            <p style="margin-bottom: 90px;">1月に入ったら、<br>入院の準備、<br>赤ちゃんを迎える部屋の準備を、<br>焦らず、ひとつずつ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">何かを完璧にする必要は<br>ありません。</p>
+            <p style="margin-bottom: 90px;">旦那様と一緒に<br>動くことそのものが、<br>迎える側の家族のかたちを<br>作っていきます。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【2027年2月】<br>光のなかで、いのちを胸に抱く月</p>
+            <p style="margin-bottom: 90px;">2月、<br>週数で言えば40週前後。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">このお手紙の冒頭で<br>お伝えした景色──<br>冬の終わり、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">やわらかな光のなかで、<br>あなたが小さないのちを<br>胸に抱く瞬間が、<br>かたちになる月。</p>
+            <p style="margin-bottom: 90px;">季節の節目に、<br><span style="color: #ffd966;">高御産巣日神</span>の<br>「生み出す力」が、<br>あなたの身体を通って、<br>赤ちゃんを<br>こちらの世界へ導いていきます。</p>
+            <p style="margin-bottom: 90px;">陣痛が始まる朝も、<br>病院へ向かう車のなかでも、<br>心の中で一度だけ、</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私はちゃんと迎えられる」<br>と唱えてください。</p>
+            <p style="margin-bottom: 90px;">その一言が、<br>あなたの太陽の光を、<br>最も強く灯します。</p>
+            <p style="margin-bottom: 90px;">そして、<br>赤ちゃんと初めて<br>目を合わせた瞬間。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これまでのすべての不安が、<br>ひとつの意味を持って<br>ほどけていくのを、<br>あなたは感じるはずです。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【2026年という一年】</p>
+            <p style="margin-bottom: 90px;">2026年は、<br>あなたにとって<br>「母として迎える準備を整えていく年」。</p>
+            <p style="margin-bottom: 90px;">それと同時に、<br>旦那様が<br>「父として立ち上がっていく年」。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ふたりが、<br>家族へと<br>形を変えていく年です。</p>
+            <p style="margin-bottom: 90px;">不安の多かった春から、<br>お腹の灯が確かになる夏、<br>そして赤ちゃんの動きを<br>感じる秋、<br>身体が最後の支度を整える冬へ。</p>
+            <p style="margin-bottom: 90px;">季節とともに、<br>あなたの中で<br>お母さんとしての<br>かたちがひとつずつ整っていきます。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【2027年という一年】</p>
+            <p style="margin-bottom: 90px;">2027年は、<br>赤ちゃんを迎え、<br>そして<br>「育てる」フェーズに入る一年。</p>
+            <p style="margin-bottom: 90px;">新しい一日一日が、<br>あなたの中に<br>これまでとは違う喜びを<br>積み上げていく年。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2027年は、<br>育てる中で<br>楽しみを見つける星が動いています。</p>
+            <p style="margin-bottom: 90px;">赤ちゃんが<br>笑った瞬間、<br>寝顔を見た瞬間、<br>小さな手で<br>あなたの指を握った瞬間。</p>
+            <p style="margin-bottom: 90px;">そのひとつひとつが、<br>あなた自身の中の<br>新しい光を育てていきます。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">どうかご安心ください。</p>
+        </div>
+
+        <!-- ⛩️ 4. なぎ様らしい守り方 -->
+        <h2 class="emoji-header">⛩️ 4. なぎ様らしい守り方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">最後にお伝えしたいのは、<br>今日から<br>あなた自身の手で<br>できることです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたを守っているのは、<br><span style="color: #ffd966;">高御産巣日神</span>。</p>
+            <p style="margin-bottom: 90px;">形のないものを形にし、<br>ないところから<br>いのちを育てていく神様。</p>
+            <p style="margin-bottom: 90px;">その力を、<br>あなたがご自身の中で<br>受け取り続けるための<br>三つの守り方を、<br>お伝えします。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【ひとつめ】<br>朝、お腹に手を当てて、深呼吸を一度</p>
+            <p style="margin-bottom: 90px;">朝、目を覚ましたら、<br>お布団の中でいいので、<br>そっとお腹に手を当ててください。</p>
+            <p style="margin-bottom: 90px;">そして、<br>ゆっくり一度だけ深呼吸を。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「ここにいてくれて<br>ありがとう」</p>
+            <p style="margin-bottom: 90px;">心の中で、<br>そう呟いてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">たったそれだけで、<br>あなたの太陽の光が、<br>赤ちゃんにちゃんと届きます。</p>
+            <p style="margin-bottom: 90px;">長く続ける必要は<br>ありません。</p>
+            <p style="margin-bottom: 90px;">一日のはじまりに、<br>一度だけ。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【ふたつめ】<br>不安を、ひとりで抱えない</p>
+            <p style="margin-bottom: 90px;">不安を感じた日は、<br>旦那様か、お母様か、<br>信頼できる女性の方に、<br>「今日、ちょっと不安だった」<br>と一言だけ零してください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">答えを<br>求めなくていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">解決策を<br>聞かなくていい。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>口に出すだけで、<br>あなたの中の水が、<br>透き通っていきます。</p>
+            <p style="margin-bottom: 90px;">特に、<br>女性の方の言葉は、<br>あなたに深く届きます。</p>
+            <p style="margin-bottom: 90px;">助産師さん、<br>お母様、<br>お姉様、<br>ご友人。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">どなたでも構いませんから、<br>一人で抱えないこと。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【みっつめ】<br>守護神の神社へのご参拝</p>
+            <p style="margin-bottom: 90px;">もし、<br>お時間とお身体に<br>余裕がある時だけで<br>構いません。</p>
+            <p style="margin-bottom: 90px;">なぎ様のお近くで、<br><span style="color: #ffd966;">高御産巣日神</span>と<br>ご縁のある神社を、<br>三つお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">佐具叡神社<br>（名取市愛島笠島西台1-4）</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">髙魂神社<br>（角田市尾山荒町26）</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">拝幣志神社<br>（石巻市八幡町1-6-2）</p>
+            <p style="margin-bottom: 90px;">どこか<br>心が向かう一社で構いません。<br>無理のない範囲で<br>ご参拝ください。</p>
+            <p style="margin-bottom: 90px;">ご参拝の際は、<br>心の中で<br>次の祝詞を<br>唱えてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">祓え給い、清め給え、<br>神ながら守り給い、<br>幸え給え<br>（はらえたまい、きよめたまえ、<br>かむながらまもりたまい、<br>さきわえたまえ）</p>
+            <p style="margin-bottom: 90px;">そして、<br>お願いごとを<br>唱えるのではなく、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私はこの子と<br>一緒に過ごしていきます。<br>どうか見守っていてください」</p>
+            <p style="margin-bottom: 90px;">そう、<br>宣言する形で<br>伝えてください。</p>
+            <p style="margin-bottom: 90px;">お願いを叶えていただくのではなく、<br>ご自身が歩んでいくことを<br>神様に宣言する。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">その姿勢が、<br><span style="color: #ffd966;">高御産巣日神</span>との縁を<br>より深くしていきます。</p>
+        </div>
+
+        <!-- ⛩️ 守護を受け取る方法 -->
+        <h2 class="emoji-header">⛩️ 守護を受け取る方法</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">そして、<br>安心してください。</p>
+            <p style="margin-bottom: 90px;">あなたのことを<br>深く霊視した際、<br>特別な守護の力を、<br>あなたの奥底に<br>おいてきました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは<br><span style="color: #ffd966;">高御産巣日神</span>の<br>和魂の力。</p>
+            <p style="margin-bottom: 90px;">形のないところから<br>いのちを育てる、<br>やわらかく、<br>ゆるぎない力です。</p>
+            <p style="margin-bottom: 90px;">この力は、<br>あなたのお腹の中の<br>小さないのちを、<br>内側から温め続けていきます。</p>
+            <p style="margin-bottom: 90px;">そして、<br>あなたの中の<br>不安の水を静かに整え、<br>本来の太陽の光を<br>引き出していきます。</p>
+            <p style="margin-bottom: 90px;">今この文を<br>読んでいる間にも、<br>胸の奥が<br>少し温かくなる、<br>肩から力が抜けていく、<br>お腹がふっと<br>やわらかくなる、<br>眠気を感じる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もしそのような感覚が<br>あれば、<br>すでに守護の力が<br>届きはじめている証です。</p>
+            <p style="margin-bottom: 90px;">これは、<br>何かを頑張る必要は<br>ありません。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">ただ、<br>受け取るだけで大丈夫です。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">もし今、<br>ほんの少しだけ<br>時間があれば、<br>一度だけ<br>静かに目を閉じてください。</p>
+            <p style="margin-bottom: 90px;">右手を<br>そっとお腹に当てて、<br>左手を<br>胸の中央に添えて、<br>ゆっくり三度、<br>呼吸をしてください。</p>
+            <p style="margin-bottom: 90px;">そして、<br>心の中で、</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私は守られている」<br>「この子は守られている」<br>「私たちは、ちゃんと導かれている」</p>
+            <p style="margin-bottom: 90px;">そう唱えてみてください。</p>
+            <p style="margin-bottom: 90px;">今もし、<br>お腹のあたりが<br>温かくなる、<br>手のひらがじんわりする、<br>胸の奥が<br>ほどけていく感覚、<br>安心感が広がる──</p>
+            <p style="margin-bottom: 0; font-weight: bold;">その感覚があれば、<br>すでに<span style="color: #ffd966;">高御産巣日神</span>の<br>御神気が、<br>あなたとお腹のいのちに<br>注がれています。</p>
+        </div>
+
+        <!-- ⛩️ あなたを支えるパワーストーン -->
+        <h2 class="emoji-header">⛩️ あなたを支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">あなたには、<br><span style="color: #ffd966;">高御産巣日神</span>のご縁を<br>お伝えし、<br>その力を<br>あなたの奥底に<br>おいてきました。</p>
+            <p style="margin-bottom: 90px;">また、<br>神社へのご参拝と<br>祝詞もお伝えしました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">基本的には、<br>これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>守護の力は、<br>何もしなければ<br>少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">妊娠中で<br>お身体が大切な時期、<br>頻繁に神社へ<br>通えないこともあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そのような時に<br>お役に立つのが、<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px;">守護神の力を<br>石に宿し、<br>常に身近に<br>持ち歩くことができる。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>どんな石でもよい<br>わけではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたの中にある<br>潜在的なエネルギーと、<br><span style="color: #ffd966;">高御産巣日神</span>が、<br>最も共鳴しやすい石で<br>お作りする必要があります。</p>
+            <p style="margin-bottom: 90px;">あなたのために<br>お伝えしたい石を、<br>四つご紹介します。</p>
+            <ul style="margin-bottom: 90px;">
+                <li><span style="color: #ffd966; font-weight: bold;">1. ローズクォーツ</span><br>母性と新しいいのちを守る、<br>桜のような淡紅色の石。<br>あなたの命の核に宿っている<br>「新しいいのちを迎える光」と、<br>最もまっすぐに共鳴します。<br>赤ちゃんをお腹の中で抱きしめる<br>やわらかな力を、<br>さらに支えていきます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">2. ムーンストーン</span><br>月の光のような、<br>やわらかな乳白色の石。<br>女性の身体のリズムを整え、<br>妊娠と出産を守るために<br>古くから用いられてきた石。<br>「胎」のリズムで育つあなたの本質と<br>ぴったり呼応します。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">3. カーネリアン</span><br>ぬくもりのあるオレンジ色の石。<br>あなたの太陽の光を水に沈ませず、<br>小さく、温かく灯し続ける力を授けます。<br>いのちの炎をゆるやかに守り、<br>赤ちゃんに届く温かさを<br>細らせないための石。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">4. アクアマリン</span><br>澄んだ水色の石。<br>不安の水を濁らせずに<br>透き通った流れに整える石。<br>古くから妊婦さんの<br>お守りとしても用いられてきた、<br>やさしい水の石です。</li>
+            </ul>
+            <p style="margin-bottom: 90px;">この中から、<br>あなたのエネルギーと<br>最もバランスの取れる<br>組み合わせを、<br>私が選び、<br>ひとつずつ手作りで<br>仕上げます。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">ご希望の方は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <h2>【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">なぎ様、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの未来には、<br>立春を過ぎたやわらかな光のなかで、<br>小さないのちを<br>胸に抱く日へと続く道が、<br>視えています。</p>
+            <p style="margin-bottom: 90px;">旦那様が<br>震える手で<br>あなたと赤ちゃんを<br>包み込み、<br>ふたつの命を<br>慈しむ姿が、<br>視えています。</p>
+            <p style="margin-bottom: 90px;">今は、<br>不安の中に<br>あるかもしれない。</p>
+            <p style="margin-bottom: 90px;">「視えない」<br>「分からない」と、<br>胸が縮こまる日が<br>続いているかもしれない。</p>
+            <p style="margin-bottom: 90px;">でもそれは、<br>あなたの愛が<br>深いからこそ<br>感じる痛み。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたが<br>本気で<br>この子を迎えようとしている、<br>その証です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">正しい感覚です。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>母として迎える運を、<br>生まれた時から<br>持っている方。</p>
+            <p style="margin-bottom: 90px;">「目に見えない場所で、<br>大切なものを<br>静かに育てていく」<br>本質を、<br>そのままに生きている方。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">赤ちゃんは、<br>あなたを選んで<br>来てくれました。</p>
+            <p style="margin-bottom: 90px;">お母さんと<br>同じリズムで、<br>ゆっくり、ちゃんと、<br>形を整えています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">光を守ること。<br>水を整えること。<br>ひとりで抱え込まないこと。</p>
+            <p style="margin-bottom: 90px;">その三つだけを、<br>心の真ん中に<br>置いておいてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それが、<br>あなたと赤ちゃんを<br>守る道。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;"><span style="color: #ffd966;">高御産巣日神</span>が、<br>あなたを、<br>そしてお腹のいのちを、<br>守っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>母になっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">不安を<br>零していい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">頼っていい。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #f0f0ff;">守られている。</p>
+            <p style="margin-bottom: 90px;">その事実を、<br>どうか<br>受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より、<br>遠隔守護祈祷を行い、<br>あなたと<br>お腹のいのちの幸せを<br>願います。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたと<br>お腹のいのちの未来に、<br>温かい光が<br>満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>

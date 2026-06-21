@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kazu様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">天命と治療家の道</h2>
+            <p class="cover-name">kazu様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 冒頭のお礼 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">kazu様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの魂が、<br>「自分の道を、自分の手で選び取りたい」と<br>強く願っている。</p>
+            <p style="margin-bottom: 90px;">その意志が、<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先、<br>あなたが本当に知るべきことを、<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2>【あなたの未来に視えるもの】</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">守護神が、<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">kazu様が、<br>ご自身の治療院の中で、<br>人の背中に手を当てている姿。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その隣に、<br>同じ志を持つ並走者が立っている。</p>
+            <p style="margin-bottom: 90px;">施術を受けた方が、<br>深く息を吐いて、<br>こわばっていた肩を緩めて、<br>「ここに来てよかった」と<br>口にしている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その景色は<br>そう遠くない未来、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">紅葉が色づき始める頃、<br>kazu様の道は、<br>はっきりとした輪郭を<br>持ち始めています。</p>
+            <p style="margin-bottom: 90px;">その未来の兆しが、<br>強く感じられます。</p>
+            <p style="margin-bottom: 90px;">そこに至るまでの道のりが、<br>一筋縄ではいかないことも、<br>正直にお伝えします。</p>
+            <p style="margin-bottom: 90px;">「これでいいのか」<br>「自分は本当に治療家でいいのか」</p>
+            <p style="margin-bottom: 90px;">その問いが、<br>もう何度も<br>kazu様の胸を通り過ぎてきた。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">でも──<br>その問いこそが、<br>あなたが本物の治療家である<br>証拠でもあるのです。</p>
+        </div>
+
+        <!-- 守護神の紹介 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは、<br><span style="color: #ffd966;">猿田彦命<br>（さるたひこのみこと）</span>。</p>
+            <p style="margin-bottom: 90px;">昔、<br>天の神様が<br>地上へ降りる時のこと。</p>
+            <p style="margin-bottom: 90px;">道がいくつにも分かれて、<br>どの道を進めばよいのか、<br>誰にも分からなかった。</p>
+            <p style="margin-bottom: 90px;">その時、<br><span style="color: #ffd966;">猿田彦命</span>が現れて、<br>正しい一本の道を照らし出した。</p>
+            <p style="margin-bottom: 90px;">迷っていた神様たちは、<br><span style="color: #ffd966;">猿田彦命</span>の案内で、<br>無事に地上へ降り立つことが<br>できました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「迷う者を正しい道へ導く神様」として、<br>今も全国の道祖神に祀られています。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">長野県では、<br>松本市宮渕の猿田彦神社をはじめ、<br>あなたのお近くにも<br>祀られています。</p>
+        </div>
+
+        <!-- あなたの本質について -->
+        <h2>【あなたの本質について】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから少し、<br>あなた自身のことを<br>お話しさせてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">kazu様の本質は、<br>広い大地です。</p>
+            <p style="margin-bottom: 90px;">それも、<br>一晩の雨では崩れない、<br>深く、どっしりとした大地。</p>
+            <p style="margin-bottom: 90px;">人が踏みしめても、<br>人がその上で泣いても、<br>人がその上で躓いても、<br>揺るがない地面。</p>
+            <p style="margin-bottom: 90px;">こんな経験は<br>ありませんでしたか？</p>
+            <p style="margin-bottom: 90px;">誰かが悩みを話している時、<br>言葉を返すより先に、<br>ただ「うん」と聴いている自分。</p>
+            <p style="margin-bottom: 90px;">そして、<br>相手が話し終わった頃には、<br>相手の方が<br>もう、少し楽になっている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>あなたが「在る」だけで、<br>人の呼吸が深くなるからです。</p>
+            <p style="margin-bottom: 90px;">治療家として<br>手を当てる前から、<br>もう癒しは始まっている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">そのくらい、<br>あなたの大地は深いのです。</p>
+            <p style="margin-bottom: 90px;">もう一つ、<br>お伝えしたいことがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたには、<br>人の道はすぐに視えるのに、<br>ご自身の道だけは<br>霞んで見えなくなる癖があります。</p>
+            <p style="margin-bottom: 90px;">「あの方にはこの道」<br>「この方にはこういう関わり方」</p>
+            <p style="margin-bottom: 90px;">そう感じる鋭さを<br>普段は持っているのに、<br>ご自身の人生になると、<br>途端に見えなくなる。</p>
+            <p style="margin-bottom: 90px;">これは、<br>あなたが鈍いからでも、<br>治療家に向いていないからでも、<br>ありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">人の道を視るために、<br>あなたの感性は<br>外側へ向くようにできている。</p>
+            <p style="margin-bottom: 90px;">だから、<br>内側に向ける時には、<br>少しだけ<br>コツが必要なのです。</p>
+            <p style="margin-bottom: 90px;">そのコツは、<br>この鑑定の中で、<br>丁寧にお伝えしていきます。</p>
+            <p style="margin-bottom: 90px;">そして、<br>お金まわりについても<br>お話しさせてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">kazu様は、<br>「人を癒したい」気持ちが<br>強すぎるあまり、<br>ご自身の対価を<br>低く設定してしまう癖があります。</p>
+            <p style="margin-bottom: 90px;">「これくらいでいいかな」<br>「もう少し下げてもいいかな」</p>
+            <p style="margin-bottom: 90px;">そう考えてしまう。</p>
+            <p style="margin-bottom: 90px;">でも──<br>あなたが受け取る分は、</p>
+            <p style="margin-bottom: 90px;">あなたの手技と、<br>あなたの大地に来てくれた人の<br>時間と勇気に対する、<br>正当な対価です。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">それを正しく受け取ることは、<br>わがままではなく、<br>治療家としての誠実さなのです。</p>
+        </div>
+
+        <!-- ⛩️ kazu様の大地の活かし方 -->
+        <h2 class="emoji-header">⛩️ kazu様の大地の活かし方</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">kazu様、</p>
+            <p style="margin-bottom: 90px;">ここからは、<br>霊視で視えていることを、<br>そのままお伝えしていきます。</p>
+            <p style="margin-bottom: 90px;">あなたが治療家として<br>持っている力は、<br>大きく分けて三つあります。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">一つ目。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「在る」だけで、<br>人の呼吸を深くする力。</p>
+            <p style="margin-bottom: 90px;">これは、<br>あなたという土地に立った瞬間、<br>人の体の緊張が<br>ゆるんでいく現象です。</p>
+            <p style="margin-bottom: 90px;">施術台に横になる前から、<br>もう癒しは始まっている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">これは、<br>治療家として最も尊い才能です。</p>
+            <p style="margin-bottom: 90px;">技術より先に、<br>存在そのものが効いている。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">二つ目。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの手から、<br>癒しの技が生まれる流れ。</p>
+            <p style="margin-bottom: 90px;">豊かな大地から、<br>希少な金属が発見されるように</p>
+            <p style="margin-bottom: 90px;">あなたの持つ大地は<br>類まれなるスキルを生み出します。</p>
+            <p style="margin-bottom: 90px;">あなたが学んできた施術、<br>あなたが磨いてきた手の感覚。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これは<br>偶然に身につけたものではなく、<br>あなたの大地が生み出した<br>とても貴重なものです。</p>
+            <p style="margin-bottom: 90px;">その手は、<br>これから先も<br>磨き続けてください。</p>
+            <p style="margin-bottom: 90px;">磨くほどに、<br>切れ味が増していく刃のように、<br>あなたの癒しは<br>鋭くなっていきます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">三つ目。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">人の重みを受け止めても<br>ぐらつかない受け止めの力。</p>
+            <p style="margin-bottom: 90px;">人の痛み、<br>人の悲しみ、<br>人の恐れ。</p>
+            <p style="margin-bottom: 90px;">それらを受け止めても、<br>あなた自身は崩れない。</p>
+            <p style="margin-bottom: 90px;">これは、<br>他の方にはなかなか<br>真似のできない<br>あなただけの強さです。</p>
+            <p style="margin-bottom: 90px;">──ただし。</p>
+            <p style="margin-bottom: 90px;">ここで一つ、<br>正直にお伝えしなければ<br>ならないことがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>人の重みを受け止められる方だからこそ、<br>それを「一人で」<br>抱え込んでしまう癖があります。</p>
+            <p style="margin-bottom: 90px;">並走者がいない場所で、<br>全ての重みを<br>一人で受け止め続けると、<br>あなたの大地は<br>じわじわと乾いていきます。</p>
+            <p style="margin-bottom: 90px;">これは、<br>治療家として<br>最も注意しなければなりません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">人を支える方の隣には、<br>あなたを支える方が<br>必ず必要なのです。</p>
+            <p style="margin-bottom: 90px;">同じ志を持つ仲間、<br>切磋琢磨できる相手、<br>あなたの背中を<br>見守ってくれる存在。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">その方が一人でも<br>あなたの隣にいれば、<br>あなたの大地は<br>枯れることなく、<br>むしろ豊かに育っていきます。</p>
+        </div>
+
+        <!-- ⛩️ kazu様の天命の本当の姿 -->
+        <h2 class="emoji-header">⛩️ kazu様の天命の本当の姿</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">kazu様、</p>
+            <p style="margin-bottom: 90px;">ここで、<br>あなたの天命について<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">これは<br><span style="color: #ffd966;">猿田彦命</span>からお預かりしている、<br>重たい言葉です。</p>
+            <p style="margin-bottom: 90px;">まず最初に、<br>正直にお伝えしておきたいことがあります。</p>
+            <p style="margin-bottom: 90px;">あなたが<br>「自分の天命だけは、よく分からない」<br>と感じてきたこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>天命を見つけられていないからではなく、<br>天命を視るための感性が、<br>最初から<br>「外側」に向いて作られているからです。</p>
+            <p style="margin-bottom: 90px;">人の天命は視える。<br>人の道筋は視える。<br>人の役割は視える。</p>
+            <p style="margin-bottom: 90px;">でも、<br>自分のことになると、<br>霞がかかる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">これは<br>あなたの星筋に<br>そう刻まれている、<br>一つの優しさの形です。</p>
+            <p style="margin-bottom: 90px;">──だから、<br>今日この場で、<br>私が代わりに視せていただきます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">あなたの天命は、<br>「治療家として、<br>ご自身の場を持ち、<br>そこで人を救う長老になること」。</p>
+            <p style="margin-bottom: 90px;">これが、<br><span style="color: #ffd966;">猿田彦命</span>が見せてくださっている、<br>あなたの本当の姿です。</p>
+            <p style="margin-bottom: 90px;">「自分の場」というのは、<br>雇われて働く場所ではなく、<br>あなた自身が<br>治療の流れを作る場所のこと。</p>
+            <p style="margin-bottom: 90px;">それは、<br>小さな治療院でもいい。<br>出張する形でもいい。<br>自宅の一室でもいい。</p>
+            <p style="margin-bottom: 90px;">形は問いません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ、<br>「kazu様の流派」<br>「kazu様の対象」<br>「kazu様の手法」</p>
+            <p style="margin-bottom: 90px;">これが<br>あなたの中で<br>はっきりと輪郭を持つこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">それが、<br>あなたの天命の核です。</p>
+            <p style="margin-bottom: 90px;">そして、<br>「長老」という言葉。</p>
+            <p style="margin-bottom: 90px;">これは<br>年齢のことではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">長く生きた知恵を持ち、<br>迷っている人の隣に座り、<br>静かに道を照らす存在。</p>
+            <p style="margin-bottom: 90px;">それが、<br>霊的な意味での「長老」です。</p>
+            <p style="margin-bottom: 90px;">あなたには、<br>この長老の役割が<br>最初から組み込まれています。</p>
+            <p style="margin-bottom: 90px;">施術を受けた方が、<br>体だけでなく、<br>心も少し軽くなって帰っていく。</p>
+            <p style="margin-bottom: 90px;">「またkazu様のところへ来たい」<br>と思って帰っていく。</p>
+            <p style="margin-bottom: 90px;">その積み重ねが、<br>あなたの長老としての<br>道を作っていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「合っているか」を<br>測る物差しは、<br>あなたの外にはありません。</p>
+            <p style="margin-bottom: 90px;">物差しは、<br>あなたの治療院に<br>来てくれた方の、<br>帰っていく時の表情の中にあります。</p>
+            <p style="margin-bottom: 90px;">肩が緩んでいるか。<br>息が深くなっているか。<br>目に光が戻っているか。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">その物差しで測れば、<br>あなたはもう、<br>天命に向かって歩いています。</p>
+        </div>
+
+        <!-- ⛩️ 道が大きく動く時期 -->
+        <h2 class="emoji-header">⛩️ 道が大きく動く時期</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">kazu様、</p>
+            <p style="margin-bottom: 90px;">ここで、<br>あなたの道が<br>大きく動く時期について<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">霊視で視えているのは、<br>2026年の秋。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">特に、<br>9月の終わりから10月にかけて。</p>
+            <p style="margin-bottom: 90px;">ここに、<br><span style="color: #ffd966;">猿田彦命</span>の力が<br>最も強く流れ込んできます。</p>
+            <p style="margin-bottom: 90px;">なぜこの時期かというと、<br>あなたの星の運びの中で、<br>一つの大きな扉が<br>ちょうど開く時だからです。</p>
+            <p style="margin-bottom: 90px;">これまでの10年間、<br>あなたは<br>「治療家として根を張る」<br>ための地ならしをしてきました。</p>
+            <p style="margin-bottom: 90px;">社会を生き<br>治療家として立ち<br>技を磨き、<br>人を診て、<br>場所を整えてきた。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その10年が、<br>2026年の秋にひとつ完成します。</p>
+            <p style="margin-bottom: 90px;">そして、<br>そこから新しい10年が始まる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">新しい10年のテーマは、<br>「自分の流派を切り開く」こと。</p>
+            <p style="margin-bottom: 90px;">これは、<br>2026年9月から<br>明確に切り替わります。</p>
+            <p style="margin-bottom: 90px;">ちょうど、<br>あなたのお誕生日のあたり。</p>
+            <p style="margin-bottom: 90px;">その前後一ヶ月の間に、<br>あなたの中で、<br>何かがカチッと音を立てて<br>動き出すはずです。</p>
+            <p style="margin-bottom: 90px;">その時期に向けて、<br>今からしておくとよいことが<br>あります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2026年の夏までに、<br>あなたの治療の「場」の形を<br>一度整えておくこと。</p>
+            <p style="margin-bottom: 90px;">どこで施術するのか。<br>どんな時間帯で行うのか。<br>どんな方を中心に診るのか。</p>
+            <p style="margin-bottom: 90px;">この三つの輪郭を、<br>2026年の夏までに<br>ぼんやりとでも<br>描いておく。</p>
+            <p style="margin-bottom: 90px;">そうすると、<br>9月以降の流れに、<br>すっと乗っていくことができます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年について</p>
+            <p style="margin-bottom: 90px;">2027年は、<br>新しい10年の最初の年。</p>
+            <p style="margin-bottom: 90px;">ここで、<br>あなたの流派の輪郭が<br>外から見える形に<br>なっていきます。</p>
+            <p style="margin-bottom: 90px;">「kazu様のところは、<br>こういう人が来る場所」<br>「kazu様の施術は、<br>こういう特徴がある」</p>
+            <p style="margin-bottom: 90px;">そんな言葉が、<br>他の方の口から出始める年です。</p>
+            <p style="margin-bottom: 90px;">そして<br>2028年から2029年にかけて、<br>あなたの周りに<br>仲間が集まり始めます。</p>
+            <p style="margin-bottom: 90px;">同じ志を持つ治療家。<br>学びの仲間。<br>あなたを応援してくれる方。</p>
+            <p style="margin-bottom: 90px;">その方たちと一緒に、<br>あなたの大地は<br>さらに豊かになっていきます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">「動くべき態度」を<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2026年の9月以降、<br>迷う場面が出てきたら、<br>必ず<br>「自分の道」を選んでください。</p>
+            <p style="margin-bottom: 90px;">「他の方が喜びそうな道」<br>「無難に見える道」<br>「これまでの延長線上の道」</p>
+            <p style="margin-bottom: 90px;">ではなく、<br>「これが自分の道だ」と<br>胸の奥が反応する方を<br>選んでください。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">その選択が、<br>これからの10年を作ります。</p>
+        </div>
+
+        <!-- ⛩️ kazu様らしい歩み方 -->
+        <h2 class="emoji-header">⛩️ kazu様らしい歩み方</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">kazu様、</p>
+            <p style="margin-bottom: 90px;">最後に、<br>今日からできることを<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">これは、<br>特別なルーティンでも、<br>頑張ることでも、<br>ありません。</p>
+            <p style="margin-bottom: 90px;">あなたのさだめを<br>整えるための、<br>小さな調整です。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">一つ目。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">並走者を、<br>一人意識すること。</p>
+            <p style="margin-bottom: 90px;">すでにいる方でも<br>構いません。</p>
+            <p style="margin-bottom: 90px;">同じ志を持つ治療家の知り合い。<br>学びの仲間。<br>あなたの仕事を理解してくれる方。</p>
+            <p style="margin-bottom: 90px;">その方の顔を<br>時々思い浮かべて、<br>「自分は一人ではない」と<br>心の中で確認する。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それだけで、<br>あなたの大地の<br>乾きが止まります。</p>
+            <p style="margin-bottom: 90px;">もし<br>まだそういう方がいなければ、<br>2026年の夏から冬にかけて、<br>出会いの兆しが強く視えています。</p>
+            <p style="margin-bottom: 90px;">学びの場、<br>講習会、<br>同業の集まり。</p>
+            <p style="margin-bottom: 90px;">そういう場所に<br>顔を出してみてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">そこに、<br>あなたの並走者がいます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">二つ目。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">自分の対価を、<br>一度書き出して見直すこと。</p>
+            <p style="margin-bottom: 90px;">紙でもいい、<br>スマートフォンのメモでもいい。</p>
+            <p style="margin-bottom: 90px;">今の施術の料金、<br>時間、<br>そこに含まれている<br>あなたの技と存在の価値。</p>
+            <p style="margin-bottom: 90px;">それを書き出して、<br>「これは正当な対価か」と<br>自分に問いかける。</p>
+            <p style="margin-bottom: 90px;">低すぎると感じたら、<br>少しだけ<br>上げてみてください。</p>
+            <p style="margin-bottom: 90px;">これは<br>お金の話ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたが<br>自分の価値を<br>正しく受け取れているか、<br>という話です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">正しく受け取れる人にしか、<br>正しく与えることはできない。</p>
+            <p style="margin-bottom: 90px;">これが、<br>治療家としての誠実さの形です。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">三つ目。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「人を救いたい」を、<br>「人を救える状態の自分でいる」に<br>置き換えること。</p>
+            <p style="margin-bottom: 90px;">これは<br>言葉遊びではありません。</p>
+            <p style="margin-bottom: 90px;">「人を救いたい」と<br>強く思っている時、<br>あなたの意識は<br>人の方に向かっています。</p>
+            <p style="margin-bottom: 90px;">でも、<br>治療家として本当に必要なのは、<br>あなた自身が<br>満たされていること。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">満たされた大地からしか、<br>本物の癒しは生まれません。</p>
+            <p style="margin-bottom: 90px;">自分が満たされること、<br>自分が休むこと、<br>自分が好きなものを食べること。</p>
+            <p style="margin-bottom: 90px;">それは<br>治療家としての仕事の一部です。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">罪悪感を持たずに、<br>自分を満たしてください。</p>
+        </div>
+
+        <!-- 今後の流れ -->
+        <h2>【今後の流れ】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">これからの4ヶ月、<br>特に意識していただきたい<br>月をお伝えします。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年6月：兆しの月</p>
+            <p style="margin-bottom: 90px;">ここで、<br>並走者となる方との<br>出会いの兆しが<br>動き始めます。</p>
+            <p style="margin-bottom: 90px;">ふと声をかけられた相手、<br>誰かに紹介された方、<br>偶然同じ場所にいた方。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「あ、この人」と<br>ピンとくる感覚があれば、<br>それは<br><span style="color: #ffd966;">猿田彦命</span>が<br>道を示している合図です。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年7月：場を整える月</p>
+            <p style="margin-bottom: 90px;">ここで一度、<br>あなたの治療の「場」を<br>見直してください。</p>
+            <p style="margin-bottom: 90px;">場所、時間帯、<br>診る方の中心層、<br>施術の流れ。</p>
+            <p style="margin-bottom: 90px;">完璧にする必要はありません。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>「自分の場はこういう形」と<br>ぼんやりとでも言葉にしておく。</p>
+            <p style="margin-bottom: 90px;">それが、<br>秋の動きへの<br>助走になります。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年9月：道が開く月</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここが、<br>最大の転換点です。</p>
+            <p style="margin-bottom: 90px;">ちょうどお誕生日の前後で、<br>あなたの星の運びが<br>大きく切り替わります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「治療家として根を張る10年」が完成し、<br>「自分の流派を切り開く10年」が<br>始まる。</p>
+            <p style="margin-bottom: 90px;">この月、<br><span style="color: #ffd966;">猿田彦命</span>の力が<br>あなたへ最も強く<br>流れ込んできます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">迷ったら自分の道を選ぶ。<br>これだけを<br>胸に置いておいてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この月に、<br>松本市宮渕の<br>猿田彦神社へ<br>お参りされることを<br>強くお勧めします。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年10月：形が見える月</p>
+            <p style="margin-bottom: 90px;">9月に動き始めた流れが、<br>10月に<br>目に見える形になっていきます。</p>
+            <p style="margin-bottom: 90px;">新しい予約、<br>新しい縁、<br>新しい依頼。</p>
+            <p style="margin-bottom: 90px;">何かしらの形で、<br>「新しい道が始まった」と<br>実感できる出来事が<br>起きるはずです。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【今年・来年の流れ】</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2026年は、<br>あなたにとって<br>人生の大転換期です。</p>
+            <p style="margin-bottom: 90px;">10年単位の流れが<br>切り替わる年であり、<br>基盤を仕上げる年でもあり、<br>新しい道が始まる年でもある。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">三つの流れが<br>同時に動く稀な年。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2027年は、<br>新しい道の輪郭が<br>外から見えてくる年。</p>
+            <p style="margin-bottom: 90px;">「kazu様の場所は、<br>こういう場所」<br>という言葉が、<br>他の方から自然に<br>出てくるようになります。</p>
+            <p style="margin-bottom: 0;">焦らず、<br>自分の流派を<br>育てていく年です。</p>
+        </div>
+
+        <!-- 守護の受け取り方 -->
+        <h2>【守護の受け取り方】</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">kazu様、</p>
+            <p style="margin-bottom: 90px;">そして、<br>安心してください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの事を深く霊視した際、<br>特別な守護の力を、<br>あなたの奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは<br><span style="color: #ffd966;">猿田彦命</span>の和魂の力。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">道を照らす光、<br>迷いをほどく風、<br>正しい一歩を後押しする手。</p>
+            <p style="margin-bottom: 90px;">この三つが、<br>あなたの大地の中心に<br>静かに宿っています。</p>
+            <p style="margin-bottom: 90px;">今この文を読んでいる間にも、<br>胸の奥が少し温かくなる、<br>肩が軽くなる、<br>眠気を感じる、<br>ふっと安心する。</p>
+            <p style="margin-bottom: 90px;">もしそのような感覚があれば、<br>すでに守護の力が<br>届き始めている証です。</p>
+            <p style="margin-bottom: 90px;">これは<br>何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ受け取るだけで<br>大丈夫です。</p>
+            <p style="margin-bottom: 90px;">もし今、<br>少しだけ時間があれば、<br>一度だけ静かに目を閉じてください。</p>
+            <p style="margin-bottom: 90px;">右手を胸の中央に当て、<br>左手をお腹に添えて、<br>ゆっくり三度<br>呼吸をしてください。</p>
+            <p style="margin-bottom: 90px;">そして心の中で、</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私の道は守られている」<br>「私は正しい方向へ導かれている」<br>「私の大地には光が流れている」</p>
+            <p style="margin-bottom: 90px;">そう唱えてみてください。</p>
+            <p style="margin-bottom: 90px;">今もし、<br>胸のあたりが少し温かくなる、<br>手がじんわりする、<br>眠くなる、<br>安心感が広がる。</p>
+            <p style="margin-bottom: 90px;">その感覚があれば、<br>すでに守護のエネルギーが<br>流れ始めています。</p>
+            <p style="margin-bottom: 0; font-weight: bold;"><span style="color: #ffd966;">猿田彦命</span>の御神気は、<br>今この瞬間にも、<br>あなたへ静かに注がれています。</p>
+        </div>
+
+        <!-- 軽い行動 -->
+        <h2>【軽い行動】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">今のkazu様に必要なのは、<br>無理に頑張ることでは<br>ありません。</p>
+            <p style="margin-bottom: 90px;">まずは守護の流れを受け取り、<br>それだけでも<br>運の流れは変わり始めます。</p>
+            <p style="margin-bottom: 90px;">もし余裕がある時だけ、<br>以下のことを<br>試してみてください。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【守護神の神社へ行く】</p>
+            <p style="margin-bottom: 90px;">あなたの守護神・<span style="color: #ffd966;">猿田彦命</span>を<br>祀る神社が、<br>お近くにあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">最寄りは、<br>猿田彦神社<br>（長野県松本市宮渕2丁目5-1）。</p>
+            <p style="margin-bottom: 90px;">そのほか、お近くで<br>同じ<span style="color: #ffd966;">猿田彦命</span>を祀る神社：</p>
+            <p style="margin-bottom: 90px;">米澤神社<br>（長野県松本市寿白瀬渕35-1265）<br>槻井泉神社<br>（長野県塩尻市洗馬3340）<br>社宮司社<br>（長野県安曇野市三郷明盛1837-イ）<br>信濃國単車神社<br>（長野県茅野市北山3413）</p>
+            <p style="margin-bottom: 90px;">参拝の際は、<br>以下の祝詞を<br>心の中で唱えてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">祓え給い、清め給え、<br>神ながら守り給い、幸え給え<br>（はらえたまい、きよめたまえ、<br>かむながらまもりたまい、さきわえたまえ）</p>
+            <p style="margin-bottom: 90px;">そして、<br>お願い事を唱えるのではなく、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私は治療家として、<br>自分の道を歩みます。<br>どうか見守っていてください」</p>
+            <p style="margin-bottom: 90px;">という形で伝えてください。</p>
+            <p style="margin-bottom: 90px;">神様へのお願いは、<br>願望を叶えてもらうのではなく、<br>自分が努力することを宣言し、<br>その歩みを助けてもらうもの。</p>
+            <p style="margin-bottom: 90px;">その姿勢が、<br><span style="color: #ffd966;">猿田彦命</span>との縁を<br>より深くします。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【朝に空を見上げる】</p>
+            <p style="margin-bottom: 90px;">朝、空を見上げて<br>深呼吸を一度。</p>
+            <p style="margin-bottom: 90px;">それだけで、<br>道祖神の巡りは<br>さらに深くなります。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【手のひらを温める】</p>
+            <p style="margin-bottom: 90px;">施術前、<br>ご自身の手のひらを<br>両手で軽く包んで温めてください。</p>
+            <p style="margin-bottom: 90px;">その温もりに、<br><span style="color: #ffd966;">猿田彦命</span>の光が<br>静かに宿ります。</p>
+            <p style="margin-bottom: 0;">患者さんに触れる前の、<br>小さな儀式として。</p>
+        </div>
+
+        <!-- ⛩️ あなたを支えるパワーストーン -->
+        <h2 class="emoji-header">⛩️ あなたを支えるパワーストーン</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">あなたには、<br>守護神のご縁をお伝えし、<br>その力を<br>あなたの奥底に置いてきました。</p>
+            <p style="margin-bottom: 90px;">また、<br>守護神と縁のある神社と、<br>参拝の際に<br>力を取り入れる方法も<br>お伝えしました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">基本的には、<br>これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>守護の力は<br>何もしなければ、<br>少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">なかなか時間が取れない、<br>神社が遠くて<br>頻繁には行けない、<br>という方もいらっしゃると思います。</p>
+            <p style="margin-bottom: 90px;">そのような方に、<br>ぜひお勧めしたいのが<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">守護神の力を石に宿し、<br>常に身近に<br>持ち歩くことができるようになります。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>どんな石でもよいわけでは<br>ありません。</p>
+            <p style="margin-bottom: 90px;">kazu様が持つ<br>潜在的なエネルギーと、<br><span style="color: #ffd966;">猿田彦命</span>が<br>共鳴しやすい石で<br>お作りする必要があります。</p>
+            <p style="margin-bottom: 90px;">あなたのエネルギーと<br>守護神が共鳴しやすい石を、<br>三つお伝えします。</p>
+        </div>
+
+        <ul style="margin-bottom: 90px;">
+            <li><span style="color: #ffd966; font-weight: bold;">1. タイガーアイ</span><br>道を見通す力、決断する力を宿す石。<br>猿田彦命の「道開き」と最も強く共鳴します。<br>「自分の道はどれか」という問いが胸を通る時、<br>この石が答えの方角を照らしてくれます。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">2. スモーキークォーツ</span><br>大地のエネルギーを深く宿す石。<br>あなたの戊土の核をさらに安定させ、<br>人の重みを受け止めても揺るがない土台を作ります。<br>治療家として人を受け止め続けるあなたを、内側から支える石です。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">3. カーネリアン</span><br>腹を決める火を宿す石。<br>受け取る勇気、踏み出す勇気をあなたの中に灯します。<br>「自分の対価を正しく受け取る」「自分の道を選ぶ」<br>その一歩を後押しする、内側から温める火の石です。<br>大地のあなたに、ちょうど良い熱を分けてくれます。</li>
+        </ul>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">この中から、<br>あなたのエネルギーと<br>最もバランスが取れる<br>組み合わせを<br>私が選び、<br>1つずつ手作りで<br>仕上げます。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">ご希望の方は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <h2>【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">kazu様、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの未来には、<br>ご自身の治療の場で、<br>人の背中に静かに手を当て、<br>並走者と笑い合いながら、<br>長老の役割を<br>果たしている姿が<br>視えています。</p>
+            <p style="margin-bottom: 90px;">施術を受けた方が、<br>深く息を吐いて<br>帰っていく。<br>「ここに来てよかった」と<br>振り返って言う。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その風景の中に、<br>あなたが<br>確かに立っています。</p>
+            <p style="margin-bottom: 90px;">今は、<br>「これでいいのか」と<br>迷っているかもしれない。</p>
+            <p style="margin-bottom: 90px;">「自分の天命は<br>本当にこの道なのか」と<br>問い続けているかもしれない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でもそれは、<br>あなたが<br>本物の治療家だからこそ、<br>胸を通り過ぎる問いです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">正しい感覚です。</p>
+            <p style="margin-bottom: 90px;">中途半端な治療家は、<br>こんなふうには<br>問いません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたが問い続けてきたことが、<br>あなたが本物である<br>証拠なのです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>広い大地そのもの。</p>
+            <p style="margin-bottom: 90px;">「在る」だけで<br>人の呼吸を深くする方。</p>
+            <p style="margin-bottom: 90px;">そして、<br>並走者の隣で力が出る方。</p>
+            <p style="margin-bottom: 90px;">腹を決めれば、<br>ご自身の流派を切り開ける方。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">だから──<br>2026年の秋を信じてください。</p>
+            <p style="margin-bottom: 90px;">そこで一度、<br>あなたの道は大きく開きます。</p>
+            <p style="margin-bottom: 90px;">それまでは、<br>ご自身を責めないでください。</p>
+            <p style="margin-bottom: 90px;">迷うことも、<br>立ち止まることも、<br>あなたの優しさの一部です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">それが、<br>あなたの幸せへの道。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;"><span style="color: #ffd966;">猿田彦命</span>が、<br>あなたを守っています。</p>
+            <p style="margin-bottom: 90px;">迷う道の先で、<br>正しい一本を<br>照らしてくださっています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px;">ご自身の道を<br>歩んでいい。</p>
+            <p style="margin-bottom: 90px;">ご自身の対価を<br>受け取っていい。</p>
+            <p style="margin-bottom: 90px;">並走者の隣で<br>力を抜いていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">守られている。</p>
+            <p style="margin-bottom: 90px;">その事実を、<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">本日より、<br>遠隔守護祈祷を行い、<br>あなたの幸せを願います。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたの未来に、<br>揺るぎない大地と確かな一本の道が<br>満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>
