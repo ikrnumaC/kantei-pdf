@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゆうこ様　守護神鑑定書</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif; background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%); color: #e8e8f0; line-height: 1.8; padding: 20px; min-height: 100vh; font-size: 17px; }
+        .container { max-width: 800px; margin: 0 auto; background: rgba(15, 15, 46, 0.7); border-radius: 20px; padding: 40px; box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2), inset 0 0 60px rgba(100, 100, 200, 0.05); border: 1px solid rgba(200, 200, 255, 0.1); }
+        h1 { text-align: center; color: #a8b8ff; font-size: 2em; margin-bottom: 30px; text-shadow: 0 0 20px rgba(168, 184, 255, 0.5); letter-spacing: 0.1em; }
+        h2 { color: #c8d0ff; font-size: 1.5em; margin: 40px 0 20px; padding-bottom: 10px; border-bottom: 2px solid rgba(168, 184, 255, 0.3); letter-spacing: 0.05em; }
+        .oracle-message { background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3)); border: 2px solid rgba(168, 184, 255, 0.3); border-radius: 15px; padding: 30px; margin: 30px 0; box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2); position: relative; }
+        .oracle-message::before { content: ''; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size: 30px; background: #1a1a3e; padding: 0 15px; }
+        .guardian-image { max-width: 400px; width: 100%; height: auto; margin: 30px auto; display: block; border-radius: 10px; box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3); }
+        .oracle-message p { margin: 15px 0; text-align: center; font-size: 1.1em; }
+        .section { margin: 30px 0; padding: 20px; background: rgba(30, 30, 70, 0.3); border-radius: 10px; text-align: center; }
+        .emoji-header { font-size: 1.8em; margin: 40px 0 20px; color: #c8d0ff; text-align: left; }
+        .guardian { text-align: center; font-size: 1.3em; color: #a8b8ff; margin: 20px 0; padding: 20px; background: rgba(168, 184, 255, 0.1); border-radius: 10px; text-shadow: 0 0 15px rgba(168, 184, 255, 0.4); }
+        ul { list-style: none; margin: 20px 0; }
+        ul li { margin: 10px 0; font-weight: bold; color: #ffd966; text-shadow: 0 0 10px rgba(255, 217, 102, 0.3); }
+        .cta { background: rgba(30, 30, 70, 0.5); border: 1px solid rgba(168, 184, 255, 0.2); border-radius: 15px; padding: 40px 25px; margin: 40px 0; text-align: center; box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2); }
+        .cta h2 { border: none; margin: 20px 0; }
+        .cta-button { display: inline-block; background: linear-gradient(135deg, #4a5a9a, #6a7aca); color: white; text-decoration: none; padding: 20px 50px; border-radius: 35px; margin: 20px 0; font-size: 1.3em; font-weight: bold; box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); transition: all 0.3s ease; border: 2px solid rgba(168, 184, 255, 0.5); }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(106, 122, 202, 0.9); background: linear-gradient(135deg, #5a6aaa, #7a8aca); }
+        .price { font-size: 1.8em; color: #e8e8f0; margin: 20px 0 5px 0; }
+        .original-price { text-decoration: line-through; color: #999; font-size: 1em; }
+        .special-price { font-size: 2em; color: #ffd700; font-weight: bold; text-shadow: 0 0 20px rgba(255, 215, 0, 0.6); white-space: nowrap; }
+        .limited-badge { color: #ff4444; font-weight: bold; font-size: 0.95em; margin: 10px 0; }
+        .closing { text-align: center; margin: 40px 0; padding: 30px 15px; background: rgba(60, 60, 120, 0.2); border-radius: 15px; font-size: 1.1em; line-height: 2; }
+        .signature { text-align: right; font-size: 1.3em; color: #c8d0ff; margin-top: 30px; }
+        /* 守護神の光輪カラー（神様によって書き換える）
+           例: 火神→ orange系 / 水神→ blue系 / 月神→ silver系 / 縁結び→ pink系 */
+        :root {
+            --aura-color-1: 255, 180, 100;  /* 内側の光 */
+            --aura-color-2: 255, 120, 60;   /* 外側の光 */
+        }
+
+        /* === 色テストパネル === */
+        .color-test-panel {
+            max-width: 900px;
+            margin: 0 auto 40px;
+            padding: 25px 20px;
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.2);
+            border-radius: 15px;
+        }
+        .color-test-panel h2 {
+            text-align: center; color: #c8d0ff; font-size: 1.2em;
+            margin-bottom: 8px; border: none; padding-bottom: 0;
+        }
+        .color-test-panel .hint {
+            text-align: center; font-size: 0.85em; color: #a8b8ff;
+            margin-bottom: 20px;
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 18px;
+        }
+        .test-thumb {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .test-thumb:hover { transform: translateY(-3px); }
+        .test-thumb img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 8px;
+            animation: aura-breath 4s ease-in-out infinite;
+        }
+        .test-thumb p {
+            margin-top: 10px;
+            font-size: 0.8em;
+            color: #e8e8f0;
+            line-height: 1.3;
+        }
+        .test-thumb.is-active img {
+            outline: 2px solid #ffd966;
+            outline-offset: 4px;
+        }
+
+        /* スクロールフェードイン */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 守護神画像の光輪（呼吸する炎） */
+        .guardian-image {
+            position: relative;
+            animation: aura-breath 4s ease-in-out infinite;
+        }
+        @keyframes aura-breath {
+            0%, 100% {
+                box-shadow:
+                    0 0 30px rgba(var(--aura-color-1), 0.35),
+                    0 0 60px rgba(var(--aura-color-2), 0.2),
+                    0 4px 20px rgba(168, 184, 255, 0.3);
+            }
+            50% {
+                box-shadow:
+                    0 0 50px rgba(var(--aura-color-1), 0.6),
+                    0 0 100px rgba(var(--aura-color-2), 0.35),
+                    0 4px 20px rgba(168, 184, 255, 0.3);
+            }
+        }
+
+        /* CTAボタンの脈動 */
+        .cta-button {
+            animation: pulse 2.4s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7);
+            }
+            50% {
+                transform: scale(1.035);
+                box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4);
+            }
+        }
+        .cta-button:hover {
+            animation: none;
+        }
+
+        @media (max-width: 768px) {
+            body { font-size: 15px; padding: 10px; }
+            .container { padding: 20px 10px; }
+            h1 { font-size: 1.3em; }
+            h2 { font-size: 1.1em; }
+            .emoji-header { font-size: 1.3em; }
+            .oracle-message, .section { padding: 15px 10px; }
+            .oracle-message p { font-size: 1em; }
+            .guardian { font-size: 1.1em; padding: 15px; }
+            .price { font-size: 1.5em; }
+            .special-price { font-size: 1.8em; }
+            .cta-button { font-size: 1.1em; padding: 15px 30px; }
+            .cta { padding: 40px 15px; }
+            .closing { padding: 30px 10px; }
+            .guardian-image { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="color-test-panel">
+        <h2>🎨 守護神 × 光輪カラー テスト</h2>
+        <p class="hint">画像をクリックすると、本体の守護神画像と光輪の色が切り替わります</p>
+        <div class="test-grid" id="testGrid"></div>
+    </div>
+
+    <div class="container">
+        <h1>ゆうこ様<br>守護神鑑定書</h1>
+
+        <div class="oracle-message reveal">
+            <p style="margin-bottom: 90px;">ゆうこ様、</p>
+            <p style="margin-bottom: 90px;">霊視して少し驚きました。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">これほど静かに、<br>深く燃え続ける<br>朱色のオーラを<br>纏った方は、<br>なかなかいらっしゃいません。</p>
+            <p style="margin-bottom: 90px;">守護神からの守護も<br>とても強いです。</p>
+            <p class="guardian" style="margin-bottom: 90px;">あなたを守っているのは、<br>火産霊神<br>(ほむすびのかみ)。</p>
+            <p>内なる火を司る、<br>静かに燃え続ける情熱の神様です。</p>
+            <img src="../鑑定画像/火産霊神.png" alt="火産霊神" class="guardian-image">
+        </div>
+
+        <div class="section reveal">
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">ゆうこ様は本来、<br>外には派手に<br>見せないけれど、<br>内側に絶対に<br>消えない芯を<br>持っている方ですよね。</p>
+            <p style="margin-bottom: 90px;">一度この人と決めると、<br>相手の小さな表情、<br>声の温度、<br>たった一言の中の本音までも、<br>ずっと拾い続けてしまう。</p>
+            <p style="margin-bottom: 90px;">そんなふうに、<br>誰かをまっすぐ<br>照らし続けられる方は、<br>なかなかいらっしゃいません。</p>
+            <p style="margin-bottom: 90px;">それなのに、<br>なぜこの恋だけは、<br>こんなに切なくて、<br>何度も心が<br>沈んでしまうのか。</p>
+            <p style="margin-bottom: 90px;">ゆうこ様には、<br>目の前のたった一人を、<br>灯し続けてしまう、<br>という性質があります。</p>
+            <p style="margin-bottom: 90px;">普通なら<br>距離をとる場面でも、<br>ゆうこ様の中の灯火は、<br>簡単には消えません。</p>
+            <p style="margin-bottom: 90px;">ただ、その分、<br>本音を言えずに、<br>ご自身の中だけで<br>気持ちを焚き続けてしまう、<br>そんな繊細さもあります。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">だから今、<br>「あの方を灯し続けたい自分」と、<br>「自分の苦しさを<br>守りたい自分」が、<br>ゆうこ様の中でぶつかって、<br>答えを出させてくれないんです。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">ですが、大丈夫です。<br>その答えの出し方を、<br>あなたを守る神様が、<br>ちゃんと視せてくれています。</p>
+            <p>内なる火を司り、<br>情熱を深く、<br>じっくり温め続ける神様。<br><br>そんな持続の力を持つ<br>神様の加護を受けているので、<br>ゆうこ様はこれまでも、<br>「大事だ」と決めた方を、<br>最後まで灯し続けることが<br>できてきたはずです。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️あの方について、視えていること</h2>
+        <div class="section reveal">
+            <p style="margin-bottom: 90px;">あの方は、<br>冬に生まれた、<br>鋭く澄んだ白銀の<br>オーラを持っています。</p>
+            <p style="margin-bottom: 90px;">鋭く澄んだオーラを<br>持っているのに、<br>冬生まれ。</p>
+            <p style="margin-bottom: 90px;">これは<br>「外には鋭く強い人に見えて、<br>内側では誰にも言えない<br>迷いを一人で<br>抱えている」<br>という性質を持つ方です。</p>
+            <p style="margin-bottom: 90px;">だからあの方は、<br>ゆうこ様の前では、<br>普段他の方に<br>見せない表情を、<br>ふと見せる瞬間が<br>あったはずです。</p>
+            <p style="margin-bottom: 90px;">あの「ふっと素顔を見せる瞬間」の裏で、<br>あの方の中に<br>何が動いているのか。</p>
+            <p style="margin-bottom: 90px;">あの方が、<br>ゆうこ様にどう近づきたいのか。<br>今のかたちを、<br>これから先、<br>どうしたいと思っているのか。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">私には、視えています。</p>
+            <p>ただ、これは<br>守護神からお預かりしている、<br>ゆうこ様のこれからを動かす<br>重たい言葉です。<br><br>本式守護霊視鑑定の場で、<br>丁寧にお伝えさせていただきますね。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️本式守護鑑定でお伝えすること</h2>
+        <div class="section reveal">
+            <p style="margin-bottom: 90px;">ゆうこ様の中で<br>起きているぶつかりは、<br>時間が経てば自然に<br>片付くもの、<br>ではありません。</p>
+            <p style="margin-bottom: 90px;">迷いを抱えたまま、<br>夏を越え、<br>秋を越えた時。<br>あの方の隣にいる<br>ゆうこ様が、<br>「期待していい自分」で<br>いられるか、<br>「結局、踏み込めなかった自分」で<br>いるか。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">その差は、今この瞬間に、<br>ゆうこ様が<br>「自分の状態を<br>正しく知るか」で<br>決まります。</p>
+            <p style="margin-bottom: 90px;">あの方の中でも、<br>ゆうこ様の存在は<br>少しずつ、<br>「会えれば嬉しい<br>今のかたち」として<br>景色に馴染んでいきます。</p>
+            <p>そうなる前に、<br>ゆうこ様にちゃんと<br>知っていただきたいことが、<br>私には視えています。</p>
+        </div>
+
+        <div style="padding: 40px 0; margin: 40px 0;">
+            <div style="margin: 30px 0; text-align: center;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 ゆうこ様の灯し方</h3>
+                        <p>ゆうこ様の中に本来ある、<br>まっすぐ照らし続ける力を、<br>この恋の中で<br>どう使えばいいのか。<br>具体的にお伝えします。</p>
+                    </div>
+                </div>
+
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 あの方の本音</h3>
+                        <p>あの方が心の奥で<br>何を感じているのか、<br>ゆうこ様にどう近づきたいのか。<br>ひとつひとつ視て、<br>お伝えします。</p>
+                    </div>
+                </div>
+
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 ふたりが動く瞬間</h3>
+                        <p>今年から来年にかけて、<br>ふたりの関係が動く瞬間が<br>訪れます。<br>その時期と、<br>ゆうこ様が取るべき態度を、<br>丁寧にお伝えします。</p>
+                    </div>
+                </div>
+
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 122, 255, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 ゆうこ様らしい選び方</h3>
+                        <p>「自分の手で」未来を<br>選び取るために、<br>今日からゆうこ様に<br>できることを、<br>ゆうこ様だけのために<br>お渡しします。</p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 90px; margin-bottom: 90px; text-align: center;">ゆうこ様ご自身の手で<br>未来を選び取るための鑑定です。</p>
+            <p style="margin-top: 90px; margin-bottom: 90px; text-align: center; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">その一歩を、<br>ここから踏み出してください。</p>
+        </div>
+
+        <div class="cta reveal">
+            <h2>【運命の扉が開く24時間】</h2>
+
+            <p style="margin-bottom: 90px;">今、ゆうこ様のために、<br>運命の扉は最も大きく<br>開かれています。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">この巡り合わせは、<br>残念ながら永遠ではありません。</p>
+            <p style="margin-bottom: 90px;">私からのこのお手紙を<br>受け取ってから<br>24時間以内に<br>一歩踏み出すと、</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">止まっていた運命は、<br>最もなめらかに<br>動き始めます。</p>
+            <p style="margin-bottom: 90px;">ご自身の手で<br>最高の未来を選び取りたいと<br>心から願うゆうこ様へ。</p>
+            <p style="margin-bottom: 90px;">通常9,800円のところ、<br>今回に限り、<br>特別価格4,980円で<br>本式守護霊視鑑定を行います。</p>
+            <p style="margin-bottom: 90px;">1日限定3名までしか<br>お受けできません。<br>リンク先が表示されない場合<br>本日分は締切ですので<br>ご了承ください。</p>
+
+            <div class="price">
+                <span class="original-price">通常9,800円</span><br>
+                <span class="limited-badge">24時間限定の特別価格</span><br>
+                <span class="special-price">4,980円</span>
+            </div>
+
+            <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/69eb763d23b5d0e88f9854e9" class="cta-button" target="_blank">本式守護鑑定を受ける▼</a>
+
+            <p style="margin-top: 90px;">お申し込み後、<br>購入時のお名前をお知らせください。<br>1日以内に、<br>あなただけの鑑定書をお届けします。</p>
+        </div>
+
+        <div class="closing reveal">
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">ゆうこ様の物語が、<br>ゆうこ様らしい結末を<br>迎えることを、<br>私は守護の声を通して、<br>すでに知っています。</p>
+            <p style="margin-bottom: 90px;">ご縁に、<br>心から感謝を込めて。</p>
+
+            <div class="signature">深雪</div>
+        </div>
+    </div>
+
+    <script>
+        // 守護神 × 光輪カラー プリセット
+        // [画像ファイル名(拡張子なし), 内側RGB, 外側RGB, 系統ラベル]
+        var PRESETS = [
+            // 火・赤
+            ['火産霊神',        '255,180,100', '255,120,60',  '火・橙'],
+            ['火之迦具土神',    '255,140,90',  '230,80,50',   '火・赤'],
+            ['不動明王',        '255,120,80',  '210,60,40',   '火・赤深'],
+            ['三宝荒神',        '255,140,100', '220,70,50',   '火・赤'],
+            ['迦楼羅天',        '255,160,90',  '230,100,40',  '火・橙'],
+            ['奥津日子命',      '255,190,120', '230,140,70',  '竈・橙'],
+            // 水・青
+            ['豊玉姫',          '120,200,255', '60,140,220',  '水・青'],
+            ['市杵嶋姫命',      '140,210,255', '70,150,230',  '水・青'],
+            ['綿津見神',        '90,160,220',  '40,100,180',  '海・深青'],
+            ['住吉大神',        '120,190,240', '60,130,210',  '海・青'],
+            ['弁財天',          '170,200,255', '110,150,220', '水・桃青'],
+            // 浄化水
+            ['瀬織津姫',        '180,220,255', '100,170,230', '浄化水'],
+            ['罔象女神',        '180,220,255', '100,170,230', '浄化水'],
+            ['弥都波能売神',    '180,220,255', '100,170,230', '浄化水'],
+            ['速秋津日子・比売神','180,220,255','100,170,230','浄化水'],
+            // 暗い水・龍
+            ['闇淤加美神',      '110,150,210', '60,100,170',  '深水・龍'],
+            ['高淤加美神',      '130,170,220', '70,120,180',  '深水・龍'],
+            ['龍樹菩薩',        '160,180,240', '110,130,210', '龍・青紫'],
+            // 木・草
+            ['久久能智神',      '180,230,150', '120,180,90',  '木・緑'],
+            ['五十猛命',        '170,220,140', '110,170,80',  '木・緑'],
+            ['鹿屋野比売',      '200,230,160', '140,190,100', '草・緑'],
+            ['木俣神',          '180,225,150', '120,180,90',  '木・緑'],
+            // 山
+            ['大山祇神',        '150,200,140', '90,150,80',   '山・深緑'],
+            ['白山比咩神',      '230,240,230', '180,210,180', '雪山・銀緑'],
+            // 花・桃
+            ['木花咲耶姫',      '255,180,210', '230,130,180', '花・桃'],
+            ['吉祥天',          '255,200,220', '230,150,200', '福・桃'],
+            // 土・茶
+            ['埴山姫神',        '220,180,140', '180,130,80',  '土・茶'],
+            ['埴山彦神',        '220,180,140', '180,130,80',  '土・茶'],
+            ['大地主神',        '210,180,140', '170,130,80',  '土・茶'],
+            ['春日大明神',      '230,200,150', '190,150,90',  '神鹿・茶金'],
+            // 金属
+            ['金山姫神',        '240,220,160', '200,170,100', '金・銀金'],
+            ['金山彦神',        '240,220,160', '200,170,100', '金・銀金'],
+            ['毘沙門天',        '230,210,140', '180,160,80',  '武・金緑'],
+            // 剣・銀
+            ['布都御魂',        '220,230,240', '170,180,200', '剣・白銀'],
+            ['経津主神',        '220,230,240', '170,180,200', '剣・白銀'],
+            ['日本武尊',        '210,225,240', '160,180,210', '武・銀'],
+            ['建御雷神',        '200,170,255', '150,100,220', '雷・紫'],
+            // 太陽・穀
+            ['天照大御神',      '255,230,130', '255,180,80',  '太陽・金'],
+            ['宇迦之御魂神',    '255,220,140', '230,170,80',  '稲・黄金'],
+            ['豊受大神',        '255,225,150', '230,180,90',  '穀・黄金'],
+            ['吒枳尼天',        '255,200,120', '230,160,70',  '狐・橙金'],
+            // 大地・縁
+            ['大己貴命',        '180,210,130', '130,170,80',  '大地・縁'],
+            // 道
+            ['猿田彦命',        '255,200,100', '230,150,50',  '道・黄橙'],
+            // 中央・宇宙
+            ['天之御中主神',    '230,220,255', '190,180,230', '中央・白紫'],
+            ['高御産巣日神',    '240,230,255', '200,190,235', '創造・白紫']
+        ];
+
+        (function buildPalette () {
+            var grid = document.getElementById('testGrid');
+            if (!grid) return;
+            PRESETS.forEach(function (p) {
+                var name = p[0], a1 = p[1], a2 = p[2], tag = p[3];
+                var item = document.createElement('div');
+                item.className = 'test-thumb';
+                item.style.setProperty('--aura-color-1', a1);
+                item.style.setProperty('--aura-color-2', a2);
+                item.innerHTML =
+                    '<img src="../鑑定画像/' + name + '.png" alt="' + name + '">' +
+                    '<p>' + name + '<br><span style="color:#a8b8ff;font-size:0.85em;">' + tag + '</span></p>';
+                item.addEventListener('click', function () {
+                    document.documentElement.style.setProperty('--aura-color-1', a1);
+                    document.documentElement.style.setProperty('--aura-color-2', a2);
+                    var main = document.querySelector('.guardian-image');
+                    if (main) {
+                        main.src = '../鑑定画像/' + name + '.png';
+                        main.alt = name;
+                    }
+                    document.querySelectorAll('.test-thumb.is-active').forEach(function (el) {
+                        el.classList.remove('is-active');
+                    });
+                    item.classList.add('is-active');
+                });
+                grid.appendChild(item);
+            });
+        })();
+
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
+</body>
+</html>
