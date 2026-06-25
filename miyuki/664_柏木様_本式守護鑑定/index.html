@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>柏木直美様　本式守護鑑定</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+        .month-header {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #c8d0ff;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        .sub-header {
+            font-size: 1.15em;
+            font-weight: bold;
+            color: #ffd966;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+        ul { list-style: none; margin: 20px 0; text-align: center; }
+        ul li { margin: 20px 0; color: #e8e8f0; }
+        .stone-name {
+            color: #ffd966;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+        @media (max-width: 768px) {
+            body { font-size: 15px; padding: 10px; }
+            .container { padding: 20px 10px; }
+            h1 { font-size: 1.3em; }
+            h2 { font-size: 1.2em; }
+            .oracle-message, .section { padding: 15px 10px; }
+            .cover-page { margin: -10px; margin-bottom: 0; }
+            .cover-title { font-size: 1.6em; }
+            .cover-subtitle { font-size: 1.3em; }
+            .cover-name { font-size: 1.2em; }
+            .toc { padding: 20px 15px; }
+            .toc-title { font-size: 1.1em; }
+            .toc a { font-size: 0.95em; padding: 12px 6px 12px 36px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">水辺に光が戻る日まで</h2>
+            <p class="cover-name">柏木直美様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 目次 -->
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-god">あなたの守護神について</a></li>
+                <li><a href="#sec-essence">あなたという人</a></li>
+                <li><a href="#sec-1">1. 包む力の使い方</a></li>
+                <li><a href="#sec-2">2. 宏太様の本音と歩む道</a></li>
+                <li><a href="#sec-3">3. お相手様について</a></li>
+                <li><a href="#sec-4">4. 離婚調停と8月19日</a></li>
+                <li><a href="#sec-5">5. 直美様らしい支え方</a></li>
+                <li><a href="#sec-6">6. 宏太様の歩む先</a></li>
+                <li><a href="#sec-flow">今後の流れ・大切な四ヶ月</a></li>
+                <li><a href="#sec-guardian">守護を受け取る方法</a></li>
+                <li><a href="#sec-stone">あなたを支えるパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
+        <!-- 冒頭 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">直美様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂が、<br>本気で守ろうとしている。</p>
+            <p style="margin-bottom: 90px;">その深い思いが、<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先、<br>あなたが本当に知るべきことを、<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が、<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px;">宏太様が、<br>自分の足で立ち、<br>自分の選んだ場所で、<br>静かに笑っている姿。</p>
+            <p style="margin-bottom: 90px;">そしてその傍らで、<br>あなたが、<br>重たい荷物を下ろして、<br>ようやく深く息をしている姿。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>2027年の春から夏にかけて。</p>
+            <p style="margin-bottom: 90px;">長い冬が明けて、<br>水辺に光が戻る頃、<br>親子それぞれが、<br>自分の人生を生き直し始めている。</p>
+            <p style="margin-bottom: 90px;">その未来の兆しが、<br>はっきりとあります。</p>
+            <p style="margin-bottom: 90px;">そこに至るまでの道のりは、<br>決して平坦ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2026年は、<br>親子で最も深い場所まで潜る年。</p>
+            <p style="margin-bottom: 90px;">特に秋。</p>
+            <p style="margin-bottom: 90px;">ここで一つの決着があり、<br>その後、年末に向けて<br>体に出るほどの消耗があるかもしれません。</p>
+            <p style="margin-bottom: 90px;">でも、<br>その深い場所まで潜るからこそ、<br>本当の意味で<br>新しい水面に浮かび上がれる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたには、<br>それを乗り越える力があります。</p>
+            <p style="margin-bottom: 0;">そして、それを支える守護の力が、<br>すでに動き始めています。</p>
+        </div>
+
+        <!-- 守護神の紹介 -->
+        <div class="oracle-message" id="sec-god">
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは、<br><span style="color: #ffd966;">豊玉姫<br>(とよたまひめ)</span>。</p>
+            <p style="margin-bottom: 90px;">遠い昔、<br>海の底に暮らす龍神の姫が、<br>地上の若者・山幸彦と出会い、<br>深く愛し合いました。</p>
+            <p style="margin-bottom: 90px;">豊玉姫は、<br>愛する人のもとに留まり、<br>やがて子を授かりました。</p>
+            <p style="margin-bottom: 90px;">けれども出産の時、<br>本来の龍の姿を見られてしまい、<br>豊玉姫は海へ帰らねばならなくなりました。</p>
+            <p style="margin-bottom: 90px;">それでも豊玉姫は、<br>我が子をその場に残し、<br>妹の玉依姫に<br>深く愛して育てるよう託したのです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">愛する者のために、<br>深く深く潜り、<br>身を引いてでも守る。</p>
+            <p style="margin-bottom: 90px;">そして、<br>信頼できる者に<br>我が子の未来を託す。</p>
+            <p style="margin-bottom: 0;">その尊い姿のまま、<br>今も豊玉姫神社、<br>そして大阪・住吉大社の中の<br>大海神社に祀られています。</p>
+            <img src="../鑑定画像/豊玉姫.png" alt="豊玉姫" class="guardian-image">
+        </div>
+
+        <!-- あなたという人 -->
+        <h2 class="emoji-header" id="sec-essence">⛩️あなたという人</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから少し、<br>あなたという人について、<br>視えていることをお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>海のように深く人を包む人です。</p>
+            <p style="margin-bottom: 90px;">それは表面の優しさではなく、<br>魂のいちばん奥にある、<br>動かない深い水のような包容力。</p>
+            <p style="margin-bottom: 90px;">人の話を聴くとき、<br>あなたは「言葉」よりも先に、<br>その人の「奥底にある何か」を<br>受け取っているはず。</p>
+            <p style="margin-bottom: 90px;">息子さんのことを思うとき、<br>あなたは息子さんの言葉ではなく、<br>息子さんの「奥底の痛み」を<br>すべて感じ取ってしまう。</p>
+            <p style="margin-bottom: 90px;">これは、<br>本当に深い愛し方です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>あなたには、<br>「愛する人を、<br>自分の中に抱え込みすぎる」<br>傾向があります。</p>
+            <p style="margin-bottom: 90px;">息子さんの痛みを、<br>自分の痛みとして感じる。</p>
+            <p style="margin-bottom: 90px;">息子さんの不安を、<br>自分の不安として抱える。</p>
+            <p style="margin-bottom: 90px;">それは愛だけれど、<br>あなた自身を消耗させる<br>愛の使い方でもあります。</p>
+            <p style="margin-bottom: 90px;">そして、もう一つ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>「私が何とかしなければ」<br>「私がちゃんとしなければ」<br>という声が、<br>内側で絶えず鳴り続けている人。</p>
+            <p style="margin-bottom: 90px;">これは、あなたの魂が<br>「愛する者を守る役」<br>として生まれてきたから。</p>
+            <p style="margin-bottom: 90px;">だからこそ、<br>役割を果たせないことに対して、<br>誰よりも自分を責めてしまう。</p>
+            <p style="margin-bottom: 90px;">でも、<br>覚えていてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたは、<br>すでに十分すぎるほど守ってきました。</p>
+            <p style="margin-bottom: 90px;">息子さんが23歳の<br>今日まで生きてこられたのは、<br>あなたの深い愛があったからです。</p>
+            <p style="margin-bottom: 90px;">これからのあなたに必要なのは、<br>「もっと頑張ること」ではなく、<br>「背負ったものを、少しずつ下ろすこと」</p>
+            <p style="margin-bottom: 90px;">仕事や人付き合いの面でも、<br>視えていることがあります。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>人の中に入って調整する役を<br>無意識に引き受ける人。</p>
+            <p style="margin-bottom: 90px;">「あの人とあの人をつなぐ」<br>「場の空気を整える」<br>そういう動きが、<br>自然にできてしまう。</p>
+            <p style="margin-bottom: 90px;">これは生まれ持った力で、<br>人に頼られやすく、<br>信頼される理由でもあります。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>家でも外でも<br>「調整役」を引き受け続けると、<br>自分の感覚を見失いやすい。</p>
+            <p style="margin-bottom: 90px;">お金や暮らしの面では、<br>とても守られている運をお持ちです。</p>
+            <p style="margin-bottom: 90px;">知恵で生きていく力、<br>学びを深める力、<br>衣食住が安泰になる星。</p>
+            <p style="margin-bottom: 90px;">これらが、<br>あなたの根に<br>しっかりと刻まれています。</p>
+            <p style="margin-bottom: 0;">これからの10年、<br>人を介して動く運の流れに入っているので、<br>信頼できる人を頼ることが、<br>そのまま運の流れを開く鍵になります。</p>
+        </div>
+
+        <!-- ⛩️1. 包む力の使い方 -->
+        <h2 class="emoji-header" id="sec-1">⛩️1. 包む力の使い方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここからは、<br>無料鑑定でお伝えした<br>「包む力」の使い方について、<br>さらに深くお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの包む力は、<br>日本の海のように深い。</p>
+            <p style="margin-bottom: 90px;">そして、<br>あなたが宏太様を包んできた力は、<br>本当に本物です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>ここで一つだけ、<br>守護神から託されている言葉があります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「息子を、自分の中に<br>入れすぎないでください」</p>
+            <p style="margin-bottom: 90px;">これは、<br>息子さんを突き放しなさい、<br>という意味ではありません。</p>
+            <p style="margin-bottom: 90px;">息子さんを、<br>あなたとは別の魂として<br>尊重してください、<br>という意味です。</p>
+            <p style="margin-bottom: 90px;">あなたはこれまで、<br>息子さんの痛みを<br>自分の痛みとして抱えてきました。</p>
+            <p style="margin-bottom: 90px;">息子さんが眠れない夜は、<br>あなたも眠れなかった。</p>
+            <p style="margin-bottom: 90px;">息子さんが何か言葉にならない苦しみを抱えた時、<br>あなたの胸が代わりに苦しくなった。</p>
+            <p style="margin-bottom: 90px;">これは、<br>あなたの魂が<br>息子さんと一体化しているからです。</p>
+            <p style="margin-bottom: 90px;">でも、<br>息子さんが本当に必要としているのは、<br>「同じ場所まで一緒に沈んでくれる人」<br>ではなく、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「沈んだ自分を、<br>水面で待っていてくれる人」</p>
+            <p style="margin-bottom: 90px;">海の女神・豊玉姫は、<br>我が子を残して海へ帰りました。</p>
+            <p style="margin-bottom: 90px;">それは突き放したのではなく、<br>「自分の場所」に戻り、<br>そこから子を守り続けたのです。</p>
+            <p style="margin-bottom: 90px;">あなたにも、<br>「自分の場所」が必要です。</p>
+            <p style="margin-bottom: 90px;">息子さんのことから離れる時間、<br>家の外にある自分のための空間、<br>神社、友人、自然の中。</p>
+            <p style="margin-bottom: 90px;">そういう「水面」を、<br>あなたが持つことで、<br>息子さんが安心して沈めるようになります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これから半年の間に、<br>意識してほしいことが三つ。</p>
+            <p style="margin-bottom: 90px;">一つは、<br>息子さんのことで悩む時間と、<br>自分のための時間を、<br>意識して分けること。</p>
+            <p style="margin-bottom: 90px;">一つは、<br>家の外に<br>「自分のための場所」を一つ持つこと。</p>
+            <p style="margin-bottom: 90px;">一つは、<br>息子さんの問題を<br>「自分の責任」として全部背負わないこと。</p>
+            <p style="margin-bottom: 0;">これだけで、<br>あなたの包む力は、<br>枯れることなく循環していきます。</p>
+        </div>
+
+        <!-- ⛩️2. 宏太様の本音と歩む道 -->
+        <h2 class="emoji-header" id="sec-2">⛩️2. 宏太様の本音と歩む道</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">宏太様のことについて、<br>視えていることをお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">宏太様の魂は、<br>磨かれた美しい金属のような<br>繊細さを持っています。</p>
+            <p style="margin-bottom: 90px;">本物にしか反応しない。<br>偽物には魂が震えない。</p>
+            <p style="margin-bottom: 90px;">そういう、<br>鋭く繊細な感性をお持ちです。</p>
+            <p style="margin-bottom: 90px;">正直にお伝えすると、<br>宏太様は今、<br>言葉にできない苦しみを<br>内に抱えていらっしゃいます。</p>
+            <p style="margin-bottom: 90px;">「自分の本当の居場所が<br>まだ見つかっていない」</p>
+            <p style="margin-bottom: 90px;">「近い人ほど、<br>ちょっとした言葉で深く傷ついてしまう」</p>
+            <p style="margin-bottom: 90px;">「何かを表現したいのに、<br>　その場所が見つからない」</p>
+            <p style="margin-bottom: 90px;">そういう、<br>名前のつかない渇望が、<br>胸の奥にあるはず。</p>
+            <p style="margin-bottom: 90px;">これは、<br>宏太様の生まれ持った魂の質で、<br>誰かのせいでも、<br>ご自身が弱いからでもありません。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ、<br>強く視えているのは、<br>宏太様が<br>「必ず助けられる人」だということ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">宏太様の魂には、<br>最も困難な時に、<br>必ず誰かが現れる運命が刻まれています。</p>
+            <p style="margin-bottom: 90px;">これまでも、<br>一番苦しい時に、<br>ふっと現れてくれた人が<br>いたのではないでしょうか。</p>
+            <p style="margin-bottom: 90px;">これからも、<br>そういう人が必ず現れます。</p>
+            <p style="margin-bottom: 90px;">ご自身が<br>「もうダメだ」と思うその瞬間に、<br>必ず救いの手が伸びてくる。</p>
+            <p style="margin-bottom: 90px;">これは、<br>変わらない事実として<br>魂に刻まれています。</p>
+            <p style="margin-bottom: 90px;">宏太様の歩む道について。</p>
+            <p style="margin-bottom: 90px;">宏太様は、<br>人の痛みを敏感に感じ取れる人です。</p>
+            <p style="margin-bottom: 90px;">そして、<br>人を惹きつける魅力を<br>生まれ持っています。</p>
+            <p style="margin-bottom: 90px;">この組み合わせは、<br>「人の心に寄り添う仕事」、<br>あるいは<br>「細やかさを活かす専門技術の仕事」、<br>そして<br>「何かを表現する仕事」に<br>深く向いている配置。</p>
+            <p style="margin-bottom: 90px;">カウンセリングや福祉、<br>医療や介護の補助、<br>手仕事の職人、<br>音楽や映像や文章を扱う仕事。</p>
+            <p style="margin-bottom: 90px;">そういう領域に、<br>宏太様が<br>「自分の場所だ」と感じる<br>何かが眠っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">時期としては、<br>24歳から33歳までの10年間が、<br>宏太様の人生の再構築期。</p>
+            <p style="margin-bottom: 90px;">特に、<br>お母様(直美様)との関係性が<br>「独立した一人の大人同士」へと<br>変化していく時期。</p>
+            <p style="margin-bottom: 90px;">これがクリアになると同時に、<br>宏太様自身の場所と役割が<br>定まっていく流れ。</p>
+            <p style="margin-bottom: 90px;">2026年の今は、<br>その大きな転換の入り口に<br>立っていらっしゃいます。</p>
+            <p style="margin-bottom: 90px;">苦しいけれど、<br>ここを通り抜けた先に、<br>宏太様の本当の人生が始まる。</p>
+            <p style="margin-bottom: 0;">その兆しが、<br>強く視えています。</p>
+        </div>
+
+        <!-- ⛩️3. お相手様について -->
+        <h2 class="emoji-header" id="sec-3">⛩️3. お相手様について</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">お相手様について、<br>視えていることをお伝えします。</p>
+            <p style="margin-bottom: 90px;">これは、<br>どなたかを責めるためではなく、<br>直美様に<br>「全体の流れ」を<br>知っていただくためです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">お相手様は、<br>直美様と魂の本質が<br>とても近い方です。</p>
+            <p style="margin-bottom: 90px;">海のように深い水を、<br>内側に持っている方。</p>
+            <p style="margin-bottom: 90px;">人を深く感じる力、<br>言葉の奥にあるものを<br>受け取る感性、<br>そういうものが<br>直美様とよく似ていらっしゃいます。</p>
+            <p style="margin-bottom: 90px;">だからこそ、<br>直美様には、<br>お相手様の苦しみが<br>理解できるはずです。</p>
+            <p style="margin-bottom: 90px;">お相手様は今、<br>21歳という若さの中に、<br>すでに「お母さん」としての<br>深い愛を持っていらっしゃる方。</p>
+            <p style="margin-bottom: 90px;">同時に、<br>「自分の世界」を<br>強く大事にしたい年齢でもあります。</p>
+            <p style="margin-bottom: 90px;">その二つが、<br>若いお相手様の中で<br>日々揺れ続けている。</p>
+            <p style="margin-bottom: 90px;">これも本物の感覚です。</p>
+            <p style="margin-bottom: 90px;">そして、<br>視えていることを<br>そのままお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">宏太様とお相手様という<br>お二人の組み合わせは、<br>「結婚生活を長く続けること」が<br>本質的に難しい組み合わせでした。</p>
+            <p style="margin-bottom: 90px;">これは、<br>どちらが悪いという話ではありません。</p>
+            <p style="margin-bottom: 90px;">お二人とも、<br>本当に良い方です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>魂の組み合わせとして、<br>情緒的な温もりを<br>長く保ち続けるための<br>要素が不足していた。</p>
+            <p style="margin-bottom: 90px;">そして、<br>妻であるお相手様は<br>「自分の想いをぶつける」立場に、<br>夫である宏太様は<br>「受け止め続ける」立場に、<br>自然と分かれてしまう構造でした。</p>
+            <p style="margin-bottom: 90px;">ぶつける側も、<br>受け止める側も、<br>どちらも消耗していく関係。</p>
+            <p style="margin-bottom: 90px;">それが、<br>時間をかけて、<br>お二人の間に<br>小さな傷を重ねていきました。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ、<br>強く視えていることがあります。</p>
+            <p style="margin-bottom: 90px;">お相手様自身が、<br>ちょうど10年ほどの間、<br>「結婚という形が揺れやすい」<br>魂の流れの中にいらっしゃいました。</p>
+            <p style="margin-bottom: 90px;">そしてその流れの<br>ちょうど終わりの時期に、<br>ご結婚を迎えられた。</p>
+            <p style="margin-bottom: 90px;">これは、<br>お相手様が悪いという話ではなく、<br>流れとして、<br>この結婚は<br>「長く続く形ではなかった」<br>ということ。</p>
+            <p style="margin-bottom: 90px;">ご結婚されて、<br>お子さんを授かり、<br>そして一年余りで<br>離婚調停に向かう。</p>
+            <p style="margin-bottom: 90px;">短い時間に<br>これだけのことが<br>重なったのも、<br>偶然ではなく、<br>お二人の魂の流れの<br>必然でした。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">だから、<br>直美様、<br>どうかご自身を<br>責めないでください。</p>
+            <p style="margin-bottom: 90px;">「もっと早く何かできたのではないか」<br>「もっと違う関わり方が<br>あったのではないか」</p>
+            <p style="margin-bottom: 90px;">そう思われるかもしれません。</p>
+            <p style="margin-bottom: 90px;">でも、<br>これは命の流れの中で、<br>通るべき道だったのです。</p>
+            <p style="margin-bottom: 0;">宏太様も、<br>お相手様も、<br>そしてお孫さんにとっても、<br>ここから新しい人生が<br>始まるための、<br>必要な通過点でした。</p>
+        </div>
+
+        <!-- ⛩️4. 離婚調停と8月19日 -->
+        <h2 class="emoji-header" id="sec-4">⛩️4. 離婚調停と8月19日</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">離婚調停の流れについて、<br>視えていることを<br>順にお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">8月19日水曜日、<br>第1回目の調停日が<br>決まりましたね。</p>
+            <p style="margin-bottom: 90px;">この日のことから、<br>お伝えしていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">8月19日の日そのものを、<br>霊視すると、<br>「整理に向かう日」であることが<br>わかりました。</p>
+            <p style="margin-bottom: 90px;">激しくぶつかり合う日ではなく、<br>物事が静かに整っていく日。</p>
+            <p style="margin-bottom: 90px;">そしてこの日のエネルギーは、<br>宏太様にとって<br>味方になる流れを持っています。</p>
+            <p style="margin-bottom: 90px;">宏太様の魂の根本と、<br>この日のエネルギーが<br>深く結びついていて、<br>宏太様の立場や主張が<br>「形になりやすい」<br>という日です。</p>
+            <p style="margin-bottom: 90px;">同時に、<br>直美様の魂の根本とも<br>この日は結ばれています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;"><span style="color: #ffd966;">豊玉姫</span>が、<br>水面の下から<br>宏太様を支えてくださる、<br>そんな景色が視えます。</p>
+            <p style="margin-bottom: 90px;">お相手様にとって、<br>この日は少し<br>感情の揺れが大きい日です。</p>
+            <p style="margin-bottom: 90px;">ただし、<br>親権を争わないと<br>決めていらっしゃるので、<br>取り返しのつかないような<br>衝突は起きません。</p>
+            <p style="margin-bottom: 90px;">第1回目の調停は、<br>最終的な決着の日ではなく、<br>「これからどう進めるか」<br>「何を整理していくか」の方向性が<br>見えてくる日です。</p>
+            <p style="margin-bottom: 90px;">財産分与、<br>養育費、<br>お孫さんとの面会のこと。</p>
+            <p style="margin-bottom: 90px;">これらの大枠が、<br>ここで一つ、<br>形になり始めます。</p>
+            <p class="sub-header">【8月19日までの直美様の動き方】</p>
+            <p style="margin-bottom: 90px;">ここから8月19日までの間、<br>直美様にお願いしたいことが<br>2つあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">一つ。<br>宏太様の話を、<br>「結論を出さずに聴く」こと。</p>
+            <p style="margin-bottom: 90px;">「こうしたほうがいい」<br>「こう言いなさい」<br>と先回りせず、<br>ただ深く頷いて、<br>聴いてあげてください。</p>
+            <p style="margin-bottom: 90px;">宏太様は、<br>言葉を整理する時間を<br>今、必要としています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">一つ。<br>8月19日の前日と当日は、<br>直美様ご自身が<br>心を整える時間を持つこと。</p>
+            <p style="margin-bottom: 90px;">落ち着いて<br>話を聞いたあとは<br>完全に任せてしまいましょう。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">どのような流れになっても<br>最終的にはうまくいく。<br>そういう運命が二人をまもっています。</p>
+        </div>
+
+        <!-- ⛩️5. 直美様らしい支え方 -->
+        <h2 class="emoji-header" id="sec-5">⛩️5. 直美様らしい支え方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここまでお伝えしてきたことを、<br>最後にもう一段深いところでまとめます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">直美様らしい支え方の核心は、<br>「全部を一人で背負わないこと」。</p>
+            <p style="margin-bottom: 90px;">直美様の魂と宏太様の魂は、<br>本来、<br>息子さんからお母様へと<br>力が流れる関係です。</p>
+            <p style="margin-bottom: 90px;">息子さんの存在自体が、<br>直美様を生かしている。</p>
+            <p style="margin-bottom: 90px;">これは、<br>本当の事実です。</p>
+            <p style="margin-bottom: 90px;">これまで直美様は、<br>「与える側」ばかりに立ってきました。</p>
+            <p style="margin-bottom: 90px;">これからは、<br>「受け取る側」になることを、<br>ご自身に許してください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">直美様の中には、<br>不足している二つのエネルギーがあります。</p>
+            <p style="margin-bottom: 90px;">一つは、<br>「自分の喜び」のエネルギー。</p>
+            <p style="margin-bottom: 90px;">もう一つは、<br>「ここまで」と線を引く力。</p>
+            <p style="margin-bottom: 90px;">「自分の喜び」のエネルギーは、<br>息子さんとは関係のない、<br>ご自身だけの小さな喜びから生まれます。</p>
+            <p style="margin-bottom: 90px;">朝のコーヒーを丁寧に淹れる。<br>好きな本を一行読む。<br>花を見つめる。</p>
+            <p style="margin-bottom: 90px;">そういう、<br>誰のためでもない時間を、<br>意識して持ってください。</p>
+            <p style="margin-bottom: 90px;">これが、<br>あなたの中の枯れた火を<br>少しずつ灯していきます。</p>
+            <p style="margin-bottom: 90px;">「ここまで」と線を引く力は、<br>「私の役割はここまで、<br>　ここから先は専門家にお任せする」<br>という形で使ってください。</p>
+            <p style="margin-bottom: 90px;">息子さんのことを<br>「全部」抱えるのではなく、<br>「ここまでは私、<br>　ここから先は弁護士や支援者」と、<br>役割を分ける。</p>
+            <p style="margin-bottom: 90px;">これは、<br>息子さんを突き放すのではなく、<br>息子さんに<br>「自分で選ぶ力」を返してあげること。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">豊玉姫</span>が、<br>我が子を妹に託したように。</p>
+            <p style="margin-bottom: 90px;">あなたも、<br>息子さんの一部を<br>専門家や支援者に<br>託していい。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">それは、<br>愛を手放すことではなく、<br>愛をより長く、より深く<br>循環させるための知恵です。</p>
+        </div>
+
+        <!-- ⛩️6. 宏太様の歩む先 -->
+        <h2 class="emoji-header" id="sec-6">⛩️6. 宏太様の歩む先</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">直美様の心の中に、<br>おそらくこういう問いが<br>あると思います。</p>
+            <p style="margin-bottom: 90px;">「宏太は一人でも<br>強く生きていけるのだろうか」</p>
+            <p style="margin-bottom: 90px;">「これから先、<br>もう一度誰かと出会って、<br>幸せな家庭を持てるのだろうか」</p>
+            <p style="margin-bottom: 90px;">その問いに、<br>視えていることを<br>お伝えします。</p>
+            <p class="sub-header">【一人でも生きていけるか】</p>
+            <p style="margin-bottom: 90px;">率直にお伝えします。</p>
+            <p style="margin-bottom: 90px;">宏太様は、<br>「一人で力強く道を切り開く」<br>というタイプの方ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただし、<br>「本当に一人になる」ことも、<br>実はない方です。</p>
+            <p style="margin-bottom: 90px;">宏太様には、<br>最も困難な時に、<br>必ず誰かが現れる<br>強い守護があります。</p>
+            <p style="margin-bottom: 90px;">これまでもそうだったように、<br>これからも、<br>本当に苦しい瞬間に、<br>ふっと現れて<br>手を差し伸べてくれる方が、<br>必ずいらっしゃいます。</p>
+            <p style="margin-bottom: 90px;">だからこそ、<br>宏太様に必要なのは、<br>「一人で強くなる」ことではなく、<br>「人と関わり続ける環境」を保つこと。</p>
+            <p style="margin-bottom: 90px;">物理的に一人で<br>暮らすことは可能です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>心の中まで一人になると、<br>宏太様の繊細さが<br>内側で空回りしてしまう。</p>
+            <p style="margin-bottom: 90px;">仕事の仲間、<br>親しい友人、<br>専門家、<br>カウンセラー、<br>あるいは直美様。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そういう「魂の支援者」を<br>少なくとも一人、<br>持ち続けてください。</p>
+            <p style="margin-bottom: 90px;">それさえあれば、<br>宏太様は<br>ちゃんと生きていけます。</p>
+            <p class="sub-header">【再婚について】</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ、<br>視えていることがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">宏太様には、<br>もう一度、<br>ご縁を結ぶ可能性があります。</p>
+            <p style="margin-bottom: 90px;">ただし、<br>すぐではありません。</p>
+            <p style="margin-bottom: 90px;">これから先の10年、<br>24歳から33歳までは、<br>宏太様にとって<br>「自分自身を立て直す」期間。</p>
+            <p style="margin-bottom: 90px;">ご自身が本当に<br>何を大切にしたいか、<br>誰と歩みたいか、<br>それを内側で<br>育てていく10年です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして30代の前半から半ばにかけて、<br>新しいご縁が<br>ゆっくり訪れ始めます。</p>
+            <p style="margin-bottom: 90px;">このときの相手は、<br>最初のご結婚のような<br>強い情熱で出会う方ではなく、<br>時間をかけて<br>ゆっくり育つご縁。</p>
+            <p style="margin-bottom: 90px;">宏太様より少し年上の方、<br>あるいは<br>精神的に深く成熟された方。</p>
+            <p style="margin-bottom: 90px;">「守ってくれる方」<br>「包んでくれる方」<br>そういう方とのご縁が<br>強く視えます。</p>
+            <p style="margin-bottom: 90px;">そして、<br>お孫さんを大切に<br>受け入れてくださる方。</p>
+            <p style="margin-bottom: 90px;">これが、<br>宏太様の次のご縁の<br>大切な基準になります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">だから直美様、<br>焦らないでください。</p>
+            <p style="margin-bottom: 90px;">宏太様は、<br>すぐに新しい方を<br>見つける必要はありません。</p>
+            <p style="margin-bottom: 90px;">まずは、<br>今回の決着を<br>落ち着いてつけること。</p>
+            <p style="margin-bottom: 90px;">そして24歳からの10年、<br>ご自身を立て直すこと。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">その時間こそが、<br>次の幸せに向かう<br>本当の準備です。</p>
+        </div>
+
+        <!-- 今後の流れ・大切な四ヶ月 -->
+        <h2 id="sec-flow">【今後の流れ・大切な四ヶ月】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここからは、<br>これから訪れる四ヶ月について、<br>具体的にお伝えします。</p>
+            <p class="month-header">2026年6月：守護神の力が満ちる月</p>
+            <p style="margin-bottom: 90px;">この月は、<br>あなたの命に深く結ばれた<br>「守護神の月」です。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">豊玉姫</span>の力が、<br>最も流れ込んでくる月。</p>
+            <p style="margin-bottom: 90px;">これまで動かなかったものが、<br>内側から<br>少しずつ動き始める準備が整います。</p>
+            <p style="margin-bottom: 90px;">この月にしてほしいことが、<br>一つだけあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">住吉大社の中にある<br>(大阪府大阪市住吉区住吉2丁目9)<br>大海神社を調べてみてください。</p>
+            <p style="margin-bottom: 90px;">できれば近いうちに一度<br>足を運んでみてください。</p>
+            <p style="margin-bottom: 90px;">そこで、<br>「私はもう全部を背負わなくていい」<br>と、<br>心の中で唱えてみてください。</p>
+            <p style="margin-bottom: 90px;">これだけで、<br>内側の重たい荷物が、<br>少し軽くなっていきます。</p>
+            <p style="margin-bottom: 90px;">この月は、<br>動く月ではなく、<br>整える月。</p>
+            <p style="margin-bottom: 90px;">ゆっくり、深く息を吸って、<br>ご自身の中に<br>豊玉姫の力を満たしてください。</p>
+            <p class="month-header">2026年7月：自分のための時間を持つ月</p>
+            <p style="margin-bottom: 90px;">この月は、<br>ご自身が動き始める月。</p>
+            <p style="margin-bottom: 90px;">ただし、<br>「息子さんのために動く」のではなく、<br>「自分のために動く」月です。</p>
+            <p style="margin-bottom: 90px;">家の外に<br>「自分のための場所」を<br>一つ作ってみてください。</p>
+            <p style="margin-bottom: 90px;">カフェでも、<br>図書館でも、<br>公園のベンチでも、<br>神社の境内でも、<br>どこでも構いません。</p>
+            <p style="margin-bottom: 90px;">「ここは私の場所」と思える場所を、<br>一つ持つ。</p>
+            <p style="margin-bottom: 90px;">それだけで、<br>息子さんの話を聴く時も、<br>自分が満ちた状態で<br>聴けるようになります。</p>
+            <p class="month-header">2026年8月：第1回調停の月</p>
+            <p style="margin-bottom: 90px;">この月は、<br>8月19日水曜日の<br>第1回調停日が、<br>ひとつの大きな節目になります。</p>
+            <p style="margin-bottom: 90px;">この日に向けて、<br>直美様にお願いしたいのは、<br>ご自身を整えておくこと。</p>
+            <p style="margin-bottom: 90px;">宏太様の代わりに動かず、<br>代わりに調べず、<br>ただ宏太様の話を<br>深く聴く役に徹してください。</p>
+            <p style="margin-bottom: 90px;">8月19日の前日と当日は、<br>朝の時間を<br>ご自身のために使ってください。</p>
+            <p style="margin-bottom: 90px;">塩を入れたお風呂、<br>神棚や仏壇への祈り、<br>近くの神社への<br>朝のお参り。</p>
+            <p style="margin-bottom: 90px;">どれか一つで構いません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">直美様が霊的に整っていることが、<br>当日の宏太様を<br>最も深く支える力になります。</p>
+            <p class="month-header">2026年9月：調停が動く月</p>
+            <p style="margin-bottom: 90px;">この月は、<br>大きな動きが出る月。</p>
+            <p style="margin-bottom: 90px;">この月、<br>直美様の内面は<br>少し揺れるかもしれません。</p>
+            <p style="margin-bottom: 90px;">「もっと何かしてあげたい」<br>「私が動けば早く解決するのに」</p>
+            <p style="margin-bottom: 90px;">そう思うかもしれません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも、<br>ここで動かないでください。</p>
+            <p style="margin-bottom: 90px;">ご自身の内面が揺れたら、<br>神社参拝、<br>パワーストーン、<br>深呼吸。</p>
+            <p style="margin-bottom: 90px;">ご自身を整える時間を、<br>意識して持ってください。</p>
+            <p class="sub-header">【今年(2026年)全体】</p>
+            <p style="margin-bottom: 90px;">2026年は、<br>あなたにとって<br>「他者を通じて家族の形が<br>再編成される年」です。</p>
+            <p style="margin-bottom: 90px;">ご自身が動くより、<br>息子さん、専門家、周囲の人を介して、<br>物事が動いていく一年。</p>
+            <p style="margin-bottom: 90px;">内面の負担は重い年ですが、<br>守護神の力と<br>専門家の手を借りることで、<br>必ず乗り越えられる流れです。</p>
+            <p class="sub-header">【来年(2027年)】</p>
+            <p style="margin-bottom: 90px;">2027年は、<br>仲間やサポート役の力が入る年。</p>
+            <p style="margin-bottom: 90px;">2026年に重い決着があった後、<br>「一人で背負わなくていい」と<br>心から気づける一年になります。</p>
+            <p style="margin-bottom: 90px;">息子さんも、<br>新しい10年に入り、<br>新しい関係性が始まります。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">長い冬が明けて、<br>水辺に光が戻る年。</p>
+        </div>
+
+        <!-- ⛩️守護を受け取る方法 -->
+        <h2 class="emoji-header" id="sec-guardian">⛩️守護を受け取る方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから、<br>あなたへの守護の届け方について<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、安心してください。</p>
+            <p style="margin-bottom: 90px;">あなたのことを深く霊視した際、<br>特別な守護の力を<br>あなたの奥底においてきました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">それは<span style="color: #ffd966;">豊玉姫</span>の和魂の力。</p>
+            <p style="margin-bottom: 90px;">この力は、<br>深く沈んだ感情を静め、<br>あなた本来の包容力を<br>枯らさずに循環させ、<br>必要な助けを<br>静かに引き寄せる流れを整えていきます。</p>
+            <p style="margin-bottom: 90px;">今この文を読んでいる間にも、<br>胸が少し温かくなる、<br>肩が軽くなる、<br>眠気を感じる、<br>ふっと安心する。</p>
+            <p style="margin-bottom: 90px;">もしそのような感覚があれば、<br>すでに守護の力が届き始めている証です。</p>
+            <p style="margin-bottom: 90px;">これは何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ受け取るだけで大丈夫です。</p>
+            <p style="margin-bottom: 90px;">もし今、少しだけ時間があれば、<br>一度だけ静かに目を閉じてください。</p>
+            <p style="margin-bottom: 90px;">右手を胸の中央に当て、<br>左手をお腹に添えて、<br>ゆっくり三度呼吸をしてください。</p>
+            <p style="margin-bottom: 90px;">そして心の中で、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私はもう全部を背負わなくていい」<br>「私は守られている」<br>「息子の未来には道がある」</p>
+            <p style="margin-bottom: 90px;">そう唱えてみてください。</p>
+            <p style="margin-bottom: 90px;">今もし、<br>胸のあたりが少し温かくなる、<br>手がじんわりする、<br>眠くなる、<br>安心感が広がる。</p>
+            <p style="margin-bottom: 90px;">その感覚があれば、<br>すでに豊玉姫の御神気が、<br>今この瞬間にも、<br>あなたへ静かに注がれています。</p>
+            <p style="margin-bottom: 90px;">そして、<br>もし余裕がある時だけ、<br>試してみてほしいことが二つあります。</p>
+            <p class="sub-header">【守護神の神社へ行く】</p>
+            <p style="margin-bottom: 90px;">あなたの守護神・<span style="color: #ffd966;">豊玉姫</span>を<br>お祀りしている神社が、<br>住吉大社のなかにある<br>大海神社に祀られています。</p>
+            <p style="margin-bottom: 90px;">豊玉姫を主祭神とし、<br>父神・豊玉彦命も祀られています。</p>
+            <p style="margin-bottom: 90px;">参拝の際は、<br>心の中でこの祝詞を唱えてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">祓え給い、清め給え、<br>神ながら守り給い、幸え給え<br>(はらえたまい、きよめたまえ、<br>　かむながらまもりたまい、さきわえたまえ)</p>
+            <p style="margin-bottom: 90px;">そして、<br>お願いを唱えるのではなく、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私は息子の歩む道を見守ります。<br>どうか親子をともに守っていてください」</p>
+            <p style="margin-bottom: 90px;">という形で伝えてください。</p>
+            <p style="margin-bottom: 90px;">神様へのお願いは、<br>願望を叶えてもらうのではなく、<br>ご自身が歩む道を宣言し、<br>その歩みを助けてもらうもの。</p>
+            <p style="margin-bottom: 90px;">その姿勢が、<br>豊玉姫との縁を<br>より深くしてくれます。</p>
+            <p class="sub-header">【水で清める】</p>
+            <p style="margin-bottom: 90px;">疲れた日は、<br>塩をひとつまみ入れたお風呂に<br>ゆっくり浸かってください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">水は<span style="color: #ffd966;">豊玉姫</span>の領域です。</p>
+            <p style="margin-bottom: 0;">入りながら、<br>「今日のことは、ここで流す」<br>と心の中で唱えるだけで、<br>内側に溜まった重たいものが<br>流れていきます。</p>
+        </div>
+
+        <!-- ⛩️あなたを支えるパワーストーン -->
+        <h2 class="emoji-header" id="sec-stone">⛩️あなたを支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">あなたには、<br>守護神とのご縁をお伝えし、<br>その力をあなたの奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px;">また、<br>守護神と縁のある神社と、<br>参拝の際に力を取り入れる方法も<br>お伝えしました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">基本的には、<br>これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>守護の力は何もしなければ、<br>少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">なかなか時間が取れない、<br>神社が遠くて頻繁には行けない、<br>という方もいらっしゃると思います。</p>
+            <p style="margin-bottom: 90px;">そのような方に、<br>ぜひお勧めしたいのが<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;"><span style="color: #ffd966;">豊玉姫</span>の力を石に宿し、<br>常に身近に持ち歩くことが<br>できるようになります。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>どんな石でもよいわけではありません。</p>
+            <p style="margin-bottom: 90px;">あなたが持つ潜在的なエネルギーと、<br>豊玉姫が共鳴しやすい石で<br>お作りする必要があります。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">あなたのエネルギーと豊玉姫が<br>共鳴しやすい石を、<br>三つお伝えします。</p>
+            <ul>
+                <li>
+                    <p class="stone-name">1. アクアマリン</p>
+                    <p style="margin-top: 10px;">海の女神の石。<br>乱れた感情を静め、<br>深く穏やかな水のような状態へ整える。<br>豊玉姫と直接共鳴する、<br>あなたにとって最も縁の深い石。</p>
+                </li>
+                <li>
+                    <p class="stone-name">2. ラリマー</p>
+                    <p style="margin-top: 10px;">カリブの海の色を映した石。<br>心の波を穏やかにし、<br>深い安心感を与える。<br>あなたの中の「焦りの火」を静め、<br>内側の海を整える石。</p>
+                </li>
+                <li>
+                    <p class="stone-name">3. ムーンストーン</p>
+                    <p style="margin-top: 10px;">月の柔らかさを宿した石。<br>母性、直感、女性性を高める。<br>あなたの「母としての力」を<br>健全に循環させ、<br>内側の暴走を抑える石。</p>
+                </li>
+            </ul>
+            <p style="margin-top: 60px; margin-bottom: 90px;">この中から、<br>あなたのエネルギーと<br>最もバランスが取れる組み合わせを、<br>私が選び、<br>一つずつ手作りで仕上げます。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">ご希望の場合は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <div class="closing" id="sec-closing">
+            <p style="margin-bottom: 90px;">直美様、</p>
+            <p style="margin-bottom: 90px;">あなたの未来には、<br>宏太様が自分の足で立ち、<br>あなたが安心して笑っている、<br>そんな日々へと続く道が<br>視えています。</p>
+            <p style="margin-bottom: 90px;">長い冬が明けて、<br>水辺に光が戻る頃、<br>親子それぞれが、<br>自分の人生を生き直し始めている。</p>
+            <p style="margin-bottom: 90px;">今は、<br>不安の中にあるかもしれません。</p>
+            <p style="margin-bottom: 90px;">「このままで本当に大丈夫なのか」<br>「私はもっと何かしてあげるべきなのか」</p>
+            <p style="margin-bottom: 90px;">そう迷っているかもしれません。</p>
+            <p style="margin-bottom: 90px;">でもそれは、<br>あなたの愛があまりにも深いから。</p>
+            <p style="margin-bottom: 90px;">息子さんを思う心が、<br>本物だから生まれる迷い。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">正しい感覚です。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>海のように深く人を包む人。</p>
+            <p style="margin-bottom: 90px;">そして、<br>すでに十分すぎるほど<br>息子さんを守ってきた人。</p>
+            <p style="margin-bottom: 90px;">これからのあなたに必要なのは、<br>もっと頑張ることではなく、<br>背負ったものを、<br>少しずつ下ろしていくこと。</p>
+            <p style="margin-bottom: 90px;">息子さんから受け取ることを、<br>ご自身に許してください。</p>
+            <p style="margin-bottom: 90px;">専門家や信頼できる人に、<br>託すことを許してください。</p>
+            <p style="margin-bottom: 90px;">ご自身のための時間を、<br>ご自身に許してください。</p>
+            <p style="margin-bottom: 90px;">それが、<br>あなたの幸せへの道。<br>そして、<br>息子さんの幸せへの道でもあります。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">豊玉姫</span>が、<br>親子ともに、<br>深く守ってくださっています。</p>
+            <p style="margin-bottom: 90px;">豊玉姫もまた、<br>愛するわが子を妹に託しました。</p>
+            <p style="margin-bottom: 90px;">あなたも、<br>そうしていいのです。</p>
+            <p style="margin-bottom: 90px;">愛を手放すのではなく、<br>愛をより長く、より深く<br>循環させるために。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたは、<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">自分を大切にしていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">全部を一人で背負わなくていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">守られている。</p>
+            <p style="margin-bottom: 90px;">その事実を、<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より、<br>遠隔守護祈祷を行い、<br>あなたと宏太様、<br>親子ともの幸せを願います。</p>
+            <p style="margin-bottom: 0;">あなたの未来に、<br>深い安らぎが満ちますように。</p>
+            <p class="signature">深雪</p>
+        </div>
+
+    </div>
+</body>
+</html>
