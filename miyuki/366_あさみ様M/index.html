@@ -205,6 +205,20 @@
             margin-top: 30px;
         }
 
+                :root { --aura-color-1: 200, 230, 160; --aura-color-2: 140, 190, 100; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .guardian-image { position: relative; animation: aura-breath 4s ease-in-out infinite; }
+        @keyframes aura-breath {
+            0%, 100% { box-shadow: 0 0 30px rgba(var(--aura-color-1), 0.35), 0 0 60px rgba(var(--aura-color-2), 0.2), 0 4px 20px rgba(168, 184, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(var(--aura-color-1), 0.6), 0 0 100px rgba(var(--aura-color-2), 0.35), 0 4px 20px rgba(168, 184, 255, 0.3); }
+        }
+        .cta-button { animation: pulse 2.4s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); }
+            50% { transform: scale(1.035); box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4); }
+        }
+        .cta-button:hover { animation: none; }
         @media (max-width: 768px) {
             body {
                 font-size: 15px;
@@ -272,7 +286,7 @@
     <div class="container">
         <h1>あさみ様<br>守護神鑑定書</h1>
 
-        <div class="oracle-message">
+        <div class="oracle-message reveal">
             <p style="margin-bottom: 90px;">あさみ様、</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">2027年の春、<br>子どもたちの笑い声を聞きながら<br>自分の足でそのそばに立って、<br>一緒に声をあげて笑っているあなたの姿を<br>あなたを守る神様が<br>そっと、私に見せてくれました。</p>
             <p style="margin-bottom: 90px;">あの子たちの顔を見ながら、<br>「もう大丈夫」と<br>静かに思えている。</p>
@@ -281,7 +295,7 @@
             <img src="../鑑定画像/鹿屋野比売.png" alt="鹿屋野比売" class="guardian-image">
         </div>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">踏まれても折れない、<br>しなやかな強さで根を張り続ける。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">どんな環境に置かれても<br>諦めずに回復しようとする<br>野生の生命力が宿っています。</p>
             <p style="margin-bottom: 90px;">体が辛くても<br>子どもたちのことを案じていること。<br>祖母に助けてもらいながら、<br>それでも解決法を探し続けていること。<br>折れそうな状況の中で、<br>前を向こうとしていること。</p>
@@ -290,7 +304,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️なぜ今、流れが滞っているのか</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">「しっかりしなければ」<br>という感覚が心を締め付けて、<br>体にまで余分な力みが<br>伝わってしまっている。</p>
             <p style="margin-bottom: 90px;">本来なら体を回復させるべきエネルギーが<br>あちこちへ分散してしまい、<br>一点に集まりきれていない。</p>
             <p style="margin-bottom: 90px;">そして、<br>「このままでいいのか」<br>という迷いが強くなり、<br>本来進むべき流れから<br>少しズレ始めています。</p>
@@ -302,7 +316,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️ここから先の流れ</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">このまま問題を放っておけば<br>今までと同じように<br>違和感を覚え、悩み、苦しみながら<br>毎日を過ごすことになります。</p>
             <p style="margin-bottom: 90px;">いつ、何をすればいいか。<br>これから何が起きるのか。<br>それさえわかれば、<br>あとは自分を整えて待つだけ。<br>望む未来は、ちゃんとやってきます。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">大事なのは、<br>自分で幸せを掴みにいくと<br>心に決めること。</p>
@@ -310,14 +324,14 @@
         </div>
 
         <h2 class="emoji-header">⛩️本式守護鑑定</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">ここまでの鑑定で、<br>あなたを守る神様の存在と、<br>今のあなたの状態をお伝えしました。</p>
             <p style="margin-bottom: 90px;">でも、本当に大切なのはここから。<br>あさみ様が本来の力を取り戻し、<br>子どもたちのそばに<br>立てる日々を手にするために<br>以下の事を霊視して、お伝えします。</p>
         </div>
 
         <div style="padding: 40px 0; margin: 40px 0;">
             <div style="margin: 30px 0; text-align: center;">
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 体が回復に向かう時期と流れ</h3>
@@ -325,7 +339,7 @@
                     </div>
                 </div>
 
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 今の体の状態の霊的な原因</h3>
@@ -333,7 +347,7 @@
                     </div>
                 </div>
 
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 子どもたちとまた笑い合える<br>日常へ</h3>
@@ -345,7 +359,7 @@
             <p style="margin-top: 90px; margin-bottom: 90px; text-align: center; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">さらに、<br>本式守護鑑定を受けてくださった方には、<br>遠隔で守護祈祷を行い、<br>あなたの背中をそっと<br>押す力をお送りします。</p>
         </div>
 
-        <div class="cta">
+        <div class="cta reveal">
             <h2>【運命が動く24時間】</h2>
 
             <p style="margin-bottom: 90px;">今、<br>あなたを守る存在の気配が、<br>いつもより強く近くにあります。</p>
@@ -366,7 +380,7 @@
             <p style="margin-top: 90px;">お申し込み後、<br>購入時のお名前をお知らせください。<br>1日以内に、<br>あなただけの鑑定書をお届けします。</p>
         </div>
 
-        <div class="closing">
+        <div class="closing reveal">
             <p style="margin-bottom: 90px;">私には視えています。</p>
             <p style="margin-bottom: 90px;">子どもたちの笑い声のそばで、<br>自分の足で立ち、<br>一緒に笑っているあさみ様の姿を。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">今感じている苦しさも、<br>決して無駄ではありません。</p>
@@ -377,5 +391,23 @@
         </div>
 
     </div>
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 </body>
 </html>

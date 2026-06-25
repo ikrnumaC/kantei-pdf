@@ -27,6 +27,20 @@
         .limited-badge { color: #ff4444; font-weight: bold; font-size: 0.95em; margin: 10px 0; }
         .closing { text-align: center; margin: 40px 0; padding: 30px 15px; background: rgba(60, 60, 120, 0.2); border-radius: 15px; font-size: 1.1em; line-height: 2; }
         .signature { text-align: right; font-size: 1.3em; color: #c8d0ff; margin-top: 30px; }
+                :root { --aura-color-1: 255, 200, 100; --aura-color-2: 230, 150, 50; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .guardian-image { position: relative; animation: aura-breath 4s ease-in-out infinite; }
+        @keyframes aura-breath {
+            0%, 100% { box-shadow: 0 0 30px rgba(var(--aura-color-1), 0.35), 0 0 60px rgba(var(--aura-color-2), 0.2), 0 4px 20px rgba(168, 184, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(var(--aura-color-1), 0.6), 0 0 100px rgba(var(--aura-color-2), 0.35), 0 4px 20px rgba(168, 184, 255, 0.3); }
+        }
+        .cta-button { animation: pulse 2.4s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); }
+            50% { transform: scale(1.035); box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4); }
+        }
+        .cta-button:hover { animation: none; }
         @media (max-width: 768px) {
             body { font-size: 15px; padding: 10px; }
             .container { padding: 20px 10px; }
@@ -49,7 +63,7 @@
     <div class="container">
         <h1>ほなみん様<br>守護神鑑定書</h1>
 
-        <div class="oracle-message">
+        <div class="oracle-message reveal">
             <p style="margin-bottom: 90px;">ほなみん様、</p>
             <p style="margin-bottom: 90px;">霊視して、<br>思わず深呼吸しました。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">これほど広く、温かく、<br>どっしりとした大地のような<br>ブラウンのオーラを纏った方は、<br>なかなかいらっしゃいません。</p>
@@ -59,7 +73,7 @@
             <img src="../鑑定画像/猿田彦命.png" alt="猿田彦命" class="guardian-image">
         </div>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">ほなみん様は本来、<br>そこにいるだけで<br>周りが安心する方ですよね。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">派手に動くわけではないのに、<br>不思議と人が<br>寄ってきてしまう。<br>話を聞いてもらいたくなる。<br>そういう「場を整える力」を<br>生まれ持っていらっしゃる方です。</p>
             <p style="margin-bottom: 90px;">頼まれごとを断れず、<br>気づけば人の重たい話を<br>引き受けている。</p>
@@ -67,7 +81,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️なぜ今、迷いが出ているのか</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">それなのに、<br>なぜ今、自分の進む道に<br>迷いが出ているのか。</p>
             <p style="margin-bottom: 90px;">ただ、ほなみん様にはもう一つ、<br>「自分と同じくらいの強さで<br>何かを成し遂げている人」<br>の世界に強く惹かれる性質があります。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">それが今、<br>「実家の農家を支える自分」と、<br>「終活という新しい仕事を<br>立ち上げたい自分」、<br>二つの強い柱を<br>同時に持とうとされている<br>理由でもあります。</p>
@@ -81,7 +95,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️ほなみん様の仕事の流れが<br>今、どう動いているか</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">ほなみん様の「終活のお話を聞く」<br>というお仕事。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">これは単なる片付けの仕事ではなく、<br>「人生の最後の景色を<br>一緒に整える仕事」として<br>オーラに刻まれています。</p>
             <p style="margin-bottom: 90px;">大地のオーラを持つ方は、<br>人の重たい荷物を<br>預かれる数少ない器を<br>持っていらっしゃいます。</p>
@@ -93,7 +107,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️本式守護鑑定でお伝えすること</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">ほなみん様の中で起きている<br>このぶつかりは、<br>時間が経てば<br>自然に片付くもの、<br>ではありません。</p>
             <p style="margin-bottom: 90px;">「自分の仕事を立ち上げた自分」で<br>来年を迎えるか。</p>
             <p style="margin-bottom: 90px;">「結局、農家の手伝いだけで<br>終わってしまった自分」として<br>来年を迎えるか。</p>
@@ -104,7 +118,7 @@
 
         <div style="padding: 40px 0; margin: 40px 0;">
             <div style="margin: 30px 0; text-align: center;">
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 ほなみん様の大地の活かし方</h3>
@@ -112,7 +126,7 @@
                     </div>
                 </div>
 
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 道が開く方角</h3>
@@ -120,7 +134,7 @@
                     </div>
                 </div>
 
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 運気が動く瞬間</h3>
@@ -128,7 +142,7 @@
                     </div>
                 </div>
 
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 122, 255, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 ほなみん様らしい選び方</h3>
@@ -141,7 +155,7 @@
             <p style="margin-bottom: 90px; text-align: center; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">その一歩を、<br>ここから踏み出してください。</p>
         </div>
 
-        <div class="cta">
+        <div class="cta reveal">
             <h2>【運命の扉が開く24時間】</h2>
 
             <p style="margin-bottom: 90px;">今、ほなみん様のために、<br>運命の扉は最も大きく<br>開かれています。</p>
@@ -161,7 +175,7 @@
             <p style="margin-top: 30px;">お申し込み後、<br>購入時のお名前をお知らせください。<br>1日以内に、<br>あなただけの鑑定書をお届けします。</p>
         </div>
 
-        <div class="closing">
+        <div class="closing reveal">
             <p style="margin-bottom: 90px;">ほなみん様の物語が、<br>ほなみん様らしい結末を<br>迎えることを、</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">私は守護の声を通して、<br>すでに知っています。</p>
             <p style="margin-bottom: 90px;">ご縁に、心から感謝を込めて。</p>
@@ -169,5 +183,23 @@
             <div class="signature">深雪</div>
         </div>
     </div>
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 </body>
 </html>

@@ -27,6 +27,20 @@
         .limited-badge { color: #ff4444; font-weight: bold; font-size: 0.95em; margin: 10px 0; }
         .closing { text-align: center; margin: 40px 0; padding: 30px 15px; background: rgba(60, 60, 120, 0.2); border-radius: 15px; font-size: 1.1em; line-height: 2; }
         .signature { text-align: right; font-size: 1.3em; color: #c8d0ff; margin-top: 30px; }
+                :root { --aura-color-1: 170, 200, 255; --aura-color-2: 110, 150, 220; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .guardian-image { position: relative; animation: aura-breath 4s ease-in-out infinite; }
+        @keyframes aura-breath {
+            0%, 100% { box-shadow: 0 0 30px rgba(var(--aura-color-1), 0.35), 0 0 60px rgba(var(--aura-color-2), 0.2), 0 4px 20px rgba(168, 184, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(var(--aura-color-1), 0.6), 0 0 100px rgba(var(--aura-color-2), 0.35), 0 4px 20px rgba(168, 184, 255, 0.3); }
+        }
+        .cta-button { animation: pulse 2.4s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); }
+            50% { transform: scale(1.035); box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4); }
+        }
+        .cta-button:hover { animation: none; }
         @media (max-width: 768px) {
             body { font-size: 15px; padding: 10px; }
             .container { padding: 20px 10px; }
@@ -49,7 +63,7 @@
     <div class="container">
         <h1>タカシマ様<br>守護神鑑定書</h1>
 
-        <div class="oracle-message">
+        <div class="oracle-message reveal">
             <p style="margin-bottom: 90px;">タカシマ様、</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">あなたを守る神様が、<br>新しい取引先と出会い、<br>あなたの仕事が欲しかったと<br>言われているあなたの姿を<br>そっと見せてくれました。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">積み重ねてきた技術と感性が、<br>正当に認められる場所が、<br>ちゃんとあります。</p>
@@ -60,7 +74,7 @@
             <img src="../鑑定画像/弁財天.png" alt="弁財天" class="guardian-image">
         </div>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">美しいものに宿る力を人の心へ届ける<br>神様の加護を受けているので、<br>デザインという仕事を通じて、<br>見た人の心を動かし、<br>記憶に残り続ける作品を生み出す力が<br>あなたには宿っています。<br>センスで人を惹きつけ、<br>気づいたら「またあの人に<br>頼みたい」と思われる。<br>それが、弁財天の加護を<br>受けたあなたの力です。</p>
             <p style="margin-bottom: 90px;">でも今、その才能が<br>不景気という壁の前で、<br>行き場を失っている。</p>
             <p style="margin-bottom: 90px;">これほど強い守護を受けているのに、<br>今のあなたは、<br>どこに力を注げばいいのかが分からず<br>動けなくなっている。</p>
@@ -68,7 +82,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️なぜ今、流れが滞っているのか</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">やる気はある。技術もある。<br>なのに結果がついてこない。<br>その焦りと、<br>何が足りないのかという問いが<br>頭の中でぐるぐるしている。</p>
             <p style="margin-bottom: 90px;">時代が変わってしまったのか、<br>自分のやり方が古くなったのか。<br>答えが見つからないまま、<br>自信が少しずつ削られていく感覚。</p>
             <p style="margin-bottom: 90px;">新しいことを始めるべきか、<br>今の仕事を続けるべきか。<br>決断できないまま時間だけが過ぎていく<br>もどかしさと、焦り。</p>
@@ -79,7 +93,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️ここから先の流れ</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">このまま問題を放っておけば<br>今までと同じように<br>迷いと焦りを抱えたまま、<br>毎日を過ごすことになります。</p>
             <p style="margin-bottom: 90px;">どの方向に動けばいいのか。<br>新しい縁が動く時期はいつなのか。<br>それさえわかれば、<br>あとは自分を整えて待つだけ。<br>望む未来は、ちゃんとやってきます。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">大事なのは、<br>自分で幸せを掴みにいくと<br>心に決めること。</p>
@@ -87,28 +101,28 @@
         </div>
 
         <h2 class="emoji-header">⛩️本式守護鑑定</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">ここまでの鑑定で、<br>あなたを守る神様の存在と、<br>今のあなたの状態をお伝えしました。</p>
             <p style="margin-bottom: 90px;">でも、本当に大切なのはここから。<br>あなたが理想の未来を手に入れるために<br>以下の事を霊視して、お伝えします。</p>
         </div>
 
         <div style="padding: 40px 0; margin: 40px 0;">
             <div style="margin: 30px 0; text-align: center;">
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 新しい取引先・縁が動く時期</h3>
                         <p>どこに動けば新しい流れが生まれるのか。<br>仕事の縁が動くタイミングを<br>お伝えします。</p>
                     </div>
                 </div>
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ デザイン業で活路を開く方向性</h3>
                         <p>今の仕事を続けるべきか、<br>新規事業に踏み出すべきか。<br>あなたの才能が最も輝く道を視ます。</p>
                     </div>
                 </div>
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 仕事運を引き寄せる方法</h3>
@@ -119,7 +133,7 @@
             <p style="margin-top: 90px; margin-bottom: 90px; text-align: center; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">さらに、<br>本式守護鑑定を受けてくださった方には、<br>遠隔で守護祈祷を行い、<br>あなたの背中をそっと<br>押す力をお送りします。</p>
         </div>
 
-        <div class="cta">
+        <div class="cta reveal">
             <h2>【運命が動く24時間】</h2>
             <p style="margin-bottom: 90px;">今、<br>あなたを守る存在の気配が、<br>いつもより強く近くにあります。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">この鑑定に目を留めたことも、<br>偶然ではありません。</p>
@@ -136,7 +150,7 @@
             <p style="margin-top: 90px;">お申し込み後、<br>購入時のお名前をお知らせください。<br>1日以内に、<br>あなただけの鑑定書をお届けします。</p>
         </div>
 
-        <div class="closing">
+        <div class="closing reveal">
             <p style="margin-bottom: 90px;">私には視えています。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">新しい取引先と出会い、<br>デザインの仕事で輝き、<br>豊かさを手にしているタカシマ様の姿を。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">今感じている不安も、<br>決して無駄ではありません。</p>
@@ -145,5 +159,23 @@
             <div class="signature">深雪</div>
         </div>
     </div>
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 </body>
 </html>

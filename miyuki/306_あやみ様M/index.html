@@ -205,6 +205,20 @@
             margin-top: 30px;
         }
 
+                :root { --aura-color-1: 255, 180, 210; --aura-color-2: 230, 130, 180; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .guardian-image { position: relative; animation: aura-breath 4s ease-in-out infinite; }
+        @keyframes aura-breath {
+            0%, 100% { box-shadow: 0 0 30px rgba(var(--aura-color-1), 0.35), 0 0 60px rgba(var(--aura-color-2), 0.2), 0 4px 20px rgba(168, 184, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(var(--aura-color-1), 0.6), 0 0 100px rgba(var(--aura-color-2), 0.35), 0 4px 20px rgba(168, 184, 255, 0.3); }
+        }
+        .cta-button { animation: pulse 2.4s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); }
+            50% { transform: scale(1.035); box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4); }
+        }
+        .cta-button:hover { animation: none; }
         @media (max-width: 768px) {
             body {
                 font-size: 15px;
@@ -259,7 +273,7 @@
     <div class="container">
         <h1>あやみ様<br>守護神鑑定書</h1>
 
-        <div class="oracle-message">
+        <div class="oracle-message reveal">
             <p style="margin-bottom: 90px;">あやみ様、</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">あなたを守る神様が<br>彼のトラウマが癒され、<br>二人で手を繋ぎながら笑い合っている姿を<br>そっと見せてくれました。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">彼の心が開き、<br>元の関係に戻るどころか、<br>以前よりも深く信頼し合える。</p>
@@ -272,7 +286,7 @@
             <img src="../鑑定画像/木花咲耶姫.png" alt="木花咲耶姫" class="guardian-image">
         </div>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">一途に愛する純粋さと人を<br>惹きつける華やかさの加護を<br>受けているので、<br>彼のことを想い続ける一途な気持ちが、<br>あなたの魅力を何倍にも輝かせているんです。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">そして、どんなに辛い状況でも<br>彼を想い続けるその愛の深さが、<br>彼の心を癒し、再び繋がる力となっている。</p>
             <p style="margin-bottom: 90px;">でも今は、<br>別れてしまった現実が辛く、<br>本当に復縁できるのか自信がない。</p>
@@ -280,7 +294,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️なぜ今、流れが滞っているのか</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">最近、<br>こんな感覚がありませんでしたか？</p>
             <p style="margin-bottom: 90px;">彼を想い続けているのに、<br>復縁できるのか分からず、<br>不安で心が落ち着かない。</p>
             <p style="margin-bottom: 90px;">彼のトラウマが原因で別れたのに、<br>それが癒えて元に戻れるのか、<br>見えない未来に怯えている。</p>
@@ -294,7 +308,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️ここから先の流れ</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">このまま問題を放っておけば<br>今までと同じように<br>不安を抱え、悩み、苦しみながら<br>毎日を過ごすことになります。</p>
             <p style="margin-bottom: 90px;">でも、<br>具体的なタイミング、<br>なにをすればいいのか<br>どういうことが起こるのかが<br>分かれば</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">あとは自分を整えて待つだけで<br>望む未来がやってきます。</p>
@@ -303,7 +317,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️本式守護鑑定</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">ここまでの鑑定で、<br>あなたを守る神様の存在と、<br>今なぜ流れが滞っているのかを<br>お伝えしました。</p>
             <p style="margin-bottom: 90px;">でも、本当に大切なのはここから。</p>
             <p style="margin-bottom: 90px;">あなたが理想の未来を<br>手に入れるために<br>以下の事を霊視して、お伝えします。</p>
@@ -312,7 +326,7 @@
         <div style="padding: 40px 0; margin: 40px 0;">
             <div style="margin: 30px 0; text-align: center;">
                 <!-- 項目1: 黄色背景 -->
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 彼の今の気持ちとトラウマの状態</h3>
@@ -322,7 +336,7 @@
                 </div>
 
                 <!-- 項目2: 赤背景 -->
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 復縁できるタイミング</h3>
@@ -331,7 +345,7 @@
                 </div>
 
                 <!-- 項目3: 緑背景 -->
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 元の関係に戻る流れを引き寄せる方法</h3>
@@ -340,7 +354,7 @@
                 </div>
 
                 <!-- 項目4: 青背景 -->
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 122, 255, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <p>さらに、<br>本式守護鑑定を受けてくださった方には、<br>遠隔で守護祈祷を行い、</p>
@@ -351,7 +365,7 @@
             <p style="margin-top: 90px; margin-bottom: 90px; text-align: center; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">あなたの背中をそっと押す力を<br>お送りします。</p>
         </div>
 
-        <div class="cta">
+        <div class="cta reveal">
             <h2>【運命が動く24時間】</h2>
 
             <p style="margin-bottom: 90px;">今、<br>あなたを守る存在の気配が、<br>いつもより強く近くにあります。</p>
@@ -374,7 +388,7 @@
             <p style="margin-bottom: 90px;">1日以内に、あなただけの鑑定書を<br>お届けします。</p>
         </div>
 
-        <div class="closing">
+        <div class="closing reveal">
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">私には視えています。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">彼と復縁して、<br>元の関係に戻り、愛し合っている<br>あなたの姿を。</p>
             <p style="margin-bottom: 90px;">今感じている不安も、<br>決して無駄ではありません。</p>
@@ -385,5 +399,23 @@
         </div>
 
     </div>
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 </body>
 </html>

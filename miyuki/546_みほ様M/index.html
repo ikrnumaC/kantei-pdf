@@ -205,7 +205,21 @@ ul li {
     margin-top: 30px;
 }
 
-@media (max-width: 768px) {
+        :root { --aura-color-1: 160, 180, 240; --aura-color-2: 110, 130, 210; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .guardian-image { position: relative; animation: aura-breath 4s ease-in-out infinite; }
+        @keyframes aura-breath {
+            0%, 100% { box-shadow: 0 0 30px rgba(var(--aura-color-1), 0.35), 0 0 60px rgba(var(--aura-color-2), 0.2), 0 4px 20px rgba(168, 184, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(var(--aura-color-1), 0.6), 0 0 100px rgba(var(--aura-color-2), 0.35), 0 4px 20px rgba(168, 184, 255, 0.3); }
+        }
+        .cta-button { animation: pulse 2.4s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); }
+            50% { transform: scale(1.035); box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4); }
+        }
+        .cta-button:hover { animation: none; }
+        @media (max-width: 768px) {
     body {
         font-size: 15px;
         padding: 10px;
@@ -272,7 +286,7 @@ ul li {
     <div class="container">
         <h1>みほ様<br>守護神鑑定書</h1>
 
-        <div class="oracle-message">
+        <div class="oracle-message reveal">
             <p style="margin-bottom: 90px;">みほ様、</p>
             <p style="margin-bottom: 90px;">霊視して、<br>少し驚きました。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">これほど澄んだ、<br>深く静かに流れる<br>青のオーラを<br>纏った女性は、<br>なかなか<br>いらっしゃいません。</p>
@@ -282,7 +296,7 @@ ul li {
             <img src="../鑑定画像/龍樹菩薩.png" alt="龍樹菩薩" class="guardian-image">
         </div>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">みほ様は本来、<br>表に出さないだけで、<br>人よりずっと深いところまで<br>ものごとを<br>視ている方ですよね。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">人の表情の<br>ちょっとした変化や、<br>言葉にならない空気を、<br>驚くほど細かく<br>拾ってしまう。</p>
             <p style="margin-bottom: 90px;">だからこそ、<br>まわりからは<br>「落ち着いている人」<br>「優しい人」<br>そう見えているはずです。</p>
@@ -290,7 +304,7 @@ ul li {
 
         <h2 class="emoji-header">⛩️なぜ今、流れが滞っているのか</h2>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">それなのに、<br>ご自分の中では<br>ちっとも<br>落ち着いていない。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">夜になると<br>頭の中だけが<br>ぐるぐると動き続けて、<br>朝になっても<br>うまく止まってくれない。<br>そんな日が、<br>増えてはいませんか。</p>
             <p style="margin-bottom: 90px;">それなのに、<br>なぜみほ様の毎日だけは、<br>こんなにスッキリ<br>穏やかに<br>なってくれないのか。</p>
@@ -306,7 +320,7 @@ ul li {
 
         <h2 class="emoji-header">⛩️みほ様のオーラに、今起きていること</h2>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">みほ様のオーラを<br>視ていると、<br>水の流れが、<br>ご自分の容量を<br>超えて<br>広がってしまっている景色が<br>視えます。</p>
             <p style="margin-bottom: 90px;">仕事のこと。<br>身近な人のこと。<br>ニュースの中の景色。<br>SNSの誰かの言葉。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">ぜんぶがみほ様の中に<br>入ってきて、<br>ぜんぶを少しずつ<br>感じてしまう。<br>ご自分の感情なのか、<br>他人の感情なのか、<br>だんだん境目が<br>あいまいになってきている。</p>
@@ -318,7 +332,7 @@ ul li {
 
         <h2 class="emoji-header">⛩️本式守護鑑定</h2>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">みほ様の中で起きている<br>心の忙しさは、<br>時間が経てば自然に<br>片付くもの、ではありません。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">このまま頭の中の流れを<br>止められないまま、<br>春を越え、夏を越えた時。<br>朝の自分が、<br>「今日もちゃんと<br>穏やかでいられる自分」で<br>いられるか、<br>「結局、何にも<br>変えられなかった自分」で<br>いるか。</p>
             <p style="margin-bottom: 90px;">ご自分の中でも、<br>「穏やかな日常」という<br>言葉は<br>少しずつ、<br>「いつかそうなれたら<br>いい遠い夢」として、<br>日常の景色に<br>馴染んでいきます。</p>
@@ -328,21 +342,21 @@ ul li {
 
         <div style="padding: 40px 0; margin: 40px 0;">
             <div style="margin: 30px 0; text-align: center;">
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 心が忙しくなる<br>本当の理由</h3>
                         <p>みほ様のオーラの中で<br>「穏やかさ」を<br>奪っているものが<br>何なのか。<br>ひとつひとつ視て、<br>お伝えします。</p>
                     </div>
                 </div>
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 流れが整う瞬間</h3>
                         <p>これからの一年の間に、<br>みほ様の毎日が<br>穏やかに整っていく<br>流れが訪れます。<br>その時期と、<br>みほ様が取るべき過ごし方を、<br>丁寧にお伝えします。</p>
                     </div>
                 </div>
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ みほ様らしい<br>毎日の作り方</h3>
@@ -356,7 +370,7 @@ ul li {
             <p style="margin-bottom: 90px; text-align: center;">その一歩を、<br>ここから踏み出してください。</p>
         </div>
 
-        <div class="cta">
+        <div class="cta reveal">
             <h2>【運命の扉が開く24時間】</h2>
 
             <p style="margin-bottom: 90px;">今、みほ様のために、<br>運命の扉は最も大きく<br>開かれています。</p>
@@ -375,7 +389,7 @@ ul li {
             <p style="margin-top: 90px;">1日限定3名までしか<br>お受けできません。<br>リンク先が表示されない場合<br>本日分は締切ですので<br>ご了承ください。</p>
         </div>
 
-        <div class="closing">
+        <div class="closing reveal">
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">みほ様の物語が、<br>みほ様らしい結末を<br>迎えることを、<br>私は守護の声を通して、<br>すでに知っています。</p>
             <p style="margin-bottom: 90px;">ご縁に、<br>心から感謝を込めて。</p>
 
@@ -383,5 +397,23 @@ ul li {
         </div>
 
     </div>
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 </body>
 </html>

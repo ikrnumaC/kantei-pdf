@@ -205,7 +205,21 @@ ul li {
     margin-top: 30px;
 }
 
-@media (max-width: 768px) {
+        :root { --aura-color-1: 120, 200, 255; --aura-color-2: 60, 140, 220; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .guardian-image { position: relative; animation: aura-breath 4s ease-in-out infinite; }
+        @keyframes aura-breath {
+            0%, 100% { box-shadow: 0 0 30px rgba(var(--aura-color-1), 0.35), 0 0 60px rgba(var(--aura-color-2), 0.2), 0 4px 20px rgba(168, 184, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(var(--aura-color-1), 0.6), 0 0 100px rgba(var(--aura-color-2), 0.35), 0 4px 20px rgba(168, 184, 255, 0.3); }
+        }
+        .cta-button { animation: pulse 2.4s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); }
+            50% { transform: scale(1.035); box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4); }
+        }
+        .cta-button:hover { animation: none; }
+        @media (max-width: 768px) {
     body {
         font-size: 15px;
         padding: 10px;
@@ -272,7 +286,7 @@ ul li {
     <div class="container">
         <h1>浅利美智子様<br>守護神鑑定書</h1>
 
-        <div class="oracle-message">
+        <div class="oracle-message reveal">
             <p style="margin-bottom: 90px;">浅利美智子様、</p>
             <p style="margin-bottom: 90px;">霊視して、<br>少し驚きました。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">これほど深い海のような、<br>落ち着いた紺碧の<br>オーラを纏った方は、<br>なかなかいらっしゃいません。</p>
@@ -282,7 +296,7 @@ ul li {
             <img src="../鑑定画像/豊玉姫.png" alt="豊玉姫" class="guardian-image">
         </div>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">本来、浅利美智子様は<br>言葉にしなくても<br>相手の本心を<br>感じ取れる方です。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">ミンさんから届くメッセージや、<br>高麗人参の贈り物の<br>ひとつひとつから、<br>あの方の本当の気持ちを、<br>ちゃんと感じ取って<br>こられたはずです。</p>
             <p style="margin-bottom: 90px;">そういう深い感受性と、<br>人を包む大きさを、<br>生まれつき<br>持った方だと思います。</p>
@@ -290,7 +304,7 @@ ul li {
 
         <h2 class="emoji-header">⛩️なぜ今、答えが出ないのか</h2>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">ただ、浅利美智子様には<br>もう一つ、<br>自分と同じくらいの<br>強さや独立心を持つ相手に、<br>ふと惹かれてしまう<br>性質があります。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">依存し合うのではなく、<br>お互い別々の場所で<br>自分の人生を生きながら、<br>ふっと寄り添えるような関係。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">それが<br>浅利美智子様にとって<br>一番心地よい愛の形<br>なのだと思います。</p>
@@ -305,7 +319,7 @@ ul li {
 
         <h2 class="emoji-header">⛩️ミンさんについて、視えていること</h2>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">ミンさんは、<br>初夏に生まれた、<br>太陽のような<br>明るい紅のオーラを<br>持つ方です。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">外側は明るく<br>気さくな方ですが、<br>心の奥に<br>人とは違う角度で<br>ものごとを見る<br>独特な感性を<br>持っておられます。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">そして、その太陽の<br>中心に、<br>浅利美智子様の<br>青いオーラが<br>やわらかく<br>映っているのが<br>視えました。</p>
@@ -319,7 +333,7 @@ ul li {
 
         <h2 class="emoji-header">⛩️本式守護鑑定</h2>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">今のお二人の関係は、<br>ただ時間が経てば<br>深まるもの、<br>ではありません。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">このまま今のままの<br>ペースで秋を越えると、<br>お互いの中で<br>「ちょうどいい距離」<br>が固まり、<br>それ以上深まらない<br>形になってしまいます。</p>
             <p style="margin-bottom: 90px;">そうなる前に、<br>浅利美智子様にちゃんと<br>知っていただきたいことが、<br>私には視えています。</p>
@@ -328,21 +342,21 @@ ul li {
 
         <div style="padding: 40px 0; margin: 40px 0;">
             <div style="margin: 30px 0; text-align: center;">
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ ミンさんの本音</h3>
                         <p>ミンさんが心の奥で<br>浅利美智子様のことを<br>どう思っているのか、<br>これからどう近づきたいのか、<br>ひとつひとつ<br>お伝えします。</p>
                     </div>
                 </div>
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 二人の関係が動く時期</h3>
                         <p>お二人の関係が<br>はっきり動く<br>時期と、<br>浅利美智子様が<br>取るべき態度を、<br>丁寧にお伝えします。</p>
                     </div>
                 </div>
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 海を越えた縁の育て方</h3>
@@ -356,7 +370,7 @@ ul li {
             <p style="margin-bottom: 90px; text-align: center;">その一歩を、<br>ここから踏み出してください。</p>
         </div>
 
-        <div class="cta">
+        <div class="cta reveal">
             <h2>【運命の扉が開く24時間】</h2>
 
             <p style="margin-bottom: 90px;">今、浅利美智子様のために、<br>運命の扉は最も大きく<br>開かれています。</p>
@@ -375,7 +389,7 @@ ul li {
             <p style="margin-top: 90px;">1日限定3名までしか<br>お受けできません。<br>リンク先が表示されない場合<br>本日分は締切ですので<br>ご了承ください。</p>
         </div>
 
-        <div class="closing">
+        <div class="closing reveal">
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">浅利美智子様の物語が、<br>浅利美智子様らしい結末を<br>迎えることを、<br>私は守護の声を通して、<br>すでに知っています。</p>
             <p style="margin-bottom: 90px;">ご縁に、<br>心から感謝を込めて。</p>
 
@@ -383,5 +397,23 @@ ul li {
         </div>
 
     </div>
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 </body>
 </html>

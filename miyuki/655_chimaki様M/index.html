@@ -29,6 +29,20 @@
         .limited-badge { color: #ff4444; font-weight: bold; font-size: 0.95em; margin: 10px 0; }
         .closing { text-align: center; margin: 40px 0; padding: 30px 15px; background: rgba(60, 60, 120, 0.2); border-radius: 15px; font-size: 1.1em; line-height: 2; }
         .signature { text-align: right; font-size: 1.3em; color: #c8d0ff; margin-top: 30px; }
+                :root { --aura-color-1: 255, 180, 210; --aura-color-2: 230, 130, 180; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .guardian-image { position: relative; animation: aura-breath 4s ease-in-out infinite; }
+        @keyframes aura-breath {
+            0%, 100% { box-shadow: 0 0 30px rgba(var(--aura-color-1), 0.35), 0 0 60px rgba(var(--aura-color-2), 0.2), 0 4px 20px rgba(168, 184, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(var(--aura-color-1), 0.6), 0 0 100px rgba(var(--aura-color-2), 0.35), 0 4px 20px rgba(168, 184, 255, 0.3); }
+        }
+        .cta-button { animation: pulse 2.4s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); }
+            50% { transform: scale(1.035); box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4); }
+        }
+        .cta-button:hover { animation: none; }
         @media (max-width: 768px) {
             body { font-size: 15px; padding: 10px; }
             .container { padding: 20px 10px; }
@@ -51,7 +65,7 @@
     <div class="container">
         <h1>chimaki様<br>守護神鑑定書</h1>
 
-        <div class="oracle-message">
+        <div class="oracle-message reveal">
             <p style="margin-bottom: 90px;">chimaki様、</p>
             <p style="margin-bottom: 90px;">霊視して少し驚きました。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">これほど、若葉のように<br>柔らかな翡翠色のオーラを纏った女性は、<br>なかなかいらっしゃいません。</p>
@@ -61,7 +75,7 @@
             <img src="../鑑定画像/木花咲耶姫.png" alt="木花咲耶姫" class="guardian-image">
         </div>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">chimaki様は本来、<br>一途な方ですよね。</p>
             <p style="margin-bottom: 90px;">「この方」と<br>心が決まった瞬間から、<br>気持ちが揺らがない。</p>
             <p style="margin-bottom: 90px;">時間が経っても、<br>距離があっても、<br>あの方への気持ちが<br>深く深く根を張り続ける、<br>そんな若葉の力をお持ちです。</p>
@@ -78,7 +92,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️あの方について、視えていること</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">あの方は、<br>晩秋に生まれた、<br>深い森のような<br>緑のオーラを持つ方ですね。</p>
             <p style="margin-bottom: 90px;">落ち着いていて、<br>ご自身の中に<br>ちゃんとした世界を持っている方。</p>
             <p style="margin-bottom: 90px;">ただ、<br>大樹のオーラを持つ方は、<br>ご自身から動くのが<br>得意ではありません。</p>
@@ -89,7 +103,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️本式守護鑑定でお伝えすること</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">chimaki様の中で起きているぶつかりは、<br>時間が経てば自然に片付くもの、<br>ではありません。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">このまま静かな時間が<br>続いていくと。<br>あの方の日常の中で<br>chimaki様の存在は<br>少しずつ薄れていきます。</p>
             <p>そうなる前に、<br>chimaki様にお伝えしたいことがあります。<br>私には、ちゃんと視えています。</p>
@@ -97,7 +111,7 @@
 
         <div style="padding: 40px 0; margin: 40px 0;">
             <div style="margin: 30px 0; text-align: center;">
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 chimaki様の若葉の活かし方</h3>
@@ -105,7 +119,7 @@
                     </div>
                 </div>
 
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 あの方の本音</h3>
@@ -113,7 +127,7 @@
                     </div>
                 </div>
 
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 連絡が動く瞬間</h3>
@@ -121,7 +135,7 @@
                     </div>
                 </div>
 
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 122, 255, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 chimaki様らしい近づき方</h3>
@@ -134,7 +148,7 @@
             <p style="margin-top: 90px; margin-bottom: 90px; text-align: center; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">その一歩を、<br>ここから踏み出してください。</p>
         </div>
 
-        <div class="cta">
+        <div class="cta reveal">
             <h2>【運命の扉が開く24時間】</h2>
 
             <p style="margin-bottom: 90px;">今、chimaki様のために、<br>運命の扉は最も大きく<br>開かれています。</p>
@@ -157,12 +171,30 @@
             <p style="margin-top: 90px;">お申し込み後、<br>購入時のお名前をお知らせください。<br>1日以内に、<br>あなただけの鑑定書をお届けします。</p>
         </div>
 
-        <div class="closing">
+        <div class="closing reveal">
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">chimaki様の物語が、<br>chimaki様らしい結末を迎えることを、<br>私は守護の声を通して、<br>すでに知っています。</p>
             <p style="margin-bottom: 90px;">ご縁に、心から感謝を込めて。</p>
 
             <div class="signature">深雪</div>
         </div>
     </div>
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 </body>
 </html>

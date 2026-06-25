@@ -205,6 +205,20 @@
             margin-top: 30px;
         }
 
+                :root { --aura-color-1: 255, 200, 100; --aura-color-2: 230, 150, 50; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .guardian-image { position: relative; animation: aura-breath 4s ease-in-out infinite; }
+        @keyframes aura-breath {
+            0%, 100% { box-shadow: 0 0 30px rgba(var(--aura-color-1), 0.35), 0 0 60px rgba(var(--aura-color-2), 0.2), 0 4px 20px rgba(168, 184, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(var(--aura-color-1), 0.6), 0 0 100px rgba(var(--aura-color-2), 0.35), 0 4px 20px rgba(168, 184, 255, 0.3); }
+        }
+        .cta-button { animation: pulse 2.4s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); }
+            50% { transform: scale(1.035); box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4); }
+        }
+        .cta-button:hover { animation: none; }
         @media (max-width: 768px) {
             body {
                 font-size: 15px;
@@ -259,7 +273,7 @@
     <div class="container">
         <h1>【くわ】様<br>守護神鑑定書</h1>
 
-        <div class="oracle-message">
+        <div class="oracle-message reveal">
             <p style="margin-bottom: 90px;">くわ様、</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">あなたを守る神様が<br>自分の店を持ち、<br>お客様に感謝されながら<br>経営者として輝いているあなたの姿を<br>そっと見せてくれました。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">セラピストとして人を癒し、<br>それが収入になり、<br>自分のやり方で自由に働いている。<br>人間関係にも恵まれ、<br>笑顔で人に囲まれながら<br>あなたらしく生きている日々が、<br>ちゃんと手に入ります。</p>
@@ -271,7 +285,7 @@
             <img src="../鑑定画像/猿田彦命.png" alt="猿田彦命" class="guardian-image">
         </div>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">迷っている人を正しい方向へ<br>導く力を持つ神の加護を受けているので、</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">本来のあなたは、<br>変化の時に道を切り開く先導者なんです。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">新しい道へ進む勇気を持ち、<br>自分で決めたことを最後までやり抜く力がある。</p>
@@ -280,7 +294,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️なぜ今、流れが滞っているのか</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">最近、<br>こんな感覚がありませんでしたか？</p>
             <p style="margin-bottom: 90px;">どちらも魅力的で、どちらも捨てがたくて、<br>決められない自分に焦りを感じている。</p>
             <p style="margin-bottom: 90px;">一つに絞るべきなのか、<br>掛け持ちはできないのか、<br>答えが出ないまま時間だけが過ぎていく。</p>
@@ -295,7 +309,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️ここから先の流れ</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">このまま問題を放っておけば<br>今までと同じように<br>迷い、悩み、決められないまま<br>毎日を過ごすことになります。</p>
             <p style="margin-bottom: 90px;">でも、具体的なタイミング、<br>なにをすればいいのか、<br>どういうことが起こるのかが分かれば</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">あとは自分を整えて待つだけで<br>望む未来がやってきます。</p>
@@ -304,7 +318,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️本式守護鑑定</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">ここまでの鑑定で、<br>あなたを守る神様の存在と、<br>今なぜ流れが<br>滞っているのかをお伝えしました。</p>
             <p style="margin-bottom: 90px;">でも、本当に大切なのはここから。</p>
             <p style="margin-bottom: 90px;">あなたが理想の未来を手に入れるために<br>以下の事を霊視して、お伝えします。</p>
@@ -313,7 +327,7 @@
         <div style="padding: 40px 0; margin: 40px 0;">
             <div style="margin: 30px 0; text-align: center;">
                 <!-- 項目1: 黄色背景 -->
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ どちらがあなたの運命の道なのか</h3>
@@ -322,7 +336,7 @@
                 </div>
 
                 <!-- 項目2: 赤背景 -->
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 決断のタイミングと移る時期</h3>
@@ -331,7 +345,7 @@
                 </div>
 
                 <!-- 項目3: 緑背景 -->
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 経営者として成功する流れ</h3>
@@ -340,7 +354,7 @@
                 </div>
 
                 <!-- 項目4: 青背景 -->
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 122, 255, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <p>さらに、本式守護鑑定を受けてくださった方には、<br>遠隔で守護祈祷を行い、</p>
@@ -351,7 +365,7 @@
             <p style="margin-top: 90px; margin-bottom: 90px; text-align: center; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">あなたの背中を<br>そっと押す力をお送りします。</p>
         </div>
 
-        <div class="cta">
+        <div class="cta reveal">
             <h2>【運命が動く24時間】</h2>
 
             <p style="margin-bottom: 90px;">今、<br>あなたを守る存在の気配が、<br>いつもより強く近くにあります。</p>
@@ -373,7 +387,7 @@
             <p style="margin-top: 90px;">お申し込み後、<br>購入時のお名前をお知らせください。<br>1日以内に、<br>あなただけの鑑定書をお届けします。</p>
         </div>
 
-        <div class="closing">
+        <div class="closing reveal">
             <p style="margin-bottom: 90px;">私には視えています。</p>
             <p style="margin-bottom: 90px;">自分の道を選び、<br>経営者として輝いているあなたの姿を。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">今感じている迷いも、<br>決して無駄ではありません。</p>
@@ -384,5 +398,23 @@
         </div>
 
     </div>
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 </body>
 </html>

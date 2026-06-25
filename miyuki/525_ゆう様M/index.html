@@ -205,7 +205,21 @@ ul li {
     margin-top: 30px;
 }
 
-@media (max-width: 768px) {
+        :root { --aura-color-1: 255, 180, 100; --aura-color-2: 255, 120, 60; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .guardian-image { position: relative; animation: aura-breath 4s ease-in-out infinite; }
+        @keyframes aura-breath {
+            0%, 100% { box-shadow: 0 0 30px rgba(var(--aura-color-1), 0.35), 0 0 60px rgba(var(--aura-color-2), 0.2), 0 4px 20px rgba(168, 184, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(var(--aura-color-1), 0.6), 0 0 100px rgba(var(--aura-color-2), 0.35), 0 4px 20px rgba(168, 184, 255, 0.3); }
+        }
+        .cta-button { animation: pulse 2.4s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); }
+            50% { transform: scale(1.035); box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4); }
+        }
+        .cta-button:hover { animation: none; }
+        @media (max-width: 768px) {
     body {
         font-size: 15px;
         padding: 10px;
@@ -272,7 +286,7 @@ ul li {
     <div class="container">
         <h1>ゆう様<br>守護神鑑定書</h1>
 
-        <div class="oracle-message">
+        <div class="oracle-message reveal">
             <p style="margin-bottom: 90px;">ゆう様、</p>
             <p style="margin-bottom: 90px;">霊視して、<br>少し驚きました。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">これほどろうそくのような<br>温かなオレンジで、<br>静かに燃え続ける<br>朱色のオーラを纏った方は、<br>なかなかいらっしゃいません。</p>
@@ -282,7 +296,7 @@ ul li {
             <img src="../鑑定画像/火産霊神.png" alt="火産霊神" class="guardian-image">
         </div>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">本来、あなたは<br>家の中の灯りのように、<br>そばにいる人の心を<br>あたためられる方です。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">派手な言葉や<br>大きな動きではなく、<br>日々のひとつひとつ<br>で人を支える。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">「あなたがいると<br>家が落ち着く」<br>と言われたことが<br>あるのではないでしょうか。</p>
@@ -291,7 +305,7 @@ ul li {
 
         <h2 class="emoji-header">⛩️なぜ今、関係が重く感じられるのか</h2>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">ただ、あなたには<br>もう一つ、<br>本当はもっと自由に<br>笑っていたい、<br>楽しさや遊び心を<br>分かち合いたいという、<br>明るい性質が<br>真ん中にあります。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">ろうそくでありながら、<br>時々ぱちぱちと<br>跳ねたい火がある。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">それなのに今、<br>お家の中での<br>ゆう様の役割が<br>だんだん「灯し続ける側」<br>だけに固まり、<br>跳ねる火を<br>出す場所が<br>なくなってきています。</p>
@@ -304,7 +318,7 @@ ul li {
 
         <h2 class="emoji-header">⛩️ご主人について、視えていること</h2>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">ご主人は、<br>夏の盛りに生まれた、<br>太陽のような<br>紅のオーラを持っています。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">そばにいる人を<br>ぱっと明るくする力と、<br>本当は地に足のついた<br>堅実な暮らしを<br>大切にしたい気持ちを<br>両方持つ方です。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">そして、その太陽の<br>真ん中に、<br>ゆう様の朱色が<br>ふっと寄り添うように<br>映っているのが<br>視えました。</p>
@@ -319,7 +333,7 @@ ul li {
 
         <h2 class="emoji-header">⛩️本式守護鑑定</h2>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">今のお二人の関係は、<br>時間が経てば自然に<br>あたたまるもの、<br>ではありません。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">このまま支える側と<br>支えられる側が<br>固まったまま秋を越えると、<br>ろうそくの火が<br>だんだん細くなり、<br>お二人の間に<br>距離が出始めます。</p>
             <p style="margin-bottom: 90px;">そうなる前に、<br>あなたにちゃんと<br>知っていただきたいことが、<br>私には視えています。</p>
@@ -328,21 +342,21 @@ ul li {
 
         <div style="padding: 40px 0; margin: 40px 0;">
             <div style="margin: 30px 0; text-align: center;">
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ ご主人の本音</h3>
                         <p>ご主人が心の奥で<br>ゆう様に<br>何を感じているのか、<br>どんな関係を<br>望んでいるのか、<br>ひとつひとつ<br>お伝えします。</p>
                     </div>
                 </div>
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 二人の関係が動く時期</h3>
                         <p>これからお二人の関係に<br>変化が訪れる<br>時期と、<br>ゆう様が取るべき態度を、<br>丁寧にお伝えします。</p>
                     </div>
                 </div>
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ ゆう様らしい<br>関係の作り方</h3>
@@ -356,7 +370,7 @@ ul li {
             <p style="margin-bottom: 90px; text-align: center;">その一歩を、<br>ここから踏み出してください。</p>
         </div>
 
-        <div class="cta">
+        <div class="cta reveal">
             <h2>【運命の扉が開く24時間】</h2>
 
             <p style="margin-bottom: 90px;">今、ゆう様のために、<br>運命の扉は最も大きく<br>開かれています。</p>
@@ -375,7 +389,7 @@ ul li {
             <p style="margin-top: 90px;">1日限定3名までしか<br>お受けできません。<br>リンク先が表示されない場合<br>本日分は締切ですので<br>ご了承ください。</p>
         </div>
 
-        <div class="closing">
+        <div class="closing reveal">
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">ゆう様の物語が、<br>ゆう様らしい結末を<br>迎えることを、<br>私は守護の声を通して、<br>すでに知っています。</p>
             <p style="margin-bottom: 90px;">ご縁に、<br>心から感謝を込めて。</p>
 
@@ -383,5 +397,23 @@ ul li {
         </div>
 
     </div>
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 </body>
 </html>

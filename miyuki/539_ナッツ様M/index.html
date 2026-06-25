@@ -205,7 +205,21 @@ ul li {
     margin-top: 30px;
 }
 
-@media (max-width: 768px) {
+        :root { --aura-color-1: 160, 180, 240; --aura-color-2: 110, 130, 210; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .guardian-image { position: relative; animation: aura-breath 4s ease-in-out infinite; }
+        @keyframes aura-breath {
+            0%, 100% { box-shadow: 0 0 30px rgba(var(--aura-color-1), 0.35), 0 0 60px rgba(var(--aura-color-2), 0.2), 0 4px 20px rgba(168, 184, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(var(--aura-color-1), 0.6), 0 0 100px rgba(var(--aura-color-2), 0.35), 0 4px 20px rgba(168, 184, 255, 0.3); }
+        }
+        .cta-button { animation: pulse 2.4s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); }
+            50% { transform: scale(1.035); box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4); }
+        }
+        .cta-button:hover { animation: none; }
+        @media (max-width: 768px) {
     body {
         font-size: 15px;
         padding: 10px;
@@ -272,7 +286,7 @@ ul li {
     <div class="container">
         <h1>ナッツ様<br>守護神鑑定書</h1>
 
-        <div class="oracle-message">
+        <div class="oracle-message reveal">
             <p style="margin-bottom: 90px;">ナッツ様、</p>
             <p style="margin-bottom: 90px;">霊視して、<br>少し驚きました。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">これほど清らかで透明な、<br>静かに流れる<br>青色のオーラを纏った方は、<br>なかなかいらっしゃいません。</p>
@@ -282,7 +296,7 @@ ul li {
             <img src="../鑑定画像/龍樹菩薩.png" alt="龍樹菩薩" class="guardian-image">
         </div>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">本来、ナッツ様は<br>表面ではなく<br>本質を見抜ける方です。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">人の言葉の裏にあるもの、<br>場の本当の流れ、<br>これからどこへ<br>向かおうとしているのか。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">そういうものを<br>静かに感じ取って、<br>ご自分の生き方に<br>落とし込んでこられた。</p>
@@ -291,7 +305,7 @@ ul li {
 
         <h2 class="emoji-header">⛩️なぜ今、形が見えないのか</h2>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">ただ、ナッツ様には<br>もう一つ、<br>地に足のついた、<br>堅実で続けられる<br>暮らしを大事にしたい、<br>という性質があります。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">「English class only」<br>「生活基盤」<br>というご相談の中に、<br>ナッツ様の<br>真面目さが<br>出ているように感じます。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">ただ、深い水を持つあなたは、<br>本当はもっと<br>広い海を目指したくなる時が<br>来てしまう方です。</p>
@@ -305,7 +319,7 @@ ul li {
 
         <h2 class="emoji-header">⛩️ナッツ様のこれからの流れ</h2>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">霊視してみると、<br>ナッツ様のオーラの周りに、<br>日本での<br>今の働き方の光と、<br>海の向こうへ続く<br>別の水脈が、<br>両方<br>同時に見えています。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">その2つは<br>別々のものではなく、<br>順番に<br>繋がっていく形を<br>しています。</p>
             <p style="margin-bottom: 90px;">つまり、今のEnglish class<br>を続けることが、<br>そのままアメリカへの<br>扉に<br>繋がっていくのか。</p>
@@ -318,7 +332,7 @@ ul li {
 
         <h2 class="emoji-header">⛩️本式守護鑑定</h2>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">ナッツ様の理想は、<br>ただ時間が経てば<br>形になるもの、<br>ではありません。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">このまま動き出す<br>タイミングを逃すと、<br>海の向こうへ続く水脈が<br>少しずつ別の方向へ<br>流れていきます。</p>
             <p style="margin-bottom: 90px;">そうなる前に、<br>ナッツ様にちゃんと<br>知っていただきたいことが、<br>私には視えています。</p>
@@ -327,21 +341,21 @@ ul li {
 
         <div style="padding: 40px 0; margin: 40px 0;">
             <div style="margin: 30px 0; text-align: center;">
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ これからの働き方の形</h3>
                         <p>English classと<br>これからの生活基盤を<br>どう維持・育てていくか、<br>ナッツ様だけの<br>形を、<br>丁寧にお伝えします。</p>
                     </div>
                 </div>
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ アメリカへの扉が開く時期</h3>
                         <p>日本からアメリカへの<br>動きが<br>はっきり形になる<br>時期と、その前に<br>整えておくことを、<br>ひとつひとつ<br>お伝えします。</p>
                     </div>
                 </div>
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ ご家族と一緒に動く流れ</h3>
@@ -355,7 +369,7 @@ ul li {
             <p style="margin-bottom: 90px; text-align: center;">その一歩を、<br>ここから踏み出してください。</p>
         </div>
 
-        <div class="cta">
+        <div class="cta reveal">
             <h2>【運命の扉が開く24時間】</h2>
 
             <p style="margin-bottom: 90px;">今、ナッツ様のために、<br>運命の扉は最も大きく<br>開かれています。</p>
@@ -374,7 +388,7 @@ ul li {
             <p style="margin-top: 90px;">1日限定3名までしか<br>お受けできません。<br>リンク先が表示されない場合<br>本日分は締切ですので<br>ご了承ください。</p>
         </div>
 
-        <div class="closing">
+        <div class="closing reveal">
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">ナッツ様の物語が、<br>ナッツ様らしい結末を<br>迎えることを、<br>私は守護の声を通して、<br>すでに知っています。</p>
             <p style="margin-bottom: 90px;">ご縁に、<br>心から感謝を込めて。</p>
 
@@ -382,5 +396,23 @@ ul li {
         </div>
 
     </div>
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 </body>
 </html>

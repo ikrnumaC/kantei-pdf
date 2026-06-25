@@ -205,6 +205,20 @@
             margin-top: 30px;
         }
 
+                :root { --aura-color-1: 240, 220, 160; --aura-color-2: 200, 170, 100; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .guardian-image { position: relative; animation: aura-breath 4s ease-in-out infinite; }
+        @keyframes aura-breath {
+            0%, 100% { box-shadow: 0 0 30px rgba(var(--aura-color-1), 0.35), 0 0 60px rgba(var(--aura-color-2), 0.2), 0 4px 20px rgba(168, 184, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(var(--aura-color-1), 0.6), 0 0 100px rgba(var(--aura-color-2), 0.35), 0 4px 20px rgba(168, 184, 255, 0.3); }
+        }
+        .cta-button { animation: pulse 2.4s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); }
+            50% { transform: scale(1.035); box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4); }
+        }
+        .cta-button:hover { animation: none; }
         @media (max-width: 768px) {
             body {
                 font-size: 15px;
@@ -260,7 +274,7 @@
         <h1>やす様<br>守護神鑑定書</h1>
 
         <!-- 神託メッセージ -->
-        <div class="oracle-message">
+        <div class="oracle-message reveal">
             <p style="margin-bottom: 90px;">やす様、</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">2026年の秋、<br>好きなものを迷わず手に取れる。<br>大切な人に何かしてあげることを<br>お金の不安なしに選べる。<br>そんな毎日を当たり前のように<br>過ごしているあなたの姿を<br>あなたを守る神様が<br>そっと、私に見せてくれました。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">財布の中身を気にしながら<br>選んでいた日々が、<br>遠い過去のように感じられる。</p>
@@ -272,7 +286,7 @@
         </div>
 
         <!-- オーラ・本質 -->
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">磨けば磨くほど輝きを増す。<br>原石を本物の宝へと変える<br>力を持つ神様の加護を受けているので、<br>やす様には、<br>積み重ねてきたものが必ず輝きに変わる<br>本物の底力が宿っています。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">苦しい中でも諦めなかったこと。<br>精一杯、自分なりに続けてきたこと。<br>それは全て、やす様という<br>鉱石を磨いてきた時間です。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">まだ誰にも<br>気づかれていないかもしれないけれど、<br>その輝きは確かに育っています。</p>
@@ -282,7 +296,7 @@
 
         <!-- なぜ今、流れが滞っているのか -->
         <h2 class="emoji-header">⛩️なぜ今、流れが滞っているのか</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">「このままじゃいけない」という<br>感覚が強くなりすぎて、<br>今の自分をそのまま<br>認めることが難しくなっている。</p>
             <p style="margin-bottom: 90px;">力の向け先が定まらず、<br>あれもこれもと意識が分散してしまい、<br>一点に集中しきれないでいる。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">「このままでいいのか」という<br>迷いが強くなり、<br>本来進むべき流れから<br>少しズレ始めています。</p>
@@ -295,7 +309,7 @@
 
         <!-- ここから先の流れ -->
         <h2 class="emoji-header">⛩️ここから先の流れ</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">このまま問題を放っておけば<br>今までと同じように<br>違和感を覚え、悩み、苦しみながら<br>毎日を過ごすことになります。</p>
             <p style="margin-bottom: 90px;">いつ、何をすればいいか。<br>これから何が起きるのか。<br>それさえわかれば、<br>あとは自分を整えて待つだけ。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">望む未来は、ちゃんとやってきます。</p>
@@ -304,7 +318,7 @@
 
         <!-- 本式守護鑑定 -->
         <h2 class="emoji-header">⛩️本式守護鑑定</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">ここまでの鑑定で、<br>あなたを守る神様の存在と、<br>今のあなたの状態をお伝えしました。</p>
             <p style="margin-bottom: 0;">でも、本当に大切なのはここから。<br>やす様がお金に苦労しない<br>豊かな人生を手にするために<br>以下の事を霊視して、お伝えします。</p>
         </div>
@@ -313,7 +327,7 @@
         <div style="padding: 40px 0; margin: 40px 0;">
             <div style="margin: 30px 0; text-align: center;">
                 <!-- 項目1: 黄色背景 -->
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ お金の流れが動き出す時期</h3>
@@ -322,7 +336,7 @@
                 </div>
 
                 <!-- 項目2: 赤背景 -->
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ やす様の底力が輝く方向性</h3>
@@ -331,7 +345,7 @@
                 </div>
 
                 <!-- 項目3: 緑背景 -->
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 豊かさを引き寄せる<br>オーラの整え方</h3>
@@ -344,7 +358,7 @@
         </div>
 
         <!-- CTA -->
-        <div class="cta">
+        <div class="cta reveal">
             <h2>【運命が動く24時間】</h2>
 
             <p style="margin-bottom: 90px;">今、<br>あなたを守る存在の気配が、<br>いつもより強く近くにあります。</p>
@@ -367,7 +381,7 @@
         </div>
 
         <!-- クロージング -->
-        <div class="closing">
+        <div class="closing reveal">
             <p style="margin-bottom: 90px;">私には視えています。</p>
             <p style="margin-bottom: 90px;">お金の不安から解放されて、<br>好きな選択を当たり前のようにしながら<br>笑っているやす様の姿を。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">今感じている苦しさも、<br>決して無駄ではありません。</p>
@@ -378,5 +392,23 @@
         </div>
 
     </div>
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 </body>
 </html>

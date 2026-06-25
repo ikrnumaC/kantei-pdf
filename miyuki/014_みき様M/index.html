@@ -205,7 +205,21 @@ ul li {
     margin-top: 30px;
 }
 
-@media (max-width: 768px) {
+        :root { --aura-color-1: 255, 120, 80; --aura-color-2: 210, 60, 40; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .guardian-image { position: relative; animation: aura-breath 4s ease-in-out infinite; }
+        @keyframes aura-breath {
+            0%, 100% { box-shadow: 0 0 30px rgba(var(--aura-color-1), 0.35), 0 0 60px rgba(var(--aura-color-2), 0.2), 0 4px 20px rgba(168, 184, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(var(--aura-color-1), 0.6), 0 0 100px rgba(var(--aura-color-2), 0.35), 0 4px 20px rgba(168, 184, 255, 0.3); }
+        }
+        .cta-button { animation: pulse 2.4s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); }
+            50% { transform: scale(1.035); box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4); }
+        }
+        .cta-button:hover { animation: none; }
+        @media (max-width: 768px) {
     body {
         font-size: 15px;
         padding: 10px;
@@ -259,7 +273,7 @@ ul li {
     <div class="container">
         <h1>みき様　守護神鑑定書</h1>
 
-        <div class="oracle-message">
+        <div class="oracle-message reveal">
             <p style="margin-bottom: 30px;">みき様、</p>
             <p style="margin-bottom: 30px;">視えました。</p>
             <p class="guardian" style="margin-bottom: 30px;">あなたを守っているのは、<br>不動明王(ふどうみょうおう)。</p>
@@ -267,7 +281,7 @@ ul li {
             <img src="../鑑定画像/不動明王.png" alt="不動明王" class="guardian-image">
         </div>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 30px;">あなたのオーラは、<br>刀のように鋭い白銀。<br>研ぎ澄まされ、凛と輝いています。</p>
             <p style="margin-bottom: 30px;">不動明王に守られる人は、<br>どんな困難にも動じず、<br>周囲の迷いや邪気を<br>燃やし尽くす<br>揺るがない守護の力を持つ人。</p>
             <p style="margin-bottom: 30px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">強い意志と、守り抜く力。<br>それがあなたの本質です。</p>
@@ -276,7 +290,7 @@ ul li {
         </div>
 
         <h2 class="emoji-header">⛩️お悩みについて</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 30px;">長男と四男の問題行動。<br>どう向き合っていいのか<br>分からない…</p>
             <p style="margin-bottom: 30px;">本来の揺るがない守護の力が<br>発揮できず、<br>感情に流され、軸を失っている。<br>子供たちを導く強さが、<br>眠ったままになっている。</p>
             <p style="margin-bottom: 30px;">この問題は、実はあなたが<br>悪いわけではありません。</p>
@@ -284,7 +298,7 @@ ul li {
         </div>
 
         <h2 class="emoji-header">⛩️なぜ今、<br>　悪いものを引き寄せているのか</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 20px;">冬や、寒い時期。<br>こんなことがありませんでしたか？</p>
             <ul style="margin-bottom: 30px;">
                 <li>感情の波が激しくなり、<br>情緒不安定になった</li>
@@ -298,7 +312,7 @@ ul li {
         </div>
 
         <h2 class="emoji-header">⛩️二つの道</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 30px;">このまま、オーラが乱れたままだと、<br>子供たちの問題行動が<br>エスカレートし、<br>家庭内が荒れてしまう。<br>あなた自身も疲れ果て、<br>どうしようもなくなる。</p>
             <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">でも、ここで流れを変えたら。</p>
             <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">オーラが整い、守護の力を<br>受け取れるようになり、<br>あなたが揺るがない軸を持ち、<br>子供たちも落ち着き始める。<br>家族が穏やかに、笑顔で過ごせる<br>日々が訪れる。</p>
@@ -306,7 +320,7 @@ ul li {
         </div>
 
         <h2 class="emoji-header">⛩️守護の方法</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 30px;">ここまでの鑑定で、<br>あなたの守護神とオーラの状態と、<br>なぜ今のような状況なのかを<br>お伝えしました。</p>
             <p style="margin-bottom: 30px;">でも、一番大事なのはここから、</p>
             <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff; text-shadow: 0 0 10px rgba(200, 200, 255, 0.3);">「じゃあ、具体的にどうすれば<br>良くなるのか」<br>「理想の未来を手に入れるためには、<br>何をすればいいのか」<br>ということですよね。</p>
@@ -318,7 +332,7 @@ ul li {
             <h2 style="text-align: center; color: #c8d0ff; font-size: 1.3em; margin-bottom: 50px; border: none; text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);">🔮 本式守護鑑定でお伝えすること</h2>
 
             <div style="margin: 30px 0; text-align: center;">
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ あなたの運命が動き出す転機</h3>
@@ -326,7 +340,7 @@ ul li {
                     </div>
                 </div>
 
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 守護神から守護を<br>受け取る方法</h3>
@@ -334,7 +348,7 @@ ul li {
                     </div>
                 </div>
 
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 守護の力を手に入れた<br>あなたの未来</h3>
@@ -342,7 +356,7 @@ ul li {
                     </div>
                 </div>
 
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 122, 255, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 私の守護の力をあなたに</h3>
@@ -354,7 +368,7 @@ ul li {
             <p style="margin-top: 30px; text-align: center;">このまま方法を知らずに過ごすか、<br>守護を受け取る道を選ぶか。<br>決めるのは、あなたです。</p>
         </div>
 
-        <div class="cta">
+        <div class="cta reveal">
             <h2>【運命が動く24時間】</h2>
 
             <p style="margin-bottom: 30px;">今、あなたの守護神、守護霊は、<br>あなたがこの鑑定を読んだことに<br>気づいています。</p>
@@ -375,7 +389,7 @@ ul li {
             <p style="margin-top: 30px;">お申し込み後、<br>購入時のお名前をお知らせください。<br>1日以内に、あなただけの<br>鑑定書をお届けします。</p>
         </div>
 
-        <div class="closing">
+        <div class="closing reveal">
             <p style="margin-bottom: 30px;">私には視えています。</p>
             <p style="margin-bottom: 30px;">あなたのオーラが整い、<br>守護神からのエネルギーを<br>受け取ったとき。</p>
             <p style="margin-bottom: 30px; font-weight: bold;">子供たちが落ち着き、<br>笑顔で話しかけてくる場面が。<br>あなたが穏やかに、<br>揺るがない軸を持って<br>向き合っている姿が。<br>家族全員が、温かな食卓を囲んでいる<br>場面が。</p>
@@ -385,5 +399,23 @@ ul li {
         </div>
 
     </div>
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 </body>
 </html>

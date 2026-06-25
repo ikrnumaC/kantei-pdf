@@ -205,7 +205,21 @@ ul li {
     margin-top: 30px;
 }
 
-@media (max-width: 768px) {
+        :root { --aura-color-1: 200, 170, 255; --aura-color-2: 150, 100, 220; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .guardian-image { position: relative; animation: aura-breath 4s ease-in-out infinite; }
+        @keyframes aura-breath {
+            0%, 100% { box-shadow: 0 0 30px rgba(var(--aura-color-1), 0.35), 0 0 60px rgba(var(--aura-color-2), 0.2), 0 4px 20px rgba(168, 184, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(var(--aura-color-1), 0.6), 0 0 100px rgba(var(--aura-color-2), 0.35), 0 4px 20px rgba(168, 184, 255, 0.3); }
+        }
+        .cta-button { animation: pulse 2.4s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); }
+            50% { transform: scale(1.035); box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4); }
+        }
+        .cta-button:hover { animation: none; }
+        @media (max-width: 768px) {
     body {
         font-size: 15px;
         padding: 10px;
@@ -272,7 +286,7 @@ ul li {
     <div class="container">
         <h1>みゆみゆ様<br>守護神鑑定書</h1>
 
-        <div class="oracle-message">
+        <div class="oracle-message reveal">
             <p style="margin-bottom: 90px;">みゆみゆ様、</p>
             <p style="margin-bottom: 90px;">霊視して<br>少し驚きました。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">これほど鋭く、<br>研ぎ澄まされた銀色のオーラを<br>纏った女性は、<br>なかなかいらっしゃいません。</p>
@@ -282,7 +296,7 @@ ul li {
             <img src="../鑑定画像/建御雷神.png" alt="建御雷神" class="guardian-image">
         </div>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">みゆみゆ様は本来、<br>やると決めたら<br>真っ直ぐに動ける方ですよね。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">「これは大事」と判断したら、<br>誰よりも早く決断して、<br>誰よりも早く動く。</p>
             <p style="margin-bottom: 90px;">お嬢様を守るために、<br>ここまで歩いてくる中で、<br>何度もその力を<br>ご自分でも使ってこられたはずです。</p>
@@ -290,7 +304,7 @@ ul li {
 
         <h2 class="emoji-header">⛩️なぜ今、暮らしが楽にならないのか</h2>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">だからこそ、<br>ダラダラと続く生活の苦しさや、<br>頑張っているのに<br>なかなか抜け出せない状況に、<br>ご自分の中の刀が、<br>うずうずしてしまうのでは<br>ないでしょうか。</p>
             <p style="margin-bottom: 90px;">それなのに、<br>なぜご自分の暮らしだけは、<br>こんなにスッキリ<br>楽になってくれないのか。</p>
             <p style="margin-bottom: 90px;">ただ、みゆみゆ様にはもう一つ、<br>ご自分よりも、<br>「お嬢様の生活」を<br>先に置いてしまう、<br>という性質があります。</p>
@@ -307,7 +321,7 @@ ul li {
 
         <h2 class="emoji-header">⛩️みゆみゆ様の豊かさが動く流れ</h2>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">みゆみゆ様のオーラを視ていると、<br>研ぎ澄まされた銀色の中に、<br>今、たくさんの火が<br>燃えている景色が視えます。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">火そのものは<br>力のあるエネルギーですが、<br>今のみゆみゆ様の中では、<br>火を浴び続けたまま、<br>ご自分を冷ます水を<br>ほとんどお持ちでない状態です。</p>
             <p style="margin-bottom: 90px;">これは、<br>ご自分のためのお金や時間、<br>休息の流れを、<br>ご自分で「いらない」と<br>押し戻してしまっている、<br>ということです。</p>
@@ -320,7 +334,7 @@ ul li {
 
         <h2 class="emoji-header">⛩️本式守護鑑定でお伝えすること</h2>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">みゆみゆ様の中で起きている<br>ぶつかりは、<br>時間が経てば自然に片付くもの、<br>ではありません。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">このままご自分のことを<br>後回しにしたまま、<br>夏を越え、秋を越えた時。<br>お嬢様の隣に立っている<br>みゆみゆ様が、<br>「ご自分のことも、<br>ちゃんと整えられた自分」で<br>いられるか、<br>「結局、自分だけが<br>追いつめられたままの自分」で<br>いるか。</p>
             <p style="margin-bottom: 90px;">その差は、今この瞬間に、<br>みゆみゆ様が「ご自分の流れを<br>正しく知るか」で決まります。</p>
@@ -331,28 +345,28 @@ ul li {
 
         <div style="padding: 40px 0; margin: 40px 0;">
             <div style="margin: 30px 0; text-align: center;">
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ みゆみゆ様の銀の使い方</h3>
                         <p>みゆみゆ様の中に本来ある、<br>迷わず動ける鋭さを、<br>ご自分のためにも<br>どう使えばいいのか。<br>具体的にお伝えします。</p>
                     </div>
                 </div>
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 暮らしを楽にする本当の道</h3>
                         <p>みゆみゆ様のオーラの中で、<br>豊かさの流れを止めているものが<br>何なのか。<br>ひとつひとつ視て、<br>お伝えします。</p>
                     </div>
                 </div>
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ 流れが動く瞬間</h3>
                         <p>これからの一年の間に、<br>みゆみゆ様の暮らしの中に、<br>「無理のない流れ」が<br>入ってくる瞬間が訪れます。<br>その時期と、<br>みゆみゆ様が取るべき態度を、<br>丁寧にお伝えします。</p>
                     </div>
                 </div>
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 122, 255, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">⛩️ みゆみゆ様らしい立て直し方</h3>
@@ -366,7 +380,7 @@ ul li {
             <p style="margin-bottom: 90px; text-align: center;">その一歩を、<br>ここから踏み出してください。</p>
         </div>
 
-        <div class="cta">
+        <div class="cta reveal">
             <h2>【運命の扉が開く24時間】</h2>
 
             <p style="margin-bottom: 90px;">今、みゆみゆ様のために、<br>運命の扉は<br>最も大きく開かれています。</p>
@@ -385,7 +399,7 @@ ul li {
             <p style="margin-top: 90px;">1日限定3名までしか<br>お受けできません。<br>リンク先が表示されない場合<br>本日分は締切ですので<br>ご了承ください。</p>
         </div>
 
-        <div class="closing">
+        <div class="closing reveal">
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">みゆみゆ様の物語が、<br>みゆみゆ様らしい結末を<br>迎えることを、<br>私は守護の声を通して、<br>すでに知っています。</p>
             <p style="margin-bottom: 90px;">ご縁に、<br>心から感謝を込めて。</p>
 
@@ -393,5 +407,23 @@ ul li {
         </div>
 
     </div>
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 </body>
 </html>

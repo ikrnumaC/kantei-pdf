@@ -27,6 +27,20 @@
         .limited-badge { color: #ff4444; font-weight: bold; font-size: 0.95em; margin: 10px 0; }
         .closing { text-align: center; margin: 40px 0; padding: 30px 15px; background: rgba(60, 60, 120, 0.2); border-radius: 15px; font-size: 1.1em; line-height: 2; }
         .signature { text-align: right; font-size: 1.3em; color: #c8d0ff; margin-top: 30px; }
+                :root { --aura-color-1: 180, 210, 130; --aura-color-2: 130, 170, 80; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .guardian-image { position: relative; animation: aura-breath 4s ease-in-out infinite; }
+        @keyframes aura-breath {
+            0%, 100% { box-shadow: 0 0 30px rgba(var(--aura-color-1), 0.35), 0 0 60px rgba(var(--aura-color-2), 0.2), 0 4px 20px rgba(168, 184, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(var(--aura-color-1), 0.6), 0 0 100px rgba(var(--aura-color-2), 0.35), 0 4px 20px rgba(168, 184, 255, 0.3); }
+        }
+        .cta-button { animation: pulse 2.4s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); }
+            50% { transform: scale(1.035); box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4); }
+        }
+        .cta-button:hover { animation: none; }
         @media (max-width: 768px) {
             body { font-size: 15px; padding: 10px; }
             .container { padding: 20px 10px; }
@@ -49,7 +63,7 @@
     <div class="container">
         <h1>もりり様<br>守護神鑑定書</h1>
 
-        <div class="oracle-message">
+        <div class="oracle-message reveal">
             <p style="margin-bottom: 90px;">もりり様、</p>
             <p style="margin-bottom: 90px;">霊視して、<br>思わず胸に手を当てました。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">これほど深く、温かく、<br>どっしりとした大地のような<br>ブラウンのオーラを<br>纏った方は、なかなか<br>いらっしゃいません。</p>
@@ -60,7 +74,7 @@
             <img src="../鑑定画像/大己貴命.png" alt="大己貴命" class="guardian-image">
         </div>
 
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">もりり様は本来、<br>人を疑うことが<br>苦手な方ですよね。</p>
             <p style="margin-bottom: 90px;">「この人は本当のことを<br>言っているのだろう」<br>「困っているなら助けたい」<br>そんな気持ちが<br>自然に出てしまう方だと思います。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">それは弱さではなく、<br>大地のオーラを持つ方の<br>本来の優しさです。</p>
@@ -71,7 +85,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️なぜ重たい荷を引き受けてしまうのか</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">ただ、もりり様にはもう一つ、<br>規格外の出来事や、<br>普通の人が経験しない<br>ような事態に<br>巻き込まれてしまう<br>ご縁の性質があります。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">それは決して<br>もりり様が悪いのではなく、<br>オーラの大きさが、<br>他の方の重たいものを<br>引き寄せてしまう<br>仕組みなんです。</p>
             <p style="margin-bottom: 90px;">大地は、雨も雪も、<br>土砂も全て<br>受け止めてしまう。</p>
@@ -84,7 +98,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️もりり様の流れが今、どう動いているか</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">もりり様の今のオーラを<br>深く視ていくと、<br>重たい借金の問題は、<br>表面上は動いていないように<br>見えるかもしれません。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">ただ、オーラは<br>すでに「解決の方向」へと<br>動き始めています。</p>
             <p style="margin-bottom: 90px;">このタイミングで、<br>もりり様がご自身のオーラを<br>正しく整えれば、<br>解決までの道のりが<br>ぐっと短くなる流れに<br>入っています。</p>
@@ -96,7 +110,7 @@
         </div>
 
         <h2 class="emoji-header">⛩️本式守護鑑定でお伝えすること</h2>
-        <div class="section">
+        <div class="section reveal">
             <p style="margin-bottom: 90px;">もりり様の中で起きている<br>この重たい状況は、<br>時間が経てば<br>自然に晴れるもの、<br>ではありません。</p>
             <p style="margin-bottom: 90px;">抱え込んだまま冬を越え、<br>春を越えていった時。</p>
             <p style="margin-bottom: 90px;">「自分の手で流れを整えて、<br>平和な暮らしを取り戻したもりり様」で<br>これからの人生を迎えるか。<br>「重たさを抱えたまま、<br>ご自身を責め続けるもりり様」で<br>過ごし続けるか。</p>
@@ -106,7 +120,7 @@
 
         <div style="padding: 40px 0; margin: 40px 0;">
             <div style="margin: 30px 0; text-align: center;">
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 もりり様の大地の活かし方</h3>
@@ -114,7 +128,7 @@
                     </div>
                 </div>
 
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 解決への道筋</h3>
@@ -122,7 +136,7 @@
                     </div>
                 </div>
 
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 流れが動く瞬間</h3>
@@ -130,7 +144,7 @@
                     </div>
                 </div>
 
-                <div style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 122, 255, 0.7); opacity: 0.3;"></div>
                     <div style="position: relative; z-index: 1;">
                         <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 もりり様らしい選び方</h3>
@@ -143,7 +157,7 @@
             <p style="margin-bottom: 90px; text-align: center; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">その一歩を、<br>ここから踏み出してください。</p>
         </div>
 
-        <div class="cta">
+        <div class="cta reveal">
             <h2>【運命の扉が開く24時間】</h2>
 
             <p style="margin-bottom: 90px;">今、もりり様のために、<br>運命の扉は最も大きく<br>開かれています。</p>
@@ -163,7 +177,7 @@
             <p style="margin-top: 30px;">お申し込み後、<br>購入時のお名前をお知らせください。<br>1日以内に、<br>あなただけの鑑定書をお届けします。</p>
         </div>
 
-        <div class="closing">
+        <div class="closing reveal">
             <p style="margin-bottom: 90px;">もりり様の物語が、<br>もりり様らしい結末を<br>迎えることを、</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">私は守護の声を通して、<br>すでに知っています。</p>
             <p style="margin-bottom: 90px;">ご縁に、心から感謝を込めて。</p>
@@ -171,5 +185,23 @@
             <div class="signature">深雪</div>
         </div>
     </div>
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 </body>
 </html>
