@@ -147,6 +147,57 @@
             letter-spacing: 0.1em;
             font-weight: bold;
         }
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
         @media (max-width: 768px) {
             body { font-size: 15px; padding: 10px; }
             .container { padding: 20px 10px; }
@@ -157,6 +208,9 @@
             .cover-title { font-size: 1.6em; }
             .cover-subtitle { font-size: 1.3em; }
             .cover-name { font-size: 1.2em; }
+            .toc { padding: 20px 15px; }
+            .toc-title { font-size: 1.1em; }
+            .toc a { font-size: 0.95em; padding: 12px 6px 12px 36px; }
         }
     </style>
 </head>
@@ -174,6 +228,24 @@
     <!-- 本文 -->
     <div class="container">
 
+        <!-- 目次 -->
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-god">守護神について</a></li>
+                <li><a href="#sec-essence">あなたの本質について</a></li>
+                <li><a href="#sec-1">1. 内なる灯りの活かし方</a></li>
+                <li><a href="#sec-2">2. これから出会う方</a></li>
+                <li><a href="#sec-3">3. ご縁が動く瞬間</a></li>
+                <li><a href="#sec-4">マサカズ様らしい歩み方</a></li>
+                <li><a href="#sec-flow">今後の流れ</a></li>
+                <li><a href="#sec-guardian">守護を受け取る方法</a></li>
+                <li><a href="#sec-stone">あなたを支えるパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
         <!-- 冒頭 -->
         <div class="oracle-message">
             <p style="margin-bottom: 90px;">マサカズ様、</p>
@@ -184,7 +256,7 @@
         </div>
 
         <!-- あなたの未来に視えるもの -->
-        <h2>【あなたの未来に視えるもの】</h2>
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
         <div class="section">
             <p style="margin-bottom: 90px;">霊視を深めていくと、<br>ひとつの景色が視えてきました。</p>
             <p style="margin-bottom: 90px;">あなたの隣に、<br>一人の女性が座っている姿。</p>
@@ -203,7 +275,7 @@
         </div>
 
         <!-- 守護神の紹介 -->
-        <div class="oracle-message">
+        <div class="oracle-message" id="sec-god">
             <p style="margin-bottom: 90px;">その景色を見せてくれたのは、<br><span style="color: #ffd966;">不動明王<br>(ふどうみょうおう)</span>。</p>
             <p style="margin-bottom: 90px;">昔、人々が迷いに飲まれ、<br>本気で動くことを忘れていた時代。</p>
             <p style="margin-bottom: 90px;"><span style="color: #ffd966;">不動明王</span>は、<br>背に燃える炎を立ち上げ、<br>右手に剣を持って、<br>迷いそのものを焼き切った。</p>
@@ -213,7 +285,7 @@
         </div>
 
         <!-- あなたの本質について -->
-        <h2 class="emoji-header">⛩️あなたの本質について</h2>
+        <h2 class="emoji-header" id="sec-essence">⛩️あなたの本質について</h2>
         <div class="section">
             <p style="margin-bottom: 90px;">まず、あなたのことを<br>お話しさせてください。</p>
             <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>ご自身の中に<br>独自の世界を持っている方です。</p>
@@ -252,7 +324,7 @@
         </div>
 
         <!-- ⛩️1. 内なる灯りの活かし方 -->
-        <h2 class="emoji-header">⛩️1. 内なる灯りの活かし方</h2>
+        <h2 class="emoji-header" id="sec-1">⛩️1. 内なる灯りの活かし方</h2>
         <div class="section">
             <p style="margin-bottom: 90px;">ここから、<br>本式守護鑑定でお伝えする<br>4つのお話に入ります。</p>
             <p style="margin-bottom: 90px;">まず最初は、<br>あなたの中の独自の世界を、<br>これからのご縁の中で<br>どう活かしていくか<br>というお話です。</p>
@@ -276,7 +348,7 @@
         </div>
 
         <!-- ⛩️2. これから出会う方 -->
-        <h2 class="emoji-header">⛩️2. これから出会う方</h2>
+        <h2 class="emoji-header" id="sec-2">⛩️2. これから出会う方</h2>
         <div class="section">
             <p style="margin-bottom: 90px;">次にお伝えするのは、<br>これからあなたの元に<br>訪れる方の姿です。</p>
             <p style="margin-bottom: 90px;">霊視を深めていくと、<br>その方の輪郭が<br>少しずつ見えてきます。</p>
@@ -311,7 +383,7 @@
         </div>
 
         <!-- ⛩️3. ご縁が動く瞬間 -->
-        <h2 class="emoji-header">⛩️3. ご縁が動く瞬間</h2>
+        <h2 class="emoji-header" id="sec-3">⛩️3. ご縁が動く瞬間</h2>
         <div class="section">
             <p style="margin-bottom: 90px;">次にお伝えするのは、<br>これからの一年の中で、<br>あなたのご縁が<br>実際に動き始める<br>具体的な時期です。</p>
             <p style="margin-bottom: 90px; font-weight: bold;">霊視で視えているのは、<br>2026年から2027年にかけての二年が、<br>あなたのこれまでの人生の中で、<br>最もご縁が動きやすい時期だ<br>ということ。</p>
@@ -360,7 +432,7 @@
         </div>
 
         <!-- ⛩️4. マサカズ様らしい歩み方 -->
-        <h2 class="emoji-header">⛩️4. マサカズ様らしい歩み方</h2>
+        <h2 class="emoji-header" id="sec-4">⛩️4. マサカズ様らしい歩み方</h2>
         <div class="section">
             <p style="margin-bottom: 90px;">最後にお伝えするのは、<br>「自分の手で」<br>未来を選び取るために、<br>今日からあなたに<br>できることです。</p>
             <p style="margin-bottom: 90px;">ここまでお伝えしてきた中で、<br>ひとつ<br>強く視えていることがあります。</p>
@@ -396,7 +468,7 @@
         </div>
 
         <!-- 今後の流れ -->
-        <h2>【今後の流れ】</h2>
+        <h2 id="sec-flow">【今後の流れ】</h2>
         <div class="section">
             <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年6月:<br>守護神の扉が開く月</p>
             <p style="margin-bottom: 90px;"><span style="color: #ffd966;">不動明王</span>の炎の力が、<br>一年で最も強く<br>流れ込む月。</p>
@@ -423,7 +495,7 @@
         </div>
 
         <!-- ⛩️ 守護を受け取る方法 -->
-        <h2 class="emoji-header">⛩️守護を受け取る方法</h2>
+        <h2 class="emoji-header" id="sec-guardian">⛩️守護を受け取る方法</h2>
         <div class="section">
             <p style="margin-bottom: 90px;">そして、安心してください。</p>
             <p style="margin-bottom: 90px; font-weight: bold;">あなたのことを<br>深く霊視した際、<br>特別な守護の力を<br>あなたの奥底に<br>置いてきました。</p>
@@ -463,7 +535,7 @@
         </div>
 
         <!-- ⛩️ あなたを支えるパワーストーン -->
-        <h2 class="emoji-header">⛩️あなたを支えるパワーストーン</h2>
+        <h2 class="emoji-header" id="sec-stone">⛩️あなたを支えるパワーストーン</h2>
         <div class="section">
             <p style="margin-bottom: 90px;">あなたには、<br>守護神のご縁をお伝えし、<br>その力を<br>あなたの奥底に<br>置いてきました。</p>
             <p style="margin-bottom: 90px;">また、<span style="color: #ffd966;">不動明王</span>様と縁のある<br>滝谷寺と、<br>参拝の際に力を取り入れる方法も<br>お伝えしました。</p>
@@ -486,7 +558,7 @@
         </div>
 
         <!-- 結びの言葉 -->
-        <h2>【結びの言葉】</h2>
+        <h2 id="sec-closing">【結びの言葉】</h2>
         <div class="closing">
             <p style="margin-bottom: 90px;">マサカズ様、</p>
             <p style="margin-bottom: 90px; font-weight: bold;">あなたの未来には、<br>静かに芯のある方の隣で、<br>言葉を交わさずに笑い合っている、<br>そんな日々へと続く道が<br>視えています。</p>
