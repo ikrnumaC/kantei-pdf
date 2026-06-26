@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>武田瑛弘様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        /* 表紙のスタイル */
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">更地から実りを育てる道</h2>
+            <p class="cover-name">武田瑛弘様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 冒頭 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">武田瑛弘様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">自己破産という、<br>人生で最も重い決断をされた直後に、<br>ご自身の未来を視るために<br>ここまで来てくださったこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その勇気を、<br>私は深く受け止めています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの魂が、<br>本気でここから歩き直そうとしている。</p>
+            <p style="margin-bottom: 90px;">その強い意志が、<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先、<br>あなたが本当に知るべきことを、<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2>【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が、<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたが、<br>小さな場所で、<br>誰かと向き合って、<br>静かに笑っている姿。</p>
+            <p style="margin-bottom: 90px;">派手な成功ではありません。</p>
+            <p style="margin-bottom: 90px;">けれど、<br>何かを差し出して、<br>それを受け取った人が、<br>あなたに「ありがとう」と<br>頭を下げている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その景色です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">時期は、<br>2027年の初夏から夏にかけて。</p>
+            <p style="margin-bottom: 90px;">その最初の兆しは、<br>実はもう動き始めています。</p>
+            <p style="margin-bottom: 90px;">ちょうどこれから──<br>2026年の夏から秋にかけての半年が、<br>あなたの土に最初の種が<br>運ばれてくる時期です。</p>
+            <p style="margin-bottom: 90px;">そこから動き始めて、<br>2027年の初夏に「これだ」と感じる形が見え、<br>58歳を迎える頃から、<br>ようやく地に足のついた安定期へと<br>入っていく。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そういう流れが、<br>あなたの運命に刻まれています。</p>
+            <p style="margin-bottom: 90px;">ただ──<br>そこに至るまでの道は、<br>決して平坦ではありません。</p>
+            <p style="margin-bottom: 90px;">「もう一度立てるのか」<br>「この歳から、何ができるのか」</p>
+            <p style="margin-bottom: 90px;">そういう不安が、<br>これからも何度も<br>胸をよぎる時があるはずです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも、<br>安心してください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたには、<br>それを乗り越える力が<br>最初から備わっています。</p>
+            <p style="margin-bottom: 90px;">その根拠を、<br>これからお伝えしていきます。</p>
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは、<br><span style="color: #ffd966;">宇迦之御魂神<br>（うかのみたまのかみ）</span>。</p>
+            <img src="../鑑定画像/宇迦之御魂神.png" alt="宇迦之御魂神" class="guardian-image">
+            <p style="margin-bottom: 90px;">昔、まだ田畑の少なかった頃。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">宇迦之御魂神</span>は、<br>人々に稲の種を授け、<br>その育て方を教えてくださった神様です。</p>
+            <p style="margin-bottom: 90px;">種を蒔き、<br>水を引き、<br>雑草を取り、<br>何ヶ月もかけて稲を育てる。</p>
+            <p style="margin-bottom: 90px;">その地味な営みの一つひとつに、<br>神様は寄り添ってくださいました。</p>
+            <p style="margin-bottom: 90px;">やがて田んぼには黄金の稲穂が実り、<br>人々は飢えから救われた。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「更地から、種を蒔き、<br>実りを育てる神様」として、<br>今も全国の稲荷神社に祀られています。</p>
+            <p style="margin-bottom: 90px;">派手な金運の神様ではなく、<br>コツコツと根を張り、<br>時間をかけて実らせる神様。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">今のあなたに、<br>これ以上ふさわしい守護はありません。</p>
+        </div>
+
+        <!-- あなたという人について -->
+        <h2>【あなたという人について】</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">本式守護鑑定では、<br>まずあなたという人の本質を、<br>深いところからお伝えします。</p>
+            <p style="margin-bottom: 90px;">ここを丁寧に視ていくことが、<br>これからの道筋を読み解く、<br>すべての土台になります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの本質は、<br>「養いの土」です。</p>
+            <p style="margin-bottom: 90px;">畑の土のように、<br>そこに何かが蒔かれれば、<br>時間をかけて育て上げていく性質。</p>
+            <p style="margin-bottom: 90px;">人を育てる、<br>場を温める、<br>誰かが安心して根を張れる土壌を<br>差し出す力。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これが、<br>あなたの魂の核心にあるものです。</p>
+            <p style="margin-bottom: 90px;">実際に──<br>これまでの人生で、<br>こういう瞬間が<br>あったのではないですか。</p>
+            <p style="margin-bottom: 90px;">あなたが何気なくかけた一言で、<br>その場の空気がふっと和らいだ。</p>
+            <p style="margin-bottom: 90px;">困っている人が、<br>なぜかあなたのところに集まってきて、<br>話し終えた後に<br>表情が明るくなって帰っていった。</p>
+            <p style="margin-bottom: 90px;">ご自身ではあまり意識していない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">けれど周りの人は、<br>あなたの隣にいると<br>不思議と安心する。</p>
+            <p style="margin-bottom: 90px;">そういう経験が、<br>何度もあったはずです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたのオーラは、<br>夏の麦畑のように温かな黄土色。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、<br>その中に細かく光る金色。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これは「人を養う側に立つ人」の色です。</p>
+            <p style="margin-bottom: 90px;">太陽を浴びて熟した実りの色。<br>冷たい色ではなく、<br>人をほっとさせる色。</p>
+            <p style="margin-bottom: 90px;">このオーラは、<br>お金を直接呼ぶ色ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「人を呼ぶ色」です。</p>
+            <p style="margin-bottom: 90px;">ここを取り違えてしまうと、<br>本来の力が活かしきれません。</p>
+            <p style="margin-bottom: 90px;">もう一つ、<br>あなたの中に視えている性質があります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>人と同じやり方では<br>本気になれない人です。</p>
+            <p style="margin-bottom: 90px;">普通の人が<br>「みんながやっているから」<br>で動ける場面でも、<br>あなたはどこか心が乗らない。</p>
+            <p style="margin-bottom: 90px;">「自分なりの形でやりたい」<br>「納得していないことは続けられない」</p>
+            <p style="margin-bottom: 90px;">そういう感覚が、<br>ずっと胸の奥にあったはずです。</p>
+            <p style="margin-bottom: 90px;">これはあなたという人の<br>独自の精神世界が、<br>他の人より深いところで<br>できあがっているからです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">人と違う角度から物事を見る目。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これも、<br>あなたの大切な才能の一つです。</p>
+            <p style="margin-bottom: 90px;">そして、<br>あなたには<br>神仏からの加護が<br>重なって視えています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">衣食住に困らないという守り。<br>天からの徳。<br>人からの徳。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この三つが、<br>あなたの核心にしっかりと宿っています。</p>
+            <p style="margin-bottom: 90px;">この意味は、<br>後ほど詳しくお伝えしますが──</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">たとえ今、<br>どれほど苦しい状況にあったとしても、<br>あなたの食べるもの、<br>住む場所、<br>身を置く環境は、<br>必ず守られていきます。</p>
+            <p style="margin-bottom: 90px;">これは私が<br>あなたを深く視た時に、<br>最初に感じた強い印象です。</p>
+            <p style="margin-bottom: 90px;">自己破産という重い局面の中でも、<br>この守りだけは<br>最初から動かないものとして<br>あなたに与えられています。</p>
+            <p style="margin-bottom: 90px;">お金についても、<br>少しだけ触れておきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの運命には、<br>財との縁が<br>もともと描かれています。</p>
+            <p style="margin-bottom: 90px;">けれど──<br>入ってきたお金が<br>手元に留まりにくい構造も、<br>同時にあります。</p>
+            <p style="margin-bottom: 90px;">これまでの人生で、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「真面目に働いてきたのに、<br>　なぜか手元にお金が残らない」</p>
+            <p style="margin-bottom: 90px;">そう感じてきた瞬間が、<br>あったのではないでしょうか。</p>
+            <p style="margin-bottom: 90px;">それは、<br>あなたが浪費家だったからではありません。</p>
+            <p style="margin-bottom: 90px;">水が高いところから低いところへ<br>流れていくように、<br>あなたの中では<br>お金が「人のため」「誰かのため」に<br>流れ出ていく構造が<br>強くあるからです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここは、<br>これからの再生でとても重要になります。</p>
+            <p style="margin-bottom: 90px;">詳しくは、<br>後ほどお伝えしていきます。</p>
+            <p style="margin-bottom: 90px;">仕事の領域でも、<br>少しお伝えしておきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>組織の中で歯車として動くより、<br>「自分の型」を持って動く方が<br>本来の力が出る人です。</p>
+            <p style="margin-bottom: 90px;">派遣でも、契約でも、<br>業務委託でも、自営でも、<br>形は何でも構いません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ、<br>「自分のやり方が許される場所」<br>であることが、<br>あなたには欠かせない条件です。</p>
+            <p style="margin-bottom: 90px;">ここを誤って、<br>「安定だから」という理由だけで<br>合わない場所に身を置くと、<br>また同じように流れて<br>形にならない結果になります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">ここから先の人生では、<br>この選び方を変えていく必要があります。</p>
+            <p style="margin-bottom: 0;">これらの土台の上に、<br>これから四つのテーマで、<br>具体的な未来をお伝えしていきます。</p>
+        </div>
+
+        <!-- 温かさの活かし方 -->
+        <h2 class="emoji-header">⛩️ 温かさの活かし方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">あなたの中に本来ある、<br>場を温める力。</p>
+            <p style="margin-bottom: 90px;">これを、<br>これからの人生のどこに向ければいいのか。</p>
+            <p style="margin-bottom: 90px;">ここから視えていることを<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">霊視で視えているのは、<br>あなたの温かさが<br>「お金を直接生む力」ではなく、<br>「人を集める力」だということ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これはとても大事な区別です。</p>
+            <p style="margin-bottom: 90px;">お金を直接狙いに行く生き方を選ぶと、<br>あなたの定めとは噛み合いません。</p>
+            <p style="margin-bottom: 90px;">けれど、<br>「人が集まる場」を作りに行くと、<br>その流れの中から<br>お金が後から付いてきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">順番が、<br>あなたの場合は逆なのです。</p>
+            <p style="margin-bottom: 90px;">運命を深く視ていくと、<br>あなたが最も力を発揮できるのは、<br>こういう領域です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">人を育てる場。<br>人をケアする場。<br>人と向き合って、<br>時間をかけて関わる場。</p>
+            <p style="margin-bottom: 90px;">たとえば、<br>食を通して人を温める仕事。<br>誰かの生活を支える仕事。<br>小さな技を、<br>弟子のような人に教えていく形。<br>土や自然に近い場所で、<br>人と関わりながら働く形。</p>
+            <p style="margin-bottom: 90px;">業種の名前は、<br>ここでは絞りません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">大切なのは、<br>「人と短く関わって去る仕事」ではなく、<br>「人と長く関わって何かを育てる仕事」<br>であること。</p>
+            <p style="margin-bottom: 90px;">ここに、<br>あなたの温かさは<br>真っ直ぐに流れていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、<br>これからの十年間──</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">53歳から62歳までのあなたには、<br>非常に強い人縁の流れが<br>入ってきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「自分一人で立て直す」のではなく、<br>「人と組んで動く」ことで運が開ける。</p>
+            <p style="margin-bottom: 90px;">あなたより少し格上の人、<br>あなたを引き上げてくれる人、<br>あなたを必要としてくれる人。</p>
+            <p style="margin-bottom: 90px;">そういう存在と組むことで、<br>あなたの温かさが<br>具体的な仕事の形になっていきます。</p>
+            <p style="margin-bottom: 90px;">「自分で何かを立ち上げなければ」<br>「一人で全部背負わなければ」</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そう力まなくて大丈夫です。</p>
+            <p style="margin-bottom: 90px;">あなたの定めは、<br>そういう動き方を求めていません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「人を介して動く」<br>「人の流れに乗って動く」</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">これが、<br>これからのあなたの正しい歩き方です。</p>
+        </div>
+
+        <!-- 新しく蒔かれる種 -->
+        <h2 class="emoji-header">⛩️ 新しく蒔かれる種</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">更地に戻ったあなたの土に、<br>これからどんな種が<br>蒔かれていくのか。</p>
+            <p style="margin-bottom: 90px;">ここを視ていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">霊視で視えているのは、<br>今年──2026年の夏から秋にかけて、<br>「新しい知恵」「新しい人」「新しい情報」が<br>向こうから運ばれてくる流れです。</p>
+            <p style="margin-bottom: 90px;">あなたが自分から<br>必死に探しに行くのではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">向こうから、<br>運ばれてくる。</p>
+            <p style="margin-bottom: 90px;">その兆しは、<br>意外な人からの連絡。<br>昔の知り合いからの紹介。<br>通っているお店や、<br>何気なく入った場所での出会い。</p>
+            <p style="margin-bottom: 90px;">そういう、<br>予測のつかない形でやってきます。</p>
+            <p style="margin-bottom: 90px;">そして、<br>今年あなたのところに来る種は、<br>すぐには芽を出しません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">冬の間、<br>土の中で静かに育ち、<br>来年──2027年に入ってから、<br>ゆっくりと形を見せ始めます。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">宇迦之御魂神</span>が<br>稲を育てるように、<br>あなたの種も、<br>急がず、確かな順番で<br>育っていく流れです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、<br>58歳を迎える頃から──</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここからの十年が、<br>あなたの人生で<br>最も地に足がついた時期になります。</p>
+            <p style="margin-bottom: 90px;">派手な飛躍ではありません。</p>
+            <p style="margin-bottom: 90px;">けれど、<br>種が根を張り、<br>茎が伸び、<br>やがて実をつけていく。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そういう、<br>確かな十年です。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">宇迦之御魂神</span>が<br>稲を育てるように、<br>あなたの仕事も、<br>ここから一年、また一年と、<br>時間をかけて根を張っていきます。</p>
+            <p style="margin-bottom: 90px;">ただし──<br>ここで一つだけ、<br>注意しておきたいことがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">来年あなたのところに来る種の中には、<br>「安定だから」という理由で<br>選びたくなるものが<br>混じってきます。</p>
+            <p style="margin-bottom: 90px;">世間が「これが正解」と言いそうな種。</p>
+            <p style="margin-bottom: 90px;">周りの人が<br>「絶対こっちにしなさい」と言う種。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そういうものは、<br>あなたの定めでは育ちません。</p>
+            <p style="margin-bottom: 90px;">土の質が合わないからです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「自分の感覚で、<br>　ここに置いてみたい」</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そう感じる種を選んでください。</p>
+            <p style="margin-bottom: 90px;">世間体ではなく、<br>胸の奥の感覚で選ぶ。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">これが、<br>来年あなたが守るべき<br>たった一つのルールです。</p>
+        </div>
+
+        <!-- 流れが動く瞬間 -->
+        <h2 class="emoji-header">⛩️ 流れが動く瞬間</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">これから一年から二年の間に、<br>あなたの数字が<br>具体的に動き始める瞬間が<br>何度か訪れます。</p>
+            <p style="margin-bottom: 90px;">その時期と、<br>その時に取るべき態度を、<br>順にお伝えします。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年7月〜10月：種が運ばれてくる時期</p>
+            <p style="margin-bottom: 90px;">最初の動きは、<br>ちょうど今──<br>2026年の7月から10月にかけて。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここは、<br>人からの紹介、<br>情報、<br>支援の流れが<br>連続して動き出す時期です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">特に、<br>8月。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">この月は、<br>あなたの運命に<br>「学びと支援の星」が<br>二重に重なって入ってくる、<br>今年の最大の窓です。</p>
+            <p style="margin-bottom: 90px;">紹介や情報が、<br>向こうから運ばれてくる。</p>
+            <p style="margin-bottom: 90px;">声をかけてくる人が、<br>増えてきます。</p>
+            <p style="margin-bottom: 90px;">そして9月。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここは、<br>あなたらしい表現の種が<br>ふっと見えてくる月。</p>
+            <p style="margin-bottom: 90px;">10月には、<br>同じ方向を向いた人たち、<br>同志のような人との繋がりが<br>固まっていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この四ヶ月の間の正しい態度は、<br>「断らない」こと。</p>
+            <p style="margin-bottom: 90px;">たとえ、<br>すぐに仕事に結びつかなくても、<br>小さな話でも、<br>一度受けてみてください。</p>
+            <p style="margin-bottom: 90px;">もし「困っている」と感じることがあれば、<br>信頼できる相手に<br>口に出して伝えてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「自分で何とかしなければ」と<br>抱え込まないこと。</p>
+            <p style="margin-bottom: 90px;">この時期に、<br>あなたを助けてくれる人が<br>動き始めます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年11月〜2027年1月：小さく形にする時期</p>
+            <p style="margin-bottom: 90px;">次の動きは、<br>2026年の11月から<br>2027年の1月にかけて。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここは、<br>「あなた自身ができることを、<br>　小さく形にして見せる」時期です。</p>
+            <p style="margin-bottom: 90px;">完璧でなくて構いません。</p>
+            <p style="margin-bottom: 90px;">何か一つ、<br>「これなら自分にもできる」と思うことを、<br>小さく動かしてみる。</p>
+            <p style="margin-bottom: 90px;">副業の小さな種でも、<br>ちょっとした手伝いでも、<br>何かを始める形でも構いません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">動かすと、<br>反応が返ってきます。</p>
+            <p style="margin-bottom: 90px;">その反応の中から、<br>2027年の初夏に向けての<br>本当の種が選ばれていきます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年5月〜7月：「これだ」と感じる時期 ★</p>
+            <p style="margin-bottom: 90px;">そして、<br>2027年の5月から7月。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この三ヶ月に──<br>「これだ」と感じる、<br>仕事の形、<br>あるいは人との出会いが、<br>強く視えています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">特に7月。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたの誕生月にあたるこの月は、<br>あなたの運命の核心と<br>完全に響き合う、<br>一年で最も力の宿る月です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;"><span style="color: #ffd966;">宇迦之御魂神</span>の力が、<br>この月に最も強く流れ込んできます。</p>
+            <p style="margin-bottom: 90px;">これまで動けなかった人が、<br>踏み出すための後押しを受ける時期。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この時期に出会うものは、<br>直感で選んでください。</p>
+            <p style="margin-bottom: 90px;">「世間が何と言うか」ではなく、<br>「自分の胸の奥が、<br>　これを選びたいと言っているか」。</p>
+            <p style="margin-bottom: 90px;">その感覚で選んだものが、<br>2027年の後半から動き始める<br>本当の流れになります。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年8月〜年末：数字が動き始める時期</p>
+            <p style="margin-bottom: 90px;">2027年の8月から年末にかけて。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここで、<br>数字が具体的に動き始めます。</p>
+            <p style="margin-bottom: 90px;">少しずつですが、<br>収入の流れが、<br>安定の方向へと動き始める時期です。</p>
+            <p style="margin-bottom: 90px;">ただし──<br>この時期に<br>一つだけ守ってほしい習慣があります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">入ってきたお金の一部を、<br>必ず手元に残してください。</p>
+            <p style="margin-bottom: 90px;">あなたの定めは、<br>水のように<br>お金が流れていく構造を持っています。</p>
+            <p style="margin-bottom: 90px;">入った瞬間に、<br>人のため、<br>誰かのため、<br>家族のためという流れが<br>自然に立ち上がってしまいます。</p>
+            <p style="margin-bottom: 90px;">これはあなたの温かさの裏返しなので、<br>止めることはできません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">けれど、<br>「流れる前に、<br>　一部を分けておく」<br>ことだけは、<br>ここから先の習慣にしてください。</p>
+            <p style="margin-bottom: 90px;">金額の大きさは関係ありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「分ける」という行為そのものが、<br>あなたの土に<br>水を留めておくための儀式になります。</p>
+            <p style="margin-bottom: 90px;">特に、<br>親や年長者、<br>家族絡みの出費には、<br>これまで以上に<br>線を引いてください。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">ここを守れるかどうかで、<br>58歳以降の安定の厚みが、<br>大きく変わってきます。</p>
+        </div>
+
+        <!-- あなたらしい歩み方 -->
+        <h2 class="emoji-header">⛩️ あなたらしい歩み方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">最後に、<br>今日から始められる、<br>あなたらしい歩み方をお伝えします。</p>
+            <p style="margin-bottom: 90px;">派手なものではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">けれど、<br>このどれもが、<br>あなたの運命に流れている<br>神気を整えていく<br>大切な動きです。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【朝、太陽を浴びる】</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたのオーラは金色。</p>
+            <p style="margin-bottom: 90px;">これは、<br>太陽の光できらめく色です。</p>
+            <p style="margin-bottom: 90px;">毎朝、<br>窓を開けて、<br>あるいはベランダや庭に出て、<br>数分間だけでいいので、<br>朝の光を浴びてください。</p>
+            <p style="margin-bottom: 90px;">光を浴びるたびに、<br>あなたの中の金色が、<br>少しずつ磨かれていきます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【土に触れる時間を作る】</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは「畑の土」の性質を持っています。</p>
+            <p style="margin-bottom: 90px;">土から離れすぎると、<br>本来の力が出にくくなります。</p>
+            <p style="margin-bottom: 90px;">庭の手入れでも、<br>鉢植えの植え替えでも、<br>散歩で土の道を歩くだけでも構いません。</p>
+            <p style="margin-bottom: 90px;">土の感触を、<br>意識して取り戻してください。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">宇迦之御魂神</span>が、<br>そこから力を流してくださいます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【入ったお金を、使う前に分ける】</p>
+            <p style="margin-bottom: 90px;">これは<br>先ほどお伝えした通りです。</p>
+            <p style="margin-bottom: 90px;">入金の翌日に、<br>たとえ小さな額でも構わないので、<br>「これは残す」と決めた分を、<br>別の場所に分けてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">金額ではなく、<br>動作そのものが<br>あなたの土に水を留めていきます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【温かさを向ける場所を、一つ決める】</p>
+            <p style="margin-bottom: 90px;">あなたの温かさは、<br>不特定多数に向けると、<br>自分が空っぽになってしまいます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「ここに向ける」と決めた、<br>一つの場所、<br>一つの仕事、<br>一人の相手に絞ってください。</p>
+            <p style="margin-bottom: 90px;">絞ることで、<br>あなたの温かさは<br>深く根を張っていきます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【「人と違っていい」と、自分に許可を出す】</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>人と同じやり方では<br>本気になれない人です。</p>
+            <p style="margin-bottom: 90px;">これからの再生で、<br>「世間並みに合わせなければ」と<br>無理をすると、<br>また同じように<br>形にならず流れていきます。</p>
+            <p style="margin-bottom: 90px;">朝、<br>鏡の前で一度、<br>心の中で唱えてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私は、私のやり方でいい」</p>
+            <p style="margin-bottom: 0;">これだけで、<br>あなたの中の独自の精神世界が、<br>力を取り戻していきます。</p>
+        </div>
+
+        <!-- 守護を受け取る方法 -->
+        <h2 class="emoji-header">⛩️ 守護を受け取る方法</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">ここまで、<br>これからの流れと、<br>日々の歩み方をお伝えしてきました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、<br>安心してください。</p>
+            <p style="margin-bottom: 90px;">あなたのことを深く霊視した際、<br>特別な守護の力を、<br>あなたの奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">それは、<br><span style="color: #ffd966;">宇迦之御魂神</span>の和魂の力。</p>
+            <p style="margin-bottom: 90px;">更地となったあなたの土に、<br>これから何度も種が蒔かれます。</p>
+            <p style="margin-bottom: 90px;">その種が根を張り、<br>芽を出し、<br>やがて実をつけていく。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その一つひとつの段階で、<br><span style="color: #ffd966;">宇迦之御魂神</span>が<br>寄り添ってくださいます。</p>
+            <p style="margin-bottom: 90px;">派手な力ではありません。</p>
+            <p style="margin-bottom: 90px;">けれど、<br>あなたの土に、<br>静かに水が引かれ、<br>日が差し、<br>やがて稲穂が実っていく。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その流れを整える力です。</p>
+            <p style="margin-bottom: 90px;">今この文を読んでいる間にも、<br>胸のあたりが少し温かくなる、<br>肩の力がふっと抜ける、<br>眠気を感じる、<br>ふっと安心する。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もし、<br>そのような感覚があれば、<br>すでに守護の力が<br>届き始めている証です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ受け取るだけで、<br>大丈夫です。</p>
+            <p style="margin-bottom: 90px;">もし今、<br>少しだけ時間があれば、<br>一度だけ静かに目を閉じてください。</p>
+            <p style="margin-bottom: 90px;">右手を胸の中央に当て、<br>左手をお腹に添えて、<br>ゆっくり三度呼吸をしてください。</p>
+            <p style="margin-bottom: 90px;">そして心の中で、</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私は守られている」</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私の土に、新しい種が蒔かれている」</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私の未来には、実りが育っている」</p>
+            <p style="margin-bottom: 90px;">そう唱えてみてください。</p>
+            <p style="margin-bottom: 0; font-weight: bold;"><span style="color: #ffd966;">宇迦之御魂神</span>の御神気は、<br>今この瞬間にも、<br>あなたへ静かに注がれています。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">もし余裕がある時だけ、<br>以下のことを試してみてください。</p>
+            <p style="margin-bottom: 90px;">無理にすべてやる必要はありません。</p>
+            <p style="margin-bottom: 0;">「これならできそう」と思うものを、<br>一つだけでも構いません。</p>
+        </div>
+
+        <!-- 守護神の神社へ行く -->
+        <h2 class="emoji-header">【守護神の神社へ行く】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">宇迦之御魂神</span>の総本社は、<br>京都の伏見稲荷大社です。</p>
+            <p style="margin-bottom: 90px;">そして<span style="color: #ffd966;">宇迦之御魂神</span>は、<br>全国の稲荷神社に祀られています。</p>
+            <p style="margin-bottom: 90px;">あなたのお住まいから最も近く、<br>かつ<span style="color: #ffd966;">宇迦之御魂神</span>とご縁のある神社を<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">稲荷神社（埼玉県比企郡ときがわ町椚平484）<br>大宮神社（埼玉県入間郡越生町上野1732）<br>照稲神社（埼玉県比企郡吉見町高尾新田154）<br>稲荷神社（埼玉県比企郡吉見町大和田684）<br>中野原稲荷神社（埼玉県入間市上小谷田1-1-5）</p>
+            <p style="margin-bottom: 90px;">ご自宅から近く、<br>日常の中で立ち寄りやすい場所です。</p>
+            <p style="margin-bottom: 90px;">参拝の際は、<br>以下の祝詞を心の中で唱えてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">祓え給い、清め給え、<br>神ながら守り給い、幸え給え</p>
+            <p style="margin-bottom: 90px;">（はらえたまい、きよめたまえ、<br>かむながらまもりたまい、さきわえたまえ）</p>
+            <p style="margin-bottom: 90px;">そして、<br>お願い事を唱えるのではなく、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私は、ここから歩き直します。<br>　どうか見守っていてください」</p>
+            <p style="margin-bottom: 90px;">という形で伝えてください。</p>
+            <p style="margin-bottom: 90px;">神様へのお願いは、<br>願望を叶えてもらうのではなく、<br>自分が動くことを宣言し、<br>その歩みを助けていただくもの。</p>
+            <p style="margin-bottom: 0;">その姿勢が、<br>守護神との縁を<br>より深くしてくれます。</p>
+        </div>
+
+        <!-- 朝、空を見上げる -->
+        <h2 class="emoji-header">【朝、空を見上げる】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-weight: bold;">朝、<br>空を見上げて、<br>深呼吸を一度。</p>
+            <p style="margin-bottom: 0;">それだけで、<br>あなたの中の金色が<br>磨かれていきます。</p>
+        </div>
+
+        <!-- 塩風呂で清める -->
+        <h2 class="emoji-header">【塩風呂で清める】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">疲れが溜まったと感じる日は、<br>塩をひとつまみ入れたお湯に<br>浸かってください。</p>
+            <p style="margin-bottom: 0;">水の流れが整い、<br>余分なものが流れていきます。</p>
+        </div>
+
+        <!-- パワーストーン -->
+        <h2 class="emoji-header">⛩️ あなたを支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">あなたには、<br>守護神とのご縁をお伝えし、<br>その力を、<br>あなたの奥底に置いてきました。</p>
+            <p style="margin-bottom: 90px;">また、<br>守護神と縁のある神社と、<br>参拝の際に力を取り入れる方法も<br>お伝えしました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">基本的には、<br>これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>守護の力は、<br>何もしなければ<br>少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">なかなか時間が取れない、<br>神社が遠くて頻繁には行けない、<br>という方もいらっしゃると思います。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そのような方に、<br>ぜひお勧めしたいのが、<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px;">守護神の力を石に宿し、<br>常に身近に<br>持ち歩くことができるようになります。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>どんな石でもよいわけではありません。</p>
+            <p style="margin-bottom: 90px;">あなたが持つ潜在的なエネルギーと、<br><span style="color: #ffd966;">宇迦之御魂神</span>が共鳴しやすい石で<br>お作りする必要があります。</p>
+            <p style="margin-bottom: 0;">あなたのエネルギーと<br>守護神が共鳴しやすい石を、<br>三つお伝えします。</p>
+        </div>
+
+        <ul style="margin-bottom: 90px;">
+            <li><span style="color: #ffd966; font-weight: bold;">1. シトリン（黄水晶）</span><br>太陽の光をそのまま閉じ込めたような、<br>温かな黄金色の石。<br>金色のオーラを持つあなたと、<br>最も深く共鳴します。<br>実りと豊かさを呼び込み、<br>土に注がれる日差しのように、<br>未来の発芽を助ける石です。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">2. タイガーアイ</span><br>大地の力と、<br>再起の力を宿す石。<br>更地に戻った土に、<br>もう一度立ち上がる足腰を与えてくれます。<br>決断と行動を、<br>静かに後押しする力。<br>これからの十年、<br>人と組んで動いていくあなたを、<br>内側から支える石です。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">3. カーネリアン</span><br>温かさを、<br>具体的な動きに変える力を持つ石。<br>胸の奥で眠っている<br>人を温める力を、<br>仕事の形に翻訳していく時に、<br>背中を押してくれます。<br>福徳の星と最も共鳴しやすい石でもあります。</li>
+        </ul>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">この中から、<br>あなたのエネルギーと<br>最もバランスが取れる組み合わせを、<br>私が選び、<br>一つずつ手作りで仕上げます。</p>
+            <p style="margin-bottom: 0;">ご希望の方は、<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <h2>【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">武田瑛弘様、</p>
+            <p style="margin-bottom: 90px;">あなたの未来には、<br>人と向き合い、<br>誰かを温め、<br>その流れの中から<br>静かに実りを受け取っていく日々へと<br>続く道が視えています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">土地は更地に戻りました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">けれど、<br>更地とは、<br>何もないということではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">これから、<br>新しい種が蒔かれるための、<br>最も自由な土です。</p>
+            <p style="margin-bottom: 90px;">今は、<br>不安の中にあるかもしれない。</p>
+            <p style="margin-bottom: 90px;">「この歳から、<br>　本当にやり直せるのか」と<br>迷っているかもしれない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でもそれは、<br>あなたの魂が、<br>本気でここから動こうとしている証拠です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">正しい感覚です。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>人を温めることで<br>人生が動いていく人。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">派手に稼ぐ定めではなく、<br>徳から流れてくる豊かさを<br>受け取っていく定め。</p>
+            <p style="margin-bottom: 90px;">その温かさを、<br>これから出会う人へ向けてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">一人ですべてを背負わず、<br>これから訪れる人縁の流れに、<br>身を委ねてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それが、<br>あなたの幸せへの道。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">宇迦之御魂神</span>が、<br>あなたを守っています。</p>
+            <p style="margin-bottom: 90px;">更地となったあなたの土に、<br>これから一粒ずつ、<br>種を蒔いてくださいます。</p>
+            <p style="margin-bottom: 90px;">実りは派手ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">けれど、<br>確かに育っていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">自分を大切にしていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">人に頼っていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">守られている。</p>
+            <p style="margin-bottom: 90px;">その事実を、<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より、<br>遠隔守護祈祷を行い、<br>あなたの幸せを願います。</p>
+            <p style="margin-bottom: 30px;">あなたの未来に、<br>黄金の稲穂のような実りが<br>満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>
