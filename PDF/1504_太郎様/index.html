@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太郎様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #2a4a7c 80%, #3d5a9e 100%);
+            color: #e8e8e8;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px; height: 400px;
+            background-image: url('../images/曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * { position: relative; z-index: 1; }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #ffd700;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #9b7dff;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #b8b8b8;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(22, 33, 62, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #ffd700;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #9b7dff;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #9b7dff;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            margin: 40px 0;
+        }
+
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background-color: rgba(155, 125, 255, 0.08);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .aura-fire {
+            background-image:
+                linear-gradient(rgba(22, 33, 62, 0.78), rgba(22, 33, 62, 0.78)),
+                url('../images/強い火.png');
+        }
+        .aura-wood {
+            background-image:
+                linear-gradient(rgba(22, 33, 62, 0.78), rgba(22, 33, 62, 0.78)),
+                url('../images/強い木.png');
+        }
+        .aura-earth {
+            background-image:
+                linear-gradient(rgba(22, 33, 62, 0.78), rgba(22, 33, 62, 0.78)),
+                url('../images/強い土.png');
+        }
+        .aura-metal {
+            background-image:
+                linear-gradient(rgba(22, 33, 62, 0.78), rgba(22, 33, 62, 0.78)),
+                url('../images/強い金.png');
+        }
+        .aura-water {
+            background-image:
+                linear-gradient(rgba(22, 33, 62, 0.78), rgba(22, 33, 62, 0.78)),
+                url('../images/強い水.png');
+        }
+
+        .header-info {
+            background: rgba(255, 215, 0, 0.08);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .important-box {
+            background: rgba(255, 215, 0, 0.12);
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .magic-word-box {
+            background: rgba(155, 125, 255, 0.15);
+            border: 2px dashed rgba(155, 125, 255, 0.5);
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+        }
+
+        .sign-box {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .toc {
+            background: rgba(255, 215, 0, 0.06);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 35px 30px;
+            margin: 40px 0 60px;
+        }
+
+        .toc-title {
+            text-align: center;
+            font-size: 22px;
+            color: #ffd700;
+            margin-bottom: 25px;
+            letter-spacing: 4px;
+            font-weight: 700;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc li {
+            margin-bottom: 14px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .toc li:last-child { margin-bottom: 0; }
+
+        .toc a {
+            color: #9b7dff;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover { color: #ffd700; }
+
+        strong {
+            color: #ffd700;
+            font-weight: 700;
+        }
+
+        @media screen and (max-width: 768px) {
+            body { padding: 8px 0; line-height: 1.8; }
+            .cover-page { min-height: 100vh; padding: 20px; }
+            .cover-page::before { width: 200px; height: 200px; }
+            .cover-recipient { font-size: 32px; letter-spacing: 4px; margin-bottom: 15px; }
+            .cover-title { font-size: 36px; letter-spacing: 2px; margin-bottom: 40px; }
+            .cover-subtitle { font-size: 14px; letter-spacing: 2px; margin-bottom: 60px; }
+            .cover-appraiser { font-size: 16px; }
+            .container { padding: 24px 14px; border-radius: 10px; max-width: 100%; }
+            h1 { font-size: 24px; letter-spacing: 2px; }
+            h2 { font-size: 22px; margin-top: 50px; margin-bottom: 30px; }
+            h3 { font-size: 18px; margin-top: 30px; margin-bottom: 20px; }
+            p { font-size: 16px; margin-bottom: 28px; }
+            .subtitle { font-size: 14px; margin-bottom: 30px; }
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box { padding: 20px 14px; margin: 16px 0; }
+            .toc { padding: 24px 18px; }
+            .toc li { font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cover-page">
+    <div class="cover-recipient">太郎様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>太郎様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <div class="toc">
+        <div class="toc-title">— 目次 —</div>
+        <ul>
+            <li><a href="#sec-you">🔮 あなたについて</a></li>
+            <li><a href="#sec-partner">🔮 お相手について</a></li>
+            <li><a href="#sec-here">🔮 ここからお伝えしていくこと</a></li>
+            <li><a href="#sec-tomorrow">🔮 明日、6月28日に視えていること</a></li>
+            <li><a href="#sec-turn">🔮 運命の転機</a></li>
+            <li><a href="#sec-action">🔮 今からできること</a></li>
+            <li><a href="#sec-support">🔑 心を守るサポート</a></li>
+            <li><a href="#sec-last">最後に</a></li>
+        </ul>
+    </div>
+
+    <p>太郎様</p>
+
+    <p>この度は本鑑定にお進みいただき<br>
+    心より感謝申し上げます。</p>
+
+    <p>「彼女は本当に<br>
+    　戻ってきてくれるんだろうか」</p>
+
+    <p>「自分の何かが<br>
+    　悪かったんだろうか」</p>
+
+    <p>「7月以降<br>
+    　今まで通りに笑い合える<br>
+    　あの時間は戻ってくるんだろうか」</p>
+
+    <p>その想いが<br>
+    お申し込みのメッセージから<br>
+    痛いほど<strong>伝わってきます</strong>。</p>
+
+    <p>3月から積み上げてきた時間。</p>
+
+    <p>ご飯、ドライブ、ハグ、手の温度。</p>
+
+    <p>毎日のように笑い合っていた人から<br>
+    突然「<strong>一人にして</strong>」と言われた時<br>
+    心の中に降りた重さがどれほどだったか。</p>
+
+    <p>その重さを抱えたまま<br>
+    それでも彼女のことを責めず<br>
+    「<strong>彼女にも事情がある</strong>」と<br>
+    受け止めようとしている太郎さんの誠実さ</p>
+
+    <p>それが、すでに<br>
+    今回の答えを引き寄せています。</p>
+
+    <p>まず、太郎さんが一番知りたいこと。</p>
+
+    <p>はっきりお伝えしますね。</p>
+
+    <p><strong>彼女の気持ちは<br>
+    冷めていません。</strong></p>
+
+    <p><strong>7月以降、関係は途切れません。</strong></p>
+
+    <p>ただし<br>
+    彼女の整いを待たず<br>
+    急いで距離を詰めると<br>
+    逆効果になる時期に今あります。</p>
+
+    <p>これは性格の問題でも<br>
+    あなたの接し方の問題でもないんです。</p>
+
+    <p>いまは二人がすれ違う<br>
+    星の流れになっているから。</p>
+
+    <p>なぜそうなっているのか。</p>
+
+    <p>そして、いつ<br>
+    どんな立ち回りで<br>
+    彼女の扉が開くのか。</p>
+
+    <p>その答えは<br>
+    あなたのオーラと<br>
+    彼女のオーラに<br>
+    はっきり視えています。</p>
+
+    <p>ここから一つずつ<br>
+    お伝えしていきますね。</p>
+
+    <h2 id="sec-you">🔮 あなたについて</h2>
+
+    <div class="aura-section aura-fire">
+        <p>太郎さんを霊視した時<br>
+        最初に視えたのは<br>
+        静かに揺れる火のオーラ。</p>
+
+        <p>無料鑑定でもお伝えした<br>
+        ロウソクの灯火のような<br>
+        柔らかいオレンジ色の炎。</p>
+
+        <p>人を優しく温める力があるのですが<br>
+        一方で足りないものもあります。</p>
+
+        <p>太郎さんのオーラに<br>
+        最も足りていないもの。</p>
+
+        <p>それは、<strong>金色のオーラ</strong>。</p>
+
+        <p>金色のオーラは<br>
+        「<strong>決める</strong>」「<strong>区切る</strong>」「<strong>線を引く</strong>」力。</p>
+
+        <p>自分の中で<br>
+        ここまでが自分の領域<br>
+        ここからは彼女の領域、と<br>
+        ちゃんと境界を引ける力。</p>
+
+        <p>そして<br>
+        答えが見えない時に<br>
+        「<strong>今は待つ</strong>」と<br>
+        自分で決められる力。</p>
+
+        <p>太郎さんは今<br>
+        この力が少ない状態で<br>
+        「彼女からの答え」を待ち続けている。</p>
+
+        <p>だから、思考が<br>
+        ぐるぐる回ってしまう。</p>
+
+        <p>「自分が悪かったんだろうか」<br>
+        「もう連絡こないんだろうか」<br>
+        「今LINE送るのは早いだろうか」</p>
+
+        <p>金色のオーラが足りないことで<br>
+        答えを自分で出せず<br>
+        彼女に答えを求め続けている状態。</p>
+
+        <p>これが今のしんどさの<br>
+        根っこにある原因です。</p>
+
+        <p>逆に言えば<br>
+        金色のオーラさえ整えば<br>
+        彼女が動くのを<br>
+        落ち着いて待てるようになります。</p>
+    </div>
+
+    <p>魂をさらに深く視させていただきました。</p>
+
+    <p>太郎さんは今<br>
+    <strong>ゼロから新しい形を<br>
+    作り直す時期</strong>に入っています。</p>
+
+    <p>アンバーと水のオーラが<br>
+    静かに巡る時期。</p>
+
+    <p>種が芽を出す前の<br>
+    最も繊細で、最も大切な時間。</p>
+
+    <p>そこに<strong>2026年</strong>は<br>
+    火のオーラが<br>
+    重なっています。</p>
+
+    <p>外から熱が加わることで<br>
+    あなたの中で揺れていた灯火が<br>
+    本来の輝きを取り戻していく<strong>転換点</strong>。</p>
+
+    <p>それが今です。</p>
+
+    <p>そして星の流れから視えてくるのは<br>
+    もう一つ大切なこと。</p>
+
+    <p>太郎さんの<strong>魂</strong>の中心には<br>
+    「こうあるべき」という<br>
+    決まった型がありません。</p>
+
+    <p>その代わりに<br>
+    陽だまりのような温かさと<br>
+    人の心を深く見抜く言葉の力を<br>
+    持って生まれています。</p>
+
+    <p>この二つは、一人でいる時より<br>
+    誰かと深く関わった時に<br>
+    一番強く発動する力。</p>
+
+    <p>一人で完結する魂やない。</p>
+
+    <p>誰かと共に生きる時に<br>
+    本来の光が出てくる方。</p>
+
+    <p>だから<br>
+    彼女との繋がりが見えにくい今<br>
+    心が削れていくのは<br>
+    当然なんです。</p>
+
+    <p>それだけ深く<br>
+    彼女を魂に入れている証なのだから。</p>
+
+    <p>このまま何もしなければ<br>
+    太郎さんの灯火は<br>
+    少しずつ細くなっていきます。</p>
+
+    <p>ただ<br>
+    金色のオーラを整え<br>
+    自分の中の境界を取り戻せば<br>
+    <strong>2026年</strong>の火のオーラに乗って<br>
+    本来の真っ直ぐな情熱が<br>
+    戻ってきます。</p>
+
+    <p>その先に<br>
+    彼女との関係の再開が<br>
+    視えています。</p>
+
+    <h2 id="sec-partner">🔮 お相手について</h2>
+
+    <p>次に彼女のオーラを<br>
+    深く視させていただきました。</p>
+
+    <div class="aura-section aura-wood">
+        <p>無料鑑定でお伝えした通り<br>
+        彼女は<br>
+        自由に伸びていく緑のオーラ。</p>
+
+        <p>風に向かって<br>
+        真っ直ぐ伸びていく<br>
+        若い木のような緑。</p>
+
+        <p>このオーラの方は<br>
+        自分の世界を大切にして<br>
+        自分のリズムで動く<br>
+        芯の強い方。</p>
+
+        <p>その彼女に<br>
+        今、何が起きているのか。</p>
+
+        <p>彼女のオーラには<br>
+        金色のオーラと水のオーラ<br>
+        この二つが少ない状態にあります。</p>
+
+        <p>金色のオーラは<br>
+        自分の感情を抑える力。</p>
+
+        <p>水のオーラは<br>
+        抱えたものを流す力。</p>
+
+        <p>つまり彼女は今<br>
+        内側にいっぱい抱え込んでいるのに<br>
+        それを抑える力も流す力も<br>
+        持ち合わせていない状態。</p>
+
+        <p>元の交際相手との別れ。</p>
+
+        <p>産婦人科系の体調のこと。</p>
+
+        <p>そして職場での太郎さんとの関係。</p>
+
+        <p>それぞれは<br>
+        彼女が向き合えば<br>
+        ちゃんと処理できることなんやけど<br>
+        三つが同時に重なった瞬間に<br>
+        容量が一気に超えた。</p>
+
+        <p>そうなった時<br>
+        緑のオーラの方が取る行動は<br>
+        ただ一つ。</p>
+
+        <p>外への扉を<br>
+        ぴたっと閉じる。</p>
+
+        <p>これは<br>
+        太郎さんを拒絶したんやなくて<br>
+        緑のオーラの方が持つ<br>
+        唯一の自己整理方法。</p>
+
+        <p>「<strong>一人にして</strong>」は<br>
+        「離れたい」やなくて<br>
+        「<strong>整える時間がほしい</strong>」だったんです。</p>
+    </div>
+
+    <p>その証拠が<br>
+    ちゃんとオーラに視えています。</p>
+
+    <p>一人にしてと言った当日の朝<br>
+    ごめんねと声をかけてきたこと。</p>
+
+    <p>手を握ってきたこと。</p>
+
+    <p><strong>7月</strong>の休みは合わせると伝えたこと。</p>
+
+    <p>これらは<br>
+    彼女のオーラの中で<br>
+    太郎さんへの気持ちが<br>
+    冷えていない明確なサインです。</p>
+
+    <p>そして星の流れから視えてくるのは<br>
+    彼女自身も<br>
+    人生の大きな再構築の時期に<br>
+    入っているということ。</p>
+
+    <p>彼女の魂の中心にも<br>
+    「私はこういう人」という<br>
+    決まった型がありません。</p>
+
+    <p>だから外側で何かが大きく変わる時に<br>
+    「私って何だっけ」と<br>
+    土台ごと揺れる方。</p>
+
+    <p>今まさに<br>
+    元彼との関係、体調、太郎さんとの関係が<br>
+    同時に動いていて<br>
+    自分を組み立て直す途中にいます。</p>
+
+    <p>だから今、彼女には<br>
+    余白を整える時間が<br>
+    どうしても必要だった。</p>
+
+    <p>ここからが<br>
+    太郎さんに最もお伝えしたいこと。</p>
+
+    <p>彼女のオーラから視えてくるのは<br>
+    今、太郎さんの存在が<br>
+    彼女にとって<br>
+    「<strong>整ったら戻りたい場所</strong>」に<br>
+    なっているということ。</p>
+
+    <p>霧の向こうに<br>
+    太郎さんの灯火が<br>
+    ちゃんと視えている。</p>
+
+    <p>ただ、彼女のオーラが<br>
+    霧で覆われている今<br>
+    太郎さんの灯火に<br>
+    真っ直ぐ手を伸ばせる状態やない。</p>
+
+    <p>だから<br>
+    太郎さんがやることはただ一つ。</p>
+
+    <p><strong>霧が晴れる時期まで<br>
+    自分の灯火を弱めずに<br>
+    そこに在り続けること。</strong></p>
+
+    <p>そして<br>
+    太郎さんのオーラが整った時<br>
+    彼女の目に映る太郎さんは<br>
+    今より遥かに<br>
+    真っ直ぐ視えるようになります。</p>
+
+    <p>「<strong>ちゃんとここにいてくれた人</strong>」<br>
+    という存在感が<br>
+    彼女の魂に染み込んでいく。</p>
+
+    <p>それが<br>
+    <strong>9月</strong>以降の二人の景色を<br>
+    作っていきます。</p>
+
+    <h2 id="sec-here">🔮 ここからお伝えしていくこと</h2>
+
+    <p>無料鑑定の最後に<br>
+    お伝えするとお約束したことを<br>
+    ここから一つずつ視ていきます。</p>
+
+    <h3>【彼女が今、本当に感じていること】</h3>
+
+    <p>彼女の魂の奥が<br>
+    今、抱えているのは<br>
+    「太郎さんを傷つけてしまった」<br>
+    という<strong>罪悪感</strong>です。</p>
+
+    <p>職場で振り回してごめん、と<br>
+    謝罪してくれたあの瞬間。</p>
+
+    <p>あれは<br>
+    取り繕いの言葉やなくて<br>
+    彼女の魂から出てきた本音。</p>
+
+    <p>緑のオーラの方は<br>
+    自分の都合で<br>
+    相手を待たせることに<br>
+    人一倍敏感です。</p>
+
+    <p>ただ、その罪悪感を<br>
+    今、太郎さんに直接渡すことが<br>
+    彼女にはできない。</p>
+
+    <p>なぜなら<br>
+    彼女の中に渡せるだけの<br>
+    「整った言葉」が<br>
+    まだ揃っていないから。</p>
+
+    <p>中途半端な言葉で<br>
+    太郎さんを振り回すことを<br>
+    緑のオーラの方は最も嫌います。</p>
+
+    <p>だから沈黙。</p>
+
+    <p>「<strong>整ってから、ちゃんと渡したい</strong>」<br>
+    それが彼女の本音。</p>
+
+    <p>だからこそ<br>
+    彼女の沈黙を<br>
+    拒絶として受け取らないでください。</p>
+
+    <p>それは<br>
+    彼女なりの<strong>誠実さ</strong>の<br>
+    裏返しなんです。</p>
+
+    <h3>【あなたのオーラの調整方法】</h3>
+
+    <p>太郎さんに必要なのは<br>
+    金色のオーラを補い<br>
+    水のオーラの揺れを<br>
+    少し落ち着けること。</p>
+
+    <p>魂のレベルでお伝えするなら<br>
+    「<strong>答えを彼女に求めない</strong>」<br>
+    在り方を取り戻すこと。</p>
+
+    <p>彼女が動くまで<br>
+    自分の中で答えを出す。</p>
+
+    <p>それは突き放しやなくて<br>
+    彼女の整いを尊重する<br>
+    最高の優しさです。</p>
+
+    <p>「彼女は彼女のペースで戻る<br>
+    　俺は俺のペースで整える」</p>
+
+    <p>この境界線を引けた瞬間に<br>
+    太郎さんのオーラに<br>
+    <strong>金色の輝き</strong>が灯り始めます。</p>
+
+    <p>具体的な日常の整え方は<br>
+    このあとお伝えしますね。</p>
+
+    <h3>【オーラが整った先に広がる景色】</h3>
+
+    <p>太郎さんのオーラが整い始めた時<br>
+    彼女の目に映る太郎さんは<br>
+    こう変わります。</p>
+
+    <p>「<strong>待ってくれる人</strong>」<br>
+    「<strong>自分の事情を分かってくれる人</strong>」<br>
+    「<strong>だけど自分の軸もちゃんとある人</strong>」</p>
+
+    <p>これが<br>
+    緑のオーラの方が<br>
+    最も信頼する在り方です。</p>
+
+    <p>そして<strong>9月</strong>以降<br>
+    彼女が整った瞬間に<br>
+    ふと太郎さんへの想いが<br>
+    強く湧き上がる場面が<br>
+    視えています。</p>
+
+    <p>職場でふと目が合った時。</p>
+
+    <p>帰り道に偶然並んだ瞬間。</p>
+
+    <p>LINEを開く時に<br>
+    画面の中で太郎さんの名前を<br>
+    無意識に探している自分。</p>
+
+    <p>そんな景色が<br>
+    彼女の中に戻ってきます。</p>
+
+    <p>そこから二人は<br>
+    今までの「曖昧な急接近」から<br>
+    「彼女の整った想いに<br>
+    　太郎さんが応える形」へ<br>
+    階段を一段昇ります。</p>
+
+    <h3>【霊視で視えた、もう一つの重要な問題】</h3>
+
+    <p>太郎さん自身も<br>
+    うっすら感じているはずです。</p>
+
+    <p>相手の気持ちが見えない時<br>
+    答えを探し続けて<br>
+    自分一人で<br>
+    全部抱え込んでしまうクセ。</p>
+
+    <p>これは<br>
+    太郎さんの魂が持つ<br>
+    誠実さの裏側に<br>
+    必ず出てくる影です。</p>
+
+    <p>「俺がもっとこうしてれば」<br>
+    「あの時の指摘がきつかったかな」<br>
+    「ハグしたあの日に<br>
+    　もっと何か言うべきだったかな」</p>
+
+    <p>その問いには<br>
+    答えが見つからない構造になっています。</p>
+
+    <p>なぜなら<br>
+    彼女が一人になりたい理由は<br>
+    太郎さんの中にはないから。</p>
+
+    <p>このクセを抱えたまま<strong>9月</strong>を迎えると<br>
+    せっかく金色のオーラが巡ってきても<br>
+    思考のループに全部使ってしまう。</p>
+
+    <p>だからこそ<br>
+    今のうちに<br>
+    「<strong>答えのない問いを置く</strong>」訓練を<br>
+    始めてほしいんです。</p>
+
+    <p>そしてその訓練を支えるのも<br>
+    金色のオーラの調整です。</p>
+
+    <p>ここまでお伝えしてきた全てが<br>
+    オーラの調整に<br>
+    繋がっていきます。</p>
+
+    <h2 id="sec-tomorrow">🔮 明日、6月28日に視えていること</h2>
+
+    <p>太郎さん。</p>
+
+    <p>明日、彼女と会うんですね。</p>
+
+    <p>明日の彼女のオーラは<br>
+    <strong>6月</strong>のどの日よりも<br>
+    ほんの少しだけ<br>
+    柔らかさを取り戻し始めています。</p>
+
+    <p>緑のオーラの霧が<br>
+    完全に晴れたわけやない。</p>
+
+    <p>でも<br>
+    「<strong>会ってもいいかな</strong>」と<br>
+    彼女の中で<br>
+    微かなOKが出ている状態。</p>
+
+    <p>ハグした日からの数週間で<br>
+    彼女自身が抱えていたものを<br>
+    少しずつ整理し始めていて<br>
+    明日はその「整理途中の彼女」が<br>
+    太郎さんの前に現れます。</p>
+
+    <p>ここで太郎さん側のオーラも<br>
+    視させていただきました。</p>
+
+    <p>太郎さんの灯火は<br>
+    今、揺れています。</p>
+
+    <p>「会えるのは嬉しい<br>
+    　でも、何を話したらいいのか分からない」<br>
+    「下手なこと言ってまた距離できたら怖い」</p>
+
+    <p>その揺れが<br>
+    明日の朝の時間に<br>
+    一番強く出ます。</p>
+
+    <p>ここで大事なお伝えがあります。</p>
+
+    <p>その揺れを<br>
+    明日、無理に消そうとしないでください。</p>
+
+    <p>消そうとすればするほど<br>
+    彼女の前で「<strong>作った笑顔</strong>」が出ます。</p>
+
+    <p>緑のオーラの方は<br>
+    作った温度を<br>
+    誰よりも敏感に感じ取ります。</p>
+
+    <p>揺れたまま<br>
+    ただ、いつも通りでいる。</p>
+
+    <p>これが明日の鍵です。</p>
+
+    <p>明日の彼女が<br>
+    太郎さんに求めているのは<br>
+    たった一つ。</p>
+
+    <p>「<strong>いつも通りでいてくれること</strong>」</p>
+
+    <p>ここを外さなければ<br>
+    明日は二人にとって<br>
+    大きなプラスの日になります。</p>
+
+    <p>逆に<br>
+    ここで一つでも踏み込みすぎると<br>
+    せっかく緩み始めた扉が<br>
+    また閉まってしまう。</p>
+
+    <p>明日、太郎さんに<br>
+    お伝えしたい立ち回りは<br>
+    三つです。</p>
+
+    <h3>一つ目</h3>
+
+    <p>最初に<br>
+    <strong>笑顔をみせてください。</strong></p>
+
+    <p>「大丈夫？」「体調どう？」と<br>
+    心配の言葉を最初に置かないこと。</p>
+
+    <p>緑のオーラの方は<br>
+    最初に心配されると<br>
+    「<strong>迷惑かけてる</strong>」という<br>
+    罪悪感のスイッチが真っ先に入ります。</p>
+
+    <p>そこから始まる時間は<br>
+    彼女が太郎さんに気を遣う時間に<br>
+    変わってしまう。</p>
+
+    <p>軽い「笑顔」だけが<br>
+    彼女の罪悪感のスイッチを切って<br>
+    3月から積み上げた<br>
+    「いつもの二人の温度」に<br>
+    戻してくれます。</p>
+
+    <h3>二つ目</h3>
+
+    <p>明日、元彼の話と体調の話には<br>
+    こちらから<strong>絶対に</strong>触れないこと。</p>
+
+    <p>彼女が自分から話し始めたら<br>
+    ただ聞いてください。</p>
+
+    <p>うなずいて、ただ受け止めるだけ。</p>
+
+    <p>意見も励ましも要りません。</p>
+
+    <p>緑のオーラの方が<br>
+    最も傷つくのは<br>
+    「整理しきれていない自分の話を<br>
+    　相手の言葉で結論づけられること」。</p>
+
+    <p>聞くだけ。</p>
+
+    <p>これが明日、最も大事な姿勢です。</p>
+
+    <h3>三つ目</h3>
+
+    <p>別れ際<br>
+    何か言葉を残したくなる衝動が<br>
+    太郎さんに来ます。</p>
+
+    <p>「これからどうしたい？」<br>
+    「<strong>7月</strong>どうする？」<br>
+    「またLINEしてもいい？」</p>
+
+    <p>その問いは全部<br>
+    家に置いてきてください。</p>
+
+    <p>明日の太郎さんに必要なのは<br>
+    「<strong>答えを持ち帰ろうとしないこと</strong>」。</p>
+
+    <p>答えを持ち帰らない姿勢こそが<br>
+    彼女のオーラに<br>
+    「この人は焦らせない」という<br>
+    深い安心を刻みます。</p>
+
+    <p>その安心が<br>
+    <strong>7月</strong>以降の関係を<br>
+    一気に動かす種になります。</p>
+
+    <p>そして<br>
+    帰り道に手を握る瞬間や<br>
+    ハグの流れが<br>
+    明日、自然に訪れる可能性があります。</p>
+
+    <p>それは彼女からの<br>
+    「<strong>気持ちは変わっていない</strong>」<br>
+    というサイン。</p>
+
+    <p>無理に何か言葉を返さなくていい。</p>
+
+    <p>「<strong>ありがとう</strong>」と<br>
+    笑顔を返すだけで十分。</p>
+
+    <p>明日の太郎さんの灯火が<br>
+    「いつもと変わらない温度」で<br>
+    彼女の前にあること。</p>
+
+    <p>これが<br>
+    <strong>9月</strong>の運命の交差点まで続く<br>
+    全ての始まりです。</p>
+
+    <h2 id="sec-turn">🔮 運命の転機</h2>
+
+    <p>ここまでお伝えしてきた中で<br>
+    これから1年の流れが<br>
+    少しずつ視えてきたかと思います。</p>
+
+    <p>そこから先<br>
+    特に重要な4つの月を<br>
+    順にお伝えします。</p>
+
+    <h3>★ 最重要月 2026年9月</h3>
+
+    <p>なぜこの月が<br>
+    特別なのか。</p>
+
+    <p>それは<br>
+    太郎さんと彼女<br>
+    二人に共通して欠けている<br>
+    <strong>金色のオーラ</strong>が<br>
+    最も純度の高い形で<br>
+    巡る唯一の月だからです。</p>
+
+    <p>そして同時に<br>
+    彼女の中で<br>
+    今閉じている扉が<br>
+    ふっと緩む星の流れも<br>
+    この月に重なってきます。</p>
+
+    <p><strong>二人の運命が<br>
+    最も近づく時期。</strong></p>
+
+    <p>それが<strong>9月</strong>です。</p>
+
+    <p>この月<br>
+    何が起こるか。</p>
+
+    <p>まず、太郎さんの中で<br>
+    <strong>6月</strong>から<strong>7月</strong>にかけて<br>
+    ぐるぐる回り続けていた<br>
+    思考のループが<br>
+    ふっと止まる瞬間が訪れます。</p>
+
+    <p>「俺はこうしたい」<br>
+    「彼女にこう伝えたい」</p>
+
+    <p>自分の言葉が<br>
+    急にくっきり輪郭を持って<br>
+    出てくるようになる。</p>
+
+    <p>そして同じ頃<br>
+    彼女の中でも<br>
+    霧がすっと薄くなる瞬間が訪れます。</p>
+
+    <p>彼女自身が<br>
+    「<strong>太郎さんに会いたい</strong>」と<br>
+    自然に思える瞬間。</p>
+
+    <p>そこから<br>
+    彼女から自然な連絡が来る。</p>
+
+    <p>または、職場で<br>
+    今までより一歩深い会話が始まる。</p>
+
+    <p>その瞬間が<br>
+    <strong>9月</strong>のどこかに<br>
+    必ず訪れます。</p>
+
+    <p>心構えとして<br>
+    お伝えしたいのは<br>
+    <strong>9月</strong>入った瞬間に<br>
+    こちらから動こうとしないこと。</p>
+
+    <p>「9月になったから連絡する」<br>
+    ではなく<br>
+    「彼女から自然な流れが来る瞬間まで<br>
+    　自分の灯火を保つ」。</p>
+
+    <p>ここを守れば<br>
+    <strong>9月</strong>の扉は最高の形で<br>
+    あなたの前に開きます。</p>
+
+    <h3>★ 次に重要な月 2026年10月</h3>
+
+    <p><strong>9月</strong>で開いた扉を<br>
+    「形」に変えていく月。</p>
+
+    <p>金色のオーラと<br>
+    アンバーのオーラが<br>
+    同時に巡る配置で<br>
+    決断と安定が<br>
+    同じタイミングで降りてきます。</p>
+
+    <p>二人の間で<br>
+    「これからどうしたいか」の会話が<br>
+    自然に生まれる時期。</p>
+
+    <p>軽い口約束のように見える瞬間が<br>
+    実は太郎さんとの<br>
+    お付き合いに向けた<br>
+    最初の階段です。</p>
+
+    <p>心構えとしては<br>
+    「<strong>重くせず、でもちゃんと言葉にする</strong>」。</p>
+
+    <p>これだけです。</p>
+
+    <h3>○ 2026年7月</h3>
+
+    <p>太郎さんの本来の灯火が<br>
+    戻り始める月。</p>
+
+    <p>彼女はまだ半開きの状態。</p>
+
+    <p>職場で顔を合わせた時の<br>
+    柔らかい挨拶<br>
+    軽い言葉。</p>
+
+    <p>それだけを<br>
+    丁寧に積み上げてください。</p>
+
+    <p>深追いせず<br>
+    温度だけ<br>
+    変わらないでいる。</p>
+
+    <p>それが<strong>7月</strong>のテーマです。</p>
+
+    <h3>○ 2026年8月</h3>
+
+    <p>金色のオーラが<br>
+    少しずつ巡り始める月。</p>
+
+    <p>共通の話題、共通の興味で<br>
+    さらりと接点を残す。</p>
+
+    <p>「最近こんなのあったよ」<br>
+    くらいの軽い投げかけが<br>
+    彼女の中の小さな扉を一つ開けます。</p>
+
+    <p>準備期間としての<br>
+    大切な月です。</p>
+
+    <p>そしてその先<br>
+    <strong>11月から12月</strong>にかけては<br>
+    二人の間に<br>
+    水のオーラが流れ込みます。</p>
+
+    <p>これは<br>
+    「深い会話」「気持ちの共有」の流れ。</p>
+
+    <p><strong>9月</strong><strong>10月</strong>で形になった関係が<br>
+    ここで「お互いの本音を<br>
+    　ゆっくり交換する時間」に<br>
+    入っていきます。</p>
+
+    <p>最も大切なこと。</p>
+
+    <p><strong>9月</strong>が<br>
+    太郎さんと彼女の運命にとって<br>
+    最大のチャンスです。</p>
+
+    <p>この月をどう迎えるかが<br>
+    今後の二人の流れを<br>
+    決めます。</p>
+
+    <p>だからこそ<br>
+    今から<strong>9月</strong>までの2ヶ月間<br>
+    オーラを整えて<br>
+    その瞬間を迎えてほしいんです。</p>
+
+    <h2 id="sec-action">🔮 今からできること</h2>
+
+    <p>ここまで<br>
+    運命の流れと<br>
+    これから訪れる転機をお伝えしました。</p>
+
+    <p>ただ、一つだけ<br>
+    知っておいてほしいことがあります。</p>
+
+    <p>運命は<br>
+    ただ待っているだけでは動きません。</p>
+
+    <p>星の流れがどれだけ整っても<br>
+    太郎さん自身のオーラが<br>
+    整っていなければ<br>
+    その流れを掴むことはできない。</p>
+
+    <p>だからこそ<br>
+    ここからお伝えするのは<br>
+    太郎さん自身が<br>
+    オーラを調整するためのアクションです。</p>
+
+    <h3>【金色のオーラを補う日常の整え方】</h3>
+
+    <p>・<strong>白いシャツ、銀色の小物</strong><br>
+    　シルバーアクセサリーを<br>
+    　毎日一つは身につける</p>
+
+    <p>・<strong>朝起きたら窓を開けて<br>
+    　深呼吸を3分</strong><br>
+    　金色のオーラは呼吸で整います</p>
+
+    <p>・<strong>部屋の整理整頓を毎日少しずつ</strong><br>
+    　視界に余白を作ると<br>
+    　思考の余白も生まれます</p>
+
+    <p>・<strong>お昼に白米と根菜を意識的に取る</strong></p>
+
+    <h3>【水のオーラの揺れを少し落ち着ける】</h3>
+
+    <p>・<strong>茶色やベージュ</strong>を服に取り入れる</p>
+
+    <p>・<strong>夜お風呂に浸かって</strong><br>
+    　1日の感情を流す</p>
+
+    <p>・<strong>寝る前</strong><br>
+    　感じたことを日記に書き出す</p>
+
+    <p>・<strong>週に一度、土に触る。</strong></p>
+
+    <h3>【日常の心がけ】</h3>
+
+    <p>・<strong>彼女のことを考える時間を<br>
+    　「1日30分」と決め</strong><br>
+    　それ以外は仕事に集中する</p>
+
+    <p>・<strong>思考がループしたら席を立ち<br>
+    　5分整理整頓をする</strong></p>
+
+    <p>・「<strong>明日の自分を信じる</strong>」と<br>
+    　一言つぶやいて目を閉じる</p>
+
+    <h3>【気をつけてほしいこと】</h3>
+
+    <p>・「最近冷たいよね」と<br>
+    　彼女に言わないこと。</p>
+
+    <p>　緑のオーラの方は<br>
+    　責められたと感じた瞬間に<br>
+    　扉を固く閉ざします</p>
+
+    <p>・「彼氏と別れたなら付き合えるよね」<br>
+    　を<strong>絶対に</strong>出さないこと。</p>
+
+    <p>　彼女の整いを乱します</p>
+
+    <p>・「考えてくれた？」と<br>
+    　返事を催促しないこと。</p>
+
+    <p>　催促はタイミングを狂わせます</p>
+
+    <p>ここまでお伝えした調整法で<br>
+    少しずつオーラは整い始めます。</p>
+
+    <p>ただ、正直にお伝えします。</p>
+
+    <p>金色のオーラがゼロから始まる場合<br>
+    日常の調整だけでは<br>
+    補いきれない部分があります。</p>
+
+    <p>白い服を着る<br>
+    深呼吸をする<br>
+    部屋を片付ける。</p>
+
+    <p>これらは<br>
+    「整ったオーラを維持する力」には<br>
+    なります。</p>
+
+    <p>でも<br>
+    ゼロから補う力としては<br>
+    どうしても限界がある。</p>
+
+    <p>もし本気で<br>
+    <strong>9月の運命の交差点</strong>を<br>
+    最高の状態で迎えたいなら<br>
+    もう一つ<br>
+    お伝えしたい方法があります。</p>
+
+    <h2 id="sec-support">🔑 心を守るサポート</h2>
+
+    <p>ここまでお伝えしてきた通り<br>
+    太郎さんのオーラには<br>
+    金色のオーラが少ない状態です。</p>
+
+    <p>これが今の状況の<br>
+    根っこにある原因であり<br>
+    <strong>9月</strong>のチャンスを掴むために<br>
+    最も整えるべき部分です。</p>
+
+    <p>金色のオーラが整うと<br>
+    彼女の沈黙の中でも<br>
+    自分の軸を保てるようになります。</p>
+
+    <p>日常の調整に加えて<br>
+    本格的にオーラを補うために<br>
+    <strong>パワーストーン</strong>を<br>
+    お守りとして取り入れる方法があります。</p>
+
+    <p>太郎さんのオーラに合わせて<br>
+    三つのプランをご用意しました。</p>
+
+    <div class="important-box">
+        <h3>【運命を動かすプラン】<br>9月の転機を本気で掴みたい方へ</h3>
+
+        <p>価格：<strong>59,800円</strong></p>
+
+        <p>・<strong>ヘマタイト</strong>（足りない金色のオーラを最も強く補う石）<br>
+        ・<strong>水晶、ハウライト</strong>（思考の濁りを取り、判断力を整える石）<br>
+        ・<strong>タイガーアイ、ルチルクォーツ</strong>（自分の軸を強くし、待つ力を支える石）<br>
+        ・<strong>スモーキークォーツ</strong>（揺れる感情、不安を吸い取る石）</p>
+
+        <p>期待できる変化：</p>
+
+        <p>・彼女と職場で目が合った時<br>
+        　動揺せず自然に笑い返せるようになる</p>
+
+        <p>・「LINEを送るべきか」の迷いが消え<br>
+        　送るべき瞬間が直感で分かるようになる</p>
+
+        <p>・彼女が一人になっている時期を<br>
+        　穏やかな気持ちで尊重できるようになる</p>
+
+        <p>・彼女の言葉に振り回されず<br>
+        　自分の温度を保てるようになる</p>
+
+        <p>・彼女が抱える事情を<br>
+        　受け止める器として在れるようになる</p>
+
+        <p>・<strong>9月の運命の転機</strong>を<br>
+        　最高の状態で迎えられる</p>
+
+        <p>特典：月1回のオーラメンテナンス相談（3ヶ月間）<br>
+        　　　浄化用水晶クラスター、水晶さざれ</p>
+
+        <p>上記6種類の石から<br>
+        最高のバランスを考えて<br>
+        1つ、もしくは2つのブレスレットを<br>
+        お届けします。</p>
+    </div>
+
+    <div class="important-box">
+        <h3>【流れを整えるプラン】<br>まずは心を安定させたい方へ</h3>
+
+        <p>価格：<strong>29,800円</strong></p>
+
+        <p>・<strong>ヘマタイト</strong>（足りない金色のオーラを補う石）<br>
+        ・<strong>タイガーアイ</strong>（自分の軸を強くする石）<br>
+        ・<strong>スモーキークォーツ</strong>（焦り・不安を吸い取る石）</p>
+
+        <p>期待できる変化：</p>
+
+        <p>・彼女からの連絡を待つ時間に<br>
+        　感情が大きく揺れなくなる</p>
+
+        <p>・「今LINE送るべきか」のループが<br>
+        　ふっと止まる場面が増える</p>
+
+        <p>・自分の感情の温度を<br>
+        　自分で整えられるようになる</p>
+
+        <p>特典：浄化用水晶さざれ・水晶クラスター</p>
+
+        <p>上記3種類の石から<br>
+        バランスを考えたブレスレット1本を<br>
+        お届けします。</p>
+    </div>
+
+    <div class="important-box">
+        <h3>【日々のお守りプラン】<br>まずは思考のループを和らげたい方へ</h3>
+
+        <p>価格：<strong>19,800円</strong></p>
+
+        <p>・<strong>ヘマタイト</strong>（足りない金色のオーラを補う石）<br>
+        ・<strong>スモーキークォーツ</strong>（揺れる感情を吸い取る石）</p>
+
+        <p>期待できる変化：</p>
+
+        <p>・夜寝る前に「彼女どうしてるかな」と<br>
+        　考え続ける時間が短くなる<br>
+        ・衝動的にLINEを送りそうになった瞬間<br>
+        　ふと止まれるようになる</p>
+
+        <p>特典：浄化用水晶さざれ・水晶クラスター</p>
+
+        <p>上記2種類の石から<br>
+        バランスを考えたブレスレット<br>
+        1本をお届けします。</p>
+    </div>
+
+    <p>実は、<strong>運命を動かすプラン</strong>を選ばれる方が最も多く<br>
+    全体の約70%を占めています。</p>
+
+    <p>「<strong>9月の転機を、本気で掴みたいから<br>
+    　中途半端にしたくない</strong>」<br>
+    というお声が多いです。</p>
+
+    <p><strong>9月</strong>に向けて今から整え始めることで<br>
+    石のエネルギーがちょうど馴染んだ状態で<br>
+    最重要月を迎えられます。</p>
+
+    <p>もし興味がありましたら<br>
+    「<strong>詳細希望</strong>」とだけ送っていただければ<br>
+    太郎さん専用の石の組み合わせを<br>
+    お伝えしますね。</p>
+
+    <h2 id="sec-last">最後に</h2>
+
+    <p>太郎さん。</p>
+
+    <p>これからの道は二つあります。</p>
+
+    <p>このまま<br>
+    「自分が悪かったんやろか」の<br>
+    思考のループの中で<br>
+    <strong>9月</strong>を迎えるか。</p>
+
+    <p>それとも<br>
+    今から金色のオーラを整え<br>
+    彼女の整いを信じて待ち<br>
+    <strong>9月</strong>の扉が開いた時に<br>
+    真っ直ぐ手を伸ばせる自分で<br>
+    そこに在るか。</p>
+
+    <p>選ぶのは<br>
+    太郎さん自身です。</p>
+
+    <p>ただ、私には<br>
+    視えています。</p>
+
+    <p>明日<strong>6月28日</strong><br>
+    彼女と会った帰り道<br>
+    ふと振り返った彼女が<br>
+    太郎さんに向ける<br>
+    あの3月の頃の柔らかい笑顔。</p>
+
+    <p>そして<strong>9月</strong><br>
+    彼女が職場で<br>
+    ふと太郎さんの目を見つめながら<br>
+    「<strong>ちゃんと話したいことがある</strong>」<br>
+    そう言ってくれる瞬間。</p>
+
+    <p>その先<br>
+    お互いの事情を全部知った上で<br>
+    それでも隣にいたいと<br>
+    自然に手を取り合う二人の景色。</p>
+
+    <p>その未来は<br>
+    ちゃんと視えています。</p>
+
+    <p>太郎さんの誠実さと深さは<br>
+    彼女にとって<br>
+    他では絶対に出会えない<br>
+    かけがえのない価値です。</p>
+
+    <p>それが彼女に<br>
+    ちゃんと届く瞬間が<br>
+    <strong>9月</strong>に待っています。</p>
+
+    <p>そこまでの道<br>
+    私が照らしますね。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>かな</p>
+    </div>
+
+</div>
+
+</body>
+</html>
