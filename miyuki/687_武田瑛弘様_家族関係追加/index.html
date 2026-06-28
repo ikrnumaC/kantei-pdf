@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>武田瑛弘様　追加鑑定　ご家族との関係性</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        /* 表紙のスタイル */
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        /* 目次 */
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+
+            .toc {
+                padding: 20px 15px;
+            }
+
+            .toc-title {
+                font-size: 1.1em;
+            }
+
+            .toc a {
+                font-size: 0.95em;
+                padding: 12px 6px 12px 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">追加鑑定</h1>
+            <h2 class="cover-subtitle">ご家族との関係性</h2>
+            <p class="cover-name">武田瑛弘様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 目次 -->
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-intro">はじめに</a></li>
+                <li><a href="#sec-wife">元奥様について</a></li>
+                <li><a href="#sec-son">長男様について</a></li>
+                <li><a href="#sec-daughter">長女様について</a></li>
+                <li><a href="#sec-takeda">そして、武田様へ</a></li>
+            </ol>
+        </nav>
+
+        <!-- はじめに -->
+        <div class="oracle-message" id="sec-intro">
+            <p style="margin-bottom: 90px;">武田瑛弘様、<br>ご質問をお預かりしました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「投資ばかりやり過ぎて<br>　別れた元奥<br>　大学二年の息子<br>　美術系の大学を目指している娘との<br>　これからの関係性が知りたい」</p>
+            <p style="margin-bottom: 90px;">このご相談を受け取った瞬間<br>私の胸にすっと<br>重い感覚が降りてきました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">家族を失ったという絶望。</p>
+            <p style="margin-bottom: 90px;">「もう戻れないかもしれない」<br>「自分のせいで、すべて壊してしまった」</p>
+            <p style="margin-bottom: 90px;">その思いが<br>武田様の中に深く沈んでいるのを<br>感じます。</p>
+            <p style="margin-bottom: 90px;">ここでまず<br>一つだけお伝えさせてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">戻れる可能性は<br>あります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただし<br>三人とも「同じ形」では戻れません。</p>
+            <p style="margin-bottom: 90px;">それぞれに<br>戻り方も、戻る時期も、違う。</p>
+            <p style="margin-bottom: 90px;">そのことを<br>お一人ずつ<br>正直にお伝えしていきます。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">迎合せず<br>お世辞でもなく<br>霊視で視えている通りに。</p>
+        </div>
+
+        <!-- 元奥様について -->
+        <h2 class="emoji-header" id="sec-wife">⛩️ 元奥様について</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">元奥様は<br>武田様と同い年。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして霊視で視ると<br>お二人の魂には<br>同じ色の光が流れています。</p>
+            <p style="margin-bottom: 90px;">これは<br>魂のレベルでは<br>深い縁で結ばれた相手だった<br>ということ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">夫婦として歩まれた時間も<br>偶然ではなく<br>必然だったとお伝えできます。</p>
+            <p style="margin-bottom: 90px;">けれど──</p>
+            <p style="margin-bottom: 90px;">今の元奥様を霊視すると<br>胸が少し痛みます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">元奥様の中には<br>女性としての深い傷が<br>今もまだ静かに残っています。</p>
+            <p style="margin-bottom: 90px;">離婚という出来事が<br>元奥様にとっては<br>「ただの別離」ではなく<br>魂に深く差し込まれた一本の刃のように<br>残っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここを<br>まずわかってあげてください。</p>
+            <p style="margin-bottom: 90px;">そして<br>今この時期<br>元奥様には<br>「静かな冬」が訪れています。</p>
+            <p style="margin-bottom: 90px;">月のような優しい気配と<br>ゆっくりと心身を整えるための時間が<br>今の元奥様を包んでいます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">つまり<br>今は元奥様にとって<br>誰かと向き合う時期ではなく<br>自分自身を癒す静かな時期なのです。</p>
+            <p style="margin-bottom: 90px;">ここに<br>武田様が<br>たとえ優しさのつもりであっても<br>近づいてしまうと──</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">元奥様の中の傷に<br>触れてしまうことになります。</p>
+            <p style="margin-bottom: 90px;">これは<br>意地悪をしているのではなく<br>今の元奥様が<br>そういう時期にあるから。</p>
+            <p style="margin-bottom: 90px;">もう一つ<br>正直にお伝えしなければなりません。</p>
+            <p style="margin-bottom: 90px;">元奥様を視ると<br>武田様は<br>「動いてくれるお金の源」として<br>かつて存在していました。</p>
+            <p style="margin-bottom: 90px;">それが<br>良いとか悪いとかではなく<br>一つの関係性として、そうだった。</p>
+            <p style="margin-bottom: 90px;">そしてそのお金が<br>今は流れていない状態。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">つまり<br>霊視で視える流れの中では<br>元奥様が武田様を必要とする理由が<br>今は薄くなっています。</p>
+            <p style="margin-bottom: 90px;">これは残酷な言い方に<br>聞こえるかもしれません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">でも<br>これは「縁が切れた」ということではなく<br>「縁の形が変わった」ということ。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">戻れる可能性と、その形</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">戻れる可能性は<br>あります。</p>
+            <p style="margin-bottom: 90px;">ただし<br>「夫婦として戻る」ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「お子様お二人の親同士として<br>　近況を伝え合える距離」</p>
+            <p style="margin-bottom: 90px;">ここまでは<br>時間をかければ取り戻せます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">時期は<br>今ではありません。</p>
+            <p style="margin-bottom: 90px;">武田様が<br>自分の足で<br>もう一度立ち上がった姿を<br>元奥様に「結果として」見せられた頃。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">おそらく<br>2027年から2028年あたり。</p>
+            <p style="margin-bottom: 90px;">それまでは</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">距離を取ってください。</p>
+            <p style="margin-bottom: 90px;">連絡を控えること。<br>こちらから動かないこと。<br>近づきたい衝動を、抑えること。</p>
+            <p style="margin-bottom: 90px;">これが<br>今の武田様にできる<br>元奥様への<br>いちばん深い優しさです。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">待つこと。<br>それが愛だと<br>守護神は言っています。</p>
+        </div>
+
+        <!-- 長男様について -->
+        <h2 class="emoji-header" id="sec-son">⛩️ 長男様について</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">長男様の本質は<br>山のように<br>どっしりとした土の性質です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">武田様の「畑の土」と<br>長男様の「山の土」。</p>
+            <p style="margin-bottom: 90px;">形は違っても<br>同じ「土」の親子。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">つまり<br>根の部分では<br>親子の繋がりは絶対に切れていません。</p>
+            <p style="margin-bottom: 90px;">ですが、長男様を視ると<br>正直に申し上げて<br>今の時期はとても重い状態にあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">長男様の魂には<br>「規律を守ること」<br>「世の中の秩序を大切にすること」<br>これを何よりも大切にする性質が<br>二重に流れています。</p>
+            <p style="margin-bottom: 90px;">つまり長男様は<br>「ルールを破った人」を<br>誰よりも許せない性質を持っている。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ<br>長男様には<br>「失う」という体験を抱えやすい<br>運命の流れも<br>同時に刻まれています。</p>
+            <p style="margin-bottom: 90px;">ここから視えてくるのは──</p>
+            <p style="margin-bottom: 90px;">お父様が自己破産をされたという事実が<br>長男様にとっては<br>ただの「経済的な出来事」ではなく</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「父が<br>　世の中の秩序を破った」</p>
+            <p style="margin-bottom: 90px;">という<br>深い衝撃として<br>受け止められている、ということ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして長男様の魂は今<br>そのことを<br>飲み込めずにいます。</p>
+            <p style="margin-bottom: 90px;">さらに、長男様には<br>「太陽」の光と<br>「言葉のもつれ」を象徴するものが<br>寄り添うように視えています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">太陽は<br>父親そのものを表す光。</p>
+            <p style="margin-bottom: 90px;">その太陽のそばに<br>「言葉が誤解になりやすい影」が並ぶ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">つまり<br>父子の会話そのものが<br>今は誤解になりやすい時期です。</p>
+            <p style="margin-bottom: 90px;">何を話しても<br>言葉が真っ直ぐ届かない。</p>
+            <p style="margin-bottom: 90px;">これも<br>今の長男様のリズムなのです。<br>誰が悪いというものではありません。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">そして2026年</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">長男様には<br>「家・財産の地殻変動」が<br>そのまま今年の運勢として来ています。</p>
+            <p style="margin-bottom: 90px;">つまり長男様にとって<br>今年は<br>「家が壊れる年」として<br>体感されている年。</p>
+            <p style="margin-bottom: 90px;">お父様の自己破産は<br>長男様にとっては<br>起こるべくして起こったこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">偶然ではなく、<br>親子が<br>同じ時期に土に同じ揺れを迎えている<br>ということです。</p>
+            <p style="margin-bottom: 90px;">ここまで聞いて<br>胸が重くなったかもしれません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも、長男様には<br>もう一つ<br>とても大切な光が灯っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「最後には名誉として<br>　受け取り直される光」</p>
+            <p style="margin-bottom: 90px;">これが<br>家・財産を司る場所に<br>ちゃんと点っているのです。</p>
+            <p style="margin-bottom: 90px;">これは<br>今すぐには見えない光。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">けれど数年後<br>必ず受け取り直される光です。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">戻れる可能性と、その時期</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">戻れる可能性は<br>あります。</p>
+            <p style="margin-bottom: 90px;">ただし<br>「今すぐ和解する」ではありません。</p>
+            <p style="margin-bottom: 90px;">時期としては──</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">早くて2027年以降。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">本格的には<br>武田様が58歳を迎えられる頃から。</p>
+            <p style="margin-bottom: 90px;">その頃には長男様も<br>ご自身の世界が広がり<br>父を「一人の人間」として<br>見直せる年齢に入っていきます。</p>
+            <p style="margin-bottom: 90px;">それまで<br>武田様がやるべきことは<br>三つ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">一つ。<br>弁解をしないこと。</p>
+            <p style="margin-bottom: 90px;">「ああしたかった」<br>「こうなるはずだった」と<br>言い訳をしないこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">二つ。<br>聞かれたら<br>経緯を正直に話すこと。</p>
+            <p style="margin-bottom: 90px;">ごまかしたり<br>美化したりしない。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">長男様の魂は<br>ごまかしを最も鋭く見抜きます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">三つ。<br>長男様から<br>言葉が来るのを、待つこと。</p>
+            <p style="margin-bottom: 90px;">こちらから無理に近づかない。</p>
+            <p style="margin-bottom: 90px;">長男様が一人で<br>父のことを整理する時間を<br>邪魔しないこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">同じ土の親子です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">根は切れていません。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">守護神が時間をかけて<br>癒してくれます。</p>
+        </div>
+
+        <!-- 長女様について -->
+        <h2 class="emoji-header" id="sec-daughter">⛩️ 長女様について</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">長女様を霊視した瞬間<br>私の胸にふっと<br>温かいものが灯りました。</p>
+            <p style="margin-bottom: 90px;">ここから<br>正直にお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">長女様こそが<br>三人のお子様の中で<br>武田様を最も深く必要としている方です。</p>
+            <p style="margin-bottom: 90px;">長女様を霊視すると<br>内側に「土」の気配がまったくありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これは<br>長女様の中に<br>「武田様の土」を求める空間が<br>最初から空いている、ということ。</p>
+            <p style="margin-bottom: 90px;">武田様の畑の土が<br>本来は娘さんの中で<br>何よりも欠かせない養分なのです。</p>
+            <p style="margin-bottom: 90px;">さらに<br>長女様にとって武田様という存在は<br>「独自の感性・芸術・直感」を<br>司る光として映っています。</p>
+            <p style="margin-bottom: 90px;">これが意味するのは──</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">長女様が美術系の大学を<br>目指していらっしゃること。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これは<br>偶然ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">長女様の中に流れている<br>「人と違う感性」は<br>お父様である武田様から<br>受け継いだものだからです。</p>
+            <p style="margin-bottom: 90px;">長女様には<br>「壊して創り直す」を司る<br>最も強い芸術家の光が<br>くっきりと灯っています。</p>
+            <p style="margin-bottom: 90px;">そしてその隣に<br>「大地にしっかり根を張る豊かさの光」も<br>同時に灯っている。</p>
+            <p style="margin-bottom: 90px;">これは</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「自分の感性で何かを創り<br>　しかもそれで<br>　ちゃんと自分の足で立てる人」</p>
+            <p style="margin-bottom: 90px;">という<br>極めて強い芸術家の素質を持っている<br>ということです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">美術の道に進まれることは<br>霊視で視ても<br>完全に正しい選択だと言えます。</p>
+            <p style="margin-bottom: 90px;">けれど──</p>
+            <p style="margin-bottom: 90px;">ここからが<br>正直に伝えなければならない部分です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">長女様の中で<br>「父母」を感じ取る場所には<br>今<br>鋭い痛みが<br>そっと差し込んでいます。</p>
+            <p style="margin-bottom: 90px;">これは何を意味するか。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「お金を出してあげられない父親」<br>という現実が<br>長女様の中に<br>鋭い痛みとして残っている<br>ということ。</p>
+            <p style="margin-bottom: 90px;">これは性格ではなく<br>今の長女様の魂の状態。</p>
+            <p style="margin-bottom: 90px;">長女様にとって<br>この大事な進学のタイミングで<br>お父様から経済的な支援を<br>受けられないという事実は──</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">頭では理解していても<br>胸の奥では<br>ずっと小さく刺さり続けます。</p>
+            <p style="margin-bottom: 90px;">これは<br>たとえ何を言葉で繕っても<br>消すことはできません。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">武田様にできること</p>
+            <p style="margin-bottom: 90px;">そして<br>武田様にできることは<br>「美大の選択を<br>　言葉で、全力で、肯定する」<br>ということです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「お前の感性は、お父さんにわかる。<br>　その道を選んでくれて、本当にうれしい」</p>
+            <p style="margin-bottom: 90px;">そう<br>はっきりと<br>口に出して伝えてあげてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">感性で、言葉で、心で支える。</p>
+            <p style="margin-bottom: 90px;">これしかありません。</p>
+            <p style="margin-bottom: 90px;">でも──<br>これは<br>他のどんな親にもできないことです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">武田様の中にある<br>独自の精神世界と感性があるからこそ<br>長女様の「人と違う道を選ぶ感性」を<br>本当の意味で理解できる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">これは<br>お金では絶対に<br>代わりにならない支え方です。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">戻れる可能性と、その時期</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">戻れる可能性は<br>三人のお子様の中で<br>最も高いです。</p>
+            <p style="margin-bottom: 90px;">ただし<br>時期は今ではありません。</p>
+            <p style="margin-bottom: 90px;">長女様の中の「鋭い痛み」が<br>柔らかくなるのは<br>長女様ご自身が<br>経済的に自立された頃。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">おおよそ25歳前後──<br>2032年あたり。</p>
+            <p style="margin-bottom: 90px;">その頃に<br>長女様は<br>「あの時、支えてくれた父」<br>という<br>新しい意味で<br>武田様を受け取り直します。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして長女様に灯っているのは<br>「壊して創り直す」光。</p>
+            <p style="margin-bottom: 90px;">親子の関係も<br>一度壊れて、その後に<br>新しい形で創り直される。</p>
+            <p style="margin-bottom: 90px;">これが<br>長女様と武田様に視えている流れです。</p>
+            <p style="margin-bottom: 90px;">今<br>できることは小さい。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">でも<br>今武田様が言葉でかけてあげる肯定は<br>数年後、長女様の中で<br>必ず光に変わります。</p>
+        </div>
+
+        <!-- そして、武田様へ -->
+        <h2 class="emoji-header" id="sec-takeda">⛩️ そして、武田様へ</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここまで読まれて<br>胸が苦しかったかもしれません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">三人とも<br>すぐには戻れない。</p>
+            <p style="margin-bottom: 90px;">「今、自分にできることは<br>　ほとんどない」</p>
+            <p style="margin-bottom: 90px;">そう感じられたかもしれません。</p>
+            <p style="margin-bottom: 90px;">でも──</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">それで<br>合っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">今、武田様がやるべきことは<br>家族との関係を<br>急いで修復しようとすることでは<br>ありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">家族との関係は<br>武田様が<br>自分の足で立ち直った後に<br>向こうから戻ってきます。</p>
+            <p style="margin-bottom: 90px;">そういう順番に<br>なっています。</p>
+            <p style="margin-bottom: 90px;">投資をされたこと。</p>
+            <p style="margin-bottom: 90px;">家族のために<br>何かを動かしたかったお気持ち。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">私には視えています。</p>
+            <p style="margin-bottom: 90px;">「自分が何とかしなければ」<br>「家族を豊かにしなければ」</p>
+            <p style="margin-bottom: 90px;">その気持ちが<br>お金を動かす形で<br>出てしまった。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">これは<br>意志が弱かったのではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">間違いなく、<br>愛するための家族に何ができるかを<br>武田様が真剣に考えた結果。</p>
+            <p style="margin-bottom: 90px;">武田様の魂には<br>もともと<br>「お金が人のため<br>　家族のために流れ出ていく流れ」が<br>あります。</p>
+            <p style="margin-bottom: 90px;">それが<br>投資という形で<br>表に出てしまった。</p>
+            <p style="margin-bottom: 90px;">けれど<br>結果として<br>家族との関係に<br>傷が残ったことは事実です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここは<br>受け止めてください。</p>
+            <p style="margin-bottom: 90px;">そして──</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その傷を癒す方法は<br>ただ一つ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">武田様が<br>ご自分の足で<br>もう一度立ち上がること。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">立ち上がった姿を<br>ご家族に見せること。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それが<br>いちばん深い謝罪になります。</p>
+            <p style="margin-bottom: 90px;">言葉ではなく<br>お金でもなく<br>「立ち直った姿」が<br>ご家族の中に届きます。</p>
+        </div>
+
+        <!-- 守護神からのメッセージ -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">宇迦之御魂神</span>が<br>お伝えくださっています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「種を蒔き直す前に<br>　まず自分の土を整えよ」</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「家族は<br>　実りの後に戻ってくる。<br>　実る前に呼び戻そうとするな」</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">「お前が立ち直る姿が<br>　いちばんの謝罪になる」</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-weight: bold;">今は<br>家族に向かう力を<br>ご自分の再建に向けてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ご自分の土を、整えてください。</p>
+            <p style="margin-bottom: 90px;">種が芽吹き<br>茎が伸び<br>やがて実をつけていく。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その姿を<br>ご家族は必ず<br>遠くから視ています。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">それぞれの時期</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">元奥様には<br>2027年から2028年に。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">長男様には<br>2027年以降<br>本格的には58歳以降に。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">長女様には<br>2032年頃<br>娘さんが自立された頃に。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">それぞれの時期に<br>それぞれの形で<br>ご家族との関係は<br>必ず戻ってきます。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <h2>結びの言葉</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">今は<br>待つ時間。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">待つことは<br>何もしていないのではありません。</p>
+            <p style="margin-bottom: 90px;">ご自分の土を<br>静かに整えている時間です。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">宇迦之御魂神</span>が<br>武田様の歩みを<br>ずっと見守っています。</p>
+            <p style="margin-bottom: 90px;">ご家族との関係も<br>あの神様が<br>時間をかけて<br>紡ぎ直してくださいます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">焦らず<br>歩いてください。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>
