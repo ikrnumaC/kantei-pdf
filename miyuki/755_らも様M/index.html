@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>らも様　守護神鑑定書</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif; background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%); color: #e8e8f0; line-height: 1.8; padding: 20px; min-height: 100vh; font-size: 17px; }
+        .container { max-width: 800px; margin: 0 auto; background: rgba(15, 15, 46, 0.7); border-radius: 20px; padding: 40px; box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2), inset 0 0 60px rgba(100, 100, 200, 0.05); border: 1px solid rgba(200, 200, 255, 0.1); }
+        h1 { text-align: center; color: #a8b8ff; font-size: 2em; margin-bottom: 30px; text-shadow: 0 0 20px rgba(168, 184, 255, 0.5); letter-spacing: 0.1em; }
+        h2 { color: #c8d0ff; font-size: 1.5em; margin: 40px 0 20px; padding-bottom: 10px; border-bottom: 2px solid rgba(168, 184, 255, 0.3); letter-spacing: 0.05em; }
+        .oracle-message { background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3)); border: 2px solid rgba(168, 184, 255, 0.3); border-radius: 15px; padding: 30px; margin: 30px 0; box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2); position: relative; }
+        .oracle-message::before { content: ''; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size: 30px; background: #1a1a3e; padding: 0 15px; }
+        .guardian-image { max-width: 400px; width: 100%; height: auto; margin: 30px auto; display: block; border-radius: 10px; box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3); }
+        .oracle-message p { margin: 15px 0; text-align: center; font-size: 1.1em; }
+        .section { margin: 30px 0; padding: 20px; background: rgba(30, 30, 70, 0.3); border-radius: 10px; text-align: center; }
+        .emoji-header { font-size: 1.8em; margin: 40px 0 20px; color: #c8d0ff; text-align: left; }
+        .guardian { text-align: center; font-size: 1.3em; color: #a8b8ff; margin: 20px 0; padding: 20px; background: rgba(168, 184, 255, 0.1); border-radius: 10px; text-shadow: 0 0 15px rgba(168, 184, 255, 0.4); }
+        ul { list-style: none; margin: 20px 0; }
+        ul li { margin: 10px 0; font-weight: bold; color: #ffd966; text-shadow: 0 0 10px rgba(255, 217, 102, 0.3); }
+        .cta { background: rgba(30, 30, 70, 0.5); border: 1px solid rgba(168, 184, 255, 0.2); border-radius: 15px; padding: 40px 25px; margin: 40px 0; text-align: center; box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2); }
+        .cta h2 { border: none; margin: 20px 0; }
+        .cta-button { display: inline-block; background: linear-gradient(135deg, #4a5a9a, #6a7aca); color: white; text-decoration: none; padding: 20px 50px; border-radius: 35px; margin: 20px 0; font-size: 1.3em; font-weight: bold; box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); transition: all 0.3s ease; border: 2px solid rgba(168, 184, 255, 0.5); }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(106, 122, 202, 0.9); background: linear-gradient(135deg, #5a6aaa, #7a8aca); }
+        .price { font-size: 1.8em; color: #e8e8f0; margin: 20px 0 5px 0; }
+        .original-price { text-decoration: line-through; color: #999; font-size: 1em; }
+        .special-price { font-size: 2em; color: #ffd700; font-weight: bold; text-shadow: 0 0 20px rgba(255, 215, 0, 0.6); white-space: nowrap; }
+        .limited-badge { color: #ff4444; font-weight: bold; font-size: 0.95em; margin: 10px 0; }
+        .closing { text-align: center; margin: 40px 0; padding: 30px 15px; background: rgba(60, 60, 120, 0.2); border-radius: 15px; font-size: 1.1em; line-height: 2; }
+        .signature { text-align: right; font-size: 1.3em; color: #c8d0ff; margin-top: 30px; }
+        :root { --aura-color-1: 255, 180, 210; --aura-color-2: 230, 130, 180; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .guardian-image { position: relative; animation: aura-breath 4s ease-in-out infinite; }
+        @keyframes aura-breath {
+            0%, 100% { box-shadow: 0 0 30px rgba(var(--aura-color-1), 0.35), 0 0 60px rgba(var(--aura-color-2), 0.2), 0 4px 20px rgba(168, 184, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(var(--aura-color-1), 0.6), 0 0 100px rgba(var(--aura-color-2), 0.35), 0 4px 20px rgba(168, 184, 255, 0.3); }
+        }
+        .cta-button { animation: pulse 2.4s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); }
+            50% { transform: scale(1.035); box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4); }
+        }
+        .cta-button:hover { animation: none; }
+        @media (max-width: 768px) {
+            body { font-size: 15px; padding: 10px; }
+            .container { padding: 20px 10px; }
+            h1 { font-size: 1.3em; }
+            h2 { font-size: 1.1em; }
+            .emoji-header { font-size: 1.3em; }
+            .oracle-message, .section { padding: 15px 10px; }
+            .oracle-message p { font-size: 1em; }
+            .guardian { font-size: 1.1em; padding: 15px; }
+            .price { font-size: 1.5em; }
+            .special-price { font-size: 1.8em; }
+            .cta-button { font-size: 1.1em; padding: 15px 30px; }
+            .cta { padding: 40px 15px; }
+            .closing { padding: 30px 10px; }
+            .guardian-image { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>らも様<br>守護神鑑定書</h1>
+
+        <div class="oracle-message reveal">
+            <p style="margin-bottom: 90px;">らも様、</p>
+            <p style="margin-bottom: 90px;">霊視して少し驚きました。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">これほど柔らかく、優しい<br>翡翠色のオーラを纏った女性は<br>なかなかいらっしゃいません。</p>
+            <p style="margin-bottom: 90px;">守護神からの守護も<br>とても強いです。</p>
+            <p class="guardian" style="margin-bottom: 90px;">あなたを守っているのは、<br>木花咲耶姫<br>(このはなさくやひめ)。</p>
+            <p>桜のように美しく、<br>一途に愛する女神様です。</p>
+            <img src="../鑑定画像/木花咲耶姫.png" alt="木花咲耶姫" class="guardian-image">
+        </div>
+
+        <div class="section reveal">
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">らも様は本来<br>一途に寄り添える方です。</p>
+            <p style="margin-bottom: 90px;">好きになったその人に<br>ふわりと絡みついて<br>その方の隣で<br>咲こうとできる<br>そんな優しさをお持ちです。</p>
+            <p style="margin-bottom: 90px;">冷たくされても<br>すぐには諦めきれない。</p>
+            <p style="margin-bottom: 90px;">相手の事情を汲んでしまって<br>自分の寂しさを<br>後回しにしてしまう。</p>
+            <p style="margin-bottom: 90px;">そんな繊細さが<br>らも様の中にはあります。</p>
+            <p style="margin-bottom: 90px;">それなのに<br>なぜあの方にだけは<br>こんなにも<br>想いが届かないのか。</p>
+            <p style="margin-bottom: 90px;">らも様には<br>立派に頑張っている人<br>自分の世界を持っている人に<br>強く惹かれてしまう<br>という性質があります。</p>
+            <p style="margin-bottom: 90px;">「彼はやりたいことに精一杯」<br>「気が回らないのだろう」。</p>
+            <p style="margin-bottom: 90px;">他の方なら不満になる距離が<br>らも様にとっては逆に<br>あの方を<br>「立派で、邪魔したくない人」<br>にしてしまっている。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">だから今<br>「絡みついて寄り添いたい自分」と<br>「あの方の世界を<br>尊重したい自分」が<br>らも様の中でぶつかって<br>答えを出させてくれないんです。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">大丈夫です。<br>その答えの出し方を、<br>あなたを守る神様が、<br>ちゃんと視せてくれています。</p>
+            <p>人を惹きつける華やかさと<br>ひとりの方を深く想い続ける<br>純粋さを持つ神様の加護を<br>受けているので<br>らも様はこれまでも<br>「この人」と決めた相手に<br>真っ直ぐ咲ききれてきたはずです。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️彼について、視えていること</h2>
+        <div class="section reveal">
+            <p style="margin-bottom: 90px;">あの方は<br>刀のように鋭い<br>白銀のオーラを持っています。</p>
+            <p style="margin-bottom: 90px;">ただ、その鋭さの奥に<br>「本当は自分の中で<br>深く考え込む時間が必要な方」<br>という性質を持っています。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">だからあの方は<br>ご自分の世界に入ると<br>周りの人のことが<br>一時的に視えなくなる。</p>
+            <p style="margin-bottom: 90px;">「気が回らない」のではなく<br>内側に深く潜って<br>何かを抱えている時間です。</p>
+            <p style="margin-bottom: 90px;">その潜りの中で<br>らも様の存在が<br>どこに置かれているのか。</p>
+            <p style="margin-bottom: 90px;">あの方の心が<br>らも様に真っ直ぐ<br>向き直る瞬間はいつ訪れるのか。</p>
+            <p style="margin-bottom: 90px;">このご縁が<br>らも様の願う形へ<br>動き始めるのはいつなのか。</p>
+            <p>私には、視えています。<br><br>ただ、これは<br>守護神からお預かりしている、<br>らも様のこれからを動かす<br>重たい言葉です。<br><br>本式守護霊視鑑定の場で、<br>丁寧にお伝えさせていただきますね。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️本式守護鑑定でお伝えすること</h2>
+        <div class="section reveal">
+            <p style="margin-bottom: 90px;">らも様の中で起きている<br>ぶつかりは<br>時間が経てば自然に片付くもの<br>ではありません。</p>
+            <p style="margin-bottom: 90px;">不安を抱えたまま<br>あの方からの連絡を<br>じっと待ち続けたその先で。</p>
+            <p style="margin-bottom: 90px;">あの方の隣に立っている<br>らも様が<br>「ちゃんと愛されている自分」<br>でいられるか<br>「結局、放置されたままの自分」<br>でいるか。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">その差は、今この瞬間に<br>らも様が「自分の状態を<br>正しく知るか」で決まります。</p>
+            <p style="margin-bottom: 90px;">あの方の中でも<br>らも様の存在は少しずつ<br>「いつでも待っていてくれる人」<br>として景色に馴染んでいきます。</p>
+            <p>そうなる前に、<br>らも様にちゃんと知って<br>いただきたいことが、<br>私には視えています。</p>
+        </div>
+
+        <div style="padding: 40px 0; margin: 40px 0;">
+            <div style="margin: 30px 0; text-align: center;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 あの方の本音</h3>
+                        <p>刀のような鋭さの奥で<br>あの方が今らも様のことを<br>どう想っているのか。<br>その心の奥を<br>ひとつひとつ視てお伝えします。</p>
+                    </div>
+                </div>
+
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 ご縁が動く瞬間</h3>
+                        <p>あの方が殻を破って<br>らも様に近づいてくる<br>瞬間が訪れます。<br>その時期と<br>らも様が取るべき態度を<br>丁寧にお伝えします。</p>
+                    </div>
+                </div>
+
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 らも様の優しさの活かし方</h3>
+                        <p>らも様の中に本来ある<br>一途に咲き続ける力を<br>この想いの中で<br>どう使えばいいのか。<br>具体的にお伝えします。</p>
+                    </div>
+                </div>
+
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 122, 255, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 らも様らしい近づき方</h3>
+                        <p>あの方の殻を<br>ふわりと開かせるために<br>今日かららも様にできる<br>守護を高める方法を<br>お渡しします。</p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 90px; margin-bottom: 90px; text-align: center;">らも様ご自身の手で<br>未来を選び取るための鑑定です。</p>
+            <p style="margin-top: 90px; margin-bottom: 90px; text-align: center; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">その一歩を、<br>ここから踏み出してください。</p>
+        </div>
+
+        <div class="cta reveal">
+            <h2>【運命の扉が開く24時間】</h2>
+
+            <p style="margin-bottom: 90px;">今、らも様のために<br>運命の扉は最も大きく<br>開かれています。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">この巡り合わせは、<br>残念ながら永遠ではありません。</p>
+            <p style="margin-bottom: 90px;">私からのこのお手紙を<br>受け取ってから24時間以内に<br>一歩踏み出すと、</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">止まっていた運命は、<br>最もなめらかに動き始めます。</p>
+            <p style="margin-bottom: 90px;">ご自身の手で<br>最高の未来を選び取りたいと<br>心から願うらも様へ。</p>
+            <p style="margin-bottom: 90px;">通常20,000円のところ、<br>今回は特別価格9,800円。</p>
+            <p style="margin-bottom: 90px;">本式守護霊視鑑定を<br>心を込めてお渡しします。</p>
+            <p style="margin-bottom: 90px;">1日限定3名までしか<br>お受けできません。<br>リンク先が表示されない場合、<br>本日分は締切となっていますご了承ください。</p>
+
+            <div class="price">
+                <span class="original-price">通常20,000円</span><br>
+                <span class="limited-badge">24時間限定の特別価格</span><br>
+                <span class="special-price">9,800円</span>
+            </div>
+
+            <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/69eb763d23b5d0e88f9854e9" class="cta-button" target="_blank">本式守護鑑定を受ける▼</a>
+
+            <p style="margin-top: 90px;">お申し込み後、<br>購入時のお名前をお知らせください。<br>1日以内に、<br>あなただけの鑑定書をお届けします。</p>
+        </div>
+
+        <div class="closing reveal">
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">らも様の物語が、<br>らも様らしい結末を<br>迎えることを、<br>私は守護の声を通して、<br>すでに知っています。</p>
+            <p style="margin-bottom: 90px;">ご縁に<br>心から感謝を込めて。</p>
+
+            <div class="signature">深雪</div>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
+</body>
+</html>
