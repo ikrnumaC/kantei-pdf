@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>みかん様　守護神鑑定書</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif; background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%); color: #e8e8f0; line-height: 1.8; padding: 20px; min-height: 100vh; font-size: 17px; }
+        .container { max-width: 800px; margin: 0 auto; background: rgba(15, 15, 46, 0.7); border-radius: 20px; padding: 40px; box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2), inset 0 0 60px rgba(100, 100, 200, 0.05); border: 1px solid rgba(200, 200, 255, 0.1); }
+        h1 { text-align: center; color: #a8b8ff; font-size: 2em; margin-bottom: 30px; text-shadow: 0 0 20px rgba(168, 184, 255, 0.5); letter-spacing: 0.1em; }
+        h2 { color: #c8d0ff; font-size: 1.5em; margin: 40px 0 20px; padding-bottom: 10px; border-bottom: 2px solid rgba(168, 184, 255, 0.3); letter-spacing: 0.05em; }
+        .oracle-message { background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3)); border: 2px solid rgba(168, 184, 255, 0.3); border-radius: 15px; padding: 30px; margin: 30px 0; box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2); position: relative; }
+        .oracle-message::before { content: ''; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size: 30px; background: #1a1a3e; padding: 0 15px; }
+        .guardian-image { max-width: 400px; width: 100%; height: auto; margin: 30px auto; display: block; border-radius: 10px; box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3); }
+        .oracle-message p { margin: 15px 0; text-align: center; font-size: 1.1em; }
+        .section { margin: 30px 0; padding: 20px; background: rgba(30, 30, 70, 0.3); border-radius: 10px; text-align: center; }
+        .emoji-header { font-size: 1.8em; margin: 40px 0 20px; color: #c8d0ff; text-align: left; }
+        .guardian { text-align: center; font-size: 1.3em; color: #a8b8ff; margin: 20px 0; padding: 20px; background: rgba(168, 184, 255, 0.1); border-radius: 10px; text-shadow: 0 0 15px rgba(168, 184, 255, 0.4); }
+        ul { list-style: none; margin: 20px 0; }
+        ul li { margin: 10px 0; font-weight: bold; color: #ffd966; text-shadow: 0 0 10px rgba(255, 217, 102, 0.3); }
+        .cta { background: rgba(30, 30, 70, 0.5); border: 1px solid rgba(168, 184, 255, 0.2); border-radius: 15px; padding: 40px 25px; margin: 40px 0; text-align: center; box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2); }
+        .cta h2 { border: none; margin: 20px 0; }
+        .cta-button { display: inline-block; background: linear-gradient(135deg, #4a5a9a, #6a7aca); color: white; text-decoration: none; padding: 20px 50px; border-radius: 35px; margin: 20px 0; font-size: 1.3em; font-weight: bold; box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); transition: all 0.3s ease; border: 2px solid rgba(168, 184, 255, 0.5); }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(106, 122, 202, 0.9); background: linear-gradient(135deg, #5a6aaa, #7a8aca); }
+        .price { font-size: 1.8em; color: #e8e8f0; margin: 20px 0 5px 0; }
+        .original-price { text-decoration: line-through; color: #999; font-size: 1em; }
+        .special-price { font-size: 2em; color: #ffd700; font-weight: bold; text-shadow: 0 0 20px rgba(255, 215, 0, 0.6); white-space: nowrap; }
+        .limited-badge { color: #ff4444; font-weight: bold; font-size: 0.95em; margin: 10px 0; }
+        .closing { text-align: center; margin: 40px 0; padding: 30px 15px; background: rgba(60, 60, 120, 0.2); border-radius: 15px; font-size: 1.1em; line-height: 2; }
+        .signature { text-align: right; font-size: 1.3em; color: #c8d0ff; margin-top: 30px; }
+        :root { --aura-color-1: 180, 230, 150; --aura-color-2: 120, 180, 90; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .guardian-image { position: relative; animation: aura-breath 4s ease-in-out infinite; }
+        @keyframes aura-breath {
+            0%, 100% { box-shadow: 0 0 30px rgba(var(--aura-color-1), 0.35), 0 0 60px rgba(var(--aura-color-2), 0.2), 0 4px 20px rgba(168, 184, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(var(--aura-color-1), 0.6), 0 0 100px rgba(var(--aura-color-2), 0.35), 0 4px 20px rgba(168, 184, 255, 0.3); }
+        }
+        .cta-button { animation: pulse 2.4s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 25px rgba(74, 90, 154, 0.7); }
+            50% { transform: scale(1.035); box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4); }
+        }
+        .cta-button:hover { animation: none; }
+        @media (max-width: 768px) {
+            body { font-size: 15px; padding: 10px; }
+            .container { padding: 20px 10px; }
+            h1 { font-size: 1.3em; }
+            h2 { font-size: 1.1em; }
+            .emoji-header { font-size: 1.3em; }
+            .oracle-message, .section { padding: 15px 10px; }
+            .oracle-message p { font-size: 1em; }
+            .guardian { font-size: 1.1em; padding: 15px; }
+            .price { font-size: 1.5em; }
+            .special-price { font-size: 1.8em; }
+            .cta-button { font-size: 1.1em; padding: 15px 30px; }
+            .cta { padding: 40px 15px; }
+            .closing { padding: 30px 10px; }
+            .guardian-image { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>みかん様<br>守護神鑑定書</h1>
+
+        <div class="oracle-message reveal">
+            <p style="margin-bottom: 90px;">みかん様</p>
+            <p style="margin-bottom: 90px;">霊視して少し驚きました。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">これほど瑞々しく<br>若葉のような透き通る緑の<br>オーラを纏った方は<br>なかなかいらっしゃいません。</p>
+            <p style="margin-bottom: 90px;">守護神からの守護も<br>とても強いです。</p>
+        </div>
+
+        <div class="section reveal">
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">みかん様は本来<br>一度心に決めた相手には<br>真っ直ぐ根を張れる方のはずです。</p>
+            <p style="margin-bottom: 90px;">大切な人の隣で<br>毎日少しずつ<br>枝葉を広げていける。</p>
+            <p style="margin-bottom: 90px;">そんな真面目な強さを<br>お持ちです。</p>
+            <p style="margin-bottom: 90px;">ご縁を軽く扱って<br>すぐに手放すことは<br>本当は得意ではない。</p>
+            <p style="margin-bottom: 90px;">それなのに<br>なぜこれからの伴侶のご縁だけは<br>はっきりとした景色が見えてこないのか。</p>
+            <p style="margin-bottom: 90px;">みかん様には<br>「豊かに感情を感じ取って<br>繊細に表現したい」<br>という性質があります。</p>
+            <p style="margin-bottom: 90px;">日々の小さな出来事にも<br>細やかな色を感じて<br>そのままの気持ちを<br>大切にしたい方です。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">だから今<br>「新しいご縁を迎えたい自分」と<br>「繊細な自分に<br>本当に寄り添ってくれる人を<br>待ちたい自分」が<br>みかん様の中でぶつかって<br>これからの景色を<br>掴ませてくれないんです。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">でも、大丈夫です。</p>
+            <p style="margin-bottom: 90px;">その景色を<br>あなたを守る神様が<br>ちゃんと視せてくれています。</p>
+            <p class="guardian" style="margin-bottom: 90px;">あなたを守っているのは<br>久久能智神<br>（くくのちのかみ）。</p>
+            <p>木々を司る神様。</p>
+            <img src="../鑑定画像/久久能智神.png" alt="久久能智神" class="guardian-image">
+            <p style="margin-bottom: 90px;">大地に根を張り<br>空へと枝を伸ばしていく力を<br>授けてくれる神様です。</p>
+            <p style="margin-bottom: 90px;">そんな成長の力を持つ<br>神様の加護を<br>受けているので</p>
+            <p style="margin-bottom: 90px;">みかん様はこれまでも<br>人生の大事な場面で<br>大切なご縁を<br>育ててこられたはずです。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️みかん様の伴侶のご縁が動く流れ</h2>
+        <div class="section reveal">
+            <p style="margin-bottom: 90px;">久久能智神が視せてくれたのは<br>青空の下で<br>若木が枝を伸ばし<br>その傍らに<br>もう一本の木が<br>静かに芽吹こうとしている姿。</p>
+            <p style="margin-bottom: 90px;">今この時間は<br>ご縁が枯れているのではなく</p>
+            <p style="margin-bottom: 90px;">久久能智神が<br>みかん様にとっての<br>「本物」の伴侶のご縁を<br>静かに育てている<br>かけがえのない時間。</p>
+            <p style="margin-bottom: 90px;">みかん様が<br>繊細な心を守りながら<br>真っ直ぐな想いを<br>大切にしてこられたから</p>
+            <p style="margin-bottom: 90px;">今、みかん様は<br>新しいご縁を<br>受け取れる場所まで<br>辿り着いていらっしゃいます。</p>
+            <p style="margin-bottom: 90px;">ここは<br>人生でそう何度も訪れない<br>大きな節目。</p>
+            <p style="margin-bottom: 90px;">その育みが姿を現し<br>みかん様の前に<br>その方が現れる瞬間は<br>いつなのか。</p>
+            <p style="margin-bottom: 90px;">そのご縁が<br>どんな形で<br>始まっていくのか。</p>
+            <p style="margin-bottom: 90px;">「この人となら」と<br>胸で頷ける瞬間は<br>いつ訪れるのか。</p>
+            <p style="margin-bottom: 90px;">私には、視えています。</p>
+            <p style="margin-bottom: 90px;">ただ、これは<br>守護神からお預かりしている<br>みかん様のこれからを動かす<br>重たい言葉です。</p>
+            <p style="margin-bottom: 90px;">本式守護霊視鑑定の場で<br>丁寧に<br>お伝えさせていただきますね。</p>
+        </div>
+
+        <h2 class="emoji-header">⛩️本式守護鑑定でお伝えすること</h2>
+        <div class="section reveal">
+            <p style="margin-bottom: 90px;">みかん様の中で<br>起きているぶつかりは<br>時間が経てば自然に<br>片付くもの<br>ではありません。</p>
+            <p style="margin-bottom: 90px;">答えを見ないまま<br>季節を越えた時。</p>
+            <p style="margin-bottom: 90px;">みかん様が<br>「伴侶のご縁を掴んだ自分」で<br>いられるか<br>「独りの時間を延ばしたままの自分」で<br>いるか。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">その差は、今この瞬間に<br>みかん様が<br>「自分の状態を正しく知るか」<br>で決まります。</p>
+            <p style="margin-bottom: 90px;">日々の中でも<br>「今のままでいい」の<br>やり過ごしが<br>少しずつ<br>当たり前になっていきます。</p>
+            <p style="margin-bottom: 90px;">そうなる前に<br>みかん様にちゃんと<br>知っていただきたいことが<br>私には視えています。</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定で<br>みかん様にお渡しするのは</p>
+        </div>
+
+        <div style="padding: 40px 0; margin: 40px 0;">
+            <div style="margin: 30px 0; text-align: center;">
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 215, 0, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 伴侶のお相手</h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 ご縁が動く瞬間</h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 199, 89, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 みかん様の繊細さの活かし方</h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="reveal" style="position: relative; padding: 40px 30px; margin-bottom: 0;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 122, 255, 0.7); opacity: 0.3;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.4em; font-weight: bold; color: #c8d0ff; margin-bottom: 15px;">🌙 みかん様らしい選び方</h3>
+                        <p></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <p style="margin-top: 90px; margin-bottom: 90px; text-align: center;">みかん様ご自身の手で<br>未来を選び取るための鑑定です。</p>
+            <p style="margin-top: 90px; margin-bottom: 90px; text-align: center; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">その一歩を<br>ここから踏み出してください。</p>
+        </div>
+
+        <div class="cta reveal">
+            <h2>【運命の扉が開く24時間】</h2>
+
+            <p style="margin-bottom: 90px;">今、みかん様のために<br>運命の扉は最も大きく<br>開かれています。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">この巡り合わせは<br>残念ながら<br>永遠ではありません。</p>
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">私からのこのお手紙を<br>受け取ってから<br>24時間以内に<br>一歩踏み出すと<br>止まっていた運命は<br>最もなめらかに<br>動き始めます。</p>
+            <p style="margin-bottom: 90px;">ご自身の手で<br>最高の未来を選び取りたいと<br>心から願うみかん様へ。</p>
+            <p style="margin-bottom: 90px;">通常20,000円のところ<br>今回に限り<br>特別価格9,800円で<br>本式守護霊視鑑定を行います。</p>
+            <p style="margin-bottom: 90px;">1日限定3名までしか<br>お受けできません<br>リンク先が表示されない場合<br>本日分は締切ですので<br>ご了承ください。</p>
+
+            <div class="price">
+                <span class="original-price">通常20,000円</span><br>
+                <span class="limited-badge">24時間限定の特別価格</span><br>
+                <span class="special-price">9,800円</span>
+            </div>
+
+            <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/69eb763d23b5d0e88f9854e9" class="cta-button" target="_blank">本式守護鑑定を受ける▼</a>
+
+            <p style="margin-top: 90px;">お申し込み後、<br>購入時のお名前をお知らせください。<br>1日以内に、<br>あなただけの鑑定書をお届けします。</p>
+        </div>
+
+        <div class="closing reveal">
+            <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">みかん様の物語が<br>みかん様らしい結末を<br>迎えることを<br>私は守護の声を通して<br>すでに知っています。</p>
+            <p style="margin-bottom: 90px;">ご縁に、心から感謝を込めて。</p>
+
+            <div class="signature">深雪</div>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
+</body>
+</html>
