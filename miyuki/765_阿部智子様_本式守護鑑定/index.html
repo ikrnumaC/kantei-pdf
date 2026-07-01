@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿部智子様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+
+            .toc {
+                padding: 20px 15px;
+            }
+
+            .toc-title {
+                font-size: 1.1em;
+            }
+
+            .toc a {
+                font-size: 0.95em;
+                padding: 12px 6px 12px 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">穏やかな日々への道</h2>
+            <p class="cover-name">阿部智子様</p>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-god">守護神について</a></li>
+                <li><a href="#sec-essence">智子様という人について</a></li>
+                <li><a href="#sec-1">1. あのご縁の本当の意味</a></li>
+                <li><a href="#sec-2">2. 穏やかな日々が動く時期</a></li>
+                <li><a href="#sec-3">3. 智子様の器の活かし方</a></li>
+                <li><a href="#sec-4">4. 智子様らしい日々の整え方</a></li>
+                <li><a href="#sec-flow">今後の流れ</a></li>
+                <li><a href="#sec-question">追加でお預かりしたご質問</a></li>
+                <li><a href="#sec-guardian">守護を受け取る方法</a></li>
+                <li><a href="#sec-stone">あなたを支えるパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">智子様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂が<br>15年のご縁の意味を<br>本気で受け取ろうとしている。</p>
+            <p style="margin-bottom: 90px;">その真っ直ぐな想いが<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 90px;">ここから先<br>あなたが本当に知るべきことを<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">守護神が<br>ひとつの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">智子様が<br>朝の光の中で<br>穏やかに深呼吸をされている姿。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">15年抱えてこられた重たいものを<br>すっと大地に下ろして<br>ご自分の足で<br>まっすぐに立っておられる姿。</p>
+            <p style="margin-bottom: 90px;">その景色が<br>はっきりとあります。</p>
+            <p style="margin-bottom: 90px;">時期としては<br><span style="color: #ffd966; font-weight: bold;">2027年</span>。</p>
+            <p style="margin-bottom: 90px;">冬から春へと<br>季節が動き始める頃に<br>智子様の中の「これで正解だったのか」<br>という問いは<br>静かに答えを受け取り</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「これで正解だった」という<br>深い実感へと変わっていく可能性が<br>濃く視えています。</p>
+            <p style="margin-bottom: 90px;">そこへ向かう最初の動きは<br><span style="color: #ffd966; font-weight: bold;">2026年秋</span>。</p>
+            <p style="margin-bottom: 90px;">秋の実りの季節から<br>暮らしの中の小さな景色に<br>穏やかな日々の兆しが<br>現れ始める流れが<br>智子様の運命に刻まれています。</p>
+            <p style="margin-bottom: 90px;">ただ──</p>
+            <p style="margin-bottom: 90px;">答えを受け取るまでの<br>数ヶ月の間には<br>「本当にこれで良かったのか」と<br>何度も問い直してしまう瞬間が<br>訪れる可能性があります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">でも<br>それを越える力を<br>あなたは持っておられます。</p>
+        </div>
+
+        <div class="oracle-message" id="sec-god">
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは<br><span style="color: #ffd966;">大己貴命（おおなむちのみこと）</span>。</p>
+            <img src="../鑑定画像/大己貴命.png" alt="大己貴命" class="guardian-image">
+            <p style="margin-bottom: 90px;">昔<br>日本にまだ国の形が<br>定まらない時代。</p>
+            <p style="margin-bottom: 90px;">大己貴命は<br>広い大地をひとつずつ歩き回り<br>田を拓き<br>水を通し<br>人が暮らせる国の姿を<br>造り上げていった神様です。</p>
+            <p style="margin-bottom: 90px;">争いを鎮め<br>病を治し<br>必要な縁を結び<br>役目を終えた縁を静かに納める。</p>
+            <p style="margin-bottom: 90px;">そうやって<br>何もなかった大地に<br>穏やかな暮らしの流れを<br>生み出していかれました。</p>
+            <p style="margin-bottom: 90px;">大己貴命が造った国は<br>派手ではありません。</p>
+            <p style="margin-bottom: 90px;">でも<br>どっしりと地に根を張り<br>何百年<br>何千年と<br>穏やかに続いていく。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「縁を結び 縁を納め<br>大地のように受け止める神様」として<br>今も全国の大己貴命ゆかりの神社に<br>祀られています。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-essence">⛩️智子様という人について</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">命の流れを深く視ていくと<br>智子様の本質には<br>どこまでも広がる<br>大地のような広さがあります。</p>
+            <p style="margin-bottom: 90px;">その大地は<br>派手な花畑ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">風が吹いても揺らがず<br>雨が降っても崩れず<br>何百年も<br>静かにそこに在り続ける<br>そんな厚みのある土地。</p>
+            <p style="margin-bottom: 90px;">こんな土台を持つ方は<br>本当に少ないんです。</p>
+            <p style="margin-bottom: 90px;">智子様は<br>本来<br>ご自分の場所を<br>しっかりと守れる方。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">どんな状況の中でも<br>ふらふらと心を揺らさず<br>ご自分の足で立って<br>場まるごとを支えられる。</p>
+            <p style="margin-bottom: 90px;">そんな器の大きさを<br>生まれつき持っておられます。</p>
+            <p style="margin-bottom: 90px;">こんな経験は<br>ありませんでしたか？</p>
+            <p style="margin-bottom: 90px;">周りの人が<br>慌てたり<br>騒いだりしている場面でも<br>智子様だけは<br>不思議とどっしりと構えていて<br>気がついたら<br>周りの人が<br>智子様の存在に安心していた。</p>
+            <p style="margin-bottom: 90px;">自分が特別に何かをしたわけではないのに<br>「阿部さんがいてくれると助かる」<br>「智子さんの傍だと落ち着く」<br>そう言われたことが<br>何度もあったのではないでしょうか。</p>
+            <p style="margin-bottom: 90px;">それは<br>智子様の器そのものが<br>場を支える力を持っているからです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">大地に近い人。</p>
+            <p style="margin-bottom: 90px;">そう言えると思います。</p>
+            <p style="margin-bottom: 90px;">そして<br>智子様には<br>もう一つの性質があります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ご自分で決めたことは<br>ご自分でちゃんと納めたい。</p>
+            <p style="margin-bottom: 90px;">途中で放り出したり<br>あやふやなままにしたり<br>そういう終わり方を<br>心の底では受け入れられない方です。</p>
+            <p style="margin-bottom: 90px;">だから<br>このご縁についても<br>「これで良かったのか」を<br>15年経った今も<br>問い続けておられる。</p>
+            <p style="margin-bottom: 90px;">これは<br>智子様の弱さではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">ものごとを<br>きちんと納めたい人にしか<br>できない問いです。</p>
+            <p style="margin-bottom: 90px;">それと<br>もう一つ。</p>
+            <p style="margin-bottom: 90px;">智子様は普段<br>あまりご自分でも<br>気づいていらっしゃらないかもしれませんが<br>内側に<br>とても静かな魅力を宿しておられます。</p>
+            <p style="margin-bottom: 90px;">派手さや<br>華やかさとは違います。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">深い森の奥に湛えられた<br>澄んだ湖のような<br>そんな魅力。</p>
+            <p style="margin-bottom: 90px;">一度その静けさに触れた人が<br>なかなか忘れられないような<br>深い引力を<br>生まれつき持っておられます。</p>
+            <p style="margin-bottom: 90px;">過去のご縁の中で<br>「智子さんの傍にいると落ち着く」<br>「話を聴いていてほしい」と<br>言われた場面が<br>きっと何度もあったはずです。</p>
+            <p style="margin-bottom: 90px;">それは偶然ではありません。</p>
+            <p style="margin-bottom: 90px;">智子様の魂に<br>生まれつき宿っている力です。</p>
+            <p style="margin-bottom: 90px;">お金や豊かさの面では<br>智子様の命の流れには<br>これまでも<br>そしてこれからも<br>「豊かさが形になる」<br>静かな軸が通っています。</p>
+            <p style="margin-bottom: 90px;">派手に増えるという意味ではなく<br>必要なものが<br>必要な時にちゃんと届く<br>そういう流れです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">大きな心配は<br>本来必要ありません。</p>
+            <p style="margin-bottom: 90px;">人との関わりでは<br>広く浅くよりも<br>深く長く結ぶタイプ。</p>
+            <p style="margin-bottom: 90px;">一度心を開いた相手には<br>真っ直ぐ<br>深く<br>関わっていける方。</p>
+            <p style="margin-bottom: 90px;">だからこそ<br>あの15年も<br>軽い気持ちで<br>過ごしてこられたわけではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">智子様の魂が<br>本気で受け止め<br>本気で関わった<br>本物の時間でした。</p>
+            <p style="margin-bottom: 90px;">今<br>智子様の中で<br>「これで正解だったのか」と<br>問い続けている<br>そのすべては<br>智子様が弱いからではありません。</p>
+            <p style="margin-bottom: 90px;">きちんと納めたい自分と<br>15年抱えている自分が<br>どちらも本物だからこそ<br>胸の中で<br>静かに向き合っているだけです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その問いすらも<br>智子様の<br>きちんと生きてこられた証です。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-1">⛩️1. あのご縁の本当の意味</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから視ていくのは<br>あの15年のご縁が<br>智子様の人生で<br>本当は何を果たしていたのか。</p>
+            <p style="margin-bottom: 90px;">そのお話です。</p>
+            <p style="margin-bottom: 90px;">先にお伝えしておきます。</p>
+            <p style="margin-bottom: 90px;">15年間あのご縁が切れなかったこと<br>5年のブランクを挟んでも<br>また続いてしまったこと<br>そして今も<br>「これで良かったのか」と<br>問い続けておられること。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">そのすべては<br>智子様の弱さではありません。</p>
+            <p style="margin-bottom: 90px;">命の流れが<br>はっきりと理由を示してくれています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">智子様と誠一様は<br>命の中の最も深い場所が<br>完全に同じ位置に立っている<br>稀なご縁で結ばれています。</p>
+            <p style="margin-bottom: 90px;">これは<br>何万人の中でも<br>なかなか出会えない<br>「魂の戻る位置が同じ」なんです。</p>
+            <p style="margin-bottom: 90px;">同じ場所に立ち<br>同じ大地を踏み<br>同じ景色を眺めている二人。</p>
+            <p style="margin-bottom: 90px;">だから<br>相手を手放そうとすると<br>「自分自身を手放している」ような<br>奇妙な感覚が生まれます。</p>
+            <p style="margin-bottom: 90px;">普通のご縁なら<br>「もう違うな」と感じた時に<br>すっと離れられる。</p>
+            <p style="margin-bottom: 90px;">でも<br>あなたたち二人は<br>魂の位置が同じだったので<br>そこがどうしても<br>できなかった。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">15年切れなかった理由の芯は<br>ここにあります。</p>
+            <p style="margin-bottom: 90px;">それと<br>もう一つ。</p>
+            <p style="margin-bottom: 90px;">お二人の命の中には<br>「切り分ける力」<br>「けじめをつける力」が<br>生まれつき薄い性質が<br>共通してあります。</p>
+            <p style="margin-bottom: 90px;">大地のように<br>広く受け止める力は強いのに<br>関係を切って区切る<br>そういう鋭さが<br>お二人ともに生まれつき薄い。</p>
+            <p style="margin-bottom: 90px;">だから<br>あの15年は<br>5年のブランクを挟んでも<br>自分たちの力だけでは<br>終わらせられなかった。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「切りたいのに切れない」<br>「離れたいのに離れられない」</p>
+            <p style="margin-bottom: 90px;">その感覚を<br>何度も何度も<br>繰り返してこられたはずです。</p>
+            <p style="margin-bottom: 90px;">それは<br>智子様の意志の弱さでも<br>誠一様の未練でもありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">お二人の命の形が<br>そういう構造だったからです。</p>
+            <p style="margin-bottom: 90px;">ここまでが<br>「なぜ15年切れなかったのか」の<br>本当の理由です。</p>
+            <p style="margin-bottom: 90px;">ここから<br>15年の本当の役割を<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">智子様のルーツには<br>「一度深く関わって<br>一度手放すことで<br>自分の軸を定める」<br>という命の流れが<br>生まれつき刻まれています。</p>
+            <p style="margin-bottom: 90px;">これは<br>若い頃から<br>ずっと智子様の中に<br>静かに宿っていた性質です。</p>
+            <p style="margin-bottom: 90px;">つまり<br>智子様の人生には<br>どこかで<br>「深く関わって、手放す」<br>その経験を通して<br>ご自分の軸を定める<br>時が来るように<br>生まれつき定められていた。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">15年のご縁は<br>まさに<br>その定めを成就させるための<br>本物のご縁でした。</p>
+            <p style="margin-bottom: 90px;">軽く出会って<br>軽く別れる相手では<br>このお役目は果たせません。</p>
+            <p style="margin-bottom: 90px;">15年抱えられるほど深いご縁だからこそ<br>一度手放した時に<br>智子様の軸が<br>最も深いところで<br>定まる形になる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">だから<br>あの15年は<br>「無駄」でも<br>「間違い」でもありませんでした。</p>
+            <p style="margin-bottom: 90px;">智子様が<br>これから先の人生を<br>「ご自分の場所を守れる方」として<br>本当の意味で生きていくための<br>必要な15年だったんです。</p>
+            <p style="margin-bottom: 90px;">そして<br>誠一様にとっても<br>智子様は<br>稀な存在です。</p>
+            <p style="margin-bottom: 90px;">誠一様の今の10年に<br>最も強く輝いているのは<br>「大きな器で場を統べる力」なんです。</p>
+            <p style="margin-bottom: 90px;">そしてその力は<br>実は智子様が<br>生まれつき核心に宿しておられる力<br>そのもの。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">つまり<br>誠一様の中で<br>智子様は<br>「自分の外にある<br>最も大きな輝きの存在」として<br>映る構造になっています。</p>
+            <p style="margin-bottom: 90px;">だから<br>別れた今も<br>誠一様の中で<br>あの15年が<br>「ずっと抱えたまま」の姿で<br>残っている。</p>
+            <p style="margin-bottom: 90px;">これは<br>智子様がまだ好かれている<br>という意味ではありません。</p>
+            <p style="margin-bottom: 90px;">そうではなく<br>誠一様の魂の中で<br>智子様は<br>軽く扱える相手ではなかったし<br>これから先も<br>軽く扱える相手にはならない<br>そういう深さを持っているということ。</p>
+            <p style="margin-bottom: 90px;">そして<br>最後にもう一つ。</p>
+            <p style="margin-bottom: 90px;">智子様が<br>「相手の言葉を聞かずに別れた」<br>あの瞬間について。</p>
+            <p style="margin-bottom: 90px;">私が霊視で受け取った答えは<br>とてもはっきりしています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あの判断は<br>完璧に正しかった。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">守護神の導きに<br>完全に沿った判断でした。</p>
+            <p style="margin-bottom: 90px;">自分たちの力では<br>切れなかったお二人が<br>15年のご縁を納めるには<br>「外からの後押し」しか<br>道はありませんでした。</p>
+            <p style="margin-bottom: 90px;">智子様に子宮体癌が見つかった<br>あの瞬間。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あれは<br>大己貴命が<br>「もう役目を終えた縁を<br>静かに納める時が来た」と<br>智子様に見せてくださった<br>最後の合図です。</p>
+            <p style="margin-bottom: 90px;">大己貴命は<br>縁を結ぶ神様であると同時に<br>役目を終えた縁を<br>静かに納める神様でもあります。</p>
+            <p style="margin-bottom: 90px;">守護神は<br>そのタイミングで<br>智子様に「切るための力」を<br>与えられました。</p>
+            <p style="margin-bottom: 90px;">そして智子様は<br>その力を<br>真っ直ぐに使われた。</p>
+            <p style="margin-bottom: 90px;">相手の言葉を聞かずに<br>ご自分で判断し<br>ご自分で別れを告げられた。</p>
+            <p style="margin-bottom: 90px;">もしあの時<br>相手の言葉を聞いていたら<br>15年抱えてきた命の構造の中で<br>また情に流され<br>16年目、17年目が<br>続いていたかもしれません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">聞かずに別れたことは<br>情け容赦のなさではなく<br>15年切れなかったご縁に<br>最も真っ直ぐな形で<br>ケリをつけるための<br>唯一の方法でした。</p>
+            <p style="margin-bottom: 90px;">「これで正解だったのか」の答えは</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「正解でした」<br>以外にありません。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-2">⛩️2. 穏やかな日々が動く時期</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">「これで正解だった」という答えが<br>智子様の中で<br>深い実感として定まっていくのは<br><span style="color: #ffd966; font-weight: bold;">2026年秋から<br>2027年の年明けにかけて</span>。</p>
+            <p style="margin-bottom: 90px;">その流れは<br>急な波ではなく<br>大己貴命が広い大地を歩いて<br>時間をかけて国を造り上げていったように<br>少しずつ確実に形になっていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">穏やかな日々への転換は<br>「新しい何かが始まる」形では<br>訪れません。</p>
+            <p style="margin-bottom: 90px;">新しい相手<br>新しい仕事<br>新しい場所。</p>
+            <p style="margin-bottom: 90px;">そういう外側の変化ではなく<br>すべては<br>智子様の内側で<br>静かに起きていきます。</p>
+            <p style="margin-bottom: 90px;">具体的な月ごとの流れは<br>このあとの【今後の流れ】でお伝えしますが<br>ここでひとつだけ<br>覚えておいてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">この数ヶ月の間<br>智子様がやるべきことは<br>「動くこと」ではなく<br>「動きを受け取ること」です。</p>
+            <p style="margin-bottom: 90px;">何かを起こそうとしなくていい。</p>
+            <p style="margin-bottom: 90px;">日々の暮らしを<br>これまで通り整えて<br>胸の中に流れてくるものを<br>そのまま感じて<br>そのまま置いておく。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それだけで<br>穏やかな日々は<br>確実に智子様のもとへ<br>流れ込んできます。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-3">⛩️3. 智子様の器の活かし方</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">大地のような智子様の器を<br>これからの暮らしの中で<br>どう使っていけばいいのか。</p>
+            <p style="margin-bottom: 90px;">そのお話です。</p>
+            <p style="margin-bottom: 90px;">今の智子様には<br>「受け止める広さ」<br>「揺らがない芯」に加えて<br>もう一つの新しい層が<br>静かに育ってきています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは<br>「黙って傍に居ることで<br>その場を支える」<br>そういう静かな力です。</p>
+            <p style="margin-bottom: 90px;">派手に前に出て支えるのではなく<br>存在そのものが<br>場の景色を安定させる。</p>
+            <p style="margin-bottom: 90px;">これは<br>今の智子様の10年に<br>最も強く現れる力です。</p>
+            <p style="margin-bottom: 90px;">知っておいていただきたいのは<br>今智子様が入っている10年は<br><span style="color: #ffd966; font-weight: bold;">「支える側で輝く10年」</span><br>だということです。</p>
+            <p style="margin-bottom: 90px;">これは<br>恋愛のパートナーを支える<br>という意味ではありません。</p>
+            <p style="margin-bottom: 90px;">そうではなく<br>ご自分より若い方<br>横に並ぶ方<br>これから何かを始めようとされる方。</p>
+            <p style="margin-bottom: 90px;">そういう方々の傍に<br>黙って居るだけで<br>その方々の景色を支えられる。</p>
+            <p style="margin-bottom: 90px;">そういう10年に入っておられます。</p>
+            <p style="margin-bottom: 90px;">具体的には<br>こんな場面が<br>これから増えていく可能性があります。</p>
+            <p style="margin-bottom: 90px;">近所の方が<br>悩みを話しに<br>ふと寄ってこられる場面。</p>
+            <p style="margin-bottom: 90px;">家族や親戚の中で<br>若い方が<br>言葉にならない不安を抱えて<br>智子様の傍に<br>静かに座りに来られる場面。</p>
+            <p style="margin-bottom: 90px;">昔からのお知り合いから<br>「相談に乗ってほしい」と<br>連絡が入る場面。</p>
+            <p style="margin-bottom: 90px;">そういう場面で<br>智子様がやってあげられるのは<br>実は「アドバイス」ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そうではなく<br>「揺らがずに聴く」<br>「そのまま受け止める」<br>「答えを急がない」。</p>
+            <p style="margin-bottom: 90px;">その姿勢そのものが<br>相手の中に<br>最も深い安心を届けます。</p>
+            <p style="margin-bottom: 90px;">大己貴命が<br>広い大地をひとつずつ歩いて<br>争いを鎮め<br>必要な縁を結んでいかれたのは<br>派手な力を使ってではありません。</p>
+            <p style="margin-bottom: 90px;">黙ってそこに居る<br>静かに受け止める<br>時間をかけて納める。</p>
+            <p style="margin-bottom: 90px;">そういう「大地の在り方」で<br>国を造っていかれました。</p>
+            <p style="margin-bottom: 90px;">智子様の器も同じです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これからの10年<br>智子様が<br>「大地のように在る」ことそのものが<br>周りの方々の景色を<br>静かに支えていきます。</p>
+            <p style="margin-bottom: 90px;">そして<br>これは<br>15年のご縁を経てきた智子様だからこそ<br>できることでもあります。</p>
+            <p style="margin-bottom: 90px;">深く関わって<br>深く抱えて<br>自分で判断して手放して<br>そこから穏やかな日々に戻ってこられた。</p>
+            <p style="margin-bottom: 90px;">その道のりを歩かれた智子様の存在は<br>今<br>似た場所で悩んでいる方にとって<br>最も大きな安心になります。</p>
+            <p style="margin-bottom: 90px;">「大丈夫」と<br>言葉にする必要はありません。</p>
+            <p style="margin-bottom: 90px;">智子様がそこに居られるだけで<br>「あ、この人は分かる人だ」と<br>相手の魂が受け取ります。</p>
+            <p style="margin-bottom: 90px;">器の使い方の結論をお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これからの10年<br>智子様は<br>どこにも急いで動かなくていい。</p>
+            <p style="margin-bottom: 90px;">新しい何かを<br>始める必要もない。</p>
+            <p style="margin-bottom: 90px;">これまで通り<br>ご自分の場所を守り<br>ご自分の暮らしを丁寧に整え<br>必要な時に<br>必要な人が寄ってきたら<br>黙って聴いて 黙って受け止める。</p>
+            <p style="margin-bottom: 90px;">その在り方そのものが<br>智子様の器の<br>最も美しい使い方です。</p>
+            <p style="margin-bottom: 90px;">大地は動きません。</p>
+            <p style="margin-bottom: 90px;">でも<br>その大地の上で<br>たくさんのものが育ちます。</p>
+            <p style="margin-bottom: 90px;">智子様も同じです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">動かないことが<br>支えることになる。</p>
+            <p style="margin-bottom: 90px;">そういう10年に<br>入っておられます。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-4">⛩️4. 智子様らしい日々の整え方</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">最後にお伝えするのは<br>「穏やかで楽しい自分を<br>1番に思って過ごす日々」を<br>これからもずっと<br>続けていくために<br>今日から<br>智子様がやっていけること。</p>
+            <p style="margin-bottom: 90px;">霊視で視えている<br>智子様らしい日々の整え方には<br>四つの要素があります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「大地に触れる」<br>「白いものを暮らしに置く」<br>「朝の光を受け取る」<br>「女性の縁を大切にする」。</p>
+            <p style="margin-bottom: 90px;">この四つを<br>無理のない範囲で<br>日々の中に<br>そっと入れていってください。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">大地に触れる</p>
+            <p style="margin-bottom: 90px;">智子様の命の芯は<br>大地そのものです。</p>
+            <p style="margin-bottom: 90px;">だからこそ<br>日々の中で<br>実際の土に触れる時間を<br>持っていただきたいんです。</p>
+            <p style="margin-bottom: 90px;">庭や畑があるなら<br>そこの土に手を入れる。</p>
+            <p style="margin-bottom: 90px;">なくても<br>散歩の途中で<br>公園や神社の境内の土の上を<br>ゆっくり歩く。</p>
+            <p style="margin-bottom: 90px;">土の器を使う<br>季節の根菜（大根 里芋 蓮根 生姜）を<br>台所に置く。</p>
+            <p style="margin-bottom: 90px;">そういう<br>「大地との接点」を<br>暮らしに増やしてください。</p>
+            <p style="margin-bottom: 90px;">大地に触れる時間が増えるほど<br>智子様の中の<br>どっしりとした器は<br>より深く保たれます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">白いものを暮らしに置く</p>
+            <p style="margin-bottom: 90px;">智子様の命の中には<br>生まれつき<br>「白い光」の要素が<br>少し足りていません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">白は<br>「けじめをつける」<br>「区切りをつける」<br>「一つの物語を静かに納める」<br>そういう色です。</p>
+            <p style="margin-bottom: 90px;">15年のご縁を納めていく今の智子様に<br>最も必要な要素です。</p>
+            <p style="margin-bottom: 90px;">大きなものである必要はありません。</p>
+            <p style="margin-bottom: 90px;">真っ白なお皿を一枚<br>シルバーの小さなアクセサリー<br>白い花を一輪<br>白いハンカチ。</p>
+            <p style="margin-bottom: 90px;">そういう<br>静かな白を<br>暮らしのどこかに<br>そっと置いてください。</p>
+            <p style="margin-bottom: 90px;">白いものを見つめる時<br>智子様の中で<br>「あの15年」も<br>「これからの日々」も<br>綺麗に区切られていきます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">朝の光を受け取る</p>
+            <p style="margin-bottom: 90px;">2026年の智子様の運命には<br>「太陽の光で照らされる」<br>静かな軸があります。</p>
+            <p style="margin-bottom: 90px;">朝<br>起きて<br>一度だけ<br>窓の外の空を見上げてください。</p>
+            <p style="margin-bottom: 90px;">カーテンを開けて<br>朝の光を<br>体に受け止めてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">たった一分でも構いません。</p>
+            <p style="margin-bottom: 90px;">その一分が<br>今年一年の智子様の運命の流れを<br>最も強く整えます。</p>
+            <p style="margin-bottom: 90px;">暗い時間を長く抱えてこられた智子様に<br>今年<br>天は<br>「もう光を受け取っていいよ」と<br>朝ごとに合図を送っておられます。</p>
+            <p style="margin-bottom: 90px;">その合図を<br>静かに受け取ってください。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">女性の縁を大切にする</p>
+            <p style="margin-bottom: 90px;">智子様の命の中には<br>生まれつき<br>「女性の助けを受ける」流れが<br>強く刻まれています。</p>
+            <p style="margin-bottom: 90px;">これからの日々<br>智子様の周りには<br>年上の女性<br>同世代の女性<br>少し年下の女性を含めて<br>様々な女性のご縁が<br>静かに現れる可能性があります。</p>
+            <p style="margin-bottom: 90px;">その縁を<br>大切にしてください。</p>
+            <p style="margin-bottom: 90px;">長く付き合っている女性のお友達に<br>一本電話を入れる。</p>
+            <p style="margin-bottom: 90px;">お茶を飲みに行く約束をする。</p>
+            <p style="margin-bottom: 90px;">近所のお知り合いと<br>挨拶を丁寧に交わす。</p>
+            <p style="margin-bottom: 90px;">そういう小さな女性の縁が<br>これからの智子様の暮らしの中に<br>穏やかな彩りを<br>運んでくれます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">男性の縁を無理に求めなくても<br>女性の縁の中で<br>智子様の日々は<br>充分に豊かになります。</p>
+            <p style="margin-bottom: 90px;">大己貴命は<br>広い大地をひとつずつ歩いて<br>必要な縁を結んでいかれた神様です。</p>
+            <p style="margin-bottom: 90px;">智子様も同じです。</p>
+            <p style="margin-bottom: 90px;">これからの日々<br>新しい大きなご縁を<br>急いで求める必要はありません。</p>
+            <p style="margin-bottom: 90px;">すでに智子様の周りにある<br>女性の縁 家族の縁 近所の縁を<br>一つずつ丁寧に大切にしていく。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その積み重ねの先に<br>「穏やかで楽しい自分を<br>1番に思って過ごす日々」が<br>静かに続いていきます。</p>
+        </div>
+
+        <h2 id="sec-flow">【今後の流れ】</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここまでお伝えしてきたことを<br>時の流れに沿って<br>もう一度整理します。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年10月：<br>記憶が最後に立ち上がる月</p>
+            <p style="margin-bottom: 90px;">15年の記憶が<br>不意に胸の奥から<br>立ち上がってくる月です。</p>
+            <p style="margin-bottom: 90px;">季節の変わり目に<br>「あれで良かったのかしら」と<br>問い直したくなる瞬間が<br>訪れる可能性があります。</p>
+            <p style="margin-bottom: 90px;">でもこれは<br>答えが出ていないから<br>起きるのではありません。</p>
+            <p style="margin-bottom: 90px;">15年の記憶を<br>最後にもう一度<br>胸の中で味わってから<br>納めるための<br>必要な問い直しです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">やっていただきたいのは<br>何も決めないこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">行動を起こさないこと。</p>
+            <p style="margin-bottom: 90px;">浮かんできた記憶を<br>そのまま感じて<br>そのまま置いておく。</p>
+            <p style="margin-bottom: 90px;">日々の暮らしを<br>これまで通り<br>丁寧に整える。</p>
+            <p style="margin-bottom: 90px;">それだけで大丈夫です。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年11月：<br>穏やかな日々の兆しが現れる月<br>（大己貴命の月）</p>
+            <p style="margin-bottom: 90px;">暮らしの中に<br>穏やかな日々の兆しが<br>最初に現れる月です。</p>
+            <p style="margin-bottom: 90px;">朝の窓の外の空<br>散歩道の足取り<br>夕方のお茶の時間。</p>
+            <p style="margin-bottom: 90px;">そういう小さな瞬間の中に<br>「ああ、これでいいな」という<br>静かな納まりが<br>少しずつ増えていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この月は<br>大己貴命の力が<br>最も濃く暮らしに流れ込む月でもあります。</p>
+            <p style="margin-bottom: 90px;">秋の実り<br>落ち葉<br>大地に返っていく季節。</p>
+            <p style="margin-bottom: 90px;">大己貴命の<br>「大地の広さ」を<br>最も強く感じられる時期。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">やっていただきたいのは<br>大己貴命ゆかりの神社に<br>足を運ぶこと。</p>
+            <p style="margin-bottom: 90px;">そして<br>秋の景色を<br>暮らしの中に取り入れること。</p>
+            <p style="margin-bottom: 90px;">季節の根菜を炊く<br>栗や柿を頂く<br>散歩の途中で紅葉を眺める。</p>
+            <p style="margin-bottom: 90px;">そういう秋の実りとの接点を<br>たくさん持ってください。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年12月：<br>15年の総整理が完了する月</p>
+            <p style="margin-bottom: 90px;">これまで<br>折々に問い直していた15年の記憶が<br>心の中で<br>静かに納まる月です。</p>
+            <p style="margin-bottom: 90px;">派手な出来事があるわけではありません。</p>
+            <p style="margin-bottom: 90px;">ある日ふと<br>「あの15年は<br>私の人生に<br>必要な時間だった」と<br>胸の奥で<br>納まる瞬間が訪れます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その瞬間から<br>15年の記憶は<br>「抱えているもの」から<br>「持っていていいもの」に<br>変わっていきます。</p>
+            <p style="margin-bottom: 90px;">やっていただきたいのは<br>15年の記憶を<br>ゆっくりと振り返る時間を持つこと。</p>
+            <p style="margin-bottom: 90px;">無理に忘れようとしないでください。</p>
+            <p style="margin-bottom: 90px;">思い出すことは<br>納めることの一部です。</p>
+            <p style="margin-bottom: 90px;">書き留めるのも良い方法です。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年1月：<br>穏やかな日々が定まる月</p>
+            <p style="margin-bottom: 90px;">天が<br>智子様の在り方に<br>静かに光を差し込む月。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「大樹のように穏やかに立つ姿」を<br>ご自分でも<br>はっきりと実感できる月です。</p>
+            <p style="margin-bottom: 90px;">朝の光の中で<br>深呼吸をした時に<br>「ああ、私は<br>私の場所に立っている」と<br>胸の奥で<br>まっすぐに感じられる瞬間が<br>訪れます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">15年の物語が<br>完全な結末を迎え<br>穏やかな日々が<br>本当に始まっていく月。</p>
+            <p style="margin-bottom: 90px;">やっていただきたいのは<br>この月を<br>「新しい日々の始まり」として<br>静かに意識すること。</p>
+            <p style="margin-bottom: 90px;">新年の始まりと重なる時期でもあります。</p>
+            <p style="margin-bottom: 90px;">自分の暮らしに<br>新しい小さな習慣を一つ<br>そっと加えてみてください。</p>
+            <p style="margin-bottom: 90px;">朝の一杯のお茶<br>夕方の五分の散歩<br>週に一度の花。</p>
+            <p style="margin-bottom: 90px;">そういう小さな儀式が<br>これからの穏やかな日々を<br>支える柱になります。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-question">⛩️追加でお預かりしたご質問について</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここで<br>別途お預かりしていた<br>二つのご質問にも<br>お答えしていきます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">一つ目のご質問<br>「井上さんと奥様（みよこ様）は<br>意味があり縁として結ばれているのか」</p>
+            <p style="margin-bottom: 90px;">誠一様の中で<br>奥様との関係は<br>「表側は穏やかに保つが<br>深いところでは繋がりきっていない」<br>そういう構造がはっきりと視えます。</p>
+            <p style="margin-bottom: 90px;">これは<br>奥様に問題がある<br>ということではありません。</p>
+            <p style="margin-bottom: 90px;">誠一様の命の中に<br>「深く根を張る力」は強くても<br>「動いて新しい形を作る力」が<br>生まれつき薄い性質があるんです。</p>
+            <p style="margin-bottom: 90px;">だから<br>奥様との関係は<br>「深い魂の呼応で結ばれている」<br>というよりは<br>「動かないから続いている」<br>そういう性質の縁です。</p>
+            <p style="margin-bottom: 90px;">現世で家庭を保ち<br>社会的な立場を保ち<br>穏やかな日常を続けていく。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そのための<br>「役割としての縁」として<br>結ばれている可能性が濃く視えます。</p>
+            <p style="margin-bottom: 90px;">意味がないわけではありません。<br>現世で誠一様が果たすべき役割を<br>一緒に担う縁として<br>ちゃんと意味を持っています。</p>
+            <p style="margin-bottom: 90px;">ただ<br>魂の呼応の濃さで比べると<br>智子様と誠一様のご縁の方が<br>明らかに深かった。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">誠一様の中で<br>奥様は「日々を共にする人」<br>智子様は「魂の奥に残る人」。</p>
+            <p style="margin-bottom: 90px;">異なる位置に<br>別々に置かれています。</p>
+            <p style="margin-bottom: 90px;">どちらが上でも下でもなく<br>異なる意味を持つ二つの縁が<br>誠一様の中に<br>共存している構造です。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">二つ目のご質問<br>「新しい恋のお相手は現れますか」</p>
+            <p style="margin-bottom: 90px;">これは<br>とても正直にお伝えします。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966; font-weight: bold;">2027年</span><br>智子様のパートナー関係の場所に<br>「新しい在り方が定まる」流れが訪れます。</p>
+            <p style="margin-bottom: 90px;">この流れには<br>二つの意味があります。</p>
+            <p style="margin-bottom: 90px;">一つは<br>新しい相手との縁が<br>静かに立ち上がる可能性。</p>
+            <p style="margin-bottom: 90px;">もう一つは<br>新しい相手を求めなくても<br>一人で穏やかに立つ在り方が<br>完全に定まる可能性。</p>
+            <p style="margin-bottom: 90px;">その中で<br>私が霊視で強く視えているのは<br>恋愛的な燃え上がりのある縁というよりは<br>「静かに寄り添える<br>対等な友のような縁」です。</p>
+            <p style="margin-bottom: 90px;">年齢を重ねた智子様の在り方に<br>静かに惹かれてくる方が<br>現れる可能性はあります。</p>
+            <p style="margin-bottom: 90px;">でもそれを<br>「恋のお相手」として受け取るか<br>「静かな縁」として受け取るかは<br>智子様ご自身の<br>選択になります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">大切なのは<br>「相手が現れるかどうか」を<br>先に決めないこと。</p>
+            <p style="margin-bottom: 90px;">智子様がご自分で<br>穏やかに立つ在り方を<br>最優先にされた時<br>その姿勢に呼応する縁が<br>自然と智子様の周りに<br>静かに集まってきます。</p>
+            <p style="margin-bottom: 90px;">それが恋愛のお相手なのか<br>静かな友なのか<br>女性の縁なのかは<br>その時<br>天が<br>最も智子様に合う形で<br>選んでくださいます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">急いで求めるより<br>穏やかに立つ。</p>
+            <p style="margin-bottom: 90px;">その姿勢のまま<br>2027年を迎えていってください。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-guardian">⛩️守護を受け取る方法</h2>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">そして<br>安心してください。</p>
+            <p style="margin-bottom: 90px;">智子様の事を<br>深く霊視した際<br>特別な守護の力を<br>智子様の奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px;">それは<br><span style="color: #ffd966; font-weight: bold;">大己貴命の和魂の力</span>。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この力は<br>15年の記憶を静かに納め<br>内側の焦りを鎮め<br>「大地のように広く<br>揺らがず 深く受け止める」<br>その大きな器を<br>これからの日々の中で<br>保っていく力です。</p>
+            <p style="margin-bottom: 90px;">もし今<br>少しだけ時間があれば<br>一度静かに目を閉じてください。</p>
+            <p style="margin-bottom: 90px;">右手を胸の中央に当て<br>左手をお腹に添えて<br>ゆっくり三度<br>呼吸をしてください。</p>
+            <p style="margin-bottom: 90px;">そして心の中で</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #ffd966;">「私は 私の場所に 立っている」</p>
+            <p style="margin-bottom: 90px;">そう唱えてみてください。</p>
+            <p style="margin-bottom: 90px;">胸のあたりが少し温かくなる<br>手がじんわりする<br>眠くなる<br>安心感が広がる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">その感覚があれば<br>すでに守護の流れが<br>動き始めています。</p>
+            <p style="margin-bottom: 90px;">大己貴命の御神気は<br>今この瞬間にも<br>智子様へ静かに<br>注がれています。</p>
+            <p style="margin-bottom: 90px;">ただ<br>せっかく流れてきた守護の力も<br>何もしないと<br>少しずつ薄れていきます。</p>
+            <p style="margin-bottom: 90px;">その器を安定させるために<br>余裕がある時だけ<br>試していただきたいことがあります。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【守護神の神社へ参拝】</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">大己貴命</span>と縁のある神社を<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">深田神社<br>（三重県鈴鹿市若松東3-22-40）<br><br>彌都加伎神社<br>（三重県鈴鹿市東玉垣町1412）<br><br>久々志彌神社<br>（三重県鈴鹿市下箕田1-5-56）<br><br>伊奈冨神社<br>（三重県鈴鹿市稲生西2-24-20）</p>
+            <p style="margin-bottom: 90px;">特に<br><span style="color: #ffd966; font-weight: bold;">2026年11月</span>の<br>秋の実りの時期の参拝は<br>大己貴命の力が<br>最も強く流れ込む時期と重なります。</p>
+            <p style="margin-bottom: 90px;">参拝の際は<br>以下の祝詞を<br>心の中で唱えてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #ffd966;">祓え給い、清め給え、<br>神ながら守り給い、幸え給え<br>（はらえたまい、きよめたまえ、<br>かむながらまもりたまい、さきわえたまえ）</p>
+            <p style="margin-bottom: 90px;">そして<br>お願い事を唱えるのではなく</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私は 私の場所に 静かに立っていきます。<br>どうか見守っていてください」</p>
+            <p style="margin-bottom: 90px;">という形で伝えてください。</p>
+            <p style="margin-bottom: 90px;">願望を叶えてもらうのではなく<br>ご自分の在り方を宣言し<br>その歩みを見守っていただく。</p>
+            <p style="margin-bottom: 90px;">その姿勢が<br>大己貴命との縁を<br>より深くします。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-stone">⛩️あなたを支えるパワーストーン</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 90px;">神社が遠くて頻繁には行けない<br>なかなか時間が取れない<br>という方にお勧めしたいのが<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px;">守護神の力を石に宿し<br>常に身近に持ち歩くことができます。</p>
+            <p style="margin-bottom: 90px;">ただ<br>どんな石でもよいわけではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">智子様のエネルギーと<br><span style="color: #ffd966;">大己貴命</span>が共鳴しやすい石を<br>4つお伝えします。</p>
+            <ul style="margin-bottom: 90px;">
+                <li><span style="color: #ffd966; font-weight: bold;">1. タイガーアイ</span><br>大地の色を宿した<br>深い茶と金の縞模様の石。<br><br>智子様のブラウンのオーラと<br>最も直接的に呼応し<br>大己貴命の大地の神気を<br>日々の中に留めてくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">2. スモーキークォーツ</span><br>大地の煙を宿した深い色の水晶。<br><br>過ぎ去った時間の記憶を<br>静かに納める石。<br><br>15年のご縁の記憶を<br>穏やかに納めていく流れを<br>整えてくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">3. カーネリアン</span><br>大地の熱を宿した<br>温かなオレンジ色の石。<br><br>智子様に生まれつき薄い<br>「区切りをつける」<br>「一つの物語を終える」<br>その力を静かに補ってくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">4. ムーンストーン</span><br>静かに光を宿した月の石。<br><br>年を重ねた女性の<br>最も美しい光を<br>そっと引き出す石です。</li>
+            </ul>
+            <p style="margin-bottom: 90px;">この中から<br>智子様のエネルギーと<br>最もバランスが取れる組み合わせを<br>私が選び<br>ひとつずつ手作りで仕上げます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ご希望の場合は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <h2 id="sec-closing">【結びの言葉】</h2>
+
+        <div class="closing">
+            <p style="margin-bottom: 90px;">智子様、</p>
+            <p style="margin-bottom: 90px;">あなたの未来には<br>朝の光の中で<br>穏やかに深呼吸をされている姿へと続く道が<br>視えています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">15年抱えてこられた重たいものを<br>すっと大地に下ろして<br>ご自分の足で<br>まっすぐに立っておられる姿。</p>
+            <p style="margin-bottom: 90px;">その景色が<br><span style="color: #ffd966; font-weight: bold;">2027年</span>に<br>完全な形で<br>定まる兆しがあります。</p>
+            <p style="margin-bottom: 90px;">今は<br>「これで正解だったのか」という問いが<br>まだ胸のどこかに残っている<br>かもしれません。</p>
+            <p style="margin-bottom: 90px;">でもそれは<br>あなたが弱いからではなく<br>15年を<br>きちんと納めたい<br>本物の真面目さがあるから。</p>
+            <p style="margin-bottom: 90px;">そして<br>その問いへの答えは<br>すでに天から降りています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #ffd966;">「正解でした」</p>
+            <p style="margin-bottom: 90px;">それが答えです。</p>
+            <p style="margin-bottom: 90px;">あなたは<br>広い大地のような器を持つ方。</p>
+            <p style="margin-bottom: 90px;">どんな状況でも揺らがず<br>ご自分の足で立って<br>場まるごとを支えられる方。</p>
+            <p style="margin-bottom: 90px;">深く関わって<br>深く抱えて<br>ご自分の判断で手放してこられた<br>本物の芯を持つ方。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その芯が<br>これからの日々の中で<br>最も美しい形で<br>働いていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;"><span style="color: #ffd966;">大己貴命</span>が<br>あなたを守っています。</p>
+            <p style="margin-bottom: 90px;">縁を結び<br>縁を納める神様が<br>あなたの15年を<br>すべて見守ってこられました。</p>
+            <p style="margin-bottom: 90px;">そしてこれから先の<br>穏やかな日々も<br>静かに見守ってくださいます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">一人で穏やかに立っていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">15年の重みを<br>下ろしていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #ffd966;">守られている。</p>
+            <p style="margin-bottom: 90px;">その事実を<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より<br>遠隔守護祈祷を行い<br>智子様の穏やかな日々を<br>願います。</p>
+            <p style="margin-bottom: 90px;">智子様の未来に<br>大地のような静かな豊かさが<br>満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>
