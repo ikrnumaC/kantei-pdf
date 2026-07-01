@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>もえ様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+
+            .toc {
+                padding: 20px 15px;
+            }
+
+            .toc-title {
+                font-size: 1.1em;
+            }
+
+            .toc a {
+                font-size: 0.95em;
+                padding: 12px 6px 12px 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">愛が結ばれる道</h2>
+            <p class="cover-name">もえ様</p>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-god">守護神について</a></li>
+                <li><a href="#sec-essence">もえ様という人について</a></li>
+                <li><a href="#sec-1">1. あの方の本音</a></li>
+                <li><a href="#sec-2">2. ご縁が動く瞬間</a></li>
+                <li><a href="#sec-3">3. もえ様の軸の活かし方</a></li>
+                <li><a href="#sec-4">4. もえ様らしい近づき方</a></li>
+                <li><a href="#sec-flow">今後の流れ</a></li>
+                <li><a href="#sec-year">今年・来年の流れ</a></li>
+                <li><a href="#sec-guardian">守護を受け取る方法</a></li>
+                <li><a href="#sec-stone">あなたを支えるパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
+        <div class="section">
+            <p style="margin-bottom: 30px;">もえ様、</p>
+            <p style="margin-bottom: 30px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 30px;">あなたの魂が<br>このご縁の中で<br>本気で幸せを掴もうとしている。</p>
+            <p style="margin-bottom: 30px;">その強い想いが<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 30px;">ここから先、<br>あなたが本当に知るべきことを<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: 30px;">守護神が<br>ひとつの景色を見せてくれています。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">もえ様とあの方が<br>毎日、当たり前のように<br>言葉を交わし合っている姿。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">会いたい時に会える距離まで<br>二人の関係が<br>静かに深まっている姿。</p>
+            <p style="margin-bottom: 30px;">その景色が<br>立ち上がる兆しが<br>はっきりと視えています。</p>
+            <p style="margin-bottom: 30px;">時期としては<br><span style="color: #ffd966; font-weight: bold;">2027年の年明け</span>。</p>
+            <p style="margin-bottom: 30px;">冬を越え<br>新しい年が動き出した頃に<br>もえ様とあの方の間には<br>今よりずっと近い距離が<br>生まれている可能性が濃く視えます。</p>
+            <p style="margin-bottom: 30px;">そして<br>そこへ向かう最初の動きは<br><span style="color: #ffd966; font-weight: bold;">2026年10月</span>。</p>
+            <p style="margin-bottom: 30px;">秋の入り口で<br>あの方の中の景色が<br>少しずつ変わり始めます。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">11月にはもえ様の内側が動き<br>12月にあの方が動き出す<br>そして年が明けると形になる。</p>
+            <p style="margin-bottom: 30px;">その流れが<br>もえ様の運命に刻まれています。</p>
+            <p style="margin-bottom: 30px;">ただ──</p>
+            <p style="margin-bottom: 30px;">その道のりは<br>決して平坦ではありません。</p>
+            <p style="margin-bottom: 30px;">「毎日連絡したい」<br>「今週会いたい」<br>その気持ちを届けたい自分と<br>繊細なあの方を急かしたくない自分が<br>胸の中でぶつかり続ける時間が訪れます。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">でも<br>それを越える力を<br>あなたは持っています。</p>
+        </div>
+
+        <div class="oracle-message" id="sec-god">
+            <p style="margin-bottom: 30px;">その景色を見せてくれたのは<br><span style="color: #ffd966;">大山祇神（おおやまつみのかみ）</span>。</p>
+            <img src="../鑑定画像/大山祇神.png" alt="大山祇神" class="guardian-image">
+            <p style="margin-bottom: 30px;">昔、<br>日本にまだ<br>山や森の形が定まらない時代。</p>
+            <p style="margin-bottom: 30px;">大山祇神は<br>天から降り立ち<br>大地に山を積み重ねていった神様です。</p>
+            <p style="margin-bottom: 30px;">一つひとつ<br>土を重ね、岩を重ね、木を植え<br>時間をかけて<br>どっしりとした山を造り上げた。</p>
+            <p style="margin-bottom: 30px;">その山の懐には<br>里が生まれ<br>人々が住み始めた。</p>
+            <p style="margin-bottom: 30px;">大山祇神が造った山は<br>風に揺らがず<br>急かされず<br>何百年、何千年と<br>そこに在り続ける。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">「どっしりと構えて<br>必要なものを育てる神様」として<br>今も全国の大山祇神社や<br>三嶋神社に祀られています。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-essence">⛩️もえ様という人について</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 30px;">命の流れを深く視ていくと<br>もえ様の本質には<br>真っ直ぐ天へ伸びる<br>一本の樹のような<br>清らかな芯があります。</p>
+            <p style="margin-bottom: 30px;">その樹は<br>枝葉を広げすぎず<br>根を深く張り<br>まっすぐに空を見上げている。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">森の中に一本<br>凛と立つ大樹。</p>
+            <p style="margin-bottom: 30px;">こんな芯を持つ方は<br>本当に少ないんです。</p>
+            <p style="margin-bottom: 30px;">もえ様は<br>気持ちを内側に<br>抱え込んだまま<br>じっと待ち続けることが<br>本当は得意ではありません。</p>
+            <p style="margin-bottom: 30px;">「会いたいなら会いたい」<br>「返してほしいなら返してほしい」</p>
+            <p style="margin-bottom: 30px;">心の中で動いていることは<br>そのまま<br>相手に届けたい方。</p>
+            <p style="margin-bottom: 30px;">胸の奥で<br>「なぜ言えないんだろう」<br>「なぜ動けないんだろう」と<br>何度もご自身に問いかけてきたはずです。</p>
+            <p style="margin-bottom: 30px;">こんな経験は<br>ありませんでしたか？</p>
+            <p style="margin-bottom: 30px;">友人や身近な方に対しては<br>気持ちを真っ直ぐ<br>伝えられるのに<br>あの方に対してだけ<br>どうしても<br>「一歩」が定まらない。</p>
+            <p style="margin-bottom: 30px;">他の相手なら<br>勢いで踏み込める場面で<br>あの方の前だけ<br>言葉を選び直してしまう。</p>
+            <p style="margin-bottom: 30px;">それは<br>もえ様が臆病だからではありません。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">もえ様の中に<br>繊細さや才能を持つ人<br>独自の世界を持つ人に<br>強く惹かれる性質があるから。</p>
+            <p style="margin-bottom: 30px;">そういう方の前だと<br>「急かしたくない」<br>「ペースを壊したくない」という<br>丁寧さが先に立ってしまう。</p>
+            <p style="margin-bottom: 30px;">その丁寧さは<br>もえ様の中にある<br>本物の優しさです。</p>
+            <p style="margin-bottom: 30px;">そして<br>もえ様は<br>生まれ持って<br>異性を惹きつける強い魅力を<br>核心に宿しています。</p>
+            <p style="margin-bottom: 30px;">これは<br>派手さや華やかさとは違います。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">森の奥に咲く<br>静かで気品のある花のような<br>そんな魅力。</p>
+            <p style="margin-bottom: 30px;">一度目に留まった相手が<br>簡単には目を離せないような<br>深い惹きつける力を<br>持っておられます。</p>
+            <p style="margin-bottom: 30px;">ご自身でも<br>気づいていらしたはずです。</p>
+            <p style="margin-bottom: 30px;">過去のご縁の中で<br>「特別に想われていた」<br>「深く記憶に残る存在だった」と<br>感じる場面が<br>何度かあったのではないでしょうか。</p>
+            <p style="margin-bottom: 30px;">それは偶然ではありません。</p>
+            <p style="margin-bottom: 30px;">もえ様の魂に<br>生まれつき宿っている力です。</p>
+            <p style="margin-bottom: 30px;">それと<br>もう一つ。</p>
+            <p style="margin-bottom: 30px;">もえ様は普段<br>あまり自分でも<br>気づいていないかもしれませんが<br>内側にとても強い意志と<br>鋭い判断力を持っています。</p>
+            <p style="margin-bottom: 30px;">表側の穏やかさとは別に<br>内側には<br>「これは違う」<br>「これは違わない」を<br>はっきりと見分ける<br>鋭い眼差しがある。</p>
+            <p style="margin-bottom: 30px;">その鋭さは<br>表に出しすぎず<br>内側に静かに置かれています。</p>
+            <p style="margin-bottom: 30px;">だから<br>一見穏やかに見えるもえ様の中には<br>「本物と偽物を見抜く目」が<br>ずっと働いている。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">これは<br>もえ様の最も大切な核です。</p>
+            <p style="margin-bottom: 30px;">お金や豊かさの面では<br>もえ様はこれからの十年で<br>静かに大きく巡り始める流れに<br>入っています。</p>
+            <p style="margin-bottom: 30px;">30代の入り口に立った今<br>「豊かさ」「安定」「支えてくれる方」<br>その三つが<br>少しずつ整い始める時期。</p>
+            <p style="margin-bottom: 30px;">派手に稼ぐという意味ではなく<br>自分の暮らしを支える力が<br>自分の中にきちんと育つ流れです。</p>
+            <p style="margin-bottom: 30px;">人との関わりも<br>広く浅くではなく<br>深く繋がるタイプ。</p>
+            <p style="margin-bottom: 30px;">一度心を開いた相手には<br>真っ直ぐ、深く<br>関わっていける方。</p>
+            <p style="margin-bottom: 30px;">だからこそ<br>今、あの方への想いも<br>軽い気持ちで<br>出てきたものではありません。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">もえ様の魂が<br>本気で選び取ろうとしている<br>本物のご縁です。</p>
+            <p style="margin-bottom: 30px;">今、もえ様が<br>「あの方への一歩だけが<br>どうしても踏み出せない」<br>と感じているのは<br>もえ様が弱いからではありません。</p>
+            <p style="margin-bottom: 30px;">真っ直ぐ届けたい自分と<br>繊細なあの方を尊重したい自分が<br>どちらも本物だからこそ<br>胸の中で<br>静かにぶつかっているだけ。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">その葛藤すらも<br>もえ様の本物さの証です。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-1">⛩️1. あの方の本音</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 30px;">ここから視ていくのは<br>あの方の心の奥に<br>今、何があるのか。</p>
+            <p style="margin-bottom: 30px;">そのお話です。</p>
+            <p style="margin-bottom: 30px;">先に<br>お伝えしておきたいことがあります。</p>
+            <p style="margin-bottom: 30px;">もえ様が今<br>「連絡が返ってこない」<br>「会いたいのに動きが少ない」<br>と感じている<br>そのすべては<br>あの方の気持ちが薄いからではありません。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">これは<br>私が霊視で最初に受け取った答えです。</p>
+            <p style="margin-bottom: 30px;">あの方の魂を<br>静かに視ていくと<br>虹色の輝きの奥に<br>一つの部屋があります。</p>
+            <p style="margin-bottom: 30px;">その部屋の中で<br>あの方はひとりで<br>静かに時間を過ごしている。</p>
+            <p style="margin-bottom: 30px;">本を読んでいるように見える時もあれば<br>ただ何かを<br>考えているように見える時もある。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">その部屋は<br>あの方にとって<br>生まれつき必要な<br>「魂を整える場所」なんです。</p>
+            <p style="margin-bottom: 30px;">そこに籠っている時<br>あの方は外の世界の音を<br>少し遠くに感じています。</p>
+            <p style="margin-bottom: 30px;">もえ様からの連絡も<br>その時間の中では<br>すぐには返せない。</p>
+            <p style="margin-bottom: 30px;">でもそれは<br>連絡を無視しているのではなく<br>返す言葉を<br>きちんと選びたいから。</p>
+            <p style="margin-bottom: 30px;">あの方の中には<br>「軽い返信でごまかしたくない」<br>という真面目さがあります。</p>
+            <p style="margin-bottom: 30px;">その真面目さが<br>かえって<br>連絡の遅さになってしまう<br>そういう性質なんです。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">もえ様の存在は<br>あの方の中で<br>決して軽くありません。</p>
+            <p style="margin-bottom: 30px;">命の流れの中で<br>はっきりと視えているのは<br>あの方の魂の中で<br>もえ様は<br>「大切に守りたい相手」として<br>すでに位置づけられているという事実です。</p>
+            <p style="margin-bottom: 30px;">これは<br>軽い相手や<br>その場限りの相手に対する感覚とは<br>全く違います。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">魂の流れの中で<br>「本命として扱いたい人」<br>そういう位置にもえ様が入っている。</p>
+            <p style="margin-bottom: 30px;">そしてもう一つ<br>視えていること。</p>
+            <p style="margin-bottom: 30px;">もえ様とあの方は<br>稀な繋がり方をしています。</p>
+            <p style="margin-bottom: 30px;">お二人とも<br>核心に<br>異性を強く惹きつける魅力を<br>生まれつき宿している方。</p>
+            <p style="margin-bottom: 30px;">そんな二人が出会って<br>惹かれ合うことは<br>とても珍しいご縁です。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">一度惹かれ合ったら<br>他の人では<br>簡単には代わりが利かない。</p>
+            <p style="margin-bottom: 30px;">あの方の中でも<br>もえ様の位置は<br>そういう深さで<br>根を張り始めています。</p>
+            <p style="margin-bottom: 30px;">ただ少しだけ<br>気になっている部分があります。</p>
+            <p style="margin-bottom: 30px;">それは<br>仕事や自分の暮らしの中で<br>今、抱えている<br>小さな迷いや詰まり。</p>
+            <p style="margin-bottom: 30px;">そちらに気持ちが向いている時<br>あの方は<br>連絡や関わりに<br>エネルギーを回しにくくなります。</p>
+            <p style="margin-bottom: 30px;">「もえ様を嫌いになった」のではなく<br>「自分の中の詰まりを整えたい」<br>という感覚が先に立って<br>一人の時間を必要としてしまう。</p>
+            <p style="margin-bottom: 30px;">もえ様が視ている<br>「返信の遅さ」の裏側には<br>あの方自身の<br>そういう時間があります。</p>
+            <p style="margin-bottom: 30px;">結論として<br>お伝えしたいのは<br>あの方の中で<br>もえ様の位置は</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">もえ様が想っている以上に<br>深い場所にあるということ。</p>
+            <p style="margin-bottom: 30px;">今すぐ形が見えなくても<br>根はすでに<br>静かに深く伸びています。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">その根が<br>地上に姿を現す時が<br>必ず訪れます。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-2">⛩️2. ご縁が動く瞬間</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 30px;">ここからお伝えするのは<br>そのご縁が<br>いつ、どう動き始めるのか。</p>
+            <p style="margin-bottom: 30px;">そのお話です。</p>
+            <p style="margin-bottom: 30px;">もえ様の運命には<br><span style="color: #ffd966; font-weight: bold;">2026年の秋から冬にかけて</span><br>このご縁が<br>静かに、けれど確かに<br>動き始める兆しがあります。</p>
+            <p style="margin-bottom: 30px;">その動きは<br>急な波のようなものではありません。</p>
+            <p style="margin-bottom: 30px;">大山祇神が<br>一つひとつ土を重ねて<br>山を造り上げていったように<br>少しずつ確実に<br>形になっていく流れです。</p>
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年10月</p>
+            <p style="margin-bottom: 30px;">ここから先は<br>霊視で視えていることを<br>そのままお渡しします。</p>
+            <p style="margin-bottom: 30px;">10月、<br>あの方の中の景色が<br>少しずつ変わり始めます。</p>
+            <p style="margin-bottom: 30px;">これまで<br>自分の内側の部屋に<br>籠っていた時間の中に<br>もえ様の姿が<br>少しずつ<br>くっきりと立ち上がってきます。</p>
+            <p style="margin-bottom: 30px;">まだ言葉にはなっていない。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">でも<br>「この人と一緒にいる時間を<br>もっと持ちたい」<br>という感覚が<br>あの方の胸の奥に<br>灯り始める月。</p>
+            <p style="margin-bottom: 30px;">もえ様の側から見ると<br>まだ大きな変化は<br>感じられないかもしれません。</p>
+            <p style="margin-bottom: 30px;">でも確実に<br>何かが動き始めている月です。</p>
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年11月</p>
+            <p style="margin-bottom: 30px;">この月は<br>もえ様自身の内側が<br>最も動く月です。</p>
+            <p style="margin-bottom: 30px;">「言いたいこと」<br>「届けたい気持ち」が<br>胸の奥から<br>言葉として<br>立ち上がり始めます。</p>
+            <p style="margin-bottom: 30px;">同時に<br>「でも急かしたくない」<br>「でもペースを壊したくない」<br>という葛藤も最も強くなる月。</p>
+            <p style="margin-bottom: 30px;">この月は決めきれなさが<br>最大化します。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">大切なのは<br>無理に決めようとしないこと。</p>
+            <p style="margin-bottom: 30px;">胸に浮かんだ言葉を<br>ノートや紙に書き留めるだけに<br>留めておいてください。</p>
+            <p style="margin-bottom: 30px;">書き出すことで<br>その言葉は消えずに<br>中で育っていきます。</p>
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年12月</p>
+            <p style="margin-bottom: 30px;">この月は<br>あの方の中で<br>気持ちが動き出す月です。</p>
+            <p style="margin-bottom: 30px;">これまで<br>静かに深く伸びていた根が<br>地上に向かって<br>姿を見せ始めます。</p>
+            <p style="margin-bottom: 30px;">具体的には<br>連絡の温度が<br>少し変わったり<br>会う頻度がわずかに増えたり<br>言葉の中に<br>今までにない優しさが<br>混ざり始めたり。</p>
+            <p style="margin-bottom: 30px;">大きな変化ではないかもしれません。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">でも<br>もえ様の敏感な感覚が<br>「あれ、少し違う」<br>と気づく瞬間が<br>この月のどこかで訪れます。</p>
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年1月</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">ここが<br>もえ様のご縁の<br>最も大きな転換点です。</p>
+            <p style="margin-bottom: 30px;">天が<br>あなたたち二人の関係に<br>静かに光を差し込む月。</p>
+            <p style="margin-bottom: 30px;">具体的には<br>二人で過ごす時間が<br>自然に増えていく流れ。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">「毎日連絡し合える形」への<br>最初の転換点がこの月に訪れます。</p>
+            <p style="margin-bottom: 30px;">気がついたら<br>以前より近い距離にいるようになっている。</p>
+            <p style="margin-bottom: 30px;">そういう静かな<br>確かな動きが<br>この月に始まります。</p>
+            <p style="margin-bottom: 30px;">ただ──</p>
+            <p style="margin-bottom: 30px;">この流れには<br>ひとつだけ<br>気をつけていただきたいことがあります。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">それは<br>10月から11月にかけて<br>急かさないこと。</p>
+            <p style="margin-bottom: 30px;">もえ様の中に<br>「早く動いてほしい」<br>「早く返してほしい」という気持ちが<br>最も強くなる時期でもあります。</p>
+            <p style="margin-bottom: 30px;">でも<br>その気持ちを<br>そのまま強くぶつけると<br>あの方の中の内側の部屋の扉が<br>一度閉まってしまいます。</p>
+            <p style="margin-bottom: 30px;">10月から11月は<br>「あの方の一人の時間を<br>そっと見守る」時期。</p>
+            <p style="margin-bottom: 30px;">その静けさを<br>もえ様が守ることで<br>12月からあの方は<br>動き出しやすくなります。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">「動く時期」ではなく<br>「動きを迎え入れる時期」として<br>秋を過ごしていただきたいんです。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-3">⛩️3. もえ様の軸の活かし方</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 30px;">ここからお伝えするのは<br>もえ様の中にある<br>「真っ直ぐ届ける力」を<br>このご縁の中で<br>どう使えばいいのか。</p>
+            <p style="margin-bottom: 30px;">そのお話です。</p>
+            <p style="margin-bottom: 30px;">もえ様の中には<br>生まれ持って<br>真っ直ぐ天へ伸びる<br>一本の樹のような芯があります。</p>
+            <p style="margin-bottom: 30px;">その樹は<br>大山祇神が造った山の中で<br>最もまっすぐに伸びた大樹と<br>同じ性質を持っています。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">風に揺れながらも<br>根は動かず<br>真っ直ぐ空へ伸びていく。</p>
+            <p style="margin-bottom: 30px;">こんな軸を持つ方は<br>本当に少ないんです。</p>
+            <p style="margin-bottom: 30px;">もえ様の軸は<br>三つの層で<br>できています。</p>
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">一つ目は<br>「感じる」層</p>
+            <p style="margin-bottom: 30px;">もえ様は<br>相手の気配や<br>場の空気を<br>とても繊細に感じ取れる方。</p>
+            <p style="margin-bottom: 30px;">言葉になる前の<br>微かな温度の変化まで<br>胸の奥で<br>ちゃんと受け取っています。</p>
+            <p style="margin-bottom: 30px;">これはあの方の中の<br>繊細さを察知する力と<br>そのまま繋がっている層です。</p>
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">二つ目は<br>「言葉にする」層</p>
+            <p style="margin-bottom: 30px;">感じたものを<br>胸の奥で温めて<br>自分の言葉に<br>翻訳していく力。</p>
+            <p style="margin-bottom: 30px;">もえ様は<br>本来<br>自分の中で動いた気持ちを<br>きちんと言葉にできる方です。</p>
+            <p style="margin-bottom: 30px;">その言葉は<br>華やかではないかもしれないけれど<br>真っ直ぐで温度がある。</p>
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">三つ目は<br>「具体的な形にする」層</p>
+            <p style="margin-bottom: 30px;">言葉にしたものを<br>実際の行動として<br>届けていく力。</p>
+            <p style="margin-bottom: 30px;">会う日を提案する<br>時間を決める<br>場所を選ぶ。</p>
+            <p style="margin-bottom: 30px;">そういう具体的な形にすることで<br>気持ちは相手に届きます。</p>
+            <p style="margin-bottom: 30px;">この三つの層が<br>すべて繋がっているのが<br>もえ様の本来の軸です。</p>
+            <p style="margin-bottom: 30px;">ただ<br>今のもえ様は<br>一つ目の「感じる」層と<br>二つ目の「言葉にする」層で<br>気持ちが渋滞しています。</p>
+            <p style="margin-bottom: 30px;">「感じている」のに<br>「言葉にできない」。</p>
+            <p style="margin-bottom: 30px;">「言葉にしても」<br>「相手に届ける前に飲み込んでしまう」。</p>
+            <p style="margin-bottom: 30px;">その渋滞の原因は<br>もえ様の中にある<br>「相手を丁寧に扱いたい」<br>という本物の優しさです。</p>
+            <p style="margin-bottom: 30px;">その優しさが<br>かえって<br>自分自身を縛ってしまっている。</p>
+            <p style="margin-bottom: 30px;">このご縁の中で<br>もえ様の軸を活かす方法は<br>シンプルです。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">「感じたこと」を<br>「そのままの温度で」<br>「小さな形で届ける」。</p>
+            <p style="margin-bottom: 30px;">大きな告白や<br>重い問いかけである必要はありません。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">「今日の空が綺麗だった」<br>「この本が好きだった」<br>「あの店の珈琲が美味しかった」。</p>
+            <p style="margin-bottom: 30px;">そんな<br>小さな共有を<br>届ける形で始めてください。</p>
+            <p style="margin-bottom: 30px;">もえ様の感じたことを<br>言葉にして相手に渡す。</p>
+            <p style="margin-bottom: 30px;">その積み重ねが<br>もえ様の三つの層を<br>再び繋げていきます。</p>
+            <p style="margin-bottom: 30px;">大山祇神が<br>山を造る時<br>一気に山を作り上げたのではありません。</p>
+            <p style="margin-bottom: 30px;">一つひとつ<br>土を重ね<br>岩を積み<br>時間をかけて<br>どっしりとした形にしていった。</p>
+            <p style="margin-bottom: 30px;">もえ様がこのご縁の中で<br>軸を使う時も同じです。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">一気に距離を縮めようとせず<br>小さな共有を<br>一つずつ積み重ねていく。</p>
+            <p style="margin-bottom: 30px;">その積み重ねの先に<br>「毎日連絡し合う関係」も<br>「週に一度会う関係」も<br>自然に形になっていきます。</p>
+            <p style="margin-bottom: 30px;">もえ様の中の<br>「真っ直ぐ届けたい」気持ちは<br>間違っていません。</p>
+            <p style="margin-bottom: 30px;">その気持ちを<br>急ぐのではなく<br>「小さく、丁寧に、続けて」の<br>形で届けてください。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">それが<br>もえ様の軸の<br>最も美しい使い方です。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-4">⛩️4. もえ様らしい近づき方</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 30px;">最後にお伝えするのは<br>あの方の世界の中に<br>もえ様の場所が生まれるために<br>今日から<br>もえ様がやっていけること。</p>
+            <p style="margin-bottom: 30px;">霊視で視えている<br>もえ様らしい近づき方には<br>三つのポイントがあります。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">「相手の時間を尊重する」<br>「自分自身を整える」<br>「短く美しい言葉を届ける」。</p>
+            <p style="margin-bottom: 30px;">この三つを<br>無理のない範囲で<br>日々の中に<br>そっと入れていってください。</p>
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">相手の時間を尊重する</p>
+            <p style="margin-bottom: 30px;">あの方には<br>生まれつき<br>自分の内側の部屋で<br>静かに過ごす時間が<br>必要な性質があります。</p>
+            <p style="margin-bottom: 30px;">その時間を<br>急かしたり<br>干渉したりすると<br>あの方の中の扉は<br>一度閉まってしまう。</p>
+            <p style="margin-bottom: 30px;">逆に<br>その時間を<br>そっと見守ってあげると<br>あの方は安心し<br>自分からもえ様の方に近づいてくる<br>自然な流れが生まれます。</p>
+            <p style="margin-bottom: 30px;">これは<br>もえ様が我慢する<br>という意味ではありません。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">「あの方の一人の時間を信じる」<br>という姿勢です。</p>
+            <p style="margin-bottom: 30px;">「返信が遅い」ことを<br>「気持ちが薄い」と<br>受け取らないこと。</p>
+            <p style="margin-bottom: 30px;">「あの方は自分の中で<br>言葉を選び直しているんだな」<br>と受け止められると<br>もえ様の内側の焦りも<br>静かに鎮まっていきます。</p>
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">自分自身を整える</p>
+            <p style="margin-bottom: 30px;">あの方の時間を尊重する間<br>もえ様は<br>ご自身の暮らしに<br>四つの要素を<br>そっと入れてください。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">「土」</p>
+            <p style="margin-bottom: 30px;">もえ様の命の流れには<br>時々地に足がつかないような<br>軽い浮遊感が訪れます。</p>
+            <p style="margin-bottom: 30px;">土に触れる時間を<br>暮らしに入れてください。</p>
+            <p style="margin-bottom: 30px;">土の器を使う<br>植物を育てる<br>畑や庭に触れる<br>公園の土の上を歩く。</p>
+            <p style="margin-bottom: 30px;">土と関わることで<br>もえ様の焦りは<br>ゆっくりと<br>地に下ろせるようになります。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">「水」</p>
+            <p style="margin-bottom: 30px;">静かな水を見る時間を<br>持ってください。</p>
+            <p style="margin-bottom: 30px;">朝のお風呂<br>清水<br>海や川の水面。</p>
+            <p style="margin-bottom: 30px;">もえ様の中で<br>高ぶった感情は<br>水を見ることで<br>自然に整います。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">「山や木」</p>
+            <p style="margin-bottom: 30px;">大山祇神は<br>山と木の神様です。</p>
+            <p style="margin-bottom: 30px;">森や公園の木々の下に<br>少しだけ立つ時間を<br>週に一度でも入れてください。</p>
+            <p style="margin-bottom: 30px;">大きな樹の下に立つと<br>もえ様の中の焦りが<br>不思議と鎮まっていきます。</p>
+            <p style="margin-bottom: 30px;">これは<br>もえ様の樹の性質と<br>大山祇神の山の性質が<br>呼応するからです。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">「美」</p>
+            <p style="margin-bottom: 30px;">暮らしに<br>「自分が美しいと感じるもの」を<br>ひとつ置いてください。</p>
+            <p style="margin-bottom: 30px;">一輪の花<br>気に入った器<br>好きな布。</p>
+            <p style="margin-bottom: 30px;">高価なものである必要はありません。</p>
+            <p style="margin-bottom: 30px;">もえ様の中の<br>美的感受性は<br>とても繊細で<br>そこに応えてあげることで<br>もえ様自身の輝きが保たれます。</p>
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">短く美しい言葉を届ける</p>
+            <p style="margin-bottom: 30px;">あの方には<br>「短く、美しく、余白のある言葉」が<br>最も届きます。</p>
+            <p style="margin-bottom: 30px;">長い問いかけ<br>重い相談<br>たくさんの絵文字。</p>
+            <p style="margin-bottom: 30px;">そういう<br>情報量の多い連絡は<br>あの方の中の<br>繊細さを疲れさせてしまいます。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">逆に<br>「今日、こんな空だった」<br>「この珈琲、美味しかった」<br>「本を読んでいる」。</p>
+            <p style="margin-bottom: 30px;">そういう<br>静かで<br>余白のある一言は<br>あの方の中に<br>「返しやすさ」を作ります。</p>
+            <p style="margin-bottom: 30px;">返信を求めるのではなく<br>「感じたものを共有する」形で<br>一言を届ける。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">その積み重ねが<br>あの方の中に<br>「もえ様と一緒にいる時間が心地いい」<br>という感覚を静かに育てていきます。</p>
+            <p style="margin-bottom: 30px;">守護を高める方法として<br>もう一つ<br>お伝えしたいことがあります。</p>
+            <p style="margin-bottom: 30px;">大山祇神は<br>山と実りの神様です。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">秋（10月から11月）の<br>実りの季節に<br>山や木のある場所に<br>足を運んでください。</p>
+            <p style="margin-bottom: 30px;">その時期の山の空気は<br>大山祇神の力が<br>最も強く流れ込んでいる空気です。</p>
+            <p style="margin-bottom: 30px;">もえ様の中の<br>真っ直ぐ伸びる樹の性質と<br>最も強く呼応する時間になります。</p>
+        </div>
+
+        <h2 id="sec-flow">【今後の流れ】</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 30px;">ここまでお伝えしてきたことを<br>時の流れに沿って<br>もう一度整理します。</p>
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年10月：芽生えの月（大山祇神の月）</p>
+            <p style="margin-bottom: 30px;">あの方の中の景色が<br>静かに変わり始める月です。</p>
+            <p style="margin-bottom: 30px;">これまで<br>自分の内側の部屋に<br>籠っていた時間の中に<br>もえ様の姿が<br>少しずつ<br>くっきりと立ち上がってきます。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">この月は<br>大山祇神の力が<br>最も強く流れ込む月でもあります。</p>
+            <p style="margin-bottom: 30px;">秋の山<br>森の中の大樹<br>実りの季節。</p>
+            <p style="margin-bottom: 30px;">もえ様の中に<br>「大山祇神の懐に<br>守られている」感覚が<br>最も濃くなる時期。</p>
+            <p style="margin-bottom: 30px;">やっていただきたいのは<br>森や木のある場所に<br>足を運ぶこと。</p>
+            <p style="margin-bottom: 30px;">そして<br>あの方への「早く返してほしい」<br>という気持ちを<br>一度手放し<br>静かに見守る体勢を作ること。</p>
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年11月：内側が動く月</p>
+            <p style="margin-bottom: 30px;">もえ様自身の内側が<br>最も動く月です。</p>
+            <p style="margin-bottom: 30px;">「言いたいこと」<br>「届けたい気持ち」が<br>胸の奥から<br>言葉として<br>立ち上がり始めます。</p>
+            <p style="margin-bottom: 30px;">同時に<br>「でも急かしたくない」<br>という葛藤も<br>最も強くなる月。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">大切なのは<br>無理に決めようとしないこと。</p>
+            <p style="margin-bottom: 30px;">胸に浮かんだ言葉を<br>ノートや紙に<br>書き留めるだけに留めてください。</p>
+            <p style="margin-bottom: 30px;">書き出すことで<br>その言葉は<br>消えずに<br>中で育っていきます。</p>
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年12月：あの方が動き出す月</p>
+            <p style="margin-bottom: 30px;">これまで<br>静かに深く伸びていた根が<br>地上に向かって<br>姿を見せ始める月です。</p>
+            <p style="margin-bottom: 30px;">連絡の温度が<br>少し変わったり<br>会う頻度がわずかに増えたり<br>言葉の中に<br>今までにない優しさが<br>混ざり始めたり。</p>
+            <p style="margin-bottom: 30px;">大きな変化ではないかもしれません。</p>
+            <p style="margin-bottom: 30px;">でも<br>もえ様の敏感な感覚が<br>「あれ、少し違う」<br>と気づく瞬間が<br>この月のどこかで<br>訪れます。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">この月は<br>「短く美しい言葉」を<br>一つだけ届けてみてください。</p>
+            <p style="margin-bottom: 30px;">重い問いではなく<br>感じたものの共有として。</p>
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年1月：喜びが結ばれる月</p>
+            <p style="margin-bottom: 30px;">もえ様の運命の中に<br>「喜びが結ばれる」<br>古来より最も美しいと言われる<br>星の並びが訪れる月。</p>
+            <p style="margin-bottom: 30px;">天が<br>二人の関係に<br>静かに光を差し込む月です。</p>
+            <p style="margin-bottom: 30px;">二人で過ごす時間が<br>自然に増えていく流れ。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">「毎日連絡し合える形」への<br>最初の転換点が<br>この月に訪れます。</p>
+            <p style="margin-bottom: 30px;">大きな告白や<br>派手な変化ではないかもしれません。</p>
+            <p style="margin-bottom: 30px;">でも<br>気がついたら<br>以前より近い距離に<br>いるようになっている。</p>
+            <p style="margin-bottom: 30px;">そういう静かで<br>確かな動きが<br>この月に始まります。</p>
+        </div>
+
+        <h2 id="sec-year">【今年（2026年）の流れ】</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 30px;">今年は、もえ様にとって<br>助けが現れる年。</p>
+            <p style="margin-bottom: 30px;">社会や仕事の場面で<br>助けてくれる方が<br>現れる兆しがあります。</p>
+            <p style="margin-bottom: 30px;">同時に<br>内側では<br>「これでいいのか」と<br>問い直す時間も訪れる年。</p>
+            <p style="margin-bottom: 30px;">秋（10月）までは<br>「整える・待つ」時期。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">そして<br>秋から冬にかけて<br>このご縁が動き始めます。</p>
+        </div>
+
+        <h2>【来年（2027年）の流れ】</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 30px;">来年は<br>人との縁が<br>大きく動く年。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">もえ様の運命には<br>「良縁が結ばれる」流れが<br>2027年の年明けから<br>最も美しい形で訪れます。</p>
+            <p style="margin-bottom: 30px;">今のご縁との関係も<br>2027年前半で<br>「毎日連絡し合える形」として<br>具体化していく流れです。</p>
+            <p style="margin-bottom: 30px;">2026年に整えたものが<br>2027年で形になる。</p>
+            <p style="margin-bottom: 30px;">そういう連続した流れが<br>もえ様の中に<br>刻まれています。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-guardian">⛩️守護を受け取る方法</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 30px;">そして<br>安心してください。</p>
+            <p style="margin-bottom: 30px;">もえ様の事を<br>深く霊視した際<br>特別な守護の力を<br>もえ様の奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">それは<br><span style="color: #ffd966;">大山祇神</span>の和魂の力。</p>
+            <p style="margin-bottom: 30px;">この力は<br>もえ様の中の焦りを鎮め<br>「どっしりと構える」大きな器を保ち<br>必要なご縁を<br>静かに深めていく流れを<br>整えていきます。</p>
+            <p style="margin-bottom: 30px;">今この文を読んでいる間にも<br>胸が少し温かくなる<br>肩が軽くなる<br>眠気を感じる<br>ふっと安心する。</p>
+            <p style="margin-bottom: 30px;">もしそのような感覚があれば<br>すでに守護の力が<br>届き始めている証です。</p>
+            <p style="margin-bottom: 30px;">これは<br>何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">ただ受け取るだけで<br>大丈夫です。</p>
+            <p style="margin-bottom: 30px;">もし今<br>少しだけ時間があれば<br>一度静かに目を閉じてください。</p>
+            <p style="margin-bottom: 30px;">右手を胸の中央に当て<br>左手をお腹に添えて<br>ゆっくり三度<br>呼吸をしてください。</p>
+            <p style="margin-bottom: 30px;">そして心の中で</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #ffd966;">「私は守られている」</p>
+            <p style="margin-bottom: 30px;">そう唱えてみてください。</p>
+            <p style="margin-bottom: 30px;">胸のあたりが少し温かくなる<br>手がじんわりする<br>眠くなる<br>安心感が広がる。</p>
+            <p style="margin-bottom: 30px;">その感覚があれば<br>すでに守護の流れが<br>動き始めています。</p>
+            <p style="margin-bottom: 30px;">大山祇神の御神気は<br>今この瞬間にも<br>もえ様へ静かに<br>注がれています。</p>
+            <p style="margin-bottom: 30px;">今のもえ様には<br>受け取る器に<br>少しだけ揺らぎがあります。</p>
+            <p style="margin-bottom: 30px;">真っ直ぐ届けたい自分と<br>急かしたくない自分が<br>内側で<br>ぶつかり続けている<br>そんな揺らぎです。</p>
+            <p style="margin-bottom: 30px;">せっかく流れてきた守護の力も<br>留めておく器が揺らいでいると<br>少しずつ<br>流れ出てしまいます。</p>
+            <p style="margin-bottom: 30px;">その器を安定させるために<br>日々の暮らしの中で<br>できる方は<br>試していただきたいことがあります。</p>
+            <p style="margin-bottom: 30px;">無理に頑張ることではありません。</p>
+            <p style="margin-bottom: 30px;">余裕がある時だけ<br>試してみてください。</p>
+            <p style="margin-bottom: 30px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">守護神の神社へ参拝</p>
+            <p style="margin-bottom: 30px;">大山祇神と縁のある神社が<br>もえ様のお住まいの<br>三重県鈴鹿市内にいくつかあります。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">深田神社（三重県鈴鹿市若松東3-22-40）<br>彌都加伎神社（三重県鈴鹿市東玉垣町1412）<br>久々志彌神社（三重県鈴鹿市下箕田1-5-56）<br>伊奈冨神社（三重県鈴鹿市稲生西2-24-20）</p>
+            <p style="margin-bottom: 30px;">特に<br>2026年10月から11月の<br>秋の実りの時期の参拝は<br>大山祇神の力が<br>最も強く流れ込む時期と重なります。</p>
+            <p style="margin-bottom: 30px;">参拝の際は<br>以下の祝詞を<br>心の中で唱えてください。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #ffd966;">祓え給い、清め給え、<br>神ながら守り給い、幸え給え<br>（はらえたまい、きよめたまえ、<br>かむながらまもりたまい、さきわえたまえ）</p>
+            <p style="margin-bottom: 30px;">そして<br>お願い事を唱えるのではなく<br>「私はこの想いを<br>真っ直ぐ育てていきます。<br>どうか見守っていてください」<br>という形で伝えてください。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-stone">⛩️あなたを支えるパワーストーン</h2>
+
+        <div class="section">
+            <p style="margin-bottom: 30px;">もえ様には<br>守護神のご縁をお伝えし<br>その力を<br>もえ様の奥底に置いてきました。</p>
+            <p style="margin-bottom: 30px;">また<br><span style="color: #ffd966;">大山祇神</span>と縁のある神社と<br>参拝の際に<br>力を取り入れる方法も<br>お伝えしました。</p>
+            <p style="margin-bottom: 30px;">基本的には<br>これで万全です。</p>
+            <p style="margin-bottom: 30px;">ただ<br>守護の力は<br>何もしなければ<br>少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 30px;">なかなか時間が取れない<br>神社が遠くて<br>頻繁には行けない<br>という方も<br>いらっしゃると思います。</p>
+            <p style="margin-bottom: 30px;">そのような方に<br>ぜひお勧めしたいのが<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 30px;">守護神の力を石に宿し<br>常に身近に持ち歩くことが<br>できるようになります。</p>
+            <p style="margin-bottom: 30px;">ただ<br>どんな石でもよいわけではありません。</p>
+            <p style="margin-bottom: 30px;">もえ様が持つ<br>潜在的なエネルギーと<br>大山祇神が<br>共鳴しやすい石で<br>お作りする必要があります。</p>
+            <p style="margin-bottom: 30px;">もえ様のエネルギーと<br>大山祇神が<br>共鳴しやすい石を<br>3つお伝えします。</p>
+        </div>
+
+        <ul style="margin-bottom: 90px;">
+            <li><span style="color: #ffd966; font-weight: bold;">1. 翡翠（ジェード）</span><br>古来より山の神様と縁の深い、気品のある緑の石。<br>「守り」「実り」「長寿」の石とされ、大山祇神の山と大樹の神気と深く呼応します。<br>もえ様の中の真っ直ぐ伸びる樹の軸を静かに保ち、焦らずに深めていく流れを整えてくれます。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">2. ムーンストーン</span><br>月の光を静かに宿した石。<br>もえ様の中にある異性を惹きつける繊細な魅力を柔らかく整え、内側の「決めきれなさ」を静かに鎮めてくれます。<br>日々の中で気持ちの高ぶりを、月のように穏やかに落ち着かせる石です。</li>
+            <li><span style="color: #ffd966; font-weight: bold;">3. ローズクォーツ</span><br>優しいピンクの水晶。<br>もえ様の中で気持ちが強くなりすぎた時に静かに鎮め、このご縁を穏やかで温かい形に包んでくれます。<br>「毎日連絡したい」という強い気持ちを「毎日届けたい優しい気持ち」に変換する流れを整えてくれます。</li>
+        </ul>
+
+        <div class="section">
+            <p style="margin-bottom: 30px;">この中から<br>もえ様のエネルギーと<br>最もバランスが取れる組み合わせを<br>私が選び<br>ひとつずつ手作りで仕上げます。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">ご希望の場合は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <h2 id="sec-closing">【結びの言葉】</h2>
+
+        <div class="closing">
+            <p style="margin-bottom: 30px;">もえ様、</p>
+            <p style="margin-bottom: 30px;">あなたの未来には<br>あの方と<br>毎日、当たり前のように<br>言葉を交わし合っている姿へと続く道が<br>視えています。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">会いたい時に<br>会える距離まで<br>二人の関係が<br>静かに深まっている姿。</p>
+            <p style="margin-bottom: 30px;">その景色が<br>2027年の年明けに<br>立ち上がる兆しが<br>はっきりとあります。</p>
+            <p style="margin-bottom: 30px;">今は<br>「連絡が返ってこない」<br>「会いたいのに動きが少ない」<br>という感覚の中にいる<br>かもしれません。</p>
+            <p style="margin-bottom: 30px;">でもそれは<br>あの方の気持ちが薄いのではなく<br>あの方の中の<br>繊細さと真面目さが<br>そのまま出ているだけ。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">そして<br>あの方の中の<br>もえ様の位置は<br>もえ様が想っている以上に<br>深い場所にあります。</p>
+            <p style="margin-bottom: 30px;">正しい感覚で<br>あなたはご縁を<br>掴もうとしています。</p>
+            <p style="margin-bottom: 30px;">あなたは<br>真っ直ぐ天へ伸びる<br>一本の樹のような芯を持つ方。</p>
+            <p style="margin-bottom: 30px;">強く惹きつけながらも<br>相手を丁寧に扱える<br>本物の優しさを持つ方。</p>
+            <p style="margin-bottom: 30px;">その優しさで<br>このご縁を<br>深く育てていける方です。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">10月は<br>静かに見守る月。<br><br>11月は<br>胸の中で言葉を育てる月。<br><br>12月は<br>小さな共有を届ける月。<br><br>1月は<br>喜びが結ばれる月。</p>
+            <p style="margin-bottom: 30px;">その四つの月を<br>焦らず<br>でも止めずに<br>進んでいってください。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">それが<br>あなたの幸せへの道。</p>
+            <p style="margin-bottom: 30px;"><span style="color: #ffd966;">大山祇神</span>が<br>あなたを守っています。</p>
+            <p style="margin-bottom: 30px;">山と大樹の神様が<br>あなたの中の樹を<br>どっしりと支え<br>必要な実りが<br>必ず訪れる季節へと<br>運んでくださっています。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">あなたは<br>幸せになっていい。</p>
+            <p style="margin-bottom: 30px;">真っ直ぐ届けていい。</p>
+            <p style="margin-bottom: 30px;">このご縁を<br>深く育てていい。</p>
+            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">守られている。</p>
+            <p style="margin-bottom: 30px;">その事実を<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 30px;">本日より<br>遠隔守護祈祷を行い<br>もえ様の幸せを願います。</p>
+            <p style="margin-bottom: 30px;">もえ様の未来に<br>静かで確かな愛が<br>満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>
