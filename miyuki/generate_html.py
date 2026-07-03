@@ -384,8 +384,8 @@ def build_body_html(data):
                 # description lines (indented). Stop when we hit non-indented content or blank->non-indented.
                 desc_lines = []
                 for l in lines_[1:]:
-                    if l.startswith("  ") or l.startswith("\t"):
-                        s = l.strip()
+                    if l.startswith("  ") or l.startswith("\t") or l.startswith("　"):
+                        s = l.strip().lstrip("　")
                         if s:
                             desc_lines.append(s)
                     elif l.strip() == "":
