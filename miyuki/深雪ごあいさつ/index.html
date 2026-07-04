@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>深雪からのお手紙</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+        background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+        color: #e8e8f0;
+        line-height: 1.9;
+        padding: 20px;
+        min-height: 100vh;
+        font-size: 17px;
+    }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: rgba(15, 15, 46, 0.7);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2), inset 0 0 60px rgba(100, 100, 200, 0.05);
+        border: 1px solid rgba(200, 200, 255, 0.1);
+    }
+    h1 {
+        text-align: center;
+        color: #a8b8ff;
+        font-size: 2em;
+        margin-bottom: 30px;
+        text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+        letter-spacing: 0.1em;
+    }
+    h2 {
+        color: #c8d0ff;
+        font-size: 1.5em;
+        margin: 50px 0 30px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+        letter-spacing: 0.05em;
+        text-align: center;
+    }
+    p { margin: 60px 0; text-align: center; }
+    .highlight {
+        color: #ffe66d;
+        text-shadow: 0 0 14px rgba(255, 230, 109, 0.5);
+    }
+    .aura-line {
+        position: relative;
+        padding: 60px 20px;
+        border-radius: 12px;
+        overflow: hidden;
+        isolation: isolate;
+    }
+    .aura-line::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center top;
+        background-repeat: no-repeat;
+        opacity: 0.3;
+        z-index: -1;
+    }
+    .aura-fire::before {
+        background-image: url("業火.png");
+    }
+    .aura-candle::before {
+        background-image: url("ろうそく.png");
+    }
+    .section {
+        margin: 30px 0;
+        padding: 40px 20px;
+        background: rgba(30, 30, 70, 0.3);
+        border-radius: 10px;
+    }
+    .intro {
+        background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+        border: 2px solid rgba(168, 184, 255, 0.3);
+        border-radius: 15px;
+        padding: 40px 30px;
+        margin: 30px 0;
+        box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+    }
+    .toc {
+        background: rgba(30, 30, 70, 0.4);
+        border: 1px solid rgba(168, 184, 255, 0.25);
+        border-radius: 12px;
+        padding: 35px 30px;
+        margin: 40px 0;
+    }
+    .toc-title {
+        text-align: center;
+        color: #c8d0ff;
+        font-size: 1.2em;
+        letter-spacing: 0.15em;
+        margin-bottom: 25px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(168, 184, 255, 0.25);
+        text-shadow: 0 0 12px rgba(168, 184, 255, 0.4);
+    }
+    .toc ol {
+        list-style: none;
+        counter-reset: toc;
+        padding: 0;
+        margin: 0;
+    }
+    .toc ol li {
+        counter-increment: toc;
+        margin: 14px 0;
+        padding-left: 2em;
+        position: relative;
+        line-height: 1.7;
+    }
+    .toc ol li::before {
+        content: counter(toc, decimal-leading-zero);
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #a8b8ff;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+    }
+    .toc a {
+        color: #e8e8f0;
+        text-decoration: none;
+        border-bottom: 1px dotted rgba(168, 184, 255, 0.3);
+        padding-bottom: 2px;
+    }
+    .toc a:hover {
+        color: #c8d0ff;
+        border-bottom-color: rgba(168, 184, 255, 0.7);
+    }
+    .ref-block {
+        margin: 40px 0;
+    }
+    .ref-label {
+        text-align: center;
+        color: #a8b8ff;
+        font-size: 0.95em;
+        letter-spacing: 0.15em;
+        margin-bottom: 15px;
+        text-shadow: 0 0 12px rgba(168, 184, 255, 0.4);
+    }
+    .ref-vertical {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    .ref-horizontal {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+    }
+    .ref-vertical .ref-img {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+    .ref-horizontal .ref-img {
+        width: calc(50% - 8px);
+        height: auto;
+    }
+    .ref-img {
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(100, 100, 200, 0.25);
+    }
+    .placeholder {
+        display: block;
+        text-align: center;
+        color: #a8b8ff;
+        font-size: 0.9em;
+        padding: 30px 20px;
+        border: 1px dashed rgba(168, 184, 255, 0.4);
+        border-radius: 10px;
+        margin: 30px 0;
+        background: rgba(30, 30, 70, 0.4);
+        letter-spacing: 0.05em;
+    }
+    .case {
+        background: rgba(40, 40, 90, 0.4);
+        border: 1px solid rgba(168, 184, 255, 0.2);
+        border-radius: 12px;
+        padding: 30px 25px;
+        margin: 30px 0;
+        box-shadow: 0 4px 15px rgba(100, 100, 200, 0.15);
+    }
+    .case-img {
+        display: block;
+        width: 80%;
+        height: auto;
+        margin: 25px auto 0;
+        border-radius: 8px;
+    }
+    .case .title {
+        color: #a8b8ff;
+        font-weight: bold;
+        font-size: 1.15em;
+        margin-bottom: 20px;
+        text-align: center;
+        text-shadow: 0 0 12px rgba(168, 184, 255, 0.4);
+    }
+    .voice {
+        margin-top: 30px;
+        padding: 25px;
+        background: rgba(168, 184, 255, 0.08);
+        border-left: 3px solid rgba(168, 184, 255, 0.4);
+        border-radius: 6px;
+        color: #e8e8f0;
+        text-align: left;
+        line-height: 2;
+    }
+    ul.plain {
+        list-style: none;
+        margin: 40px 0;
+        padding: 0;
+    }
+    ul.plain li {
+        margin: 20px 0;
+        text-align: center;
+    }
+    ul.plain li::before {
+        content: "・";
+        margin-right: 0.3em;
+    }
+    .signature {
+        text-align: right;
+        margin-top: 60px;
+        font-size: 1.4em;
+        color: #c8d0ff;
+        text-shadow: 0 0 12px rgba(168, 184, 255, 0.4);
+    }
+    @media (max-width: 768px) {
+        body { font-size: 15px; padding: 10px; }
+        .container { padding: 20px 10px; }
+        h1 { font-size: 1.3em; }
+        h2 { font-size: 1.1em; }
+        .intro, .section { padding: 25px 12px; }
+        .case { padding: 20px 15px; }
+        .signature { font-size: 1.2em; }
+        p { margin: 45px 0; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <div class="intro">
+        <p>こんにちは、<br>深雪と申します。</p>
+        <p>このたびは、<br>大切な情報をお預けくださって<br>ありがとうございます。</p>
+        <p>これから<br>あなたのオーラの色、<br>守ってくださっている守護神、</p>
+        <p>あなたという人間の本質を<br>視てまいります。</p>
+        <p>霊視が完了して<br>文章を書き上げるまでに<br>大体24〜48時間かかります。</p>
+        <p>1人1人丁寧に鑑定していますし、<br>沢山の事をあなたに伝えたいので<br>結構な文量になります。</p>
+        <p>楽しみにお待ちください。</p>
+    </div>
+
+    <div class="ref-block">
+        <div class="ref-label">このような鑑定書が届きます</div>
+        <div class="ref-horizontal">
+            <img src="001.png" alt="参考画像1" class="ref-img">
+            <img src="002.png" alt="参考画像2" class="ref-img">
+        </div>
+    </div>
+
+    <div class="section">
+        <p>鑑定に入る前に、<br>すこしお伝えしたいことがあります。</p>
+        <p>私がなぜ霊視鑑定を<br>やっているのか。</p>
+        <p class="highlight">守護とは、<br>そもそも何なのか。</p>
+        <p class="highlight">どうすれば運命を<br>変えることができるのか。</p>
+        <p>どうすれば現状を<br>より良くできるのか。</p>
+        <p>これがわかった上で<br>鑑定文を読むと<br>それだけであなたの運勢は<br>上向きになります。</p>
+        <p>自分に必要だと<br>思う部分だけでも<br>大丈夫です。</p>
+        <p>ゆっくりお読みください。</p>
+    </div>
+
+    <div class="toc">
+        <div class="toc-title">目次</div>
+        <ol>
+            <li><a href="#s1">なぜ、京都の守護家を出たのか</a></li>
+            <li><a href="#s2">守護とは何か</a></li>
+            <li><a href="#s3">守護神と守護霊について</a></li>
+            <li><a href="#s4">なぜ今、守護を整えるべきなのか</a></li>
+            <li><a href="#s5">実際に守護鑑定を受けた方の実例</a></li>
+            <li><a href="#s6">これからお届けする鑑定について</a></li>
+        </ol>
+    </div>
+
+    <h2 id="s1">なぜ、京都の守護家を出たのか</h2>
+    <div class="section">
+        <p class="highlight">京都に、表には出ない家があります。</p>
+        <p>奈良の世から続く守護の家系。<br>代々、要人・政治家・著名人の<br>霊的守護を担ってきました。</p>
+        <p>私は後継者として生まれ、<br>神職に就き、霊力を磨いてきました。</p>
+        <p>ただ、ずっと違和感がありました。</p>
+        <p class="highlight">守護される側は、<br>いつも選ばれた人間だけ。</p>
+        <p>政治家、財界人、著名人——<br>社会を動かす人たちは、<br>金と権力で守護を手に入れてきました。</p>
+        <p>だから彼らは、<br>スキャンダルがあっても生き残る。<br>失敗しても復活する。<br>なぜか助けが入る。</p>
+        <p>一方で、<br>身近な人がどれだけ苦しんでいても、<br>家は動きませんでした。</p>
+        <p>私が異を唱えた結果は⋯追放でした。</p>
+        <p class="highlight" style="font-weight: bold;">「遠くの大きな幸せより、<br>身近な小さい幸せ」</p>
+        <p>これが、私の座右の銘です。</p>
+        <p>家が要人にだけ使ってきた守護の知識を<br>今、初めて外に出します。</p>
+    </div>
+
+    <h2 id="s2">守護とは何か</h2>
+    <div class="section">
+        <p class="highlight">生きているすべての人に、<br>守護のオーラは存在しています。</p>
+        <p>霊的な盾のようなもの。<br>見えないけれど、確かにあるものです。</p>
+        <p>守護のオーラには<br>属性や色があります。</p>
+        <p>簡単にいうと<br>火・水・木・金・土。</p>
+        <p class="aura-line aura-fire">燃え盛る業火のようなオーラもあれば</p>
+        <p class="aura-line aura-candle">ろうそくのように穏やかなオーラもあります。</p>
+        <p>そして、それぞれに<br><span class="highlight">得意、苦手があります。</span></p>
+        <p>例えば火のオーラを持つ人は、<br>外からの悪意を跳ね返す力が強い。</p>
+        <p>でも自分の内側からくる不安には、<br>意外と弱い。</p>
+        <p>同じ事をぐるぐる考えては<br>答えが出ないことにまた悩む。</p>
+        <p>水のオーラを持つ人は、<br>人の感情を包み込む力がある。</p>
+        <p>どんなことがあっても<br>広く受け止める<br>まるで大海のような心の持ち主。</p>
+        <p>でも流されやすく、<br>知らないうちに他人の疲れを<br>引き受けていることがあります。</p>
+        <p class="highlight">なぜかあなただけが疲れ果てたり、<br>他の方が罹らない病気になりやすいのは</p>
+        <p class="highlight">実は守護のオーラの属性と<br>深く関係しています。</p>
+    </div>
+
+    <h2 id="s3">守護神と守護霊について</h2>
+    <div class="section">
+        <p>日本に生まれ、育つ人なら<br>何らかの神様の守護を得ています。</p>
+        <p class="highlight">守護してくれる神様は、<br>オーラの属性と密接に関わります。</p>
+        <p>例えば、火のオーラを持つ方は、<br>火産霊神のような<br>火を司る神々の守護を、</p>
+        <p>木のオーラを持つ方は、<br>木之花咲耶姫のような<br>木や花を司る神々の守護を<br>受けていたりします。</p>
+        <p class="highlight">日本人が<br>節目節目に神社を訪れるのは、<br>偶然ではありません。</p>
+        <p>初詣、お宮参り、七五三、<br>厄払い、合格祈願。</p>
+        <p>理由をうまく説明できなくても、<br>私たちは自然と<br>神社に足を運んできました。</p>
+        <p>それは、<br><span class="highlight">私たちが神々の守護を受けている事を<br>無意識で認識していて、</span><br>感謝の作法が<br>血の中に組み込まれているから。</p>
+        <p>生まれた瞬間から<br>その神様の守護は始まっていて、<br>一生涯、途切れることはありません。</p>
+        <p class="highlight">自分の守護神を知るということは、<br>自分が今日まで<br>どなたに守られてきたのかを<br>知るということでもあります。</p>
+        <p>次に、<br><span class="highlight">守護霊は、<br>誰にでもいるわけではありません。</span></p>
+        <p>先祖に縁がある人、<br>特定の土地に深く根ざした家系の人、<br>偶発的な出来事がきっかけで<br>つくことがあります。</p>
+        <p>また、<br>守護霊は離れることもあります。</p>
+        <p>もう守護が必要ないほど守られている場合。<br>守護する存在に背いた場合。<br>守護しすぎて疲れ果ててしまった場合。</p>
+        <p>さらに、守護霊が一時的に<br>力を失う時期もあります。</p>
+        <p>月に一度、年に一度、<br>十二年に一度、一生に一度。</p>
+        <p>そのタイミングで<br>「なぜかこの時期に⋯」<br>という出来事が起きることがあります。</p>
+    </div>
+
+    <h2 id="s4">なぜ今、守護を整えるべきなのか</h2>
+    <div class="section">
+        <p>今の世界を見てください。</p>
+        <p>戦争、争い、<br>むき出しの悪意が<br>ニュースを通じて毎日流れてきます。</p>
+        <p class="highlight">意識していなくても、<br>守護のオーラは少しずつ削られています。</p>
+        <p>些細なことで涙が出てしまったり、</p>
+        <p>普段だったら耐えられる言葉に<br>心がボロボロにされてしまったり、</p>
+        <p>何かをしなければいけないのはわかるのに<br>何をすればいいのかが<br>わからなくなってしまったり⋯</p>
+        <p class="highlight">これは、<br>あなたのせいではありません。</p>
+        <p>守護のオーラが悪意によって<br>削られているからなんです。</p>
+        <p>守護が薄いままでは<br>何をしても崩されてしまいます。</p>
+        <p>どれだけ仕事を頑張っても。<br>どれだけ節約しても。<br>どれだけ関係を修復しようとしても。</p>
+        <p>積み重ねた努力が、<br>片っ端から崩されていく——</p>
+        <p>そんな感覚があるとしたら、<br>それは守護の状態が原因です。</p>
+        <p>だから、順番があります。</p>
+        <p class="highlight">努力する前に、守護を整える。</p>
+        <p>守護が整った瞬間から、<br>すべてが動き始めます。</p>
+        <p>守護を整える前に頑張るのは、<br>穴の空いた器に<br>水を入れ続けるようなもの。</p>
+        <p>努力しても全て<br>水の泡と消えてしまうんです。</p>
+        <p>そして、いちばん最初は</p>
+        <p><span class="highlight">「自分の守護の状態を知ること」</span>です。</p>
+        <ul class="plain">
+            <li><strong>私のオーラは何色なのか</strong></li>
+            <li><strong>私を守る守護神はどなたか</strong></li>
+            <li><strong>今起こっていることは何が原因なのか</strong></li>
+        </ul>
+        <p>これを知らないまま動いても、<br>どこに力を入れればいいのか<br>わかりません。</p>
+        <p>まず、知ることから。</p>
+        <p>そこから動き出した方を、<br>私はたくさん見てきました。</p>
+    </div>
+
+    <h2 id="s5">実際に守護鑑定を受けた方の実例</h2>
+
+    <div class="case">
+        <div class="title">2児の母（30代女性）</div>
+        <p>夫のモラハラで離婚調停中。<br>人の顔色を伺うクセがついて<br>楽しく話すこともできない状態でした。</p>
+        <p>鑑定し、守護の力を授けたあとは<br>離婚調停が無事成立。<br>取るものはしっかりと取れました。</p>
+        <img src="感想001.jpg" alt="感想001" class="case-img">
+    </div>
+
+    <div class="case">
+        <div class="title">自営業(50代男性)</div>
+        <p>コロナ以降、仕事が激減して3年以上。<br>何をやってもうまくいかず、<br>貯金も底をつきそうな状態でした。</p>
+        <p>守護の力を授けたあとは、<br>5年ぶりの大口案件が舞い込み、<br>コロナ前の8割まで<br>仕事が戻ってきました。</p>
+        <img src="感想002.jpg" alt="感想002" class="case-img">
+    </div>
+
+    <div class="case">
+        <div class="title">主婦（60代女性）</div>
+        <p>娘が離婚して帰宅、<br>息子も未婚のまま。<br>子どもたちの将来が不安で、<br>夜も眠れない日々でした。</p>
+        <p>守護の力を授けたあとは、<br>娘さんに新しい出会いが。<br>息子さんも初めて彼女を<br>連れてきました。</p>
+        <img src="感想003.jpg" alt="感想003" class="case-img">
+    </div>
+
+    <h2 id="s6">これからお届けする鑑定について</h2>
+    <div class="section">
+        <p>私からお届けするのは、</p>
+        <ul class="plain">
+            <li><strong>あなたのオーラの色と、今の状態</strong></li>
+            <li><strong>オーラから視える、あなたの本質</strong></li>
+            <li><strong>あなたを守っている守護神</strong></li>
+            <li><strong>今起きていることの、霊的な意味</strong></li>
+        </ul>
+        <p>丁寧に丁寧に霊視して<br>わかりやすい言葉で<br>お伝えします。</p>
+        <p>まもなく、<br>あなたのオーラと守護神を<br>お届けします。</p>
+        <p>読み終えたその瞬間から、<br>あなたの中で<br>静かに何かが動き始めますが</p>
+        <p class="highlight">安心して身を委ねてくださいね。</p>
+        <div class="signature">深雪</div>
+    </div>
+
+</div>
+</body>
+</html>
