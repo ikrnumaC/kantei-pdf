@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゆか様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+
+            .toc {
+                padding: 20px 15px;
+            }
+
+            .toc-title {
+                font-size: 1.1em;
+            }
+
+            .toc a {
+                font-size: 0.95em;
+                padding: 12px 6px 12px 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">自分の場所を選び取る道</h2>
+            <p class="cover-name">ゆか様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 目次 -->
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-god">守護神について</a></li>
+                <li><a href="#sec-essence">あなたという人</a></li>
+                <li><a href="#sec-1">就職の道が動く時期</a></li>
+                <li><a href="#sec-2">就職先との結び</a></li>
+                <li><a href="#sec-3">ゆか様の軸の活かし方</a></li>
+                <li><a href="#sec-4">あなたに合う仕事</a></li>
+                <li><a href="#sec-flow">今後の流れ</a></li>
+                <li><a href="#sec-guardian">ゆか様らしい歩み方</a></li>
+                <li><a href="#sec-stone">あなたを支えるパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
+        <!-- 冒頭 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">ゆか様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂が、<br>本気で自分の場所を選び取ろうとしている。</p>
+            <p style="margin-bottom: 90px;">その強い意志が、<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先、<br>あなたが本当に知るべきことを、<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が、<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px;">新しい場所で、<br>あなたが背筋を伸ばして立っている姿。</p>
+            <p style="margin-bottom: 90px;">任された仕事を、<br>自分の手でしっかりと動かしている。</p>
+            <p style="margin-bottom: 90px;">周りの人が、<br>あなたを頼りにして集まってくる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>2026年の秋。</p>
+            <p style="margin-bottom: 90px;">木々が色づき始める頃、<br>あなたは「ここが自分の場所」と<br>胸を張って言えるところに立っています。</p>
+            <p style="margin-bottom: 90px;">その未来の兆しが、<br>はっきりとあります。</p>
+            <p style="margin-bottom: 90px;">動き始めたのは、<br>今年です。</p>
+            <p style="margin-bottom: 90px;">初夏、<br>5月を過ぎたあたりから、<br>あなたの中で何かが<br>静かに定まり始めていたはずです。</p>
+            <p style="margin-bottom: 90px;">その流れが実を結ぶのは、<br>これから。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">秋、<br>9月の頃に、<br>止まっていた歯車が<br>一気に噛み合う瞬間が訪れます。</p>
+            <p style="margin-bottom: 90px;">そこに至るまでの道のりは、<br>決して平坦ではありません。</p>
+            <p style="margin-bottom: 90px;">迷いが、<br>何度も戻ってくるかもしれない。</p>
+            <p style="margin-bottom: 0;">でも──<br>あなたには、それを選び取る力があります。</p>
+        </div>
+
+        <!-- 守護神について -->
+        <div class="oracle-message" id="sec-god">
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは、<br><span style="color: #ffd966;">大山祇神</span>（おおやまつみのかみ）。</p>
+            <p style="margin-bottom: 90px;">山を司る、<br>とても大きな神様です。</p>
+            <p style="margin-bottom: 90px;">昔、<br>まだ人が自然の力に<br>なすすべもなかった頃。</p>
+            <p style="margin-bottom: 90px;">大山祇神は、<br>どっしりとした山となって<br>大地に根を下ろし、<br>風を防ぎ、水を蓄え、<br>そこに暮らす人々を守りました。</p>
+            <p style="margin-bottom: 90px;">山があるから、<br>麓の村は安心して育っていける。</p>
+            <p style="margin-bottom: 90px;">そんなふうに、<br>「動かずに、そこにあることで<br>周りを守る神様」として、<br>今も各地の山の神社に祀られています。</p>
+            <p style="margin-bottom: 90px;">自分の場所にどっしりと根を張り、<br>周りから頼られる。</p>
+            <p style="margin-bottom: 0;">それは、<br>あなたそのものの姿です。</p>
+            <img src="../鑑定画像/大山祇神.png" alt="大山祇神" class="guardian-image">
+        </div>
+
+        <!-- あなたという人 -->
+        <h2 class="emoji-header" id="sec-essence">⛩️ あなたという人</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">まず、<br>あなたの本質について、<br>視えていることをお伝えします。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>一度「ここだ」と決めたら、<br>そこに根を張って<br>折れずに立てる人です。</p>
+            <p style="margin-bottom: 90px;">風が吹いても、<br>雨が降っても、<br>簡単には揺らがない。</p>
+            <p style="margin-bottom: 90px;">大きな木のように、<br>自分の場所で<br>真っ直ぐに伸びていける。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それが、<br>あなたが生まれ持った軸の強さです。</p>
+            <p style="margin-bottom: 90px;">だからこそ、<br>方向が定まらないまま<br>ふらふらと迷い続けることは、<br>本当は得意ではありません。</p>
+            <p style="margin-bottom: 90px;">「どこへ向かうのか」</p>
+            <p style="margin-bottom: 90px;">それさえ決まれば、<br>あなたは誰よりも強く歩ける。</p>
+            <p style="margin-bottom: 90px;">でも今、<br>その「どこへ」が<br>定まっていない。</p>
+            <p style="margin-bottom: 90px;">だから苦しいのです。</p>
+            <p style="margin-bottom: 90px;">ここには、<br>あなたの中にある<br>もう一つの性質が関わっています。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>条件だけが揃った無難な場所には、<br>どうしても心が動きません。</p>
+            <p style="margin-bottom: 90px;">「安定しているから」<br>「悪くないから」</p>
+            <p style="margin-bottom: 90px;">そういう理由では、<br>あなたの芯は満たされない。</p>
+            <p style="margin-bottom: 90px;">刺激のある場所、<br>規格外の縁、<br>「自分の芯で選び取った」と<br>胸を張れる道。</p>
+            <p style="margin-bottom: 90px;">そこにこそ、<br>あなたの心は動きます。</p>
+            <p style="margin-bottom: 90px;">こんな経験は、<br>ありませんでしたか。</p>
+            <p style="margin-bottom: 90px;">周りが「良い話じゃない」と言う条件でも、<br>なぜか心が動かない。</p>
+            <p style="margin-bottom: 90px;">逆に、<br>人から見れば「大変そう」な道に、<br>不思議と惹かれてしまう。</p>
+            <p style="margin-bottom: 90px;">それは、<br>あなたが妥協できない人だから<br>ではありません。</p>
+            <p style="margin-bottom: 90px;">自分の人生を、<br>自分の芯で選び取りたい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その願いが、<br>人一倍強いからです。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>仕事の面でも、<br>本来とても現実的で、<br>任されたことを<br>きちんと形にできる力を持っています。</p>
+            <p style="margin-bottom: 90px;">コツコツと積み上げ、<br>責任を持って動く。</p>
+            <p style="margin-bottom: 90px;">その姿を、<br>周りの人はちゃんと見ています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">年齢を重ねてきたことは、<br>あなたにとって<br>決して不利なことではありません。</p>
+            <p style="margin-bottom: 90px;">むしろ、<br>落ち着きと実務の力が<br>「この人になら任せたい」という<br>信頼へと変わっていきます。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>一つだけ視えていることがあります。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>自分の中だけで<br>答えを出そうとしすぎる<br>ところがあります。</p>
+            <p style="margin-bottom: 90px;">頭の中で、<br>「本当にここでいいのか」を<br>何度も繰り返してしまう。</p>
+            <p style="margin-bottom: 90px;">でも、<br>あなたの道は、<br>頭の中で考え続けても開きません。</p>
+            <p style="margin-bottom: 90px;">外に出て、<br>動いて、<br>人と関わる中で開いていく。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">それが、<br>あなたという人の<br>運命の仕組みです。</p>
+        </div>
+
+        <!-- 1. 就職の道が動く時期 -->
+        <h2 class="emoji-header" id="sec-1">⛩️ 就職の道が動く時期</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">今のあなたが<br>最も知りたいこと。</p>
+            <p style="margin-bottom: 90px;">「この就職の道は<br>いつ動くのか」</p>
+            <p style="margin-bottom: 90px;">正直にお伝えします。</p>
+            <p style="margin-bottom: 90px;">就職活動を始めて半年。</p>
+            <p style="margin-bottom: 90px;">まだ決まらないまま、<br>「私を雇ってくれる場所は<br>本当にあるのだろうか」</p>
+            <p style="margin-bottom: 90px;">そんな不安の中に<br>いらっしゃると思います。</p>
+            <p style="margin-bottom: 90px;">でも、<br>まず知っておいてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたが半年決まらなかったのは、<br>あなたに問題があるからでも、<br>雇ってくれる場所がないからでも<br>ありません。</p>
+            <p style="margin-bottom: 90px;">今この時間は、<br>大山祇神が<br>高い山の上から、<br>あなたにとって「本物」の就職先を<br>探してくれている時間です。</p>
+            <p style="margin-bottom: 90px;">条件だけが良い場所に<br>あなたが飛びつかないよう、</p>
+            <p style="margin-bottom: 90px;">本当に根を張れる場所が<br>見つかるまで、<br>神様が見定めてくれている。</p>
+            <p style="margin-bottom: 90px;">だから、<br>まだ形にならないのです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">決まらないのではなく、<br>「まだその時ではない」</p>
+            <p style="margin-bottom: 90px;">ただ、それだけです。</p>
+            <p style="margin-bottom: 90px;">そして、<br>その時は近づいています。</p>
+            <p style="margin-bottom: 90px;">はっきりとお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">来年、2027年には、<br>あなたはもう、<br>新しい場所で働いています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">やりがいのある仕事に就いて、<br>安心して暮らせる日が、<br>ちゃんと訪れます。</p>
+            <p style="margin-bottom: 90px;">つまり、<br>2026年の今は、<br>「探して、動く年」。</p>
+            <p style="margin-bottom: 90px;">来年<br>腰を据えて働くために、<br>今年、脚を動かす。</p>
+            <p style="margin-bottom: 90px;">それが、<br>最も自然な流れなのです。</p>
+            <p style="margin-bottom: 90px;">だから、<br>焦らなくて大丈夫です。</p>
+            <p style="margin-bottom: 90px;">でも、<br>立ち止まったままでも<br>いけません。</p>
+            <p style="margin-bottom: 90px;">神様が場所を見定めてくれている間、<br>あなたは諦めずに、<br>人と会い、<br>足を運び続けてください。</p>
+            <p style="margin-bottom: 90px;">そうすればある時、<br>条件に引かれるのではなく、</p>
+            <p style="margin-bottom: 0; font-weight: bold;">「ここだ」<br><br>と、心が決まる瞬間が<br>訪れます。</p>
+        </div>
+
+        <!-- 2. 就職先との結び -->
+        <h2 class="emoji-header" id="sec-2">⛩️ 就職先との結び</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">では、<br>あなたに合った場所は、<br>どういう形で開かれてくるのか。</p>
+            <p style="margin-bottom: 90px;">その道筋を、<br>ひとつひとつ視てお伝えします。</p>
+            <p style="margin-bottom: 90px;">まず知っておいてほしいのは、<br>あなたの新しい場所は、<br>求人の条件を並べた紙の中からは<br>なかなか見つからない<br>ということです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの縁は、<br>「人」から開きます。</p>
+            <p style="margin-bottom: 90px;">以前関わった人、<br>知り合い、<br>面談で出会う誰か。</p>
+            <p style="margin-bottom: 90px;">その人の何気ない一言や、<br>「こういう話があるよ」という声かけ。</p>
+            <p style="margin-bottom: 90px;">そこから、<br>道は動き始めます。</p>
+            <p style="margin-bottom: 90px;">だから、<br>一人で求人を眺め続けるより、<br>少しでも人と関わる場に<br>身を置いてみてください。</p>
+            <p style="margin-bottom: 90px;">動いて、<br>人と会うほど、<br>良い縁に近づいていきます。</p>
+            <p style="margin-bottom: 90px;">次に視えているのは、<br>あなたを引き上げてくれる<br>目上の人の存在です。</p>
+            <p style="margin-bottom: 90px;">あなたの落ち着きや、<br>これまで積み上げてきた実務の力を見て</p>
+            <p style="margin-bottom: 90px;">「この人に任せたい」</p>
+            <p style="margin-bottom: 90px;">そう思ってくれる人が現れます。</p>
+            <p style="margin-bottom: 90px;">面談の場で、<br>あなたが飾らずに<br>これまでの歩みを話したとき</p>
+            <p style="margin-bottom: 90px;">相手の心が動く瞬間が<br>視えています。</p>
+            <p style="margin-bottom: 90px;">そして、<br>最終的にあなたの心が決まるのは</p>
+            <p style="margin-bottom: 90px;">給料や条件が<br>一番良い場所ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「ここでなら自分は力を出せる」</p>
+            <p style="margin-bottom: 90px;">そう感じられた場所です。</p>
+            <p style="margin-bottom: 90px;">その実感が湧いた場所こそ、<br>あなたが根を張れる<br>本物の就職先です。</p>
+            <p style="margin-bottom: 90px;">入ったあとも、<br>安心してください。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>最初から完璧でなくても、<br>働くうちに信頼を積み上げ、<br>少しずつ立場を固めていける人です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>一つだけ気をつけてほしいことがあります。</p>
+            <p style="margin-bottom: 90px;">この道は、<br>一度ですんなり決まるとは限りません。</p>
+            <p style="margin-bottom: 90px;">途中で遅れたり、<br>迷いが戻ってきたり、<br>することがあります。</p>
+            <p style="margin-bottom: 90px;">そこで焦って、<br>条件だけを見て飛びついてしまうと、<br>あなたの芯が<br>後で「違う」と感じてしまう。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">秋に心が決まるその時までは、<br>いくつかの縁を<br>同時に見ておいてください。</p>
+            <p style="margin-bottom: 0;">一つに絞りきらないことが、<br>今のあなたには<br>大切なことです。</p>
+        </div>
+
+        <!-- 3. ゆか様の軸の活かし方 -->
+        <h2 class="emoji-header" id="sec-3">⛩️ ゆか様の軸の活かし方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">あなたの中には、<br>真っ直ぐ根を張る、<br>強い軸があります。</p>
+            <p style="margin-bottom: 90px;">この力を、<br>新しい場所で<br>どう使えばいいのか。</p>
+            <p style="margin-bottom: 90px;">大切なことをお伝えします。</p>
+            <p style="margin-bottom: 90px;">あなたの軸は、<br>「選ぶまで」に使うと、<br>かえって苦しくなります。</p>
+            <p style="margin-bottom: 90px;">まだ決まっていないものを、<br>軸の強さで<br>無理に決めようとすると、<br>頭の中がぐるぐるして、<br>動けなくなってしまう。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの軸が<br>本当に力を発揮するのは、<br>「選んだあと」です。</p>
+            <p style="margin-bottom: 90px;">一度「ここだ」と決めたら、<br>あなたは誰よりも<br>折れずに歩ける人。</p>
+            <p style="margin-bottom: 90px;">だから、<br>選ぶまでの時間は、<br>どうか力を抜いてください。</p>
+            <p style="margin-bottom: 90px;">その部分は、<br>大山祇神に委ねて大丈夫です。</p>
+            <p style="margin-bottom: 90px;">そして、<br>場所が決まったその瞬間から、<br>あなたの軸を全開にする。</p>
+            <p style="margin-bottom: 90px;">そうすれば、<br>あなたは新しい場所で、<br>自分から場を耕し、<br>周りに頼られる存在になっていきます。</p>
+            <p style="margin-bottom: 90px;">受け身で待つのではなく、<br>自分から動いて、<br>自分の場所をつくっていく。</p>
+            <p style="margin-bottom: 90px;">それが、<br>あなたの軸の<br>一番の活かし方です。</p>
+            <p style="margin-bottom: 90px;">一つだけ、<br>心に留めておいてほしいことがあります。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>人との関わりの中で、<br>相手のことを気にかけすぎて、<br>自分をすり減らしてしまうことがあります。</p>
+            <p style="margin-bottom: 90px;">新しい場所では、<br>すべてを抱え込まないでください。</p>
+            <p style="margin-bottom: 90px;">少し距離を保つこと。</p>
+            <p style="margin-bottom: 0;">それが、<br>あなたの軸を<br>長く、強く保つ鍵になります。</p>
+        </div>
+
+        <!-- 4. あなたに合う仕事 -->
+        <h2 class="emoji-header" id="sec-4">⛩️ あなたに合う仕事</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここで、<br>守護神が視せてくれた<br>もう一つのことを<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">あなたが本当に<br>力を発揮できる<br>仕事の形です。</p>
+            <p style="margin-bottom: 90px;">まず、<br>あなたが重ねてきた<br>年月についてお伝えします。</p>
+            <p style="margin-bottom: 90px;">五十を過ぎ、<br>これまで歩んできた時間を、<br>あなたはもしかすると<br>「今さら」と<br>引け目に感じているかもしれません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも、<br>それは逆です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたのその年輪こそが、<br>これからの仕事で<br>一番の強みになります。</p>
+            <p style="margin-bottom: 90px;">あなたに合うのは、<br>若さや勢いで<br>駆け抜ける場所ではありません。</p>
+            <p style="margin-bottom: 90px;">これまで積み重ねてきた<br>落ち着きと<br>実務の確かさを、<br>「この人だから任せられる」と<br>頼りにされる場所です。</p>
+            <p style="margin-bottom: 90px;">視えているのは、<br>こういう仕事です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">一つは、<br>任されて、<br>自分の判断で動かせる仕事。</p>
+            <p style="margin-bottom: 90px;">言われた通りに<br>こなすだけの役割では、<br>あなたの芯は満たされません。</p>
+            <p style="margin-bottom: 90px;">一つの現場、<br>一つの持ち場を、<br>あなたが預かって回していく。<br>そういう「任される」形が、<br>あなたを生き生きとさせます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">もう一つは、<br>手に職として、<br>長く続けていける仕事。</p>
+            <p style="margin-bottom: 90px;">一度身につけたら、<br>年齢に関係なく<br>ずっと使える技術や役割。<br>コロコロ変わるものより、<br>腰を据えて<br>深めていける仕事が向いています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして、<br>人を支え、<br>面倒を見る役割。</p>
+            <p style="margin-bottom: 90px;">あなたには、<br>どっしりと構えて<br>周りを守る力があります。<br>年下の人を支えたり、<br>現場をまとめたり、<br>誰かの相談役になったり。<br>そういう場所で、<br>あなたは頼られ、<br>必要とされます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">さらに、<br>堅実に、<br>物事をきちんと回していく仕事。</p>
+            <p style="margin-bottom: 90px;">数字やお金、<br>段取りや管理。<br>派手ではなくても、<br>あなたが関わると<br>物事がきちんと収まっていく。<br>その堅実さは、<br>どんな場所でも重宝されます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これらに共通しているのは、<br>「あなたが要になれる場所」<br>だということ。</p>
+            <p style="margin-bottom: 90px;">隅で言われるまま動くのではなく、<br>あなたがいるから<br>その場所が回っていく。<br>そういう仕事に出会ったとき、<br>あなたの心は<br>「ここだ」と動きます。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">年齢は、<br>あなたを狭めるものではありません。<br>これまで生きてきた分だけ、<br>あなたを求める場所は<br>ちゃんとあります。</p>
+        </div>
+
+        <!-- 今後の流れ -->
+        <h2 id="sec-flow">【今後の流れ】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから、<br>あなたの大切な四つの月について<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">今年の5月を過ぎたあたり</p>
+            <p style="margin-bottom: 90px;">少し、思い返してみてください。</p>
+            <p style="margin-bottom: 90px;">この頃、<br>あなたの中で<br>何かが静かに定まり始めて<br>いなかったでしょうか。</p>
+            <p style="margin-bottom: 90px;">これまで頭の中でぐるぐるしていた<br>「本当にここでいいのか」が、</p>
+            <p style="margin-bottom: 90px;">ある時ふと、<br>「自分はこういう場所で働きたい」という<br>はっきりとした言葉に<br>変わり始めていた。</p>
+            <p style="margin-bottom: 90px;">これまで素通りしていた選択肢が、<br>急に気になり出した。</p>
+            <p style="margin-bottom: 90px;">もし、<br>そんな小さな心の動きがあったなら、<br>それこそが、<br>あなたの道が動き始めた<br>最初の兆しです。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年8月</p>
+            <p style="margin-bottom: 90px;">人と情報が動き出す月です。</p>
+            <p style="margin-bottom: 90px;">応募や問い合わせ、<br>面談の予定が入ったり、<br>知り合いを通じて<br>「こういう話があるよ」と<br>声がかかったりします。</p>
+            <p style="margin-bottom: 90px;">この月は、<br>一人で抱え込まず、<br>人と関わる場に<br>積極的に出てみてください。</p>
+            <p style="margin-bottom: 90px;">あなたの道は、<br>人と関わった先で<br>転がり始めます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2026年9月　― 守護神の月 ―</p>
+            <p style="margin-bottom: 90px;">この月が、<br>今年のあなたにとって<br>最も大きな転換の月です。</p>
+            <p style="margin-bottom: 90px;">日の巡りと守護神の力が<br>最も強く重なり、<br>大山祇神の加護が、<br>あなたのもとへ<br>一気に流れ込んできます。</p>
+            <p style="margin-bottom: 90px;">これまで止まっていた歯車が、<br>音を立てて噛み合い始める。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「ここだ」と、<br>腹が決まる瞬間が訪れます。</p>
+            <p style="margin-bottom: 90px;">面談が具体的に進んだり、<br>採用の連絡が来たり、<br>条件がまとまったり。<br>形になる出来事が、<br>この月に重なってきます。</p>
+            <p style="margin-bottom: 90px;">もし、<br>胸の奥が急に軽くなったり、<br>迷いがふっと晴れる感覚があれば、<br>それは、<br>守護神があなたの背中を<br>押してくれている合図です。</p>
+            <p style="margin-bottom: 90px;">その流れに、<br>どうか身を任せてください。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年11月</p>
+            <p style="margin-bottom: 90px;">秋の見定めが実を結び、<br>新しい場所での<br>あなたの立ち位置が定まっていく月です。</p>
+            <p style="margin-bottom: 90px;">人間関係や役割が<br>少しずつ形になり、<br>「ここに根を張っていける」<br>そんな実感が、<br>静かに芽生えてきます。</p>
+            <p style="margin-bottom: 90px;">今年2026年は、<br>あなたにとって、<br>新しい場所へ根を張り替える、<br>土台の年です。</p>
+            <p style="margin-bottom: 90px;">無理に何かを掴みにいく年ではなく、<br>自然に流れが動いていく年。<br>動いて、<br>人と関わっていれば、<br>道のほうから<br>あなたに近づいてきます。</p>
+            <p style="margin-bottom: 90px;">そして来年2027年は、<br>新しい場所で<br>あなたの立場が定まり、<br>腰を据えて<br>力を発揮していく年になります。</p>
+            <p style="margin-bottom: 0;">年長者に支えられ、<br>信頼を得て、<br>「ここが自分の場所」と<br>言い切れる一年です。</p>
+        </div>
+
+        <!-- ゆか様らしい歩み方 -->
+        <h2 class="emoji-header" id="sec-guardian">⛩️ ゆか様らしい歩み方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここからは、<br>今日からあなたにできる、<br>守護を高める歩み方をお伝えします。</p>
+            <p style="margin-bottom: 90px;">そして、<br>安心してください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたのことを深く視たとき、<br>特別な守護の力を、<br>あなたの奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px;">それは、<br><span style="color: #ffd966;">大山祇神</span>の、<br>どっしりと大地に根を張る力。</p>
+            <p style="margin-bottom: 90px;">この力は、<br>あなたの迷いを静め、<br>あなたの軸を支え、<br>「自分の場所」へ向かう流れを<br>静かに整えていきます。</p>
+            <p style="margin-bottom: 90px;">今この文を読んでいる間にも、</p>
+            <p style="margin-bottom: 90px;">胸のあたりが少し温かくなる、<br>肩の力がふっと抜ける、<br>足の裏が地面に<br>しっかりついた感覚がする。</p>
+            <p style="margin-bottom: 90px;">もしそのような感覚があれば、<br>すでに守護の力が<br>届き始めている証です。</p>
+            <p style="margin-bottom: 90px;">これは、<br>何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ受け取るだけで、<br>大丈夫です。</p>
+            <p style="margin-bottom: 90px;">今のあなたに必要なのは、<br>無理に頑張ることではありません。</p>
+            <p style="margin-bottom: 90px;">まずは、<br>この守護の流れを受け取ること。<br>それだけでも、<br>運の流れは変わり始めます。</p>
+            <p style="margin-bottom: 90px;">もし余裕がある時だけ、<br>以下のことを試してみてください。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">山の神様の神社へ行く</p>
+            <p style="margin-bottom: 90px;">あなたのお近くで、<br>大山祇神と同じ、<br>山の神様をお祀りしている神社があります。</p>
+            <p style="margin-bottom: 90px; color: #f0f0ff;">横見神社（岡山県真庭市社758）<br>山祇神社（岡山県真庭市関1734）<br>八幡神社（岡山県真庭市鹿田1537）<br>山神社（岡山県真庭市鹿田2109）</p>
+            <p style="margin-bottom: 90px;">お参りの際は、<br>以下の言葉を<br>心の中で唱えてみてください。</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">祓え給い、清め給え、<br>神ながら守り給い、幸え給え<br>（はらえたまい、きよめたまえ、<br>かむながらまもりたまい、さきわえたまえ）</p>
+            <p style="margin-bottom: 90px;">そして、<br>お願い事を並べるのではなく</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">「私は、自分の場所を選び取ります。<br>どうか見守っていてください」</p>
+            <p style="margin-bottom: 90px;">そう伝えてください。</p>
+            <p style="margin-bottom: 90px;">神様への祈りは、<br>願いを叶えてもらうためではなく、<br>自分が歩むことを宣言し、<br>その歩みを助けてもらうもの。<br>その姿勢が、<br>守護神との縁を<br>より深くしてくれます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">朝、山や空を見上げる</p>
+            <p style="margin-bottom: 90px;">朝、<br>少しだけ空を見上げて、<br>深呼吸を一度。<br>遠くに山が見えるなら、<br>その山にそっと心を向けて。<br>それだけで、<br>守護の巡りは<br>さらに深くなります。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">足元を整える</p>
+            <p style="margin-bottom: 0;">疲れた日は、<br>塩をひとつまみ入れたお風呂に<br>ゆっくり浸かってください。<br>足の裏から、<br>地に足がつく感覚が<br>戻ってきます。</p>
+        </div>
+
+        <!-- あなたを支えるパワーストーン -->
+        <h2 class="emoji-header" id="sec-stone">⛩️ あなたを支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">あなたには、<br>守護神のご縁をお伝えし、<br>その力を<br>あなたの奥底に置いてきました。</p>
+            <p style="margin-bottom: 90px;">また、<br>守護神と縁のある神社と、<br>お参りの際に力を取り入れる方法も<br>お伝えしました。</p>
+            <p style="margin-bottom: 90px;">基本的には、<br>これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>守護の力は、<br>何もしなければ、<br>少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">なかなか時間が取れない、<br>神社が遠くて<br>頻繁には行けない。<br>そういう方も<br>いらっしゃると思います。</p>
+            <p style="margin-bottom: 90px;">そのような方に、<br>ぜひお勧めしたいのが、<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px;">守護神の力を石に宿し、<br>いつも身近に<br>持ち歩くことができます。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>どんな石でも<br>よいわけではありません。</p>
+            <p style="margin-bottom: 90px;">あなたが持つエネルギーと、<br><span style="color: #ffd966;">大山祇神</span>が共鳴しやすい石で<br>お作りする必要があります。</p>
+            <p style="margin-bottom: 90px;">あなたと守護神が<br>共鳴しやすい石を、<br>三つお伝えします。</p>
+            <ul style="margin-bottom: 90px;">
+                <li><span style="color: #ffd966; font-weight: bold;">1. 翡翠（ひすい）</span><br>深い森の緑を宿し、古くから<br>「根を張り、実を結ぶ」石として<br>大切にされてきました。<br>迷いの中でも自分の芯を保ち、<br>努力を確かな成功へとつなげてくれます。<br>あなたの森の緑のエネルギーと、<br>最も響き合う石です。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">2. カーネリアン（紅玉髄）</span><br>新しい一歩を踏み出す<br>勇気と行動力を与えてくれる石。<br>迷いで足が止まりそうなとき、<br>背中をそっと押し、<br>外へ動き出す力をくれます。<br>「探して、動く」今のあなたを<br>支えてくれる石です。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">3. タイガーアイ（虎目石）</span><br>決断と実行を後押しする石。<br>「ここだ」と決めた瞬間に、<br>迷わず一歩を踏み出す力を<br>与えてくれます。<br>選んだあとに軸を全開にする、<br>あなたの背中を押してくれます。</li>
+            </ul>
+            <p style="margin-bottom: 90px;">この中から、<br>あなたのエネルギーと<br>最もバランスの取れる組み合わせを<br>私が選び、<br>一つずつ手作りで仕上げます。</p>
+            <p style="margin-bottom: 0;">ご希望の場合は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <h2 id="sec-closing">【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">ゆか様、</p>
+            <p style="margin-bottom: 90px;">あなたの未来には、<br>自分で選び取った場所に<br>どっしりと根を張っている、<br>その日へと続く道が<br>視えています。</p>
+            <p style="margin-bottom: 90px;">新しい場所で、<br>背筋を伸ばして立ち、<br>周りから頼られながら、<br>生き生きと働く姿。</p>
+            <p style="margin-bottom: 90px;">今は、<br>迷いの中に<br>いるかもしれない。</p>
+            <p style="margin-bottom: 90px;">「本当にここでいいのか」と、<br>何度も問いを<br>繰り返しているかもしれない。</p>
+            <p style="margin-bottom: 90px;">でもそれは、<br>あなたがいい加減に<br>決められない人だからではありません。</p>
+            <p style="margin-bottom: 90px;">自分の人生を、<br>自分の芯で選び取りたい。<br>その願いが、<br>人一倍強いから。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">正しい感覚です。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>自分の場所に根を張れば、<br>誰よりも強く立てる人。</p>
+            <p style="margin-bottom: 90px;">そして、<br>動くことで、<br>道が開ける人です。</p>
+            <p style="margin-bottom: 90px;">じっと考え続けるより、<br>外に出て、<br>人と関わってみてください。<br>そこから、<br>道は開けていきます。</p>
+            <p style="margin-bottom: 90px;">それが、<br>あなたの幸せへの道。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">大山祇神</span>が、<br>あなたを守っています。<br>高い山の上から、<br>あなたにとっての本物の場所を、<br>今も見定めてくれています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>自分の場所を<br>選び取っていい。</p>
+            <p style="margin-bottom: 90px;">迷ってきた時間は、<br>無駄ではありませんでした。<br>その時間があったから、<br>今、あなたは<br>選び取れるところまで<br>辿り着いています。</p>
+            <p style="margin-bottom: 90px;">守られている。<br>その事実を、<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より、<br>遠隔守護祈祷を行い、<br>あなたの幸せを願います。</p>
+            <p style="margin-bottom: 90px;">あなたの未来に、<br>確かな居場所と豊かさが<br>満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>
