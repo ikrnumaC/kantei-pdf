@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>はな様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+
+            .toc {
+                padding: 20px 15px;
+            }
+
+            .toc-title {
+                font-size: 1.1em;
+            }
+
+            .toc a {
+                font-size: 0.95em;
+                padding: 12px 6px 12px 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">新しい命を迎える道</h2>
+            <p class="cover-name">はな様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 目次 -->
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-god">守護神について</a></li>
+                <li><a href="#sec-essence">あなたという人の本質</a></li>
+                <li><a href="#sec-1">あなたが自分に許していないこと</a></li>
+                <li><a href="#sec-2">芽吹きが訪れる時期</a></li>
+                <li><a href="#sec-3">ご家族の流れ</a></li>
+                <li><a href="#sec-4">土壌の活かし方</a></li>
+                <li><a href="#sec-guardian">守護を高める歩み方</a></li>
+                <li><a href="#sec-stone">あなたを支えるパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
+        <!-- 冒頭 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">はな様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂が、<br>「二人で家族を育てていきたい」と、<br>静かに、けれど強く願っている。</p>
+            <p style="margin-bottom: 90px;">その真っ直ぐな祈りが、<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先、<br>あなたが本当に知るべきことを、<br>一つひとつ丁寧にお伝えしていきます。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が、<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>2027年。</p>
+            <p style="margin-bottom: 90px;">木々が濃く緑を深め、<br>やわらかな光が家の中まで<br>差し込む頃。</p>
+            <p style="margin-bottom: 90px;">その光の真ん中に、<br>小さな新しい気配があります。</p>
+            <p style="margin-bottom: 90px;">はな様と旦那様が、<br>その気配を囲んで、<br>顔を見合わせて笑い合っている。</p>
+            <p style="margin-bottom: 90px;">言葉はいらない。</p>
+            <p style="margin-bottom: 90px;">ただ「よかったね」と、<br>目と目で伝え合っている。</p>
+            <p style="margin-bottom: 90px;">そういう景色が、<br>はっきりと視えています。</p>
+            <p style="margin-bottom: 90px;">ただ──</p>
+            <p style="margin-bottom: 90px;">その景色に至るまでに、<br>あなたが越えるべき小さな壁が、<br>一つだけあります。</p>
+            <p style="margin-bottom: 90px;">それは、<br>外にあるものではありません。</p>
+            <p style="margin-bottom: 90px;">他の誰でもない、<br>あなた自身の内側にある、<br>静かな焦りです。</p>
+            <p style="margin-bottom: 90px;">でも、大丈夫です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その壁を、<br>あなたは越えられる。</p>
+            <p style="margin-bottom: 0;">なぜなら、<br>あなたを守る神様が、<br>すでにあなたの土に、<br>芽吹きのための水を<br>注ぎ始めているからです。</p>
+        </div>
+
+        <!-- 守護神について -->
+        <div class="oracle-message" id="sec-god">
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは、<br><span style="color: #ffd966;">五十猛命</span>（いそたけるのみこと）。</p>
+            <p style="margin-bottom: 90px;">はるか昔、<br>父である須佐之男命から、<br>木の種を託された五十猛命は、</p>
+            <p style="margin-bottom: 90px;">姉神とともに<br>この国じゅうを巡り歩き、<br>まだ何も生えていない土地に、<br>一本、また一本と<br>木を植えていきました。</p>
+            <p style="margin-bottom: 90px;">荒れた大地が、<br>やがて深い緑で満ちていく。</p>
+            <p style="margin-bottom: 90px;">命のないところに、<br>命を根付かせていく。</p>
+            <p style="margin-bottom: 90px;">五十猛命とは、<br>そういう神様です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「新しい命を育て、<br>土地を生命で満たす神」。</p>
+            <p style="margin-bottom: 90px;">今その総本社は、<br>和歌山の伊太祁曽神社に鎮まり、<br>「木の神・いのちの神」として<br>祀られています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたのオーラは、<br>深い森の緑。</p>
+            <p style="margin-bottom: 90px;">五十猛命が満たしていった<br>あの緑と、<br>同じ色をしています。</p>
+            <p style="margin-bottom: 90px;">数えきれない神様の中で、<br>まさに「命を育てる神」が、<br>あなたのそばにいてくださる。</p>
+            <p style="margin-bottom: 0;">これは今のあなたにとって、<br>これ以上ないほど<br>心強い守りです。</p>
+            <img src="../鑑定画像/五十猛命.png" alt="五十猛命" class="guardian-image">
+        </div>
+
+        <!-- あなたという人の本質 -->
+        <h2 class="emoji-header" id="sec-essence">⛩️ あなたという人の本質</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">あなたの魂の奥を、<br>深く視させていただきました。</p>
+            <p style="margin-bottom: 90px;">そこにあったものを、<br>ここでお伝えしていきます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">まず一つ目。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>大切なものを<br>真っ直ぐに育てていく人。</p>
+            <p style="margin-bottom: 90px;">一度「大切だ」と決めたものを、<br>簡単に手放すことができない人です。</p>
+            <p style="margin-bottom: 90px;">人でも、仕事でも、関わりでも。</p>
+            <p style="margin-bottom: 90px;">周りが「もう十分じゃない？」と<br>言うようなときでも、</p>
+            <p style="margin-bottom: 90px;">あなたは最後まで手をかけ、<br>時間をかけて育てようとする。</p>
+            <p style="margin-bottom: 90px;">それはあなたの中にある、<br>深い母性そのものです。</p>
+            <p style="margin-bottom: 90px;">新しい命を、<br>時間をかけて<br>慈しんで育てていける人。</p>
+            <p style="margin-bottom: 90px;">その資質を、<br>あなたは最初から持っています。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">二つ目。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>静かに整った暮らしよりも、</p>
+            <p style="margin-bottom: 90px;">誰かが増えて、<br>笑い声が増えていく暮らしに、<br>心が動く人です。</p>
+            <p style="margin-bottom: 90px;">これから先の景色を思うとき、</p>
+            <p style="margin-bottom: 90px;">しんと静かな部屋より、<br>賑やかで、<br>少し慌ただしくて温かい家。</p>
+            <p style="margin-bottom: 90px;">そういう未来を思い描くと、<br>胸の奥がふっと明るくなる。</p>
+            <p style="margin-bottom: 90px;">それはあなたの魂が、<br>「家族を増やして育てていく人生」を、<br>最初から望んでいるからです。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">三つ目。</p>
+            <p style="margin-bottom: 90px;">これはあなたが普段、<br>誰にも見せていない<br>深い部分のお話です。</p>
+            <p style="margin-bottom: 90px;">あなたの内側には、</p>
+            <p style="margin-bottom: 90px;">「どうしてうまくいかないのか」と、</p>
+            <p style="margin-bottom: 90px;">静かに自分を追い込んでしまう<br>癖があります。</p>
+            <p style="margin-bottom: 90px;">表には出さない。</p>
+            <p style="margin-bottom: 90px;">周りには穏やかで、<br>おおらかな人に見えている。</p>
+            <p style="margin-bottom: 90px;">でも夜、一人になると、</p>
+            <p style="margin-bottom: 90px;">「私だけ遅れているのでは」</p>
+            <p style="margin-bottom: 90px;">「何が足りないのだろう」と、</p>
+            <p style="margin-bottom: 90px;">答えの出ない問いを胸の奥で、<br>ぐるぐると巡らせてしまう。</p>
+            <p style="margin-bottom: 90px;">その静かな焦りが、</p>
+            <p style="margin-bottom: 90px;">本当はとても豊かなはずの<br>あなたの土を、<br>少しずつ乾かしてしまっている。</p>
+            <p style="margin-bottom: 90px;">でも、これは欠点ではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それだけ真剣に、<br>心の底から望んでいる、という証。</p>
+            <p style="margin-bottom: 90px;">そしてその焦りの奥には、</p>
+            <p style="margin-bottom: 90px;">あなたがずっと誰にも言えずに<br>抱えてきた、</p>
+            <p style="margin-bottom: 90px;">もっと深い痛みが隠れています。</p>
+            <p style="margin-bottom: 0;">ここから、<br>そのお話をさせてください。</p>
+        </div>
+
+        <!-- あなたが自分に許していないこと -->
+        <h2 class="emoji-header" id="sec-1">⛩️ あなたが自分に許していないこと</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここからはあなたの魂の、<br>一番深いところに<br>触れさせていただきます。</p>
+            <p style="margin-bottom: 90px;">少し勇気のいるお話かもしれません。</p>
+            <p style="margin-bottom: 90px;">でもここを越えることが、</p>
+            <p style="margin-bottom: 90px;">あなたの芽吹きにとって、<br>一番大切な鍵になります。</p>
+            <p style="margin-bottom: 90px;">あなたの心の奥に、</p>
+            <p style="margin-bottom: 90px;">ずっと誰にも言えずに<br>抱えてきた痛みがあります。</p>
+            <p style="margin-bottom: 90px;">かつて一度、<br>あなたのもとに<br>小さな命が訪れてくれたこと。</p>
+            <p style="margin-bottom: 90px;">そしてそのときのあなたには、</p>
+            <p style="margin-bottom: 90px;">まだ迎えるための準備が<br>整っていなかったこと。</p>
+            <p style="margin-bottom: 90px;">あなたは今もそのことで、</p>
+            <p style="margin-bottom: 90px;">「自分には子どもを望む資格がない」と、</p>
+            <p style="margin-bottom: 90px;">ご自分を責め続けておられます。</p>
+            <p style="margin-bottom: 90px;">大切な人との間に、<br>そっと距離を置いてこられたのも、</p>
+            <p style="margin-bottom: 90px;">その痛みからご自分を<br>守るためだったのですね。</p>
+            <p style="margin-bottom: 90px;">でも、どうか聞いてください。</p>
+            <p style="margin-bottom: 90px;">あのときのあなたの選択は、<br>「愛が足りなかった」から<br>ではありません。</p>
+            <p style="margin-bottom: 90px;">むしろその逆です。</p>
+            <p style="margin-bottom: 90px;">あなたは命というものを、<br>軽く扱えなかった。</p>
+            <p style="margin-bottom: 90px;">「ちゃんと迎えられないのに、<br>迎えてはいけない」と、</p>
+            <p style="margin-bottom: 90px;">それだけ真剣に、<br>その小さな命のことを<br>考えられる人だった。</p>
+            <p style="margin-bottom: 90px;">覚悟が足りなかったのでは<br>ありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">覚悟の重さを、<br>誰よりも深く知っていたのです。</p>
+            <p style="margin-bottom: 90px;">一度あなたのもとに来てくれた命は、</p>
+            <p style="margin-bottom: 90px;">あなたを責めるために<br>来たのではありません。</p>
+            <p style="margin-bottom: 90px;">「この人は本気で<br>命を大切にできる人だ」</p>
+            <p style="margin-bottom: 90px;">そのことをあなたに伝えて、</p>
+            <p style="margin-bottom: 90px;">そしてあなたの土を、<br>そっとやわらかくして、</p>
+            <p style="margin-bottom: 90px;">また巡ってくるために、<br>一度還っていった。</p>
+            <p style="margin-bottom: 90px;">そういう命です。</p>
+            <p style="margin-bottom: 90px;">あなたが<span style="color: #ffd966;">五十猛命</span>に<br>守られていること。</p>
+            <p style="margin-bottom: 90px;">それには深い意味があります。</p>
+            <p style="margin-bottom: 90px;">五十猛命は、<br>命を裁く神ではありません。</p>
+            <p style="margin-bottom: 90px;">一度草木の絶えた土地にも、<br>もう一度緑を芽吹かせる神。</p>
+            <p style="margin-bottom: 90px;">荒れた大地を、<br>ふたたび生命で<br>満たしていく神です。</p>
+            <p style="margin-bottom: 90px;">その神様が、<br>数えきれない人の中から、<br>あなたを選んで<br>守ってくださっている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>「あなたの土はもう一度必ず芽吹く」<br>という、何よりの証です。</p>
+            <p style="margin-bottom: 90px;">そして──</p>
+            <p style="margin-bottom: 90px;">あなたが最近、<br>「やはり子どものいる人生を送りたい」と、<br>もう一度願えるようになったこと。</p>
+            <p style="margin-bottom: 90px;">それこそが、<br>あのとき足りないと感じた「覚悟」が、<br>時間をかけてあなたの中で<br>静かに満ちた、<br>その証なのです。</p>
+            <p style="margin-bottom: 90px;">これはわがままではありません。</p>
+            <p style="margin-bottom: 90px;">誰かを愛し、命を育てたいと願うことは、<br>わがままとは正反対のものです。</p>
+            <p style="margin-bottom: 90px;">だからあなたの問いに、<br>はっきりとお答えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、<br>幸せを望んでいい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">望んでいいどころか、<br>その幸せを受け取る準備は<br>もうできています。</p>
+            <p style="margin-bottom: 90px;">自分を責める時間は、<br>もう終わりにして大丈夫です。</p>
+            <p style="margin-bottom: 90px;">ここから先は、<br>過去を悔いるためではなく、</p>
+            <p style="margin-bottom: 0;">これから来てくれる命を<br>迎えるために、<br>あなたの心を使ってあげてください。</p>
+        </div>
+
+        <!-- 芽吹きが訪れる時期 -->
+        <h2 class="emoji-header" id="sec-2">⛩️ 芽吹きが訪れる時期</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">新しい命を迎える流れについて、<br>守護神が見せてくださっている<br>時期をお伝えします。</p>
+            <p style="margin-bottom: 90px;">まず、安心してほしいこと。</p>
+            <p style="margin-bottom: 90px;">今のあなたは、<br>「授からない」のではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「迎えるための土を整えられている」<br>時間の中にいます。</p>
+            <p style="margin-bottom: 90px;">五十猛命があなたの土に、<br>そっと水を注ぎ、<br>根の準備をさせてくれている。</p>
+            <p style="margin-bottom: 90px;">その最初の動きが、<br>もう始まっています。</p>
+            <p style="margin-bottom: 90px;">近い流れから、<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年の秋　― とくに9月頃 ―</p>
+            <p style="margin-bottom: 90px;">この時期、<br>あなたを守る五十猛命の力が、<br>一年で最も強く<br>あなたの中へ流れ込んできます。</p>
+            <p style="margin-bottom: 90px;">それまでどこか乾いて、<br>止まっていたものが、<br>秋の風とともに<br>静かに動き出す。</p>
+            <p style="margin-bottom: 90px;">「あれ、なんだか少し<br>肩の力が抜けてきた」<br>そんな感覚が、<br>ふっと訪れます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年の11月から12月</p>
+            <p style="margin-bottom: 90px;">ここで、<br>あなたにずっと足りなかった<br>「潤い」が満ちてきます。</p>
+            <p style="margin-bottom: 90px;">体の巡りも、<br>心の巡りも、<br>やわらかく整っていく。</p>
+            <p style="margin-bottom: 90px;">乾いていた土に、<br>ようやく水が<br>行き渡っていく時期です。</p>
+            <p style="margin-bottom: 90px;">この2026年の秋から冬が、<br>芽吹きに向けて<br>あなたの土台が整っていく、<br>大切な時間になります。</p>
+            <p style="margin-bottom: 90px;">そして──<br>守護神が最も強く光を<br>見せているのは、</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2027年</p>
+            <p style="margin-bottom: 90px;">この年、<br>あなたの家庭に、<br>大きな喜びが訪れる兆しがあります。</p>
+            <p style="margin-bottom: 90px;">新しい命、<br>新しい家族。</p>
+            <p style="margin-bottom: 90px;">そういう「慶びの光」が、<br>2027年、<br>あなたの家の上に<br>はっきりと灯っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">授かりの流れが最も濃くなるのが、<br>この2027年。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ですから、<br>その先に生まれてくる<br>新しい命を迎えるのは、<br>2027年の後半から2028年頃に<br>かけての流れとして<br>視えています。</p>
+            <p style="margin-bottom: 90px;">そしてその子は、<br>存在感の大きな、<br>恵みの子。</p>
+            <p style="margin-bottom: 90px;">その子を迎えることで、<br>あなたの家庭は、<br>これまでとまるで違う<br>新しい景色へと<br>生まれ変わっていきます。</p>
+            <p style="margin-bottom: 90px;">だから、<br>今は焦らなくていい。</p>
+            <p style="margin-bottom: 90px;">今この時間は、<br>あなたが待たされている時間ではなく、</p>
+            <p style="margin-bottom: 0;">五十猛命が、<br>迎えるための土を<br>丁寧に整えてくれている時間なのです。</p>
+        </div>
+
+        <!-- ご家族の流れ -->
+        <h2 class="emoji-header" id="sec-3">⛩️ ご家族の流れ</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">新しい命を迎えたその先で、</p>
+            <p style="margin-bottom: 90px;">あなたのご家庭が<br>どうなっていくのか。</p>
+            <p style="margin-bottom: 90px;">守護神が見せてくださっている<br>景色をお伝えします。</p>
+            <p style="margin-bottom: 90px;">まず、<br>お伝えしたいことがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">はな様と旦那様は、<br>とても珍しいほど、<br>互いを補い合う組み合わせです。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>真っ直ぐに伸びていく、<br>大きな樹のような人。</p>
+            <p style="margin-bottom: 90px;">育てる力、<br>根を張る力が、<br>とても豊かです。</p>
+            <p style="margin-bottom: 90px;">けれどその樹に、<br>ただ一つ足りていなかったのが<br>「潤す水」でした。</p>
+            <p style="margin-bottom: 90px;">そして──<br>旦那様は、</p>
+            <p style="margin-bottom: 90px;">静かに、やさしく降りそそぐ、<br>雨のような人。</p>
+            <p style="margin-bottom: 90px;">あなたの土に足りない、<br>その「水」を、</p>
+            <p style="margin-bottom: 90px;">旦那様は、<br>何気ない日常の中で、<br>自然と注いでくれています。</p>
+            <p style="margin-bottom: 90px;">乾いていた土に、<br>水が届く。</p>
+            <p style="margin-bottom: 90px;">すると根が動き出し、<br>樹が芽吹く。</p>
+            <p style="margin-bottom: 90px;">これは新しい命が、<br>芽吹いていく形そのものです。</p>
+            <p style="margin-bottom: 90px;">あなた一人では足りなかったものが、<br>旦那様と二人でそろうことで、<br>ちょうど満ちる。</p>
+            <p style="margin-bottom: 90px;">「二人で家族を<br>つくっていけるだろうか」</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたが胸に抱えてきた<br>その問いへの答えは、<br>はっきりと「大丈夫」です、<br>とお答えします。</p>
+            <p style="margin-bottom: 90px;">むしろ、<br>二人だからこそ命が芽吹く。</p>
+            <p style="margin-bottom: 90px;">そういう組み合わせなのです。</p>
+            <p style="margin-bottom: 90px;">守護神はさらに、<br>深いところも見せてくれています。</p>
+            <p style="margin-bottom: 90px;">あなたを守る光の中には、<br>「尊く恵み豊かな子を授かる」<br>という兆しと、</p>
+            <p style="margin-bottom: 90px;">「慶び」を告げる光が、<br>すでに宿っています。</p>
+            <p style="margin-bottom: 90px;">そして旦那様を守る光の中には、<br>「父と母の慈しみ」が、<br>静かに灯っている。</p>
+            <p style="margin-bottom: 90px;">二人の守りの光が、<br>同じ場所で重なり合っている。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これは「二人でひとつの子を迎える形」が、<br>すでに整っている、<br>ということです。</p>
+            <p style="margin-bottom: 90px;">そうして新しい命を迎えたあと、</p>
+            <p style="margin-bottom: 90px;">あなたのご家庭は、<br>喜びと笑い声で満ちていきます。</p>
+            <p style="margin-bottom: 90px;">夫婦は、<br>互いを支え合う縁に<br>恵まれています。</p>
+            <p style="margin-bottom: 90px;">一人で背負う家庭ではなく、<br>二人で分かち合う家庭。</p>
+            <p style="margin-bottom: 90px;">その温かさが、<br>これから先のあなたの日常に<br>なっていきます。</p>
+            <p style="margin-bottom: 90px;">ただ一つだけ、<br>お伝えしておくこと。</p>
+            <p style="margin-bottom: 90px;">これから新しい命を願う時間の中で、<br>ときどき焦りから<br>少し急ぎすぎて、</p>
+            <p style="margin-bottom: 90px;">夫婦のあいだで<br>小さくぶつかる瞬間が、<br>訪れるかもしれません。</p>
+            <p style="margin-bottom: 90px;">とくにこの願いに関して、<br>二人のペースがほんの少し<br>ずれたときです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そういうときこそ、<br>急がないでください。</p>
+            <p style="margin-bottom: 0;">穏やかに歩幅を合わせて<br>整えていくことが、<br>これから訪れる豊かさを、<br>そっと守ってくれます。</p>
+        </div>
+
+        <!-- 土壌の活かし方 -->
+        <h2 class="emoji-header" id="sec-4">⛩️ 土壌の活かし方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここまでお伝えしてきた通り、</p>
+            <p style="margin-bottom: 90px;">あなたの中の「育てる土壌」は、<br>すでにとても豊かに整っています。</p>
+            <p style="margin-bottom: 90px;">母性も、<br>根を張る力も、<br>家庭を育てる力も、<br>十分すぎるほど<br>あなたは持っている。</p>
+            <p style="margin-bottom: 90px;">足りていないのは、<br>たった一つ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「潤い」、<br>つまり心の安らぎだけです。</p>
+            <p style="margin-bottom: 90px;">だからこそ、<br>あなたにとって一番大切な歩み方は、</p>
+            <p style="margin-bottom: 90px;">「もっと頑張ること」ではありません。</p>
+            <p style="margin-bottom: 90px;">むしろ、逆です。</p>
+            <p style="margin-bottom: 90px;">あなたの中の、<br>あの静かな焦りを、<br>「乾き」を手放していくこと。</p>
+            <p style="margin-bottom: 90px;">そして、<br>旦那様がくれる潤いと、<br>五十猛命が注いでくれる水を、<br>ただ受け取ること。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これが、<br>あなたの豊かな土壌を<br>本当に活かす、<br>たった一つの鍵です。</p>
+            <p style="margin-bottom: 90px;">あなたは真面目で<br>一生懸命な人だから、</p>
+            <p style="margin-bottom: 90px;">つい「自分がもっと頑張らなければ」<br>と考えてしまう。</p>
+            <p style="margin-bottom: 90px;">でも、あなたの場合は、</p>
+            <p style="margin-bottom: 90px;">一人で頑張って<br>土を乾かしてしまうより、</p>
+            <p style="margin-bottom: 90px;">力を抜いて二人で、<br>そして守護に委ねて<br>満ちていくほうが、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ずっと早く芽吹きます。</p>
+            <p style="margin-bottom: 90px;">おおらかさを取り戻すほど、<br>あなたの「産み育てる力」は、<br>のびのびと働き始めます。</p>
+            <p style="margin-bottom: 0;">「そんなに気負わなくて大丈夫」<br>守護神は、<br>あなたにそう伝えています。</p>
+        </div>
+
+        <!-- 守護を高める歩み方 -->
+        <h2 class="emoji-header" id="sec-guardian">⛩️ 守護を高める歩み方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここからは、<br>あなたの守護を高め、<br>芽吹きの流れを引き寄せていくために、<br>今日からできることを<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">まず、安心してください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたを深く霊視した際、<br><span style="color: #ffd966;">五十猛命</span>のやわらかな守りの力を、<br>あなたの魂の奥に<br>そっと置いてきました。</p>
+            <p style="margin-bottom: 90px;">この力は、<br>乾いていたあなたの土に<br>静かに水を巡らせ、</p>
+            <p style="margin-bottom: 90px;">芽吹きの準備を整えていきます。</p>
+            <p style="margin-bottom: 90px;">今この文を読みながら、</p>
+            <p style="margin-bottom: 90px;">胸の奥がふっと温かくなる、<br>肩の力が抜ける、<br>呼吸が深くなる。</p>
+            <p style="margin-bottom: 90px;">もしそういう感覚があれば、</p>
+            <p style="margin-bottom: 90px;">すでに五十猛命の神気が、<br>あなたの中に<br>届き始めている証です。</p>
+            <p style="margin-bottom: 90px;">これは、<br>何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ受け取るだけで、<br>大丈夫です。</p>
+            <p style="margin-bottom: 90px;">そのうえで、<br>余裕のあるときだけ、<br>試していただきたいことを<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【縁のある神社へ】</p>
+            <p style="margin-bottom: 90px;">五十猛命の総本社は、<br>和歌山の伊太祁曽神社。</p>
+            <p style="margin-bottom: 90px;">「木の神・いのちの神」として<br>祀られています。</p>
+            <p style="margin-bottom: 90px;">ただ、和歌山は<br>気軽に行ける距離ではありません。</p>
+            <p style="margin-bottom: 90px;">ですから、<br>あなたの暮らす出水の地に、<br>深いご縁のある社を一つ<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">加紫久利神社<br>（鹿児島県出水市下鯖町1272）</p>
+            <p style="margin-bottom: 90px;">この社は古くから、<br>樫や栗の茂る森の山を<br>信仰の山として、</p>
+            <p style="margin-bottom: 90px;">命を養う実り豊かな緑とともに<br>祀られてきました。</p>
+            <p style="margin-bottom: 90px;">五十猛命が満たしていった<br>あの「緑」と、<br>深く響き合う場所です。</p>
+            <p style="margin-bottom: 90px;">そしてここには、</p>
+            <p style="margin-bottom: 90px;">伊邪那岐命と伊邪那美命、</p>
+            <p style="margin-bottom: 90px;">夫婦で力を合わせ、<br>この国と数えきれない命を<br>生み出していった、</p>
+            <p style="margin-bottom: 90px;">「生命を生む夫婦の神様」が、<br>ともに祀られています。</p>
+            <p style="margin-bottom: 90px;">新しい命を二人で迎えたいと願う<br>あなたにとって、</p>
+            <p style="margin-bottom: 90px;">これ以上ふさわしい社は<br>ありません。</p>
+            <p style="margin-bottom: 90px;">参拝の際は、<br>心の中で次の祝詞を<br>唱えてください。</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">祓え給い、清め給え、<br>神ながら守り給い、<br>幸え給え<br>（はらえたまい、きよめたまえ、<br>かむながらまもりたまい、<br>さきわえたまえ）</p>
+            <p style="margin-bottom: 90px;">そして、<br>お願い事を並べるのではなく、</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">「二人で温かい家庭を<br>育てていきます。<br>どうか見守っていてください」</p>
+            <p style="margin-bottom: 90px;">という形で伝えてください。</p>
+            <p style="margin-bottom: 90px;">神様への祈りは、<br>願いを叶えてもらうものではなく、<br>自分の歩む道を宣言し、<br>その歩みを助けていただくもの。</p>
+            <p style="margin-bottom: 90px;">その姿勢が、<br>守護神とのご縁を<br>深くしてくれます。</p>
+            <p style="margin-bottom: 90px;">少し遠い場合は、</p>
+            <p style="margin-bottom: 90px; color: #f0f0ff;">八坂神社（鹿児島県出水市麓町2-33）<br>八坂神社（鹿児島県出水市住吉町27-8）<br>八坂神社（鹿児島県出水市下知識町111-3）<br>矢越神社（鹿児島県出水市下鯖町7139）<br>韓国宇豆峯神社（鹿児島県霧島市国分上井898）</p>
+            <p style="margin-bottom: 90px;">あたりに足を運んでください。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【朝、緑に触れる】</p>
+            <p style="margin-bottom: 90px;">五十猛命は、<br>木と緑とともに動く神様です。</p>
+            <p style="margin-bottom: 90px;">朝、少しだけ、</p>
+            <p style="margin-bottom: 90px;">庭の木や道ばたの草花、<br>鉢植えの緑に<br>そっと触れてみてください。</p>
+            <p style="margin-bottom: 90px;">土や葉の湿り気に<br>指先が触れると、</p>
+            <p style="margin-bottom: 90px;">あなたの中に足りなかった<br>「潤い」が、</p>
+            <p style="margin-bottom: 90px;">五十猛命の神気とともに、<br>静かに満ちてきます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【おおらかに、楽しむ】</p>
+            <p style="margin-bottom: 90px;">あなたの土壌は、</p>
+            <p style="margin-bottom: 90px;">あなたがおおらかに<br>笑っているとき、<br>一番よく働きます。</p>
+            <p style="margin-bottom: 90px;">「ちゃんとしなきゃ」を<br>一つ手放して、</p>
+            <p style="margin-bottom: 90px;">好きなお茶を飲む、<br>旦那様とくだらない話で笑う、<br>何もしない時間を過ごす。</p>
+            <p style="margin-bottom: 90px;">そういう「潤いの時間」を、</p>
+            <p style="margin-bottom: 90px;">一日にひとつ、<br>自分に許してあげてください。</p>
+            <p style="margin-bottom: 0;">その安らぎが、<br>あなたの土を潤し、<br>芽吹きを早めてくれます。</p>
+        </div>
+
+        <!-- あなたを支えるパワーストーン -->
+        <h2 class="emoji-header" id="sec-stone">⛩️ あなたを支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">あなたには、<br>守護神とのご縁をお伝えし、<br>五十猛命の守りの力を<br>魂の奥に置いてきました。</p>
+            <p style="margin-bottom: 90px;">縁のある社や、<br>朝の緑、<br>おおらかな時間のことも<br>お伝えしました。</p>
+            <p style="margin-bottom: 90px;">基本的には、<br>これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>守護の力は何もしなければ、<br>日々の忙しさの中で<br>少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">そういうときに<br>ぜひお勧めしたいのが、<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px;">五十猛命の力を石に宿し、<br>身近に持つことで、<br>日常の中で神気を<br>保ち続けることができます。</p>
+            <p style="margin-bottom: 90px;">あなたのエネルギーと<span style="color: #ffd966;">五十猛命</span>が<br>共鳴しやすい石を、<br>三つお伝えします。</p>
+            <ul style="margin-bottom: 90px;">
+                <li><span style="color: #ffd966; font-weight: bold;">1. ムーンストーン</span><br>月のような乳白色の石。<br>満ちていく月のように<br>「静かに満ちて実る力」を<br>支えてくれる石です。<br>あなたの女性性と、<br>新しい命を授かる力を<br>やわらかく高めてくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">2. ローズクォーツ</span><br>やさしいピンクの石。<br>あなたに足りなかった<br>「潤い」と「母性」を<br>そっと満たしてくれる石です。<br>心の乾きをやわらげ、<br>夫婦の縁を<br>温かく包んでくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">3. ペリドット</span><br>太陽の光を宿した、<br>若葉のような緑の石。<br>五十猛命が満たした緑と<br>深く共鳴し、<br>「新しい始まり」「生命力」を<br>呼び込む石です。<br>あなたの土壌の芽吹きを<br>明るく後押ししてくれます。</li>
+            </ul>
+            <p style="margin-bottom: 90px;">この中から、<br>あなたのエネルギーと<br>最もバランスの取れる組み合わせを、<br>私が選び、<br>一つひとつ手作りで仕上げます。</p>
+            <p style="margin-bottom: 0;">ご希望の場合は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <h2 id="sec-closing">【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">はな様、</p>
+            <p style="margin-bottom: 90px;">2027年、<br>新しい命を囲んで旦那様と、<br>笑い合っている景色が<br>視えています。</p>
+            <p style="margin-bottom: 90px;">家じゅうに、<br>やわらかな光と<br>賑やかな笑い声が満ちている。</p>
+            <p style="margin-bottom: 90px;">その景色は、<br>もう始まろうとしています。</p>
+            <p style="margin-bottom: 90px;">真っ直ぐに育てる豊かな力も、<br>強い天の守りも、<br>あなたはもう持っています。</p>
+            <p style="margin-bottom: 90px;">だから、どうか安心してください。</p>
+            <p style="margin-bottom: 90px;">あなたは、一人ではありません。</p>
+            <p style="margin-bottom: 90px;">足りない潤いは旦那様が、<br>そして守護神が満たしてくれます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">二人でなら、あなたは<br>必ず家族を育てていけます。</p>
+            <p style="margin-bottom: 90px;">焦らなくていい。</p>
+            <p style="margin-bottom: 90px;">あなたは守られています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">幸せになっていい。</p>
+            <p style="margin-bottom: 90px;">その事実を、<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より遠隔守護祈祷を行い、<br>あなたと旦那様、</p>
+            <p style="margin-bottom: 90px;">そしてこれから訪れる<br>新しい命の幸せを願います。</p>
+            <p style="margin-bottom: 90px;">あなたの家庭に、<br>深い森のような緑の生命が、<br>満ちていきますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+</body>
+</html>
