@@ -36,6 +36,66 @@ kantei/
 
 ---
 
+## GA4計測タグ（みゆき用・必須）
+
+測定ID: **`G-JHLDFT6DR7`**（みゆき専用。かな側 `G-2SSQHY7CEL` とは別プロパティで完全分離）
+
+計測できること（全イベントに `persona: 'miyuki'` を付与）:
+- **ページ開いた**（誰が）… `page_open`＋ `kantei_id`（URLのフォルダ名＝連番_名前様M）
+- **最後まで読んだ**… 署名 `.signature` が画面に入ったら `read_complete`
+- **購入ボタンを押した**… `.cta-button` クリックで `cta_click`（STORESの決済ページへ進んだ数。決済完了ではない）
+
+### 1. `<head>` 内（`<meta viewport>` の直後）に追加
+
+```html
+    <!-- Google tag (gtag.js) : GA4 計測 [GA4-MIYUKI] -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHLDFT6DR7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JHLDFT6DR7');
+    </script>
+```
+
+### 2. `</body>` の直前に追加（カスタムイベント）
+
+```html
+<!-- GA4 カスタム計測：誰が/最後まで読んだか/購入ボタン [GA4-MIYUKI] -->
+<script>
+(function () {
+  function fire() {
+    var seg = location.pathname.split('/').filter(Boolean);
+    var last = decodeURIComponent(seg[seg.length - 1] || '');
+    var id = /\.html?$/i.test(last) ? decodeURIComponent(seg[seg.length - 2] || 'unknown') : (last || 'unknown');
+    var base = { kantei_id: id, persona: 'miyuki' };
+    gtag('set', 'user_properties', { kantei_id: id, persona: 'miyuki' });
+    gtag('event', 'page_open', base);
+
+    var end = document.querySelector('.signature, .sign');
+    if (end && 'IntersectionObserver' in window) {
+      var done = false;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && !done) { done = true; gtag('event', 'read_complete', base); io.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      io.observe(end);
+    }
+
+    document.querySelectorAll('.cta-button, .btn').forEach(function (b) {
+      b.addEventListener('click', function () { gtag('event', 'cta_click', base); });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire); else fire();
+})();
+</script>
+```
+
+**注意**: かな用ID `G-2SSQHY7CEL` は絶対にみゆきに入れない（プロパティを分けている意味が無くなる）。
+
+---
+
 ## HTML完全テンプレート
 
 ### 1. ヘッダー部分（DOCTYPE～head終了まで）
