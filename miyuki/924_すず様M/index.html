@@ -15,7 +15,7 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif; background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%); color: #e8e8f0; line-height: 1.8; padding: 20px; min-height: 100vh; font-size: 17px; }
-        .container { max-width: 800px; margin: 0 auto; background: rgba(15, 15, 46, 0.7); border-radius: 20px; padding: 40px; box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2), inset 0 0 60px rgba(100, 100, 200, 0.05); border: 1px solid rgba(200, 200, 255, 0.1); }
+        .container { max-width: 800px; margin: 0 auto; background: none; border-radius: 20px; padding: 40px; box-shadow: none; border: none; }
         h1 { text-align: center; color: #a8b8ff; font-size: 2em; margin-bottom: 30px; text-shadow: 0 0 20px rgba(168, 184, 255, 0.5); letter-spacing: 0.1em; }
         h2 { color: #c8d0ff; font-size: 1.5em; margin: 40px 0 20px; padding-bottom: 10px; border-bottom: 2px solid rgba(168, 184, 255, 0.3); letter-spacing: 0.05em; }
         .oracle-message { background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3)); border: 2px solid rgba(168, 184, 255, 0.3); border-radius: 15px; padding: 30px; margin: 30px 0; box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2); position: relative; }
@@ -51,6 +51,64 @@
             50% { transform: scale(1.035); box-shadow: 0 8px 35px rgba(168, 184, 255, 0.9), 0 0 40px rgba(168, 184, 255, 0.4); }
         }
         .cta-button:hover { animation: none; }
+
+        /* ===== 演出：元素の背景（冒頭〜神様登場まで） ===== */
+        .element-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../鑑定画像/太陽.gif");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0.4;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .element-bg.is-hidden { opacity: 0; }
+
+        /* ===== 演出：神様の背景（神様登場〜本式4メニューの手前まで） ===== */
+        .deity-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/天照大御神.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center 18%;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .deity-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：本式4メニュー〜クロージングは扉の背景に続ける ===== */
+        .door-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/ドア2.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .door-bg.is-visible { opacity: 0.4; }
+
+        .deity-veil {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(15, 15, 46, 0.15) 0%, rgba(15, 15, 46, 0.55) 60%, rgba(15, 15, 46, 0.85) 100%),
+                linear-gradient(180deg, rgba(15, 15, 46, 0.25) 0%, rgba(15, 15, 46, 0.7) 100%);
+        }
         @media (max-width: 768px) {
             body { font-size: 15px; padding: 10px; }
             .container { padding: 20px 10px; }
@@ -70,6 +128,10 @@
     </style>
 </head>
 <body>
+    <div class="element-bg" id="elementBg"></div>
+    <div class="deity-bg" id="deityBg"></div>
+    <div class="door-bg" id="doorBg"></div>
+    <div class="deity-veil"></div>
     <div class="container">
         <h1>すず様<br>守護神鑑定書</h1>
 
@@ -92,6 +154,7 @@
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">だから今<br>「彼を信じて待ちたい自分」と<br>「遊びだと諦めて<br>他を探そうとする自分」が<br>心の中でぶつかって<br>答えを出させてくれないんです。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">でも、大丈夫です。</p>
             <p style="margin-bottom: 90px; color: #ffd966; font-weight: bold; text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);">その答えの出し方を<br>あなたを守る神様が<br>ちゃんと視せてくれています。</p>
+            <div id="guardianSentinel"></div>
             <p class="guardian" style="margin-bottom: 90px;">あなたを守っているのは<br>天照大御神(あまてらすおおみかみ)。</p>
             <p style="margin-bottom: 90px;">太陽のように<br>すべてを照らす最高神です。</p>
             <img src="../鑑定画像/天照大御神.png" alt="天照大御神" class="guardian-image">
@@ -125,6 +188,8 @@
             <p style="margin-bottom: 90px;">そうなる前に<br>あなたにちゃんと<br>知っていただきたいことが<br>私には視えています。</p>
             <p style="margin-bottom: 90px;">本式守護鑑定で<br>すず様にお渡しするのは</p>
         </div>
+
+        <div id="deitySentinel"></div>
 
         <div style="padding: 40px 0; margin: 40px 0;">
             <div style="margin: 30px 0; text-align: center;">
@@ -193,6 +258,42 @@
             <div class="signature">深雪</div>
         </div>
     </div>
+    <script>
+    /* ===== 演出：背景の切り替え（元素 → 神様登場で神様に → 4メニュー手前で扉に） ===== */
+    (function () {
+        var elementBg = document.getElementById('elementBg');
+        var deityBg = document.getElementById('deityBg');
+        var doorBg = document.getElementById('doorBg');
+        var guardianSentinel = document.getElementById('guardianSentinel');
+        var deitySentinel = document.getElementById('deitySentinel');
+        if (!elementBg || !deityBg || !doorBg || !guardianSentinel || !deitySentinel) return;
+
+        var layers = [elementBg, deityBg, doorBg];
+        function show(active) {
+            layers.forEach(function (el) {
+                if (el === active) el.classList.add('is-visible');
+                else el.classList.remove('is-visible');
+            });
+            elementBg.classList.toggle('is-hidden', active !== elementBg);
+        }
+
+        function onScroll() {
+            var trigger = window.innerHeight * 0.65;
+            var guardianReached = guardianSentinel.getBoundingClientRect().top < trigger;
+            var doorReached = deitySentinel.getBoundingClientRect().top < trigger;
+
+            if (!guardianReached) {
+                show(elementBg);
+            } else if (!doorReached) {
+                show(deityBg);
+            } else {
+                show(doorBg);
+            }
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    })();
+    </script>
     <script>
         (function () {
             var els = document.querySelectorAll('.reveal');

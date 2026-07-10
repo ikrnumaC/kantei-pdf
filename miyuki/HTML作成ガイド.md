@@ -1032,6 +1032,156 @@ ul li {
 
 ---
 
+## 背景演出（応用オプション：元素→神様→扉のクロスフェード）
+
+標準の3点セット（フェードイン/光輪/CTA脈動）に加えて、画面いっぱいの背景画像をスクロールに合わせて切り替える演出。世界観をより没入させたい鑑定書で使う。
+
+**流れ（3段階）：**
+1. 冒頭〜守護神登場まで＝鑑定対象者の**日干（十干）に対応する元素画像**
+2. 守護神登場〜本式4メニューの手前まで＝**守護神の画像**
+3. 本式4メニュー以降〜結びまで＝**扉2.jpg**（「運命の扉」の演出と対応）
+
+背景はすべて `position: fixed` で画面全体に敷き、スクロール位置に応じて opacity をクロスフェード。文字の可読性を保つため、背景レイヤーの上に暗いグラデーションの `.deity-veil` を常時重ねる。
+
+### 1. CSS追記（`<style>`内、メディアクエリの直前に追加）
+
+```css
+/* ===== 演出：元素の背景（冒頭〜神様登場まで） ===== */
+.element-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -4;
+    background-image: url("../鑑定画像/【元素画像プリセット表から選択】");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(1.5px) brightness(0.85);
+    opacity: 0.4;
+    pointer-events: none;
+    transition: opacity 1.4s ease;
+}
+.element-bg.is-hidden { opacity: 0; }
+
+/* ===== 演出：神様の背景（神様登場〜本式4メニューの手前まで） ===== */
+.deity-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    background-image: url("../鑑定画像/【守護神画像】");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 18%;
+    filter: blur(1.5px) brightness(0.85);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.4s ease;
+}
+.deity-bg.is-visible { opacity: 0.4; }
+
+/* ===== 演出：本式4メニュー〜クロージングは扉の背景に続ける ===== */
+.door-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    background-image: url("../鑑定画像/ドア2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(1.5px) brightness(0.85);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.4s ease;
+}
+.door-bg.is-visible { opacity: 0.4; }
+
+.deity-veil {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 50% 20%, rgba(15, 15, 46, 0.15) 0%, rgba(15, 15, 46, 0.55) 60%, rgba(15, 15, 46, 0.85) 100%),
+        linear-gradient(180deg, rgba(15, 15, 46, 0.25) 0%, rgba(15, 15, 46, 0.7) 100%);
+}
+```
+
+深海（壬水）だけは元画像が暗すぎて既存の背景色に埋もれるため、使う場合は `filter: blur(1.5px) brightness(1.5) contrast(1.2);` に差し替え、opacityも0.6程度まで上げる。
+
+### 2. HTML側の配置
+
+body直下、`.aurora` より前に4つのdivを追加（`.container` の外）：
+
+```html
+<div class="element-bg" id="elementBg"></div>
+<div class="deity-bg" id="deityBg"></div>
+<div class="door-bg" id="doorBg"></div>
+<div class="deity-veil"></div>
+```
+
+本文中に、切り替えタイミングを示す目印（sentinel）を2つ埋め込む：
+
+- 守護神の名前が**最初に明かされる直前**（「あなたを守っているのは◯◯神」の段落の直前）に `<div id="guardianSentinel"></div>`
+- 本式4メニュー（3〜4色ボックス）の**直前**（その手前の `.section` の直後）に `<div id="deitySentinel"></div>`
+
+### 3. JS追記（`</body>` の直前に追加）
+
+```html
+<script>
+(function () {
+    var elementBg = document.getElementById('elementBg');
+    var deityBg = document.getElementById('deityBg');
+    var doorBg = document.getElementById('doorBg');
+    var guardianSentinel = document.getElementById('guardianSentinel');
+    var deitySentinel = document.getElementById('deitySentinel');
+    if (!elementBg || !deityBg || !doorBg || !guardianSentinel || !deitySentinel) return;
+
+    var layers = [elementBg, deityBg, doorBg];
+    function show(active) {
+        layers.forEach(function (el) {
+            if (el === active) el.classList.add('is-visible');
+            else el.classList.remove('is-visible');
+        });
+        elementBg.classList.toggle('is-hidden', active !== elementBg);
+    }
+
+    function onScroll() {
+        var trigger = window.innerHeight * 0.65;
+        var guardianReached = guardianSentinel.getBoundingClientRect().top < trigger;
+        var doorReached = deitySentinel.getBoundingClientRect().top < trigger;
+
+        if (!guardianReached) {
+            show(elementBg);
+        } else if (!doorReached) {
+            show(deityBg);
+        } else {
+            show(doorBg);
+        }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
+</script>
+```
+
+### 元素背景プリセット（十干 × 画像）
+
+背景に使う元素画像は、**鑑定対象者本人の日干（十干）**で選ぶ（守護神から逆引きしない。同じ神様でも人によって対応する十干が違うため）。画像はすべて `miyuki/鑑定画像/` にある。
+
+| 十干 | 画像ファイル | 該当する神様（参考・命式ガイドの神様リファレンスと対応） |
+|---|---|---|
+| 甲木 | 深い森.jpg | 五十猛命、久久能智神、大山祇神、春日大明神 |
+| 乙木 | 若葉.jpg | 木花咲耶姫、鹿屋野比売、豊受大神、木俣神、弁財天 |
+| 丙火 | 太陽.gif | 天照大御神、火之迦具土神、天之御中主神、高御産巣日神、日本武尊 |
+| 丁火 | ろうそく.jpg | 火産霊神、奥津日子命、三宝荒神、迦楼羅天、不動明王 |
+| 戊土 | 大地.jpg | 大山祇神、大己貴命、埴山彦神、猿田彦命、毘沙門天 |
+| 己土 | 肥沃な大地.webp | 埴山姫神、豊受大神、宇迦之御魂神、大地主神、吒枳尼天 |
+| 庚金 | 刀.png | 建御雷神、経津主神、布都御魂、金山彦神、不動明王 |
+| 辛金 | 宝石.jpg | 市杵嶋姫命、瀬織津姫、白山比咩神、金山姫神、吉祥天 |
+| 壬水 | 深海.jpg（暗いのでbrightness/contrast調整推奨） | 綿津見神、住吉大神、豊玉姫、速秋津日子・比売神、弁財天 |
+| 癸水 | 水面.jpg | 罔象女神、闇淤加美神、高淤加美神、弥都波能売神、龍樹菩薩 |
+
+---
+
 ## 色テストパネル（作成時に色を試したいとき・本番ではコメントアウト推奨）
 
 新規作成時に「この神様にはどの色が合うか」を試したい場合、ページ上部に色見本パネルを設置できます。
