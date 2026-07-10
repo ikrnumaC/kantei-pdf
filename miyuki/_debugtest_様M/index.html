@@ -321,7 +321,6 @@
     var id = /\.html?$/i.test(last) ? decodeURIComponent(seg[seg.length - 2] || 'unknown') : (last || 'unknown');
     var base = { kantei_id: id, persona: 'miyuki' };
     gtag('set', 'user_properties', { kantei_id: id, persona: 'miyuki' });
-    gtag('event', 'page_open', base);
 
     var end = document.querySelector('.signature, .sign');
     if (end && 'IntersectionObserver' in window) {
@@ -337,6 +336,39 @@
     document.querySelectorAll('.cta-button, .btn').forEach(function (b) {
       b.addEventListener('click', function () { gtag('event', 'cta_click', base); });
     });
+
+    /* ===== 滞在秒数トラッキング(可視状態の累積時間) ===== */
+    var visibleStart = document.visibilityState === 'visible' ? Date.now() : null;
+    var accumulated = 0;
+    var milestones = [10, 30, 60, 120];
+    var sent = {};
+    var finalSent = false;
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'visible') {
+        visibleStart = Date.now();
+      } else if (visibleStart !== null) {
+        accumulated += Date.now() - visibleStart;
+        visibleStart = null;
+        sendFinal();
+      }
+    });
+
+    setInterval(function () {
+      if (document.visibilityState !== 'visible' || visibleStart === null) return;
+      var totalSec = (accumulated + (Date.now() - visibleStart)) / 1000;
+      milestones.forEach(function (s) {
+        if (totalSec >= s && !sent[s]) { sent[s] = true; gtag('event', 'view_' + s + 's', base); }
+      });
+    }, 5000);
+
+    function sendFinal() {
+      if (finalSent) return;
+      finalSent = true;
+      if (visibleStart !== null) { accumulated += Date.now() - visibleStart; visibleStart = null; }
+      gtag('event', 'view_end', Object.assign({}, base, { view_seconds: Math.round(accumulated / 1000) }), { transport_type: 'beacon' });
+    }
+    window.addEventListener('pagehide', sendFinal);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire); else fire();
 })();
