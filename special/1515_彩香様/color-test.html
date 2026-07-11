@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文字色 視認性テスト（全属性 × 全文字色）</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "Noto Serif JP", serif; line-height: 2; background: #fdfcfa; color: #333; }
+
+    .test-block { position: relative; min-height: 100vh; border-bottom: 4px solid #333; }
+    .bg-layer { position: absolute; inset: 0; background-size: cover; background-position: center; filter: blur(1px) saturate(0.55) brightness(1.2); }
+    .veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(253,252,250,0.85) 0%, rgba(248,246,241,0.85) 100%); }
+    .content { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; padding: 50px 30px; }
+
+    .label { font-size: 14px; font-weight: 700; color: #000; background: #fff; display: inline-block; padding: 4px 12px; margin-bottom: 30px; }
+
+    .content p { margin-bottom: 18px; text-align: center; font-weight: 300; }
+    .swatch-name { font-size: 11px; letter-spacing: 1px; opacity: 0.7; margin-bottom: 4px; }
+
+    .c-default { color: #444; }
+    .c-strong  { color: #8b7355; font-weight: 500; }
+    .c-yellow  { color: #9c6b1f; font-weight: 500; }
+    .c-wood    { color: #1b5e20; font-weight: 500; }
+    .c-fire    { color: #c62828; font-weight: 500; }
+    .c-earth   { color: #5d4037; font-weight: 500; }
+    .c-metal   { color: #b8860b; font-weight: 500; }
+    .c-water   { color: #1565c0; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<!-- 木・強 -->
+<div class="test-block">
+    <div class="bg-layer" style="background-image: url('../image/strong_wood.png');"></div>
+    <div class="veil"></div>
+    <div class="content">
+        <div class="label">strong_wood.png（木・強）</div>
+        <div><div class="swatch-name">default #444</div><p class="c-default">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">strong #8b7355</div><p class="c-strong">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">yellow-text #9c6b1f</div><p class="c-yellow">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-wood #1b5e20</div><p class="c-wood">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-fire #c62828</div><p class="c-fire">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-earth #5d4037</div><p class="c-earth">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-metal #b8860b</div><p class="c-metal">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-water #1565c0</div><p class="c-water">サンプルテキストです。読みやすさを確認します。</p></div>
+    </div>
+</div>
+
+<!-- 木・弱 -->
+<div class="test-block">
+    <div class="bg-layer" style="background-image: url('../image/weak_wood.png');"></div>
+    <div class="veil"></div>
+    <div class="content">
+        <div class="label">weak_wood.png（木・弱）</div>
+        <div><div class="swatch-name">default #444</div><p class="c-default">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">strong #8b7355</div><p class="c-strong">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">yellow-text #9c6b1f</div><p class="c-yellow">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-wood #1b5e20</div><p class="c-wood">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-fire #c62828</div><p class="c-fire">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-earth #5d4037</div><p class="c-earth">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-metal #b8860b</div><p class="c-metal">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-water #1565c0</div><p class="c-water">サンプルテキストです。読みやすさを確認します。</p></div>
+    </div>
+</div>
+
+<!-- 火・強 -->
+<div class="test-block">
+    <div class="bg-layer" style="background-image: url('../image/strong_fire.png');"></div>
+    <div class="veil"></div>
+    <div class="content">
+        <div class="label">strong_fire.png（火・強）</div>
+        <div><div class="swatch-name">default #444</div><p class="c-default">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">strong #8b7355</div><p class="c-strong">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">yellow-text #9c6b1f</div><p class="c-yellow">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-wood #1b5e20</div><p class="c-wood">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-fire #c62828</div><p class="c-fire">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-earth #5d4037</div><p class="c-earth">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-metal #b8860b</div><p class="c-metal">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-water #1565c0</div><p class="c-water">サンプルテキストです。読みやすさを確認します。</p></div>
+    </div>
+</div>
+
+<!-- 火・弱 -->
+<div class="test-block">
+    <div class="bg-layer" style="background-image: url('../image/weak_fire.png');"></div>
+    <div class="veil"></div>
+    <div class="content">
+        <div class="label">weak_fire.png（火・弱）</div>
+        <div><div class="swatch-name">default #444</div><p class="c-default">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">strong #8b7355</div><p class="c-strong">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">yellow-text #9c6b1f</div><p class="c-yellow">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-wood #1b5e20</div><p class="c-wood">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-fire #c62828</div><p class="c-fire">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-earth #5d4037</div><p class="c-earth">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-metal #b8860b</div><p class="c-metal">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-water #1565c0</div><p class="c-water">サンプルテキストです。読みやすさを確認します。</p></div>
+    </div>
+</div>
+
+<!-- 土・強 -->
+<div class="test-block">
+    <div class="bg-layer" style="background-image: url('../image/strong_earth.png');"></div>
+    <div class="veil"></div>
+    <div class="content">
+        <div class="label">strong_earth.png（土・強）</div>
+        <div><div class="swatch-name">default #444</div><p class="c-default">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">strong #8b7355</div><p class="c-strong">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">yellow-text #9c6b1f</div><p class="c-yellow">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-wood #1b5e20</div><p class="c-wood">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-fire #c62828</div><p class="c-fire">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-earth #5d4037</div><p class="c-earth">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-metal #b8860b</div><p class="c-metal">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-water #1565c0</div><p class="c-water">サンプルテキストです。読みやすさを確認します。</p></div>
+    </div>
+</div>
+
+<!-- 土・弱 -->
+<div class="test-block">
+    <div class="bg-layer" style="background-image: url('../image/weak_earth.png');"></div>
+    <div class="veil"></div>
+    <div class="content">
+        <div class="label">weak_earth.png（土・弱）</div>
+        <div><div class="swatch-name">default #444</div><p class="c-default">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">strong #8b7355</div><p class="c-strong">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">yellow-text #9c6b1f</div><p class="c-yellow">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-wood #1b5e20</div><p class="c-wood">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-fire #c62828</div><p class="c-fire">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-earth #5d4037</div><p class="c-earth">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-metal #b8860b</div><p class="c-metal">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-water #1565c0</div><p class="c-water">サンプルテキストです。読みやすさを確認します。</p></div>
+    </div>
+</div>
+
+<!-- 金・強 -->
+<div class="test-block">
+    <div class="bg-layer" style="background-image: url('../image/strong_metal.png');"></div>
+    <div class="veil"></div>
+    <div class="content">
+        <div class="label">strong_metal.png（金・強）</div>
+        <div><div class="swatch-name">default #444</div><p class="c-default">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">strong #8b7355</div><p class="c-strong">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">yellow-text #9c6b1f</div><p class="c-yellow">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-wood #1b5e20</div><p class="c-wood">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-fire #c62828</div><p class="c-fire">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-earth #5d4037</div><p class="c-earth">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-metal #b8860b</div><p class="c-metal">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-water #1565c0</div><p class="c-water">サンプルテキストです。読みやすさを確認します。</p></div>
+    </div>
+</div>
+
+<!-- 金・弱 -->
+<div class="test-block">
+    <div class="bg-layer" style="background-image: url('../image/weak_metal.png');"></div>
+    <div class="veil"></div>
+    <div class="content">
+        <div class="label">weak_metal.png（金・弱）</div>
+        <div><div class="swatch-name">default #444</div><p class="c-default">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">strong #8b7355</div><p class="c-strong">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">yellow-text #9c6b1f</div><p class="c-yellow">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-wood #1b5e20</div><p class="c-wood">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-fire #c62828</div><p class="c-fire">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-earth #5d4037</div><p class="c-earth">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-metal #b8860b</div><p class="c-metal">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-water #1565c0</div><p class="c-water">サンプルテキストです。読みやすさを確認します。</p></div>
+    </div>
+</div>
+
+<!-- 水・強 -->
+<div class="test-block">
+    <div class="bg-layer" style="background-image: url('../image/strong_water.png');"></div>
+    <div class="veil"></div>
+    <div class="content">
+        <div class="label">strong_water.png（水・強）</div>
+        <div><div class="swatch-name">default #444</div><p class="c-default">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">strong #8b7355</div><p class="c-strong">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">yellow-text #9c6b1f</div><p class="c-yellow">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-wood #1b5e20</div><p class="c-wood">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-fire #c62828</div><p class="c-fire">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-earth #5d4037</div><p class="c-earth">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-metal #b8860b</div><p class="c-metal">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-water #1565c0</div><p class="c-water">サンプルテキストです。読みやすさを確認します。</p></div>
+    </div>
+</div>
+
+<!-- 水・弱 -->
+<div class="test-block">
+    <div class="bg-layer" style="background-image: url('../image/weak_water.png');"></div>
+    <div class="veil"></div>
+    <div class="content">
+        <div class="label">weak_water.png（水・弱）</div>
+        <div><div class="swatch-name">default #444</div><p class="c-default">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">strong #8b7355</div><p class="c-strong">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">yellow-text #9c6b1f</div><p class="c-yellow">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-wood #1b5e20</div><p class="c-wood">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-fire #c62828</div><p class="c-fire">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-earth #5d4037</div><p class="c-earth">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-metal #b8860b</div><p class="c-metal">サンプルテキストです。読みやすさを確認します。</p></div>
+        <div><div class="swatch-name">aura-water #1565c0</div><p class="c-water">サンプルテキストです。読みやすさを確認します。</p></div>
+    </div>
+</div>
+
+</body>
+</html>
