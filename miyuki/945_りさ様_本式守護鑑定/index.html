@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) : GA4 計測 [GA4-MIYUKI] -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHLDFT6DR7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JHLDFT6DR7');
+    </script>
+    <title>りさ様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+
+            .toc {
+                padding: 20px 15px;
+            }
+
+            .toc-title {
+                font-size: 1.1em;
+            }
+
+            .toc a {
+                font-size: 0.95em;
+                padding: 12px 6px 12px 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">揺るがない安心へ</h2>
+            <p class="cover-name">りさ様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 目次 -->
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-god">守護神について</a></li>
+                <li><a href="#sec-essence">りさ様という人について</a></li>
+                <li><a href="#sec-1">りさ様を包む結界</a></li>
+                <li><a href="#sec-2">光が戻る時期</a></li>
+                <li><a href="#sec-3">芯の強さの活かし方</a></li>
+                <li><a href="#sec-4">婚活への一歩</a></li>
+                <li><a href="#sec-flow">今後の流れ</a></li>
+                <li><a href="#sec-guardian">守護を受け取る方法</a></li>
+                <li><a href="#sec-stone">あなたを支えるパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
+        <!-- 冒頭 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">りさ様</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂が<br>この重荷を<br>本気で乗り越えようとしている。</p>
+            <p style="margin-bottom: 90px;">その強い想いが<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先<br>あなたが本当に知るべきことを<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px;">風のない静かな部屋で<br>りさ様が<br>誰の視線も気にせず<br>ゆっくりと息をしている姿。</p>
+            <p style="margin-bottom: 90px;">肩の力が抜けて<br>表情が柔らかい。</p>
+            <p style="margin-bottom: 90px;">もう<br>知らない誰かの気配を<br>探さなくていい。</p>
+            <p style="margin-bottom: 90px;">そんな<br>当たり前だったはずの日常が<br>戻ってきている景色です。</p>
+            <p style="margin-bottom: 90px;">その景色が<br>現実として立ち上がる兆しが<br>はっきりと視えています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">時期としては<br>2027年1月。</p>
+            <p style="margin-bottom: 90px;">りさ様の生まれ持った芯の強さと<br>今年という年の流れと<br>巡ってくる月の力が<br>一つに重なり合う月。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">一年をかけて積み重ねてきた守りが<br>はっきりとした形になる<br>節目の月です。</p>
+            <p style="margin-bottom: 90px;">そして<br>そこへ向かう最初の動きは<br>2026年の夏の終わり。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">8月<br>水面下で<br>りさ様の内側にある力が<br>静かにまとまり始めます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">10月<br>その力が一年で最も強くまとまり<br>不動明王の力が<br>最も強く流れ込む月を迎えます。</p>
+            <p style="margin-bottom: 90px;">そこから<br>生活の面でも少しずつ<br>状況が整い始めていく。</p>
+            <p style="margin-bottom: 90px;">その流れが<br>りさ様の運命に刻まれています。</p>
+            <p style="margin-bottom: 90px;">ただ──</p>
+            <p style="margin-bottom: 90px;">その道のりは<br>決して平坦ではありません。</p>
+            <p style="margin-bottom: 90px;">今もまだ<br>外側からの心無い視線や<br>その気配への不安が<br>完全には消えていません。</p>
+            <p style="margin-bottom: 90px;">それは<br>りさ様の火が弱いからではなく<br>まだその火を<br>たった一人で<br>守り続けているからです。</p>
+            <p style="margin-bottom: 0;">でも<br>それを越える力を<br>りさ様は持っています。</p>
+        </div>
+
+        <!-- 守護神について -->
+        <div class="oracle-message" id="sec-god">
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは<br><span style="color: #ffd966;">不動明王</span>（ふどうみょうおう）。</p>
+            <p style="margin-bottom: 90px;">右手に剣を<br>左手に縄を持ち<br>背に燃え盛る炎を負った神様です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その炎は<br>人を傷つけるためのものではなく<br>迷いや<br>悪しきものだけを<br>静かに焼き尽くすための炎。</p>
+            <p style="margin-bottom: 90px;">どんな困難にも動じず<br>揺るがない意志で<br>その人を守り抜く。</p>
+            <p style="margin-bottom: 0;">そういう役割を<br>古くから担い続けてきました。</p>
+            <img src="../鑑定画像/不動明王.png" alt="不動明王" class="guardian-image">
+        </div>
+
+        <!-- りさ様という人について -->
+        <h2 class="emoji-header" id="sec-essence">⛩️ りさ様という人について</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">命の流れを深く視ていくと<br>りさ様の本質には<br>静かに燃え続ける灯火のような<br>輝きがあります。</p>
+            <p style="margin-bottom: 90px;">大きく揺らいだり<br>荒れたりすることなく<br>一定の熱を保ち続ける火。</p>
+            <p style="margin-bottom: 90px;">しかも<br>その火は<br>金属の器の中で<br>守られながら燃えている姿。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">簡単には消えない<br>そういう芯の強さを<br>生まれ持っています。</p>
+            <p style="margin-bottom: 90px;">こんな感覚はありませんでしたか。</p>
+            <p style="margin-bottom: 90px;">自分の生活は<br>自分の力で<br>きちんと立てていきたい。</p>
+            <p style="margin-bottom: 90px;">誰かに甘えたり<br>頼ったりすることが<br>どこか苦手。</p>
+            <p style="margin-bottom: 90px;">しんどい時ほど<br>「大丈夫」と言って<br>一人で抱え込んでしまう。</p>
+            <p style="margin-bottom: 90px;">それは<br>りさ様が現実を見る力と<br>経済的な自立心を<br>人一倍強く持っているからです。</p>
+            <p style="margin-bottom: 90px;">ただその分<br>誰かに寄りかかる通路が<br>少し細く</p>
+            <p style="margin-bottom: 90px;">本当は助けを求めていい場面でも<br>つい一人で<br>背負い込んでしまう。</p>
+            <p style="margin-bottom: 90px;">そういう構造が<br>りさ様の中にはあります。</p>
+            <p style="margin-bottom: 90px;">もう一つ<br>視えていることがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">りさ様の核心には<br>非常に厚い守護が<br>もともと宿っています。</p>
+            <p style="margin-bottom: 90px;">守られている度合いで言えば<br>本当に少ない<br>恵まれた部類に入る方です。</p>
+            <p style="margin-bottom: 90px;">ただ今は<br>その厚い守護があるにもかかわらず<br>どこか閉じ込められたような<br>身動きの取れない感覚を<br>抱えているはずです。</p>
+            <p style="margin-bottom: 90px;">それは矛盾ではありません。</p>
+            <p style="margin-bottom: 90px;">本来は守られているのに<br>今だけそう感じられない。</p>
+            <p style="margin-bottom: 90px;">そういう一時的なねじれが<br>今のりさ様に<br>起きているだけです。</p>
+            <p style="margin-bottom: 90px;">仕事や社会との関わりの面では<br>りさ様は本来<br>大樹のように周りを守り<br>頼られる側の資質を<br>持っている方です。</p>
+            <p style="margin-bottom: 90px;">今<br>外側の出来事に振り回されて<br>「この先も働いていけるのか」<br>という不安を<br>抱えているかもしれません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でも<br>りさ様の仕事の運気そのものは<br>簡単には揺らぐような<br>弱いものではありません。</p>
+            <p style="margin-bottom: 90px;">土台がしっかりしているからこそ<br>少し先には<br>本来の「守られる・頼られる」立場に<br>自然と戻っていく流れがあります。</p>
+            <p style="margin-bottom: 90px;">生活の土台に関しても<br>同じことが言えます。</p>
+            <p style="margin-bottom: 90px;">今年<br>りさ様の生活の場そのものに<br>大きな運気の流れが<br>巡ってきています。</p>
+            <p style="margin-bottom: 90px;">これは<br>生活の場が脅かされる流れではなく<br>むしろ<br>生活の土台が<br>動きながら整っていく流れです。</p>
+            <p style="margin-bottom: 90px;">今は不安に感じることがあっても<br>その流れの先には<br>穏やかな安定が<br>待っています。</p>
+            <p style="margin-bottom: 90px;">内面では<br>言葉や噂に関することで<br>心が波立ちやすい面があり</p>
+            <p style="margin-bottom: 90px;">内側にくすぶる悔しさや怒りを<br>静かに溜め込みやすいところもあります。</p>
+            <p style="margin-bottom: 90px;">でもその奥には<br>本来強い意志と<br>主導権を握る力が<br>眠っています。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ<br>良い縁や華やぎを求める気持ちも<br>りさ様の内面には<br>確かにあります。</p>
+            <p style="margin-bottom: 0;">今はその気持ちに<br>蓋をしているかもしれませんが<br>それは決して<br>消えてなくなったわけではありません。</p>
+        </div>
+
+        <!-- りさ様を包む結界 -->
+        <h2 class="emoji-header" id="sec-1">⛩️ 1. りさ様を包む結界</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから視ていくのは<br>りさ様を<br>外からの視線や悪意から<br>どう守っていけばいいのか。</p>
+            <p style="margin-bottom: 90px;">そのお話です。</p>
+            <p style="margin-bottom: 90px;">先に<br>お伝えしておきたいことがあります。</p>
+            <p style="margin-bottom: 90px;">りさ様の核心には<br>すでに非常に厚い守護が<br>宿っています。</p>
+            <p style="margin-bottom: 90px;">これは<br>私が霊視で最初に受け取った答えです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">一つの守護だけでなく<br>複数の強い力が<br>りさ様の核心に<br>集中して宿っている。</p>
+            <p style="margin-bottom: 90px;">こんなに厚く守られている方は<br>本当に多くありません。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ<br>良い知らせがあります。</p>
+            <p style="margin-bottom: 90px;">りさ様の仕事の運気を司る場所には<br>大樹のように守る力が<br>最も良い状態で入っています。</p>
+            <p style="margin-bottom: 90px;">これは<br>「仕事場がこの先<br>潰れてしまうのではないか」<br>という不安に対して<br>はっきりとお伝えできることです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">りさ様の仕事の土台は<br>本来<br>簡単には崩れない強さを<br>持っています。</p>
+            <p style="margin-bottom: 90px;">今は嵐の中にいるように感じても<br>その根はしっかりと<br>守られています。</p>
+            <p style="margin-bottom: 90px;">ただ<br>正直にお伝えしなければ<br>ならないことがあります。</p>
+            <p style="margin-bottom: 90px;">これだけ厚い守護が宿っているのに<br>今のりさ様は<br>どこか閉じ込められたような<br>身動きの取れない感覚を<br>抱えているはずです。</p>
+            <p style="margin-bottom: 90px;">それは<br>守護が弱いからではありません。</p>
+            <p style="margin-bottom: 90px;">むしろ守護が厚いからこそ<br>その力を今<br>うまく使いきれていない<br>そういう状態です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この「閉じ込められた感覚」を解く鍵は<br>「自分を守る」という意識を<br>はっきりと持って<br>行動することにあります。</p>
+            <p style="margin-bottom: 90px;">不動明王は<br>迷いも<br>悪しきものも<br>静かに焼き尽くす神様です。</p>
+            <p style="margin-bottom: 90px;">この神様の力を日常に取り入れることで<br>外からの視線を跳ね返す結界が<br>少しずつ強まっていきます。</p>
+            <p style="margin-bottom: 90px;">大きな行動である必要はありません。</p>
+            <p style="margin-bottom: 90px;">「自分の生活を<br>自分の手で守る」</p>
+            <p style="margin-bottom: 0; font-weight: bold;">その意識そのものが<br>すでに結界の一部になっています。</p>
+        </div>
+
+        <!-- 光が戻る時期 -->
+        <h2 class="emoji-header" id="sec-2">⛩️ 2. 光が戻る時期</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここからお伝えするのは<br>この重荷から<br>りさ様がいつ<br>どう解放されていくのか。</p>
+            <p style="margin-bottom: 90px;">そのお話です。</p>
+            <p style="margin-bottom: 90px;">りさ様の運命には<br>2026年8月から</p>
+            <p style="margin-bottom: 90px;">内側の力が静かにまとまり始める<br>兆しがあります。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">まず、2026年8月。</p>
+            <p style="margin-bottom: 90px;">これまで表に出てこなかった<br>りさ様自身の生まれ持った力が<br>静かに整い始める月です。</p>
+            <p style="margin-bottom: 90px;">まだ大きな変化は<br>見えないかもしれません。</p>
+            <p style="margin-bottom: 90px;">でも<br>確実に流れが<br>動き始めています。</p>
+            <p style="margin-bottom: 90px;">9月に入ると<br>「自分は自分」という軸が<br>はっきりとしてきます。</p>
+            <p style="margin-bottom: 90px;">外からの視線に<br>心が揺れる瞬間があっても</p>
+            <p style="margin-bottom: 90px;">その奥にある芯は<br>少しずつ強さを<br>取り戻していきます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">そして、2026年10月。</p>
+            <p style="margin-bottom: 90px;">ここが<br>不動明王の力が<br>最も強く流れ込む月です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">りさ様自身の芯の力が<br>一年の中で最もまとまる時期。</p>
+            <p style="margin-bottom: 90px;">この頃から<br>生活面での小さな変化</p>
+            <p style="margin-bottom: 90px;">環境を整える<br>相談できる先を増やす<br>そういった動きが<br>少しずつ出てきます。</p>
+            <p style="margin-bottom: 90px;">11月は<br>静かに生活を整える月です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">急いで何かを変えようとせず<br>じっくりと<br>日々を整えていってください。</p>
+            <p style="margin-bottom: 90px;">12月に入ると<br>生活面・経済面での<br>流れが動きやすくなります。</p>
+            <p style="margin-bottom: 90px;">これまで積み重ねてきたものが<br>少しずつ<br>土台として<br>形になり始めます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">そして、2027年1月。</p>
+            <p style="margin-bottom: 90px;">ここが<br>今回の流れの中で<br>最も重要な月です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">今年という年の流れと<br>りさ様自身の芯の強さと<br>この月の力が<br>一つに重なり合う。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">一年をかけて積み重ねてきた守りが<br>はっきりとした形になる<br>節目の月です。</p>
+            <p style="margin-bottom: 90px;">この一連の流れは<br>偶然ではありません。</p>
+            <p style="margin-bottom: 90px;">りさ様の生まれ持った力と<br>今年という年に巡ってきた流れと<br>月の力。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">三つの異なる流れが<br>同じ時期に重なり合っている。</p>
+            <p style="margin-bottom: 90px;">これほど重なるのは<br>決して多いことではありません。</p>
+            <p style="margin-bottom: 90px;">最後に<br>仕事についても<br>お伝えしておきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">来年<br>2027年にかけて<br>りさ様の仕事運は<br>「大樹のように守られる」<br>流れに変わっていきます。</p>
+            <p style="margin-bottom: 90px;">本来の信頼や実力が<br>正しく評価される流れに<br>戻っていく年です。</p>
+            <p style="margin-bottom: 0;">今の不安が<br>そのまま続くわけではありません。</p>
+        </div>
+
+        <!-- 芯の強さの活かし方 -->
+        <h2 class="emoji-header" id="sec-3">⛩️ 3. 芯の強さの活かし方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここからお伝えするのは<br>りさ様の中にある<br>消えない火を</p>
+            <p style="margin-bottom: 90px;">これからの毎日で<br>どう活かせばいいのか。</p>
+            <p style="margin-bottom: 90px;">そのお話です。</p>
+            <p style="margin-bottom: 90px;">りさ様の本質は<br>静かに燃え続ける灯火です。</p>
+            <p style="margin-bottom: 90px;">その火の一番の特徴は<br>「消えない」<br>ということだけではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「静かに、確実に燃え続ける」</p>
+            <p style="margin-bottom: 90px;">そのこと自体が<br>りさ様の本来の強さです。</p>
+            <p style="margin-bottom: 90px;">大きく反撃したり<br>声を荒げて戦ったりすることは<br>りさ様の火の使い方として<br>本来の形ではありません。</p>
+            <p style="margin-bottom: 90px;">むしろ<br>日常を守り続けること</p>
+            <p style="margin-bottom: 90px;">自分のペースを保ち<br>毎日を積み重ねていくこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それ自体が<br>この火を最も活かす方法です。</p>
+            <p style="margin-bottom: 90px;">りさ様の中には<br>現実を見る力と<br>自立して生きていく強さが<br>もともと備わっています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その力を信じて<br>一日一日を<br>丁寧に積み重ねていってください。</p>
+            <p style="margin-bottom: 0;">その積み重ねが<br>やがて大きな安定として<br>形になっていきます。</p>
+        </div>
+
+        <!-- 婚活への一歩 -->
+        <h2 class="emoji-header" id="sec-4">⛩️ 4. 婚活への一歩</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここからお伝えするのは<br>心と暮らしが整った先に</p>
+            <p style="margin-bottom: 90px;">りさ様らしい出会いへ<br>どう進んでいけばいいのか。</p>
+            <p style="margin-bottom: 90px;">そのお話です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">りさ様の運命の中には<br>穏やかで<br>経済的にも安定した<br>誠実な相手との縁の兆しが<br>すでにあります。</p>
+            <p style="margin-bottom: 90px;">良い縁や華やぎを求める気持ちは<br>りさ様の内面に<br>確かに強くあります。</p>
+            <p style="margin-bottom: 90px;">その願いは<br>決して的外れなものではありません。</p>
+            <p style="margin-bottom: 90px;">ただ<br>正直にお伝えすると<br>今はまだ<br>その一歩を踏み出す<br>最適な時期ではありません。</p>
+            <p style="margin-bottom: 90px;">まずは<br>今の重荷から<br>気持ちが解放されていくこと。</p>
+            <p style="margin-bottom: 90px;">そして<br>生活の土台が<br>落ち着いていくこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この二つが整うことが<br>婚活の本当の土台になります。</p>
+            <p style="margin-bottom: 90px;">焦る必要はありません。</p>
+            <p style="margin-bottom: 90px;">先ほどお伝えした流れの通り<br>2026年の秋から<br>りさ様の生活は<br>少しずつ整っていきます。</p>
+            <p style="margin-bottom: 90px;">その土台の上に<br>穏やかな縁は<br>自然と巡ってきます。</p>
+            <p style="margin-bottom: 90px;">今はまだ<br>その準備の時期。</p>
+            <p style="margin-bottom: 0;">でも<br>その先には<br>確かな希望が<br>待っています。</p>
+        </div>
+
+        <!-- 今後の流れ -->
+        <h2 id="sec-flow">【今後の流れ】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここまでお伝えしてきたことを<br>時の流れに沿って<br>もう一度整理します。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年8月：静かに力をためる月</p>
+            <p style="margin-bottom: 90px;">りさ様の生まれ持った力が<br>静かに整い始める月です。</p>
+            <p style="margin-bottom: 90px;">まだ大きな変化は<br>見えないかもしれません。</p>
+            <p style="margin-bottom: 90px;">でも<br>確実に流れが<br>動き始めています。</p>
+            <p style="margin-bottom: 90px;">無理に何かを変えようとせず<br>自分のペースを<br>大切にしてください。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年9月：芯が定まる月</p>
+            <p style="margin-bottom: 90px;">「自分は自分」という軸が<br>はっきりとしてくる時期です。</p>
+            <p style="margin-bottom: 90px;">外からの視線に<br>心が揺れる瞬間があっても</p>
+            <p style="margin-bottom: 90px;">その奥にある芯は<br>少しずつ強さを<br>取り戻していきます。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年10月：力がまとまる月（不動明王の月）</p>
+            <p style="margin-bottom: 90px;">りさ様自身の芯の力が<br>一年の中で最も強くまとまる月です。</p>
+            <p style="margin-bottom: 90px;">不動明王の力が<br>最も強く流れ込む月でもあります。</p>
+            <p style="margin-bottom: 90px;">この頃から<br>生活面での小さな変化</p>
+            <p style="margin-bottom: 90px;">環境を整える<br>相談できる先を増やす<br>そういった動きを<br>意識してみてください。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年11月：静かに整う月</p>
+            <p style="margin-bottom: 90px;">急いで何かを変えようとせず<br>じっくりと<br>日々を整える月です。</p>
+            <p style="margin-bottom: 90px;">生活の土台が<br>背景で少しずつ<br>効き始めています。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年12月：土台が動く月</p>
+            <p style="margin-bottom: 90px;">生活面・経済面での<br>流れが動きやすくなる月です。</p>
+            <p style="margin-bottom: 90px;">これまで積み重ねてきたものが<br>少しずつ<br>土台として<br>形になり始めます。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2027年1月：守りが完成する月</p>
+            <p style="margin-bottom: 90px;">今年という年の流れと<br>りさ様自身の芯の強さと<br>この月の力が<br>一つに重なり合う月です。</p>
+            <p style="margin-bottom: 0;">一年をかけて積み重ねてきた守りと安定が<br>はっきりとした形になる<br>節目の月です。</p>
+        </div>
+
+        <div class="section">
+            <h2 style="margin-top: 0;">【今年（2026年）の流れ】</h2>
+            <p style="margin-bottom: 90px; font-weight: bold;">今年は<br>りさ様にとって<br>「生活の土台が<br>動きながら整っていく年」です。</p>
+            <p style="margin-bottom: 90px;">秋<br>特に10月を境に<br>状況に動きが出やすくなります。</p>
+            <p style="margin-bottom: 0;">前半に感じていた不安は<br>後半になるにつれて<br>少しずつ和らいでいきます。</p>
+        </div>
+
+        <div class="section">
+            <h2 style="margin-top: 0;">【来年（2027年）の流れ】</h2>
+            <p style="margin-bottom: 90px; font-weight: bold;">来年は<br>仕事や社会的な立場が<br>「大樹のように守られる」流れに<br>変わっていく年です。</p>
+            <p style="margin-bottom: 90px;">本来の信頼と実力が<br>正しく評価される流れに<br>戻っていきます。</p>
+            <p style="margin-bottom: 0;">今年積み重ねてきた土台の上に<br>穏やかな安定と<br>新しい出会いへの道が<br>開かれていく年です。</p>
+        </div>
+
+        <!-- 守護を受け取る方法 -->
+        <h2 class="emoji-header" id="sec-guardian">⛩️ 守護を受け取る方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">そして<br>安心してください。</p>
+            <p style="margin-bottom: 90px;">りさ様のことを<br>深く霊視した際<br>特別な守護の力を<br>りさ様の奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">それは<br><span style="color: #ffd966;">不動明王</span>の力。</p>
+            <p style="margin-bottom: 90px;">この力は<br>りさ様の中の迷いを鎮め<br>消えない火を静かに守り<br>外からの心無い視線を<br>跳ね返していく流れを<br>整えていきます。</p>
+            <p style="margin-bottom: 90px;">今この文を読んでいる間にも<br>胸が少し温かくなる<br>肩が軽くなる<br>眠気を感じる<br>ふっと安心する。</p>
+            <p style="margin-bottom: 90px;">もしそのような感覚があれば<br>すでに守護の力が<br>届き始めている証です。</p>
+            <p style="margin-bottom: 90px;">これは<br>何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ受け取るだけで大丈夫です。</p>
+            <p style="margin-bottom: 90px;">もし今<br>少しだけ時間があれば<br>一度静かに目を閉じてください。</p>
+            <p style="margin-bottom: 90px;">右手を胸の中央に当て<br>左手をお腹に添えて<br>ゆっくり三度<br>呼吸をしてください。</p>
+            <p style="margin-bottom: 90px;">そして心の中で、</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">「私は守られている」<br>「私の火は誰にも消せない」</p>
+            <p style="margin-bottom: 90px;">そう唱えてみてください。</p>
+            <p style="margin-bottom: 90px;">胸のあたりが少し温かくなる<br>手がじんわりする<br>眠くなる<br>安心感が広がる。</p>
+            <p style="margin-bottom: 90px;">その感覚があれば<br>すでに守護の流れが<br>動き始めています。</p>
+            <p style="margin-bottom: 90px;">不動明王の御神気は<br>今この瞬間にも<br>りさ様へ静かに<br>注がれています。</p>
+            <p style="margin-bottom: 90px;">今のりさ様には<br>受け取る器に<br>少しだけ揺らぎがあります。</p>
+            <p style="margin-bottom: 90px;">一人で耐えて乗り越えようとする自分と<br>本当は誰かに守られたい自分が<br>内側でぶつかり続けている<br>そんな揺らぎです。</p>
+            <p style="margin-bottom: 90px;">せっかく流れてきた守護の力も<br>留めておく器が揺らいでいると<br>少しずつ流れ出てしまいます。</p>
+            <p style="margin-bottom: 90px;">その器を安定させるために<br>日々の暮らしの中でできる方は<br>試していただきたいことがあります。</p>
+            <p style="margin-bottom: 90px;">無理に頑張ることではありません。</p>
+            <p style="margin-bottom: 90px;">余裕がある時だけ<br>試してみてください。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【守護神の寺院へ参拝】</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">不動明王</span>と縁のある寺院が<br>りさ様のお住まいの<br>神奈川県横浜市南区大岡より<br>近郊にいくつかあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">福智山普門院（神奈川県横浜市南区西中町1-2）<br>西向山乗蓮寺（神奈川県横浜市南区井土ケ谷上町33-1）<br>東照山普門院（神奈川県横浜市南区別所4-7-1）<br>瀧頭山明王寺（神奈川県横浜市磯子区滝頭3-13-5）<br>川崎大師（神奈川県川崎市川崎区大師町4-48）</p>
+            <p style="margin-bottom: 90px;">不動明王はお寺に祀られている神様なので<br>参拝の際は<br>祝詞ではなく<br>以下の真言を心の中で唱えてください。</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">ノウマク サンマンダ バザラダン<br>センダン マカロシャダ ソワタヤ<br>ウンタラタ カンマン</p>
+            <p style="margin-bottom: 90px;">そして<br>お願い事を唱えるのではなく</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">「私は自分の生活を<br>自分の手で守っていきます。<br>どうか見守っていてください」</p>
+            <p style="margin-bottom: 0;">という形で伝えてください。</p>
+        </div>
+
+        <!-- あなたを支えるパワーストーン -->
+        <h2 class="emoji-header" id="sec-stone">⛩️ あなたを支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">りさ様には<br>守護神のご縁をお伝えし<br>その力をりさ様の奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px;">また<br>不動明王と縁のある寺院と<br>参拝の際に力を取り入れる方法も<br>お伝えしました。</p>
+            <p style="margin-bottom: 90px;">基本的には<br>これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ<br>守護の力は<br>何もしなければ<br>少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">なかなか時間が取れない<br>寺院が遠くて頻繁には行けない<br>という方も<br>いらっしゃると思います。</p>
+            <p style="margin-bottom: 90px;">そのような方に<br>ぜひお勧めしたいのが<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px;">守護神の力を石に宿し<br>常に身近に持ち歩くことが<br>できるようになります。</p>
+            <p style="margin-bottom: 90px;">ただ<br>どんな石でもよいわけではありません。</p>
+            <p style="margin-bottom: 90px;">りさ様が持つ<br>潜在的なエネルギーと<br>不動明王が共鳴しやすい石で<br>お作りする必要があります。</p>
+            <p style="margin-bottom: 90px;">りさ様のエネルギーと<br><span style="color: #ffd966;">不動明王</span>が共鳴しやすい石を<br>4つお伝えします。</p>
+            <ul style="margin-bottom: 90px;">
+                <li><span style="color: #ffd966; font-weight: bold;">1. ガーネット</span><br>燃える赤を宿す<br>灯火の石です。<br>りさ様の中の<br>「静かに燃え続ける火」を強め<br>消えない芯の力を<br>支えてくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">2. タイガーアイ</span><br>力強い金色の光を宿す<br>意志の石です。<br>不動明王の<br>揺るがぬ意志と直結し<br>外からの心無い視線を<br>跳ね返す守りの力を<br>強めてくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">3. オニキス</span><br>深く黒く沈む<br>邪気払いの石です。<br>閉じ込められたような感覚を<br>静かに解き放ち<br>悪意ある視線から<br>身を守る結界を<br>張ってくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">4. シトリン</span><br>明るい金色を宿す<br>豊かさの石です。<br>りさ様の中の<br>現実を見る力・自立心を後押しし<br>仕事や生活の土台に<br>明るさと安定を<br>取り戻してくれます。</li>
+            </ul>
+            <p style="margin-bottom: 90px;">この中から<br>りさ様のエネルギーと<br>最もバランスが取れる組み合わせを<br>私が選び<br>ひとつずつ手作りで仕上げます。</p>
+            <p style="margin-bottom: 0;">ご希望の場合は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <h2 id="sec-closing">【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">りさ様</p>
+            <p style="margin-bottom: 90px;">あなたの未来には<br>誰の視線も気にせず<br>静かに息をしている姿へと<br>続く道が視えています。</p>
+            <p style="margin-bottom: 90px;">肩の力が抜けて<br>表情が柔らかくなる<br>そんな日常の景色。</p>
+            <p style="margin-bottom: 90px;">その景色が<br>2027年1月<br>一年をかけて積み重ねてきた守りが<br>形になる中で<br>はっきりと立ち上がる兆しが<br>視えています。</p>
+            <p style="margin-bottom: 90px;">今は<br>一人で耐えて<br>乗り越えようとしているかもしれません。</p>
+            <p style="margin-bottom: 90px;">でもそれは<br>あなたの守護が弱いからではなく</p>
+            <p style="margin-bottom: 90px;">すでに宿っている厚い守護を<br>今はうまく使いきれていない<br>一時的なねじれにすぎません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">正しい感覚です。</p>
+            <p style="margin-bottom: 90px;">あなたは<br>静かに<br>でも消えることなく<br>燃え続ける火を持つ人。</p>
+            <p style="margin-bottom: 90px;">大きく反撃するのではなく<br>日常を守り続けることこそが<br>その火を最も活かす道を<br>知っている人です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">8月は静かに力をためる月。<br>10月はその力が一年で最も強くまとまる月。<br>12月は生活の土台が動く月。<br>1月は一年がかりの守りが完成する月。</p>
+            <p style="margin-bottom: 90px;">その流れを<br>焦らず<br>でも止めずに<br>進んでいってください。</p>
+            <p style="margin-bottom: 90px;">それが<br>あなたの安心への道。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">不動明王</span>が<br>あなたを守っています。</p>
+            <p style="margin-bottom: 90px;">迷いも<br>悪しきものも<br>静かに焼き尽くしながら</p>
+            <p style="margin-bottom: 90px;">あなたの火を<br>これからもずっと<br>守り続けてくれます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">穏やかな暮らしも<br>誠実な縁も<br>これから先<br>あなたのもとに<br>巡ってきます。</p>
+            <p style="margin-bottom: 90px;">守られている。</p>
+            <p style="margin-bottom: 90px;">その事実を<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より<br>遠隔守護祈祷を行い<br>りさ様の安心と幸せを願います。</p>
+            <p style="margin-bottom: 90px;">りさ様の未来に<br>静かで確かな光が<br>満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+<!-- GA4 カスタム計測：誰が/最後まで読んだか/購入ボタン [GA4-MIYUKI] -->
+<script>
+(function () {
+  function fire() {
+    var seg = location.pathname.split('/').filter(Boolean);
+    var last = decodeURIComponent(seg[seg.length - 1] || '');
+    var id = /\.html?$/i.test(last) ? decodeURIComponent(seg[seg.length - 2] || 'unknown') : (last || 'unknown');
+    var base = { kantei_id: id, persona: 'miyuki' };
+    gtag('set', 'user_properties', { kantei_id: id, persona: 'miyuki' });
+    gtag('event', 'page_open', base);
+
+    var end = document.querySelector('.signature, .sign');
+    if (end && 'IntersectionObserver' in window) {
+      var done = false;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && !done) { done = true; gtag('event', 'read_complete', base); io.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      io.observe(end);
+    }
+
+    document.querySelectorAll('.cta-button, .btn').forEach(function (b) {
+      b.addEventListener('click', function () { gtag('event', 'cta_click', base); });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire); else fire();
+})();
+</script>
+
+</body>
+</html>
