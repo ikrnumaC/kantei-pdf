@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>岡田里香様専用鑑定書</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+        line-height: 2;
+        background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+        color: #2d2d2d;
+        padding: 40px 20px;
+        margin: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    /* ===== 演出：スクロールで背景が五行イメージへ移り変わる ===== */
+    .bg-fixed {
+        position: fixed;
+        inset: 0;
+        z-index: -3;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: blur(1.5px) saturate(0.75) brightness(1.18);
+        opacity: 0;
+        transition: opacity 1.6s ease;
+        will-change: opacity;
+    }
+    #bg-you { opacity: 1; }
+    .bg-fixed.is-hidden { opacity: 0 !important; }
+    .bg-fixed.is-active { opacity: 0.5; }
+    .bg-veil {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        pointer-events: none;
+        background:
+            linear-gradient(180deg, rgba(250, 248, 245, 0.8) 0%, rgba(249, 243, 255, 0.86) 100%);
+    }
+
+    /* ===== 表紙ページ ===== */
+    .cover-page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+    }
+
+    .cover-page::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 400px;
+        background-image: url('../images/曼荼羅.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.3;
+        z-index: 0;
+    }
+
+    .cover-page > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .cover-recipient {
+        font-size: 48px;
+        font-weight: 300;
+        color: #c9a05d;
+        margin-bottom: 20px;
+        letter-spacing: 8px;
+    }
+
+    .cover-title {
+        font-size: 56px;
+        font-weight: 700;
+        color: #c9a05d;
+        margin-bottom: 60px;
+        letter-spacing: 4px;
+    }
+
+    .cover-subtitle {
+        font-size: 18px;
+        color: #8b6f9c;
+        letter-spacing: 3px;
+        margin-bottom: 80px;
+    }
+
+    .cover-appraiser {
+        font-size: 20px;
+        color: #6d6d6d;
+        letter-spacing: 2px;
+    }
+
+    /* ===== コンテンツページ ===== */
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        padding: 60px 50px;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                    inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 36px;
+        font-weight: 700;
+        color: #c9a05d;
+        margin-bottom: 15px;
+        letter-spacing: 3px;
+    }
+
+    h1::after {
+        content: '';
+        display: block;
+        width: 150px;
+        height: 2px;
+        background: #c9a05d;
+        margin: 20px auto 0;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #8b6f9c;
+        font-size: 16px;
+        margin-bottom: 50px;
+        letter-spacing: 2px;
+    }
+
+    h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #c9a05d;
+        margin-top: 80px;
+        margin-bottom: 40px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #e8d5b7;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 24px;
+        font-weight: 600;
+        color: #8b6f9c;
+        margin-top: 40px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    p {
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid #e8d5b7;
+        margin: 40px 0;
+    }
+
+    /* ===== オーラセクション（枠のみ、背景画像なし） ===== */
+    .aura-section {
+        padding: 40px;
+        margin: 30px 0;
+        border-radius: 10px;
+        background-color: #f9f3ff;
+        border: 2px solid #e8d5b7;
+    }
+
+    /* ===== ボックス装飾 ===== */
+    .header-info {
+        background: #fff9f0;
+        border: 2px solid #e8d5b7;
+        border-radius: 10px;
+        padding: 30px;
+        margin: 30px 0;
+    }
+
+    .important-box {
+        background: #fffef5;
+        border: 2px solid #d4a574;
+        border-radius: 10px;
+        padding: 30px;
+        margin: 30px 0;
+    }
+
+    .magic-word-box {
+        background: #f9f3ff;
+        border: 2px dashed #c9a0dc;
+        border-radius: 10px;
+        padding: 35px;
+        margin: 30px 0;
+        white-space: pre-line;
+    }
+
+    .sign-box {
+        text-align: center;
+        margin-top: 60px;
+        padding-top: 30px;
+        border-top: 1px solid #e8d5b7;
+    }
+
+    .toc {
+        background: #fff9f0;
+        border: 2px solid #e8d5b7;
+        border-radius: 10px;
+        padding: 35px 30px;
+        margin: 40px 0 60px;
+    }
+
+    .toc-title {
+        text-align: center;
+        font-size: 22px;
+        color: #c9a05d;
+        margin-bottom: 25px;
+        letter-spacing: 4px;
+        font-weight: 700;
+    }
+
+    .toc ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc li {
+        margin-bottom: 14px;
+        text-align: center;
+        font-size: 17px;
+    }
+
+    .toc li:last-child {
+        margin-bottom: 0;
+    }
+
+    .toc a {
+        color: #8b6f9c;
+        text-decoration: none;
+        letter-spacing: 1px;
+        transition: color 0.2s;
+    }
+
+    .toc a:hover {
+        color: #c9a05d;
+    }
+
+    strong {
+        color: #000000;
+        font-weight: 700;
+    }
+
+    /* ===== スマホレスポンシブ ===== */
+    @media screen and (max-width: 768px) {
+        body {
+            padding: 8px 0;
+            line-height: 1.8;
+        }
+
+        .cover-page { min-height: 100vh; padding: 20px; }
+        .cover-page::before { width: 200px; height: 200px; }
+
+        .cover-recipient {
+            font-size: 32px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .cover-title {
+            font-size: 36px;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+        }
+
+        .cover-subtitle {
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+        }
+
+        .cover-appraiser { font-size: 16px; }
+
+        .container {
+            padding: 24px 14px;
+            border-radius: 10px;
+            max-width: 100%;
+        }
+
+        h1 { font-size: 24px; letter-spacing: 2px; }
+        h2 { font-size: 22px; margin-top: 50px; margin-bottom: 30px; }
+        h3 { font-size: 18px; margin-top: 30px; margin-bottom: 20px; }
+        p { font-size: 16px; margin-bottom: 40px; }
+        .subtitle { font-size: 14px; margin-bottom: 30px; }
+
+        .aura-section,
+        .header-info,
+        .important-box,
+        .magic-word-box {
+            padding: 20px 14px;
+            margin: 16px 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="bg-fixed" id="bg-you" style="background-image: url('../images/強い火.png');"></div>
+<div class="bg-fixed" id="bg-wood" style="background-image: url('../images/強い木.png');"></div>
+<div class="bg-fixed" id="bg-water" style="background-image: url('../images/強い水.png');"></div>
+<div class="bg-fixed" id="bg-mandala" style="background-image: url('../images/曼荼羅.png');"></div>
+<div class="bg-veil"></div>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">岡田里香様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>岡田里香様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <div class="toc">
+        <div class="toc-title">— 目次 —</div>
+        <ul>
+            <li><a href="#sec-you">🔮 あなたについて</a></li>
+            <li><a href="#sec-partner">🔮 お相手について</a></li>
+            <li><a href="#sec-here">🔮 ここからお伝えしていくこと</a></li>
+            <li><a href="#sec-turning">🔮 運命の転機</a></li>
+            <li><a href="#sec-action">🔮 今からできること</a></li>
+            <li><a href="#sec-support">🔑 心を守るサポート</a></li>
+            <li><a href="#sec-last">最後に</a></li>
+        </ul>
+    </div>
+
+    <p>岡田里香様</p>
+
+    <p>この度は本鑑定にお進みいただき<br>
+    心より感謝申し上げます。</p>
+
+    <p>「彼から、何か動きはあるんだろうか」</p>
+
+    <p>「このまま何も変わらないまま<br>
+    　終わってしまうんじゃないか」</p>
+
+    <p>「もし私が諦めたら<br>
+    　彼は少しでも気づいてくれるんだろうか」</p>
+
+    <p>その三つの想いが<br>
+    お申し込みのメッセージから<br>
+    静かに、でも確かに伝わってきました。</p>
+
+    <p>長い間、一人で想いを抱え続け<br>
+    それでも心を燃やし続けてきた里香様。</p>
+
+    <p>その一途さは<br>
+    誰にでも持てるものではありません。</p>
+
+    <p>だからこそ<br>
+    答えの出ない時間が<br>
+    余計に長く、重く感じられているはずです。</p>
+
+    <p>まず、里香様が一番知りたいこと。</p>
+
+    <p>はっきりお伝えしますね。</p>
+
+    <p>彼の中に<br>
+    里香様の存在は<br>
+    すでにしっかりと入っています。</p>
+
+    <p>ただ、正直にお伝えすると<br>
+    今のまま諦めて距離を置いても<br>
+    彼のほうから追いかけてくる可能性は<br>
+    高くありません。</p>
+
+    <p>彼は「待つ」ということに<br>
+    慣れてしまっている性質だからです。</p>
+
+    <p>ただ、「気づかない」というのとは<br>
+    違います。</p>
+
+    <p>里香様がふっと<br>
+    言葉を送らなくなれば<br>
+    彼は、その変化に<br>
+    確かに気づきます。</p>
+
+    <p>いつもそこにあった<br>
+    小さな灯りが<br>
+    消えたことに。</p>
+
+    <p>ただ、気づくことと<br>
+    自分から動くことの間には<br>
+    今の彼にはまだ<br>
+    高い壁があるんです。</p>
+
+    <p>だからといって<br>
+    この想いに望みがないわけではないんです。</p>
+
+    <p>今のペースで穏やかに関わり続けることで<br>
+    彼の中で里香様という存在が<br>
+    少しずつ育っていく。</p>
+
+    <p>そしてある月を境に<br>
+    その変化がはっきりと形になってくる。</p>
+
+    <p>その理由が<br>
+    里香様のオーラに視えています。</p>
+
+    <p>次のセクションから<br>
+    一つずつお伝えしていきますね。</p>
+
+    <h2 id="sec-you">🔮 あなたについて</h2>
+
+    <div class="aura-section">
+        <p>里香様を霊視した時<br>
+        視えたのは<br>
+        燃え上がる真っ赤な火のオーラ。</p>
+
+        <p>太陽のように明るく<br>
+        情熱的に広がる炎です。</p>
+
+        <p>一度好きになった相手を<br>
+        時間をかけてでも大切に想い続けられる<br>
+        まっすぐな強さを持つ人。</p>
+
+        <p>ここまでの道のりの中で<br>
+        里香様は<br>
+        お伝えしてきたことを<br>
+        一つひとつ<br>
+        丁寧に積み重ねてくださっています。</p>
+
+        <p>水を意識して飲むこと。<br>
+        青や黒を身につけること。<br>
+        心を込めて言葉を送り続けること。</p>
+
+        <p>派手な行動ではなくても<br>
+        続けることは<br>
+        簡単なことではありません。</p>
+
+        <p>その積み重ねがあったからこそ<br>
+        今の里香様のオーラは<br>
+        以前より確かに整ってきています。</p>
+
+        <p>まず、そのことを<br>
+        きちんとお伝えしておきたいんです。</p>
+
+        <p>その上で<br>
+        改めてお伝えしたいことがあります。</p>
+
+        <p>オーラは一度整えたら<br>
+        それで終わりではなく<br>
+        巡り続けるもの。</p>
+
+        <p>12月という大切な月を前に<br>
+        今のオーラの状態を<br>
+        もう一度、丁寧に視ていきますね。</p>
+
+        <p>ただ、その里香様のオーラに<br>
+        今、出すぎているものがあります。</p>
+
+        <p>それは、金のオーラの強さと<br>
+        水のオーラの少なさ。</p>
+
+        <p>これは以前の鑑定でも<br>
+        お伝えした通りです。</p>
+
+        <p>金が強すぎると<br>
+        答えの出ない時間に耐えづらくなり<br>
+        自分から壁を作ってしまう。</p>
+
+        <p>水が足りないと<br>
+        一喜一憂しやすくなり<br>
+        待つ時間そのものが<br>
+        苦しく感じられてしまう。</p>
+
+        <p>ここまでは、もうご存知のこと。</p>
+
+        <p>大切なのは、ここから先です。</p>
+
+        <p>今、里香様は<br>
+        自分自身の在り方を<br>
+        静かに見つめ直す<br>
+        力強い10年の中にいます。</p>
+
+        <p>そして<strong>2026年</strong>は<br>
+        その力がさらに強く重なる<br>
+        特別な年。</p>
+
+        <p>一年を通して<br>
+        非常に力強いエネルギーが<br>
+        里香様自身に巡っています。</p>
+
+        <p>このまま金のオーラの強さに<br>
+        振り回され続ければ<br>
+        答えの出ない苦しさに<br>
+        消耗してしまう。</p>
+
+        <p>ただ、水のオーラを補い<br>
+        金の強さを少し鎮めれば<br>
+        この特別な一年の光を<br>
+        まっすぐ受け取れるようになる。</p>
+
+        <p>その先に<br>
+        彼の変化にちゃんと気づける<br>
+        自分でいられる未来が<br>
+        視えています。</p>
+    </div>
+
+    <h2 id="sec-partner">🔮 お相手について</h2>
+
+    <div class="aura-section">
+        <p>次に彼のオーラを<br>
+        深く視させていただきました。</p>
+
+        <p>彼は柔らかく揺れる木のオーラ。</p>
+
+        <p>草花のようにしなやかで<br>
+        周りに合わせながらも<br>
+        芯のある緑を持つ人です。</p>
+
+        <p>穏やかな感受性を持ちながら<br>
+        自分から動くよりも<br>
+        状況が整うのを待とうとする性質。</p>
+
+        <p>このオーラの方に<br>
+        今、何が起きているのか。</p>
+
+        <p>彼に足りない金のオーラは<br>
+        自分から一歩を踏み出す決断力。</p>
+
+        <p>これが足りないから<br>
+        気持ちがあっても<br>
+        けじめをつけられないまま<br>
+        時間だけが過ぎてしまいます。</p>
+
+        <p>以前の鑑定でお伝えした<br>
+        慎重で堅実、関係を急がないという性質が<br>
+        今、色濃く出ている状態です。</p>
+
+        <p>そして彼は今<br>
+        自分の立場や役目に伴う<br>
+        大きな責任と<br>
+        向き合っていく時期の中にいます。</p>
+
+        <p>外から見ると<br>
+        恋愛よりもそちらに<br>
+        意識が向いているように映るはず。</p>
+
+        <p>これは<br>
+        冷めているからではなく<br>
+        自分の置かれた場所と<br>
+        向き合おうとしている<br>
+        静かな時間だからなんです。</p>
+
+        <p>ただ、2026年という年だけは<br>
+        彼にとって新しい始まりの力が<br>
+        強まる年でもあります。</p>
+
+        <p>土台を整える10年の中に<br>
+        今年だけ<br>
+        芽生えのエネルギーが<br>
+        巡ってきているんです。</p>
+
+        <p>里香様と彼。</p>
+
+        <p>二人のオーラは<br>
+        木が火を育てる相性を持っています。</p>
+
+        <p>彼の存在そのものが<br>
+        里香様の情熱の源になっている関係。</p>
+
+        <p>ただ、この相性は<br>
+        一方通行になりやすいところがあり<br>
+        彼はマイペースなまま<br>
+        里香様だけが想いを燃やし続ける<br>
+        形になりやすいんです。</p>
+
+        <p>だからこそ<br>
+        里香様が焦らず<br>
+        自分の炎を自分自身のために<br>
+        保ち続けることが大切になります。</p>
+
+        <p>彼のオーラから視えてくるのは<br>
+        今、里香様の存在が<br>
+        彼の中に確かに置かれているということ。</p>
+
+        <p>ただ、彼のオーラが<br>
+        慎重さという霧に<br>
+        覆われているから</p>
+
+        <p>言葉や行動にする一歩を<br>
+        まだ選べずにいるだけなんです。</p>
+
+        <p>そして里香様のオーラが整った時<br>
+        彼の目に映る里香様は<br>
+        今より遥かに<br>
+        穏やかで、頼れる存在になります。</p>
+
+        <p>「急かさずにいてくれる人」<br>
+        「自分のペースを大切にしてくれる人」</p>
+
+        <p>その在り方が<br>
+        彼の中に少しずつ<br>
+        染み込んでいく。</p>
+
+        <p>それが、ある月を境に<br>
+        彼自身の変化と重なって<br>
+        形になっていきます。</p>
+    </div>
+
+    <h2 id="sec-here">🔮 ここからお伝えしていくこと</h2>
+
+    <p>無料鑑定の最後に<br>
+    お伝えするとお約束したことを<br>
+    ここから一つずつ視ていきます。</p>
+
+    <h3>【彼が今、本当に感じていること】</h3>
+
+    <p>彼の魂の奥が今抱えているのは<br>
+    「里香様の言葉は、いつも温かい」<br>
+    という静かな実感です。</p>
+
+    <p>ただ、それを言葉や行動にして<br>
+    示すことが、今の彼にはまだできない。</p>
+
+    <p>慎重な性質の人は<br>
+    中途半端な気持ちのまま<br>
+    関係を動かすことを何より嫌います。</p>
+
+    <p>だから<br>
+    自分の中でちゃんと答えが固まるまで<br>
+    動かないという形を取っているんです。</p>
+
+    <p>「今はまだ、動く時ではない」<br>
+    それが彼の本音であって<br>
+    「<strong>気持ちがない</strong>」わけでは<br>
+    決してありません。</p>
+
+    <p>だからこそ<br>
+    彼の動きのなさを<br>
+    気持ちが冷めたサインとして<br>
+    受け取らないでください。</p>
+
+    <h3>【あなたのオーラの調整方法】</h3>
+
+    <p>里香様に必要なのは<br>
+    水のオーラを補い<br>
+    金の強さを少し和らげること。</p>
+
+    <p>魂のレベルでお伝えするなら<br>
+    「彼の答えを、彼のペースで待つ」<br>
+    という在り方を<br>
+    自分の中に育てることです。</p>
+
+    <p>答えの出ない時間の中でも<br>
+    自分の心の温度を<br>
+    自分で保つ。</p>
+
+    <p>それは我慢ではなく<br>
+    彼が今、自分の足元を<br>
+    固めている時間を尊重する<br>
+    最高の優しさです。</p>
+
+    <p>「彼は彼のペースで動く<br>
+    　私は私のペースで整える」</p>
+
+    <p>この境界線が引けた瞬間<br>
+    里香様のオーラに<br>
+    水の巡りが戻り始めます。</p>
+
+    <p>具体的な日常の整え方は<br>
+    このあとお伝えしますね。</p>
+
+    <h3>【オーラが整った先に広がる景色】</h3>
+
+    <p>里香様のオーラが<br>
+    整い始めた時<br>
+    彼の目に映る里香様は<br>
+    こう変わります。</p>
+
+    <p>「変わらず穏やかにそこにいてくれる人」<br>
+    「急かさず、自然体で関わってくれる人」</p>
+
+    <p>これが慎重な彼が<br>
+    最も安心できる在り方です。</p>
+
+    <p>そして12月<br>
+    彼の中で静かに積もっていた想いが<br>
+    小さな変化として<br>
+    表に出てくる瞬間が視えています。</p>
+
+    <p>連絡の頻度に<br>
+    これまでとは違う温度が戻る瞬間。</p>
+
+    <p>自分から話しかけてくる様子に<br>
+    小さな変化が見える瞬間。</p>
+
+    <p>そんな景色が<br>
+    里香様の元に近づいてきます。</p>
+
+    <h3>【霊視で視えた、もう一つの重要な問題】</h3>
+
+    <p>里香様自身も<br>
+    うっすら感じているはずです。</p>
+
+    <p>答えが出ないと<br>
+    同じ場所で立ち止まってしまい<br>
+    つい試すような行動を<br>
+    取りたくなってしまうクセ。</p>
+
+    <p>これは里香様の魂が持つ<br>
+    まっすぐさの裏側に<br>
+    <strong>必ず</strong>出てくる影です。</p>
+
+    <p>「もう諦めたほうがいいのかもしれない」<br>
+    その問いに<br>
+    今、答えを出す必要はないんです。</p>
+
+    <p>なぜなら<br>
+    彼が動かない理由は<br>
+    里香様の中にはないから。</p>
+
+    <p>このクセを抱えたまま12月を迎えると<br>
+    せっかく巡ってくる水のオーラを<br>
+    不安を打ち消すことだけに<br>
+    使ってしまいます。</p>
+
+    <p>だからこそ今のうちに<br>
+    「答えの出ない問いを、そっと置く」<br>
+    練習を始めてほしいんです。</p>
+
+    <p>そしてその練習を支えるのも<br>
+    オーラの調整です。</p>
+
+    <p>ここまでお伝えしてきた全てが<br>
+    オーラの調整に繋がっていきます。</p>
+
+    <h2 id="sec-turning">🔮 運命の転機</h2>
+
+    <p>ここまでお伝えしてきた中で<br>
+    これから半年の流れが<br>
+    少しずつ視えてきたかと思います。</p>
+
+    <p>そこから特に重要な4つの月を<br>
+    順にお伝えします。</p>
+
+    <h3>最重要月　2026年12月</h3>
+
+    <p>なぜこの月が特別なのか。</p>
+
+    <p>それは里香様に足りなかった水のオーラと<br>
+    彼に足りなかった金のオーラが<br>
+    同時に巡ってくるからです。</p>
+
+    <p>半年のうち、<br>
+    双方の不足が重なって満たされるのは<br>
+    この月だけ。</p>
+
+    <p>そしてもう一つ<br>
+    この月が特別な理由があります。</p>
+
+    <p>彼はこれから<br>
+    外での活動がさらに増え<br>
+    忙しさが強まっていく時期に入ります。</p>
+
+    <p>そしてその先には<br>
+    来年、彼が大きな務めに入り<br>
+    里香様と彼の間で<br>
+    言葉を交わせなくなる期間が<br>
+    待っています。</p>
+
+    <p>だからこそ<br>
+    金のオーラが巡り<br>
+    決断力が芽生える12月という窓は<br>
+    その務めが始まる前に巡ってくる<br>
+    最後に近い、貴重な機会なんです。</p>
+
+    <p>二人の運命が最も近づく時期。<br>
+    それが<strong>12月</strong>です。</p>
+
+    <p>この月、何が起こるか。</p>
+
+    <p>派手な進展というより<br>
+    静かに関係の土台が<br>
+    固まっていく実感があるはずです。</p>
+
+    <p>彼の連絡の頻度や<br>
+    自分から話しかけてくる様子に<br>
+    これまでとは違う<br>
+    小さな変化が見え始めます。</p>
+
+    <p>心構えとしてお伝えしたいのは<br>
+    変化が見えても<br>
+    急に距離を詰めすぎないこと。</p>
+
+    <p>「やっと動いた」と決めつけて<br>
+    期待を一気に膨らませすぎないこと。</p>
+
+    <p>焦らず、これまで通り<br>
+    自然体で関わり続けてください。</p>
+
+    <p>自分自身の生活や好きなことも<br>
+    大切にしながら<br>
+    彼の小さな変化を<br>
+    丁寧に受け止めていく。</p>
+
+    <p>それができれば<br>
+    12月の扉は<br>
+    最高の形で開いていきます。</p>
+
+    <h3>次に重要な月　2026年7月（今この瞬間）</h3>
+
+    <p>極端な弱さのない<br>
+    比較的穏やかな月です。</p>
+
+    <p>大きな進展はありませんが<br>
+    関係が悪化することもない<br>
+    安定した時期。</p>
+
+    <p>12月に向けての土台を<br>
+    静かに整える時間です。</p>
+
+    <p>心構えとしては<br>
+    「焦らず今のペースを保つ」。<br>
+    そして自分自身の生活を<br>
+    充実させることに<br>
+    意識を向けてください。</p>
+
+    <h3>○ 2026年8月</h3>
+
+    <p>彼に足りなかった金のオーラが<br>
+    巡り始める月。</p>
+
+    <p>まだ大きな変化は出にくいものの<br>
+    静かな準備が進んでいく時期です。</p>
+
+    <h3>○ 2026年9月</h3>
+
+    <p>引き続き金のオーラは巡りますが<br>
+    双方ともにエネルギーが<br>
+    落ち着いている時期。</p>
+
+    <p>無理に動かず<br>
+    静観することが大切です。</p>
+
+    <h3>○ 2026年10月</h3>
+
+    <p>二人ともエネルギーが<br>
+    落ち着いてくる時期。</p>
+
+    <p>じっくりと<br>
+    関係の土台を固める月です。</p>
+
+    <h3>○ 2026年11月</h3>
+
+    <p>里香様に足りなかった水のオーラが<br>
+    巡り始める月。</p>
+
+    <p>12月への準備が<br>
+    少しずつ整っていきます。</p>
+
+    <p>その先、2027年から2028年にかけては<br>
+    関係の輪郭がはっきりと<br>
+    形になっていく時間が続きます。</p>
+
+    <p>2027年には<br>
+    焦らず育ててきた関係が<br>
+    少しずつ形になり始め</p>
+
+    <p>2028年には<br>
+    これまでの想いに一区切りがつき<br>
+    里香様自身が納得できる<br>
+    次の段階へと進んでいきます。</p>
+
+    <p><strong>最も大切なこと。</strong></p>
+
+    <p><strong>12月</strong>が里香様と彼の運命にとって<br>
+    最大のチャンスです。</p>
+
+    <p>この月をどう迎えるかが<br>
+    今後の二人の流れを決めます。</p>
+
+    <p>だからこそ今から12月までの数ヶ月<br>
+    オーラを整えて<br>
+    その瞬間を迎えてほしいんです。</p>
+
+    <h2 id="sec-action">🔮 今からできること</h2>
+
+    <p>ここまで運命の流れと<br>
+    これから訪れる転機をお伝えしました。</p>
+
+    <p>ただ、一つだけ<br>
+    知っておいてほしいことがあります。</p>
+
+    <p>運命は<br>
+    ただ待っているだけでは動きません。</p>
+
+    <p>星の流れがどれだけ整っても<br>
+    里香様自身のオーラが整っていなければ<br>
+    その流れを掴むことはできない。</p>
+
+    <p>だからこそここからお伝えするのは<br>
+    里香様自身が<br>
+    オーラを調整するためのアクションです。</p>
+
+    <p>すでに実践してくださっている<br>
+    水を飲む、青や黒を身につける、<br>
+    お風呂にゆっくり浸かる習慣は<br>
+    そのまま続けてください。</p>
+
+    <p>ここでは、12月に向けて<br>
+    新しく意識してほしいことだけ<br>
+    お伝えしますね。</p>
+
+    <p>・試すような行動を取りたくなったら、<br>
+    　一呼吸置く</p>
+
+    <p>・寝る前に彼からの連絡を<br>
+    　何度も確認しすぎない</p>
+
+    <p>・完璧な答えを求めず、<br>
+    　余白を残すことを意識する</p>
+
+    <p>・赤い服や小物は、<br>
+    　彼に金のオーラが巡り始める8月以降<br>
+    　少しずつ増やしていく</p>
+
+    <h3>【気をつけてほしいこと】</h3>
+
+    <p>即答を求めたり<br>
+    焦りをぶつけたりしないこと。</p>
+
+    <p>じっくり型の彼には<br>
+    急かす気配だけで<br>
+    プレッシャーになってしまいます。</p>
+
+    <p>彼のペースを尊重する姿勢が<br>
+    彼の警戒心をそっと解いていきます。</p>
+
+    <p>ここまでお伝えした調整法で<br>
+    少しずつオーラは整い始めます。</p>
+
+    <p>ただ、正直にお伝えします。</p>
+
+    <p>水のオーラがほとんどない状態からだと<br>
+    日常の調整だけでは<br>
+    補いきれない部分があります。</p>
+
+    <p>水を飲む、色を身につける。</p>
+
+    <p>これらは<br>
+    「整ったオーラを維持する力」には<br>
+    なります。</p>
+
+    <p>でも、ゼロから補う力としては<br>
+    どうしても限界がある。</p>
+
+    <p>もし本気で<br>
+    12月の運命の交差点を<br>
+    最高の状態で迎えたいなら<br>
+    もう一つお伝えしたい方法があります。</p>
+
+    <h2 id="sec-support">🔑 心を守るサポート</h2>
+
+    <p>ここまでお伝えしてきた通り<br>
+    里香様のオーラには<br>
+    水のオーラが少なく<br>
+    金のオーラが強く出すぎている状態です。</p>
+
+    <p>これが今の状況の<br>
+    根っこにある原因であり<br>
+    12月のチャンスを掴むために<br>
+    最も整えるべき部分です。</p>
+
+    <p>このオーラが整うと</p>
+
+    <p>彼から連絡がない時間も<br>
+    心が波立たず<br>
+    穏やかに過ごせるようになります。</p>
+
+    <p>「もう諦めようかな」と<br>
+    自分を責めるような夜も減り<br>
+    今のペースで関わり続ける自分を<br>
+    そのまま認められるようになる。</p>
+
+    <p>そうして12月の扉が開いた瞬間<br>
+    彼の小さな変化を<br>
+    まっすぐ受け取れる自分で<br>
+    そこに立てるようになります。</p>
+
+    <p>日常の調整に加えて<br>
+    本格的にオーラを補うために<br>
+    パワーストーンをお守りとして<br>
+    取り入れる方法があります。</p>
+
+    <p>里香様のオーラに合わせて<br>
+    三つのプランをご用意しました。</p>
+
+    <div class="important-box">
+        <h3>【運命を動かすプラン】</h3>
+        <p>12月の転機を本気で掴みたい方へ</p>
+
+        <p>・アクアマリン、ムーンストーン<br>
+        　水の力を最も強く補い、穏やかに待てるようになる</p>
+
+        <p>・グリーンアベンチュリン<br>
+        　穏やかな成長の力を補い、関係を焦らず育てられる</p>
+
+        <p>・ローズクォーツ<br>
+        　金の強さを和らげ、柔らかさを取り戻す</p>
+
+        <p>・スモーキークォーツ<br>
+        　試す衝動や不安を吸い取り、心が落ち着く</p>
+
+        <p>期待できる変化：</p>
+
+        <p>・彼から連絡がない時間も<br>
+        　心が波立たず<br>
+        　穏やかに過ごせる</p>
+
+        <p>・「もう諦めようかな」と<br>
+        　思い悩む時間が<br>
+        　静かに減っていく</p>
+
+        <p>・12月の転機を<br>
+        　最高の状態で迎えられる</p>
+
+        <h3>【流れを整えるプラン】</h3>
+        <p>まずは心を安定させたい方へ</p>
+
+        <p>・アクアマリン<br>
+        　水の力を補い、穏やかに待てるようになる</p>
+
+        <p>・ローズクォーツ<br>
+        　金の強さを和らげ、柔らかさを取り戻す</p>
+
+        <p>・スモーキークォーツ<br>
+        　試す衝動や不安を吸い取り、心が落ち着く</p>
+
+        <p>期待できる変化：</p>
+
+        <p>・答えが出ない時間に<br>
+        　感情が大きく揺れなくなる</p>
+
+        <p>・「諦めたほうがいいのかも」という<br>
+        　ループが、ふっと止まる場面が増える</p>
+
+        <p>・自分の心の温度を<br>
+        　自分で整えられるようになる</p>
+
+        <h3>【日々のお守りプラン】</h3>
+        <p>まずは焦りを和らげたい方へ</p>
+
+        <p>・アクアマリン<br>
+        　水の力を補い、穏やかに待てるようになる</p>
+
+        <p>・スモーキークォーツ<br>
+        　試す衝動や焦りを吸い取り、心が落ち着く</p>
+
+        <p>期待できる変化：</p>
+
+        <p>・夜、彼からの連絡を<br>
+        　何度も確認してしまう時間が短くなる</p>
+
+        <p>・「私だけが想っているのかも」という<br>
+        　考えが、ふっと軽くなる</p>
+
+        <p>実は<br>
+        運命を動かすプランを<br>
+        選ばれる方が最も多く<br>
+        全体の約70%を占めています。</p>
+
+        <p>「12月の転機を<br>
+        　本気で掴みたいから<br>
+        　中途半端にしたくない」<br>
+        というお声が多いです。</p>
+
+        <p>12月に向けて<br>
+        今から整え始めることで<br>
+        石のエネルギーがちょうど<br>
+        馴染んだ状態で<br>
+        最重要月を迎えられます。</p>
+
+        <p>もし興味がありましたら<br>
+        「詳細希望」とだけ送っていただければ<br>
+        里香様専用の石の組み合わせを<br>
+        お伝えしますね。</p>
+    </div>
+
+    <h2 id="sec-last">最後に</h2>
+
+    <p>岡田里香様。</p>
+
+    <p>これからの道は二つあります。</p>
+
+    <p>このまま<br>
+    「もう諦めたほうがいいのかもしれない」<br>
+    という不安の中で<br>
+    12月を迎えるか。</p>
+
+    <p>それとも<br>
+    今から水のオーラを整え<br>
+    彼が自分の足元を固める時間を尊重しながら<br>
+    12月の扉が開いた時に<br>
+    真っ直ぐ受け取れる自分で<br>
+    そこに在るか。</p>
+
+    <p>選ぶのは里香様自身です。</p>
+
+    <p>ただ、私には視えています。</p>
+
+    <p>12月のある日<br>
+    彼のほうから<br>
+    「<strong>今度、ゆっくり話さない</strong>」と<br>
+    自然に声をかけてくる場面。</p>
+
+    <p>派手な告白ではなく<br>
+    彼らしい、静かな一歩として。</p>
+
+    <p>その先<br>
+    穏やかな時間の中で<br>
+    二人の距離が<br>
+    少しずつ近づいていく景色。</p>
+
+    <p>その未来は、ちゃんと視えています。</p>
+
+    <p>里香様の<br>
+    一度好きになった人をまっすぐ想い続ける強さは<br>
+    彼にとって<br>
+    時間をかけてでも大切にしたい<br>
+    かけがえのない存在感です。</p>
+
+    <p>それが彼にちゃんと届く瞬間が<br>
+    12月に待っています。</p>
+
+    <p>そこまでの道、私が照らしますね。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>かな</p>
+    </div>
+
+</div>
+
+<script>
+/* 演出：スクロールで背景があなた（火）→お相手（木）→調整（水）→最後に（曼荼羅）と切り替わる */
+(function () {
+    var bgYou = document.getElementById('bg-you');
+    var stages = [
+        { bg: document.getElementById('bg-wood'), sentinel: document.getElementById('sec-partner') },
+        { bg: document.getElementById('bg-water'), sentinel: document.getElementById('sec-here') },
+        { bg: document.getElementById('bg-mandala'), sentinel: document.getElementById('sec-last') }
+    ];
+    if (!bgYou) return;
+    function onScroll() {
+        var trigger = window.innerHeight * 0.5;
+        var activeIndex = -1;
+        stages.forEach(function (s, i) {
+            if (s.bg && s.sentinel && s.sentinel.getBoundingClientRect().top < trigger) activeIndex = i;
+        });
+        bgYou.classList.toggle('is-hidden', activeIndex !== -1);
+        stages.forEach(function (s, i) {
+            if (!s.bg) return;
+            s.bg.classList.toggle('is-active', i === activeIndex);
+        });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
+
+</script>
+
+</body>
+</html>

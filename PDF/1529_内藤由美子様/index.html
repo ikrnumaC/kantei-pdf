@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>内藤由美子様専用鑑定書</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+        line-height: 2;
+        background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+        color: #2d2d2d;
+        padding: 40px 20px;
+        margin: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    /* ===== 演出：スクロールで背景が五行イメージへ移り変わる ===== */
+    .bg-fixed {
+        position: fixed;
+        inset: 0;
+        z-index: -3;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: blur(1.5px) saturate(0.75) brightness(1.18);
+        opacity: 0;
+        transition: opacity 1.6s ease;
+        will-change: opacity;
+    }
+    #bg-you { opacity: 1; }
+    .bg-fixed.is-hidden { opacity: 0 !important; }
+    .bg-fixed.is-active { opacity: 0.5; }
+    .bg-veil {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        pointer-events: none;
+        background:
+            linear-gradient(180deg, rgba(250, 248, 245, 0.8) 0%, rgba(249, 243, 255, 0.86) 100%);
+    }
+
+    /* ===== 表紙ページ ===== */
+    .cover-page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+    }
+
+    .cover-page::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 400px;
+        background-image: url('../images/曼荼羅.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.3;
+        z-index: 0;
+    }
+
+    .cover-page > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .cover-recipient {
+        font-size: 48px;
+        font-weight: 300;
+        color: #c9a05d;
+        margin-bottom: 20px;
+        letter-spacing: 8px;
+    }
+
+    .cover-title {
+        font-size: 56px;
+        font-weight: 700;
+        color: #c9a05d;
+        margin-bottom: 60px;
+        letter-spacing: 4px;
+    }
+
+    .cover-subtitle {
+        font-size: 18px;
+        color: #8b6f9c;
+        letter-spacing: 3px;
+        margin-bottom: 80px;
+    }
+
+    .cover-appraiser {
+        font-size: 20px;
+        color: #6d6d6d;
+        letter-spacing: 2px;
+    }
+
+    /* ===== コンテンツページ ===== */
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        padding: 60px 50px;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                    inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 36px;
+        font-weight: 700;
+        color: #c9a05d;
+        margin-bottom: 15px;
+        letter-spacing: 3px;
+    }
+
+    h1::after {
+        content: '';
+        display: block;
+        width: 150px;
+        height: 2px;
+        background: #c9a05d;
+        margin: 20px auto 0;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #8b6f9c;
+        font-size: 16px;
+        margin-bottom: 50px;
+        letter-spacing: 2px;
+    }
+
+    h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #c9a05d;
+        margin-top: 80px;
+        margin-bottom: 40px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #e8d5b7;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 24px;
+        font-weight: 600;
+        color: #8b6f9c;
+        margin-top: 40px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    p {
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid #e8d5b7;
+        margin: 40px 0;
+    }
+
+    /* ===== オーラセクション（五行背景画像） ===== */
+    .aura-section {
+        padding: 40px;
+        margin: 30px 0;
+        border-radius: 10px;
+        background-color: #f9f3ff;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border: 2px solid #e8d5b7;
+    }
+
+    /* ===== ボックス装飾 ===== */
+    .header-info {
+        background: #fff9f0;
+        border: 2px solid #e8d5b7;
+        border-radius: 10px;
+        padding: 30px;
+        margin: 30px 0;
+    }
+
+    .important-box {
+        background: #fffef5;
+        border: 2px solid #d4a574;
+        border-radius: 10px;
+        padding: 30px;
+        margin: 30px 0;
+    }
+
+    .magic-word-box {
+        background: #f9f3ff;
+        border: 2px dashed #c9a0dc;
+        border-radius: 10px;
+        padding: 35px;
+        margin: 30px 0;
+        white-space: pre-line;
+    }
+
+    .sign-box {
+        text-align: center;
+        margin-top: 60px;
+        padding-top: 30px;
+        border-top: 1px solid #e8d5b7;
+    }
+
+    .toc {
+        background: #fff9f0;
+        border: 2px solid #e8d5b7;
+        border-radius: 10px;
+        padding: 35px 30px;
+        margin: 40px 0 60px;
+    }
+
+    .toc-title {
+        text-align: center;
+        font-size: 22px;
+        color: #c9a05d;
+        margin-bottom: 25px;
+        letter-spacing: 4px;
+        font-weight: 700;
+    }
+
+    .toc ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc li {
+        margin-bottom: 14px;
+        text-align: center;
+        font-size: 17px;
+    }
+
+    .toc li:last-child {
+        margin-bottom: 0;
+    }
+
+    .toc a {
+        color: #8b6f9c;
+        text-decoration: none;
+        letter-spacing: 1px;
+        transition: color 0.2s;
+    }
+
+    .toc a:hover {
+        color: #c9a05d;
+    }
+
+    strong {
+        color: #000000;
+        font-weight: 700;
+    }
+
+    /* ===== スマホレスポンシブ ===== */
+    @media screen and (max-width: 768px) {
+        body {
+            padding: 8px 0;
+            line-height: 1.8;
+        }
+
+        .cover-page { min-height: 100vh; padding: 20px; }
+        .cover-page::before { width: 200px; height: 200px; }
+
+        .cover-recipient {
+            font-size: 32px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .cover-title {
+            font-size: 36px;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+        }
+
+        .cover-subtitle {
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+        }
+
+        .cover-appraiser { font-size: 16px; }
+
+        .container {
+            padding: 24px 14px;
+            border-radius: 10px;
+            max-width: 100%;
+        }
+
+        h1 { font-size: 24px; letter-spacing: 2px; }
+        h2 { font-size: 22px; margin-top: 50px; margin-bottom: 30px; }
+        h3 { font-size: 18px; margin-top: 30px; margin-bottom: 20px; }
+        p { font-size: 16px; margin-bottom: 40px; }
+        .subtitle { font-size: 14px; margin-bottom: 30px; }
+
+        .aura-section,
+        .header-info,
+        .important-box,
+        .magic-word-box {
+            padding: 20px 14px;
+            margin: 16px 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="bg-fixed" id="bg-you" style="background-image: url('../images/強い金.png');"></div>
+<div class="bg-fixed" id="bg-fire" style="background-image: url('../images/強い火.png');"></div>
+<div class="bg-fixed" id="bg-water" style="background-image: url('../images/強い水.png');"></div>
+<div class="bg-fixed" id="bg-mandala" style="background-image: url('../images/曼荼羅.png');"></div>
+<div class="bg-veil"></div>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">内藤由美子様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>内藤由美子様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <div class="toc">
+        <div class="toc-title">— 目次 —</div>
+        <ul>
+            <li><a href="#sec-you">🔮 あなたについて</a></li>
+            <li><a href="#sec-partner">🔮 お相手について</a></li>
+            <li><a href="#sec-here">🔮 ここからお伝えしていくこと</a></li>
+            <li><a href="#sec-turning">🔮 運命の転機</a></li>
+            <li><a href="#sec-action">🔮 今からできること</a></li>
+            <li><a href="#sec-support">🔑 心を守るサポート</a></li>
+            <li><a href="#sec-last">最後に</a></li>
+        </ul>
+    </div>
+
+    <p>まみ様</p>
+
+    <p>この度は本鑑定にお進みいただき<br>
+    心より感謝申し上げます。</p>
+
+    <p>「彼から急に連絡があって<br>
+    久しぶりに会えた」</p>
+
+    <p>「でも、転職の報告をしても<br>
+    まだ返事が来ない」</p>
+
+    <p>「9月がチャンスって言われていたけど<br>
+    どんな流れになっていくんだろう」</p>
+
+    <p>その想いが<br>
+    お申し込みのメッセージから<br>
+    静かに伝わってきました。</p>
+
+    <p>彼を元気づけたい一心で<br>
+    自分の悩みは横に置いて<br>
+    話を聞いてあげたまみ様。</p>
+
+    <p>その優しさと<br>
+    自立した強さは<br>
+    簡単なことではありません。</p>
+
+    <p>だからこそ<br>
+    自分の大切な報告に返事がない時間が<br>
+    余計に不安に<br>
+    感じられているはずです。</p>
+
+    <p>まず、まみ様が一番知りたいこと。</p>
+
+    <p>はっきりお伝えしますね。</p>
+
+    <p>彼の気持ちは<br>
+    まみ様から離れていません。</p>
+
+    <p>彼は今<br>
+    現場の忙しさに<br>
+    心の余白を奪われていて<br>
+    言葉を返す力が<br>
+    一時的に足りていないだけなんです。</p>
+
+    <p>これは<br>
+    まみ様への想いが<br>
+    薄れたからではありません。</p>
+
+    <p>そしてもう一つ。</p>
+
+    <p><strong>9月</strong>に入ると<br>
+    彼自身のエネルギーが<br>
+    「新しい始まり」に切り替わり<br>
+    まみ様も一年で最も力強い時期に入ります。</p>
+
+    <p>その時<br>
+    彼のほうから<br>
+    自然な形で言葉が返ってくる<br>
+    可能性が高いんです。</p>
+
+    <p>転職の報告も<br>
+    彼にとって<br>
+    前向きな刺激として<br>
+    受け止められていきます。</p>
+
+    <p>その答えが<br>
+    どう形になっていくのか。</p>
+
+    <p>ここから一つずつ<br>
+    お伝えしていきますね。</p>
+
+    <h2 id="sec-you">🔮 あなたについて</h2>
+
+    <div class="aura-section">
+
+    <p>まみ様を霊視した時<br>
+    視えたのは<br>
+    鋭く光る銀色のオーラ。</p>
+
+    <p>刀のようにまっすぐな輝き。</p>
+
+    <p>物事に対して<br>
+    はっきりした軸を持てる人。</p>
+
+    <p>自分の力でしっかり立っていける<br>
+    自立した強さを持つ人です。</p>
+
+    <p>ただ、その銀色のオーラに<br>
+    今、足りていないものがあります。</p>
+
+    <p>それは、火と水のオーラ。</p>
+
+    <p>火のオーラは<br>
+    気持ちを言葉にして<br>
+    積極的に表現する力。</p>
+
+    <p>水のオーラは<br>
+    不安を柔らかく<br>
+    受け流していく力です。</p>
+
+    <p>この二つが少ないと<br>
+    「想いは強いのに、動けない、言えない」<br>
+    という状態に陥りやすくなります。</p>
+
+    <p>彼への想いも<br>
+    転職への不安も<br>
+    自分の胸の内にとどめがちになるのは<br>
+    このオーラの少なさが<br>
+    関係しています。</p>
+
+    <p>そしてもう一つ。</p>
+
+    <p>まみ様のオーラには<br>
+    金のオーラが<br>
+    非常に強く出ています。</p>
+
+    <p>金のオーラは<br>
+    意志の強さ、自立心。</p>
+
+    <p>これが強すぎると<br>
+    自分の力で立とうとするあまり<br>
+    人に頼ることが苦手になり</p>
+
+    <p>物事に白黒つけたい気持ちが<br>
+    不安をさらに<br>
+    増幅させてしまうことがあります。</p>
+
+    <p>逆に言えば<br>
+    火のオーラが補われれば<br>
+    気持ちや報告をもっと素直に<br>
+    言葉にできるようになり</p>
+
+    <p>水のオーラが補われれば<br>
+    返事を待つ時間が<br>
+    穏やかになります。</p>
+
+    <p>それが今、まみ様に起きている<br>
+    一番の変化の鍵です。</p>
+
+    <p><strong>魂</strong>をさらに深く<br>
+    視させていただきました。</p>
+
+    <p>まみ様の魂の芯には<br>
+    人を守り支える光と<br>
+    恵みを運ぶ光が並んでいます。</p>
+
+    <p>自分が目立つことより<br>
+    大切な人を支えることに<br>
+    力を発揮するタイプ。</p>
+
+    <p>だからこそ<br>
+    彼を元気づけられる存在に<br>
+    なれているんです。</p>
+
+    <p>そしてその支えは<br>
+    <strong>必ず</strong>まみ様自身にも<br>
+    返ってきます。</p>
+
+    <p>今、まみ様は<br>
+    自分自身の土台を<br>
+    静かに育てる時期の中にいます。</p>
+
+    <p>ふだんは<br>
+    生活の基盤を見直していく<br>
+    落ち着いた流れの中に</p>
+
+    <p><strong>2026年</strong>だけ<br>
+    違う光が差し込んでいます。</p>
+
+    <p>それは、積み重ねてきた努力が<br>
+    実を結び始める光。</p>
+
+    <p>今年一年だけ<br>
+    「積み重ねてきたもの」の場所に<br>
+    特別な光が当たっている。</p>
+
+    <p>転職活動という<br>
+    地道な努力が<br>
+    着実に形になっていく年なんです。</p>
+
+    <p>だからこそ<br>
+    今感じているその手応えは<br>
+    決して気のせいなんかじゃないんです。</p>
+
+    <p>このまま何もしなければ<br>
+    まみ様の銀色のオーラは<br>
+    不安に揺れたまま<br>
+    壁を厚くしていきます。</p>
+
+    <p>ただ、火と水のオーラを補い<br>
+    金の強さを少し和らげれば<br>
+    2026年の実りの光を<br>
+    まっすぐ受け取れるようになる。</p>
+
+    <p>その先に<br>
+    彼との関係も<br>
+    転職の道も<br>
+    両方が前向きに動いていく未来が<br>
+    視えています。</p>
+
+    </div>
+
+    <h2 id="sec-partner">🔮 お相手について</h2>
+
+    <div class="aura-section">
+
+    <p>次に彼のオーラを<br>
+    深く視させていただきました。</p>
+
+    <p>彼は静かに揺れる火のオーラ。</p>
+
+    <p>ろうそくのように<br>
+    優しい炎を持つ人。</p>
+
+    <p>自分のペースを大事にしながら<br>
+    心を開ける相手には<br>
+    まっすぐ気持ちを見せられる人です。</p>
+
+    <p>このオーラの方に<br>
+    今、何が起きているのか。</p>
+
+    <p>彼のオーラには<br>
+    金のオーラが少ない状態にあります。</p>
+
+    <p>金のオーラは<br>
+    冷静に距離を取る力、自分を律する客観性。</p>
+
+    <p>そして火と土のオーラが<br>
+    非常に強く出ています。</p>
+
+    <p>火のオーラは情熱・気持ちの表現力。<br>
+    土のオーラは現実的な責任感。</p>
+
+    <p>この組み合わせが<br>
+    今、彼に起きていることの正体です。</p>
+
+    <p>忙しさに<br>
+    火のエネルギーが全部使われてしまい<br>
+    言葉を返す、新しい行動に出る余力が<br>
+    残っていない状態なんです。</p>
+
+    <p>「まみ様の報告を嬉しく受け止めている」<br>
+    その気持ちは確かに彼の中にあります。</p>
+
+    <p>ただ今は<br>
+    目の前の現場のことで<br>
+    手一杯になっていて<br>
+    大切な人への連絡すら<br>
+    後回しになってしまっている。</p>
+
+    <p>これは<br>
+    冷めたから起きていることでは<br>
+    ありません。</p>
+
+    <p>彼の<strong>魂</strong>をさらに視ると<br>
+    内に秘めて静かに力を蓄える<br>
+    冬眠期のようなエネルギーが<br>
+    強く出ています。</p>
+
+    <p>表には出さないけれど<br>
+    大切なものは<br>
+    しっかり内側に守っている。</p>
+
+    <p>心が疲れると<br>
+    周りに気を配る余裕を<br>
+    失いやすい人なんです。</p>
+
+    <p>そして今、彼は<br>
+    内に力を蓄えながら<br>
+    実力を安定させていく<br>
+    大きな時期の中にいます。</p>
+
+    <p>外からは動きが見えにくい。</p>
+
+    <p>でもそれは<br>
+    冷めているのではなく<br>
+    静かに次の動き出しに向けて<br>
+    充電している時間だからなんです。</p>
+
+    <p>まみ様と彼。</p>
+
+    <p>二人のオーラは<br>
+    火が金を鍛え上げる関係。</p>
+
+    <p>彼の情熱が<br>
+    まみ様の芯を<br>
+    より輝かせる相性でもあります。</p>
+
+    <p>ただ、度が過ぎると<br>
+    彼の忙しさに<br>
+    まみ様が振り回される形にも<br>
+    なりやすい。</p>
+
+    <p>まみ様が自分のペースを保てている間は<br>
+    この相性は<br>
+    むしろ二人を高め合う関係になります。</p>
+
+    <p>ここからまみ様に<br>
+    最もお伝えしたいこと。</p>
+
+    <p>彼のオーラから視えてくるのは<br>
+    今、まみ様の存在が<br>
+    彼の中で<br>
+    確かな支えになっているということ。</p>
+
+    <p>忙しさという霧の向こうに<br>
+    まみ様の銀色の輝きが<br>
+    確かに視えている。</p>
+
+    <p>ただ、彼のオーラが<br>
+    今、その霧に<br>
+    覆われているから</p>
+
+    <p>言葉を返すという一歩を<br>
+    まだ選べずにいるだけなんです。</p>
+
+    <p>だからまみ様がやることは<br>
+    ただ一つ。</p>
+
+    <p>霧が晴れる時期まで<br>
+    自分の輝きを<br>
+    弱めずにそこにあり続けること。</p>
+
+    <p>そしてまみ様のオーラが整った時<br>
+    彼の目に映るまみ様は<br>
+    今より遥かに<br>
+    穏やかで、確かな存在になります。</p>
+
+    <p>「会うと元気が出る人」<br>
+    「急かさずにいてくれる人」</p>
+
+    <p>その存在感が<br>
+    彼の魂に少しずつ染み込んでいく。</p>
+
+    <p>それが<strong>9月</strong>以降の<br>
+    二人の景色を作っていきます。</p>
+
+    </div>
+
+    <h2 id="sec-here">🔮 ここからお伝えしていくこと</h2>
+
+    <p>無料鑑定の最後に<br>
+    お伝えするとお約束したことを<br>
+    ここから一つずつ視ていきます。</p>
+
+    <h3>【彼が今、本当に感じていること】</h3>
+
+    <p>彼の魂の奥が今抱えているのは<br>
+    「まみ様の報告を、<br>
+    本当は嬉しく受け止めている」<br>
+    という静かな本音です。</p>
+
+    <p>ただ、それをすぐ言葉にする余裕が<br>
+    今の彼にはまだない。</p>
+
+    <p>火のオーラの人は<br>
+    余裕がない時ほど<br>
+    言葉にするタイミングを<br>
+    逃してしまいます。</p>
+
+    <p>だから<br>
+    現場の忙しさが落ち着くまで<br>
+    沈黙という形を取っている。</p>
+
+    <p>「今はまだ、ちゃんと返せない」<br>
+    それが彼の本音です。</p>
+
+    <p>だからこそ<br>
+    彼の沈黙を<br>
+    興味がないサインとして<br>
+    受け取らないでください。</p>
+
+    <p>それは彼なりの<br>
+    不器用さの裏返しなんです。</p>
+
+    <h3>【あなたのオーラの調整方法】</h3>
+
+    <p>まみ様に必要なのは<br>
+    火と水のオーラを補い<br>
+    金の強さを少し和らげること。</p>
+
+    <p>魂のレベルでお伝えするなら<br>
+    「彼の余白が戻るまで、彼のペースで待つ」<br>
+    という在り方を<br>
+    自分の中に育てること。</p>
+
+    <p>返事がない時間の中でも<br>
+    自分の心の温度を<br>
+    自分で保つ。</p>
+
+    <p>それは我慢ではなく<br>
+    彼の充電の時間を尊重する<br>
+    最高の優しさです。</p>
+
+    <p>「彼は彼のペースで戻ってくる<br>
+    私は私のペースで前に進む」</p>
+
+    <p>この境界線が引けた瞬間<br>
+    まみ様のオーラに<br>
+    火と水の巡りが戻り始めます。</p>
+
+    <p>具体的な日常の整え方は<br>
+    このあとお伝えしますね。</p>
+
+    <h3>【オーラが整った先に広がる景色】</h3>
+
+    <p>まみ様のオーラが整い始めた時<br>
+    彼の目に映るまみ様は<br>
+    こう変わります。</p>
+
+    <p>「会うと落ち着ける人」<br>
+    「急かさない人」<br>
+    「それでいて、ちゃんと支えてくれる人」</p>
+
+    <p>これが火のオーラの彼が<br>
+    最も安心できる在り方です。</p>
+
+    <p>そして<strong>9月</strong><br>
+    彼の中に<br>
+    新しい始まりのエネルギーが流れ込み<br>
+    まみ様の中には<br>
+    一年で最も力強い時期が巡ってきます。</p>
+
+    <p>彼から自然な形で<br>
+    連絡や反応が返ってくる<br>
+    可能性が高まる月。</p>
+
+    <p>転職の報告に対しても<br>
+    彼が前向きな一言を<br>
+    返してくれる可能性がある月です。</p>
+
+    <p>同時にこの月は<br>
+    まみ様の転職活動にも<br>
+    自信と決断力が戻ってくる時期。</p>
+
+    <p>彼との関係と<br>
+    新しい生活への一歩。</p>
+
+    <p>両方が同じ9月というタイミングで<br>
+    動き出していく景色が<br>
+    まみ様の元に戻ってきます。</p>
+
+    <h3>【霊視で視えた、もう一つの重要な問題】</h3>
+
+    <p>まみ様自身も<br>
+    うっすら感じているはずです。</p>
+
+    <p>考えすぎて<br>
+    自分の気持ちを<br>
+    後回しにしてしまうクセ。</p>
+
+    <p>これはまみ様の魂が持つ<br>
+    優しさの裏側に<br>
+    <strong>必ず</strong>出てくる影です。</p>
+
+    <p>「彼にとって私はどれくらい大切なんだろう」<br>
+    「気持ちが離れたんじゃないか」</p>
+
+    <p>その問いには<br>
+    今、答えを出す必要がないんです。</p>
+
+    <p>なぜなら<br>
+    彼の沈黙の理由は<br>
+    まみ様の中にはないから。</p>
+
+    <p>このクセを抱えたまま9月を迎えると<br>
+    せっかく巡ってくる火と水のオーラを<br>
+    不安を打ち消すことだけに<br>
+    使ってしまう。</p>
+
+    <p>だからこそ今のうちに<br>
+    「答えのない問いを、そっと置く」<br>
+    練習を始めてほしいんです。</p>
+
+    <p>そしてその練習を支えるのも<br>
+    オーラの調整です。</p>
+
+    <p>ここまでお伝えしてきた全てが<br>
+    オーラの調整に繋がっていきます。</p>
+
+    <h2 id="sec-turning">🔮 運命の転機</h2>
+
+    <p>ここまでお伝えしてきた中で<br>
+    これから半年の流れが<br>
+    少しずつ視えてきたかと思います。</p>
+
+    <p>そこから特に重要な4つの月を<br>
+    順にお伝えします。</p>
+
+    <h3>最重要月 2026年9月</h3>
+
+    <p>なぜこの月が特別なのか。</p>
+
+    <p>それはまみ様の力が<br>
+    一年で最も力強くなる時期に入り<br>
+    彼の中にも新しい始まりのエネルギーが<br>
+    流れ込んでくるから。</p>
+
+    <p>同時に、まみ様に不足していた火<br>
+    彼に不足していた金が<br>
+    ともに巡ってくる月だからです。</p>
+
+    <p>二人の運命が最も近づく時期。<br>
+    それが<strong>9月</strong>です。</p>
+
+    <p>この月、何が起こるか。</p>
+
+    <p>まずまみ様の中で<br>
+    自信と決断力が戻り<br>
+    彼への想いを言葉にする勇気が<br>
+    自然と湧いてきます。</p>
+
+    <p>転職活動にも<br>
+    前向きな結果が<br>
+    出やすくなる時期です。</p>
+
+    <p>そして同じ頃<br>
+    彼の中でも<br>
+    現場の忙しさに<br>
+    少しずつ余白が戻ってきます。</p>
+
+    <p>彼から自然な形で<br>
+    連絡や反応が<br>
+    返ってくる可能性がある月です。</p>
+
+    <p>心構えとしてお伝えしたいのは<br>
+    9月になっても<br>
+    すぐに反応がなくても<br>
+    焦って何度も催促しないこと。</p>
+
+    <p>「彼からの連絡が来たら<br>
+    素直に嬉しさを言葉で伝える」</p>
+
+    <p>それくらいの軽やかさで十分です。</p>
+
+    <p>ここを守れば<br>
+    <strong>9月の扉は最高の形で</strong><br>
+    まみ様の前に開きます。</p>
+
+    <h3>次に重要な月 2026年8月</h3>
+
+    <p>9月への準備が整っていく月。</p>
+
+    <p>まみ様の実力と自信が<br>
+    戻ってくる配置で<br>
+    転職活動にも<br>
+    良い流れが出始めます。</p>
+
+    <p>心構えとしては<br>
+    「彼への連絡は控えめにし、<br>
+    9月に向けて心の余裕を保つ」。<br>
+    これだけです。</p>
+
+    <h3>○ 2026年7月（今この瞬間）</h3>
+
+    <p>大きく動くよりも<br>
+    今の生活リズムを<br>
+    整えることを優先する月。</p>
+
+    <p>彼への連絡は控えて<br>
+    まずは自分自身のペースを<br>
+    守ってください。</p>
+
+    <h3>○ 2026年10月</h3>
+
+    <p>9月の流れを<br>
+    静かに受け止める月。</p>
+
+    <p>関係も転職も<br>
+    次の段階へ進む準備をする<br>
+    時期です。</p>
+
+    <p>その先、2027年から2028年にかけては<br>
+    新しい生活のリズムが落ち着き<br>
+    彼との関係にも<br>
+    これまでとは違う段階が<br>
+    訪れていきます。</p>
+
+    <p>2027年には<br>
+    新しい生活を根付かせる<br>
+    静かな安定の年が巡り</p>
+
+    <p>2028年には<br>
+    これまでの積み重ねが<br>
+    しっかり形になる<br>
+    節目の年が訪れます。</p>
+
+    <p><strong>最も大切なこと。</strong></p>
+
+    <p><strong>9月</strong>がまみ様と彼の運命にとって<br>
+    最大のチャンスです。</p>
+
+    <p>この月をどう迎えるかが<br>
+    今後の二人の流れを決めます。</p>
+
+    <p>だからこそ今から9月までの数ヶ月<br>
+    オーラを整えて<br>
+    その瞬間を迎えてほしいんです。</p>
+
+    <h2 id="sec-action">🔮 今からできること</h2>
+
+    <p>ここまで運命の流れと<br>
+    これから訪れる転機をお伝えしました。</p>
+
+    <p>ただ、一つだけ<br>
+    知っておいてほしいことがあります。</p>
+
+    <p>運命は<br>
+    ただ待っているだけでは動きません。</p>
+
+    <p>星の流れがどれだけ整っても<br>
+    まみ様自身のオーラが整っていなければ<br>
+    その流れを掴むことはできない。</p>
+
+    <p>だからこそここからお伝えするのは<br>
+    まみ様自身が<br>
+    オーラを調整するためのアクションです。</p>
+
+    <h3>【火と水のオーラを補う日常の整え方】</h3>
+
+    <p>・赤やオレンジを身につける</p>
+
+    <p>赤やオレンジの色は<br>
+    火のエネルギーそのもの。</p>
+
+    <p>まみ様の中で<br>
+    まだ言葉にできずにいる<br>
+    気持ちや報告への想いを<br>
+    外側からそっと<br>
+    引き出してくれる色です。</p>
+
+    <p>やり方はシンプルです。</p>
+
+    <p>・ネイルや口紅、ストールや小物など<br>
+    身につけやすい形でOK</p>
+
+    <p>・毎朝それを選ぶ時<br>
+    「今日は火を取り入れる」と<br>
+    意識する。</p>
+
+    <p>・湯船にゆっくり浸かる</p>
+
+    <p>お湯は水のオーラの<br>
+    象徴そのものだから。</p>
+
+    <p>まみ様に今足りていない<br>
+    「不安を柔らかく受け流す力」を<br>
+    少しずつ育ててくれます。</p>
+
+    <p>・シャワーで済まさず<br>
+    5分でもいいので湯船に浸かる</p>
+
+    <p>・その間はスマホを見ず<br>
+    今日感じたことを<br>
+    心の中でそっと言葉にしてみる</p>
+
+    <p>声に出さなくても<br>
+    <strong>大丈夫です</strong></p>
+
+    <h3>【金の強さを少し和らげる】</h3>
+
+    <p>・深呼吸をして、力を抜く時間を持つ</p>
+
+    <p>まみ様の金のオーラは<br>
+    強すぎるほどの<br>
+    意志の強さと自立心。</p>
+
+    <p>それが常に張りつめていると<br>
+    心も体も力を抜くタイミングを<br>
+    見失ってしまいます。</p>
+
+    <p>・1日1回でいいので<br>
+    目を閉じて深く息を吸い<br>
+    ゆっくり吐き出す</p>
+
+    <p>・吐く息と一緒に<br>
+    「<strong>大丈夫</strong>」と心の中でつぶやく</p>
+
+    <p>それだけで<br>
+    金の強さが少しずつ和らぎます</p>
+
+    <p>・白黒つけようとする気持ちを手放す</p>
+
+    <p>金のオーラが強いと<br>
+    「好き/嫌い」<br>
+    「大丈夫/ダメ」と<br>
+    すぐに答えを出したくなります。</p>
+
+    <p>でも彼の沈黙は<br>
+    今はまだ答えが出ない時間。</p>
+
+    <p>そこに白黒を<br>
+    つけようとするほど<br>
+    不安は強くなります。</p>
+
+    <p>意識したいのはこの2つです。</p>
+
+    <p>・「今はまだ<br>
+    わからなくていい」<br>
+    と自分に声をかけてあげる</p>
+
+    <p>・答えを急がず<br>
+    「保留」という<br>
+    選択肢を自分に許してください</p>
+
+    <h3>【日常の心がけ】</h3>
+
+    <p>・返事が来ないことを考えすぎたら、一呼吸置く</p>
+
+    <p>なぜこれが大切かというと<br>
+    考えすぎる時間は<br>
+    金のオーラが<br>
+    不安を増幅させている<br>
+    サインだからです。</p>
+
+    <p>一度立ち止まることで<br>
+    そのループを<br>
+    断ち切ることができます。</p>
+
+    <p>やり方はシンプルです。</p>
+
+    <p>・「また考えてるな」<br>
+    と気づいた瞬間深呼吸を一つ</p>
+
+    <p>・そのあとで<br>
+    今できる<br>
+    目の前のことに<br>
+    意識を戻してみてください</p>
+
+    <p>・寝る前にメッセージの通知を<br>
+    何度も確認しすぎない</p>
+
+    <p>その理由は<br>
+    寝る前の時間は<br>
+    一日の中で最も不安が<br>
+    強くなりやすい時間帯。</p>
+
+    <p>ここで通知を<br>
+    何度も確認すると<br>
+    眠りの質も<br>
+    オーラの回復力も<br>
+    下がってしまいます。</p>
+
+    <h3>【気をつけてほしいこと】</h3>
+
+    <p>・返事の催促を繰り返さないこと</p>
+
+    <p>なぜかというと<br>
+    彼は今、忙しさに<br>
+    気持ちの余白を<br>
+    奪われています。</p>
+
+    <p>追われれば追われるほど<br>
+    彼はさらに余裕を失い<br>
+    言葉を返すことから<br>
+    遠ざかってしまいます。</p>
+
+    <p>意識したいのはこの2つです。</p>
+
+    <p>・催促したくなったら<br>
+    「彼は今<br>
+    充電中なんだ」と<br>
+    自分に言い聞かせる</p>
+
+    <p>・どうしても<br>
+    伝えたい時は<br>
+    返事を求めない<br>
+    軽いメッセージに<br>
+    留めてください</p>
+
+    <p>ここまでお伝えした調整法で<br>
+    少しずつオーラは整い始めます。</p>
+
+    <p>ただ、正直にお伝えします。</p>
+
+    <p>火と水のオーラがほとんどない状態からだと<br>
+    日常の調整だけでは<br>
+    補いきれない部分があります。</p>
+
+    <p>赤を身につける、日光を浴びる、水辺を歩く。</p>
+
+    <p>これらは<br>
+    「整ったオーラを維持する力」には<br>
+    なります。</p>
+
+    <p>でも、ゼロから補う力としては<br>
+    どうしても限界がある。</p>
+
+    <p>もし本気で<br>
+    9月の運命の交差点を<br>
+    最高の状態で迎えたいなら<br>
+    もう一つお伝えしたい方法があります。</p>
+
+    <h2 id="sec-support">🔑 心を守るサポート</h2>
+
+    <p>ここまでお伝えしてきた通り<br>
+    まみ様のオーラには<br>
+    火と水のオーラが少なく<br>
+    金のオーラが強く出すぎている状態です。</p>
+
+    <p>これが今の状況の<br>
+    根っこにある原因であり<br>
+    9月のチャンスを掴むために<br>
+    最も整えるべき部分です。</p>
+
+    <p>このオーラが整うと</p>
+
+    <p>彼からの返事が来ない夜も<br>
+    心が波立たず<br>
+    いつも通り眠れるようになります。</p>
+
+    <p>転職の報告をした自分を<br>
+    後悔せず<br>
+    素直な気持ちのまま<br>
+    彼との時間を待てるようになる。</p>
+
+    <p>そうして9月の扉が開いた瞬間<br>
+    まっすぐ受け取れる自分で<br>
+    そこに立てるようになります。</p>
+
+    <p>日常の調整に加えて<br>
+    本格的にオーラを補うために<br>
+    パワーストーンをお守りとして<br>
+    取り入れる方法があります。</p>
+
+    <p>まみ様のオーラに合わせて<br>
+    三つのプランをご用意しました。</p>
+
+    <div class="important-box">
+
+    <h3>【運命を動かすプラン】</h3>
+
+    <p>・カーネリアン、サンストーン<br>
+    火の力を補い、素直に想いを言葉にできる</p>
+
+    <p>・アクアマリン、ムーンストーン<br>
+    水の力を補い、不安を穏やかに受け流せる</p>
+
+    <p>・ローズクォーツ<br>
+    金の強さを和らげ、人に頼れるようになる</p>
+
+    <p>・スモーキークォーツ<br>
+    揺れる不安を吸い取り、心が落ち着く</p>
+
+    <p>期待できる変化：</p>
+
+    <p>・彼からの返事が<br>
+    来ない夜も心が波立たず<br>
+    いつも通り眠れる</p>
+
+    <p>・転職の報告をした自分を<br>
+    後悔せず<br>
+    素直な気持ちのまま<br>
+    彼との時間を待てる</p>
+
+    <p>・9月の転機を<br>
+    最高の状態で迎えられる</p>
+
+    <h3>【流れを整えるプラン】</h3>
+
+    <p>・カーネリアン<br>
+    火の力を補い、素直に想いを言葉にできる</p>
+
+    <p>・アクアマリン<br>
+    水の力を補い、不安を穏やかに受け流せる</p>
+
+    <p>・スモーキークォーツ<br>
+    揺れる不安を吸い取り、心が落ち着く</p>
+
+    <p>期待できる変化：</p>
+
+    <p>・返事が来ない時間に<br>
+    感情が大きく揺れなくなる</p>
+
+    <p>・「気持ちが離れたかも」<br>
+    というループが<br>
+    ふっと止まる場面が増える</p>
+
+    <p>・自分の心の温度を<br>
+    自分で整えられるようになる</p>
+
+    <h3>【日々のお守りプラン】</h3>
+
+    <p>・カーネリアン<br>
+    火の力を補い、素直に想いを言葉にできる</p>
+
+    <p>・スモーキークォーツ<br>
+    揺れる不安を吸い取り、心が落ち着く</p>
+
+    <p>期待できる変化：</p>
+
+    <p>・夜、メッセージの画面を<br>
+    何度も見返してしまう<br>
+    時間が短くなる</p>
+
+    <p>・「私だけが<br>
+    想っているのかも」という<br>
+    考えが、ふっと軽くなる</p>
+
+    <p>実は<br>
+    運命を動かすプランを<br>
+    選ばれる方が最も多く<br>
+    全体の約70%を占めています。</p>
+
+    <p>「9月の転機を<br>
+    本気で掴みたいから<br>
+    中途半端にしたくない」<br>
+    というお声が多いです。</p>
+
+    <p>9月に向けて<br>
+    今から整え始めることで<br>
+    石のエネルギーがちょうど<br>
+    馴染んだ状態で<br>
+    最重要月を迎えられます。</p>
+
+    <p>もし興味がありましたら<br>
+    「詳細希望」とだけ送っていただければ<br>
+    まみ様専用の石の組み合わせを<br>
+    お伝えしますね。</p>
+
+    </div>
+
+    <h2 id="sec-last">最後に</h2>
+
+    <p>まみ様。</p>
+
+    <p>これからの道は二つあります。</p>
+
+    <p>このまま<br>
+    「気持ちが離れたかもしれない」の不安の中で<br>
+    9月を迎えるか。</p>
+
+    <p>それとも<br>
+    今から火と水のオーラを整え<br>
+    彼の充電の時間を信じて待ち<br>
+    9月の扉が開いた時に<br>
+    真っ直ぐ受け取れる自分で<br>
+    そこに在るか。</p>
+
+    <p>選ぶのはまみ様自身です。</p>
+
+    <p>ただ、私には視えています。</p>
+
+    <p>9月のある日<br>
+    彼からのメッセージに<br>
+    いつもより温度のある言葉が<br>
+    綴られている場面。</p>
+
+    <p>そしてその先<br>
+    彼がまみ様の目を見つめながら<br>
+    「<strong>ちゃんと話したい</strong>」<br>
+    そう言っている場面が。</p>
+
+    <p>同じ頃、新しい生活への道も<br>
+    まみ様の努力が実を結び<br>
+    形になっていく景色。</p>
+
+    <p>その未来は、ちゃんと視えています。</p>
+
+    <p>まみ様の<br>
+    自分より相手を思いやれる優しさは<br>
+    彼にとって<br>
+    他では出会えないかけがえのない存在です。</p>
+
+    <p>それが彼にちゃんと届く瞬間が<br>
+    9月に待っています。</p>
+
+    <p>そこまでの道、私が照らしますね。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+<script>
+/* 演出：スクロールで背景があなた（金）→お相手（火）→調整（水）→最後に（曼荼羅）と切り替わる */
+(function () {
+    var bgYou = document.getElementById('bg-you');
+    var stages = [
+        { bg: document.getElementById('bg-fire'), sentinel: document.getElementById('sec-partner') },
+        { bg: document.getElementById('bg-water'), sentinel: document.getElementById('sec-action') },
+        { bg: document.getElementById('bg-mandala'), sentinel: document.getElementById('sec-last') }
+    ];
+    if (!bgYou) return;
+    function onScroll() {
+        var trigger = window.innerHeight * 0.5;
+        var activeIndex = -1;
+        stages.forEach(function (s, i) {
+            if (s.bg && s.sentinel && s.sentinel.getBoundingClientRect().top < trigger) activeIndex = i;
+        });
+        bgYou.classList.toggle('is-hidden', activeIndex !== -1);
+        stages.forEach(function (s, i) {
+            if (!s.bg) return;
+            s.bg.classList.toggle('is-active', i === activeIndex);
+        });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
+
+</script>
+
+</body>
+</html>

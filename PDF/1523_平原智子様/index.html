@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>平原智子様専用鑑定書</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+        line-height: 2;
+        background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+        color: #2d2d2d;
+        padding: 40px 20px;
+        margin: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    /* ===== 演出：スクロールで背景が五行イメージへ移り変わる ===== */
+    .bg-fixed {
+        position: fixed;
+        inset: 0;
+        z-index: -3;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: blur(1.5px) saturate(0.75) brightness(1.18);
+        opacity: 0;
+        transition: opacity 1.6s ease;
+        will-change: opacity;
+    }
+    #bg-you { opacity: 1; }
+    .bg-fixed.is-hidden { opacity: 0 !important; }
+    .bg-fixed.is-active { opacity: 0.5; }
+    .bg-veil {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        pointer-events: none;
+        background:
+            linear-gradient(180deg, rgba(250, 248, 245, 0.8) 0%, rgba(249, 243, 255, 0.86) 100%);
+    }
+
+    /* ===== 表紙ページ ===== */
+    .cover-page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+    }
+
+    .cover-page::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 400px;
+        background-image: url('../images/曼荼羅.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.3;
+        z-index: 0;
+    }
+
+    .cover-page > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .cover-recipient {
+        font-size: 48px;
+        font-weight: 300;
+        color: #c9a05d;
+        margin-bottom: 20px;
+        letter-spacing: 8px;
+    }
+
+    .cover-title {
+        font-size: 56px;
+        font-weight: 700;
+        color: #c9a05d;
+        margin-bottom: 60px;
+        letter-spacing: 4px;
+    }
+
+    .cover-subtitle {
+        font-size: 18px;
+        color: #8b6f9c;
+        letter-spacing: 3px;
+        margin-bottom: 80px;
+    }
+
+    .cover-appraiser {
+        font-size: 20px;
+        color: #6d6d6d;
+        letter-spacing: 2px;
+    }
+
+    /* ===== コンテンツページ ===== */
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        padding: 60px 50px;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                    inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 36px;
+        font-weight: 700;
+        color: #c9a05d;
+        margin-bottom: 15px;
+        letter-spacing: 3px;
+    }
+
+    h1::after {
+        content: '';
+        display: block;
+        width: 150px;
+        height: 2px;
+        background: #c9a05d;
+        margin: 20px auto 0;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #8b6f9c;
+        font-size: 16px;
+        margin-bottom: 50px;
+        letter-spacing: 2px;
+    }
+
+    h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #c9a05d;
+        margin-top: 80px;
+        margin-bottom: 40px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #e8d5b7;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 24px;
+        font-weight: 600;
+        color: #8b6f9c;
+        margin-top: 40px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    p {
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid #e8d5b7;
+        margin: 40px 0;
+    }
+
+    /* ===== オーラセクション（五行背景画像） ===== */
+    .aura-section {
+        padding: 40px;
+        margin: 30px 0;
+        border-radius: 10px;
+        background-color: #f9f3ff;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border: 2px solid #e8d5b7;
+    }
+
+    /* ===== ボックス装飾 ===== */
+    .header-info {
+        background: #fff9f0;
+        border: 2px solid #e8d5b7;
+        border-radius: 10px;
+        padding: 30px;
+        margin: 30px 0;
+    }
+
+    .important-box {
+        background: #fffef5;
+        border: 2px solid #d4a574;
+        border-radius: 10px;
+        padding: 30px;
+        margin: 30px 0;
+    }
+
+    .magic-word-box {
+        background: #f9f3ff;
+        border: 2px dashed #c9a0dc;
+        border-radius: 10px;
+        padding: 35px;
+        margin: 30px 0;
+        white-space: pre-line;
+    }
+
+    .sign-box {
+        text-align: center;
+        margin-top: 60px;
+        padding-top: 30px;
+        border-top: 1px solid #e8d5b7;
+    }
+
+    .toc {
+        background: #fff9f0;
+        border: 2px solid #e8d5b7;
+        border-radius: 10px;
+        padding: 35px 30px;
+        margin: 40px 0 60px;
+    }
+
+    .toc-title {
+        text-align: center;
+        font-size: 22px;
+        color: #c9a05d;
+        margin-bottom: 25px;
+        letter-spacing: 4px;
+        font-weight: 700;
+    }
+
+    .toc ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc li {
+        margin-bottom: 14px;
+        text-align: center;
+        font-size: 17px;
+    }
+
+    .toc li:last-child {
+        margin-bottom: 0;
+    }
+
+    .toc a {
+        color: #8b6f9c;
+        text-decoration: none;
+        letter-spacing: 1px;
+        transition: color 0.2s;
+    }
+
+    .toc a:hover {
+        color: #c9a05d;
+    }
+
+    strong {
+        color: #000000;
+        font-weight: 700;
+    }
+
+    /* ===== スマホレスポンシブ ===== */
+    @media screen and (max-width: 768px) {
+        body {
+            padding: 8px 0;
+            line-height: 1.8;
+        }
+
+        .cover-page { min-height: 100vh; padding: 20px; }
+        .cover-page::before { width: 200px; height: 200px; }
+
+        .cover-recipient {
+            font-size: 32px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .cover-title {
+            font-size: 36px;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+        }
+
+        .cover-subtitle {
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+        }
+
+        .cover-appraiser { font-size: 16px; }
+
+        .container {
+            padding: 24px 14px;
+            border-radius: 10px;
+            max-width: 100%;
+        }
+
+        h1 { font-size: 24px; letter-spacing: 2px; }
+        h2 { font-size: 22px; margin-top: 50px; margin-bottom: 30px; }
+        h3 { font-size: 18px; margin-top: 30px; margin-bottom: 20px; }
+        p { font-size: 16px; margin-bottom: 40px; }
+        .subtitle { font-size: 14px; margin-bottom: 30px; }
+
+        .aura-section,
+        .header-info,
+        .important-box,
+        .magic-word-box {
+            padding: 20px 14px;
+            margin: 16px 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="bg-fixed" id="bg-you" style="background-image: url('../images/強い木.png');"></div>
+<div class="bg-fixed" id="bg-fire" style="background-image: url('../images/強い火.png');"></div>
+<div class="bg-fixed" id="bg-water" style="background-image: url('../images/強い水.png');"></div>
+<div class="bg-fixed" id="bg-mandala" style="background-image: url('../images/曼荼羅.png');"></div>
+<div class="bg-veil"></div>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">平原智子様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>平原智子様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <div class="toc">
+        <div class="toc-title">— 目次 —</div>
+        <ul>
+            <li><a href="#sec-you">🔮 あなたについて</a></li>
+            <li><a href="#sec-en">🔮 気になる複数の縁について</a></li>
+            <li><a href="#sec-here">🔮 ここからお伝えしていくこと</a></li>
+            <li><a href="#sec-turning">🔮 運命の転機</a></li>
+            <li><a href="#sec-action">🔮 今からできること</a></li>
+            <li><a href="#sec-support">🔑 心を守るサポート</a></li>
+            <li><a href="#sec-last">最後に</a></li>
+        </ul>
+    </div>
+
+    <p>平原智子様</p>
+
+    <p>この度は本鑑定にお進みいただき<br>
+    心より感謝申し上げます。</p>
+
+    <p>「ブルームーンの夜に宣言をしてから<br>
+    　私のオーラは変わったのかな」</p>
+
+    <p>「6月生まれのCさんとの縁は<br>
+    　このまま根付いていくんだろうか」</p>
+
+    <p>「8月に飲みに行く約束をしたBさんと<br>
+    　お昼をよく一緒に食べるAさんと<br>
+    　結局どちらの縁が<br>
+    　本当に動いているんだろう」</p>
+
+    <p>いくつもの想いが<br>
+    一つの胸の中で<br>
+    同時に揺れている。</p>
+
+    <p>そのメッセージから<br>
+    もこさんの心が<br>
+    今どれだけ忙しく動いているかが<br>
+    静かに伝わってきました。</p>
+
+    <p>一つの縁ではなく<br>
+    複数の光が同時に見えているからこそ<br>
+    どれを信じればいいのか<br>
+    分からなくなってしまう。</p>
+
+    <p>それは、もこさんが<br>
+    浮ついているからでは<br>
+    決してありません。</p>
+
+    <p>まず、一番知りたいことから<br>
+    はっきりお伝えしますね。</p>
+
+    <p>あの夜の宣言から<br>
+    もこさんのオーラは<br>
+    確かに変わり始めています。</p>
+
+    <p>そして今年は<br>
+    もこさん自身の<br>
+    「縁を結ぶ場所」に<br>
+    これまでにないほど強い光が<br>
+    差し込んでいる年。</p>
+
+    <p>複数の縁が同時に動いているのは<br>
+    偶然ではなく<br>
+    その光が呼び込んだ動きなんです。</p>
+
+    <p>ただ、その光の中には<br>
+    豊かさをもたらす星と<br>
+    少し虚しさを感じさせる星が<br>
+    妖しく輝きを放っている。</p>
+
+    <p>だからこそ今は<br>
+    複数の光の中から<br>
+    「本物」を選び取るための<br>
+    大切な整理の時期。</p>
+
+    <p><strong>8月と10月</strong>に<br>
+    その答えがはっきりと<br>
+    浮かび上がってきます。</p>
+
+    <p>ここから一つずつ<br>
+    お伝えしていきますね。</p>
+
+    <h2 id="sec-you">🔮 あなたについて</h2>
+
+    <div class="aura-section">
+        <p>もこさんを霊視した時<br>
+        視えたのは<br>
+        柔らかく揺れる優しい緑のオーラ。</p>
+
+        <p>ちなみに、<br>
+        このオーラが<br>
+        今後変わることはありません。</p>
+
+        <p>出てくる強さ、弱さは<br>
+        時期や状況によって変わります。</p>
+
+        <p>草花のように、しなやかな緑。</p>
+
+        <p>周りに合わせながらも<br>
+        自分の芯を保てる人。</p>
+
+        <p>包み込むような優しさがあって<br>
+        人を自然と惹きつける力を持っている。</p>
+
+        <p>だからこそ、じっくり時間をかけて<br>
+        縁を育てていける人なんです。</p>
+
+        <p>ただ、その緑のオーラの奥に<br>
+        今、かなり強く出ているものがあります。</p>
+
+        <p>それは、火のオーラの強さ。</p>
+
+        <p>火のオーラは<br>
+        情熱と表現力。</p>
+
+        <p>これが出すぎると<br>
+        一人で気持ちが盛り上がって<br>
+        後から急に不安になる、という<br>
+        波を繰り返しやすくなります。</p>
+
+        <p>気になる相手ができると<br>
+        そのことばかり考えてしまうのも<br>
+        この火の強さが関係しています。</p>
+
+        <p>そしてもう一つ。</p>
+
+        <p>もこさんのオーラには<br>
+        地に足をつける力と<br>
+        白黒を見極める力が<br>
+        今、かなり少ない状態にあります。</p>
+
+        <p>この二つが少ないと<br>
+        気持ちが決まってもすぐ揺らぎ<br>
+        複数の縁の間で<br>
+        迷い続けてしまう。</p>
+
+        <p>逆に言えば<br>
+        この二つの力が補われれば<br>
+        現実的な判断ができるようになり<br>
+        一つの縁に対して<br>
+        腹をくくれるようになります。</p>
+
+        <p><strong>魂</strong>をさらに深く視させていただくと<br>
+        もこさんの中心には<br>
+        実力で道を切り開く強さと<br>
+        人を自然と惹きつける魅力が<br>
+        同時に宿っています。</p>
+
+        <p>だからこそ<br>
+        複数の光に心が引かれやすい。</p>
+
+        <p>それは弱さではなく<br>
+        もこさんの魂がそれだけ<br>
+        豊かな磁力を持っている証なんです。</p>
+
+        <p>そして今、もこさんは<br>
+        自分自身を見つめ直すという<br>
+        大きな時期の中にいます。</p>
+
+        <p>本来は心と体を整える時間のはずが<br>
+        <strong>2026年</strong>だけ<br>
+        「縁を結ぶ場所」に<br>
+        特別な光が集中して差し込んでいる。</p>
+
+        <p>自分を見つめ直しているからこそ<br>
+        かえって本物の縁を<br>
+        冷静に見極められる。</p>
+
+        <p>今のもこさんは<br>
+        まさにそのタイミングにいるんです。</p>
+    </div>
+
+    <h2 id="sec-en">🔮 気になる複数の縁について</h2>
+
+    <p>もこさんの縁を司る場所を視ると<br>
+    安定と豊かさをもたらす星が<br>
+    静かに輝いています。</p>
+
+    <p>本来、もこさんは<br>
+    安定と豊かさを求める<br>
+    包容力のある恋愛観を持つ人。</p>
+
+    <p>そして今年はまさにこの場所に<br>
+    一年で最も強い光が差し込んでいます。</p>
+
+    <p>喜びの気配も感じられますが<br>
+    同時に「与えすぎて虚しくなる」<br>
+    という星も<br>
+    妖しく瞬いているので<br>
+    自分を満たすことを<br>
+    忘れないでほしいんです。</p>
+
+    <p>この光の中で<br>
+    複数の縁が同時に動いているのが<br>
+    今のもこさんの状況です。</p>
+
+    <p>まず、日々顔を合わせて<br>
+    安心を感じられるAさん。</p>
+
+    <p>その縁は<br>
+    静かに、けれど確かに<br>
+    育ち始めています。</p>
+
+    <p>本当はもこさんと過ごす時間を<br>
+    特別に感じている。</p>
+
+    <p>ただ今は<br>
+    日常の関係の心地よさに<br>
+    気持ちを乗せることに<br>
+    まだ慎重になっている状態です。</p>
+
+    <p>次に、5月に食事へ行き<br>
+    <strong>8月</strong>に会う約束をしたBさん。</p>
+
+    <p>こちらの縁は<br>
+    8月という時期そのものが<br>
+    「本物かどうかを確かめる機会」に<br>
+    なっていきます。</p>
+
+    <p>そして、6月生まれのCさん。</p>
+
+    <p>この縁については<br>
+    もこさんの気持ちが<br>
+    実際の距離感以上に<br>
+    大きく膨らみやすいところがあります。</p>
+
+    <p>火のオーラが強く出ているもこさんは<br>
+    一人で想いを育てすぎて<br>
+    後から「思っていたのと違った」と<br>
+    感じやすい面があるからです。</p>
+
+    <p>三つの光を同時に見つめようとすると<br>
+    どうしても心が忙しくなります。</p>
+
+    <p>でも、覚えておいてほしいのは<br>
+    <strong>本物の縁</strong>は<br>
+    比べて選ぶものではなく<br>
+    自然と静かに深まっていくものだ<br>
+    ということ。</p>
+
+    <p>その見極めの答えが<br>
+    <strong>8月と10月</strong>に<br>
+    はっきりと浮かび上がってきます。</p>
+
+    <h2 id="sec-here">🔮 ここからお伝えしていくこと</h2>
+
+    <p>無料鑑定の最後に<br>
+    お伝えするとお約束したことを<br>
+    ここから一つずつ視ていきます。</p>
+
+    <h3>【気になる相手が今、本当に感じていること】</h3>
+
+    <p>日々一緒に過ごすAさんは<br>
+    もこさんと過ごす時間を<br>
+    本当は特別なものとして<br>
+    感じています。</p>
+
+    <p>ただ、それを言葉や態度で<br>
+    はっきり示す一歩を<br>
+    まだ踏み出せずにいる。</p>
+
+    <p>もこさんが与えてくれる<br>
+    何気ない安心感を<br>
+    失いたくないという気持ちが<br>
+    逆に、慎重にさせているんです。</p>
+
+    <p>8月に約束したBさんは<br>
+    今の時点では<br>
+    軽い気持ちの延長線上にいます。</p>
+
+    <p>ただ、もこさんと過ごした<br>
+    あの食事の時間に<br>
+    ふとした心地よさを<br>
+    感じ始めているのも本当です。</p>
+
+    <p>本気になるかどうかは<br>
+    8月の関わり方次第という状態。</p>
+
+    <p>そして、6月生まれのCさん。</p>
+
+    <p>正直にお伝えすると<br>
+    この方の気持ちは<br>
+    まだはっきりとした形に<br>
+    なっていません。</p>
+
+    <p>もこさんの中で<br>
+    その人の存在が<br>
+    大きく育っているぶん<br>
+    実際の相手との温度差に<br>
+    戸惑うことになりやすい関係です。</p>
+
+    <p>三人分の心を<br>
+    同時に読み取ろうとすると<br>
+    どうしても疲れてしまいます。</p>
+
+    <p>もこさんは<br>
+    物事を深く理解しようとする力を<br>
+    生まれ持っているぶん<br>
+    「本当はどう思っているんだろう」と<br>
+    考えすぎてしまうところがある。</p>
+
+    <p>でも今は<br>
+    考えて答えを出す時期ではなく<br>
+    時間が答えを見せてくれるのを<br>
+    待つ時期なんです。</p>
+
+    <p>三人とも<br>
+    今すぐ答えが出ているわけではなく<br>
+    これからの時期に<br>
+    本音がはっきりしてくる関係なんです。</p>
+
+    <h3>【あなたのオーラの調整方法】</h3>
+
+    <p>もこさんに必要なのは<br>
+    乱れている緑のオーラを整え<br>
+    本来のしなやかな強さを<br>
+    取り戻すこと。</p>
+
+    <p>具体的には<br>
+    出すぎている火のオーラを鎮め<br>
+    少ない地の力と見極める力を<br>
+    補っていくことです。</p>
+
+    <p>これができると<br>
+    一人で盛り上がって<br>
+    後から不安になる、という波が<br>
+    少しずつ穏やかになっていきます。</p>
+
+    <p>詳しくはこの先で<br>
+    お伝えしていきますね。</p>
+
+    <h3>【オーラが整った先に広がる景色】</h3>
+
+    <p>もこさんのオーラが整い始めると<br>
+    日々一緒に過ごすAさんの中で<br>
+    ためらいが少しずつ緩んでいきます。</p>
+
+    <p>相手のほうから<br>
+    自然と、距離を縮めてくるようになる。</p>
+
+    <p>そして8月の約束のBさんとの時間も<br>
+    焦らず見つめれば<br>
+    本物かどうかが<br>
+    自然と分かってくる。</p>
+
+    <p>6月生まれのCさんへの想いも<br>
+    実際の距離感に合わせて<br>
+    落ち着いて扱えるようになり<br>
+    一人で膨らませて<br>
+    苦しくなる夜が減っていきます。</p>
+
+    <p>そしてもう一つ。</p>
+
+    <p>もこさんのオーラは<br>
+    人に優しく合わせられるぶん<br>
+    自分の気持ちを<br>
+    後回しにしやすい性質を持っています。</p>
+
+    <p>オーラが整うと<br>
+    「相手にどう思われるか」より<br>
+    「自分は本当はどう感じているか」を<br>
+    大切にできるようになる。</p>
+
+    <p>その変化そのものが<br>
+    複数の光の中から<br>
+    一つを選び取る力になります。</p>
+
+    <p>安心できる縁と<br>
+    自然に距離が縮まっていく未来。</p>
+
+    <p>そこへ向かうタイミングは<br>
+    このあとお伝えする転機の月に<br>
+    はっきりと表れます。</p>
+
+    <h3>【霊視で視えた、もう一つの重要な問題】</h3>
+
+    <p>もこさん自身も<br>
+    うっすら感じているはずです。</p>
+
+    <p>気になる相手ができると<br>
+    そのことばかり考えてしまうクセ。</p>
+
+    <p>これは弱さではなく<br>
+    それだけまっすぐに<br>
+    人を想える愛情深さがあるから。</p>
+
+    <p>もこさんの魂は<br>
+    思春期の頃のような<br>
+    揺れやすく感受性豊かな性質を<br>
+    今もそのまま持っています。</p>
+
+    <p>感性が鋭く、人を惹きつける魅力がある反面<br>
+    傷つきやすく<br>
+    一つの想いに心を持っていかれやすい。</p>
+
+    <p>そしてもう一つ<br>
+    根っこにある性質があります。</p>
+
+    <p>もこさんは<br>
+    人に合わせることが得意なぶん<br>
+    自分の気持ちよりも<br>
+    相手の気持ちを<br>
+    優先してしまいやすい。</p>
+
+    <p>「私はどうしたいんだろう」より<br>
+    「あの人はどう思っているんだろう」に<br>
+    意識が向きやすいんです。</p>
+
+    <p>三人のことを<br>
+    同時に考えてしまうのも<br>
+    この性質が関係しています。</p>
+
+    <p>ただ、このクセを抱えたまま<br>
+    <strong>8月と10月</strong>を迎えてしまうと<br>
+    せっかく巡ってくる見極めの力を<br>
+    不安を打ち消すことだけに<br>
+    使ってしまいます。</p>
+
+    <p>だからこそ今のうちに<br>
+    一つの想いに気持ちを乗せすぎず<br>
+    静かに見つめる練習を<br>
+    始めてほしいんです。</p>
+
+    <p><strong>大丈夫。</strong></p>
+
+    <p>もこさんの周りには<br>
+    気づけば自然と<br>
+    支えてくれる人が現れる<br>
+    巡り合わせがあります。</p>
+
+    <p>一人で抱え込まず<br>
+    信頼できる人にも<br>
+    今の想いを話してみてくださいね。</p>
+
+    <h2 id="sec-turning">🔮 運命の転機</h2>
+
+    <p>ここまでお伝えしてきた中で<br>
+    これから半年の流れが<br>
+    少しずつ視えてきたかと思います。</p>
+
+    <p>そこから特に重要な月を<br>
+    順にお伝えします。</p>
+
+    <h3>最重要月　2026年8月</h3>
+
+    <p>なぜこの月が特別なのか。</p>
+
+    <p>もこさんに足りていない<br>
+    見極める力が<br>
+    最も強く巡ってくる月だからです。</p>
+
+    <p>ちょうど、8月に約束している<br>
+    Bさんと会う時期と重なっています。</p>
+
+    <p>この月、何が起こるか。</p>
+
+    <p>その時間が<br>
+    単なる楽しい食事ではなく<br>
+    「この縁が本物かどうか」を<br>
+    確かめる機会になります。</p>
+
+    <p>相手の言葉よりも<br>
+    態度や行動から<br>
+    誠実さが見えやすくなる月です。</p>
+
+    <p>やるべきこと。</p>
+
+    <p>焦らず、相手の言葉より<br>
+    態度をよく観察すること。</p>
+
+    <p>白か黒かをすぐに決めず<br>
+    見極める力を味方につけて<br>
+    冷静に向き合うこと。</p>
+
+    <p>心が定まったら<br>
+    その相手に少しずつ<br>
+    気持ちを開いていくこと。</p>
+
+    <p>やってはいけないこと。</p>
+
+    <p>火の強さに引っ張られて<br>
+    勢いだけで距離を詰めないこと。</p>
+
+    <p>複数の相手に<br>
+    同時に期待をかけすぎないこと。</p>
+
+    <p>ここを守れば<br>
+    <strong>8月は最高の形で</strong><br>
+    もこさんの前に開きます。</p>
+
+    <h3>重要月　2026年10月</h3>
+
+    <p>足りていなかった<br>
+    地に足をつける力が巡り<br>
+    安心感が生まれてくる月です。</p>
+
+    <p>「なんとなく好き」ではなく<br>
+    「一緒にいて安心できる」と感じる相手が<br>
+    はっきりと分かるようになります。</p>
+
+    <p>日々顔を合わせるAさんとの縁が<br>
+    静かに深まりやすい時期です。</p>
+
+    <p>焦らず、安心できる時間を<br>
+    大切にしてください。</p>
+
+    <h3>○ 2026年7月（今この瞬間）</h3>
+
+    <p>ブルームーンの宣言の余韻で<br>
+    気持ちが高ぶりやすい時期。</p>
+
+    <p>これは変化の兆しです。</p>
+
+    <p>焦って動かず<br>
+    静かに受け止めてください。</p>
+
+    <h3>○ 2026年9月</h3>
+
+    <p>見極める力が続く時期。</p>
+
+    <p>8月に見極めた縁を<br>
+    少しずつ育て始めるとよい月です。</p>
+
+    <h3>○ 2026年11月</h3>
+
+    <p>感情の流れが良くなり<br>
+    素直な気持ちを<br>
+    言葉にしやすくなります。</p>
+
+    <h3>○ 2026年12月</h3>
+
+    <p>一年の縁を振り返り<br>
+    本当に大切にしたい相手が<br>
+    見えてくる月です。</p>
+
+    <h3>2027年</h3>
+
+    <p>この一年は<br>
+    火のオーラに加えて<br>
+    地の力も巡ってくる年です。</p>
+
+    <p>2026年に見極めた縁が<br>
+    焦らなくても<br>
+    自然と根を張っていく<br>
+    そんな一年になります。</p>
+
+    <p>もこさんの心も<br>
+    ようやく地に足がついて<br>
+    落ち着いた気持ちで<br>
+    相手と向き合えるようになる。</p>
+
+    <p>関係が<br>
+    穏やかなステージへと<br>
+    進んでいく気配があります。</p>
+
+    <h3>2028年</h3>
+
+    <p>この年は<br>
+    足りていなかった<br>
+    地の力と見極める力の<br>
+    両方が巡ってくる<br>
+    特別な一年。</p>
+
+    <p>もこさんにとって<br>
+    大きく整う年になります。</p>
+
+    <p>見極めた縁が<br>
+    形になっていく。</p>
+
+    <p>同居や結婚といった<br>
+    具体的な進展が<br>
+    現実味を帯びてくる<br>
+    そんな時期です。</p>
+
+    <p><strong>最も大切なこと。</strong></p>
+
+    <p><strong>8月と10月</strong>が<br>
+    もこさんにとって<br>
+    最大の見極めのチャンスです。</p>
+
+    <p>この二つの月をどう迎えるかが<br>
+    今後の流れを決めます。</p>
+
+    <h2 id="sec-action">🔮 今からできること</h2>
+
+    <p>ここまで運命の流れと<br>
+    これから訪れる転機をお伝えしました。</p>
+
+    <p>ただ、一つだけ<br>
+    知っておいてほしいことがあります。</p>
+
+    <p>運命は<br>
+    ただ待っているだけでは動きません。</p>
+
+    <p>星の流れがどれだけ整っても<br>
+    もこさん自身のオーラが<br>
+    整っていなければ<br>
+    その流れを掴むことはできない。</p>
+
+    <p>ここからは<br>
+    もこさん自身がオーラを整えていく<br>
+    日々のやることをお伝えします。</p>
+
+    <h3>⛩️ 地の力と見極める力を補う</h3>
+
+    <p>茶色やベージュの服、<br>
+    アクセサリーを<br>
+    身につけてみてください。</p>
+
+    <p>大地の色を纏うほど、<br>
+    足りない地の力が<br>
+    静かに満ちてきます。</p>
+
+    <p>白や銀色のアイテムも<br>
+    少しずつ取り入れてみる。</p>
+
+    <p>見極める力を<br>
+    研ぎ澄ましてくれます。</p>
+
+    <p>陶器のカップや器を<br>
+    日常使いにしてみてください。</p>
+
+    <p>土から生まれたものに触れるたび<br>
+    心が地に足をつけていきます。</p>
+
+    <p>休みの日には<br>
+    裸足で大地に立つ時間を。</p>
+
+    <p>公園を歩くだけでもいい。</p>
+
+    <p>足の裏から<br>
+    地の力が<br>
+    もこさんの中に流れ込んできます。</p>
+
+    <p>部屋の整理整頓や<br>
+    断捨離も効果的です。</p>
+
+    <p>不要なものを手放すたび<br>
+    見極める力が磨かれていきます。</p>
+
+    <h3>⛩️ 火の強さを少し鎮める</h3>
+
+    <p>青い服を<br>
+    意識して選んでみてください。</p>
+
+    <p>火照った心を<br>
+    静かに冷ましてくれます。</p>
+
+    <p>こまめに水を飲むこと。</p>
+
+    <p>一口の水が<br>
+    燃えすぎた想いを<br>
+    穏やかに整えます。</p>
+
+    <p>お風呂にゆっくり浸かる時間も<br>
+    大切にしてください。</p>
+
+    <p>水辺を歩く、深呼吸をする。</p>
+
+    <p>そういう時間が<br>
+    クールダウンの力になります。</p>
+
+    <p>就寝前はスマホを見ず<br>
+    心を静める時間を作ってみてください。</p>
+
+    <p>その静けさが<br>
+    火のオーラを<br>
+    穏やかな灯りに変えていきます。</p>
+
+    <h3>⛩️ 気をつけてほしいこと</h3>
+
+    <p>複数の相手への想いを比べて<br>
+    自分を責めないでください。</p>
+
+    <p>それは<br>
+    「相手が見つからない焦り」ではなく<br>
+    「本物を見極める大切な時間」です。</p>
+
+    <p>8月、火の強さに引っ張られて<br>
+    勢いだけで距離を詰めないこと。</p>
+
+    <p>焦った一歩は<br>
+    せっかく巡る見極めの力を<br>
+    打ち消してしまいます。</p>
+
+    <p>6月生まれのCさんへの想いを<br>
+    実際の距離感以上に<br>
+    膨らませすぎないでください。</p>
+
+    <p>一人で盛り上がった想いは<br>
+    後から自分を苦しめる<br>
+    原因になります。</p>
+
+    <p>ここまでお伝えした調整法で<br>
+    少しずつオーラは整い始めます。</p>
+
+    <p>ただ、正直にお伝えします。</p>
+
+    <p>地の力と見極める力がほとんどない状態からだと<br>
+    日常の調整だけでは<br>
+    補いきれない部分があります。</p>
+
+    <p>もし本気で<br>
+    8月と10月の転機を<br>
+    最高の状態で迎えたいなら<br>
+    もう一つお伝えしたい方法があります。</p>
+
+    <h2 id="sec-support">🔑 心を守るサポート</h2>
+
+    <p>ここまでお伝えしてきた通り<br>
+    もこさんのオーラには<br>
+    地の力と見極める力が少なく<br>
+    火の力が強く出すぎている状態です。</p>
+
+    <p>これが今の状況の<br>
+    根っこにある原因であり<br>
+    8月と10月のチャンスを掴むために<br>
+    最も整えるべき部分です。</p>
+
+    <p>このオーラが整うと</p>
+
+    <p>8月の約束の日、<br>
+    相手の些細な言葉に<br>
+    振り回されなくなります。</p>
+
+    <p>複数の相手を比べて<br>
+    自分を責める夜も減り、<br>
+    Aさんと過ごす時間には<br>
+    安心が積み重なっていく。</p>
+
+    <p>そうして「この人だ」と思える瞬間に<br>
+    迷わず心を開けるようになり、<br>
+    8月の転機を<br>
+    最高の状態で迎えられます。</p>
+
+    <p>日常の調整に加えて<br>
+    本格的にオーラを補うために<br>
+    パワーストーンをお守りとして<br>
+    取り入れる方法があります。</p>
+
+    <p>もこさんのオーラに合わせて<br>
+    三つのプランをご用意しました。</p>
+
+    <div class="important-box">
+        <h3>【運命を動かすプラン】</h3>
+        <p>8月の転機を本気で掴みたい方へ</p>
+
+        <p>・ラピスラズリ<br>
+        　見極める力を補い、本音を見抜ける</p>
+
+        <p>・タイガーアイ、ガーネット<br>
+        　地の力を補い、迷わず一歩を踏み出せる</p>
+
+        <p>・アメジスト<br>
+        　火の勢いを鎮め、冷静に見つめられる</p>
+
+        <p>・スモーキークォーツ<br>
+        　焦りを吸い取り、心が落ち着く</p>
+
+        <p>期待できる変化：</p>
+
+        <p>・複数の縁を比べて<br>
+        　「欲張りなのかな」と<br>
+        　自分を責める気持ちが<br>
+        　静かに軽くなっていく</p>
+
+        <p>・「選ばれたい」ではなく<br>
+        　「一緒にいたい」と思える相手が<br>
+        　自然と見えてくる</p>
+
+        <p>・8月の転機を<br>
+        　最高の状態で迎えられる</p>
+
+        <h3>【流れを整えるプラン】</h3>
+        <p>まずは心を安定させたい方へ</p>
+
+        <p>・ラピスラズリ<br>
+        　見極める力を補い、本音を見抜ける</p>
+
+        <p>・タイガーアイ<br>
+        　地の力を補い、迷わず一歩を踏み出せる</p>
+
+        <p>・スモーキークォーツ<br>
+        　焦りを吸い取り、心が落ち着く</p>
+
+        <p>期待できる変化：</p>
+
+        <p>・複数の縁を比べて<br>
+        　焦る気持ちが静まっていく</p>
+
+        <p>・「これでいいのかな」と<br>
+        　考え込む時間が減っていく</p>
+
+        <p>・自分の心の温度を<br>
+        　自分で整えられるようになる</p>
+
+        <h3>【日々のお守りプラン】</h3>
+        <p>まずは焦りを和らげたい方へ</p>
+
+        <p>・ラピスラズリ<br>
+        　見極める力を補い、本音を見抜ける</p>
+
+        <p>・アメジスト<br>
+        　火の勢いを鎮め、冷静に見つめられる</p>
+
+        <p>期待できる変化：</p>
+
+        <p>・気になる相手のことばかり<br>
+        　考えてしまう夜が短くなる</p>
+
+        <p>・「私だけが想っているのかも」<br>
+        　という不安がふっと軽くなる</p>
+
+        <p>実は<br>
+        運命を動かすプランを<br>
+        選ばれる方が最も多く<br>
+        全体の約70%を占めています。</p>
+
+        <p>「8月の転機を<br>
+        　本気で掴みたいから<br>
+        　中途半端にしたくない」<br>
+        というお声が多いです。</p>
+
+        <p>8月に向けて<br>
+        今から整え始めることで<br>
+        石のエネルギーがちょうど<br>
+        馴染んだ状態で<br>
+        最重要月を迎えられます。</p>
+
+        <p>もし興味がありましたら<br>
+        「詳細希望」とだけ送っていただければ<br>
+        もこさん専用の石の組み合わせを<br>
+        お伝えしますね。</p>
+    </div>
+
+    <h2 id="sec-last">最後に</h2>
+
+    <p>平原智子様。</p>
+
+    <p>これからの道は二つあります。</p>
+
+    <p>このまま<br>
+    複数の想いを比べて<br>
+    自分を責め続けながら<br>
+    8月を迎えるか。</p>
+
+    <p>それとも<br>
+    今から地の力と見極める力を整え<br>
+    火の強さを鎮めながら<br>
+    8月の扉が開いた時に<br>
+    迷わず受け取れる自分で<br>
+    そこに在るか。</p>
+
+    <p>選ぶのは、もこさん自身です。</p>
+
+    <p>ただ、私には視えています。</p>
+
+    <p>もこさんの濁りが取れて<br>
+    本来の輝きを取り戻したとき。</p>
+
+    <p>その人が、もこさんの目を見つめながら<br>
+    「<strong>ちゃんと話したい</strong>」<br>
+    そう言っている場面が。</p>
+
+    <p>複数の光の中から<br>
+    本物の縁が静かに浮かび上がり<br>
+    もこさんがそれを<br>
+    迷いなく受け取る景色。</p>
+
+    <p>その未来への道、私が照らしますね。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>かな</p>
+    </div>
+
+</div>
+
+<script>
+/* 演出：スクロールで背景があなた（木）→縁（火）→調整（土）→最後に（曼荼羅）と切り替わる */
+(function () {
+    var bgYou = document.getElementById('bg-you');
+    var stages = [
+        { bg: document.getElementById('bg-fire'), sentinel: document.getElementById('sec-en') },
+        { bg: document.getElementById('bg-water'), sentinel: document.getElementById('sec-action') },
+        { bg: document.getElementById('bg-mandala'), sentinel: document.getElementById('sec-last') }
+    ];
+    if (!bgYou) return;
+    function onScroll() {
+        var trigger = window.innerHeight * 0.5;
+        var activeIndex = -1;
+        stages.forEach(function (s, i) {
+            if (s.bg && s.sentinel && s.sentinel.getBoundingClientRect().top < trigger) activeIndex = i;
+        });
+        bgYou.classList.toggle('is-hidden', activeIndex !== -1);
+        stages.forEach(function (s, i) {
+            if (!s.bg) return;
+            s.bg.classList.toggle('is-active', i === activeIndex);
+        });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
+
+</script>
+
+</body>
+</html>
