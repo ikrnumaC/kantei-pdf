@@ -5,261 +5,332 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>やっちん様専用鑑定書</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
 
-body {
-    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
-    background: linear-gradient(135deg, #fdf6f0 0%, #f9f3ff 50%, #fff8f0 100%);
-    color: #2d2d2d;
-    line-height: 1.9;
-}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-.cover-page {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: linear-gradient(135deg, #fdf6f0 0%, #f4e8ff 50%, #fff3e8 100%);
-    padding: 40px 20px;
-}
+    body {
+        font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+        line-height: 2;
+        background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+        color: #2d2d2d;
+        padding: 40px 20px;
+        margin: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
 
-.cover-recipient {
-    font-size: 32px;
-    letter-spacing: 6px;
-    color: #6b5b73;
-    margin-bottom: 20px;
-}
+    /* ===== 演出：スクロールで背景が五行イメージへ移り変わる ===== */
+    .bg-fixed {
+        position: fixed;
+        inset: 0;
+        z-index: -3;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: blur(1.5px) saturate(0.75) brightness(1.18);
+        opacity: 0;
+        transition: opacity 1.6s ease;
+        will-change: opacity;
+    }
+    #bg-you { opacity: 1; }
+    .bg-fixed.is-hidden { opacity: 0 !important; }
+    .bg-fixed.is-active { opacity: 0.5; }
+    .bg-veil {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        pointer-events: none;
+        background:
+            linear-gradient(180deg, rgba(250, 248, 245, 0.8) 0%, rgba(249, 243, 255, 0.86) 100%);
+    }
 
-.cover-title {
-    font-size: 48px;
-    font-weight: 700;
-    letter-spacing: 8px;
-    background: linear-gradient(135deg, #d4a574 0%, #f4d03f 30%, #d4a574 60%, #c9a0dc 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 30px;
-}
+    /* ===== 表紙ページ ===== */
+    .cover-page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+    }
 
-.cover-subtitle {
-    font-size: 16px;
-    letter-spacing: 4px;
-    color: #a8a8a8;
-    margin-bottom: 60px;
-}
+    .cover-page::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 400px;
+        background-image: url('../images/曼荼羅.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.3;
+        z-index: 0;
+    }
 
-.cover-appraiser {
-    font-size: 18px;
-    letter-spacing: 3px;
-    color: #8b6f9c;
-}
+    .cover-page > * {
+        position: relative;
+        z-index: 1;
+    }
 
-.container {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 80px 40px 120px;
-    position: relative;
-    overflow: hidden;
-}
+    .cover-recipient {
+        font-size: 48px;
+        font-weight: 300;
+        color: #c9a05d;
+        margin-bottom: 20px;
+        letter-spacing: 8px;
+    }
 
-.container::before {
-    content: '';
-    position: fixed;
-    top: -100px;
-    right: -100px;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(244, 208, 63, 0.15) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-}
+    .cover-title {
+        font-size: 56px;
+        font-weight: 700;
+        color: #c9a05d;
+        margin-bottom: 60px;
+        letter-spacing: 4px;
+    }
 
-.container::after {
-    content: '';
-    position: fixed;
-    bottom: -100px;
-    left: -100px;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(201, 160, 220, 0.15) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-}
+    .cover-subtitle {
+        font-size: 18px;
+        color: #8b6f9c;
+        letter-spacing: 3px;
+        margin-bottom: 80px;
+    }
 
-.fade-in { animation: fadeIn 1s ease-in; }
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+    .cover-appraiser {
+        font-size: 20px;
+        color: #6d6d6d;
+        letter-spacing: 2px;
+    }
 
-h1 {
-    text-align: center;
-    font-size: 30px;
-    letter-spacing: 4px;
-    background: linear-gradient(135deg, #d4a574 0%, #f4d03f 30%, #d4a574 60%, #c9a0dc 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 10px;
-}
+    /* ===== コンテンツページ ===== */
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        padding: 60px 50px;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                    inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+    }
 
-.subtitle {
-    text-align: center;
-    font-size: 14px;
-    letter-spacing: 3px;
-    color: #b8a8c0;
-    margin-bottom: 20px;
-}
+    h1 {
+        text-align: center;
+        font-size: 36px;
+        font-weight: 700;
+        color: #c9a05d;
+        margin-bottom: 15px;
+        letter-spacing: 3px;
+    }
 
-h2 {
-    font-size: 22px;
-    letter-spacing: 2px;
-    background: linear-gradient(135deg, #d4a574 0%, #c9a0dc 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin: 70px 0 30px;
-    text-align: center;
-    position: relative;
-}
+    h1::after {
+        content: '';
+        display: block;
+        width: 150px;
+        height: 2px;
+        background: #c9a05d;
+        margin: 20px auto 0;
+    }
 
-h2::before {
-    content: '✦';
-    display: block;
-    color: #f4d03f;
-    font-size: 20px;
-    margin-bottom: 10px;
-    animation: pulse 2s ease-in-out infinite;
-}
+    .subtitle {
+        text-align: center;
+        color: #8b6f9c;
+        font-size: 16px;
+        margin-bottom: 50px;
+        letter-spacing: 2px;
+    }
 
-@keyframes pulse {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.2); }
-}
+    h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #c9a05d;
+        margin-top: 80px;
+        margin-bottom: 40px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #e8d5b7;
+        text-align: center;
+    }
 
-h3 {
-    font-size: 17px;
-    letter-spacing: 1px;
-    color: #a87d9e;
-    text-align: center;
-    margin: 45px 0 22px;
-    font-weight: 700;
-}
+    h3 {
+        font-size: 24px;
+        font-weight: 600;
+        color: #8b6f9c;
+        margin-top: 40px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
 
-p {
-    font-size: 16px;
-    line-height: 2;
-    color: #2d2d2d;
-    text-align: center;
-    margin-bottom: 20px;
-}
+    p {
+        margin-bottom: 50px;
+        text-align: center;
+    }
 
-strong {
-    color: #b8863f;
-    font-weight: 700;
-}
+    hr {
+        border: none;
+        border-top: 1px solid #e8d5b7;
+        margin: 40px 0;
+    }
 
-.toc {
-    background: linear-gradient(135deg, rgba(255, 245, 235, 0.8) 0%, rgba(249, 243, 255, 0.8) 100%);
-    border: 1px solid rgba(212, 165, 116, 0.3);
-    border-radius: 15px;
-    padding: 35px 30px;
-    margin: 40px 0 60px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-}
+    /* ===== オーラセクション ===== */
+    .aura-section {
+        padding: 40px;
+        margin: 30px 0;
+        border-radius: 10px;
+        background-color: #f9f3ff;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border: 2px solid #e8d5b7;
+    }
 
-.toc-title {
-    text-align: center;
-    font-size: 20px;
-    letter-spacing: 4px;
-    background: linear-gradient(135deg, #d4a574 0%, #c9a0dc 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 25px;
-    font-weight: 700;
-}
+    /* ===== ボックス装飾 ===== */
+    .header-info {
+        background: #fff9f0;
+        border: 2px solid #e8d5b7;
+        border-radius: 10px;
+        padding: 30px;
+        margin: 30px 0;
+    }
 
-.toc ul { list-style: none; }
+    .important-box {
+        background: #fffef5;
+        border: 2px solid #d4a574;
+        border-radius: 10px;
+        padding: 30px;
+        margin: 30px 0;
+    }
 
-.toc li {
-    text-align: center;
-    margin-bottom: 14px;
-    font-size: 15px;
-}
+    .magic-word-box {
+        background: #f9f3ff;
+        border: 2px dashed #c9a0dc;
+        border-radius: 10px;
+        padding: 35px;
+        margin: 30px 0;
+        white-space: pre-line;
+    }
 
-.toc li:last-child { margin-bottom: 0; }
+    .sign-box {
+        text-align: center;
+        margin-top: 60px;
+        padding-top: 30px;
+        border-top: 1px solid #e8d5b7;
+    }
 
-.toc a {
-    color: #8b6f9c;
-    text-decoration: none;
-    letter-spacing: 1px;
-    transition: color 0.2s;
-}
+    .toc {
+        background: #fff9f0;
+        border: 2px solid #e8d5b7;
+        border-radius: 10px;
+        padding: 35px 30px;
+        margin: 40px 0 60px;
+    }
 
-.toc a:hover { color: #d4a574; }
+    .toc-title {
+        text-align: center;
+        font-size: 22px;
+        color: #c9a05d;
+        margin-bottom: 25px;
+        letter-spacing: 4px;
+        font-weight: 700;
+    }
 
-.aura-section {
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 15px;
-    padding: 40px 30px;
-    margin: 30px 0;
-    overflow: hidden;
-}
+    .toc ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 
-.aura-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.82);
-    z-index: 0;
-}
+    .toc li {
+        margin-bottom: 14px;
+        text-align: center;
+        font-size: 17px;
+    }
 
-.aura-section p {
-    position: relative;
-    z-index: 1;
-}
+    .toc li:last-child {
+        margin-bottom: 0;
+    }
 
-.aura-water { background-image: url('../images/強い水.png'); }
-.aura-fire { background-image: url('../images/強い火.png'); }
-.aura-wood { background-image: url('../images/強い木.png'); }
-.aura-earth { background-image: url('../images/強い土.png'); }
-.aura-metal { background-image: url('../images/強い金.png'); }
+    .toc a {
+        color: #8b6f9c;
+        text-decoration: none;
+        letter-spacing: 1px;
+        transition: color 0.2s;
+    }
 
-.sign-box {
-    text-align: center;
-    margin-top: 70px;
-    padding-top: 35px;
-    border-top: 1px solid rgba(212, 165, 116, 0.4);
-}
+    .toc a:hover {
+        color: #c9a05d;
+    }
 
-.sign-box p {
-    font-size: 17px;
-    letter-spacing: 1px;
-    color: #6b5b73;
-}
+    strong {
+        color: #000000;
+        font-weight: 700;
+    }
 
-@media print {
-    .cover-page { page-break-after: always; }
-    h2 { page-break-before: auto; }
-    .aura-section { page-break-inside: avoid; }
-}
+    /* ===== スマホレスポンシブ ===== */
+    @media screen and (max-width: 768px) {
+        body {
+            padding: 8px 0;
+            line-height: 1.8;
+        }
 
-@media (max-width: 768px) {
-    .cover-title { font-size: 34px; letter-spacing: 4px; }
-    .cover-recipient { font-size: 24px; }
-    .container { padding: 60px 22px 90px; }
-    h1 { font-size: 24px; }
-    h2 { font-size: 19px; }
-    p { font-size: 15px; }
-}
+        .cover-page { min-height: 100vh; padding: 20px; }
+        .cover-page::before { width: 200px; height: 200px; }
+
+        .cover-recipient {
+            font-size: 32px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .cover-title {
+            font-size: 36px;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+        }
+
+        .cover-subtitle {
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+        }
+
+        .cover-appraiser { font-size: 16px; }
+
+        .container {
+            padding: 24px 14px;
+            border-radius: 10px;
+            max-width: 100%;
+        }
+
+        h1 { font-size: 24px; letter-spacing: 2px; }
+        h2 { font-size: 22px; margin-top: 50px; margin-bottom: 30px; }
+        h3 { font-size: 18px; margin-top: 30px; margin-bottom: 20px; }
+        p { font-size: 16px; margin-bottom: 40px; }
+        .subtitle { font-size: 14px; margin-bottom: 30px; }
+
+        .aura-section,
+        .header-info,
+        .important-box,
+        .magic-word-box {
+            padding: 20px 14px;
+            margin: 16px 0;
+        }
+    }
 </style>
 </head>
+<body>
+
+<div class="bg-fixed" id="bg-you" style="background-image: url('../images/強い水.png');"></div>
+<div class="bg-fixed" id="bg-fire" style="background-image: url('../images/強い火.png');"></div>
+<div class="bg-fixed" id="bg-wood" style="background-image: url('../images/強い木.png');"></div>
+<div class="bg-fixed" id="bg-mandala" style="background-image: url('../images/曼荼羅.png');"></div>
+<div class="bg-veil"></div>
+
+<!-- 表紙ページ -->
 <div class="cover-page">
     <div class="cover-recipient">やっちん様</div>
     <div class="cover-title">専用鑑定書</div>
@@ -267,267 +338,297 @@ strong {
     <div class="cover-appraiser">鑑定師：かな</div>
 </div>
 
-<div class="container fade-in">
-<h1>やっちん様の本鑑定書</h1>
-<p class="subtitle">Premium Spiritual Reading</p>
+<div class="container">
+    <h1>やっちん様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
 
-<div class="toc">
-    <div class="toc-title">目次</div>
-    <ul>
-        <li><a href="#sec-you">🔮 あなたについて</a></li>
-        <li><a href="#sec-partner">🔮 お相手について</a></li>
-        <li><a href="#sec-here">🔮 ここからお伝えしていくこと</a></li>
-        <li><a href="#sec-turn">🔮 運命の転機</a></li>
-        <li><a href="#sec-action">🔮 今からできること</a></li>
-        <li><a href="#sec-bracelet">🔑 今のブレスレットを大切に</a></li>
-        <li><a href="#sec-question">🔮 追加でいただいたご質問について</a></li>
-        <li><a href="#sec-last">最後に</a></li>
-    </ul>
+    <div class="toc">
+        <div class="toc-title">— 目次 —</div>
+        <ul>
+            <li><a href="#sec-you">🔮 あなたについて</a></li>
+            <li><a href="#sec-partner">🔮 お相手について</a></li>
+            <li><a href="#sec-here">🔮 ここからお伝えしていくこと</a></li>
+            <li><a href="#sec-turn">🔮 運命の転機</a></li>
+            <li><a href="#sec-action">🔮 今からできること</a></li>
+            <li><a href="#sec-bracelet">🔑 今のブレスレットを大切に</a></li>
+            <li><a href="#sec-question">🔮 追加でいただいたご質問について</a></li>
+            <li><a href="#sec-last">最後に</a></li>
+        </ul>
+    </div>
+
+    <p>やっちん様</p>
+    <p>この度は本鑑定にお進みいただき、<br>心より感謝申し上げます。</p>
+    <p>「まーちゃんさんと、<br>また気軽にサシ呑みがしたい」</p>
+    <p>「前のような関係に、<br>本当に戻れるんだろうか」</p>
+    <p>「やっと連絡が取れるようになったのに、<br>お互いに何となく<br>引っかかるものがある気がする」</p>
+    <p>その想い、<strong>痛いほど伝わってきます</strong>。</p>
+
+    <div class="aura-section">
+        <p>やっちん様は静かな水のオーラを持つ方。<br>雨のように優しく、染み込んでいく水。</p>
+        <p>その優しさで、まーちゃんさんとの時間を<br>ずっと大切に想い続けてこられました。</p>
+    </div>
+
+    <p>そして今、その想いは<br>少しずつ形になり始めています。</p>
+    <p>まず、やっちん様が一番知りたいこと。<br>はっきりお伝えします。</p>
+    <p>まーちゃんさんとの関係は、<strong>戻れます</strong>。</p>
+    <p>いいえ、正しく言えば<br>もう戻り始めています。</p>
+    <p>最近、実際に連絡が<br>取れるようになったこと自体が<br>その何よりの証です。</p>
+    <p>これは偶然ではありません。<br>やっちん様が急かさず、<br>無理に距離を詰めようとせず、</p>
+    <p>静かに想い続けてきたその在り方が、<br>まーちゃんさんの心の壁を<br>少しずつ緩めていった結果なんです。</p>
+    <p>ただ、<br>実際に連絡が取れるようになった今も<br>お互いの中に何となく残っている、<br>言葉にならない引っかかり。</p>
+    <p>これには、ちゃんとした理由があります。</p>
+    <p>その正体は、あなたのオーラと、<br>まーちゃんさんのオーラの<br>両方に視えています。</p>
+    <p>順番に、<br>詳しくお伝えしていきますね。</p>
+
+    <h2 id="sec-you">🔮 あなたについて</h2>
+
+    <div class="aura-section">
+        <p>やっちん様のオーラを、<br>あらためて深く視させていただきました。</p>
+        <p>静かな水のオーラ。</p>
+        <p>雨のように優しく、<br>あらゆるものに染み込んでいく水。</p>
+        <p>このオーラは、<br>人の気持ちに寄り添う力を持っています。</p>
+        <p>だからこそ、まーちゃんさんとの時間を<br>ずっと大切に想い続けてこられたんです。</p>
+    </div>
+
+    <p>やっちん様の水のオーラは、<br>これまでのご自身の在り方によって、<br>以前よりずっと落ち着きを<br>取り戻してきています。</p>
+    <p>だからこそ、まーちゃんさんとの連絡が<br>再び取れるようになったんです。</p>
+    <p>ただ、まだ完全に落ち着いたわけではなく、<br>ふとした瞬間に水のオーラが揺れて、<br>考えすぎてしまうことがあります。</p>
+    <p>「関係が戻るんだろうか」<br>「まーちゃんさんは今、<br>どう思ってるんだろう」</p>
+    <p>そうやって、答えの出ない問いを<br>繰り返してしまうのも、<br>この揺れが関係しています。</p>
+    <p>そして今、新しいステージに入った<br>やっちん様には、<br>木のオーラを補う必要が<br>出てきています。</p>
+    <p>これは、これまでのやり方が<br>間違っていたわけではありません。</p>
+    <p>今、<strong>大きな運気の節目</strong>を迎えているからこそ、<br>これまでとは違う力が<br>新たに求められ始めているんです。</p>
+    <p>木のオーラは、新しい一歩を踏み出す力。<br>これが少ないと、<br>想いはあっても、その想いを<br>軽やかな行動に変えることが難しくなります。</p>
+    <p>ここまで整えてきた水と、<br>これから補っていく木。<br>この二つが揃うことが、<br>次の扉を開く鍵になるんです。</p>
+    <p><strong>魂</strong>をさらに深く視させていただくと、<br>やっちん様の<strong>魂</strong>の奥には、<br>変化の中に可能性を見出す知性と、<br>堅実に信頼を積み上げていく力が<br>静かに輝いています。</p>
+    <p>状況がどう変わっても、<br><strong>本質</strong>を見失わずにいられる方。<br>だからこそ、離れていた時間があっても<br>まーちゃんさんとの縁を<br>簡単には手放さずにいられたんです。</p>
+    <p>そして今、やっちん様は<strong>まさに</strong>、<br>人との縁が<br>大きく動く時期の真ん中にいます。</p>
+    <p>これまで積み重ねてきたものを、<br>一度ゼロに戻し、<br>新しい形で結び直していく。<br>そんな流れが、<br>今の運気には強く出ています。</p>
+    <p>同時に今年は、<br>やっちん様に不足していた<br>温かなエネルギーが<br>特別に補われる年でもあります。</p>
+    <p>執着を手放しながらも、<br>行動する力がそっと後押しされる。<br>それが、今この瞬間のやっちん様なんです。</p>
+    <p>だからこそ、<br>最近やっと連絡が取れるようになったのも<br>決して偶然ではなく、<br>この星の巡りが<br>後押ししてくれた結果なんです。</p>
+    <p>このまま水のオーラの乱れを<br>整えないままでいると、<br>せっかく開き始めた扉の前で、<br>また考えすぎて動けなくなってしまいます。</p>
+    <p>水を鎮め、木を少し補うことができれば、<br>やっちん様本来の<br>染み込むような優しさが安定し、<br>まーちゃんさんに<br>一番伝わりやすい形で届くようになります。</p>
+    <p>その先に、<br>二人の関係が本当の意味で<br>落ち着きを取り戻していく未来が視えています。</p>
+
+    <h2 id="sec-partner">🔮 お相手について</h2>
+
+    <div class="aura-section">
+        <p>次に、まーちゃんさんのオーラを<br>深く視させていただきました。</p>
+        <p>まーちゃんさんは<br>燃え上がる真っ赤な火のオーラを持つ人。<br>太陽のように明るく、情熱的に広がる炎です。</p>
+        <p>誠実さを持ちながらも、<br>日々の忙しさの中で<br>気持ちの余裕を見失いがちな人。</p>
+    </div>
+
+    <p>この火のオーラに、<br>今、木のオーラが少ない状態が<br>重なっています。</p>
+    <p>木のオーラは、<br>新しい変化に対応する柔軟さ。</p>
+    <p>これが少ないと、<br>今のやり方や距離感を変えることが<br>億劫になり、<br>一歩を先延ばしに<br>してしまいやすくなります。</p>
+    <p>以前のような気軽な関係に戻りたいと<br>本当は思っていても、<br>その一歩をなかなか選べずにいたのは<br>このオーラの巡りが理由なんです。</p>
+    <p>まーちゃんさんの<strong>魂</strong>の奥には、<br>自分の意志で<br>道を切り開いていく強さがあります。</p>
+    <p>人に頼るより、<br>自分の内側だけで<br>気持ちを処理しようとする性質。</p>
+    <p>だからこそ、心を開くまでに<br>少し時間がかかる人なんです。</p>
+    <p>そして今、<br>まーちゃんさんの運気を視ると、</p>
+    <p>これまでの関わり方を一度リセットし、<br>新しい形を探っていく時期の<br>真ん中にいることが視えます。</p>
+    <p>表からは忙しさに追われて<br>余裕がないように見えても、<br>内側では、大切な人との縁を<br>もう一度結び直す土台が、<br>静かに育まれています。</p>
+    <p>そんな時期なんです。</p>
+    <p>さらに今年は、<br>まーちゃんさんの生活そのものに<br>動きが出やすい年でもあります。</p>
+    <p>環境や日々のリズムが<br>少しずつ変わることで、<br>「本当に心地いい関係」を<br>見つめ直すきっかけが訪れます。</p>
+    <p>その動きの中で、<br>自然体でいてくれるやっちん様の存在が、<br>まーちゃんさんの心にふっと蘇ってくる。</p>
+    <p>最近実際に連絡が取れるようになったのは、<br><strong>まさに</strong>この流れが<br>形になり始めているサインなんです。</p>
+    <p>ただ<br>まーちゃんさんの目に映るやっちん様は、<br>まだ少し、<br>忙しさという霧の向こうにあります。</p>
+    <p>その霧が晴れて、<br>やっちん様のオーラが<br>落ち着きを取り戻した時、</p>
+    <p>まーちゃんさんの目には<br>こう映るようになります。</p>
+    <p>「変わらず、そこにいてくれる人」<br>「急かさず、自然体でいてくれる人」</p>
+    <p>それが、<br>火のオーラのまーちゃんさんにとって<br>一番安心できる存在なんです。</p>
+    <p>あなたが整えば、まーちゃんさんの心も<br>もう一段、軽くなっていきます。</p>
+
+    <h2 id="sec-here">🔮 ここからお伝えしていくこと</h2>
+
+    <p>無料鑑定の最後に<br>お伝えするとお約束したことを、<br>ここから一つずつ視ていきます。</p>
+
+    <h3>【まーちゃんさんが今、本当に感じていること】</h3>
+    <p>まーちゃんさんの<strong>魂</strong>の奥にあるのは、<br>やっちん様との時間を<br>「気の置けない、大切なもの」として<br>今も残しているという事実です。</p>
+    <p>日々の忙しさに追われながらも、<br>心の奥では静かに、<br>その時間の心地よさを覚えている。</p>
+    <p>最近連絡が取れるようになったのは、<br>その本音が少しずつ、<br>行動として表に出てき始めた証拠です。</p>
+    <p>ただ、まだ完全に霧が<br>晴れたわけではありません。<br>だからこそ、お互いの間に<br>何となくの引っかかりが残っている。</p>
+    <p>その正体は、<br>このあと詳しくお伝えしますね。</p>
+
+    <h3>【あなたのオーラの調整方法】</h3>
+    <p>やっちん様に必要なのは、<br>多すぎる水のオーラを鎮め、<br>少ない木のオーラをそっと補うこと。</p>
+    <p><strong>魂</strong>のレベルでお伝えするなら、<br>「答えの出ない問いを、そっと横に置く」<br>という在り方を、<br>自分の中に育てることです。</p>
+    <p>まーちゃんさんの本心を<br>今すぐ確かめようとするのではなく、<br>「まーちゃんさんのペースを信じて待つ」</p>
+    <p>それは我慢ではなく、<br>まーちゃんさんの心が整っていく時間を<br>尊重する、最高の優しさです。</p>
+    <p>この境界線が引けた時、<br>やっちん様のオーラに<br>軽やかさが戻り始めます。</p>
+
+    <h3>【オーラが整った先に広がる景色】</h3>
+    <p>やっちん様のオーラが整い始めた時、<br>まーちゃんさんとの間に、<br>こんな景色が広がります。</p>
+    <p>以前のように、<br>他愛のない話で笑い合える時間。<br>「また今度、飲みに行こうか」<br>そんな一言が、<br>どちらからともなく出てくる瞬間。</p>
+    <p>このあとお伝えする運命の転機の中で、<br>その景色がどう形になっていくかを<br>具体的に視ていきますね。</p>
+
+    <h3>【霊視で視えた、もう一つの重要な問題】</h3>
+    <p>やっちん様自身も、<br>うっすら感じているはずです。</p>
+    <p>前のような関係に戻れるのか、<br>考えすぎてしまうクセ。</p>
+    <p>これは、水のオーラが多い方に<br>必ず出てくる影の部分です。</p>
+    <p>「本当は嫌われているんじゃないか」<br>「もう手遅れなんじゃないか」</p>
+    <p>その問いに、<br>今、答えを出す必要はありません。</p>
+    <p>なぜなら、まーちゃんさんの沈黙の理由は、<br>やっちん様の中にはないからです。</p>
+    <p>このクセを抱えたまま次の<strong>転機</strong>を迎えると、<br>せっかく巡ってくる追い風を<br>不安を打ち消すためだけに<br>使ってしまいます。</p>
+    <p>だからこそ今のうちから、<br>「答えのない問いを、そっと置く」<br>練習を始めてほしいんです。</p>
+
+    <h2 id="sec-turn">🔮 運命の転機</h2>
+
+    <p>ここまでお伝えしてきた流れの中で、<br>これから半年の動きが<br>少しずつ視えてきたかと思います。</p>
+    <p>今の<strong>7月から9月</strong>にかけては、<br>大きく動くよりも、<br>それぞれが心の忙しさを<br>静かに整えていく時期です。</p>
+    <p>その先、特に重要な4つの月を<br>順にお伝えします。</p>
+
+    <h3>最重要月　2026年11月</h3>
+    <p>なぜこの月が特別なのか。</p>
+    <p>やっちん様とまーちゃんさん、<br>双方の運気が<br>ちょうどリセットの時期に重なっている中で、</p>
+    <p>この月、二人にとって大切なオーラが<br>同時に補われてくるからです。</p>
+    <p>やっちん様の中では、<br>感受性がさらに深まり、<br>まーちゃんさんの小さな変化に<br>気づきやすくなります。</p>
+    <p>そして同じ頃、<br>まーちゃんさんの中で少なくなっていた<br>心の余裕を生むオーラが満ちてきます。</p>
+    <p>二人の<strong>運命</strong>が、最も近づく月。<br>それが<strong>11月</strong>です。</p>
+    <p>この月に起こるのは、<br>お互いの間で、<br>ふと会話が戻ってくるような、<br>自然な繋がりの気配です。</p>
+    <p>心構えとしてお伝えしたいのは、<br>この月に<br>一気に距離を縮めようとしないこと。</p>
+    <p>考えすぎず、<br>ただ穏やかにその瞬間を待つ姿勢が、<br><strong>11月</strong>の扉を最高の形で開いてくれます。</p>
+
+    <h3>2つ目の重要月　2026年10月</h3>
+    <p><strong>11月</strong>への準備が整っていく月です。</p>
+    <p>二人の中に、<br>落ち着きと<br>安定感をもたらすオーラが巡り始めます。</p>
+    <p>心構えは、「焦らず今の関係を大切にする」<br>それだけで十分です。</p>
+
+    <h3>3つ目の重要月　2026年12月</h3>
+    <p><strong>11月</strong>に近づいた繋がりを、<br>次の一歩に進めるかどうかを<br>自然と判断できるようになる月です。</p>
+    <p>決断する力が満ちてくる時期なので、<br>無理に急かさなくても、<br>心の中で自然と答えが定まっていきます。</p>
+
+    <h3>4つ目の重要月　2027年1月</h3>
+    <p>バランスが整ってくる月です。</p>
+    <p>新しい年に向けて、<br>関係の行方を落ち着いて<br>見極められるようになります。</p>
+
+    <h3>その先の未来</h3>
+    <p><strong>2027年</strong>は、関係を育てる年。<br>交流が徐々に自然な形に戻り、<br>無理のない距離感が築かれていきます。</p>
+    <p><strong>2028年</strong>は、見極めの年。<br>関係を続けるか、次の形に進めるか、<br>自然と答えが見えてくる時期です。</p>
+    <p>最も大切なのは、<br><strong>11月</strong>の巡りをどう迎えるか。<br>そこまでの数ヶ月、<br>オーラを整えながら過ごしてほしいんです。</p>
+
+    <h2 id="sec-action">🔮 今からできること</h2>
+
+    <p>ここまで、運命の流れと<br>これから訪れる転機をお伝えしました。</p>
+    <p>ただ、一つだけ<br>知っておいてほしいことがあります。</p>
+    <p><strong>運命</strong>は、<br>ただ待っているだけでは動きません。</p>
+    <p>星の流れがどれだけ整っても、<br>やっちん様自身のオーラが整っていなければ、<br>その流れを掴むことはできないんです。</p>
+    <p>だからこそここからは、<br>やっちん様自身がオーラを整えるための<br>アクションをお伝えします。</p>
+
+    <h3>⛩️ 木のオーラを補う</h3>
+    <p>・緑色のものを身につける、観葉植物を育てる<br>・自然の中を歩く、公園を散歩する</p>
+    <p>なぜこれが大切かというと、<br>木のオーラは新しい一歩を<br>踏み出す力そのものだからです。</p>
+    <p>考えすぎて動けなくなった時ほど、<br>緑に触れる時間を<br>意識的に作ってみてください。</p>
+
+    <h3>⛩️ 水のオーラを鎮める</h3>
+    <p>・茶色やベージュの服を意識する<br>・土に触れる、深呼吸をして心を落ち着ける</p>
+    <p>やり方はシンプルです。<br>考えすぎてしまったら、一度手を止めて、<br>今感じていることを<br>紙に書き出してみてください。</p>
+    <p>抱え込んでいた不安が、<br>少しずつ外に流れ出していきます。</p>
+
+    <h3>⛩️ 気をつけてほしいこと</h3>
+    <p>まーちゃんさんとの間にある引っかかりを、<br>無理に問い詰めて解消しようとしないこと。</p>
+    <p>「なんで連絡くれなかったの」<br>「私のこと、どう思ってるの」</p>
+    <p>こういった、答えを急かす言葉は、<br>まだ自分の内側で気持ちを<br>処理している最中のまーちゃんさんを<br>かえって固くさせてしまいます。</p>
+    <p>意識したいのはこの2つです。</p>
+    <p>・軽いトーンで、<br>日常の延長として接すること</p>
+    <p>・相手が話したがらない気配を感じたら、<br>無理に掘り下げず、<br>その場の空気に委ねること</p>
+
+    <h3>【正直にお伝えしたいこと】</h3>
+    <p>ここまでお伝えした調整法で、<br>少しずつオーラは整い始めます。</p>
+    <p>そしてもう一つ、<br>やっちん様にはすでに<br>大切な味方があります。</p>
+    <p>今、身につけているブレスレットです。</p>
+
+    <h2 id="sec-bracelet">🔑 今のブレスレットを大切に</h2>
+
+    <p>やっちん様がすでに<br>お守りとして身につけている<br>そのブレスレット。</p>
+    <p>これまで水を鎮め、<br>土台を育てる力を<br>静かに支え続けてくれていました。</p>
+    <p>まーちゃんさんとの連絡が<br>再び取れるようになったのも、<br>そのお守りが後押ししてくれた<br>流れの一つです。</p>
+    <p>ただ、石にも<br>休息が必要な時期があります。</p>
+    <p>毎日つけたままにしていると、<br>石自身が力を溜め込みすぎて、<br>本来の巡りが<br>鈍ってしまうことがあるんです。</p>
+    <p>最近、そのブレスレットを<br>休ませてあげていますか?</p>
+    <p>夜眠るときは外して、<br>そっと布の上に置いておく。</p>
+    <p>月に一度ほど、<br>数時間だけ日の光や<br>月の光に当ててあげる。</p>
+    <p>たまに流水でさっと洗い流して、<br>溜まった疲れを流してあげる。</p>
+    <p>そんな簡単なメンテナンスで<br>十分なんです。</p>
+    <p><strong>11月</strong>の転機に向けて、<br>そのブレスレットが<br>本来の力を発揮できるよう、<br>これからも大切に労ってあげてください。</p>
+
+    <h2 id="sec-question">🔮 追加でいただいたご質問について</h2>
+
+    <p>「お互いに、何となく<br>ひっかかっているものがある気がします。<br>それは、何ですか？」</p>
+    <p>その感覚、確かなものです。<br>ここまで視てきたことを踏まえて、<br>その正体をお伝えしますね。</p>
+
+    <h3>【何となくの引っかかりの正体】</h3>
+    <p>まーちゃんさんの、<br>恋愛やご縁を映す場所には、<br>今も小さな引っかかりを示す光が<br>静かに宿っています。</p>
+    <p>これは、過去のやり取りの中で<br>「もう少し違う関わり方ができていたら」<br>という、本人も気づいていないくらい<br>小さな後悔が<br>そこに残っていることを示しています。</p>
+    <p>責めるようなものではありません。<br>誰かを傷つけた、傷つけられた、<br>というような大きな出来事ではなく、<br>本当に「小さな」ものです。</p>
+    <p>一方、やっちん様の中にも、<br>似たような引っかかりがあります。</p>
+    <p>もともと繊細な性質を持って生まれた<strong>魂</strong>は、<br>言いたいことを飲み込んだまま<br>伝えきれずにいる想いを、<br>静かに抱え続けるところがあります。</p>
+    <p>さらに、やっちん様には<br>人との縁の中で、心が惹きつけられる方向に<br>少し揺れやすい性質も重なっています。</p>
+    <p>だから、はっきり言葉にできないまま<br>「あの時、ああ言えばよかったのかもしれない」<br>という想いが、そっと残っているんです。</p>
+    <p>お二人とも、通じ合う性質として<br>本音をぶつけるより、<br>自分の中で静かに処理するタイプ。</p>
+    <p>だからこそ、それぞれが<br>「まあ、いいか」で済ませてきた<br>小さな引っかかりが、<br>何となく心の片隅に残っている。</p>
+    <p>それだけなんです。</p>
+    <p>大きな問題ではありません。<br>ただ、実際に連絡が<br>取れるようになった<br>今だからこそ、</p>
+    <p>その小さな引っかかりに、<br>そっと触れてみる時期が来ています。</p>
+
+    <h3>【この引っかかりとの向き合い方】</h3>
+    <p>無理に言葉にして<br>解消しようとしなくて大丈夫です。</p>
+    <p>深刻に問い詰めるのではなく、<br>雑談の延長で、<br>懐かしい話にふと触れてみる。</p>
+    <p>まーちゃんさんが話したがらない様子なら、<br>無理に掘り下げず、<br>その場の軽さに任せてください。</p>
+    <p>今すぐ全部を解消しようとすると、<br>かえってまた新しい壁ができてしまいます。</p>
+    <p>「触れるだけ」で、今は十分です。</p>
+    <p>そして<strong>11月</strong>の巡りが訪れる頃には、<br>この引っかかりも、<br>自然と溶けていく流れが視えています。</p>
+
+    <h2 id="sec-last">最後に</h2>
+
+    <p>やっちん様。</p>
+    <p>今、あなたは大切な岐路に立っています。</p>
+    <p>このまま、考えすぎるクセを抱えたまま<br><strong>11月</strong>を迎えるか。</p>
+    <p>それとも、水のオーラを整え、<br>まーちゃんさんが育つ時間を信じて待ち、<br><strong>11月</strong>の扉が開いた時に<br>まっすぐ受け取れる自分でそこに在るか。</p>
+    <p>選ぶのは、やっちん様自身です。</p>
+    <p>ただ、私には視えています。</p>
+    <p><strong>11月</strong>のある日、<br>まーちゃんさんが<br>「やっちん、久しぶり」<br>「元気にしてた?」<br>そう軽く声をかけてくる場面。</p>
+    <p>そして、以前のように<br>他愛のない話で笑い合いながら、<br>「また飲みに行こうね」<br>そう言葉を交わしている場面が。</p>
+    <p>小さな引っかかりを抱えたままでも、<br>それでも簡単には切れない<br>静かで深い縁を、<br>二人で確かめ合える景色。</p>
+    <p>その未来は、ちゃんと視えています。</p>
+    <p>やっちん様の、<br>染み込むように優しい水のオーラは、<br>まーちゃんさんにとって<br>他では出会えないかけがえのない存在感です。</p>
+    <p>それが、まーちゃんさんにちゃんと届く瞬間が<br><strong>11月</strong>に待っています。</p>
+    <p>そこまでの道、私が照らし続けますね。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>かな</p>
+    </div>
+
 </div>
 
-<p>やっちん様</p>
-<p>この度は本鑑定にお進みいただき、<br>心より感謝申し上げます。</p>
-<p>「まーちゃんさんと、<br>また気軽にサシ呑みがしたい」</p>
-<p>「前のような関係に、<br>本当に戻れるんだろうか」</p>
-<p>「やっと連絡が取れるようになったのに、<br>お互いに何となく<br>引っかかるものがある気がする」</p>
-<p>その想い、<strong>痛いほど伝わってきます</strong>。</p>
+<script>
+/* 演出：スクロールで背景があなた（水）→お相手（火）→調整（木）→最後に（曼荼羅）と切り替わる */
+(function () {
+    var bgYou = document.getElementById('bg-you');
+    var stages = [
+        { bg: document.getElementById('bg-fire'), sentinel: document.getElementById('sec-partner') },
+        { bg: document.getElementById('bg-wood'), sentinel: document.getElementById('sec-action') },
+        { bg: document.getElementById('bg-mandala'), sentinel: document.getElementById('sec-last') }
+    ];
+    if (!bgYou) return;
+    function onScroll() {
+        var trigger = window.innerHeight * 0.5;
+        var activeIndex = -1;
+        stages.forEach(function (s, i) {
+            if (s.bg && s.sentinel && s.sentinel.getBoundingClientRect().top < trigger) activeIndex = i;
+        });
+        bgYou.classList.toggle('is-hidden', activeIndex !== -1);
+        stages.forEach(function (s, i) {
+            if (!s.bg) return;
+            s.bg.classList.toggle('is-active', i === activeIndex);
+        });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
+</script>
 
-<div class="aura-section aura-water">
-<p>やっちん様は静かな水のオーラを持つ方。<br>雨のように優しく、染み込んでいく水。</p>
-<p>その優しさで、まーちゃんさんとの時間を<br>ずっと大切に想い続けてこられました。</p>
-</div>
-
-<p>そして今、その想いは<br>少しずつ形になり始めています。</p>
-<p>まず、やっちん様が一番知りたいこと。<br>はっきりお伝えします。</p>
-<p>まーちゃんさんとの関係は、<strong>戻れます</strong>。</p>
-<p>いいえ、正しく言えば<br>もう戻り始めています。</p>
-<p>最近、実際に連絡が<br>取れるようになったこと自体が<br>その何よりの証です。</p>
-<p>これは偶然ではありません。<br>やっちん様が急かさず、<br>無理に距離を詰めようとせず、</p>
-<p>静かに想い続けてきたその在り方が、<br>まーちゃんさんの心の壁を<br>少しずつ緩めていった結果なんです。</p>
-<p>ただ、<br>実際に連絡が取れるようになった今も<br>お互いの中に何となく残っている、<br>言葉にならない引っかかり。</p>
-<p>これには、ちゃんとした理由があります。</p>
-<p>その正体は、あなたのオーラと、<br>まーちゃんさんのオーラの<br>両方に視えています。</p>
-<p>順番に、<br>詳しくお伝えしていきますね。</p>
-
-<h2 id="sec-you">🔮 あなたについて</h2>
-
-<div class="aura-section aura-water">
-<p>やっちん様のオーラを、<br>あらためて深く視させていただきました。</p>
-<p>静かな水のオーラ。</p>
-<p>雨のように優しく、<br>あらゆるものに染み込んでいく水。</p>
-<p>このオーラは、<br>人の気持ちに寄り添う力を持っています。</p>
-<p>だからこそ、まーちゃんさんとの時間を<br>ずっと大切に想い続けてこられたんです。</p>
-</div>
-
-<p>やっちん様の水のオーラは、<br>これまでのご自身の在り方によって、<br>以前よりずっと落ち着きを<br>取り戻してきています。</p>
-<p>だからこそ、まーちゃんさんとの連絡が<br>再び取れるようになったんです。</p>
-<p>ただ、まだ完全に落ち着いたわけではなく、<br>ふとした瞬間に水のオーラが揺れて、<br>考えすぎてしまうことがあります。</p>
-<p>「関係が戻るんだろうか」<br>「まーちゃんさんは今、<br>どう思ってるんだろう」</p>
-<p>そうやって、答えの出ない問いを<br>繰り返してしまうのも、<br>この揺れが関係しています。</p>
-<p>そして今、新しいステージに入った<br>やっちん様には、<br>木のオーラを補う必要が<br>出てきています。</p>
-<p>これは、これまでのやり方が<br>間違っていたわけではありません。</p>
-<p>今、<strong>大きな運気の節目</strong>を迎えているからこそ、<br>これまでとは違う力が<br>新たに求められ始めているんです。</p>
-<p>木のオーラは、新しい一歩を踏み出す力。<br>これが少ないと、<br>想いはあっても、その想いを<br>軽やかな行動に変えることが難しくなります。</p>
-<p>ここまで整えてきた水と、<br>これから補っていく木。<br>この二つが揃うことが、<br>次の扉を開く鍵になるんです。</p>
-<p><strong>魂</strong>をさらに深く視させていただくと、<br>やっちん様の<strong>魂</strong>の奥には、<br>変化の中に可能性を見出す知性と、<br>堅実に信頼を積み上げていく力が<br>静かに輝いています。</p>
-<p>状況がどう変わっても、<br><strong>本質</strong>を見失わずにいられる方。<br>だからこそ、離れていた時間があっても<br>まーちゃんさんとの縁を<br>簡単には手放さずにいられたんです。</p>
-<p>そして今、やっちん様は<strong>まさに</strong>、<br>人との縁が<br>大きく動く時期の真ん中にいます。</p>
-<p>これまで積み重ねてきたものを、<br>一度ゼロに戻し、<br>新しい形で結び直していく。<br>そんな流れが、<br>今の運気には強く出ています。</p>
-<p>同時に今年は、<br>やっちん様に不足していた<br>温かなエネルギーが<br>特別に補われる年でもあります。</p>
-<p>執着を手放しながらも、<br>行動する力がそっと後押しされる。<br>それが、今この瞬間のやっちん様なんです。</p>
-<p>だからこそ、<br>最近やっと連絡が取れるようになったのも<br>決して偶然ではなく、<br>この星の巡りが<br>後押ししてくれた結果なんです。</p>
-<p>このまま水のオーラの乱れを<br>整えないままでいると、<br>せっかく開き始めた扉の前で、<br>また考えすぎて動けなくなってしまいます。</p>
-<p>水を鎮め、木を少し補うことができれば、<br>やっちん様本来の<br>染み込むような優しさが安定し、<br>まーちゃんさんに<br>一番伝わりやすい形で届くようになります。</p>
-<p>その先に、<br>二人の関係が本当の意味で<br>落ち着きを取り戻していく未来が視えています。</p>
-
-<h2 id="sec-partner">🔮 お相手について</h2>
-
-<div class="aura-section aura-fire">
-<p>次に、まーちゃんさんのオーラを<br>深く視させていただきました。</p>
-<p>まーちゃんさんは<br>燃え上がる真っ赤な火のオーラを持つ人。<br>太陽のように明るく、情熱的に広がる炎です。</p>
-<p>誠実さを持ちながらも、<br>日々の忙しさの中で<br>気持ちの余裕を見失いがちな人。</p>
-</div>
-
-<p>この火のオーラに、<br>今、木のオーラが少ない状態が<br>重なっています。</p>
-<p>木のオーラは、<br>新しい変化に対応する柔軟さ。</p>
-<p>これが少ないと、<br>今のやり方や距離感を変えることが<br>億劫になり、<br>一歩を先延ばしに<br>してしまいやすくなります。</p>
-<p>以前のような気軽な関係に戻りたいと<br>本当は思っていても、<br>その一歩をなかなか選べずにいたのは<br>このオーラの巡りが理由なんです。</p>
-<p>まーちゃんさんの<strong>魂</strong>の奥には、<br>自分の意志で<br>道を切り開いていく強さがあります。</p>
-<p>人に頼るより、<br>自分の内側だけで<br>気持ちを処理しようとする性質。</p>
-<p>だからこそ、心を開くまでに<br>少し時間がかかる人なんです。</p>
-<p>そして今、<br>まーちゃんさんの運気を視ると、</p>
-<p>これまでの関わり方を一度リセットし、<br>新しい形を探っていく時期の<br>真ん中にいることが視えます。</p>
-<p>表からは忙しさに追われて<br>余裕がないように見えても、<br>内側では、大切な人との縁を<br>もう一度結び直す土台が、<br>静かに育まれています。</p>
-<p>そんな時期なんです。</p>
-<p>さらに今年は、<br>まーちゃんさんの生活そのものに<br>動きが出やすい年でもあります。</p>
-<p>環境や日々のリズムが<br>少しずつ変わることで、<br>「本当に心地いい関係」を<br>見つめ直すきっかけが訪れます。</p>
-<p>その動きの中で、<br>自然体でいてくれるやっちん様の存在が、<br>まーちゃんさんの心にふっと蘇ってくる。</p>
-<p>最近実際に連絡が取れるようになったのは、<br><strong>まさに</strong>この流れが<br>形になり始めているサインなんです。</p>
-<p>ただ<br>まーちゃんさんの目に映るやっちん様は、<br>まだ少し、<br>忙しさという霧の向こうにあります。</p>
-<p>その霧が晴れて、<br>やっちん様のオーラが<br>落ち着きを取り戻した時、</p>
-<p>まーちゃんさんの目には<br>こう映るようになります。</p>
-<p>「変わらず、そこにいてくれる人」<br>「急かさず、自然体でいてくれる人」</p>
-<p>それが、<br>火のオーラのまーちゃんさんにとって<br>一番安心できる存在なんです。</p>
-<p>あなたが整えば、まーちゃんさんの心も<br>もう一段、軽くなっていきます。</p>
-
-<h2 id="sec-here">🔮 ここからお伝えしていくこと</h2>
-
-<p>無料鑑定の最後に<br>お伝えするとお約束したことを、<br>ここから一つずつ視ていきます。</p>
-
-<h3>【まーちゃんさんが今、本当に感じていること】</h3>
-<p>まーちゃんさんの<strong>魂</strong>の奥にあるのは、<br>やっちん様との時間を<br>「気の置けない、大切なもの」として<br>今も残しているという事実です。</p>
-<p>日々の忙しさに追われながらも、<br>心の奥では静かに、<br>その時間の心地よさを覚えている。</p>
-<p>最近連絡が取れるようになったのは、<br>その本音が少しずつ、<br>行動として表に出てき始めた証拠です。</p>
-<p>ただ、まだ完全に霧が<br>晴れたわけではありません。<br>だからこそ、お互いの間に<br>何となくの引っかかりが残っている。</p>
-<p>その正体は、<br>このあと詳しくお伝えしますね。</p>
-
-<h3>【あなたのオーラの調整方法】</h3>
-<p>やっちん様に必要なのは、<br>多すぎる水のオーラを鎮め、<br>少ない木のオーラをそっと補うこと。</p>
-<p><strong>魂</strong>のレベルでお伝えするなら、<br>「答えの出ない問いを、そっと横に置く」<br>という在り方を、<br>自分の中に育てることです。</p>
-<p>まーちゃんさんの本心を<br>今すぐ確かめようとするのではなく、<br>「まーちゃんさんのペースを信じて待つ」</p>
-<p>それは我慢ではなく、<br>まーちゃんさんの心が整っていく時間を<br>尊重する、最高の優しさです。</p>
-<p>この境界線が引けた時、<br>やっちん様のオーラに<br>軽やかさが戻り始めます。</p>
-
-<h3>【オーラが整った先に広がる景色】</h3>
-<p>やっちん様のオーラが整い始めた時、<br>まーちゃんさんとの間に、<br>こんな景色が広がります。</p>
-<p>以前のように、<br>他愛のない話で笑い合える時間。<br>「また今度、飲みに行こうか」<br>そんな一言が、<br>どちらからともなく出てくる瞬間。</p>
-<p>このあとお伝えする運命の転機の中で、<br>その景色がどう形になっていくかを<br>具体的に視ていきますね。</p>
-
-<h3>【霊視で視えた、もう一つの重要な問題】</h3>
-<p>やっちん様自身も、<br>うっすら感じているはずです。</p>
-<p>前のような関係に戻れるのか、<br>考えすぎてしまうクセ。</p>
-<p>これは、水のオーラが多い方に<br>必ず出てくる影の部分です。</p>
-<p>「本当は嫌われているんじゃないか」<br>「もう手遅れなんじゃないか」</p>
-<p>その問いに、<br>今、答えを出す必要はありません。</p>
-<p>なぜなら、まーちゃんさんの沈黙の理由は、<br>やっちん様の中にはないからです。</p>
-<p>このクセを抱えたまま次の<strong>転機</strong>を迎えると、<br>せっかく巡ってくる追い風を<br>不安を打ち消すためだけに<br>使ってしまいます。</p>
-<p>だからこそ今のうちから、<br>「答えのない問いを、そっと置く」<br>練習を始めてほしいんです。</p>
-
-<h2 id="sec-turn">🔮 運命の転機</h2>
-
-<p>ここまでお伝えしてきた流れの中で、<br>これから半年の動きが<br>少しずつ視えてきたかと思います。</p>
-<p>今の<strong>7月から9月</strong>にかけては、<br>大きく動くよりも、<br>それぞれが心の忙しさを<br>静かに整えていく時期です。</p>
-<p>その先、特に重要な4つの月を<br>順にお伝えします。</p>
-
-<h3>最重要月 <strong>2026年11月</strong></h3>
-<p>なぜこの月が特別なのか。</p>
-<p>やっちん様とまーちゃんさん、<br>双方の運気が<br>ちょうどリセットの時期に重なっている中で、</p>
-<p>この月、二人にとって大切なオーラが<br>同時に補われてくるからです。</p>
-<p>やっちん様の中では、<br>感受性がさらに深まり、<br>まーちゃんさんの小さな変化に<br>気づきやすくなります。</p>
-<p>そして同じ頃、<br>まーちゃんさんの中で少なくなっていた<br>心の余裕を生むオーラが満ちてきます。</p>
-<p>二人の<strong>運命</strong>が、最も近づく月。<br>それが<strong>11月</strong>です。</p>
-<p>この月に起こるのは、<br>お互いの間で、<br>ふと会話が戻ってくるような、<br>自然な繋がりの気配です。</p>
-<p>心構えとしてお伝えしたいのは、<br>この月に<br>一気に距離を縮めようとしないこと。</p>
-<p>考えすぎず、<br>ただ穏やかにその瞬間を待つ姿勢が、<br><strong>11月</strong>の扉を最高の形で開いてくれます。</p>
-
-<h3>2つ目の重要月 <strong>2026年10月</strong></h3>
-<p><strong>11月</strong>への準備が整っていく月です。</p>
-<p>二人の中に、<br>落ち着きと<br>安定感をもたらすオーラが巡り始めます。</p>
-<p>心構えは、「焦らず今の関係を大切にする」<br>それだけで十分です。</p>
-
-<h3>3つ目の重要月 <strong>2026年12月</strong></h3>
-<p><strong>11月</strong>に近づいた繋がりを、<br>次の一歩に進めるかどうかを<br>自然と判断できるようになる月です。</p>
-<p>決断する力が満ちてくる時期なので、<br>無理に急かさなくても、<br>心の中で自然と答えが定まっていきます。</p>
-
-<h3>4つ目の重要月 <strong>2027年1月</strong></h3>
-<p>バランスが整ってくる月です。</p>
-<p>新しい年に向けて、<br>関係の行方を落ち着いて<br>見極められるようになります。</p>
-
-<h3>その先の未来</h3>
-<p><strong>2027年</strong>は、関係を育てる年。<br>交流が徐々に自然な形に戻り、<br>無理のない距離感が築かれていきます。</p>
-<p><strong>2028年</strong>は、見極めの年。<br>関係を続けるか、次の形に進めるか、<br>自然と答えが見えてくる時期です。</p>
-<p>最も大切なのは、<br><strong>11月</strong>の巡りをどう迎えるか。<br>そこまでの数ヶ月、<br>オーラを整えながら過ごしてほしいんです。</p>
-
-<h2 id="sec-action">🔮 今からできること</h2>
-
-<p>ここまで、運命の流れと<br>これから訪れる転機をお伝えしました。</p>
-<p>ただ、一つだけ<br>知っておいてほしいことがあります。</p>
-<p><strong>運命</strong>は、<br>ただ待っているだけでは動きません。</p>
-<p>星の流れがどれだけ整っても、<br>やっちん様自身のオーラが整っていなければ、<br>その流れを掴むことはできないんです。</p>
-<p>だからこそここからは、<br>やっちん様自身がオーラを整えるための<br>アクションをお伝えします。</p>
-
-<h3>【木のオーラを補う】</h3>
-<p>・緑色のものを身につける、観葉植物を育てる<br>・自然の中を歩く、公園を散歩する</p>
-<p>なぜこれが大切かというと、<br>木のオーラは新しい一歩を<br>踏み出す力そのものだからです。</p>
-<p>考えすぎて動けなくなった時ほど、<br>緑に触れる時間を<br>意識的に作ってみてください。</p>
-
-<h3>【水のオーラを鎮める】</h3>
-<p>・茶色やベージュの服を意識する<br>・土に触れる、深呼吸をして心を落ち着ける</p>
-<p>やり方はシンプルです。<br>考えすぎてしまったら、一度手を止めて、<br>今感じていることを<br>紙に書き出してみてください。</p>
-<p>抱え込んでいた不安が、<br>少しずつ外に流れ出していきます。</p>
-
-<h3>【気をつけてほしいこと】</h3>
-<p>まーちゃんさんとの間にある引っかかりを、<br>無理に問い詰めて解消しようとしないこと。</p>
-<p>「なんで連絡くれなかったの」<br>「私のこと、どう思ってるの」</p>
-<p>こういった、答えを急かす言葉は、<br>まだ自分の内側で気持ちを<br>処理している最中のまーちゃんさんを<br>かえって固くさせてしまいます。</p>
-<p>意識したいのはこの2つです。</p>
-<p>・軽いトーンで、<br>日常の延長として接すること</p>
-<p>・相手が話したがらない気配を感じたら、<br>無理に掘り下げず、<br>その場の空気に委ねること</p>
-
-<h3>【正直にお伝えしたいこと】</h3>
-<p>ここまでお伝えした調整法で、<br>少しずつオーラは整い始めます。</p>
-<p>そしてもう一つ、<br>やっちん様にはすでに<br>大切な味方があります。</p>
-<p>今、身につけているブレスレットです。</p>
-
-<h2 id="sec-bracelet">🔑 今のブレスレットを大切に</h2>
-
-<p>やっちん様がすでに<br>お守りとして身につけている<br>そのブレスレット。</p>
-<p>これまで水を鎮め、<br>土台を育てる力を<br>静かに支え続けてくれていました。</p>
-<p>まーちゃんさんとの連絡が<br>再び取れるようになったのも、<br>そのお守りが後押ししてくれた<br>流れの一つです。</p>
-<p>ただ、石にも<br>休息が必要な時期があります。</p>
-<p>毎日つけたままにしていると、<br>石自身が力を溜め込みすぎて、<br>本来の巡りが<br>鈍ってしまうことがあるんです。</p>
-<p>最近、そのブレスレットを<br>休ませてあげていますか?</p>
-<p>夜眠るときは外して、<br>そっと布の上に置いておく。</p>
-<p>月に一度ほど、<br>数時間だけ日の光や<br>月の光に当ててあげる。</p>
-<p>たまに流水でさっと洗い流して、<br>溜まった疲れを流してあげる。</p>
-<p>そんな簡単なメンテナンスで<br>十分なんです。</p>
-<p><strong>11月</strong>の転機に向けて、<br>そのブレスレットが<br>本来の力を発揮できるよう、<br>これからも大切に労ってあげてください。</p>
-
-<h2 id="sec-question">🔮 追加でいただいたご質問について</h2>
-
-<p>「お互いに、何となく<br>ひっかかっているものがある気がします。<br>それは、何ですか？」</p>
-<p>その感覚、確かなものです。<br>ここまで視てきたことを踏まえて、<br>その正体をお伝えしますね。</p>
-
-<h3>【何となくの引っかかりの正体】</h3>
-<p>まーちゃんさんの、<br>恋愛やご縁を映す場所には、<br>今も小さな引っかかりを示す光が<br>静かに宿っています。</p>
-<p>これは、過去のやり取りの中で<br>「もう少し違う関わり方ができていたら」<br>という、本人も気づいていないくらい<br>小さな後悔が<br>そこに残っていることを示しています。</p>
-<p>責めるようなものではありません。<br>誰かを傷つけた、傷つけられた、<br>というような大きな出来事ではなく、<br>本当に「小さな」ものです。</p>
-<p>一方、やっちん様の中にも、<br>似たような引っかかりがあります。</p>
-<p>もともと繊細な性質を持って生まれた<strong>魂</strong>は、<br>言いたいことを飲み込んだまま<br>伝えきれずにいる想いを、<br>静かに抱え続けるところがあります。</p>
-<p>さらに、やっちん様には<br>人との縁の中で、心が惹きつけられる方向に<br>少し揺れやすい性質も重なっています。</p>
-<p>だから、はっきり言葉にできないまま<br>「あの時、ああ言えばよかったのかもしれない」<br>という想いが、そっと残っているんです。</p>
-<p>お二人とも、通じ合う性質として<br>本音をぶつけるより、<br>自分の中で静かに処理するタイプ。</p>
-<p>だからこそ、それぞれが<br>「まあ、いいか」で済ませてきた<br>小さな引っかかりが、<br>何となく心の片隅に残っている。</p>
-<p>それだけなんです。</p>
-<p>大きな問題ではありません。<br>ただ、実際に連絡が<br>取れるようになった<br>今だからこそ、</p>
-<p>その小さな引っかかりに、<br>そっと触れてみる時期が来ています。</p>
-
-<h3>【この引っかかりとの向き合い方】</h3>
-<p>無理に言葉にして<br>解消しようとしなくて大丈夫です。</p>
-<p>深刻に問い詰めるのではなく、<br>雑談の延長で、<br>懐かしい話にふと触れてみる。</p>
-<p>まーちゃんさんが話したがらない様子なら、<br>無理に掘り下げず、<br>その場の軽さに任せてください。</p>
-<p>今すぐ全部を解消しようとすると、<br>かえってまた新しい壁ができてしまいます。</p>
-<p>「触れるだけ」で、今は十分です。</p>
-<p>そして<strong>11月</strong>の巡りが訪れる頃には、<br>この引っかかりも、<br>自然と溶けていく流れが視えています。</p>
-
-<h2 id="sec-last">最後に</h2>
-
-<p>やっちん様。</p>
-<p>今、あなたは大切な岐路に立っています。</p>
-<p>このまま、考えすぎるクセを抱えたまま<br><strong>11月</strong>を迎えるか。</p>
-<p>それとも、水のオーラを整え、<br>まーちゃんさんが育つ時間を信じて待ち、<br><strong>11月</strong>の扉が開いた時に<br>まっすぐ受け取れる自分でそこに在るか。</p>
-<p>選ぶのは、やっちん様自身です。</p>
-<p>ただ、私には視えています。</p>
-<p><strong>11月</strong>のある日、<br>まーちゃんさんが<br>「やっちん、久しぶり」<br>「元気にしてた?」<br>そう軽く声をかけてくる場面。</p>
-<p>そして、以前のように<br>他愛のない話で笑い合いながら、<br>「また飲みに行こうね」<br>そう言葉を交わしている場面が。</p>
-<p>小さな引っかかりを抱えたままでも、<br>それでも簡単には切れない<br>静かで深い縁を、<br>二人で確かめ合える景色。</p>
-<p>その未来は、ちゃんと視えています。</p>
-<p>やっちん様の、<br>染み込むように優しい水のオーラは、<br>まーちゃんさんにとって<br>他では出会えないかけがえのない存在感です。</p>
-<p>それが、まーちゃんさんにちゃんと届く瞬間が<br><strong>11月</strong>に待っています。</p>
-<p>そこまでの道、私が照らし続けますね。</p>
-
-<div class="sign-box">
-<p>心からの愛と光を込めて。<br>かな</p>
-</div>
-</div>
+</body>
 </html>
