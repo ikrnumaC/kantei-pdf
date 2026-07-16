@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>かおり様専用パワーストーン</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Sans JP", sans-serif;
+            line-height: 1.8;
+            background: #000814 url('../素材/背景.jpg') top center;
+            background-size: 100% auto;
+            background-repeat: repeat-y;
+            background-attachment: scroll;
+            color: #e8eef5;
+            overflow-x: hidden;
+        }
+
+        /* 星空背景アニメーション */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .stars::before,
+        .stars::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(2px 2px at 20% 30%, white, transparent),
+                radial-gradient(2px 2px at 60% 70%, white, transparent),
+                radial-gradient(1px 1px at 50% 50%, white, transparent),
+                radial-gradient(1px 1px at 80% 10%, white, transparent),
+                radial-gradient(2px 2px at 90% 60%, white, transparent),
+                radial-gradient(1px 1px at 33% 80%, white, transparent),
+                radial-gradient(2px 2px at 15% 90%, white, transparent);
+            background-size: 200% 200%;
+            animation: twinkle 8s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        .stars::after {
+            animation-delay: 4s;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(0, 18, 51, 0.7) 0%, rgba(0, 51, 102, 0.7) 50%, rgba(0, 68, 136, 0.7) 100%);
+            padding: 80px 20px;
+        }
+
+        .hero-title {
+            font-family: "Noto Serif JP", serif;
+            font-size: 72px;
+            font-weight: 300;
+            color: #fff;
+            margin-bottom: 30px;
+            letter-spacing: 12px;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+            animation: fadeIn 2s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            color: #a8dadc;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+            animation: fadeIn 2.5s ease-out;
+        }
+
+        .hero-name {
+            font-size: 36px;
+            color: #f1faee;
+            letter-spacing: 6px;
+            margin-bottom: 20px;
+            animation: fadeIn 3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* セクション共通 */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 120px 20px;
+        }
+
+        .section-blue   { background: linear-gradient(180deg, rgba(0, 24, 69, 0.7) 0%, rgba(0, 40, 85, 0.7) 100%); }
+        .section-dark   { background: linear-gradient(180deg, rgba(0, 8, 20, 0.7) 0%, rgba(0, 18, 51, 0.7) 100%); }
+        .section-purple { background: linear-gradient(180deg, rgba(26, 26, 62, 0.7) 0%, rgba(45, 45, 90, 0.7) 100%); }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-family: "Noto Serif JP", serif;
+            font-size: 48px;
+            font-weight: 300;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 80px;
+            letter-spacing: 8px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 60px 50px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .content-box p {
+            font-size: 18px;
+            line-height: 2.2;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+        }
+
+        .content-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* レーダーチャート */
+        .aura-chart-container {
+            width: 320px;
+            padding: 30px;
+            background: rgba(0, 18, 35, 0.6);
+            border: 1px solid rgba(168, 218, 220, 0.3);
+            border-radius: 20px;
+            margin: 40px auto 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .aura-chart-title {
+            text-align: center;
+            font-size: 18px;
+            color: #a8dadc;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        /* プランカード */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .plan-card {
+            background: linear-gradient(135deg, rgba(0, 24, 69, 0.8) 0%, rgba(0, 40, 85, 0.8) 100%);
+            border: 2px solid rgba(168, 218, 220, 0.3);
+            border-radius: 30px;
+            padding: 60px 50px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(168, 218, 220, 0.3);
+            border-color: rgba(168, 218, 220, 0.6);
+        }
+
+        .plan-card.premium {
+            background: linear-gradient(135deg, rgba(0, 35, 102, 0.9) 0%, rgba(0, 68, 136, 0.9) 100%);
+            border: 3px solid #a8dadc;
+            box-shadow: 0 0 60px rgba(168, 218, 220, 0.4);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #457b9d 0%, #a8dadc 100%);
+            color: #000814;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            box-shadow: 0 5px 20px rgba(168, 218, 220, 0.5);
+            white-space: nowrap;
+        }
+
+        .plan-title {
+            font-family: "Noto Serif JP", serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: #a8dadc;
+            text-align: center;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            letter-spacing: 3px;
+        }
+
+        .plan-subtitle {
+            text-align: center;
+            color: #e8eef5;
+            font-size: 16px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .plan-price {
+            font-size: 48px;
+            font-weight: 700;
+            color: #f1faee;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px rgba(168, 218, 220, 0.5);
+        }
+
+        /* 円形配置 */
+        .stones-circle {
+            position: relative;
+            margin: 60px auto;
+        }
+
+        .stone-item-circle {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            left: 50%;
+            top: 50%;
+            margin-left: -70px;
+            margin-top: -70px;
+        }
+
+        .stone-image-circle {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(168, 218, 220, 0.5);
+            transition: all 0.4s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .stone-image-circle:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 50px rgba(168, 218, 220, 0.8);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .stone-name-circle { display: none; }
+
+        /* 中央装飾 */
+        .center-decoration {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgba(168, 218, 220, 0.3);
+            border-radius: 50%;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50%       { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+        }
+
+        /* 松プラン：4石 90度配置 */
+        .matsu .stones-circle {
+            width: 500px;
+            height: 500px;
+        }
+        .matsu .stone-item-circle:nth-child(2) { transform: rotate(-90deg) translate(200px) rotate(90deg); }
+        .matsu .stone-item-circle:nth-child(3) { transform: rotate(0deg) translate(200px) rotate(0deg); }
+        .matsu .stone-item-circle:nth-child(4) { transform: rotate(90deg) translate(200px) rotate(-90deg); }
+        .matsu .stone-item-circle:nth-child(5) { transform: rotate(180deg) translate(200px) rotate(-180deg); }
+
+        /* 竹プラン：3石 三角配置 */
+        .take .stones-circle {
+            width: 480px;
+            height: 480px;
+        }
+        .take .stone-item-circle:nth-child(2) { transform: rotate(-90deg) translate(190px) rotate(90deg); }
+        .take .stone-item-circle:nth-child(3) { transform: rotate(30deg) translate(190px) rotate(-30deg); }
+        .take .stone-item-circle:nth-child(4) { transform: rotate(150deg) translate(190px) rotate(-150deg); }
+
+        /* 梅プラン：2石 左右配置 */
+        .ume .stones-circle {
+            width: 500px;
+            height: 300px;
+        }
+        .ume .stone-item-circle:nth-child(2) { transform: rotate(180deg) translate(180px) rotate(-180deg); }
+        .ume .stone-item-circle:nth-child(3) { transform: rotate(0deg) translate(180px) rotate(0deg); }
+
+        /* 石名リスト */
+        .stone-names-list {
+            text-align: center;
+            font-size: 14px;
+            color: #a8dadc;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            line-height: 2.4;
+        }
+        .stone-names-list span {
+            display: inline-block;
+            margin: 0 8px;
+        }
+
+        /* プラン説明 */
+        .plan-description {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .plan-description h4 {
+            color: #a8dadc;
+            font-size: 20px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .plan-description ul {
+            list-style: none;
+            padding: 0;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .plan-description li {
+            padding: 12px 0 12px 30px;
+            position: relative;
+            font-size: 16px;
+            line-height: 1.8;
+            letter-spacing: 2px;
+        }
+
+        .plan-description li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #a8dadc;
+            font-size: 20px;
+        }
+
+        .plan-note {
+            background: rgba(168, 218, 220, 0.1);
+            border-left: 4px solid #a8dadc;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 0 10px 10px 0;
+            font-size: 14px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        /* お客様の声 */
+        .testimonial {
+            background: rgba(0, 24, 69, 0.6);
+            border-left: 4px solid #a8dadc;
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 15px;
+            font-style: italic;
+            line-height: 2;
+            position: relative;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-size: 80px;
+            color: rgba(168, 218, 220, 0.2);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: serif;
+        }
+
+        /* CTAボタン */
+        .cta-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, rgba(0, 35, 102, 0.8) 0%, rgba(0, 68, 136, 0.8) 100%);
+            border-radius: 30px;
+            margin: 60px 0;
+        }
+
+        .cta-options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 500px;
+            margin: 40px auto;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #457b9d 0%, #a8dadc 100%);
+            color: #000814;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(168, 218, 220, 0.3);
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(168, 218, 220, 0.5);
+        }
+
+        /* サイン */
+        .sign-section {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid rgba(168, 218, 220, 0.3);
+            margin-top: 80px;
+        }
+
+        .sign-section p {
+            font-family: "Noto Serif JP", serif;
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #a8dadc;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        strong { color: #f1faee; font-weight: 700; }
+
+        /* ============================
+           レスポンシブ
+           ============================ */
+        @media (max-width: 768px) {
+            .hero-title  { font-size: 48px; letter-spacing: 6px; }
+            .hero-subtitle { font-size: 18px; }
+            h2 { font-size: 36px; letter-spacing: 4px; }
+            .plan-title  { font-size: 24px; }
+            .plan-price  { font-size: 36px; }
+            .content-box { padding: 40px 30px; }
+
+            /* 松プラン：半径150px */
+            .matsu .stones-circle {
+                width: 400px;
+                height: 400px;
+            }
+            .matsu .stone-item-circle:nth-child(2) { transform: rotate(-90deg) translate(150px) rotate(90deg); }
+            .matsu .stone-item-circle:nth-child(3) { transform: rotate(0deg) translate(150px) rotate(0deg); }
+            .matsu .stone-item-circle:nth-child(4) { transform: rotate(90deg) translate(150px) rotate(-90deg); }
+            .matsu .stone-item-circle:nth-child(5) { transform: rotate(180deg) translate(150px) rotate(-180deg); }
+
+            /* 竹プラン：半径150px */
+            .take .stones-circle {
+                width: 380px;
+                height: 380px;
+            }
+            .take .stone-item-circle:nth-child(2) { transform: rotate(-90deg) translate(150px) rotate(90deg); }
+            .take .stone-item-circle:nth-child(3) { transform: rotate(30deg) translate(150px) rotate(-30deg); }
+            .take .stone-item-circle:nth-child(4) { transform: rotate(150deg) translate(150px) rotate(-150deg); }
+
+            /* 梅プラン */
+            .ume .stones-circle {
+                width: 400px;
+                height: 240px;
+            }
+            .ume .stone-item-circle:nth-child(2) { transform: rotate(180deg) translate(140px) rotate(-180deg); }
+            .ume .stone-item-circle:nth-child(3) { transform: rotate(0deg) translate(140px) rotate(0deg); }
+
+            .stone-image-circle { width: 100px; height: 100px; }
+            .stone-item-circle  { width: 100px; height: 100px; margin-left: -50px; margin-top: -50px; }
+
+            .aura-chart-container { width: 280px; padding: 20px; }
+
+            .plan-note img { width: 140px !important; }
+            .plan-note > div[style*="flex"] {
+                flex-direction: column !important;
+                gap: 10px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .matsu .stones-circle { width: 320px; height: 320px; }
+            .matsu .stone-item-circle:nth-child(2) { transform: rotate(-90deg) translate(120px) rotate(90deg); }
+            .matsu .stone-item-circle:nth-child(3) { transform: rotate(0deg) translate(120px) rotate(0deg); }
+            .matsu .stone-item-circle:nth-child(4) { transform: rotate(90deg) translate(120px) rotate(-90deg); }
+            .matsu .stone-item-circle:nth-child(5) { transform: rotate(180deg) translate(120px) rotate(-180deg); }
+
+            .take .stones-circle { width: 300px; height: 300px; }
+            .take .stone-item-circle:nth-child(2) { transform: rotate(-90deg) translate(115px) rotate(90deg); }
+            .take .stone-item-circle:nth-child(3) { transform: rotate(30deg) translate(115px) rotate(-30deg); }
+            .take .stone-item-circle:nth-child(4) { transform: rotate(150deg) translate(115px) rotate(-150deg); }
+
+            .ume .stones-circle { width: 300px; height: 200px; }
+            .ume .stone-item-circle:nth-child(2) { transform: rotate(180deg) translate(100px) rotate(-180deg); }
+            .ume .stone-item-circle:nth-child(3) { transform: rotate(0deg) translate(100px) rotate(0deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+
+    <!-- ヒーロー -->
+    <section class="hero">
+        <div class="hero-name">かおり様</div>
+        <h1 class="hero-title">パワーストーン</h1>
+        <p class="hero-subtitle">あなた専用のオーラ調整ガイド</p>
+    </section>
+
+    <!-- イントロ -->
+    <section class="section-blue">
+        <div class="container">
+            <div class="content-box">
+                <p>詳細のご希望、ありがとうございます。</p>
+                <p>「最近は会話もするようになり、<br>
+                関係は戻りつつあります」</p>
+                <p><strong>その変化は、偶然ではありません。</strong></p>
+                <p>旦那様のオーラには今、<br>
+                大切な人を守ろうとする、<br>
+                とても強い光が巡っています。</p>
+                <p>そして、かおり様が言葉にする力を<br>
+                強めているこの時期に、<br>
+                旦那様は守りたいという想いを<br>
+                強めています。</p>
+                <p>このタイミングの重なりを、<br>
+                最高の形で受け取るために、<br>
+                かおり様専用のパワーストーンについて、<br>
+                詳しくお伝えさせていただきますね。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- オーラの状態 -->
+    <section class="section-dark">
+        <div class="container">
+            <h2>かおり様の今のオーラの状態</h2>
+            <div class="content-box">
+                <p>かおり様のオーラには今、<br>
+                <strong>金のオーラが強く出すぎています。</strong></p>
+                <p>白黒はっきりさせたい力、<br>
+                物事を厳しく判断する力です。</p>
+                <p>これが強く出すぎると、<br>
+                「私だけが一方的に<br>
+                想っているだけかもしれない」と、<br>
+                自分を責める思考に<br>
+                陥りやすくなります。</p>
+                <p>そしてもう一つ、<br>
+                <strong>木と火のオーラが少ない状態</strong>にあります。</p>
+                <p>木のオーラは、新しい一歩を<br>
+                踏み出す勇気。<br>
+                火のオーラは、前向きな気持ちを<br>
+                言葉や行動にする力。</p>
+                <p>この二つが少ないと、<br>
+                「もう終わるのかもしれない」<br>
+                という諦めに気持ちが流れやすくなります。</p>
+                <p>逆に言えば、<br>
+                木と火が補われれば新しい道が見えてきて、<br>
+                金の強さが和らげば<br>
+                自分にも相手にも優しくなれる。</p>
+                <p><strong>それが今、一番の変化の鍵です。</strong></p>
+
+                <div class="aura-chart-container">
+                    <div class="aura-chart-title">木と火を補い、金を鎮めた後のオーラ</div>
+                    <canvas id="auraChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- なぜ今 -->
+    <section class="section-blue">
+        <div class="container">
+            <h2>なぜ今、オーラ調整が必要なのか</h2>
+            <div class="content-box">
+                <p>パワーストーンが体に馴染むまでには、<br>
+                通常2〜3週間ほどかかります。</p>
+                <p><strong>2026年12月が、<br>
+                かおり様と旦那様の運命が<br>
+                最も近づく月。</strong></p>
+                <p>この最重要期間に向けて、<br>
+                今から整えておく必要があります。</p>
+                <p>木と火のオーラが少ない状態のままこの月を迎えると、<br>
+                せっかく巡ってくる旦那様の想いを、<br>
+                不安を打ち消すことだけに<br>
+                使ってしまいます。</p>
+                <p>今から木と火のオーラを整え、<br>
+                金の強さを和らげておくこと。<br>
+                これが12月の扉を、<br>
+                最高の形で開く鍵になります。</p>
+                <p><strong>実は、運命を動かすプランを選ばれる方が最も多く、<br>
+                全体の約70%を占めています。</strong><br>
+                「12月の転機を、本気で掴みたいから<br>
+                中途半端にしたくない」<br>
+                というお声が多いです。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3つのプラン -->
+    <section class="section-purple">
+        <div class="container">
+            <h2>3つのプラン</h2>
+            <div class="plans-grid">
+
+                <!-- 松プラン -->
+                <div class="plan-card premium matsu">
+                    <div class="plan-badge">⭐ おすすめ ⭐</div>
+                    <div class="plan-title">運命を動かすプラン</div>
+                    <div class="plan-subtitle">12月の転機を本気で掴みたい方へ</div>
+                    <div class="plan-price">59,800円</div>
+
+                    <div class="stones-circle">
+                        <div class="center-decoration"></div>
+                        <div class="stone-item-circle">
+                            <img src="../素材/アベンチュリン.png" alt="グリーンアベンチュリン" class="stone-image-circle">
+                        </div>
+                        <div class="stone-item-circle">
+                            <img src="../素材/カーネリアン.png" alt="カーネリアン" class="stone-image-circle">
+                        </div>
+                        <div class="stone-item-circle">
+                            <img src="../素材/ローズクォーツ.png" alt="ローズクォーツ" class="stone-image-circle">
+                        </div>
+                        <div class="stone-item-circle">
+                            <img src="../素材/タイガーアイ.png" alt="タイガーアイ" class="stone-image-circle">
+                        </div>
+                    </div>
+                    <div class="stone-names-list">
+                        <span>グリーンアベンチュリン</span>
+                        <span>カーネリアン</span>
+                        <span>ローズクォーツ</span>
+                        <span>タイガーアイ</span>
+                    </div>
+
+                    <div class="plan-description">
+                        <h4>期待できる変化</h4>
+                        <ul>
+                            <li>先生との時間を<br>「終わるか終わらないか」で<br>追い詰めずにいられるようになる</li>
+                            <li>旦那さんの沈黙にも振り回されず<br>「ちゃんと届いている」と<br>信じられるようになる</li>
+                            <li>「私だけが一方的に<br>想っているだけかもしれない」<br>という自己否定の思考が、静かに和らぐ</li>
+                            <li>12月の転機を<br>最高の状態で迎えられる</li>
+                        </ul>
+                    </div>
+
+                    <div class="plan-note">
+                        <strong>特典：</strong>月1回のオーラメンテナンス相談（3ヶ月間）、<br>
+                        浄化用水晶クラスター、水晶さざれ<br>
+                        <div style="margin-top: 20px; display: flex; gap: 15px; justify-content: center; align-items: center;">
+                            <img src="../素材/水晶クラスター.png" alt="水晶クラスター" style="width: 180px; border-radius: 10px;">
+                            <img src="../素材/水晶さざれ.png" alt="水晶さざれ" style="width: 180px; border-radius: 10px;">
+                        </div>
+                        <strong style="display: block; margin-top: 20px;">※上記4種類の石から最高のバランスを考えて、<br>1つ、もしくは2つのブレスレットをお届けします</strong>
+                    </div>
+                </div>
+
+                <!-- 竹プラン -->
+                <div class="plan-card take">
+                    <div class="plan-title">流れを整えるプラン</div>
+                    <div class="plan-subtitle">まずは心を安定させたい方へ</div>
+                    <div class="plan-price">29,800円</div>
+
+                    <div class="stones-circle">
+                        <div class="center-decoration"></div>
+                        <div class="stone-item-circle">
+                            <img src="../素材/アベンチュリン.png" alt="グリーンアベンチュリン" class="stone-image-circle">
+                        </div>
+                        <div class="stone-item-circle">
+                            <img src="../素材/カーネリアン.png" alt="カーネリアン" class="stone-image-circle">
+                        </div>
+                        <div class="stone-item-circle">
+                            <img src="../素材/タイガーアイ.png" alt="タイガーアイ" class="stone-image-circle">
+                        </div>
+                    </div>
+                    <div class="stone-names-list">
+                        <span>グリーンアベンチュリン</span>
+                        <span>カーネリアン</span>
+                        <span>タイガーアイ</span>
+                    </div>
+
+                    <div class="plan-description">
+                        <h4>期待できる変化</h4>
+                        <ul>
+                            <li>先生との連絡が減っても<br>心が大きく揺れなくなる</li>
+                            <li>旦那さんの沈黙を<br>「愛情がない」と結びつけずにいられる</li>
+                            <li>自分の心の温度を<br>自分で整えられるようになる</li>
+                        </ul>
+                    </div>
+
+                    <div class="plan-note">
+                        <strong>特典：</strong>浄化用水晶さざれ<br>
+                        <strong style="display: block; margin-top: 15px;">※上記3種類の石から<br>バランスを考えたブレスレット1本をお届けします</strong>
+                    </div>
+                </div>
+
+                <!-- 梅プラン -->
+                <div class="plan-card ume">
+                    <div class="plan-title">日々のお守りプラン</div>
+                    <div class="plan-subtitle">まずは自己否定の思考を和らげたい方へ</div>
+                    <div class="plan-price">19,800円</div>
+
+                    <div class="stones-circle">
+                        <div class="center-decoration"></div>
+                        <div class="stone-item-circle">
+                            <img src="../素材/カーネリアン.png" alt="カーネリアン" class="stone-image-circle">
+                        </div>
+                        <div class="stone-item-circle">
+                            <img src="../素材/ローズクォーツ.png" alt="ローズクォーツ" class="stone-image-circle">
+                        </div>
+                    </div>
+                    <div class="stone-names-list">
+                        <span>カーネリアン</span>
+                        <span>ローズクォーツ</span>
+                    </div>
+
+                    <div class="plan-description">
+                        <h4>期待できる変化</h4>
+                        <ul>
+                            <li>「もう終わりかもしれない」<br>という考えが浮かんでも<br>ふっと軽くなる瞬間が増える</li>
+                            <li>自分を責める思考が出た時、<br>すぐに手放せるようになる</li>
+                        </ul>
+                    </div>
+
+                    <div class="plan-note">
+                        <strong>特典：</strong>浄化用水晶さざれ<br>
+                        <strong style="display: block; margin-top: 15px;">※上記2種類の石から<br>バランスを考えたブレスレット1本をお届けします</strong>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- お客様の声 -->
+    <section class="section-dark">
+        <div class="container">
+            <h2>石を身につけた後の変化</h2>
+            <div class="testimonial">
+                <p>「旦那さんが黙り込む時間があっても、<br>
+                石を触りながら深呼吸すると、<br>
+                『これは表現が苦手なだけ』と<br>
+                思える」</p>
+            </div>
+            <div class="testimonial">
+                <p>「息子の話をしながら先生と話す時、<br>
+                いつもより自然に<br>
+                『いつもありがとうございます』<br>
+                と言葉が出てくる」</p>
+            </div>
+            <div class="testimonial">
+                <p>「『私だけが一方的に』と<br>
+                言いそうになった時、<br>
+                手首の石が目に入って、<br>
+                『答えのない問いは、そっと置こう』と思える」</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-purple">
+        <div class="container">
+            <div class="cta-section">
+                <h2 style="margin-bottom: 40px;">どれが気になりますか？</h2>
+                <p style="font-size: 18px; margin-bottom: 30px; letter-spacing: 2px;">一つ選んで、そのままメッセージください</p>
+                <div class="cta-options">
+                    <button class="cta-button">松希望</button>
+                    <button class="cta-button">竹希望</button>
+                    <button class="cta-button">梅希望</button>
+                </div>
+                <p style="margin-top: 40px; font-size: 16px; color: #a8dadc; letter-spacing: 2px;">または、「もう少し聞きたいことがある」でも大丈夫です</p>
+            </div>
+
+            <div class="content-box" style="margin-top: 60px;">
+                <p>迷われる場合は、<br>
+                かおり様の現状と旦那様への想いの強さから見て、<br>
+                私は<strong>運命を動かすプラン</strong>をおすすめします。</p>
+                <p>ご実家のご両親を続けて亡くされる中でも、<br>
+                誠実に息子さんと向き合い、<br>
+                旦那様のことも見つめ続けてきたかおり様。</p>
+                <p>その優しさと誠実さがあるからこそ、<br>
+                旦那様の中に<br>
+                「大切な人を守りたい」という想いが<br>
+                今、強く湧き上がっているのです。</p>
+                <p><strong>あとは、オーラを整えて、<br>
+                12月のチャンスを本気で掴むだけ。</strong></p>
+            </div>
+
+            <div class="sign-section">
+                <p>かおり様と旦那様の関係が、<br>
+                自然に深まっていく未来を、<br>
+                心から応援しております。</p>
+                <p style="margin-top: 30px;">心からの愛と光を込めて。</p>
+                <p style="font-size: 24px; margin-top: 10px;"><strong>かな</strong></p>
+            </div>
+        </div>
+    </section>
+
+<script>
+const chartOptions = {
+    responsive: true,
+    plugins: { legend: { display: false } },
+    scales: {
+        r: {
+            min: 0,
+            max: 5,
+            ticks: { stepSize: 1, display: false },
+            grid: { color: 'rgba(168, 218, 220, 0.2)' },
+            pointLabels: {
+                font: { size: 16, weight: '600' },
+                color: '#a8dadc'
+            }
+        }
+    }
+};
+
+new Chart(document.getElementById('auraChart'), {
+    type: 'radar',
+    data: {
+        labels: ['木', '火', '土', '金', '水'],
+        datasets: [
+            {
+                label: '補う前',
+                data: [0.3, 0.3, 1, 3, 2],
+                backgroundColor: 'rgba(168, 218, 220, 0.1)',
+                borderColor: 'rgba(168, 218, 220, 0.4)',
+                borderWidth: 2,
+                borderDash: [5, 5],
+                pointBackgroundColor: 'rgba(168, 218, 220, 0.4)',
+                pointBorderColor: '#fff',
+                pointRadius: 3
+            },
+            {
+                label: '補った後',
+                data: [2, 2, 1, 2, 2],
+                backgroundColor: 'rgba(168, 218, 220, 0.3)',
+                borderColor: '#a8dadc',
+                borderWidth: 3,
+                pointBackgroundColor: '#a8dadc',
+                pointBorderColor: '#fff',
+                pointRadius: 5
+            }
+        ]
+    },
+    options: chartOptions
+});
+</script>
+</body>
+</html>
