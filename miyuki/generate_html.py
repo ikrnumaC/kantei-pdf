@@ -635,9 +635,9 @@ def build_body_html(data):
 
                 html_parts.append('')
                 html_parts.append('            <div class="price">')
-                html_parts.append('                <span class="original-price">通常20,000円</span><br>')
+                html_parts.append('                <span class="original-price">通常9,800円</span><br>')
                 html_parts.append('                <span class="limited-badge">24時間限定の特別価格</span><br>')
-                html_parts.append('                <span class="special-price">9,800円</span>')
+                html_parts.append('                <span class="special-price">4,980円</span>')
                 html_parts.append('            </div>')
                 html_parts.append('')
                 html_parts.append(f'            <a href="{url}" class="cta-button" target="_blank">本式守護鑑定を受ける▼</a>')
@@ -710,22 +710,18 @@ if __name__ == "__main__":
         SRC_DIR = Path("/Users/miura/Documents/GitHub/kantei/無料鑑定/深雪")
         OUT_DIR = Path("/Users/miura/Documents/GitHub/kantei/miyuki")
         TARGETS = [
-            (934, "さち", "934_さち_不倫曖昧な関係_深雪.txt"),
-            (935, "永嶋 由里", "935_永嶋 由里_お金と才能の相談_深雪.txt"),
-            (936, "つのの", "936_つのの_夫婦と子宝の相談_深雪.txt"),
-            (937, "けいこ", "937_けいこ_出会いと結婚相談_深雪.txt"),
-            (938, "あさかたん", "938_あさかたん_金運と事業運相談_深雪.txt"),
-            (939, "ぴ", "939_ぴ_将来と彼の関係相談_深雪.txt"),
-            (940, "ゆずりん", "940_ゆずりん_仕事生活健康家族経済相談_深雪.txt"),
-            (941, "Izm", "941_Izm_曖昧な関係とご縁相談_深雪.txt"),
-            (942, "るこ", "942_るこ_音信不通の彼との縁相談_深雪.txt"),
-            (943, "しほ", "943_しほ_復縁相談_深雪.txt"),
-            (944, "2月", "944_2月_娘との面会交流相談_深雪.txt"),
-            (945, "りさ", "945_りさ_盗撮被害相談_深雪.txt"),
-            (946, "真由美", "946_真由美_初恋との縁相談_深雪.txt"),
-            (947, "ゆり", "947_ゆり_年下男性への恋愛相談_深雪.txt"),
-            (948, "白昼夢", "948_白昼夢_復縁相談_深雪.txt"),
-            (949, "のりちゃん", "949_のりちゃん_主人の転職と家族の豊かさ_深雪.txt"),
+            (984, "みい", "984_みい_推し執着手放し相談_深雪.txt"),
+            (985, "しほ", "985_しほ_不倫復縁相談_深雪.txt"),
+            (986, "しし", "986_しし_離婚と愛され相談_深雪.txt"),
+            (987, "あさ", "987_あさ_離婚危機夫婦relat_深雪.txt"),
+            (988, "絵里", "988_絵里_二刀流商才相談_深雪.txt"),
+            (989, "A", "989_A_同棲すれ違い相談_深雪.txt"),
+            (990, "izumi", "990_izumi_守護霊感謝相談_深雪.txt"),
+            (991, "ゆうか", "991_ゆうか_婚活出会い相談_深雪.txt"),
+            (992, "たけ", "992_たけ_社内掌握相談_深雪.txt"),
+            (993, "わかな", "993_わかな_就活内定相談_深雪.txt"),
+            (994, "SORAMAME", "994_SORAMAME_理想の生き方相談_深雪.txt"),
+            (995, "もん", "995_もん_浮気後の再構築相談_深雪.txt"),
         ]
         for num, disp_name, fname in TARGETS:
             txt_path = SRC_DIR / fname
