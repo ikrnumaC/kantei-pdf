@@ -407,11 +407,37 @@ def split_paragraphs(text):
     return [p.strip("\n") for p in paras if p.strip()]
 
 
+HEADER_BR = "\x01BR\x01"
+
+
+def merge_multiline_headers(body):
+    """Some ⛩️ headers wrap onto a second line with no blank line in between
+    (blank line comes after the full header, before the section body). Merge
+    those two lines into one so the header-split regex treats them as a unit."""
+    lines = body.split("\n")
+    out = []
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        if line.startswith("⛩️") and i + 1 < len(lines):
+            nxt = lines[i + 1]
+            after = lines[i + 2] if i + 2 < len(lines) else ""
+            if nxt.strip() != "" and not nxt.startswith("⛩️") and after.strip() == "":
+                line = line + HEADER_BR + nxt.strip()
+                i += 1
+        out.append(line)
+        i += 1
+    return "\n".join(out)
+
+
 def build_body_html(data):
     name = data["name"]
     guardian = data["guardian"]
     reading = data["reading"]
-    body = data["body"]
+    body = data["body"].replace(
+        "【本式守護鑑定でお伝えすること】", "⛩️本式守護鑑定でお伝えすること"
+    )
+    body = merge_multiline_headers(body)
 
     # Split into major sections by ⛩️ headers
     # First section: everything before first ⛩️
@@ -511,7 +537,7 @@ def build_body_html(data):
         # e.g. "タダオ様のご縁が動く流れ" → "タダオ様<br>ご縁が動く流れ"
         # But only if header is long. Simple: don't force br.
         # Actually template uses br sometimes but not always. Keep simple.
-        h_html = html_escape(header_text)
+        h_html = html_escape(header_text).replace(HEADER_BR, "<br>")
 
         html_parts.append(f'        <h2 class="emoji-header">⛩️{h_html}</h2>')
 
@@ -552,19 +578,16 @@ def build_body_html(data):
             for it in items:
                 lines_ = it.split("\n")
                 title = lines_[0].strip()
-                # description lines (indented). Stop when we hit non-indented content or blank->non-indented.
+                # description lines (indented or flat). Stop at the closing boilerplate
+                # ("あなたご自身の手で...") which follows the last item with no further 🌙 to bound it.
                 desc_lines = []
                 for l in lines_[1:]:
-                    if l.startswith("  ") or l.startswith("\t") or l.startswith("　"):
-                        s = l.strip().lstrip("　")
-                        if s:
-                            desc_lines.append(s)
-                    elif l.strip() == "":
-                        # blank line - continue but if we've seen indented content, this may signal end
+                    s = l.strip().lstrip("　")
+                    if s == "":
                         continue
-                    else:
-                        # non-indented content after item → end of description
+                    if s.startswith("あなたご自身の手で"):
                         break
+                    desc_lines.append(s)
                 parsed_items.append((title, desc_lines))
                 if len(parsed_items) == 4:
                     break
@@ -710,18 +733,25 @@ if __name__ == "__main__":
         SRC_DIR = Path("/Users/miura/Documents/GitHub/kantei/無料鑑定/深雪")
         OUT_DIR = Path("/Users/miura/Documents/GitHub/kantei/miyuki")
         TARGETS = [
-            (984, "みい", "984_みい_推し執着手放し相談_深雪.txt"),
-            (985, "しほ", "985_しほ_不倫復縁相談_深雪.txt"),
-            (986, "しし", "986_しし_離婚と愛され相談_深雪.txt"),
-            (987, "あさ", "987_あさ_離婚危機夫婦relat_深雪.txt"),
-            (988, "絵里", "988_絵里_二刀流商才相談_深雪.txt"),
-            (989, "A", "989_A_同棲すれ違い相談_深雪.txt"),
-            (990, "izumi", "990_izumi_守護霊感謝相談_深雪.txt"),
-            (991, "ゆうか", "991_ゆうか_婚活出会い相談_深雪.txt"),
-            (992, "たけ", "992_たけ_社内掌握相談_深雪.txt"),
-            (993, "わかな", "993_わかな_就活内定相談_深雪.txt"),
-            (994, "SORAMAME", "994_SORAMAME_理想の生き方相談_深雪.txt"),
-            (995, "もん", "995_もん_浮気後の再構築相談_深雪.txt"),
+            (996, "みむ", "996_みむ_お別れと次の恋相談_深雪.txt"),
+            (997, "なおこ", "997_なおこ_子育てと守護霊相談_深雪.txt"),
+            (998, "はるな", "998_はるな_復縁相談_深雪.txt"),
+            (999, "かなめ", "999_かなめ_穏やかな関係相談_深雪.txt"),
+            (1000, "レナ", "1000_レナ_借金完済と金運相談_深雪.txt"),
+            (1001, "えなこ", "1001_えなこ_娘との関係相談_深雪.txt"),
+            (1002, "みー", "1002_みー_社会復帰不安相談_深雪.txt"),
+            (1003, "yossy", "1003_yossy_部活の保護者との関係_深雪.txt"),
+            (1004, "ゆー", "1004_ゆー_進路と人間関係相談_深雪.txt"),
+            (1005, "まり", "1005_まり_仕事の運相談_深雪.txt"),
+            (1006, "ユキノ", "1006_ユキノ_闘病と再婚生活の願い_深雪.txt"),
+            (1007, "よ", "1007_よ_復縁相談_深雪.txt"),
+            (1008, "やす", "1008_やす_恋愛仕事プライベート相談_深雪.txt"),
+            (1009, "のりこ", "1009_のりこ_娘との関係相談_深雪.txt"),
+            (1010, "あゆか", "1010_あゆか_金運相談_深雪.txt"),
+            (1011, "mimi", "1011_mimi_パニック障害相談_深雪.txt"),
+            (1012, "タビ", "1012_タビ_未来と家族の幸せ相談_深雪.txt"),
+            (1013, "あき", "1013_あき_定年と老後資金相談_深雪.txt"),
+            (1014, "Asuka", "1014_Asuka_魂と使命の相談_深雪.txt"),
         ]
         for num, disp_name, fname in TARGETS:
             txt_path = SRC_DIR / fname
