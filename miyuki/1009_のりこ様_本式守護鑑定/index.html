@@ -316,9 +316,118 @@
                 padding: 12px 6px 12px 36px;
             }
         }
+
+        /* ===== 演出：元素の背景（冒頭〜守護神登場まで） ===== */
+        .element-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../鑑定画像/大地.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .element-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：守護神の背景（守護神登場〜本式内容の手前まで） ===== */
+        .deity-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/大己貴命.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center 18%;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .deity-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：扉の背景（本式内容〜結びまで） ===== */
+        .door-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/ドア2.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .door-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：今後の流れ 季節背景 ===== */
+        .season-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .season-bg.is-visible { opacity: 0.4; }
+        #seasonSummerBg { background-image: url("../鑑定画像/夏.jpg"); }
+        #seasonAutumnBg { background-image: url("../鑑定画像/秋.jpg"); }
+        #seasonWinterBg { background-image: url("../鑑定画像/冬.jpg"); }
+
+        /* ===== 演出：パワーストーン背景 ===== */
+        .stone-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../素材/タイガーアイ.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .stone-bg.is-visible { opacity: 0.4; }
+
+        .deity-veil {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(15, 15, 46, 0.04) 0%, rgba(15, 15, 46, 0.15) 60%, rgba(15, 15, 46, 0.25) 100%),
+                linear-gradient(180deg, rgba(15, 15, 46, 0.06) 0%, rgba(15, 15, 46, 0.18) 100%);
+        }
+
+        /* ===== 演出：花びら ===== */
+        #petals {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
+    <div class="element-bg" id="elementBg"></div>
+    <div class="deity-bg" id="deityBg"></div>
+    <div class="door-bg" id="doorBg"></div>
+    <div class="season-bg" id="seasonSummerBg"></div>
+    <div class="season-bg" id="seasonAutumnBg"></div>
+    <div class="season-bg" id="seasonWinterBg"></div>
+    <div class="stone-bg" id="stoneBg"></div>
+    <div class="deity-veil"></div>
+    <canvas id="petals"></canvas>
 
     <!-- 表紙 -->
     <div class="cover-page">
@@ -351,6 +460,7 @@
         </nav>
 
         <!-- 冒頭 -->
+        <div id="elementSentinel"></div>
         <div class="oracle-message">
             <p style="margin-bottom: 90px;">のりこ様</p>
             <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき<br>本当にありがとうございます。</p>
@@ -384,6 +494,7 @@
         </div>
 
         <!-- 守護神について -->
+        <div id="guardianSentinel"></div>
         <div class="oracle-message" id="sec-god">
             <p style="margin-bottom: 90px;">その景色を見せてくれたのは<br><span style="color: #ffd966;">大己貴命</span>（おおなむちのみこと）。</p>
             <p style="margin-bottom: 90px;">昔、傷ついた白うさぎを<br>深く気の毒に思い</p>
@@ -396,6 +507,7 @@
         </div>
 
         <!-- のりこ様という人について -->
+        <div id="essenceSentinel"></div>
         <h2 class="emoji-header" id="sec-essence">⛩️ のりこ様という人について</h2>
         <div class="section">
             <p style="margin-bottom: 90px;">運命を深く視ていくと<br>あなたの本質には</p>
@@ -431,6 +543,7 @@
         </div>
 
         <!-- 1. 心が近づく時期 -->
+        <div id="deitySentinel"></div>
         <h2 class="emoji-header" id="sec-1">⛩️ 1. 心が近づく時期</h2>
         <div class="section">
             <p style="margin-bottom: 90px;">ここから視ていくのは</p>
@@ -572,7 +685,7 @@
         <h2 id="sec-flow">【今後の流れ】</h2>
         <div class="section">
             <p style="margin-bottom: 90px;">ここまでお伝えしてきたことを<br>時の流れに沿って<br>もう一度整理します。</p>
-
+            <div id="flow1Sentinel"></div>
             <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2026年6月：関わり方を変え始める月（大己貴命の月）</p>
             <p style="margin-bottom: 90px;">生まれ持った運命の巡りと<br>今の運気の流れが</p>
             <p style="margin-bottom: 90px;">ひとつに結びつく月です。</p>
@@ -582,12 +695,14 @@
             <p style="margin-bottom: 0;">変える練習を<br>始めるのに適した時期です。</p>
         </div>
 
+        <div id="flow2Sentinel"></div>
         <div class="section">
             <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年8月から9月：対等な関わりを学ぶ時期</p>
             <p style="margin-bottom: 90px;">身近な人との関わり方を<br>見直す機会が<br>自然と増えていく時期です。</p>
             <p style="margin-bottom: 0;">焦らず<br>少しずつ<br>関わり方を<br>変えていってください。</p>
         </div>
 
+        <div id="flow3Sentinel"></div>
         <div class="section">
             <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年12月：土台を整える月</p>
             <p style="margin-bottom: 90px;">これまでの10年の<br>締めくくりに向けて</p>
@@ -595,12 +710,14 @@
             <p style="margin-bottom: 0;">頑張るのをやめることを<br>意識してみてください。</p>
         </div>
 
+        <div id="flow4Sentinel"></div>
         <div class="section">
             <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2027年2月ごろ：存在感が輝き始める月（最重要の月）</p>
             <p style="margin-bottom: 90px;">あなたが生まれ持った<br>頼られる存在としての芯が<br>最も輝き始める節目です。</p>
             <p style="margin-bottom: 0;">娘様との関係も<br>新しい形で<br>安定していきます。</p>
         </div>
 
+        <div id="flowEndSentinel"></div>
         <div class="section">
             <h2 style="margin-top: 0;">【今年（2026年）の流れ】</h2>
             <p style="margin-bottom: 90px;">今年は</p>
@@ -616,6 +733,7 @@
         </div>
 
         <!-- 守護を受け取る方法 -->
+        <div id="guardianReturnSentinel"></div>
         <h2 class="emoji-header" id="sec-guardian">⛩️ 守護を受け取る方法</h2>
         <div class="section">
             <p style="margin-bottom: 90px;">そして<br>安心してください。</p>
@@ -677,6 +795,7 @@
         </div>
 
         <!-- あなたを支えるパワーストーン -->
+        <div id="stoneSentinel"></div>
         <h2 class="emoji-header" id="sec-stone">⛩️ あなたを支えるパワーストーン</h2>
         <div class="section">
             <p style="margin-bottom: 90px;">あなたには</p>
@@ -712,6 +831,7 @@
         </div>
 
         <!-- 結びの言葉 -->
+        <div id="closingSentinel"></div>
         <h2 id="sec-closing">【結びの言葉】</h2>
         <div class="closing">
             <p style="margin-bottom: 90px;">のりこ様</p>
@@ -739,6 +859,121 @@
         </div>
 
     </div>
+
+    <script>
+        (function () {
+            var elementBg = document.getElementById('elementBg');
+            var deityBg = document.getElementById('deityBg');
+            var doorBg = document.getElementById('doorBg');
+            var seasonSummerBg = document.getElementById('seasonSummerBg');
+            var seasonAutumnBg = document.getElementById('seasonAutumnBg');
+            var seasonWinterBg = document.getElementById('seasonWinterBg');
+            var stoneBg = document.getElementById('stoneBg');
+
+            var stages = [
+                { el: document.getElementById('elementSentinel'), bg: elementBg },
+                { el: document.getElementById('guardianSentinel'), bg: deityBg },
+                { el: document.getElementById('essenceSentinel'), bg: elementBg },
+                { el: document.getElementById('deitySentinel'), bg: doorBg },
+                { el: document.getElementById('flow1Sentinel'), bg: seasonSummerBg },
+                { el: document.getElementById('flow2Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flow3Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flow4Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flowEndSentinel'), bg: doorBg },
+                { el: document.getElementById('guardianReturnSentinel'), bg: deityBg },
+                { el: document.getElementById('stoneSentinel'), bg: stoneBg },
+                { el: document.getElementById('closingSentinel'), bg: doorBg }
+            ].filter(function (stage) { return !!stage.el; });
+            if (!stages.length) return;
+
+            var layers = [elementBg, deityBg, doorBg, seasonSummerBg, seasonAutumnBg, seasonWinterBg, stoneBg];
+            function show(active) {
+                layers.forEach(function (el) {
+                    if (el === active) el.classList.add('is-visible');
+                    else el.classList.remove('is-visible');
+                });
+            }
+
+            function onScroll() {
+                var trigger = window.innerHeight * 0.65;
+                var active = null;
+                for (var i = 0; i < stages.length; i++) {
+                    if (stages[i].el.getBoundingClientRect().top < trigger) {
+                        active = stages[i].bg;
+                    }
+                }
+                show(active);
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+
+        /* ===== 演出：花びら ===== */
+        (function () {
+            var cv = document.getElementById('petals');
+            var ctx = cv.getContext('2d');
+            var W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+            var isMobile = window.innerWidth < 700;
+
+            function resize() {
+                W = window.innerWidth; H = window.innerHeight;
+                cv.width = W * dpr; cv.height = H * dpr;
+                cv.style.width = W + 'px'; cv.style.height = H + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            var petals = [];
+            var petalN = isMobile ? 14 : 24;
+            for (var i = 0; i < petalN; i++) {
+                petals.push({
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    s: 5 + Math.random() * 7,
+                    vy: 0.35 + Math.random() * 0.7,
+                    sway: Math.random() * Math.PI * 2,
+                    swayV: 0.008 + Math.random() * 0.014,
+                    rot: Math.random() * Math.PI * 2,
+                    rotV: (Math.random() - 0.5) * 0.03,
+                    hue: Math.random() < 0.6 ? 'light' : 'deep'
+                });
+            }
+            function drawPetal(p) {
+                ctx.save();
+                ctx.translate(p.x + Math.sin(p.sway) * 26, p.y);
+                ctx.rotate(p.rot);
+                var g = ctx.createRadialGradient(0, 0, 0, 0, 0, p.s);
+                if (p.hue === 'light') {
+                    g.addColorStop(0, 'rgba(220, 180, 140, 0.95)');
+                    g.addColorStop(1, 'rgba(220, 180, 140, 0.25)');
+                } else {
+                    g.addColorStop(0, 'rgba(180, 130, 80, 0.95)');
+                    g.addColorStop(1, 'rgba(180, 130, 80, 0.25)');
+                }
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, p.s, p.s * 0.62, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function tick() {
+                ctx.clearRect(0, 0, W, H);
+                for (var pi = 0; pi < petals.length; pi++) {
+                    var p = petals[pi];
+                    p.y += p.vy;
+                    p.sway += p.swayV;
+                    p.rot += p.rotV;
+                    if (p.y > H + 20) { p.y = -20; p.x = Math.random() * W; }
+                    drawPetal(p);
+                }
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        })();
+    </script>
+
 <!-- GA4 カスタム計測：誰が/最後まで読んだか/購入ボタン [GA4-MIYUKI] -->
 <script>
 (function () {
