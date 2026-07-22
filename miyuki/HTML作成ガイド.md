@@ -1182,6 +1182,169 @@ body直下、`.aurora` より前に4つのdivを追加（`.container` の外）�
 
 ---
 
+## 本式（有料）鑑定書での背景演出（拡張パターン）
+
+無料鑑定（M）は元素→神様→扉の3段階だが、本式は文章が長く節目（今後の流れの各時期、パワーストーン紹介、結びなど）が多いため、同じ仕組みを以下のように拡張する。
+
+**無料鑑定パターンとの違い：**
+
+1. **sentinel↔背景の対応を配列化し、if-elseの連鎖ではなく「一番下まで見て、最後に到達したsentinelの背景を表示する」ループ処理にする。** sentinelが増えても配列に1行足すだけで済む。
+2. **セクションごとに専用の背景レイヤーを追加できる。** 例：「今後の流れ」の各時期に季節画像（冬/夏/秋/冬/夏/春など、暦の季節に合わせて割り当て）、「パワーストーン」セクションに石のブレスレット画像。同じ画像を複数のsentinelから使い回してよい（無料鑑定でelementBgを2箇所で使い回すのと同じ考え方）。
+3. **元の背景（神様や扉）に途中で戻したい場合は、そのdivをstages配列に再度登録するだけでよい**（新しいdivを作る必要はない）。例：パワーストーン紹介の直前に「神様」に戻す、結びの直前に「扉」に戻す、など。
+4. **`.deity-veil`の不透明度は、本式では以下の値まで下げる。** レイヤー数が増え、各背景写真がopacity 0.4程度でも埋もれやすくなるため（無料鑑定の初期値 radial `0.15/0.55/0.85`、linear `0.25/0.7` より大幅に薄い）。
+
+```css
+.deity-veil {
+    background:
+        radial-gradient(ellipse at 50% 20%, rgba(15, 15, 46, 0.04) 0%, rgba(15, 15, 46, 0.15) 60%, rgba(15, 15, 46, 0.25) 100%),
+        linear-gradient(180deg, rgba(15, 15, 46, 0.06) 0%, rgba(15, 15, 46, 0.18) 100%);
+}
+```
+
+**JSパターン（配列＋ループで拡張）：**
+
+```js
+(function () {
+    var elementBg = document.getElementById('elementBg');
+    var deityBg = document.getElementById('deityBg');
+    var doorBg = document.getElementById('doorBg');
+    // セクション専用の背景レイヤーもここで取得（例：季節・パワーストーンなど）
+
+    var stages = [
+        { el: document.getElementById('elementSentinel'), bg: elementBg },
+        { el: document.getElementById('guardianSentinel'), bg: deityBg },
+        { el: document.getElementById('essenceSentinel'), bg: elementBg },
+        { el: document.getElementById('deitySentinel'), bg: doorBg },
+        // ここから先、セクションごとにsentinelと背景を追加していく
+        { el: document.getElementById('guardianReturnSentinel'), bg: deityBg }, // 例：途中で神様に戻す
+        { el: document.getElementById('closingSentinel'), bg: doorBg }          // 例：結びの直前で扉に戻す
+    ].filter(function (stage) { return !!stage.el; });
+    if (!stages.length) return;
+
+    var layers = [elementBg, deityBg, doorBg /* , 追加した背景レイヤーも全部ここに列挙 */];
+    function show(active) {
+        layers.forEach(function (el) {
+            if (el === active) el.classList.add('is-visible');
+            else el.classList.remove('is-visible');
+        });
+    }
+
+    function onScroll() {
+        var trigger = window.innerHeight * 0.65;
+        var active = null;
+        for (var i = 0; i < stages.length; i++) {
+            if (stages[i].el.getBoundingClientRect().top < trigger) {
+                active = stages[i].bg;
+            }
+        }
+        show(active);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
+```
+
+**完成例:** `961_荒川理恵様_本式守護鑑定/index.html` を参照してください。季節背景（今後の流れ）、パワーストーン背景、神様⇄扉の複数回切り替え、deity-veilの薄め調整など、この拡張パターンの実装例として最も詳しく作り込まれています。**本式のHTMLを新規作成する際は、まずこのファイルの構成を参考にしてください。**
+
+---
+
+## 花びら演出（応用オプション：オーラカラーの花びらが舞う）
+
+背景クロスフェードに加えて、画面全体に花びらが常時舞う演出。色は**きらきら（白い光の粒）ではなく、守護神の光輪カラー（オーラ）と同じ色**を使う。世界観を統一するため、独自の色を当てずに「守護神 × 光輪カラー プリセット」表の値をそのまま流用する。
+
+### 1. CSS追記（`<style>`内）
+
+```css
+/* ===== 演出：花びら ===== */
+#petals {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+```
+
+body直下、`.deity-veil` の直後に追加：
+
+```html
+<canvas id="petals"></canvas>
+```
+
+### 2. JS追記（`</body>` の直前、背景クロスフェードのIIFEの後ろに追加）
+
+```html
+<script>
+/* ===== 演出：花びら ===== */
+(function () {
+    var cv = document.getElementById('petals');
+    var ctx = cv.getContext('2d');
+    var W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var isMobile = window.innerWidth < 700;
+
+    function resize() {
+        W = window.innerWidth; H = window.innerHeight;
+        cv.width = W * dpr; cv.height = H * dpr;
+        cv.style.width = W + 'px'; cv.style.height = H + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    var petals = [];
+    var petalN = isMobile ? 14 : 24;
+    for (var i = 0; i < petalN; i++) {
+        petals.push({
+            x: Math.random() * W,
+            y: Math.random() * H,
+            s: 5 + Math.random() * 7,
+            vy: 0.35 + Math.random() * 0.7,
+            sway: Math.random() * Math.PI * 2,
+            swayV: 0.008 + Math.random() * 0.014,
+            rot: Math.random() * Math.PI * 2,
+            rotV: (Math.random() - 0.5) * 0.03,
+            hue: Math.random() < 0.6 ? 'light' : 'deep'
+        });
+    }
+    function drawPetal(p) {
+        ctx.save();
+        ctx.translate(p.x + Math.sin(p.sway) * 26, p.y);
+        ctx.rotate(p.rot);
+        var g = ctx.createRadialGradient(0, 0, 0, 0, 0, p.s);
+        if (p.hue === 'light') {
+            g.addColorStop(0, 'rgba(【光輪カラー内側】, 0.95)');
+            g.addColorStop(1, 'rgba(【光輪カラー内側】, 0.25)');
+        } else {
+            g.addColorStop(0, 'rgba(【光輪カラー外側】, 0.95)');
+            g.addColorStop(1, 'rgba(【光輪カラー外側】, 0.25)');
+        }
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, p.s, p.s * 0.62, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    }
+
+    function tick() {
+        ctx.clearRect(0, 0, W, H);
+        for (var pi = 0; pi < petals.length; pi++) {
+            var p = petals[pi];
+            p.y += p.vy;
+            p.sway += p.swayV;
+            p.rot += p.rotV;
+            if (p.y > H + 20) { p.y = -20; p.x = Math.random() * W; }
+            drawPetal(p);
+        }
+        requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+})();
+</script>
+```
+
+**色の決め方（重要）**: `【光輪カラー内側】`/`【光輪カラー外側】`には、その鑑定書の守護神に対応する「守護神 × 光輪カラー プリセット」表の `--aura-color-1`（内側）/`--aura-color-2`（外側）の数値をそのまま入れる。例：961（大山祇神・山・深緑）では `150, 200, 140`（内側）/ `90, 150, 80`（外側）を使用。独自の色（きらきらの白系など）を新たに作らず、既存のオーラカラーに揃えることで世界観が統一される。
+
+---
+
 ## 色テストパネル（作成時に色を試したいとき・本番ではコメントアウト推奨）
 
 新規作成時に「この神様にはどの色が合うか」を試したい場合、ページ上部に色見本パネルを設置できます。

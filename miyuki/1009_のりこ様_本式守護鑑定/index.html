@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) : GA4 計測 [GA4-MIYUKI] -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHLDFT6DR7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JHLDFT6DR7');
+    </script>
+    <title>のりこ様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+
+            .toc {
+                padding: 20px 15px;
+            }
+
+            .toc-title {
+                font-size: 1.1em;
+            }
+
+            .toc a {
+                font-size: 0.95em;
+                padding: 12px 6px 12px 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">母娘の新しい絆</h2>
+            <p class="cover-name">のりこ様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 目次 -->
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-god">守護神について</a></li>
+                <li><a href="#sec-essence">のりこ様という人について</a></li>
+                <li><a href="#sec-1">1. 心が近づく時期</a></li>
+                <li><a href="#sec-2">2. 娘様の本当の想い</a></li>
+                <li><a href="#sec-3">3. のりこ様らしい寄り添い方</a></li>
+                <li><a href="#sec-4">4. ご自分を守る整え方</a></li>
+                <li><a href="#sec-flow">今後の流れ</a></li>
+                <li><a href="#sec-guardian">守護を受け取る方法</a></li>
+                <li><a href="#sec-stone">あなたを支えるパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
+        <!-- 冒頭 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">のりこ様</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂が<br>この関係に<br>本気で向き合おうとしている。</p>
+            <p style="margin-bottom: 90px;">その優しい強さが<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先<br>あなたが本当に知るべきことを<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px;">のりこ様と娘様が<br>それぞれの時間を過ごしながら<br>ふとした瞬間に<br>自然に笑い合っている姿。</p>
+            <p style="margin-bottom: 90px;">支える側と支えられる側<br>ではなく</p>
+            <p style="margin-bottom: 90px;">対等な二人として<br>隣に並んで立っている<br>そんな横顔です。</p>
+            <p style="margin-bottom: 90px;">その景色が<br>現実として立ち上がる兆しが<br>はっきりと視えています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">時期としては<br>2027年の2月ごろ。</p>
+            <p style="margin-bottom: 90px;">あなたが生まれながらに持つ<br>頼られる存在としての芯は<br>ふだんは静かに<br>眠っています。</p>
+            <p style="margin-bottom: 90px;">その芯が<br>最も強く目を覚ます時期が<br>ちょうどこの頃です。</p>
+            <p style="margin-bottom: 90px;">生まれ持った芯の光と<br>今年から積み重ねてきた変化と<br>めぐってくる月の後押しが</p>
+            <p style="margin-bottom: 90px;">三つの川が一つに合流するように<br>同じ場所で重なるからです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">長く積み重ねてきた<br>関わり方の見直しが<br>自然な形に落ち着いていく<br>節目の時期です。</p>
+            <p style="margin-bottom: 90px;">そこへ向かう最初の動きは<br>2026年の6月ごろ。</p>
+            <p style="margin-bottom: 90px;">これまで「これでいい」と<br>決めてきた関わり方が<br>少しずつ形を変え始めます。</p>
+            <p style="margin-bottom: 90px;">そこから夏にかけて<br>身近な人との関わり方を<br>見直す機会が続いていきます。</p>
+            <p style="margin-bottom: 90px;">その流れが<br>あなたの運命に刻まれています。</p>
+            <p style="margin-bottom: 90px;">ただ</p>
+            <p style="margin-bottom: 90px;">その道のりは<br>決して平坦ではありません。</p>
+            <p style="margin-bottom: 90px;">一度こうと決めた形を<br>手放すことに<br>静かな寂しさを覚える瞬間が<br>きっとあります。</p>
+            <p style="margin-bottom: 0;">でも<br>それを越える力を<br>あなたはすでに持っています。</p>
+        </div>
+
+        <!-- 守護神について -->
+        <div class="oracle-message" id="sec-god">
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは<br><span style="color: #ffd966;">大己貴命</span>（おおなむちのみこと）。</p>
+            <p style="margin-bottom: 90px;">昔、傷ついた白うさぎを<br>深く気の毒に思い</p>
+            <p style="margin-bottom: 90px;">痛みを癒す方法をそっと教えて<br>救った神様です。</p>
+            <p style="margin-bottom: 90px;">その優しさゆえに<br>多くの神々や人々から慕われ</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">広い国土を治め<br>豊かな実りをもたらしました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">包み込むように大きく<br>誰も見捨てない。</p>
+            <p style="margin-bottom: 0;">そんな神様として<br>今も出雲大社をはじめ<br>各地の神社に祀られています。</p>
+            <img src="../鑑定画像/大己貴命.png" alt="大己貴命" class="guardian-image">
+        </div>
+
+        <!-- のりこ様という人について -->
+        <h2 class="emoji-header" id="sec-essence">⛩️ のりこ様という人について</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">運命を深く視ていくと<br>あなたの本質には</p>
+            <p style="margin-bottom: 90px;">広い大地のような<br>どっしりとした土台があります。</p>
+            <p style="margin-bottom: 90px;">家族の中で<br>「大丈夫、私がいるから」と</p>
+            <p style="margin-bottom: 90px;">自然と頼られてきた<br>経験はありませんでしたか。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは<br>あなたが生まれ持った<br>大きさそのものです。</p>
+            <p style="margin-bottom: 90px;">もう一つ<br>視えていることがあります。</p>
+            <p style="margin-bottom: 90px;">あなたは<br>楽しい時間を分かち合うことで<br>人と深く繋がろうとする<br>性質を持っています。</p>
+            <p style="margin-bottom: 90px;">一緒に笑ったり<br>何気ない時間を過ごしたりすることが<br>あなたにとって<br>何より大切な栄養になっている。</p>
+            <p style="margin-bottom: 90px;">そう感じてきませんでしたか。</p>
+            <p style="margin-bottom: 90px;">ただ</p>
+            <p style="margin-bottom: 90px;">一度「これでいい」と決めた形を<br>変えることは<br>実はあまり得意ではありません。</p>
+            <p style="margin-bottom: 90px;">こうあってほしいという形が<br>崩れていくことに<br>静かな不安を覚える瞬間が<br>これまでにもありませんでしたか。</p>
+            <p style="margin-bottom: 90px;">普通なら<br>時間が解決してくれると思うところを</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは<br>その形そのものにこだわり続けてしまう。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは弱さではなく</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">一度築いた関係を<br>大切にしすぎるほどの<br>誠実さの表れです。</p>
+            <p style="margin-bottom: 90px;">もう一つ</p>
+            <p style="margin-bottom: 90px;">あなたの内側には<br>自分から新しいことを切り拓いていく力も<br>眠っています。</p>
+            <p style="margin-bottom: 90px;">これまでも<br>何もない場所から</p>
+            <p style="margin-bottom: 90px;">居場所や豊かさを<br>自分の手で築いてきました。</p>
+            <p style="margin-bottom: 90px;">そして<br>社会的な場でも</p>
+            <p style="margin-bottom: 90px;">大きな存在として<br>周りを支えてきた自負も<br>持っています。</p>
+            <p style="margin-bottom: 90px;">外に出れば<br>骨が折れることもありますが</p>
+            <p style="margin-bottom: 90px;">そのぶん必ず<br>助けてくれる縁にも恵まれています。</p>
+            <p style="margin-bottom: 90px;">心の内側では<br>いつもバランスを取りたい</p>
+            <p style="margin-bottom: 90px;">誰も傷つけたくないという<br>穏やかな願いが働いています。</p>
+            <p style="margin-bottom: 90px;">娘様の成長を<br>心から喜びたい自分と</p>
+            <p style="margin-bottom: 90px;">今のままでいてほしい自分。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その両方が<br>あなたの中で静かにせめぎ合っている。</p>
+            <p style="margin-bottom: 0;">それが今<br>一番大きな戸惑いになっています。</p>
+        </div>
+
+        <!-- 1. 心が近づく時期 -->
+        <h2 class="emoji-header" id="sec-1">⛩️ 1. 心が近づく時期</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから視ていくのは</p>
+            <p style="margin-bottom: 90px;">のりこ様と娘様の距離が<br>自然に縮まっていくタイミング。</p>
+            <p style="margin-bottom: 90px;">そのお話です。</p>
+            <p style="margin-bottom: 90px;">あなたの運命の流れは今</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これまでのものを一度手放し<br>次の形へと移っていく<br>そういう時期に入っています。</p>
+            <p style="margin-bottom: 90px;">同じころ娘様の運命は</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">自分の力を試し始める<br>そういう時期に入っています。</p>
+            <p style="margin-bottom: 90px;">この二つの流れが<br>噛み合うタイミングこそが</p>
+            <p style="margin-bottom: 90px;">心が近づく時期そのものです。</p>
+            <p style="margin-bottom: 90px;">今のあなたには</p>
+            <p style="margin-bottom: 90px;">「守りたいのに<br>気づけば距離ができてしまう」</p>
+            <p style="margin-bottom: 90px;">そういう感覚が<br>静かにあります。</p>
+            <p style="margin-bottom: 90px;">同じように娘様の内側にも</p>
+            <p style="margin-bottom: 90px;">母への信頼や愛情は<br>本物としてありながら</p>
+            <p style="margin-bottom: 90px;">ときどきぶつかったり<br>噛み合わなさを感じたりする<br>そういう揺れがあります。</p>
+            <p style="margin-bottom: 90px;">この二つの揺れが<br>同時に和らいでいく時が</p>
+            <p style="margin-bottom: 90px;">必ず訪れます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年は</p>
+            <p style="margin-bottom: 90px;">あなたにとっても娘様にとっても</p>
+            <p style="margin-bottom: 90px;">それぞれが自分の立ち位置を<br>見直す年にあたります。</p>
+            <p style="margin-bottom: 90px;">母娘それぞれが<br>同じ年に同じテーマへ向き合う。</p>
+            <p style="margin-bottom: 90px;">これは決して<br>偶然の巡り合わせではありません。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2026年の後半</p>
+            <p style="margin-bottom: 90px;">あなたが「支える」から<br>「対等に見守る」へと</p>
+            <p style="margin-bottom: 90px;">関わり方を変え始めたことが<br>きっかけとなり</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2027年<br>自然な距離感が定まっていきます。</p>
+            <p style="margin-bottom: 90px;">2026年は<br>関わり方そのものを変える練習の年。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">2027年に<br>その結果が実ります。</p>
+        </div>
+
+        <!-- 2. 娘様の本当の想い -->
+        <h2 class="emoji-header" id="sec-2">⛩️ 2. 娘様の本当の想い</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから視ていくのは</p>
+            <p style="margin-bottom: 90px;">娘様が口には出さない<br>本当の想い。</p>
+            <p style="margin-bottom: 90px;">そのお話です。</p>
+            <p style="margin-bottom: 90px;">娘様の内側には</p>
+            <p style="margin-bottom: 90px;">一人の時間や<br>自分だけの世界を</p>
+            <p style="margin-bottom: 90px;">大切にしたいという核があります。</p>
+            <p style="margin-bottom: 90px;">同時に</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">自分の力で<br>自分の道を選び取りたいという<br>強い意志も<br>生まれ持って備わっています。</p>
+            <p style="margin-bottom: 90px;">これは一時的なものではなく</p>
+            <p style="margin-bottom: 90px;">娘様の中で<br>一生変わらない核として</p>
+            <p style="margin-bottom: 90px;">これから先も<br>ずっとそこにあり続けます。</p>
+            <p style="margin-bottom: 90px;">娘様の中に映る<br>あなたの姿を視ていくと</p>
+            <p style="margin-bottom: 90px;">太陽のように<br>力強く照らしてくれる存在と</p>
+            <p style="margin-bottom: 90px;">繊細で情の深い<br>もう一つの姿と</p>
+            <p style="margin-bottom: 90px;">その両方として<br>映っています。</p>
+            <p style="margin-bottom: 90px;">そして</p>
+            <p style="margin-bottom: 90px;">娘様は母から受け取ってきた<br>愛情や恩恵を</p>
+            <p style="margin-bottom: 90px;">心のどこかで<br>確かに感じ取っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">母への信頼や好意そのものは<br>本質的に強いものとして</p>
+            <p style="margin-bottom: 90px;">娘様の中にあります。</p>
+            <p style="margin-bottom: 90px;">ただ同時に</p>
+            <p style="margin-bottom: 90px;">瞬発的な感情のぶつかりや</p>
+            <p style="margin-bottom: 90px;">分かっているのに<br>すれ違ってしまう瞬間も</p>
+            <p style="margin-bottom: 90px;">関係の中に<br>生まれやすくなっています。</p>
+            <p style="margin-bottom: 90px;">それは<br>嫌っているからではありません。</p>
+            <p style="margin-bottom: 90px;">気持ちが噛み合わない瞬間が<br>あるだけです。</p>
+            <p style="margin-bottom: 90px;">健康の面についても<br>少しだけ触れておきます。</p>
+            <p style="margin-bottom: 90px;">娘様の身体の基礎は<br>穏やかで安定した配置です。</p>
+            <p style="margin-bottom: 90px;">ただ思春期特有の<br>感情の張り詰めが</p>
+            <p style="margin-bottom: 90px;">身体のサインとして<br>出やすい時期でもあります。</p>
+            <p style="margin-bottom: 90px;">だからこそ</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「話を聞いてほしい」よりも<br>「そっとしておいてほしい」</p>
+            <p style="margin-bottom: 90px;">そういう瞬間があることも<br>本音の一部として</p>
+            <p style="margin-bottom: 90px;">知っておいていただきたいのです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">娘様の本当の想いは</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">嫌いになったわけではなく<br>自分の力を試したいだけ。</p>
+            <p style="margin-bottom: 90px;">あなたへの愛情は<br>変わっていません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">過度な心配よりも<br>見守ることのほうが</p>
+            <p style="margin-bottom: 90px;">今の娘様の本音に<br>寄り添う形になります。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">一人の時間を尊重することが<br>今できる<br>最大の歩み寄りです。</p>
+        </div>
+
+        <!-- 3. のりこ様らしい寄り添い方 -->
+        <h2 class="emoji-header" id="sec-3">⛩️ 3. のりこ様らしい寄り添い方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから視ていくのは</p>
+            <p style="margin-bottom: 90px;">頼られる強さを<br>この関係の中で</p>
+            <p style="margin-bottom: 90px;">どう活かしていけばいいのか。</p>
+            <p style="margin-bottom: 90px;">そのお話です。</p>
+            <p style="margin-bottom: 90px;">あなたは<br>楽しい時間を分かち合うことで<br>人と深く繋がろうとする<br>力を持っています。</p>
+            <p style="margin-bottom: 90px;">この力を</p>
+            <p style="margin-bottom: 90px;">教える形や<br>支える形として使うと</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">一度決めた形にこだわる<br>あなたの窮屈さが<br>かえって強まってしまいます。</p>
+            <p style="margin-bottom: 90px;">こんな感覚はありませんでしたか。</p>
+            <p style="margin-bottom: 90px;">良かれと思って伝えたことが<br>かえって<br>距離を作ってしまった経験。</p>
+            <p style="margin-bottom: 90px;">それは<br>あなたの愛情が<br>正面から届けようとする形に<br>向かいやすいからです。</p>
+            <p style="margin-bottom: 90px;">守護神が<br>もう一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px;">あなたが<br>何かに夢中になって<br>心から楽しそうに<br>笑っている横顔。</p>
+            <p style="margin-bottom: 90px;">その姿を<br>少し離れた場所から<br>娘様がそっと<br>見つめている景色です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">教えたり導いたりする姿より</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その笑顔のほうが<br>娘様の心には<br>ずっと深く残っていきます。</p>
+            <p style="margin-bottom: 90px;">守りたいという気持ちを<br>そのまま正面からぶつけると</p>
+            <p style="margin-bottom: 90px;">かえって<br>距離が生まれやすくなります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その守りたい気持ちは<br>正面から関わるより</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「いつでも見ている」という<br>後ろからの見守りに変えてみてください。</p>
+            <p style="margin-bottom: 90px;">夕暮れの光のように<br>そっと後ろから<br>照らし続けるような見守り方です。</p>
+            <p style="margin-bottom: 90px;">そうすることで</p>
+            <p style="margin-bottom: 90px;">守りたい気持ちの強さを保ったまま<br>距離感を刺激せずに<br>関係の中で機能させることができます。</p>
+            <p style="margin-bottom: 90px;">一緒に何かをするよりも</p>
+            <p style="margin-bottom: 90px;">それぞれが楽しむ姿を<br>見せ合う関わり方へ。</p>
+            <p style="margin-bottom: 0;">その移行が<br>これからのあなたたちの<br>新しい形になります。</p>
+        </div>
+
+        <!-- 4. ご自分を守る整え方 -->
+        <h2 class="emoji-header" id="sec-4">⛩️ 4. ご自分を守る整え方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから視ていくのは</p>
+            <p style="margin-bottom: 90px;">娘様を支えながらも</p>
+            <p style="margin-bottom: 90px;">あなたご自身の<br>心と体を守る方法。</p>
+            <p style="margin-bottom: 90px;">そのお話です。</p>
+            <p style="margin-bottom: 90px;">あなたの身体の基礎は</p>
+            <p style="margin-bottom: 90px;">今の10年の流れの中で<br>安定した土台にあります。</p>
+            <p style="margin-bottom: 90px;">ただ</p>
+            <p style="margin-bottom: 90px;">情熱を燃やしすぎる性質と</p>
+            <p style="margin-bottom: 90px;">一度決めた形にこだわり続ける<br>これまでの積み重ねが</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">頑張りすぎや<br>気持ちの溜め込みすぎとして</p>
+            <p style="margin-bottom: 90px;">胃腸や血圧<br>炎症といった形で<br>不調のきっかけになりやすいです。</p>
+            <p style="margin-bottom: 90px;">肩や首など<br>力の入りやすい部分や</p>
+            <p style="margin-bottom: 90px;">突発的な小さなケガにも<br>少しだけ気をつけてください。</p>
+            <p style="margin-bottom: 90px;">守護神が見せてくれているのは</p>
+            <p style="margin-bottom: 90px;">大地に根を張った大きな木が<br>一度、葉を落として<br>静かに休んでいる姿です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">木は弱ったのではなく</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">次の季節に向けて<br>力を蓄えているだけ。</p>
+            <p style="margin-bottom: 90px;">あなたの基礎そのものは<br>無理をしなければ<br>守られるようにできています。</p>
+            <p style="margin-bottom: 90px;">だからこそ</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「頑張るのをやめる」こと自体が<br>あなたにとって<br>最大の養生になります。</p>
+            <p style="margin-bottom: 90px;">急かされる感覚を<br>一度手放して</p>
+            <p style="margin-bottom: 90px;">ゆったりとしたペースを<br>意識してみてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">娘様を支える前に<br>まずはあなた自身が休むこと。</p>
+            <p style="margin-bottom: 0;">それが<br>これからの関係を<br>長く育てていく<br>一番の近道になります。</p>
+        </div>
+
+        <!-- 今後の流れ -->
+        <h2 id="sec-flow">【今後の流れ】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここまでお伝えしてきたことを<br>時の流れに沿って<br>もう一度整理します。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2026年6月：関わり方を変え始める月（大己貴命の月）</p>
+            <p style="margin-bottom: 90px;">生まれ持った運命の巡りと<br>今の運気の流れが</p>
+            <p style="margin-bottom: 90px;">ひとつに結びつく月です。</p>
+            <p style="margin-bottom: 90px;">大己貴命の<br>縁結び和合の力が</p>
+            <p style="margin-bottom: 0;">最も強く流れ込む月でもあります。</p>
+            <p style="margin-bottom: 90px;">娘様との関わり方を<br>「支える」から「対等」へ</p>
+            <p style="margin-bottom: 0;">変える練習を<br>始めるのに適した時期です。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年8月から9月：対等な関わりを学ぶ時期</p>
+            <p style="margin-bottom: 90px;">身近な人との関わり方を<br>見直す機会が<br>自然と増えていく時期です。</p>
+            <p style="margin-bottom: 0;">焦らず<br>少しずつ<br>関わり方を<br>変えていってください。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年12月：土台を整える月</p>
+            <p style="margin-bottom: 90px;">これまでの10年の<br>締めくくりに向けて</p>
+            <p style="margin-bottom: 90px;">身体のケアを<br>見直すのに適した時期です。</p>
+            <p style="margin-bottom: 0;">頑張るのをやめることを<br>意識してみてください。</p>
+        </div>
+
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2027年2月ごろ：存在感が輝き始める月（最重要の月）</p>
+            <p style="margin-bottom: 90px;">あなたが生まれ持った<br>頼られる存在としての芯が<br>最も輝き始める節目です。</p>
+            <p style="margin-bottom: 0;">娘様との関係も<br>新しい形で<br>安定していきます。</p>
+        </div>
+
+        <div class="section">
+            <h2 style="margin-top: 0;">【今年（2026年）の流れ】</h2>
+            <p style="margin-bottom: 90px;">今年は</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">身近な人との関わり方を<br>「支える 導く」から<br>「対等に見守る」へと見直す年です。</p>
+            <p style="margin-bottom: 0;">家族を含めた人との関わり方に<br>自然と変化が訪れます。</p>
+        </div>
+
+        <div class="section">
+            <h2 style="margin-top: 0;">【来年（2027年）の流れ】</h2>
+            <p style="margin-bottom: 90px;">来年は</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなた本来の<br>頼られる存在感や行動力が<br>最も輝く年です。</p>
+            <p style="margin-bottom: 0;">娘様との関係も<br>新しい形で<br>落ち着いていく可能性が<br>濃く視えています。</p>
+        </div>
+
+        <!-- 守護を受け取る方法 -->
+        <h2 class="emoji-header" id="sec-guardian">⛩️ 守護を受け取る方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">そして<br>安心してください。</p>
+            <p style="margin-bottom: 90px;">あなたのことを<br>深く霊視した際</p>
+            <p style="margin-bottom: 90px;">特別な守護の力を<br>あなたの奥底に</p>
+            <p style="margin-bottom: 90px;">置いてきました。</p>
+            <p style="margin-bottom: 90px;">それは<br><span style="color: #ffd966;">大己貴命</span>の力です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">一度決めた形にこだわる<br>心の強張りを静め</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">対等に見守る力を引き出し<br>必要な距離感を自然に整えていく流れを</p>
+            <p style="margin-bottom: 90px;">作っていきます。</p>
+            <p style="margin-bottom: 90px;">今この文を読んでいる間にも</p>
+            <p style="margin-bottom: 90px;">胸が少し温かくなる<br>肩が軽くなる<br>眠気を感じる<br>ふっと安心する。</p>
+            <p style="margin-bottom: 90px;">もしそのような感覚があれば</p>
+            <p style="margin-bottom: 90px;">すでに守護の力が<br>届き始めている証です。</p>
+            <p style="margin-bottom: 90px;">これは<br>何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ受け取るだけで<br>大丈夫です。</p>
+            <p style="margin-bottom: 90px;">もし今<br>少しだけ時間があれば</p>
+            <p style="margin-bottom: 90px;">一度静かに目を閉じてください。</p>
+            <p style="margin-bottom: 90px;">右手を胸の中央に当て<br>左手をお腹に添えて</p>
+            <p style="margin-bottom: 90px;">ゆっくり三度<br>呼吸をしてください。</p>
+            <p style="margin-bottom: 90px;">そして心の中で</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">「私は守られている」<br>「私は娘との新しい関係へ導かれている」</p>
+            <p style="margin-bottom: 90px;">そう唱えてみてください。</p>
+            <p style="margin-bottom: 90px;">胸のあたりが少し温かくなる<br>手がじんわりする<br>安心感が広がる。</p>
+            <p style="margin-bottom: 90px;">その感覚があれば</p>
+            <p style="margin-bottom: 90px;">すでに守護のエネルギーが<br>流れ始めています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">今のあなたに必要なのは</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">無理に頑張ることでは<br>ありません。</p>
+            <p style="margin-bottom: 90px;">まずは守護の流れを受け取り</p>
+            <p style="margin-bottom: 90px;">それだけでも<br>関わり方は変わり始めます。</p>
+            <p style="margin-bottom: 90px;">もし余裕がある時だけ<br>以下のことを試してみてください。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【守護神の神社へ行く】</p>
+            <p style="margin-bottom: 90px;">あなたの守護神とご縁のある神社を<br>4つお伝えします。</p>
+            <p style="margin-bottom: 90px;">お住まいから近い場所を<br>選んで訪れてみてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">1. 翠ヶ丘出雲神社<br>（神奈川県相模原市南区相南3-26-25）</p>
+            <p style="margin-bottom: 90px;">出雲大社より正式に<br>御分霊を勧請した神社です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">2. 子神社<br>（神奈川県相模原市緑区青山3732）</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">3. 出雲大社 相模分祠<br>（神奈川県秦野市平沢1221）</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">4. 石楯尾神社<br>（神奈川県相模原市南区磯部2137）</p>
+            <p style="margin-bottom: 90px;">古くからこの地を<br>見守り続けてきた神社です。</p>
+            <p style="margin-bottom: 90px;">参拝の際は<br>以下の祝詞を心の中で唱えてください。</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">祓え給い、清め給え、<br>神ながら守り給い、幸え給え</p>
+            <p style="margin-bottom: 90px;">（はらえたまい きよめたまえ<br>かむながらまもりたまい さきわえたまえ）</p>
+            <p style="margin-bottom: 90px;">そして</p>
+            <p style="margin-bottom: 90px;">お願い事を唱えるのではなく</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">「私は対等に見守っていきます。<br>どうか見守っていてください」</p>
+            <p style="margin-bottom: 90px;">という形で伝えてください。</p>
+            <p style="margin-bottom: 90px;">その姿勢が</p>
+            <p style="margin-bottom: 90px;">守護神との縁を<br>より深くします。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【朝に空を見上げる】</p>
+            <p style="margin-bottom: 90px;">朝、空を見上げて<br>深呼吸を一度。</p>
+            <p style="margin-bottom: 90px;">それだけで<br>守護の巡りはさらに深くなります。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【水で清める】</p>
+            <p style="margin-bottom: 90px;">疲れた日は<br>塩をひとつまみ入れたお風呂に。</p>
+            <p style="margin-bottom: 0;">流れが整っていきます。</p>
+        </div>
+
+        <!-- あなたを支えるパワーストーン -->
+        <h2 class="emoji-header" id="sec-stone">⛩️ あなたを支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">あなたには</p>
+            <p style="margin-bottom: 90px;">守護神のご縁をお伝えし<br>その力をあなたの奥底に</p>
+            <p style="margin-bottom: 90px;">置いてきました。</p>
+            <p style="margin-bottom: 90px;">また</p>
+            <p style="margin-bottom: 90px;">守護神と縁のある神社と</p>
+            <p style="margin-bottom: 90px;">参拝の際に力を取り入れる方法も<br>お伝えしました。</p>
+            <p style="margin-bottom: 90px;">基本的には<br>これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ</p>
+            <p style="margin-bottom: 90px;">守護の力は<br>何もしなければ</p>
+            <p style="margin-bottom: 90px;">少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">なかなか時間が取れない<br>神社が遠くて頻繁には行けない<br>という方も<br>いらっしゃいます。</p>
+            <p style="margin-bottom: 90px;">そのような方に<br>ぜひお勧めしたいのが</p>
+            <p style="margin-bottom: 90px;">パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px;">守護神の力を石に宿し</p>
+            <p style="margin-bottom: 90px;">常に身近に<br>持ち歩くことができるようになります。</p>
+            <p style="margin-bottom: 90px;">ただ</p>
+            <p style="margin-bottom: 90px;">どんな石でもよいわけではありません。</p>
+            <p style="margin-bottom: 90px;">あなたが持つエネルギーと<br>守護神が共鳴しやすい石で</p>
+            <p style="margin-bottom: 90px;">お作りする必要があります。</p>
+            <p style="margin-bottom: 90px;">あなたのエネルギーと<br><span style="color: #ffd966;">大己貴命</span>が共鳴しやすい石を</p>
+            <p style="margin-bottom: 90px;">3つお伝えします。</p>
+            <ul style="margin-bottom: 90px;">
+                <li><span style="color: #ffd966; font-weight: bold;">1. タイガーアイ</span><br>大地に根ざす力を宿す<br>土の石です。<br>あなたの本来の土台を支え<br>大己貴命の<br>広い大地のような包容力と<br>深く共鳴します。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">2. ローズクォーツ</span><br>無条件の愛を象徴する<br>優しいピンクの石です。<br>大己貴命の縁結びの力と共鳴し<br>娘様との関係を<br>新しい形で結び直す力を<br>後押ししてくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">3. アクアマリン</span><br>澄んだ海のような<br>涼やかな水色の石です。<br>燃えやすいあなたの情熱を鎮め<br>頑張りすぎる気持ちを<br>そっとほどいてくれます。</li>
+            </ul>
+            <p style="margin-bottom: 90px;">この中から</p>
+            <p style="margin-bottom: 90px;">あなたのエネルギーと<br>最もバランスが取れる組み合わせを</p>
+            <p style="margin-bottom: 90px;">私が選び<br>1つずつ手作りで仕上げます。</p>
+            <p style="margin-bottom: 0;">ご希望の方は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <h2 id="sec-closing">【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">のりこ様</p>
+            <p style="margin-bottom: 90px;">ここまで<br>読んでくださって<br>ありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたはこれまで<br>「大丈夫、私がいるから」と</p>
+            <p style="margin-bottom: 90px;">家族に向けて<br>ずっと言い続けてきました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これからは<br>その言葉を<br>あなた自身にも<br>向けてあげてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">変わることは<br>壊れることではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">距離を置くことも<br>見捨てることではありません。</p>
+            <p style="margin-bottom: 90px;">それは<br>新しい形で<br>つながり直すための<br>一番勇気のいる<br>一歩です。</p>
+            <p style="margin-bottom: 90px;">怖くなくなるわけではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">怖くても<br>踏み出していい。</p>
+            <p style="margin-bottom: 90px;">その一歩のすぐそばに<br><span style="color: #ffd966;">大己貴命</span>が<br>寄り添っています。</p>
+            <p style="margin-bottom: 90px;">あなたが<br>楽しそうに生きる姿。</p>
+            <p style="margin-bottom: 90px;">それこそが<br>娘様への<br>何よりの贈り物になります。</p>
+            <p style="margin-bottom: 90px;">だからどうか<br>自分のことを<br>後回しにしないでください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたにも<br>幸せになる権利が<br>はっきりとあります。</p>
+            <p style="margin-bottom: 90px;">迷いが出た時は<br>思い出してください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたはひとりではないと。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">大己貴命</span>が<br>広い大地のように<br>静かに<br>けれど確かに<br>あなたを支え続けています。</p>
+            <p style="margin-bottom: 90px;">本日より</p>
+            <p style="margin-bottom: 90px;">遠隔守護祈祷を行い<br>あなたの幸せを願います。</p>
+            <p style="margin-bottom: 0;">あなたと娘様の未来に<br>温かな絆が満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+<!-- GA4 カスタム計測：誰が/最後まで読んだか/購入ボタン [GA4-MIYUKI] -->
+<script>
+(function () {
+  function fire() {
+    var seg = location.pathname.split('/').filter(Boolean);
+    var last = decodeURIComponent(seg[seg.length - 1] || '');
+    var id = /\.html?$/i.test(last) ? decodeURIComponent(seg[seg.length - 2] || 'unknown') : (last || 'unknown');
+    var base = { kantei_id: id, persona: 'miyuki' };
+    gtag('set', 'user_properties', { kantei_id: id, persona: 'miyuki' });
+    gtag('event', 'page_open', base);
+
+    var end = document.querySelector('.signature, .sign');
+    if (end && 'IntersectionObserver' in window) {
+      var done = false;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && !done) { done = true; gtag('event', 'read_complete', base); io.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      io.observe(end);
+    }
+
+    document.querySelectorAll('.cta-button, .btn').forEach(function (b) {
+      b.addEventListener('click', function () { gtag('event', 'cta_click', base); });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire); else fire();
+})();
+</script>
+
+</body>
+</html>
