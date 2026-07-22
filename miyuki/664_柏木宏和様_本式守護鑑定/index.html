@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>柏木宏和様　本式守護鑑定</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+        .month-header {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #c8d0ff;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        .sub-header {
+            font-size: 1.15em;
+            font-weight: bold;
+            color: #ffd966;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+        ul { list-style: none; margin: 20px 0; text-align: center; }
+        ul li { margin: 20px 0; color: #e8e8f0; }
+        .stone-name {
+            color: #ffd966;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+        @media (max-width: 768px) {
+            body { font-size: 15px; padding: 10px; }
+            .container { padding: 20px 10px; }
+            h1 { font-size: 1.3em; }
+            h2 { font-size: 1.2em; }
+            .oracle-message, .section { padding: 15px 10px; }
+            .cover-page { margin: -10px; margin-bottom: 0; }
+            .cover-title { font-size: 1.6em; }
+            .cover-subtitle { font-size: 1.3em; }
+            .cover-name { font-size: 1.2em; }
+            .toc { padding: 20px 15px; }
+            .toc-title { font-size: 1.1em; }
+            .toc a { font-size: 0.95em; padding: 12px 6px 12px 36px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">北の大地に、もう一度</h2>
+            <p class="cover-name">柏木宏和様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 目次 -->
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-god">あなたの守護神について</a></li>
+                <li><a href="#sec-essence">宏和様という人</a></li>
+                <li><a href="#sec-1">1. 直美様との相性、そして北海道への願い</a></li>
+                <li><a href="#sec-2">2. 定年という決断について</a></li>
+                <li><a href="#sec-3">3. 転職と、これからの働き方について</a></li>
+                <li><a href="#sec-4">4. 健康と、これからの暮らしについて</a></li>
+                <li><a href="#sec-5">5. 老後の暮らしについて</a></li>
+                <li><a href="#sec-flow">今後の流れ</a></li>
+                <li><a href="#sec-guardian">守護を受け取る方法</a></li>
+                <li><a href="#sec-stone">あなたを支えるパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
+        <!-- 冒頭 -->
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">直美様、</p>
+            <p style="margin-bottom: 90px;">ご主人・宏和様についての<br>大切なご質問を、<br>ありがとうございます。</p>
+            <p style="margin-bottom: 90px;">ここから先は、<br>宏和様に語りかける形で、<br>視えていることをすべてお伝えしていきます。</p>
+            <p style="margin-bottom: 0;">このまま、<br>宏和様と一緒に読んでいただいても構いません。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2 id="sec-future">【宏和様の未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が、<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px;">宏和様が、<br>長年背負ってきた重たい荷物を、<br>静かに下ろす姿。</p>
+            <p style="margin-bottom: 90px;">そのすぐ隣で、<br>直美様が、<br>穏やかに笑っている。</p>
+            <p style="margin-bottom: 90px;">そして二人で、<br>かつて新婚旅行で訪れた<br>北の大地に、<br>もう一度降り立っている景色。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、<br>定年を迎えたあとの、<br>ある年の景色です。</p>
+            <p style="margin-bottom: 90px;">そこに至るまでの道のりは、<br>決して楽なものではありません。</p>
+            <p style="margin-bottom: 90px;">今、宏和様の中には、<br>「辞めたい」という思いと、<br>「本当にそれでいいのか」という迷いが、<br>静かにせめぎ合っています。</p>
+            <p style="margin-bottom: 90px;">でも、<br>その迷いの先に、<br>確かな安らぎの季節が待っている。</p>
+            <p style="margin-bottom: 0;">その兆しが、<br>はっきりと視えています。</p>
+        </div>
+
+        <!-- 守護神の紹介 -->
+        <div class="oracle-message" id="sec-god">
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは、<br><span style="color: #ffd966;">大山祇神<br>(おおやまつみのかみ)</span>。</p>
+            <p style="margin-bottom: 90px;">日本の山々を司る、<br>山の神々の総元締めです。</p>
+            <p style="margin-bottom: 90px;">大山祇神には、<br>二人の娘がいました。</p>
+            <p style="margin-bottom: 90px;">花のように美しく、<br>けれど儚い命を持つ、<br>木花咲耶姫。</p>
+            <p style="margin-bottom: 90px;">そして、<br>岩のように、<br>永遠に崩れない命を持つ、<br>磐長姫。</p>
+            <p style="margin-bottom: 90px;">天から降りた若き神は、<br>美しい妹の木花咲耶姫だけを娶り、<br>姉の磐長姫を<br>実家へ送り返してしまいました。</p>
+            <p style="margin-bottom: 90px;">大山祇神は深く嘆き、<br>こう言ったと伝えられています。</p>
+            <p style="margin-bottom: 90px;">「これでは、<br>天孫の命は、<br>花のように儚くなってしまうだろう」</p>
+            <p style="margin-bottom: 90px;">美しさよりも、<br>崩れない永遠を選ばなかったことを、<br>惜しんだのです。</p>
+            <p style="margin-bottom: 90px;">この物語が象徴しているのは、<br>「動かない岩」の尊さ。</p>
+            <p style="margin-bottom: 90px;">どれほど時代が移ろっても、<br>どれほど周りが揺れ動いても、<br>自分の場所から動かない。</p>
+            <p style="margin-bottom: 90px;">その揺るがない力こそが、<br>本当は一番、<br>人を守り、<br>支え続ける力なのだということ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">宏和様が持って生まれた<br>「動じない」<br>「一度決めたら曲げない」という質は、<br>まさにこの山の神の力そのものです。</p>
+            <p style="margin-bottom: 90px;">40年間、<br>休むことなく働き続けてこられた忍耐力も、<br>どんな天候にも揺るがず立ち続ける<br>山の姿と重なります。</p>
+            <p style="margin-bottom: 90px;">大山祇神は、<br>航海や治水、堤防の神とも<br>されています。</p>
+            <p style="margin-bottom: 90px;">大きな水の流れを受け止め、<br>氾濫から人々の暮らしを守る。</p>
+            <p style="margin-bottom: 0;">これもまた、<br>家族の暮らしを<br>土台からずっと支え続けてきた<br>宏和様の生き方と、<br>深く重なっています。</p>
+            <img src="../鑑定画像/大山祇神.png" alt="大山祇神" class="guardian-image">
+        </div>
+
+        <!-- 宏和様という人 -->
+        <h2 class="emoji-header" id="sec-essence">⛩️宏和様という人</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから、<br>宏和様という人について、<br>視えていることをお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">宏和様は、<br>山のように動じない人です。</p>
+            <p style="margin-bottom: 90px;">どっしりと構え、<br>何があっても、<br>そう簡単には揺らがない。</p>
+            <p style="margin-bottom: 90px;">そして、<br>家族に対しては、<br>惜しみなく尽くす。</p>
+            <p style="margin-bottom: 90px;">日頃の穏やかさは、<br>決して表面だけのものではなく、<br>魂の深いところから来ている、<br>本物の優しさです。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>その静かな優しさの奥には、<br>もう一つの顔があります。</p>
+            <p style="margin-bottom: 90px;">自分の価値観、<br>自分の美意識から外れた相手には、<br>本音では深く距離を置いてしまう。</p>
+            <p style="margin-bottom: 90px;">「嫌いな人には驚くほど冷たい」<br>という直美様の観察は、<br>まさにこの奥にある一面から来ています。</p>
+            <p style="margin-bottom: 90px;">これは冷たい人だからではなく、<br>自分の中に、<br>はっきりとした基準を持っているから。</p>
+            <p style="margin-bottom: 90px;">その基準に合わない相手に、<br>無理に心を開くことができない。<br>それだけのことです。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ。</p>
+            <p style="margin-bottom: 90px;">宏和様は、<br>一人の静けさをとても大切にする人です。</p>
+            <p style="margin-bottom: 90px;">群れることよりも、<br>一人で物事を静かに見つめる時間に、<br>本当の安らぎを感じる。</p>
+            <p style="margin-bottom: 90px;">穏やかに見えて、<br>実は内側に、<br>強い決断力と、<br>簡単には動かされない押しの強さを<br>秘めています。</p>
+            <p style="margin-bottom: 90px;">これが、<br>「頑固」という形で<br>外側に見えているものの正体です。</p>
+            <p style="margin-bottom: 90px;">不満や感情を言葉にして<br>すぐ外に出すタイプではありません。</p>
+            <p style="margin-bottom: 90px;">だからこそ、<br>内側に静かに溜め込みやすい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">40年の勤続、<br>そして3年以上休みのない生活を<br>支え続けてきたのは、<br>まさにこの<br>「自分を型にはめてでも耐え抜く力」です。</p>
+            <p style="margin-bottom: 90px;">これは本当にすごい力です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">でも同時に、<br>そろそろその力が<br>限界に近づいていることも、<br>はっきりと視えています。</p>
+            <p style="margin-bottom: 90px;">頭の回転は速く、<br>状況に応じて柔軟に物事を考えられる、<br>知恵のある人でもあります。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>柔らかく見える判断の奥で、<br>一度決めたことは絶対に譲らない。</p>
+            <p style="margin-bottom: 90px;">穏やかなのに頑固。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">これが、<br>宏和様という人の、<br>本当の姿です。</p>
+        </div>
+
+        <!-- ⛩️1. 直美様との相性、そして北海道への願い -->
+        <h2 class="emoji-header" id="sec-1">⛩️1. 直美様との相性、そして北海道への願い</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">直美様は、<br>海のように深く、<br>大きな水のエネルギーを持つ方。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">宏和様は、<br>その水を受け止め、<br>行き先を定める、<br>大地のような方です。</p>
+            <p style="margin-bottom: 90px;">大きな水は、<br>受け止める大地がなければ、<br>ただ広がり続けてしまう。</p>
+            <p style="margin-bottom: 90px;">大地は、<br>流れ込む水がなければ、<br>ただ乾いた場所になってしまう。</p>
+            <p style="margin-bottom: 90px;">お二人は、<br>そうやって<br>お互いを補い合う関係です。</p>
+            <p style="margin-bottom: 90px;">お二人の魂の根っこには、<br>「動かない者同士が向き合い、<br>互いに蓄えたものを持ち寄る」<br>という気持ちがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">26年間、<br>穏やかな結婚生活を<br>積み重ねてこられた。</p>
+            <p style="margin-bottom: 90px;">その実績こそが、<br>何よりの証明です。</p>
+            <p style="margin-bottom: 90px;">さらに、<br>直美様の魂の奥深くには、<br>もともと宏和様と同じ<br>「山」の気質が<br>静かに眠っています。</p>
+            <p style="margin-bottom: 90px;">だからこそ、<br>言葉にしなくても、<br>深いところで通じ合える。</p>
+            <p style="margin-bottom: 90px;">宏和様にとって直美様は、<br>太陽のように自分を照らし、<br>支えてくれる存在。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">誇れる、<br>信頼できる相手として、<br>魂に刻まれています。</p>
+            <p style="margin-bottom: 90px;">北海道への願いについて、<br>視えていることをお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">宏和様の運気は、<br>定年を迎える頃から、<br>「環境が大きく動く」流れに<br>入っていきます。</p>
+            <p style="margin-bottom: 90px;">これは、<br>移動や旅、<br>新しい景色に強く縁づく流れです。</p>
+            <p style="margin-bottom: 90px;">つまり、<br>定年後にちょうど、<br>旅の運気が開いていく。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">北海道にもう一度、<br>お二人で降り立つ願いは、<br>命の流れの上でも、<br>しっかりと後押しされています。</p>
+            <p style="margin-bottom: 90px;">今はまだ、<br>その手前の時期。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">まずは体を整え、<br>働き方を見直すこと。</p>
+            <p style="margin-bottom: 0;">それさえ整えば、<br>新婚旅行の景色を、<br>もう一度二人で見る日は、<br>決して遠い夢ではありません。</p>
+        </div>
+
+        <!-- ⛩️2. 定年という決断について -->
+        <h2 class="emoji-header" id="sec-2">⛩️2. 定年という決断について</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-weight: bold;">来年1月に定年を迎える、<br>このタイミングについて<br>お伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2026年は、<br>宏和様自身の命の中心に、<br>大きな節目のエネルギーが<br>直撃する年です。</p>
+            <p style="margin-bottom: 90px;">これは、<br>誰かに流されてではなく、<br>自分の意志で<br>人生の方向を選び直す年、<br>という意味です。</p>
+            <p style="margin-bottom: 90px;">宏和様の中には、<br>もともと<br>「自分の意志を強く貫く力」が<br>根に刻まれています。</p>
+            <p style="margin-bottom: 90px;">周りがどれだけ引き止めても、<br>本人の中に<br>「辞めたい」という思いがあるなら、<br>それは命の流れとして、<br>とても自然なことです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">無理に理由をつけて<br>自分を納得させる必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その「辞めたい」という気持ちそのものが、<br>すでに一つの答えです。</p>
+            <p style="margin-bottom: 90px;">そして、<br>ここ10年は<br>「耐えて調整する」ことがテーマの時期でした。</p>
+            <p style="margin-bottom: 90px;">その時期がちょうど終わりに近づき、<br>次の10年は<br>「環境が変わる」時期に<br>入っていきます。</p>
+            <p style="margin-bottom: 90px;">つまり、<br>定年という環境の変化は、<br>命の流れとして、<br>ごく自然なタイミングで<br>訪れているのです。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">このまま無理を重ねて<br>会社に残り続けるより、<br>ここで一つ区切りをつけて、<br>暮らしのペースを変えていくことが、<br>宏和様の命の流れに<br>沿った選択です。</p>
+        </div>
+
+        <!-- ⛩️3. 転職と、これからの働き方について -->
+        <h2 class="emoji-header" id="sec-3">⛩️3. 転職と、これからの働き方について</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">従兄弟の会社「ペッズイシバシ」への<br>転職について、<br>視えていることをお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">宏和様には、<br>もともと、<br>身内や年長者から<br>引き立てられ、支えられる<br>仕事運が強く刻まれています。</p>
+            <p style="margin-bottom: 90px;">血縁のご縁を通して、<br>新しい形の仕事に入っていくことは、<br>命の流れとして<br>無理のない選択です。</p>
+            <p style="margin-bottom: 90px;">むしろ、<br>一人で本業を抱え込むより、<br>支えられながら働ける環境の方が、<br>今の宏和様には合っています。</p>
+            <p style="margin-bottom: 90px;">バイトという軽い形であっても、<br>それは<br>「支えられながら生きる」<br>という、<br>今の宏和様にふさわしい<br>働き方の形です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">無理に本業のペースを<br>続けようとするより、<br>心と体に合った速さで<br>働ける場所に移っていくこと。</p>
+            <p style="margin-bottom: 0;">それが、<br>これからの宏和様を守る<br>一つの鍵になります。</p>
+        </div>
+
+        <!-- ⛩️4. 健康と、これからの暮らしについて -->
+        <h2 class="emoji-header" id="sec-4">⛩️4. 健康と、これからの暮らしについて</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-weight: bold;">3年以上、<br>休みのない生活を<br>続けてこられたことについて、<br>率直にお伝えします。</p>
+            <p style="margin-bottom: 90px;">先ほどもお伝えした通り、<br>宏和様には、<br>自分を型にはめてでも耐え抜く力が<br>とても強く刻まれています。</p>
+            <p style="margin-bottom: 90px;">それが、<br>40年の勤続、<br>そして週末返上の日々を<br>支えてきました。</p>
+            <p style="margin-bottom: 90px;">同時に、<br>不満や疲れを<br>言葉にして外に出す力が<br>弱い配置でもあります。</p>
+            <p style="margin-bottom: 90px;">外に逃せない分、<br>すべて内側に<br>静かに溜め込んでしまう。</p>
+            <p style="margin-bottom: 90px;">大きな崩れが<br>すでに決まっているわけではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">けれど、<br>このペースをこのまま続けること自体に、<br>無理があるという流れは、<br>はっきりと視えています。</p>
+            <p style="margin-bottom: 90px;">体そのものよりも先に、<br>心の中の<br>「我慢の器」が<br>そろそろ満ちてきている。</p>
+            <p style="margin-bottom: 90px;">そう捉えてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">だからこそ、<br>今のタイミングで<br>働き方を変えることが、<br>何よりの健康対策になります。</p>
+            <p style="margin-bottom: 0;">休みを増やすこと、<br>一つの仕事に絞ること、<br>そのどちらも、<br>今の宏和様にとって<br>必要な選択です。</p>
+        </div>
+
+        <!-- ⛩️5. 老後の暮らしについて -->
+        <h2 class="emoji-header" id="sec-5">⛩️5. 老後の暮らしについて</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">老後資金への不安について、<br>視えていることをお伝えします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">宏和様の根には、<br>お金を蓄える力、<br>そして身内から支えられる力が、<br>複数しっかりと刻まれています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">生活の土台そのものが<br>崩れてしまうようなことはありません。</p>
+            <p style="margin-bottom: 90px;">ただし、<br>「なんとなく不安なまま考え続ける」ことと、<br>「実際の数字を見て安心すること」は、<br>まったく違います。</p>
+            <p style="margin-bottom: 90px;">年金、扶養、保険。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">こうした実務的なことは、<br>感覚だけで判断せず、<br>一度、専門家に<br>きちんと整理してもらうことをお勧めします。</p>
+            <p style="margin-bottom: 90px;">数字として<br>土台の安定を確認できたとき、<br>宏和様の中に本来ある<br>「蓄える運」が、<br>本当の意味で活きてきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">老後破産を、<br>必要以上に恐れなくて大丈夫です。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">ただ、<br>不安なまま抱え込まず、<br>専門家という<br>「外の力」を頼ってください。</p>
+        </div>
+
+        <!-- 今後の流れ -->
+        <h2 id="sec-flow">【今後の流れ】</h2>
+        <div class="section">
+            <p class="month-header">2026年8月：立ち止まって心を定める月</p>
+            <p style="margin-bottom: 90px;">まだ結論を急がなくていい月です。</p>
+            <p style="margin-bottom: 90px;">「辞めたい」という気持ちを、<br>誰かに説明する必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">まずはご自身の中で、<br>その気持ちを<br>静かに認めてあげてください。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">直美様にも、<br>今の正直な気持ちを<br>少しずつ言葉にしてみてください。</p>
+
+            <p class="month-header">2026年9月：気持ちを言葉にしていく月</p>
+            <p style="margin-bottom: 90px;">心の中で固まってきたものを、<br>少しずつ外に出していく月です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">会社の人にではなく、<br>まずは身近な人に、<br>「辞めようと思っている」<br>という言葉を口にしてみてください。</p>
+            <p style="margin-bottom: 90px;">言葉にすることで、<br>気持ちがさらにはっきりしていきます。</p>
+            <p style="margin-bottom: 0;">従兄弟の会社のことも、<br>この時期に一度、<br>軽く話してみるとよいでしょう。</p>
+
+            <p class="month-header">2026年10月：意志を固め、動き始める月</p>
+            <p style="margin-bottom: 90px;">宏和様自身の意志が、<br>静かに固まっていく時期。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">会社に対して、<br>定年後の意向を<br>正式に伝える準備を<br>進めていく月。</p>
+            <p style="margin-bottom: 0;">迷いよりも、<br>確信が前に出てくる時期です。</p>
+
+            <p class="month-header">2026年11月：整理と準備の月</p>
+            <p style="margin-bottom: 90px;">退職に向けた<br>実務的な整理を進める月です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">年金、保険、<br>退職後の暮らし方について、<br>専門家に相談してみるなら、<br>このタイミングが良いでしょう。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">心の準備だけでなく、<br>現実の準備も整えていくことで、<br>2027年1月を<br>迷いなく迎えられます。</p>
+
+            <p class="sub-header">【今年（2026年）全体】</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2026年は、<br>宏和様にとって<br>「自分の意志で人生の舵を切り直す年」です。</p>
+            <p style="margin-bottom: 90px;">これまでの40年、<br>ずっと会社や周りに<br>自分を合わせてきました。</p>
+            <p style="margin-bottom: 90px;">その生き方から、<br>自分自身の声に従う生き方へ。</p>
+            <p style="margin-bottom: 90px;">大きな転換の年です。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">内側では、<br>迷いと決意がせめぎ合う年ですが、<br>その先に、<br>確かな安心が待っています。</p>
+
+            <p class="sub-header">【来年（2027年）】</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2027年1月、<br>定年を迎えます。</p>
+            <p style="margin-bottom: 90px;">長く続いた一つの時代が、<br>静かに幕を下ろす年です。</p>
+            <p style="margin-bottom: 90px;">同時に、<br>年金や退職手続きなど、<br>公的な整理が<br>進んでいく年でもあります。</p>
+            <p style="margin-bottom: 90px;">従兄弟の会社での<br>新しい働き方にも、<br>少しずつ馴染んでいく時期。</p>
+            <p style="margin-bottom: 90px;">これまでの<br>「休みなく働く」生き方から、<br>「自分のペースで働く」生き方へ。</p>
+            <p style="margin-bottom: 0;">体も心も、<br>少しずつ本来のリズムを<br>取り戻していく一年になります。</p>
+
+            <p class="sub-header">【再来年（2028年）】</p>
+            <p style="margin-bottom: 90px;">2028年は、<br>新しい暮らしのリズムが<br>すっかり馴染んでいく年です。</p>
+            <p style="margin-bottom: 90px;">働き方も、<br>心と体のペースも、<br>2027年に整えたものが<br>安定して回り始めます。</p>
+            <p style="margin-bottom: 90px;">直美様との時間も、<br>これまで以上に<br>穏やかに深まっていく時期。</p>
+            <p style="margin-bottom: 90px;">そしてこの先の数年で、<br>運気は少しずつ<br>「移動」や「旅」に<br>縁づいていく流れに入っていきます。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">新婚旅行で訪れた北の大地に、<br>もう一度お二人で降り立つ日は、<br>このゆっくりとした流れの延長線上に、<br>すでに用意されています。</p>
+        </div>
+
+        <!-- ⛩️守護を受け取る方法 -->
+        <h2 class="emoji-header" id="sec-guardian">⛩️守護を受け取る方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">宏和様の魂の奥底に、<br><span style="color: #ffd966;">大山祇神</span>の力を<br>そっと置いてきました。</p>
+            <p style="margin-bottom: 90px;">それは、<br>どれほど時代が移ろっても、<br>崩れることのない、<br>山そのものの力です。</p>
+            <p style="margin-bottom: 90px;">これから疲れを感じたときは、<br>どうか思い出してください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「私は、<br>崩れない山として<br>すでに立ち続けてきた」</p>
+            <p style="margin-bottom: 90px;">そう心の中で唱えるだけで、<br>内側に溜め込んだ重さが、<br>少しずつ軽くなっていきます。</p>
+            <p style="margin-bottom: 90px;">もし機会があれば、<br>直美様が調べてくださった<br>ゆかりの神社を、<br>訪れてみてください。</p>
+            <p style="margin-bottom: 30px;">赤手拭稲荷神社<br>（大阪府大阪市浪速区稲荷2-6-26）</p>
+            <p style="margin-bottom: 30px;">丹比神社<br>（大阪府堺市美原区多治井157-1）</p>
+            <p style="margin-bottom: 30px;">三島鴨神社<br>（大阪府高槻市三島江2-7-37）</p>
+            <p style="margin-bottom: 30px;">庄春日神社<br>（大阪府茨木市庄1-10-5）</p>
+            <p style="margin-bottom: 90px;">そして、<br>大山祇神をお祀りする総本社、<br>大山祇神社<br>（愛媛県今治市大三島町宮浦3327）</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">このうちどこか一社でも、<br>足を運べる時に<br>訪れてみてください。</p>
+            <p style="margin-bottom: 90px;">参拝の際は、<br>心の中でこの祝詞を<br>唱えてみてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">祓え給い、清め給え、<br>神ながら守り給い、幸え給え<br>（はらえたまい、きよめたまえ、<br>　かむながらまもりたまい、さきわえたまえ）</p>
+            <p style="margin-bottom: 90px;">そして、<br>願いを唱えるのではなく、</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">「私はこれまで、<br>家族のために立ち続けてきました。<br>これからも、<br>自分の場所から見守ります」</p>
+            <p style="margin-bottom: 90px;">という形で、<br>心の中で伝えてください。</p>
+            <p style="margin-bottom: 0;">その姿勢が、<br>大山祇神との縁を、<br>より深くしてくれます。</p>
+        </div>
+
+        <!-- ⛩️宏和様を支えるパワーストーン -->
+        <h2 class="emoji-header" id="sec-stone">⛩️宏和様を支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-weight: bold;">ここまでお伝えしてきた<br>守護神の力と神社での作法だけでも、<br>基本的には万全です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>神社になかなか足を運べない、<br>日々の中で守りを<br>身近に感じていたい、<br>という時のために、</p>
+            <p style="margin-bottom: 90px;">パワーストーンという形も<br>お伝えしておきます。</p>
+            <p style="margin-bottom: 90px;">直美様はすでに、<br>アクアマリン・ラリマー・<br>ムーンストーンという、<br>海の女神・豊玉姫と共鳴する<br>3つの石を身につけていらっしゃいます。</p>
+            <p style="margin-bottom: 30px; font-weight: bold;">宏和様の石を選ぶ際は、<br>直美様の石と<br>反発し合うのではなく、<br>「大地が海を受け止める」<br>という、<br>お二人の本来の関係性のまま<br>響き合う石を選びました。</p>
+            <ul>
+                <li>
+                    <p class="stone-name">1. タイガーアイ</p>
+                    <p style="margin-top: 10px;">山の力そのものを宿した石です。<br>決断力を強め、<br>迷いを断ち切って<br>前へ進む力を後押しします。<br>40年間、自分を型にはめて<br>耐え続けてきた宏和様が、<br>これから「自分の意志で選ぶ」段階に入る、<br>今の時期に最も合う石です。</p>
+                </li>
+                <li>
+                    <p class="stone-name">2. スモーキークォーツ</p>
+                    <p style="margin-top: 10px;">大地に深く根を張るような、<br>穏やかな茶褐色の石です。<br>内側に溜め込みやすい<br>不満や疲れを、<br>静かに吸い取り、<br>地に流してくれます。<br>3年以上、休みなく働き続けてきた<br>心と体を、<br>根本から支える石です。</p>
+                </li>
+                <li>
+                    <p class="stone-name">3. ラブラドライト</p>
+                    <p style="margin-top: 10px;">灰色の石でありながら、<br>角度によって、<br>海のような青い光を<br>内側にたたえています。<br>大地の石でありながら、<br>直美様の海の石と<br>最も強く共鳴する石です。<br>大きな変化の時期を<br>静かに支え、<br>お二人の魂をつなぐ<br>橋渡しの役割を果たします。<br>定年という人生の転換を<br>安心して迎えるために、<br>この石が力を貸してくれます。</p>
+                </li>
+            </ul>
+            <p style="margin-top: 60px; margin-bottom: 90px;">この3つの石を、<br>宏和様のために<br>一つひとつ手作りで仕上げます。</p>
+            <p style="margin-bottom: 90px;">直美様のブレスレットと並べてつけていただくと、<br>海と大地が響き合う、<br>お二人だけの守護の形になります。</p>
+            <p style="margin-bottom: 0; font-weight: bold; color: #f0f0ff;">ご希望の場合は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <div class="closing" id="sec-closing">
+            <p style="margin-bottom: 90px;">宏和様、</p>
+            <p style="margin-bottom: 90px;">あなたの未来には、<br>長年の重たい荷物を静かに下ろし、<br>直美様と穏やかに笑い合う日々へと<br>続く道が視えています。</p>
+            <p style="margin-bottom: 90px;">今はまだ、<br>迷いの中にあるかもしれません。</p>
+            <p style="margin-bottom: 90px;">「本当に辞めていいのか」<br>「このまま頑張り続けるべきなのか」</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">でもその迷いは、<br>40年間、<br>本当に真面目に<br>生きてこられたからこそ生まれるもの。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">あなたはすでに、<br>十分すぎるほど、<br>家族のために立ち続けてきました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これから必要なのは、<br>もっと耐えることではなく、<br>背負ってきたものを、<br>少しずつ下ろしていくことです。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">大山祇神</span>が、<br>崩れない山として、<br>これからのあなたを<br>静かに支え続けてくれます。</p>
+            <p style="margin-bottom: 90px;">直美様、</p>
+            <p style="margin-bottom: 90px;">ご主人の未来には、<br>穏やかな暮らしと、<br>北の大地にもう一度立つ<br>その日が視えています。</p>
+            <p style="margin-bottom: 90px;">お二人でその景色を<br>迎えられますように。</p>
+            <p style="margin-bottom: 0;">本日より、<br>宏和様の遠隔守護祈祷を行います。</p>
+            <p class="signature">深雪</p>
+        </div>
+
+    </div>
+</body>
+</html>
