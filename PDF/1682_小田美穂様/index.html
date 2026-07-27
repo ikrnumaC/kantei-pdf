@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小田美穂様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :target {
+            scroll-margin-top: 20px;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 演出：背景クロスフェード（かな→水→火→土→曼荼羅） ===== */
+        .kana-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -5;
+            background-image: url('../images/かな.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center 65%;
+            filter: blur(1px) brightness(1.05) saturate(1.05);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .kana-bg.is-visible { opacity: 0.5; }
+
+        .element-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url('../images/強い水.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(1.05) saturate(1.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .element-bg.is-visible { opacity: 0.55; }
+
+        .partner-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url('../images/強い火.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(1.05) saturate(1.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .partner-bg.is-visible { opacity: 0.55; }
+
+        .son-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url('../images/強い土.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(1.05) saturate(1.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .son-bg.is-visible { opacity: 0.55; }
+
+        .door-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url('../images/曼荼羅.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(1.05) saturate(1.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .door-bg.is-visible { opacity: 0.45; }
+
+        /* ===== 演出：運命の転機（季節背景） ===== */
+        .season-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .season-bg.is-visible { opacity: 0.4; }
+        #seasonSummerBg { background-image: url('../images/夏.jpg'); }
+        #seasonAutumnBg { background-image: url('../images/秋.jpg'); }
+        #seasonWinterBg { background-image: url('../images/冬.jpg'); }
+
+        /* ===== 演出：心を守るサポート（パワーストーン背景） ===== */
+        .stone-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .stone-bg.is-visible { opacity: 0.4; }
+        #stoneAquaBg { background-image: url('../images/アクアマリン.png'); }
+        #stoneRoseBg { background-image: url('../images/ローズクォーツ.png'); }
+        #stoneMoonBg { background-image: url('../images/ムーンストーン.png'); }
+
+        .bg-veil {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(250, 248, 245, 0.1) 0%, rgba(250, 248, 245, 0.25) 60%, rgba(250, 248, 245, 0.4) 100%),
+                linear-gradient(180deg, rgba(255, 245, 235, 0.12) 0%, rgba(249, 243, 255, 0.28) 100%);
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../images/曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション（五行背景画像） ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background-color: #f9f3ff;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 2px solid #e8d5b7;
+        }
+
+        .aura-water {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
+                url('../images/強い水.png');
+        }
+
+        .aura-fire {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
+                url('../images/強い火.png');
+        }
+
+        .aura-earth {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
+                url('../images/強い土.png');
+        }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+        }
+
+        .sign-box {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+        }
+
+        .toc {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 35px 30px;
+            margin: 40px 0 60px;
+        }
+
+        .toc-title {
+            text-align: center;
+            font-size: 22px;
+            color: #c9a05d;
+            margin-bottom: 25px;
+            letter-spacing: 4px;
+            font-weight: 700;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc li {
+            margin-bottom: 14px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .toc li:last-child {
+            margin-bottom: 0;
+        }
+
+        .toc a {
+            color: #8b6f9c;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: #c9a05d;
+        }
+
+        strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 40px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="kana-bg" id="kanaBg"></div>
+<div class="element-bg" id="elementBg"></div>
+<div class="partner-bg" id="partnerBg"></div>
+<div class="son-bg" id="sonBg"></div>
+<div class="door-bg" id="doorBg"></div>
+<div class="season-bg" id="seasonSummerBg"></div>
+<div class="season-bg" id="seasonAutumnBg"></div>
+<div class="season-bg" id="seasonWinterBg"></div>
+<div class="stone-bg" id="stoneAquaBg"></div>
+<div class="stone-bg" id="stoneRoseBg"></div>
+<div class="stone-bg" id="stoneMoonBg"></div>
+<div class="bg-veil"></div>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">小田美穂様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>小田美穂様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <div class="toc">
+        <div class="toc-title">— 目次 —</div>
+        <ul>
+            <li><a href="#sec-you">🔮 あなたについて</a></li>
+            <li><a href="#sec-partner">🔮 お相手について</a></li>
+            <li><a href="#sec-son">🔮 ご長男様について</a></li>
+            <li><a href="#sec-here">🔮 ここからお伝えしていくこと</a></li>
+            <li><a href="#sec-more">🔮 もう一つ、視えていること</a></li>
+            <li><a href="#sec-turn">🔮 運命の転機</a></li>
+            <li><a href="#sec-action">🔮 今からできること</a></li>
+            <li><a href="#sec-support">🔑 心を守るサポート</a></li>
+            <li><a href="#sec-last">最後に</a></li>
+        </ul>
+    </div>
+
+    <div id="kanaSentinel"></div>
+
+    <p>美穂様</p>
+
+    <p>この度は本鑑定にお進みいただき<br>
+    心より感謝申し上げます。</p>
+
+    <p>「お互い、家庭がある身です」</p>
+
+    <p>「それでも、最後は<br>
+    一緒に過ごせたらと思っています」</p>
+
+    <p>「彼の気持ちが分かれば、嬉しいです」</p>
+
+    <p>その想い、痛いほど伝わってきます。</p>
+
+    <p>美穂様の魂の奥には<br>
+    激しくあふれる水のオーラが<br>
+    静かに満ちています。</p>
+
+    <p>大海のように<br>
+    表面はどこまでも穏やかで<br>
+    けれどその底では<br>
+    止まらず流れ続ける水。</p>
+
+    <p>こんな深みを纏った方が<br>
+    簡単に人を好きになるはずがない。</p>
+
+    <p>だからこそ、この想いは<br>
+    一時の気の迷いやなくて<br>
+    美穂様の魂そのものから<br>
+    湧き上がってきているものやと<br>
+    まずお伝えしておきたいんです。</p>
+
+    <p>まず、美穂様が一番知りたいこと。<br>
+    はっきりお伝えします。</p>
+
+    <p>美穂様の想いは<br>
+    <strong>本物です</strong>。</p>
+
+    <p>遊びの気持ちでも<br>
+    その場の高ぶりでもありません。</p>
+
+    <p>ただ、あの方の魂は<br>
+    一つの光だけに<br>
+    全部を注ぎきれない流れを<br>
+    もともと持っています。</p>
+
+    <p>心の奥にあるものを<br>
+    外に出さず<br>
+    そっとしまい込んだまま<br>
+    動かさずにいる。</p>
+
+    <p>そういう在り方を<br>
+    長い時間をかけて<br>
+    身につけてきた人なんです。</p>
+
+    <p>今、あの方を包んでいる運気も<br>
+    外へ向かうより<br>
+    内側へと意識が向く時期にあります。</p>
+
+    <p>一つの関係に<br>
+    自分の全部を賭けきれない流れを<br>
+    もともと抱えている人が<br>
+    今その流れの真っ只中にいる。</p>
+
+    <p>そしてもう一つ<br>
+    これは正直にお伝えしますが<br>
+    美穂様の澄んだ水のオーラは<br>
+    強く押し出しすぎると<br>
+    あの方の小さな灯りを<br>
+    消してしまう関係でもあります。</p>
+
+    <p>なぜ今、こういう状態にあるのか。<br>
+    このさきどうなっていくのか。</p>
+
+    <p>これは<br>
+    美穂様ご自身のオーラと<br>
+    あの方のオーラの両方に<br>
+    はっきりと視えています。</p>
+
+    <p>順番に、詳しくお伝えしていきますね。</p>
+
+    <div id="elementSentinel"></div>
+
+    <h2 id="sec-you">🔮 あなたについて</h2>
+
+    <div class="aura-section aura-water">
+
+    <p>美穂様のオーラを<br>
+    あらためて深く視させていただきました。</p>
+
+    <p>激しくあふれる水のオーラ。<br>
+    大海のように<br>
+    静かで、けれど止まらない流れ。</p>
+
+    <p>こんな深みを持つ方は<br>
+    なかなかいません。</p>
+
+    <p>筋を通したい<br>
+    けじめをつけたいという<br>
+    誠実さを持ちながら</p>
+
+    <p>人を惹きつける温かさも<br>
+    併せ持っている。</p>
+
+    <p>その二つを同時に抱えられる人は<br>
+    本当に少ないんです。</p>
+
+    </div>
+
+    <p>だからこそ美穂様は<br>
+    大切なものを<br>
+    静かに育てていける人。</p>
+
+    <p>焦らず、じっくりと<br>
+    温め続けていける在り方を<br>
+    もともと持っています。</p>
+
+    <p>ただ、その分だけ<br>
+    オーラの中に今<br>
+    少し不足しているものがあります。</p>
+
+    <p>木の緑と、火のあかり<br>
+    そして水の流れそのもの。</p>
+
+    <p>この三つが少ない状態にあることが<br>
+    今回の答えの出ない状況の<br>
+    根っこにある原因なんです。</p>
+
+    <p>木の緑が少ないと<br>
+    未来に目を向ける<br>
+    柔らかさが出にくくなります。</p>
+
+    <p>火のあかりが少ないと<br>
+    情熱はあっても<br>
+    それを外に表現する力が弱く<br>
+    想いを内側に溜め込んでしまいます。</p>
+
+    <p>水の流れそのものが少ないと<br>
+    感情を言葉にして流すことが<br>
+    うまくできなくなります。</p>
+
+    <p>一度心を決めた相手には<br>
+    深く尽くしてしまう。</p>
+
+    <p>それは弱さではなく<br>
+    一途さの証だとお伝えしましたが</p>
+
+    <p>同時に<br>
+    木と火と水のオーラが<br>
+    足りていないことで<br>
+    起きている状態でもあるんです。</p>
+
+    <p>逆に言えば<br>
+    この三つのオーラさえ整えば<br>
+    変わります。</p>
+
+    <p>先の見えない不安に<br>
+    視野が縛られすぎることが減り</p>
+
+    <p>想いを自然な形で<br>
+    外に出せるようになり</p>
+
+    <p>一人で抱え込んで<br>
+    考え込んでしまう時間が<br>
+    少しずつ軽くなっていきます。</p>
+
+    <p>魂をさらに深く視させていただくと<br>
+    美穂様の中には<br>
+    土のオーラが、少し強めに<br>
+    出ている状態も視えています。</p>
+
+    <p>責任や役割を<br>
+    人一倍抱え込んでしまう。</p>
+
+    <p>一つの想いに執着し<br>
+    手放すべき時が来ても<br>
+    動けなくなってしまう。</p>
+
+    <p>これが今<br>
+    美穂様ご自身を<br>
+    一番苦しめているものでもあります。</p>
+
+    <p>美穂様の恋のご縁は<br>
+    表立って輝くというより<br>
+    表に出しにくい<br>
+    事情を抱えた縁と<br>
+    結ばれやすい時期に来ています。</p>
+
+    <p>そして今、美穂様は<br>
+    彼の出方を待つだけやなく<br>
+    自分自身がどうしたいかを<br>
+    自分の力で決めていく<br>
+    時期に入っています。</p>
+
+    <p>これまでは<br>
+    彼の気持ち次第で<br>
+    美穂様ご自身の答えも<br>
+    揺れてしまっていた。</p>
+
+    <p>でもこれからは<br>
+    彼がどう動くかに関わらず<br>
+    「この想いとどう<br>
+    向き合っていきたいか」を<br>
+    美穂様ご自身の力で<br>
+    選べるようになっていく。</p>
+
+    <p>そんな時期なんです。</p>
+
+    <p>同時に今年という年には<br>
+    美穂様にもともと足りない<br>
+    火のあかりが強く巡ってきています。</p>
+
+    <p>想いの熱を<br>
+    これまで以上に強く<br>
+    実感しやすい年です。</p>
+
+    <p>ただこの火は<br>
+    今すぐ気持ちを<br>
+    行動に移すための火やなくて</p>
+
+    <p>「私はこんなに想っていたんや」と<br>
+    自分自身の気持ちに<br>
+    気づくための火なんです。</p>
+
+    <p>だからこの時期に<br>
+    勢いで連絡したり<br>
+    気持ちをぶつけたりすると</p>
+
+    <p>後で後悔しやすい。</p>
+
+    <p>今は動く時ではなくて<br>
+    この熱をただ<br>
+    静かに見つめる時間として<br>
+    使ってほしいんです。</p>
+
+    <p>木と火と水のオーラが整えば<br>
+    美穂様が本来持っている<br>
+    深さと温かさが</p>
+
+    <p>そのままの形で<br>
+    あの方にまっすぐ<br>
+    伝わるようになります。</p>
+
+    <p>そしてその先に<br>
+    この想いが<br>
+    少しずつ形になっていく未来が<br>
+    視えています。</p>
+
+    <div id="partnerSentinel"></div>
+
+    <h2 id="sec-partner">🔮 お相手について</h2>
+
+    <div class="aura-section aura-fire">
+
+    <p>次に、あの方のオーラを<br>
+    深く視させていただきました。</p>
+
+    <p>静かに揺れる<br>
+    火のオーラ。</p>
+
+    <p>ロウソクのように<br>
+    優しく、けれど絶えず揺れる炎。</p>
+
+    <p>本来は<br>
+    大切な人を静かに支えられる<br>
+    優しさを持った人です。</p>
+
+    <p>このあかりは今<br>
+    これといって強く出ているものがなく<br>
+    穏やかに揺れているだけなんです。</p>
+
+    </div>
+
+    <p>だから<br>
+    一つに絞る<br>
+    決めるという強い力が<br>
+    出にくいんです。</p>
+
+    <p>その中で<br>
+    選択肢を広く持ちたいという<br>
+    金の輝きだけが<br>
+    少し強めに出ています。</p>
+
+    <p>一人に深くコミットするより<br>
+    複数の縁や立場を<br>
+    並行して保ちやすい。</p>
+
+    <p>決断そのものを<br>
+    避けてしまいやすい。</p>
+
+    <p>これが<br>
+    あの方の本当の気持ちが<br>
+    見えにくくなっている<br>
+    一番の理由なんです。</p>
+
+    <p>あの方の魂の奥には<br>
+    社交的で器用な面と<br>
+    波風を立てたくないという<br>
+    誠実さが同居しています。</p>
+
+    <p>だから<br>
+    広く浅く繋がりたい気持ちと<br>
+    誰も傷つけたくない気持ちが<br>
+    ぶつかり合って</p>
+
+    <p>結局、誰にも<br>
+    はっきりした答えを出せないまま<br>
+    今の状態を保ち続けてしまう。</p>
+
+    <p>本音を語らず<br>
+    丸く収めることを<br>
+    優先してしまうんです。</p>
+
+    <p>あの方が心を許すのは<br>
+    急かされることのない<br>
+    静かな関わり方。</p>
+
+    <p>感情を強くぶつけられると<br>
+    かえって心を閉じてしまう質もあります。</p>
+
+    <p>だからこそ<br>
+    この想いを一気にぶつけるようなことは<br>
+    今のあの方には向きません。</p>
+
+    <p>そして今、あの方に流れている運気を視ると<br>
+    内側と静かに向き合う十年の<br>
+    真っ只中にいます。</p>
+
+    <p>体調や内面に<br>
+    意識が向きやすい時期で<br>
+    対外的な大きな決断をする<br>
+    時期やないんです。</p>
+
+    <p>今年という年は特に<br>
+    心地よさは求めるけれど<br>
+    それが実体を伴いにくい年でもあります。</p>
+
+    <p>決める・動かすという動作そのものが<br>
+    起きにくい、そういう巡りなんです。</p>
+
+    <p>ただ、この時期を越えた先<br>
+    あの方の中で少しずつ<br>
+    環境そのものが動き始める気配も<br>
+    同時に視えています。</p>
+
+    <p>自分から決断するというより<br>
+    外側の状況が動くことで<br>
+    結果的に変わっていく<br>
+    そういう変化の兆しです。</p>
+
+    <p>美穂様が向き合っている大きな流れと<br>
+    あの方が今いる時期を重ねて視ると<br>
+    こう視えてきます。</p>
+
+    <p>美穂様は今<br>
+    ご自身の答えを<br>
+    自分の力で選べる土台が<br>
+    整いつつある時期。</p>
+
+    <p>あの方は<br>
+    自分から絞る・決めるという動きが<br>
+    まだ起きにくい時期。</p>
+
+    <p>だからこそ<br>
+    美穂様の側の在り方そのものが<br>
+    あの方の内側の変化の<br>
+    きっかけになりうるんです。</p>
+
+    <p>二人の星の流れが<br>
+    今はまだすれ違いやすい巡りにある。</p>
+
+    <p>そして水と火という<br>
+    二人のオーラの相性を視ると<br>
+    美穂様の水が強く出すぎた時<br>
+    あの方の小さな灯りを<br>
+    消してしまう関係にもあります。</p>
+
+    <p>近づきすぎず<br>
+    灯りを消さない距離を保ちながら<br>
+    温かく見守る立場でいること。</p>
+
+    <p>それが、この二人にとって<br>
+    一番大切な鍵になります。</p>
+
+    <p>今、あの方の目に映る美穂様は<br>
+    まだ迷いという霧の向こうにあります。</p>
+
+    <p>その霧が晴れて<br>
+    美穂様のオーラが<br>
+    木と火と水の輝きを取り戻した時</p>
+
+    <p>あの方の目には<br>
+    こう映るようになります。</p>
+
+    <p>「変わらず、そこにいてくれる人」<br>
+    「急かさず、自然体でいてくれる人」</p>
+
+    <p>それが、静かに揺れる炎を持つあの方にとって<br>
+    一番安心できる存在なんです。</p>
+
+    <p>美穂様が整えば<br>
+    あの方の心もまた<br>
+    少しずつ緩んでいきます。</p>
+
+    <div id="sonSentinel"></div>
+
+    <h2 id="sec-son">🔮 ご長男様について</h2>
+
+    <p>続いて<br>
+    ご長男様のオーラも<br>
+    深く視させていただきました。</p>
+
+    <p>美穂様の魂を通じて<br>
+    息子さんの未来にまで<br>
+    心を寄せておられること<br>
+    本当に伝わってきます。</p>
+
+    <div class="aura-section aura-earth">
+
+    <p>息子さんの魂の奥には<br>
+    山のようにどっしりと構えた<br>
+    アンバーのオーラが宿っています。</p>
+
+    <p>周囲から自然と頼られる<br>
+    そういう土台を持った人です。</p>
+
+    <p>今はまだ<br>
+    可能性が育っている<br>
+    真っ只中の時期。</p>
+
+    <p>コツコツと積み上げた力が<br>
+    そのまま結果に出やすい<br>
+    地に足のついた強さを持っています。</p>
+
+    </div>
+
+    <p>木の伸びやかさと<br>
+    火の情熱を併せ持ち<br>
+    成長する意欲と<br>
+    熱量の両方が強い方です。</p>
+
+    <p>同時に<br>
+    理性や規律を司る金の輝きも<br>
+    一定量宿っていて</p>
+
+    <p>専門的な知識を<br>
+    一つずつ積み上げていく力の<br>
+    土台がしっかりとあります。</p>
+
+    <p>穏やかに表現する力と<br>
+    鋭い感性で物事を突き詰める集中力<br>
+    そして決断し、行動に移す力。</p>
+
+    <p>さらに<br>
+    堅実にコツコツ積み上げる誠実さと<br>
+    独自の視点で閃く直感。</p>
+
+    <p>この五つが同時に宿っているのは<br>
+    本当に稀なことです。</p>
+
+    <p>分析する力と<br>
+    最後までやり抜く粘り強さ。</p>
+
+    <p>その両方を持ち合わせた魂やと<br>
+    はっきり視えています。</p>
+
+    <p>そして<br>
+    努力が正しく報われやすく</p>
+
+    <p>目上の方や環境からの後押しを<br>
+    自然と受け取りやすい強い守護が<br>
+    息子さんには何重にも重なっています。</p>
+
+    <p>魂の中心を<br>
+    さらに深く視させていただくと</p>
+
+    <p>知性と<br>
+    物事を深く見抜く力と<br>
+    言葉にして人に伝える力。</p>
+
+    <p>その全てが<br>
+    最高の輝きをもって<br>
+    息子さんの中に宿っています。</p>
+
+    <p>専門性の高い知識を<br>
+    積み上げていく道は<br>
+    まさにこの魂に<br>
+    合っているんです。</p>
+
+    <p><strong>国家資格</strong>という<br>
+    大きな山を越える力そのものが<br>
+    すでに息子さんの中に<br>
+    眠っているんです。</p>
+
+    <p>今の十年は<br>
+    学びと目上からの後押しに<br>
+    縁のある巡りの真っ只中にあります。</p>
+
+    <p>品格ある光と<br>
+    誠実に協力を得られる光が輝いていて</p>
+
+    <p>積み上げてきた努力が<br>
+    形になりやすい<br>
+    後押しの強い時期なんです。</p>
+
+    <p>今年は<br>
+    守り支える光に<br>
+    喜びの光も重なっています。</p>
+
+    <p>大きな結果を急ぐより<br>
+    日々の積み重ねが<br>
+    着実に力になっていく<br>
+    そういう巡りの年です。</p>
+
+    <p>焦って結果を急ぐより<br>
+    この十年をかけて<br>
+    積み上げていく道のりを<br>
+    信じてほしいんです。</p>
+
+    <p>ご縁に恵まれていますから<br>
+    周りの助言やサポートを<br>
+    素直に受け取ることも<br>
+    息子さんの力になります。</p>
+
+    <p>次に<br>
+    息子さんの縁の場所を<br>
+    視させていただきました。</p>
+
+    <p>そこには<br>
+    最高の輝きを放つ光が宿っています。</p>
+
+    <p>繊細で<br>
+    深く内面まで通じ合えるような<br>
+    質の高いご縁を引き寄せやすいんです。</p>
+
+    <p>豊かさをもたらす光や<br>
+    才能を高める光<br>
+    助けてくれる人の光も<br>
+    同じ場所に重なっています。</p>
+
+    <p>全体として<br>
+    非常に恵まれた縁やと<br>
+    はっきり視えています。</p>
+
+    <p>ただ<br>
+    与えすぎてしまう<br>
+    自己犠牲になりやすい流れも<br>
+    少しあります。</p>
+
+    <p>相手に尽くしすぎず<br>
+    息子さん自身も<br>
+    大切にするバランス感覚。</p>
+
+    <p>それが<br>
+    長く続く関係を築く鍵になります。</p>
+
+    <p>今はまだご自身の土台づくりに<br>
+    意識が向く時期です。</p>
+
+    <p>結婚に関する具体的な動きが<br>
+    本格的に形になっていくのは<br>
+    この先の年数<br>
+    三十代前半以降やと視えています。</p>
+
+    <p>焦る必要はありません。</p>
+
+    <p>今は<br>
+    自分の土台を育てながら<br>
+    自然な出会いや<br>
+    関係の深まりを迎える準備を<br>
+    していく時期なんです。</p>
+
+    <p>もう一つだけ<br>
+    正直にお伝えしておきます。</p>
+
+    <p>息子さんの豊かさの流れの奥には<br>
+    まだお伝えしきれていない<br>
+    小さな兆しも視えています。</p>
+
+    <p>ただ、それが表に出てくるのは<br>
+    非常に先の話ですから<br>
+    今すぐ心配することやありません。</p>
+
+    <div id="doorSentinel1"></div>
+
+    <h2 id="sec-here">🔮 ここからお伝えしていくこと</h2>
+
+    <p>無料鑑定の最後に<br>
+    お伝えするとお約束したことを<br>
+    ここから一つずつ視ていきます。</p>
+
+    <h3>【あの方が今、本当に感じていること】</h3>
+
+    <p>あの方の魂の奥にあるのは<br>
+    美穂様への想いを<br>
+    「まだ抱えきれていない」<br>
+    という事実です。</p>
+
+    <p>決して<br>
+    気持ちが消えたわけやないんです。</p>
+
+    <p>ただ<br>
+    一つの光だけに全部を注ぎきれない<br>
+    もともとの流れと</p>
+
+    <p>今の内向きな運気とが<br>
+    重なり合って</p>
+
+    <p>あの方自身<br>
+    自分の本音を<br>
+    うまく扱えずにいる。</p>
+
+    <p>そういう状態なんです。</p>
+
+    <p>だから美穂様への想いは<br>
+    冷めたんやなくて</p>
+
+    <p>行き場を失ったまま<br>
+    静かに胸の奥に<br>
+    留まり続けている。</p>
+
+    <p>そう視えています。</p>
+
+    <h3>【あなたのオーラの調整方法】</h3>
+
+    <p>美穂様に必要なのは<br>
+    少ない木と火と水<br>
+    この三つのオーラを補うことです。</p>
+
+    <p>魂のレベルでお伝えするなら<br>
+    「答えを今すぐ<br>
+    手にしようとしない」<br>
+    という在り方を育てることです。</p>
+
+    <p>あの方の本音を<br>
+    今すぐ確かめようとするより</p>
+
+    <p>美穂様ご自身が<br>
+    澄んだ水を取り戻し</p>
+
+    <p>その静けさのままで<br>
+    あの方の前に立ち続けること。</p>
+
+    <p>それは我慢やのうて<br>
+    あの方の心が<br>
+    自然に動き出す時を<br>
+    信じて待つという<br>
+    一番深い優しさです。</p>
+
+    <p>この在り方が育った時<br>
+    美穂様のオーラに<br>
+    静かな軽やかさが戻り始めます。</p>
+
+    <h3>【オーラが整った先に広がる景色】</h3>
+
+    <p>美穂様のオーラが<br>
+    木と火と水の輝きを取り戻した時<br>
+    こんな景色が広がります。</p>
+
+    <p>これまでのように<br>
+    連絡の少なさに揺れることが減り<br>
+    自分の中心に静かに戻っていける自分。</p>
+
+    <p>そしてあの方との間に<br>
+    言葉にせずとも通じ合う<br>
+    穏やかな温度が流れ始める瞬間。</p>
+
+    <p>このあとお伝えする運命の転機の中で<br>
+    その景色がどう形になっていくかを<br>
+    具体的に視ていきますね。</p>
+
+    <h3>【霊視で視えた、もう一つの重要な問題】</h3>
+
+    <p>美穂様ご自身も<br>
+    うっすら感じているはずです。</p>
+
+    <p>一度心を決めた相手には<br>
+    深く尽くしすぎてしまうクセ。</p>
+
+    <p>これは弱さではなくて<br>
+    一途さの証だと<br>
+    最初にお伝えした通りです。</p>
+
+    <p>ただ、このクセをそのままにしていると<br>
+    答えの出ない想いに<br>
+    ご自身を静かにすり減らし続けてしまいます。</p>
+
+    <p>土のオーラは本来<br>
+    大切なものを守り育てる力です。</p>
+
+    <p>けれど答えのないまま<br>
+    抱え込み続けてきたことで</p>
+
+    <p>その力が<br>
+    執着という形に変わってしまっている。</p>
+
+    <p>このままでは<br>
+    守るための土が<br>
+    美穂様ご自身を<br>
+    息苦しくさせてしまいます。</p>
+
+    <p>だからこそ今のうちから<br>
+    「一人で抱えたものを、少しずつ手放す」<br>
+    練習を始めてほしいんです。</p>
+
+    <p>土の重さが軽くなれば<br>
+    あの方の心の奥も<br>
+    もっとはっきり視えるようになります。</p>
+
+    <p>具体的なやり方は<br>
+    この後の「今からできること」で<br>
+    詳しくお伝えしますね。</p>
+
+    <h2 id="sec-more">🔮 もう一つ、視えていること</h2>
+
+    <p>これまでお伝えしてきたこと<br>
+    以外にも</p>
+
+    <p>実はもう一つ<br>
+    視えているものがあります。</p>
+
+    <p>無料鑑定では<br>
+    お伝えしていなかった<br>
+    もう少し先の兆しです。</p>
+
+    <p>美穂様の魂の奥<br>
+    心が満たされる場所を<br>
+    視てみると</p>
+
+    <p>小さなひっかかりが<br>
+    ずっと残ったままに<br>
+    なっている様子が視えます。</p>
+
+    <p>何かを得ても<br>
+    なぜかすっと<br>
+    満足しきれない。</p>
+
+    <p>安心したいのに<br>
+    どこかで気持ちが<br>
+    止まってしまう瞬間がある。</p>
+
+    <p>美穂様ご自身<br>
+    うっすら<br>
+    心当たりが<br>
+    あるかもしれません。</p>
+
+    <p>これは今すぐの問題やなくて<br>
+    もっと根っこの深いところにある<br>
+    魂の傾向として視えているものです。</p>
+
+    <p>そしてもう一つ<br>
+    息子さんの金運の流れの奥にも<br>
+    似たようなひっかかりが視えています。</p>
+
+    <p>タイミングが<br>
+    少しずつずれてしまいやすい<br>
+    そういう星が入っているんです。</p>
+
+    <p>ただこれは<br>
+    非常に先の話です。</p>
+
+    <p>今すぐ心配するような<br>
+    ことは何もありません。</p>
+
+    <p>どちらも<br>
+    今回はここまでお伝えするだけに<br>
+    とどめておきますね。</p>
+
+    <p>また別の機会に<br>
+    詳しくお伝えできたらと思います。</p>
+
+    <h2 id="sec-turn">🔮 運命の転機</h2>
+
+    <p>ここまでお伝えしてきた流れの中で<br>
+    これから半年の動きが<br>
+    少しずつ視えてきたかと思います。</p>
+
+    <div id="flow0Sentinel"></div>
+
+    <p>今の<strong>7月から8月</strong>にかけては<br>
+    大きく動くというより<br>
+    美穂様ご自身が<br>
+    木と火と水のオーラを<br>
+    静かに整えていく時期です。</p>
+
+    <p>その先、特に重要な四つの月を<br>
+    順にお伝えします。</p>
+
+    <div id="flow1Sentinel"></div>
+
+    <h3>最重要月　<strong>2026年12月</strong></h3>
+
+    <p>なぜこの月が特別なのか。</p>
+
+    <p>美穂様にとって<br>
+    最も足りないオーラの一つである<br>
+    水が、この月<br>
+    大きく巡ってくるからです。</p>
+
+    <p>本来の自分自身<br>
+    その中心に立ち返る力が<br>
+    最も強まる月なんです。</p>
+
+    <p>感情が整理され<br>
+    焦りやのうて静けさの中で<br>
+    物事を見つめられるようになります。</p>
+
+    <p>この関係にどう向き合うか<br>
+    外側の変化を待たなくても<br>
+    美穂様ご自身の中で<br>
+    軸が定まってくる、そんな月です。</p>
+
+    <p>同じ頃<br>
+    あの方の側にも<br>
+    静かな気配が動き始めています。</p>
+
+    <p>すぐに大きく動く月やないけれど<br>
+    これから訪れる変化に向けて<br>
+    水面下で少しずつ<br>
+    状況が動き始める時期にあたります。</p>
+
+    <p>美穂様が自分の中心を取り戻すこの月に<br>
+    あの方の側もまた<br>
+    静かに動き始める。</p>
+
+    <p>そんな<br>
+    稀有な巡り合わせの月です。</p>
+
+    <p>この月に起こるのは<br>
+    あの方の連絡や態度に<br>
+    いつもと違う小さな変化が<br>
+    見られる可能性。</p>
+
+    <p>もしくは美穂様ご自身の中に<br>
+    「このままでいい」<br>
+    「見守っていこう」<br>
+    という静かな納得が<br>
+    生まれてくる、そんな気配です。</p>
+
+    <p>心構えとしてお伝えしたいのは<br>
+    この月に無理に答えを<br>
+    引き出そうとしないこと。</p>
+
+    <p>感情を強くぶつけて<br>
+    あの方の灯りを消してしまわないこと。</p>
+
+    <p>その代わりに<br>
+    あの方の言動に小さな変化を<br>
+    見つけた時ほど</p>
+
+    <p>騒がず<br>
+    自然にそのまま<br>
+    受け止めてあげてください。</p>
+
+    <p>そしていつもと変わらない<br>
+    穏やかな態度で<br>
+    そこに在り続けること。</p>
+
+    <p>焦らず、ただ穏やかに<br>
+    その瞬間を待つ姿勢が<br>
+    <strong>12月</strong>の扉を<br>
+    最高の形で開いてくれます。</p>
+
+    <div id="flow2Sentinel"></div>
+
+    <h3>2つ目の重要月　<strong>2026年11月</strong></h3>
+
+    <p><strong>12月</strong>に先立って<br>
+    水のオーラが巡り始める月です。</p>
+
+    <p>少しずつ心が<br>
+    落ち着きを取り戻し<br>
+    焦りが和らいでいきます。</p>
+
+    <p>これまでの関係を<br>
+    俯瞰して見られるようになる<br>
+    そんな準備の月です。</p>
+
+    <p>心構えは<br>
+    「一人の時間を大切にし<br>
+    自分の気持ちを整理すること」</p>
+
+    <p>水辺を歩く<br>
+    湯船にゆっくり浸かるなど<br>
+    心を静める習慣が<br>
+    この月の力になります。</p>
+
+    <div id="flow3Sentinel"></div>
+
+    <h3>3つ目の重要月　<strong>2027年1月</strong></h3>
+
+    <p>あの方の環境に訪れる<br>
+    大きな節目を<br>
+    すぐ翌月に控えた月です。</p>
+
+    <p>美穂様の側では<br>
+    土の重さが少し強まりやすく<br>
+    抱え込みすぎに注意したい時期。</p>
+
+    <p>だからこそ<br>
+    一人で背負い込まず<br>
+    人に頼ることを<br>
+    自分に許してあげてほしいんです。</p>
+
+    <p>心構えは<br>
+    「あの方の環境が動くその時を<br>
+    静かに待つこと」</p>
+
+    <p>焦って踏み込むより<br>
+    風向きが変わるのを<br>
+    信じて見守る一ヶ月です。</p>
+
+    <div id="flow4Sentinel"></div>
+
+    <h3>4つ目の重要月　<strong>2026年9月</strong></h3>
+
+    <p>理性的に物事を<br>
+    整理しやすい時期です。</p>
+
+    <p>感情よりも頭で考える力が<br>
+    優位になりやすい月で</p>
+
+    <p>これまでの関係を<br>
+    少し距離を置いて<br>
+    見つめ直すきっかけになります。</p>
+
+    <p>心構えは<br>
+    「答えを急がず<br>
+    今の自分の気持ちを<br>
+    静かに書き出してみること」</p>
+
+    <p>それが<br>
+    この先の月への<br>
+    静かな土台になります。</p>
+
+    <h3>その先の未来</h3>
+
+    <p><strong>2027年</strong>は<br>
+    変化の芽が出る年です。</p>
+
+    <p>あの方を取り巻く環境に<br>
+    外側からの変化が<br>
+    訪れやすくなります。</p>
+
+    <p>表現する力<br>
+    決める力が<br>
+    美穂様の中でも<br>
+    少しずつ育っていく一年です。</p>
+
+    <p><strong>2028年</strong>は<br>
+    答えを定める年です。</p>
+
+    <p>もともと強い土のオーラが<br>
+    さらに強まる年やからこそ</p>
+
+    <p>けじめをつける意識を<br>
+    持てるかどうかが鍵になります。</p>
+
+    <p>続けるにしても<br>
+    手放すにしても<br>
+    納得のいく形が<br>
+    見えてくる年やと視えています。</p>
+
+    <p>最も大切なのは<br>
+    <strong>十二月</strong>の巡りを<br>
+    どう迎えるかです。</p>
+
+    <p>そこまでの数ヶ月<br>
+    木と火と水のオーラを<br>
+    整えながら過ごしてほしいんです。</p>
+
+    <div id="flowEndSentinel"></div>
+
+    <h2 id="sec-action">🔮 今からできること</h2>
+
+    <p>ここまで<br>
+    運命の流れと<br>
+    これから訪れる転機を<br>
+    お伝えしました。</p>
+
+    <p>ただ、一つだけ<br>
+    知っておいてほしいことがあります。</p>
+
+    <p>運命は<br>
+    ただ待っているだけでは<br>
+    動きません。</p>
+
+    <p>星の流れがどれだけ整っても<br>
+    美穂様ご自身のオーラが<br>
+    整っていなければ</p>
+
+    <p>その流れを<br>
+    掴むことはできないんです。</p>
+
+    <p>だからこそここからは<br>
+    美穂様が今日から<br>
+    ご自身の手で<br>
+    運命を動かしていくための<br>
+    具体的なアクションを<br>
+    お伝えしていきます。</p>
+
+    <h3>【木と火と水のオーラを補う】</h3>
+
+    <p>木の緑は新しい可能性へ目を向ける力<br>
+    火のあかりは想いを表現する力<br>
+    水の流れは感情を自然に流す力そのものです。</p>
+
+    <p><strong>観葉植物を育てる</strong><br>
+    　公園や緑の多い場所を歩く</p>
+
+    <p>→ 今の関係性だけに<br>
+    視野が閉じてしまうことが減り<br>
+    新しい可能性にも<br>
+    自然と目が向くようになります</p>
+
+    <p><strong>朝、日光を浴びる時間を作り</strong><br>
+    　赤やオレンジのものを<br>
+    　日常に取り入れる</p>
+
+    <p>→ 内側にこもりがちな情熱が<br>
+    少しずつ外に出やすくなります</p>
+
+    <p><strong>水辺を歩く</strong><br>
+    　湯船にゆっくり浸かる時間を作り<br>
+    　青いものを身につける</p>
+
+    <p>→ 一人で抱え込んでいた感情が<br>
+    自然と流れやすくなっていきます</p>
+
+    <p><strong>感じたことをノートに書き出す</strong><br>
+    　信頼できる人に話す時間を持つ</p>
+
+    <p>→ 心の中に溜まっていたものが<br>
+    少しずつ軽くなっていきます</p>
+
+    <p>答えのない問いを<br>
+    繰り返してしまいそうになった時ほど<br>
+    青いものを身につけて<br>
+    過ごしてみてください。</p>
+
+    <h3>【気をつけてほしいこと】</h3>
+
+    <p><strong>12月</strong>以外の時期に<br>
+    感情を強くぶつけて<br>
+    答えを急かそうとすること。</p>
+
+    <p>「本当はどう思ってるの」<br>
+    「いつまで待てばいいの」</p>
+
+    <p>こういった<br>
+    答えを迫る言葉は</p>
+
+    <p>まだ心を閉じている<br>
+    あの方をかえって<br>
+    固くさせてしまいます。</p>
+
+    <p>意識したいのはこの2つです。</p>
+
+    <p><strong>あの方の今の頑張りや<br>
+    立場を、そっとねぎらう<br>
+    気持ちで接すること</strong></p>
+
+    <p><strong>返事や結論を急がず<br>
+    いつも通りの温度で<br>
+    そこに在ること</strong></p>
+
+    <p>急かされずに<br>
+    自然体でいてもらえることこそ<br>
+    今のあの方が<br>
+    一番安心できることやから。</p>
+
+    <h3>【正直にお伝えしたいこと】</h3>
+
+    <p>ここまでお伝えした調整法で<br>
+    少しずつオーラは<br>
+    整い始めます。</p>
+
+    <p>ただ、正直に言うと<br>
+    木と火と水がここまで少ない状態は</p>
+
+    <p>日常の調整だけでは<br>
+    補いきれない部分があります。</p>
+
+    <p>水を飲む<br>
+    色を身につける。</p>
+
+    <p>これらは<br>
+    「維持する力」にはなりますが</p>
+
+    <p>ゼロから補う力としては<br>
+    どうしても限界があるんです。</p>
+
+    <p>もし本気で<br>
+    <strong>十二月</strong>までにオーラを整えたいなら<br>
+    もう一つ<br>
+    お伝えしたい方法があります。</p>
+
+    <h2 id="sec-support">🔑 心を守るサポート</h2>
+
+    <div id="stoneSentinel1"></div>
+
+    <p>ここまでお伝えしてきた通り<br>
+    美穂様のオーラには<br>
+    木と火と水の輝きが<br>
+    少ない状態です。</p>
+
+    <p>これが今の状況の<br>
+    根っこにある原因であり</p>
+
+    <p><strong>12月</strong>のチャンスを掴むために<br>
+    最も整えるべき部分です。</p>
+
+    <p>木と火と水のオーラが整うと</p>
+
+    <p><strong>あの方の小さな変化のサインを<br>
+    焦らず自然に受け止められるようになる</strong></p>
+
+    <p><strong>一つの想いを<br>
+    抱え込みすぎず<br>
+    自分の意志で扱えるようになる</strong></p>
+
+    <p>言葉にならなかった想いが<br>
+    自然と外に流れ出すようになる</p>
+
+    <p>答えのない不安に<br>
+    夜、一人で<br>
+    押しつぶされる時間が減っていく</p>
+
+    <p>静かな自信を持って<br>
+    <strong>十二月</strong>という巡りを<br>
+    迎えられるようになる</p>
+
+    <p>日常の調整法に加えて<br>
+    本格的にオーラを補うために</p>
+
+    <p>パワーストーンを<br>
+    お守りとして取り入れる方法があります。</p>
+
+    <p>美穂様のオーラに合わせて<br>
+    三つのプランをご用意しました。</p>
+
+    <div class="important-box">
+
+    <h3>【運命を動かすプラン】</h3>
+
+    <p><strong>十二月の転機を本気で掴みたい方へ</strong></p>
+
+    <p><strong>アクアマリン、ムーンストーン</strong><br>
+    少ない水の流れを補い、感情を穏やかに流す力を育てる</p>
+
+    <p><strong>カーネリアン</strong><br>
+    少ない火のあかりを補い、想いを表現する力を目覚めさせる</p>
+
+    <p><strong>ラブラドライト</strong><br>
+    強めの土の重さを鎮め、抱え込みすぎた執着を軽くする</p>
+
+    <p><strong>ローズクォーツ</strong><br>
+    答えの出ない焦りと不安を吸い取り、優しい安心に変える</p>
+
+    <p>期待できる変化：</p>
+
+    <p>石の力が馴染んでいくにつれて<br>
+    あの方の言動に表れる<br>
+    小さな変化にも<br>
+    焦らず自然に気づけるようになります。</p>
+
+    <p><strong>十二月</strong>、答えを急がなくても<br>
+    自分の中で気持ちが<br>
+    自然と定まっていき</p>
+
+    <p>その転機を<br>
+    最高の状態で迎えられるようになります。</p>
+
+    <div id="stoneSentinel2"></div>
+
+    <h3>【流れを整えるプラン】</h3>
+
+    <p><strong>まずは心を安定させたい方へ</strong></p>
+
+    <p><strong>アクアマリン</strong><br>
+    少ない水の流れを補い、溜め込んだ感情を緩める</p>
+
+    <p><strong>ラブラドライト</strong><br>
+    土の重さを鎮め、抱え込みすぎた気持ちを手放す</p>
+
+    <p><strong>ローズクォーツ</strong><br>
+    焦りと不安を吸い取り、穏やかな気持ちを育てる</p>
+
+    <p>期待できる変化：</p>
+
+    <p>「彼は今どう思っているんだろう」<br>
+    そう考え込んでしまう時間が<br>
+    少しずつ減っていきます。</p>
+
+    <p>一人で抱え込む重さから離れ<br>
+    静かな落ち着きを<br>
+    日々の中で取り戻していきます。</p>
+
+    <div id="stoneSentinel3"></div>
+
+    <h3>【日々のお守りプラン】</h3>
+
+    <p><strong>まずは焦りと不安を和らげたい方へ</strong></p>
+
+    <p><strong>ムーンストーン</strong><br>
+    少ない水の流れを補い、心を落ち着ける</p>
+
+    <p><strong>ローズクォーツ</strong><br>
+    答えの出ない不安を和らげ、優しい安心に変える</p>
+
+    <p>期待できる変化：</p>
+
+    <p>ふとした瞬間に<br>
+    胸が締めつけられる感覚が和らぎ</p>
+
+    <p>答えの出ない不安に<br>
+    振り回されにくくなっていきます。</p>
+
+    <p>実は、【<strong>運命を動かすプラン</strong>】を<br>
+    選ばれる方が最も多く<br>
+    全体の約70%を占めています。</p>
+
+    <p>「<strong>12月</strong>の転機を<br>
+    本気で掴みたいから<br>
+    中途半端にしたくない」<br>
+    というお声が多いです。</p>
+
+    <p><strong>12月</strong>に向けて<br>
+    今から整え始めることで</p>
+
+    <p>石のエネルギーが<br>
+    ちょうど馴染んだ状態で<br>
+    最重要月を迎えられます。</p>
+
+    <p>もし興味がありましたら<br>
+    「詳細希望」とだけ<br>
+    送っていただければ</p>
+
+    <p>美穂様専用の<br>
+    石の組み合わせをお伝えしますね。</p>
+
+    </div>
+
+    <div id="closingSentinel"></div>
+
+    <h2 id="sec-last">最後に</h2>
+
+    <p>美穂様。</p>
+
+    <p>今、あなたは<br>
+    大切な岐路に立っています。</p>
+
+    <p>このまま<br>
+    答えの出ない問いを<br>
+    一人で抱えたまま<br>
+    <strong>十二月</strong>を迎えるか。</p>
+
+    <p>それとも<br>
+    木と火と水のオーラを整え</p>
+
+    <p>あの方の心が緩む時を<br>
+    静かに信じて待ちながら</p>
+
+    <p><strong>十二月</strong>の扉が開いた時に<br>
+    まっすぐ受け取れる自分で<br>
+    そこに在るか。</p>
+
+    <p>選ぶのは<br>
+    美穂様ご自身です。</p>
+
+    <p>家庭という立場を抱えながら<br>
+    それでも一途に<br>
+    一人を想い続けてこられたこと。</p>
+
+    <p>それは弱さではなく<br>
+    深い愛情を<br>
+    静かに貫き通してきた<br>
+    何よりの証です。</p>
+
+    <p>ただ、私には視えています。</p>
+
+    <p><strong>12月</strong>のある日<br>
+    あの方の言葉や態度の中に</p>
+
+    <p>これまでとは違う<br>
+    少しだけ柔らかい温度が<br>
+    滲む瞬間が。</p>
+
+    <p>そしてその温度に触れた時<br>
+    美穂様の胸の奥で</p>
+
+    <p>長く抱えてきた想いが<br>
+    静かに報われていく感覚が<br>
+    広がっていく景色が。</p>
+
+    <p>その未来がどんな形であっても</p>
+
+    <p>「この想いをどう抱えていくか」を<br>
+    美穂様ご自身が<br>
+    自分の意志で選べるようになった時</p>
+
+    <p>これまでの日々は<br>
+    後悔やのうて<br>
+    深い愛を貫いてきた<br>
+    誇りに変わっていきます。</p>
+
+    <p>そして<br>
+    息子さんの未来もまた<br>
+    着実に積み上げてきた努力の先に<br>
+    穏やかな実りが訪れる道が<br>
+    はっきりと視えています。</p>
+
+    <p>そこまでの道<br>
+    私が照らし続けますね。</p>
+
+    <div class="sign-box">
+    <p>心からの愛と光を込めて。<br>かな</p>
+    </div>
+
+</div>
+
+<script>
+(function () {
+    var kanaBg = document.getElementById('kanaBg');
+    var elementBg = document.getElementById('elementBg');
+    var partnerBg = document.getElementById('partnerBg');
+    var sonBg = document.getElementById('sonBg');
+    var doorBg = document.getElementById('doorBg');
+    var seasonSummerBg = document.getElementById('seasonSummerBg');
+    var seasonAutumnBg = document.getElementById('seasonAutumnBg');
+    var seasonWinterBg = document.getElementById('seasonWinterBg');
+    var stoneAquaBg = document.getElementById('stoneAquaBg');
+    var stoneRoseBg = document.getElementById('stoneRoseBg');
+    var stoneMoonBg = document.getElementById('stoneMoonBg');
+
+    var stages = [
+        { el: document.getElementById('kanaSentinel'), bg: kanaBg },
+        { el: document.getElementById('elementSentinel'), bg: elementBg },
+        { el: document.getElementById('partnerSentinel'), bg: partnerBg },
+        { el: document.getElementById('sonSentinel'), bg: sonBg },
+        { el: document.getElementById('doorSentinel1'), bg: doorBg },
+        { el: document.getElementById('flow0Sentinel'), bg: seasonSummerBg },
+        { el: document.getElementById('flow1Sentinel'), bg: seasonWinterBg },
+        { el: document.getElementById('flow2Sentinel'), bg: seasonAutumnBg },
+        { el: document.getElementById('flow3Sentinel'), bg: seasonWinterBg },
+        { el: document.getElementById('flow4Sentinel'), bg: seasonAutumnBg },
+        { el: document.getElementById('flowEndSentinel'), bg: doorBg },
+        { el: document.getElementById('stoneSentinel1'), bg: stoneAquaBg },
+        { el: document.getElementById('stoneSentinel2'), bg: stoneRoseBg },
+        { el: document.getElementById('stoneSentinel3'), bg: stoneMoonBg },
+        { el: document.getElementById('closingSentinel'), bg: doorBg }
+    ].filter(function (stage) { return !!stage.el; });
+    if (!stages.length) return;
+
+    var layers = [kanaBg, elementBg, partnerBg, sonBg, doorBg, seasonSummerBg, seasonAutumnBg, seasonWinterBg, stoneAquaBg, stoneRoseBg, stoneMoonBg];
+    function show(active) {
+        layers.forEach(function (el) {
+            if (el === active) el.classList.add('is-visible');
+            else el.classList.remove('is-visible');
+        });
+    }
+
+    function onScroll() {
+        var trigger = window.innerHeight * 0.65;
+        var active = null;
+        for (var i = 0; i < stages.length; i++) {
+            if (stages[i].el.getBoundingClientRect().top < trigger) {
+                active = stages[i].bg;
+            }
+        }
+        show(active);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
+</script>
+
+</body>
+</html>
