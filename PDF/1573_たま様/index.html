@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>たま様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :target {
+            scroll-margin-top: 20px;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 演出：背景クロスフェード（かな→火→土→曼荼羅） ===== */
+        .kana-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -5;
+            background-image: url('../images/かな.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center 65%;
+            filter: blur(1px) brightness(1.05) saturate(1.05);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .kana-bg.is-visible { opacity: 0.5; }
+
+        .element-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url('../images/強い火.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(1.05) saturate(1.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .element-bg.is-visible { opacity: 0.55; }
+
+        .deity-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url('../images/強い土.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(1.05) saturate(1.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .deity-bg.is-visible { opacity: 0.55; }
+
+        .door-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url('../images/曼荼羅.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(1.05) saturate(1.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .door-bg.is-visible { opacity: 0.45; }
+
+        /* ===== 演出：運命の転機（季節背景） ===== */
+        .season-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .season-bg.is-visible { opacity: 0.4; }
+        #seasonSummerBg { background-image: url('../images/夏.jpg'); }
+        #seasonAutumnBg { background-image: url('../images/秋.jpg'); }
+        #seasonWinterBg { background-image: url('../images/冬.jpg'); }
+
+        /* ===== 演出：心を守るサポート（パワーストーン背景） ===== */
+        .stone-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.9);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .stone-bg.is-visible { opacity: 0.4; }
+        #stoneMoonstoneBg { background-image: url('../images/ムーンストーン.png'); }
+        #stoneAquaBg { background-image: url('../images/アクアマリン.png'); }
+        #stoneCarnelianBg { background-image: url('../images/カーネリアン.png'); }
+        #stoneRoseBg { background-image: url('../images/ローズクォーツ.png'); }
+
+        .bg-veil {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(250, 248, 245, 0.1) 0%, rgba(250, 248, 245, 0.25) 60%, rgba(250, 248, 245, 0.4) 100%),
+                linear-gradient(180deg, rgba(255, 245, 235, 0.12) 0%, rgba(249, 243, 255, 0.28) 100%);
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../images/曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .plan-subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #a0895f;
+            margin-top: -15px;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        p {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background-color: #f9f3ff;
+            border: 2px solid #e8d5b7;
+        }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+        }
+
+        .sign-box {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+        }
+
+        .toc {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 35px 30px;
+            margin: 40px 0 60px;
+        }
+
+        .toc-title {
+            text-align: center;
+            font-size: 22px;
+            color: #c9a05d;
+            margin-bottom: 25px;
+            letter-spacing: 4px;
+            font-weight: 700;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc li {
+            margin-bottom: 14px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .toc li:last-child {
+            margin-bottom: 0;
+        }
+
+        .toc a {
+            color: #8b6f9c;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: #c9a05d;
+        }
+
+        strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 40px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="kana-bg" id="kanaBg"></div>
+<div class="element-bg" id="elementBg"></div>
+<div class="deity-bg" id="deityBg"></div>
+<div class="door-bg" id="doorBg"></div>
+<div class="season-bg" id="seasonSummerBg"></div>
+<div class="season-bg" id="seasonAutumnBg"></div>
+<div class="season-bg" id="seasonWinterBg"></div>
+<div class="stone-bg" id="stoneMoonstoneBg"></div>
+<div class="stone-bg" id="stoneAquaBg"></div>
+<div class="stone-bg" id="stoneCarnelianBg"></div>
+<div class="stone-bg" id="stoneRoseBg"></div>
+<div class="bg-veil"></div>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">たま様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>たま様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <div class="toc">
+        <div class="toc-title">— 目次 —</div>
+        <ul>
+            <li><a href="#sec-you">🔮 あなたについて</a></li>
+            <li><a href="#sec-partner">🔮 お相手について</a></li>
+            <li><a href="#sec-here">🔮 ここからお伝えしていくこと</a></li>
+            <li><a href="#sec-mind">🔮 気になること</a></li>
+            <li><a href="#sec-turn">🔮 運命の転機</a></li>
+            <li><a href="#sec-action">🔮 今からできること</a></li>
+            <li><a href="#sec-support">🔑 心を守るサポート</a></li>
+            <li><a href="#sec-last">最後に</a></li>
+        </ul>
+    </div>
+
+    <div id="kanaSentinel"></div>
+    <p>たま様</p>
+
+    <p>この度は本鑑定にお進みいただき<br>
+    心より感謝申し上げます。</p>
+
+    <p>「彼ともう一度、<br>
+    やり直したい」</p>
+
+    <p>「<strong>20年</strong>近く想い続けてきた<br>
+    この気持ちにまだ望みはあるのか」</p>
+
+    <p>「ここまで来て<br>
+    諦めることなんてできない」</p>
+
+    <p>その想い、<br>
+    痛いほど<strong>伝わってきます</strong>。</p>
+
+    <p><strong>20年</strong>という時間は<br>
+    誰にでも積めるものでは<br>
+    ありません。</p>
+
+    <p>出会った頃のたま様も<br>
+    離れてしまってからの<br>
+    たま様も</p>
+
+    <p>ずっと同じ一つの光を<br>
+    抱えたまま歩いてきた。</p>
+
+    <p>その事実だけで<br>
+    どれほど深く<br>
+    彼を想い続けてきたかが<br>
+    分かります。</p>
+
+    <p>まず、たま様が<br>
+    一番知りたいこと。<br>
+    はっきりお伝えします。</p>
+
+    <p>復縁の望みは<br>
+    まだ<strong>十分に残っています</strong>。</p>
+
+    <p>ただし、条件があります。<br>
+    「昔と同じやり方で待つ」<br>
+    段階ではないということです。</p>
+
+    <p>彼の魂を視ると<br>
+    今はまだ答えを固めていない<br>
+    生まれる前の可能性のような<br>
+    エネルギーの中にいます。</p>
+
+    <p>気持ちが<br>
+    離れたのではありません。</p>
+
+    <p>もともと想いを<br>
+    言葉にするのが<br>
+    得意ではない方で、</p>
+
+    <p>そこに今<br>
+    自分でもまだ<br>
+    答えを決めかねている時間が<br>
+    重なっているだけなんです。</p>
+
+    <p>そしてもう一つ<br>
+    大切なことをお伝えします。</p>
+
+    <p>たま様の燃える火のオーラと<br>
+    彼の魂にある大地のオーラ。</p>
+
+    <p>太陽が大地を照らし<br>
+    命を育てるように</p>
+
+    <p>火は、土を<br>
+    温め、育てていく関係にあります。</p>
+
+    <p>あなたという存在そのものが<br>
+    彼の心の奥を<br>
+    静かに温め続けている。</p>
+
+    <p><strong>20年</strong>という時間があるから<br>
+    彼の中であなたの存在は<br>
+    消えていません。</p>
+
+    <p>なぜ今、彼が動かないのか。<br>
+    なぜ、たま様の中で<br>
+    これほどまでに<br>
+    想いが強く残り続けているのか。</p>
+
+    <p>そのカギは<br>
+    たま様のオーラにも<br>
+    視えています。</p>
+
+    <p>次のセクションで<br>
+    詳しくお伝えしますね。</p>
+
+    <div id="elementSentinel"></div>
+    <h2 id="sec-you">🔮 あなたについて</h2>
+
+    <h3>【足りないオーラと、整った時の変化】</h3>
+
+    <div class="aura-section">
+        <p>たま様のオーラを<br>
+        深く視させていただきました。</p>
+
+        <p>たま様に<br>
+        生まれつき少ないもの。</p>
+
+        <p>それは、水のオーラです。</p>
+
+        <p>気持ちを言葉として<br>
+        自然に流し出す力。</p>
+
+        <p>溜め込んだものを<br>
+        外に出す力。</p>
+
+        <p>この水のオーラが<br>
+        たま様の中には少ないのです。</p>
+    </div>
+
+    <p>無料鑑定でお伝えした<br>
+    「火のオーラが乱れて<br>
+    突っ走ってしまう」という感覚。</p>
+
+    <p>火は、水によって<br>
+    静められる。<br>
+    それが本来の巡りです。</p>
+
+    <p>たま様の中には<br>
+    その水が少ない。</p>
+
+    <p>だから、燃え上がる想いに<br>
+    ブレーキがかからず<br>
+    そのまま突っ走ってしまう。</p>
+
+    <p>抑えられないのではなく<br>
+    抑える水そのものが<br>
+    少ないんです。</p>
+
+    <p>水のオーラが整った時<br>
+    何が変わるか。</p>
+
+    <p>燃える情熱はそのままに<br>
+    自分を焦がさない<br>
+    優しい光に変わります。</p>
+
+    <p>言葉が<br>
+    自然に出てくるようになる。</p>
+
+    <p>焦りではなく<br>
+    静かな強さで<br>
+    彼に向き合えるようになるんです。</p>
+
+    <h3>【今の流れと、抱えている問題の関係】</h3>
+
+    <p>たま様は今<br>
+    心と体の調和を<br>
+    静かに見つめ直す<br>
+    10年の真ん中に<br>
+    立たれています。</p>
+
+    <p>これまでのバランスを<br>
+    保とうとする力が<br>
+    少しずつ緩み始めている時期です。</p>
+
+    <p>そこに今年<br>
+    これまでにないほど強い<br>
+    生まれ変わりを促す<br>
+    エネルギーが重なって<br>
+    巡ってきています。</p>
+
+    <p>「これまでのバランスを<br>
+    保とうとする力」と<br>
+    「大きく変わろうとする力」。</p>
+
+    <p>この二つがせめぎ合っているからこそ<br>
+    今、心が<br>
+    大きく揺れているんです。</p>
+
+    <p>古いものを手放す先に<br>
+    新しい流れが待っている。</p>
+
+    <p>それが、<br>
+    今のたま様がいる場所です。</p>
+
+    <p>だからこそ今<br>
+    「もう諦めた方がいいのかな」<br>
+    「でも、やっぱり忘れられない」</p>
+
+    <p>その両方の気持ちが<br>
+    交互に押し寄せてきて<br>
+    苦しいんです。</p>
+
+    <p>これは、たま様が<br>
+    ぶれているわけではありません。</p>
+
+    <p>大きく生まれ変わる直前だからこそ<br>
+    心がこれだけ<br>
+    揺れているんです。</p>
+
+    <h3>【なぜ"今"この問題が起きているのか】</h3>
+
+    <p>たま様の魂を<br>
+    さらに深く<br>
+    視させていただきました。</p>
+
+    <p>たま様の魂は<br>
+    自分ひとりの中に<br>
+    閉じこもっていると</p>
+
+    <p>本来の輝きが<br>
+    発揮されにくいタイプです。</p>
+
+    <p>人と関わり<br>
+    言葉を交わす中でこそ</p>
+
+    <p>本来の眩しさが<br>
+    立ち現れてくる。</p>
+
+    <p>太陽のように周りを照らし<br>
+    言葉で人の心を動かす力を<br>
+    持っています。</p>
+
+    <p>ただ、その中心には<br>
+    時々訪れる<br>
+    突発的な感情の高まりも<br>
+    同居しています。</p>
+
+    <p>想いが強くなればなるほど<br>
+    勢いで動いてしまう瞬間がある。</p>
+
+    <p>それも、水のオーラが<br>
+    少ないことと<br>
+    同じねっこから来ているものです。</p>
+
+    <p>いまはそういうタイミング。</p>
+
+    <p>彼が動かないのも<br>
+    たま様の想いが<br>
+    強すぎるように感じてしまうのも</p>
+
+    <p>誰のせいでもなく<br>
+    この流れの中で<br>
+    起きていることなんです。</p>
+
+    <h3>【これから、どうなっていくか】</h3>
+
+    <p>このまま何も整えずに過ごせば<br>
+    おそらく彼はこれからも<br>
+    答えを決めかねたまま<br>
+    時間だけが過ぎていきます。</p>
+
+    <p>でも、たま様が<br>
+    水のオーラを整えれば<br>
+    流れは変わります。</p>
+
+    <p><strong>2026年の終わりにかけて</strong><br>
+    たま様の中に<br>
+    水のオーラが満ちてくる<br>
+    時期が巡ってきます。</p>
+
+    <p>ここが節目です。</p>
+
+    <p>ここまでに整えていれば<br>
+    彼の中の迷いにも<br>
+    静かに変化が起き始めます。</p>
+
+    <p>その先、<strong>2027年</strong>は<br>
+    土台を築く年。</p>
+
+    <p><strong>2028年</strong>は<br>
+    この縁とどう向き合っていくか<br>
+    自分自身ではっきりとした<br>
+    答えを選び取れる年です。</p>
+
+    <p>理想の未来は<br>
+    この3年のスパンで<br>
+    確かに視えています。</p>
+
+    <div id="guardianSentinel"></div>
+    <h2 id="sec-partner">🔮 お相手について</h2>
+
+    <h3>【お相手のオーラと、足りないもの】</h3>
+
+    <div class="aura-section">
+        <p>彼を霊視させていただくと<br>
+        どっしりとした<br>
+        アンバーのオーラが視えます。</p>
+
+        <p>山のように動じない<br>
+        大地のエネルギー。</p>
+
+        <p>誠実さを持ちながら<br>
+        自分のペースで<br>
+        物事を進める魂です。</p>
+    </div>
+
+    <p>ただ、彼にも<br>
+    足りないオーラがあります。</p>
+
+    <p>それが、木のオーラ。</p>
+
+    <p>新しい一歩を<br>
+    踏み出す力。</p>
+
+    <p>柔らかく動き出す推進力。</p>
+
+    <p>これが彼の中には<br>
+    少ないのです。</p>
+
+    <p>気持ちがないわけでは<br>
+    ありません。</p>
+
+    <p>むしろ、彼の中には<br>
+    燃える火と<br>
+    静かな水が<br>
+    ほぼ同じ強さで巡っていて</p>
+
+    <p>その二つが<br>
+    常にせめぎ合っている。</p>
+
+    <p>動きたい気持ちと<br>
+    立ち止まりたい気持ちが</p>
+
+    <p>同時に彼の内側で<br>
+    渦を巻いているんです。</p>
+
+    <p>木のオーラが少ないから<br>
+    その渦から<br>
+    一歩を踏み出す力が<br>
+    出てこない。</p>
+
+    <p>連絡をしようか迷ったまま<br>
+    時間だけが過ぎていく。</p>
+
+    <p>それが今の<br>
+    彼の姿です。</p>
+
+    <h3>【今の彼の流れと、行動の関係】</h3>
+
+    <p>彼は今<br>
+    本来の輝きが<br>
+    やや内向きになり</p>
+
+    <p>静かに自分自身と<br>
+    向き合う10年の中にいます。</p>
+
+    <p>外に向けていた光を<br>
+    一度自分の内側に<br>
+    戻している時期。</p>
+
+    <p>だからこそ<br>
+    以前のように<br>
+    積極的に動くことができません。</p>
+
+    <p>これは、彼が<br>
+    冷たくなったからではありません。</p>
+
+    <p>彼自身が、自分の本質と<br>
+    静かに向き合っている最中だから<br>
+    外への一歩が<br>
+    重くなっているだけなんです。</p>
+
+    <h3>【星の流れから視る、お相手の今の状態】</h3>
+
+    <p>彼の魂の中心に<br>
+    今年、光が<br>
+    差し込んでいます。</p>
+
+    <p>誠実さと調和を象徴する光が<br>
+    彼自身の本質そのものを<br>
+    照らす年。</p>
+
+    <p>ただ、同じ場所に<br>
+    これまで抱えてきた執着を<br>
+    手放そうとする流れも<br>
+    重なっています。</p>
+
+    <p>彼は今<br>
+    自分の中にある古いものを<br>
+    一つずつ手放しながら</p>
+
+    <p>本当に必要なものだけを<br>
+    選び直している最中です。</p>
+
+    <p>そこに、多少の摩擦や<br>
+    足踏みも伴っている。</p>
+
+    <p>すぐに答えを出せず<br>
+    同じ場所で<br>
+    立ち止まってしまう瞬間があるのは<br>
+    そのためです。</p>
+
+    <p>いまは二人がすれ違う<br>
+    星の流れというより</p>
+
+    <p>二人がそれぞれ違う速さで<br>
+    同じ方向を<br>
+    向こうとしている時期。</p>
+
+    <p>彼の沈黙は<br>
+    たま様への気持ちが<br>
+    冷めたことの証ではなく</p>
+
+    <p>彼自身が静かに<br>
+    自分を整理している時間の<br>
+    証なんです。</p>
+
+    <h3>【彼の目に映る「あなた」、これからの変化】</h3>
+
+    <p>今、彼の目に映るたま様は<br>
+    少し霧がかかった状態です。</p>
+
+    <p>強い想いが先立つあまり<br>
+    彼にはその熱量が<br>
+    プレッシャーのように<br>
+    伝わってしまうことがあります。</p>
+
+    <p>でも、たま様の<br>
+    水のオーラが整った時<br>
+    その霧は晴れていきます。</p>
+
+    <p>彼の目に映るのは<br>
+    燃えながらも焦らない<br>
+    静かな強さを持った<br>
+    たま様です。</p>
+
+    <p>彼が答えを<br>
+    探している今だからこそ</p>
+
+    <p>急かさず、そばで<br>
+    静かに光り続ける存在が<br>
+    彼の心を<br>
+    一番動かします。</p>
+
+    <p>たま様が整えば<br>
+    彼も変わり始めます。</p>
+
+    <div id="deitySentinel"></div>
+    <h2 id="sec-here">🔮 ここからお伝えしていくこと</h2>
+
+    <p>無料鑑定の最後に<br>
+    お伝えするとお約束したことを<br>
+    ここから一つずつ<br>
+    視ていきますね。</p>
+
+    <h3>【彼が今、本当に感じていること】</h3>
+
+    <p>彼の魂の<br>
+    一番深い場所を<br>
+    視させていただきました。</p>
+
+    <p>彼が今、本当に感じているのは<br>
+    「たま様を失いたくない」<br>
+    という想いと</p>
+
+    <p>「もう一度歩み寄る勇気がまだ持てない」<br>
+    という葛藤です。</p>
+
+    <p>彼の魂には<br>
+    深く理解しようとしながらも<br>
+    それをうまく<br>
+    言葉にできないところがあります。</p>
+
+    <p>加えて、感受性が鋭く<br>
+    繊細で美意識の高い魂でもある。</p>
+
+    <p>だからこそ本音が<br>
+    ストレートに出せず</p>
+
+    <p>行動よりも先に<br>
+    考えることに<br>
+    時間を使ってしまうんです。</p>
+
+    <p>そして今年<br>
+    彼自身の魂の中心に<br>
+    光が差し込んでいます。</p>
+
+    <p>これまで抱えていた古い執着<br>
+    たとえば過去の別れ方への後悔や<br>
+    二人の間にあった行き違いを</p>
+
+    <p>静かに手放そうと<br>
+    している最中です。</p>
+
+    <p>手放した先に<br>
+    何を選ぶのか。</p>
+
+    <p>それを、彼は今まさに<br>
+    自分の内側で<br>
+    決めようとしています。</p>
+
+    <p>彼にとって<br>
+    たま様は<br>
+    終わった相手ではありません。</p>
+
+    <p>まだ答えを出せていないだけの<br>
+    大切な相手のままなんです。</p>
+
+    <h3>【あなたのオーラの調整方法】</h3>
+
+    <p>魂のレベルで<br>
+    たま様に必要な調整。</p>
+
+    <p>それは、水のオーラを<br>
+    内側に取り戻すことです。</p>
+
+    <p>具体的な日常の方法は<br>
+    後のセクションで<br>
+    お伝えしますが</p>
+
+    <p>魂の在り方として大切なのは<br>
+    彼の答えを<br>
+    たま様が急かさないということ。</p>
+
+    <p>彼は今<br>
+    自分の中で<br>
+    静かに答えを選び直している最中です。</p>
+
+    <p>その時間を奪わず<br>
+    たま様自身が<br>
+    水のオーラを整えながら</p>
+
+    <p>自分の人生を<br>
+    穏やかに生きる。</p>
+
+    <p>それが、遠回りに見えて<br>
+    実は一番早く<br>
+    彼の心に届く方法です。</p>
+
+    <p>「待つ」というのは<br>
+    何もしないことではありません。</p>
+
+    <p>たま様自身を整えながら<br>
+    彼が答えを出す時を</p>
+
+    <p>自分の人生を生きながら<br>
+    待つ。</p>
+
+    <p>それが、本当の意味での<br>
+    「整える」ということです。</p>
+
+    <h3>【オーラが整った先に広がる景色】</h3>
+
+    <p>たま様の水のオーラが<br>
+    整った先<br>
+    視えている景色をお伝えします。</p>
+
+    <p><strong>2026年の終わりにかけて</strong><br>
+    彼の方から<br>
+    昔の話題や近況の話が<br>
+    自然と出てくる場面が視えています。</p>
+
+    <p>過去を懐かしむだけでなく<br>
+    今の彼自身のことも<br>
+    少しずつ言葉にしてくれるようになる。</p>
+
+    <p>年をまたいだその先<br>
+    <strong>2027年</strong>。</p>
+
+    <p>二人の間に<br>
+    静かに新しい関係の形が<br>
+    育っていく姿が視えます。</p>
+
+    <p>焦らず、時間をかけて<br>
+    積み重ねてきたものが<br>
+    ようやく形になっていく年です。</p>
+
+    <p>ただし、この景色に<br>
+    辿り着く条件は一つ。</p>
+
+    <p>2026年の終わりまでに<br>
+    たま様の水のオーラを<br>
+    整えておくこと。<br>
+    これが鍵です。</p>
+
+    <h3>【霊視で視えた、もう一つの重要な問題】</h3>
+
+    <p>無料鑑定でも少し触れた<br>
+    たま様の<br>
+    「想いが強くなると突っ走ってしまう」</p>
+
+    <p>ここでより深く<br>
+    視ていきます。</p>
+
+    <p>たま様のパートナー縁は</p>
+
+    <p>穏やかな幸せと<br>
+    深く繊細な結びつきを<br>
+    引き寄せる力が備わっています。</p>
+
+    <p>ただ、<br>
+    タイミングのずれや<br>
+    試練を伴いやすい面も出やすいです。</p>
+
+    <p><strong>20年</strong>という長い時間<br>
+    想いを抱き続けてきたのは<br>
+    偶然ではありません。</p>
+
+    <p>たま様の縁そのものが<br>
+    深く時間をかけて育っていく<br>
+    縁だからなんです。</p>
+
+    <p>そうやって時間をかけて<br>
+    育つ縁ほど<br>
+    焦ると余計に<br>
+    タイミングがずれてしまいます。</p>
+
+    <p>突っ走ってしまうクセが<br>
+    出た時ほど</p>
+
+    <p>実は一歩引いて<br>
+    時間をかけることを<br>
+    自分に許してあげてください。</p>
+
+    <p>急がなくていい。</p>
+
+    <p>たま様の縁は<br>
+    もともとそういう<br>
+    育ち方をするものだから。</p>
+
+    <h2 id="sec-mind">🔮 気になること</h2>
+
+    <p>これまでお伝えしてきたこと以外にも<br>
+    実はもう一つ<br>
+    視えているものがあります。</p>
+
+    <p>無料鑑定ではお伝えしていなかった<br>
+    もう少し先の兆しです。</p>
+
+    <p>たま様の人生の中には<br>
+    頑張りや才能が<br>
+    正当に認められるまでに<br>
+    少し時間がかかる可能性があります。</p>
+
+    <p>恋愛のことだけでなく<br>
+    お仕事や、人から<br>
+    評価される場面でも</p>
+
+    <p>同じような時間差が<br>
+    起きやすいんです。</p>
+
+    <p>これは、先ほどお伝えした<br>
+    深く時間をかけて育つ縁の話と<br>
+    根っこが同じところにあります。</p>
+
+    <p>本物だからこそ<br>
+    認められるまでに<br>
+    時間がかかる。</p>
+
+    <p>たま様の人生全体に流れている<br>
+    一つの傾向として<br>
+    視えているものです。</p>
+
+    <p>ただこれは<br>
+    非常に先の話です。</p>
+
+    <p>今すぐ心配することは<br>
+    何もありません。</p>
+
+    <p>今回はここまで<br>
+    お伝えするだけに<br>
+    とどめておきますね。</p>
+
+    <p>また別の機会に<br>
+    詳しくお伝えできたらと思います。</p>
+
+    <h2 id="sec-turn">🔮 運命の転機</h2>
+
+    <p>セクション「あなたについて」で<br>
+    お伝えした流れの中で</p>
+
+    <p>これから半年ほどの間に<br>
+    特に重要な4つの月が<br>
+    巡ってきます。</p>
+
+    <p>順番に視ていきますね。</p>
+
+    <div id="flow1Sentinel"></div>
+    <h3>2026年8月</h3>
+
+    <p>金色のオーラが強まり<br>
+    物事を白黒つけたくなりやすい月です。</p>
+
+    <p>「私だけが一方的に<br>
+    想っているのかな」というような</p>
+
+    <p>自分を責める考えが<br>
+    浮かびやすい時期でもあります。</p>
+
+    <p>大きな決断や結論づけは<br>
+    この月には向きません。</p>
+
+    <p>深呼吸をして<br>
+    一旦立ち止まる。<br>
+    それだけで十分です。</p>
+
+    <div id="flow2Sentinel"></div>
+    <h3>2026年10月</h3>
+
+    <p>やや弱めだった安定の力が補われ<br>
+    落ち着いて過ごせる月です。</p>
+
+    <p>前の月までの揺れが<br>
+    少し収まり</p>
+
+    <p>心にも余裕が<br>
+    戻ってくる時期。</p>
+
+    <p>この落ち着きを<br>
+    次の変化に備える<br>
+    準備の時間として使ってください。</p>
+
+    <div id="flow3Sentinel"></div>
+    <h3>2026年11月</h3>
+
+    <p>水のオーラが<br>
+    巡り始める月です。</p>
+
+    <p>たま様の中で<br>
+    焦りが少しずつ和らぎ</p>
+
+    <p>感情の流れが<br>
+    緩やかに戻り始めます。</p>
+
+    <p>彼のことを<br>
+    自然に思い出す機会も<br>
+    増えてくるはず。</p>
+
+    <p>自然な会話のきっかけが<br>
+    生まれやすくなる時期です。</p>
+
+    <p>湯船にゆっくり浸かる<br>
+    水辺を歩く。</p>
+
+    <p>そうした時間を<br>
+    意識して増やしてみてください。</p>
+
+    <p>ここで整えた分だけ<br>
+    次の月への準備になります。</p>
+
+    <div id="flow4Sentinel"></div>
+    <h3>2026年12月</h3>
+
+    <p>これから半年の中で<br>
+    最も大切な月です。</p>
+
+    <p>たま様に少ない水のオーラが<br>
+    一年で最も満ちる月であると同時に</p>
+
+    <p>彼自身の魂の中心にも<br>
+    誠実さと調和を象徴する光が<br>
+    差し込む月。</p>
+
+    <p>二人の運命が<br>
+    最も近づくタイミングです。</p>
+
+    <p>たま様の中で<br>
+    言葉にできなかった想いが<br>
+    自然と出てくるようになる。</p>
+
+    <p>彼の方でも<br>
+    自分の本音と<br>
+    静かに向き合いやすい時期が<br>
+    重なってきます。</p>
+
+    <p>過去を振り返りながらも<br>
+    今の気持ちを整理できる時間が<br>
+    双方に訪れやすくなるんです。</p>
+
+    <p>この月を迎える心構えは<br>
+    一つだけ。<br>
+    結果を焦らないことです。</p>
+
+    <p>近況を伝える<br>
+    短い連絡から始めてみる。</p>
+
+    <p>過去に感謝を<br>
+    伝えてみる。</p>
+
+    <p>そうした小さな一歩の積み重ねが<br>
+    この月の流れを<br>
+    最も自然に活かす方法です。</p>
+
+    <p>勢いに任せて<br>
+    一気に結論を出そうとしたり</p>
+
+    <p>これまでの寂しさを<br>
+    一方的にぶつけたりすることだけは<br>
+    避けてください。</p>
+
+    <h3>【その先の未来】</h3>
+
+    <p><strong>2027年</strong>は<br>
+    土台を築く年。</p>
+
+    <p>2026年に動き出した変化が<br>
+    少しずつ形になっていきます。</p>
+
+    <p><strong>2028年</strong>は<br>
+    この縁とどう向き合っていくか</p>
+
+    <p>たま様自身が<br>
+    はっきりとした答えを<br>
+    選び取れる年です。</p>
+
+    <h3>【大切なこと】</h3>
+
+    <p><strong>2026年12月</strong>が<br>
+    最大のチャンスです。</p>
+
+    <p>この月をどう迎えるかが<br>
+    これから先の流れを決めます。</p>
+
+    <div id="flowEndSentinel"></div>
+    <h2 id="sec-action">🔮 今からできること</h2>
+
+    <h3>【運命は、待っているだけでは変わらない】</h3>
+
+    <p>ここまで、運命の流れと<br>
+    これから訪れる転機を<br>
+    お伝えしました。</p>
+
+    <p>ただ、一つだけ<br>
+    知っておいてほしいことがあります。</p>
+
+    <p>運命は<br>
+    ただ待っているだけでは<br>
+    動きません。</p>
+
+    <p>星の流れがどれだけ整っても<br>
+    たま様自身のオーラが<br>
+    整っていなければ</p>
+
+    <p>その流れを<br>
+    掴むことはできないんです。</p>
+
+    <p>だからこそ<br>
+    ここからお伝えするのは</p>
+
+    <p>たま様自身が<br>
+    「オーラを調整するための<br>
+    アクション」です。</p>
+
+    <p>今日から、自分の手で<br>
+    運命を動かしていくための<br>
+    最初の一歩を<br>
+    視ていきましょう。</p>
+
+    <h3>【水のオーラを補う日常の整え方】</h3>
+
+    <p>・青や黒の色を、身につける</p>
+
+    <p>なぜこれが大切かというと<br>
+    水のオーラは<br>
+    色のエネルギーを通して<br>
+    一番取り入れやすいものだからです。</p>
+
+    <p>アクセサリーやハンカチなど<br>
+    自分にだけ視える場所でも<br>
+    十分に効果があります。</p>
+
+    <p>やり方はシンプルです。</p>
+
+    <p>・湯船にゆっくり浸かる時間を<br>
+    毎日少しでも作る</p>
+
+    <p>・水辺を歩く、川や海の音に<br>
+    耳を澄ませる時間を持つ</p>
+
+    <h3>【気をつけてほしいこと】</h3>
+
+    <p>・想いが強くなった瞬間に<br>
+    すぐ連絡を送ってしまうこと</p>
+
+    <p>これには理由があります。</p>
+
+    <p>水のオーラが少ないたま様は<br>
+    感情が高まった瞬間ほど<br>
+    行動が先に出てしまいやすい。</p>
+
+    <p>その勢いのまま送った言葉は<br>
+    彼にとって<br>
+    重く感じられてしまうことがあります。</p>
+
+    <p>意識したいのはこの2つです。</p>
+
+    <p>・想いが強くなったと感じたら<br>
+    一晩置いてから行動する</p>
+
+    <p>・連絡を送る前に<br>
+    深呼吸を三回する</p>
+
+    <h3>【正直にお伝えしたいこと】</h3>
+
+    <p>ここまでお伝えした調整法を<br>
+    続けていけば</p>
+
+    <p>少しずつたま様のオーラは<br>
+    整い始めます。</p>
+
+    <p>ただ、正直に申し上げると<br>
+    水のオーラが少ない場合</p>
+
+    <p>日常の調整だけでは<br>
+    補いきれない部分があります。</p>
+
+    <p>水を飲む<br>
+    色を身につける。</p>
+
+    <p>これらは<br>
+    「維持する力」にはなりますが</p>
+
+    <p>ゼロから補う力としては<br>
+    どうしても限界があるんです。</p>
+
+    <p>もし本気で<br>
+    オーラを整えたいなら</p>
+
+    <p>もう一つ<br>
+    お伝えしたい方法があります。</p>
+
+    <h2 id="sec-support">🔑 心を守るサポート</h2>
+
+    <p>ここまでお伝えしてきた通り<br>
+    たま様のオーラには<br>
+    水という最も大切なオーラが<br>
+    少ない状態です。</p>
+
+    <p>これが、今の状況の<br>
+    根っこにある原因であり</p>
+
+    <p><strong>2026年12月</strong>のチャンスを<br>
+    掴むために</p>
+
+    <p>最も整えるべき部分です。</p>
+
+    <p>水のオーラが整うと</p>
+
+    <p>・彼への連絡を<br>
+    勢いではなく<br>
+    静かな気持ちで送れるようになる</p>
+
+    <p>・彼の沈黙を<br>
+    不安に振り回されず<br>
+    受け止められるようになる</p>
+
+    <p>・過去への感謝の言葉が<br>
+    自然な形で<br>
+    口から出てくるようになる</p>
+
+    <p>・言葉にできなかった想いを<br>
+    焦らず自分のペースで<br>
+    伝えられるようになる</p>
+
+    <p>・自分を責める考えが浮かんでも<br>
+    そっと手放せるようになる</p>
+
+    <p>日常の調整法に加えて<br>
+    本格的にオーラを補うために</p>
+
+    <p>パワーストーンを<br>
+    お守りとして<br>
+    取り入れる方法があります。</p>
+
+    <p>たま様のオーラに合わせて<br>
+    <strong>三つのプラン</strong>をご用意しました。</p>
+
+    <div class="important-box">
+        <div id="stone1Sentinel"></div>
+        <h3>【運命を動かすプラン】</h3>
+        <p class="plan-subtitle">12月の転機を本気で掴みたい方へ</p>
+
+        <p>・ムーンストーン、アクアマリン<br>
+        水のオーラを補い、<br>
+        言葉が自然に流れ出す力を取り戻す</p>
+
+        <div id="stone2Sentinel"></div>
+        <p>・カーネリアン、サンストーン<br>
+        本来の情熱を、<br>
+        焦がすものから照らすものへ整える</p>
+
+        <p>・グリーンアベンチュリン<br>
+        白黒つけたくなる焦りを鎮め、<br>
+        余白を持って見守る力を育てる</p>
+
+        <div id="stone3Sentinel"></div>
+        <p>・ローズクォーツ<br>
+        自分を責める気持ちをそっと吸い取り、<br>
+        優しさを取り戻す</p>
+
+        <p>期待できる変化：</p>
+
+        <p>・彼から近況の話が出た時<br>
+        落ち着いて<br>
+        受け止められるようになる</p>
+
+        <p>・過去への感謝を<br>
+        自然な言葉で<br>
+        伝えられるようになる</p>
+
+        <p>・<strong>2026年12月</strong>の転機を<br>
+        最高の状態で迎えられる</p>
+
+        <div id="stone4Sentinel"></div>
+        <h3>【流れを整えるプラン】</h3>
+        <p class="plan-subtitle">まずは心を安定させたい方へ</p>
+
+        <p>・ムーンストーン<br>
+        水のオーラを補い、<br>
+        感情の流れを緩やかに取り戻す</p>
+
+        <div id="stone5Sentinel"></div>
+        <p>・アクアマリン<br>
+        言葉にできなかった想いを、<br>
+        自然に外へ出す力を育てる</p>
+
+        <div id="stone6Sentinel"></div>
+        <p>・ローズクォーツ<br>
+        焦りや自己否定の気持ちを鎮める</p>
+
+        <p>期待できる変化：</p>
+
+        <p>・彼の言動に振り回される頻度が減る</p>
+
+        <p>・自分の気持ちを<br>
+        落ち着いて<br>
+        整理できるようになる</p>
+
+        <p>・連絡を送る前に<br>
+        一呼吸置けるようになる</p>
+
+        <div id="stone7Sentinel"></div>
+        <h3>【日々のお守りプラン】</h3>
+        <p class="plan-subtitle">まずは焦りを和らげたい方へ</p>
+
+        <p>・ムーンストーン<br>
+        水のオーラを補い、<br>
+        心に潤いを取り戻す</p>
+
+        <div id="stone8Sentinel"></div>
+        <p>・ローズクォーツ<br>
+        自分を責める気持ちを和らげる</p>
+
+        <p>期待できる変化：</p>
+
+        <p>・眠る前の考えすぎる時間が減る</p>
+
+        <p>・彼のことを思い出しても<br>
+        静かな気持ちで<br>
+        いられる時間が増える</p>
+
+        <p>多くの方が<br>
+        <strong>運命を動かすプラン</strong>を<br>
+        選ばれています。</p>
+
+        <p><strong>2026年12月</strong>に向けて<br>
+        今から整え始めることで</p>
+
+        <p>石のエネルギーが<br>
+        ちょうど馴染んだ状態で<br>
+        最重要月を迎えられます。</p>
+
+        <p>もし興味がありましたら<br>
+        「<strong>詳細希望</strong>」とだけ<br>
+        送っていただければ</p>
+
+        <p>たま様専用の<br>
+        石の組み合わせを<br>
+        お伝えしますね。</p>
+    </div>
+
+    <div id="stoneEndSentinel"></div>
+    <h2 id="sec-last">最後に</h2>
+
+    <p>たま様は今<br>
+    人生の岐路に<br>
+    立っています。</p>
+
+    <p>このまま何も整えずに過ごせば<br>
+    彼はこれからも<br>
+    答えを決めかねたまま<br>
+    時間だけが過ぎていきます。</p>
+
+    <p>でも、ここから<br>
+    水のオーラを整え始めれば</p>
+
+    <p><strong>2026年12月</strong><br>
+    運命が最も近づくその月に</p>
+
+    <p>たま様は焦らず<br>
+    静かな強さを持った<br>
+    自分で立っていられます。</p>
+
+    <p><strong>20年</strong>という時間<br>
+    想い続けてきたこと。</p>
+
+    <p>それは弱さでは<br>
+    ありません。</p>
+
+    <p>深く、時間をかけて育っていく<br>
+    たま様の縁のかたち<br>
+    そのものです。</p>
+
+    <p>私には、視えています。</p>
+
+    <p><strong>2027年</strong>のどこかの日<br>
+    穏やかな時間の中で</p>
+
+    <p>彼が静かに<br>
+    「あの時は、ありがとう」と<br>
+    口にする場面が。</p>
+
+    <p>そしてたま様が<br>
+    焦ることなく</p>
+
+    <p>あたたかい笑顔で<br>
+    それを受け止めている姿が。</p>
+
+    <p>その隣にいるたま様は<br>
+    今のような揺れる表情ではなく</p>
+
+    <p>燃える火の奥に<br>
+    静かな水がちゃんと<br>
+    宿っている姿です。</p>
+
+    <p>その未来は<br>
+    確かに視えています。</p>
+
+    <p>ここから先<br>
+    もし迷うことがあれば</p>
+
+    <p>いつでも<br>
+    私に声をかけてください。</p>
+
+    <p>たま様が、自分で選んだ未来に<br>
+    辿り着くまで</p>
+
+    <p>私がその道を<br>
+    照らし続けますね。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>
+        かな</p>
+    </div>
+
+</div>
+
+<script>
+(function () {
+    var kanaBg = document.getElementById('kanaBg');
+    var elementBg = document.getElementById('elementBg');
+    var deityBg = document.getElementById('deityBg');
+    var doorBg = document.getElementById('doorBg');
+    var seasonSummerBg = document.getElementById('seasonSummerBg');
+    var seasonAutumnBg = document.getElementById('seasonAutumnBg');
+    var seasonWinterBg = document.getElementById('seasonWinterBg');
+    var stoneMoonstoneBg = document.getElementById('stoneMoonstoneBg');
+    var stoneAquaBg = document.getElementById('stoneAquaBg');
+    var stoneCarnelianBg = document.getElementById('stoneCarnelianBg');
+    var stoneRoseBg = document.getElementById('stoneRoseBg');
+
+    var stages = [
+        { el: document.getElementById('kanaSentinel'), bg: kanaBg },
+        { el: document.getElementById('elementSentinel'), bg: elementBg },
+        { el: document.getElementById('guardianSentinel'), bg: deityBg },
+        { el: document.getElementById('deitySentinel'), bg: doorBg },
+        { el: document.getElementById('flow1Sentinel'), bg: seasonSummerBg },
+        { el: document.getElementById('flow2Sentinel'), bg: seasonAutumnBg },
+        { el: document.getElementById('flow3Sentinel'), bg: seasonAutumnBg },
+        { el: document.getElementById('flow4Sentinel'), bg: seasonWinterBg },
+        { el: document.getElementById('flowEndSentinel'), bg: doorBg },
+        { el: document.getElementById('stone1Sentinel'), bg: stoneMoonstoneBg },
+        { el: document.getElementById('stone2Sentinel'), bg: stoneCarnelianBg },
+        { el: document.getElementById('stone3Sentinel'), bg: stoneRoseBg },
+        { el: document.getElementById('stone4Sentinel'), bg: stoneMoonstoneBg },
+        { el: document.getElementById('stone5Sentinel'), bg: stoneAquaBg },
+        { el: document.getElementById('stone6Sentinel'), bg: stoneRoseBg },
+        { el: document.getElementById('stone7Sentinel'), bg: stoneMoonstoneBg },
+        { el: document.getElementById('stone8Sentinel'), bg: stoneRoseBg },
+        { el: document.getElementById('stoneEndSentinel'), bg: doorBg }
+    ].filter(function (stage) { return !!stage.el; });
+    if (!stages.length) return;
+
+    var layers = [kanaBg, elementBg, deityBg, doorBg, seasonSummerBg, seasonAutumnBg, seasonWinterBg, stoneMoonstoneBg, stoneAquaBg, stoneCarnelianBg, stoneRoseBg];
+    function show(active) {
+        layers.forEach(function (el) {
+            if (el === active) el.classList.add('is-visible');
+            else el.classList.remove('is-visible');
+        });
+    }
+
+    function onScroll() {
+        var trigger = window.innerHeight * 0.65;
+        var active = null;
+        for (var i = 0; i < stages.length; i++) {
+            if (stages[i].el.getBoundingClientRect().top < trigger) {
+                active = stages[i].bg;
+            }
+        }
+        show(active);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
+</script>
+
+</body>
+</html>
