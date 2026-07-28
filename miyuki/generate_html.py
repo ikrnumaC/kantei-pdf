@@ -385,7 +385,8 @@ def parse_txt(path):
     # Fallback: extract guardian from body if not in header
     if not guardian_name:
         # look for "あなたを守っているのは\n<NAME>（<reading>）" (parens may be on next line)
-        m = re.search(r"あなたを守っているのは\s*\n\s*([^\n（(]+?)\s*\n?\s*[（(]([^）)]+)[）)]", body)
+        # Some texts use "<name>様を守っているのは" instead of "あなたを守っているのは".
+        m = re.search(r"(?:あなたを|\S+?様を)守っているのは\s*\n\s*([^\n（(]+?)\s*\n?\s*[（(]([^）)]+)[）)]", body)
         if m:
             guardian_name = m.group(1).strip()
             guardian_reading = m.group(2).strip()
