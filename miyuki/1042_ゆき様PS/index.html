@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>パワーストーンブレスレット | 深雪</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d0d1a;
+      color: #ddd9cc;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 2;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* 区切り */
+    .divider {
+      border: none;
+      border-top: 1px solid #222238;
+      margin: 32px 0;
+    }
+
+    /* 本文エリア */
+    .body {
+      padding: 36px 28px 48px;
+    }
+
+    /* 段落 */
+    p {
+      margin-bottom: 0;
+    }
+
+    /* セクションタイトル */
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1rem;
+      color: #c8a86b;
+      letter-spacing: 0.12em;
+      margin: 40px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #2a2a44;
+    }
+
+    /* 石見出し */
+    .stone-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem;
+      color: #e8e4d8;
+      letter-spacing: 0.1em;
+      margin: 36px 0 6px;
+    }
+
+    /* 石の画像 */
+    .stone-img {
+      width: 100%;
+      margin: 16px 0 20px;
+      display: block;
+    }
+
+    /* 石どうしの区切り */
+    .stone-divider {
+      border: none;
+      text-align: center;
+      color: #2a2a44;
+      font-size: 1rem;
+      margin: 32px 0;
+    }
+    .stone-divider::before { content: '— — —'; letter-spacing: 0.3em; }
+
+    /* 価格ボックス */
+    .price-box {
+      border: 1px solid #c8a86b;
+      padding: 28px 24px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .price-label {
+      font-size: 0.78rem;
+      color: #c8a86b;
+      letter-spacing: 0.2em;
+      margin-bottom: 10px;
+    }
+    .price-num {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 2rem;
+      color: #e8e4d8;
+      letter-spacing: 0.05em;
+    }
+    .price-tax {
+      font-size: 0.72rem;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    /* インフォリスト */
+    .info-list {
+      margin: 8px 0 0;
+      padding: 0;
+    }
+    .info-list li {
+      list-style: none;
+      padding-left: 1em;
+      position: relative;
+      color: #b8b4a6;
+      font-size: 0.88rem;
+    }
+    .info-list li::before {
+      content: '・';
+      position: absolute;
+      left: 0;
+      color: #c8a86b;
+    }
+
+    /* 特典 */
+    .tokuten {
+      border-left: 2px solid #c8a86b;
+      padding: 14px 18px;
+      margin: 12px 0;
+      background: rgba(200,168,107,0.04);
+      font-size: 0.88rem;
+      color: #b8b4a6;
+    }
+    .tokuten li {
+      list-style: none;
+      padding-left: 1.5em;
+      position: relative;
+    }
+    .tokuten li::before {
+      content: attr(data-num) '.';
+      position: absolute;
+      left: 0;
+      color: #c8a86b;
+    }
+
+    /* 締め */
+    .closing {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid #222238;
+    }
+    .closing-sign {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.1rem;
+      color: #c8a86b;
+      letter-spacing: 0.15em;
+      margin-top: 16px;
+    }
+
+    /* CTAボタン */
+    .cta-button {
+      display: block;
+      text-align: center;
+      background: linear-gradient(135deg, #c8a86b 0%, #d4b878 100%);
+      color: #0d0d1a;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      padding: 20px 24px;
+      margin: 28px 0 12px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: opacity 0.2s;
+    }
+    .cta-button:hover {
+      opacity: 0.88;
+    }
+    .cta-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: #888;
+      margin-bottom: 24px;
+    }
+
+    /* フッター */
+    .footer {
+      padding: 24px;
+      text-align: center;
+      font-size: 0.72rem;
+      color: #444;
+      border-top: 1px solid #1a1a30;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="body">
+
+    <!-- 冒頭 -->
+    <p>ゆき様</p>
+    <br>
+    <p>詳細のご希望、ありがとうございます。</p>
+    <br>
+    <p>ゆき様のために選んだ石について、<br>詳しくお伝えしますね。</p>
+
+    <hr class="divider">
+
+    <!-- 専用PSについて -->
+    <div class="section-title">💎 ゆき様専用パワーストーンについて</div>
+
+    <p>ゆき様の命の流れを視させていただき、<br>今のゆき様に最も必要な石を3つ選びました。</p>
+    <br>
+    <p>ゆき様は、深い海の底で静かに凪いでいく、<br>「深く豊かな水」のエネルギーを持つ方です。</p>
+    <br>
+    <p>言葉にされなくても、相手の本音を静かに汲み取り、<br>そっと包み込むように受け止めてしまう。</p>
+    <br>
+    <p>でも、<br>迷いや揺れを一人で抱え込んでしまう感覚が<br>繰り返されやすい流れがあります。</p>
+    <br>
+    <p>2026年8月から決断の芯が立ち上がり始め、<br>10月、豊玉姫の力が一年で最も強く流れ込む月を経て、<br>11月、新しい流れが静かに芽吹き始める兆しが、<br>すでに動き始めています。</p>
+    <br>
+    <p>その流れを最大限に活かすために、<br>ゆき様のエネルギーと<br>豊玉姫（とよたまひめ）が<br>深く共鳴する3つの石を選びました。</p>
+
+    <hr class="divider">
+
+    <!-- 3つの石 -->
+    <div class="section-title">🪨 3つの石について</div>
+
+    <!-- ムーンストーン -->
+    <div class="stone-title">ムーンストーン</div>
+
+    <img src="../素材/ムーンストーン.png" class="stone-img" alt="ムーンストーン">
+
+    <p>新しい始まりと、受け取る力を象徴する乳白色の石です。</p>
+    <br>
+    <p>ゆき様の、深い海の底に眠る水のエネルギーと最も深く共鳴します。</p>
+    <br>
+    <p>心の奥に眠る、本物の縁への願いを<br>静かに外へ引き出してくれます。</p>
+    <br>
+    <p>ゆき様の、「これは錯覚かもしれない」と<br>自分を疑ってしまう感覚を、<br>この石がそっと緩めてくれます。</p>
+
+    <div class="stone-divider"></div>
+
+    <!-- ラリマー -->
+    <div class="stone-title">ラリマー</div>
+
+    <img src="../素材/ラリマー.png" class="stone-img" alt="ラリマー">
+
+    <p>豊玉姫と最も共鳴が強い石です。</p>
+    <br>
+    <p>海と空をつなぐような、<br>穏やかなターコイズブルーの輝きを持っています。</p>
+    <br>
+    <p>ゆき様の命の流れには、<br>深い海のような水のエネルギーが豊かに流れる配置があります。</p>
+    <br>
+    <p>ラリマーは、その守護を日常の中で<br>ずっとそばに置いておける石です。</p>
+    <br>
+    <p>迷いや空回りのエネルギーを鎮め、<br>心を整理しながら前に進む力を支えてくれます。</p>
+
+    <div class="stone-divider"></div>
+
+    <!-- ラブラドライト -->
+    <div class="stone-title">ラブラドライト</div>
+
+    <img src="../素材/ラブラドライト.png" class="stone-img" alt="ラブラドライト">
+
+    <p>静かな輝きの奥に、強い決断の力を秘めた石です。</p>
+    <br>
+    <p>ゆき様が、彼との関係や自分の気持ちの間で<br>揺れてしまう場面のとき、</p>
+    <br>
+    <p>この石が、そのループを静かにほどいてくれます。</p>
+    <br>
+    <p>迷いの力を止めるのではなく、<br>それを「答えを選び取る力」へと整えてくれる石です。</p>
+
+    <hr class="divider">
+
+    <!-- 価格 -->
+    <div class="section-title">✨ ゆき様専用ブレスレット</div>
+
+    <div class="price-box">
+      <div class="price-label">ゆき様専用ブレスレット</div>
+      <div class="price-num">¥19,800</div>
+      <div class="price-tax">（税込）</div>
+    </div>
+
+    <p>ムーンストーン・ラリマー・ラブラドライト。<br>この3つをゆき様専用に組み合わせて、<br>一つひとつ手作りで仕上げます。</p>
+    <br>
+    <p>豊玉姫への祈祷とエネルギーチャージを込めて、<br>ゆき様のもとへお届けします。</p>
+    <br>
+    <p>身につけていくうちに、<br>「これは錯覚じゃなかった」「私の感覚は正しかった」<br>という感覚が少しずつ戻ってきます。</p>
+    <br>
+    <p>彼との関係や自分の気持ちの間で揺れそうになる瞬間、<br>石が静かにそのループをほどいてくれる。</p>
+    <br>
+    <p>日常の中で、守護がそばにある。</p>
+    <br>
+    <p>そして2026年10月、豊玉姫の力が最も強く流れ込むその月、<br>11月、新しい流れが静かに芽吹き始めるその時期に、<br>エネルギーが整った状態で臨めるようになります。</p>
+
+    <hr class="divider">
+
+    <!-- タイミング -->
+    <div class="section-title">⏰ タイミングについて</div>
+
+    <p>ゆき様の場合、<br>2026年8月から決断の芯が静かに立ち上がり始め、<br>10月に一年で最も大きな節目を迎えます。</p>
+    <br>
+    <p>パワーストーンのエネルギーが<br>しっかりと馴染むまでには、<br>通常2〜3週間ほどかかります。</p>
+    <br>
+    <p>今から始めることで、<br>ちょうど8月から始まる決断の流れに、<br>エネルギーが整った状態で臨んでいただけます。</p>
+
+    <hr class="divider">
+
+    <!-- お届け -->
+    <div class="section-title">📦 お届けについて</div>
+
+    <ul class="info-list">
+      <li>ご注文から7〜10日以内に発送</li>
+      <li>追跡番号付きで安心</li>
+      <li>専用の浄化・エネルギーチャージ済みでお届けします</li>
+    </ul>
+
+    <hr class="divider">
+
+    <!-- 特典 -->
+    <div class="section-title">🎁 ご購入特典</div>
+
+    <p>今回ご購入いただいた方には：</p>
+    <br>
+    <div class="tokuten">
+      <ul>
+        <li data-num="1">パワーストーンの取扱い・浄化方法のご案内</li>
+        <li data-num="2">ご購入から3ヶ月間、気になることがあればいつでもご相談いただけます</li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <!-- CTA -->
+    <p>ご希望の方は、下のボタンよりお進みください。</p>
+    <br>
+    <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/6a28ffdd2a10e43b163effbc" class="cta-button" target="_blank" rel="noopener">ブレスレットを希望する</a>
+    <p class="cta-note">※ 別ウィンドウで購入ページが開きます</p>
+
+    <p>ご不明な点があれば、<br>お気軽にお尋ねくださいね。</p>
+
+    <!-- 締め -->
+    <div class="closing">
+      <p>ゆき様の、揺れながらも本音を見極めようとするその力を、<br>豊玉姫が静かに支えていきますように。</p>
+      <div class="closing-sign">深雪</div>
+    </div>
+
+  </div>
+
+  <div class="footer">© 深雪 MIYUKI</div>
+
+</body>
+</html>
