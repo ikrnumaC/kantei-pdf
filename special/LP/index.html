@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) : GA4 計測 [GA4-KANA-LP] -->
+    <!-- ★既存ページと同じ計測IDのままにしています。別IDにする場合は書き換えてください -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2SSQHY7CEL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2SSQHY7CEL');
+    </script>
+    <title>無料鑑定 | かな</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700;900&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Noto Serif JP", serif; line-height: 2; background: #fdfcfa; color: #333; min-height: 100vh; }
+
+        .bg-veil { position: fixed; inset: 0; z-index: -3; pointer-events: none; background: linear-gradient(180deg, rgba(253,252,250,0.94) 0%, rgba(248,246,241,0.94) 100%); }
+
+        .bg-follow { position: fixed; inset: 0; z-index: -2; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.2s ease; pointer-events: none; }
+        .bg-follow.is-visible { opacity: 0.1; }
+
+        .container { max-width: 600px; margin: 0 auto; padding: 60px 30px; }
+
+        .header { text-align: center; padding: 50px 0 60px; }
+        .eyebrow { font-size: 13px; color: #9c8a6f; letter-spacing: 4px; margin-bottom: 18px; }
+        .headline { font-size: 26px; font-weight: 500; color: #6b5a43; letter-spacing: 4px; line-height: 1.9; }
+        .headline .accent { color: #8b7355; }
+
+        section { padding: 50px 0; border-bottom: 1px solid #e5e0d5; opacity: 0; transform: translateY(14px); transition: opacity 0.9s ease, transform 0.9s ease; }
+        section.is-visible { opacity: 1; transform: translateY(0); }
+
+        h2 { font-size: 17px; font-weight: 500; color: #8b7355; letter-spacing: 2px; margin-bottom: 35px; text-align: center; }
+        p { margin-bottom: 40px; font-weight: 300; color: #444; text-align: center; }
+        strong { color: #8b7355; font-weight: 500; }
+
+        .check-item { padding: 25px 0; text-align: center; }
+        .check-item div { font-size: 15px; color: #444; font-weight: 300; line-height: 1.9; }
+        .check-item div:first-child { margin-bottom: 10px; }
+
+        .step-list { counter-reset: step; margin-bottom: 10px; }
+        .step-item { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 22px 0; border-bottom: 1px solid #e5e0d5; text-align: center; }
+        .step-item:last-child { border-bottom: none; }
+        .step-num { counter-increment: step; flex: none; width: 34px; height: 34px; border-radius: 50%; border: 1px solid #8b7355; color: #8b7355; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+        .step-num::before { content: counter(step); }
+        .step-body .title { font-size: 15px; color: #6b5a43; font-weight: 500; margin-bottom: 6px; }
+        .step-body div:not(.title) { font-size: 14px; color: #555; font-weight: 300; }
+
+        .voice { padding: 24px 0; border-bottom: 1px solid #e5e0d5; text-align: left; }
+        .voice:last-child { border-bottom: none; }
+        .voice p { text-align: left; font-size: 14px; margin-bottom: 12px; color: #444; }
+        .voice .name { font-size: 12px; color: #9c8a6f; text-align: right; margin-bottom: 0; }
+
+        .stats { display: flex; justify-content: center; gap: 40px; text-align: center; margin-bottom: 10px; }
+        .stat .num { font-size: 30px; color: #8b7355; font-weight: 400; }
+        .stat .label { font-size: 12px; color: #9c8a6f; letter-spacing: 1px; margin-top: 6px; }
+
+        .testimonial-shot { width: 100%; display: block; border-radius: 4px; margin-bottom: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+
+        .cta-block { text-align: center; padding: 55px 20px; margin: 0 -30px; background: #fff; border-top: 1px solid #e5e0d5; border-bottom: 1px solid #e5e0d5; }
+        .cta-title { font-size: 15px; color: #8b7355; margin-bottom: 22px; letter-spacing: 2px; }
+        .btn { display: inline-block; background: #8b7355; color: #fff; text-decoration: none; padding: 16px 45px; border-radius: 2px; font-size: 14px; letter-spacing: 2px; margin: 16px 0; }
+        .btn:active { opacity: 0.85; }
+        .note { margin-top: 20px; font-size: 12px; color: #999; }
+
+        .faq-item { padding: 22px 0; border-bottom: 1px solid #e5e0d5; text-align: left; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item .q { font-size: 15px; color: #6b5a43; font-weight: 500; margin-bottom: 10px; }
+        .faq-item .q::before { content: "Q. "; color: #8b7355; }
+        .faq-item .a { font-size: 14px; color: #555; font-weight: 300; }
+        .faq-item .a::before { content: "A. "; color: #9c8a6f; }
+
+        .closing { text-align: center; padding: 60px 20px 20px; color: #666; }
+        .closing p { margin-bottom: 30px; }
+        .sign { text-align: right; padding-top: 10px; padding-bottom: 40px; color: #8b7355; font-size: 17px; letter-spacing: 3px; }
+
+        .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: rgba(253,252,250,0.96); border-top: 1px solid #e5e0d5; padding: 12px 20px; text-align: center; backdrop-filter: blur(4px); transform: translateY(100%); transition: transform 0.4s ease; }
+        .sticky-cta.is-visible { transform: translateY(0); }
+        .sticky-cta .btn { margin: 0; padding: 13px 40px; font-size: 13px; }
+
+        @media (max-width: 480px) {
+            .headline { font-size: 22px; letter-spacing: 2px; }
+            .stats { gap: 24px; }
+        }
+    </style>
+</head>
+<body>
+<div class="bg-veil"></div>
+<div class="bg-follow" id="bg-thread" style="background-image: url('縁の糸.jpg');"></div>
+<div class="bg-follow" id="bg-kana" style="background-image: url('祈るかな.png');"></div>
+<div class="container">
+
+    <header class="header">
+        <div class="eyebrow">かなの霊視鑑定</div>
+        <div class="headline">その恋の行方を<br>私と一緒に視てみませんか？</div>
+    </header>
+
+    <section id="section-empathy">
+        <h2>🔮 こんな想い、抱えていませんか</h2>
+        <div class="check-item">
+            <div>好きな人がいるのに、素直になれない</div>
+            <div>複雑な恋愛だから、<br>誰にも相談できず、ひとりで抱えている。</div>
+        </div>
+        <div class="check-item">
+            <div>連絡が途絶えて、<br>そのままになっている</div>
+            <div>終わったのか、まだ続いているのか。</div>
+        </div>
+        <div class="check-item">
+            <div>今の関係が、この先どうなるか分からない。</div>
+            <div>動くべきか、待つべきか、判断がつかない。</div>
+        </div>
+        <p style="margin-top:40px;">安心してください。</p>
+        <p>私の霊視鑑定なら<br>その関係の行く末を視て<br>お伝えすることが出来ます。</p>
+    </section>
+
+    <section id="section-philosophy">
+        <h2>🔮 霊視鑑定で視るもの</h2>
+        <p>人と人のあいだには、<br>「縁の糸」があります。</p>
+        <p>色、太さ、<br>繋がっているかどうか。</p>
+        <p>私はその糸を<br>特別な力を使い<br>視ることが出来ます。</p>
+        <p>ただ、視えたことを<br>そのままお伝えしても</p>
+        <p>オーラが乱れたままだと<br>不安に振り回されて<br>前に進めなくなってしまう。</p>
+        <p>だから、<br>
+        <strong>視えた縁の行方</strong>と、<br>
+        <strong>受け取るためのオーラの整え方</strong>を<br>
+        セットでお伝えしています。</p>
+    </section>
+
+    <section id="section-accept">
+        <h2>🔮 どんな状況でも、否定しません</h2>
+        <p>複雑な関係のご相談は、<br>みなさん謝罪から入ることが多いです。</p>
+        <p>「ごめんなさい、<br>お互いパートナーがいて。<br>でも将来一緒になりたいです。」</p>
+        <p>「恥ずかしいのですが<br>不倫関係なんです……<br>でも相手の事を本当に愛しています」</p>
+        <p>いいですか。</p>
+        <p>謝ることなんて<br>何ひとつありません。</p>
+        <p>今、たまたま<br>パートナーがいるだけで</p>
+        <p>その人と未来永劫<br>一緒にいなければいけない<br>ということは一切ないんです。</p>
+        <p>縁の糸は<br>今付き合ってる人よりも、<br>今愛している人と強く結びついている<br>なんて事も、結構多いんです。</p>
+        <p>世間がどう言おうと、<br>私はあなたの想いを尊重します。</p>
+        <p>霊視で視えたことは、<br>包み隠さずお伝えするので、</p>
+        <p>厳しいと感じることが<br>あるかもしれません。</p>
+        <p>でも、その関係性や<br>恋する相手そのものを<br>否定することは絶対にしません。</p>
+        <p>安心して<br>今の関係の行く末を<br>聞きに来てください。</p>
+    </section>
+
+    <section id="section-trust">
+        <h2>🔮 鑑定を受けた方の声</h2>
+        <p>今まで鑑定を受けてくださった方から<br>素敵な感想を頂いています。</p>
+        <p>一部紹介させていただきますね。</p>
+        <div style="margin-top:10px;">
+            <img class="testimonial-shot" src="スクリーンショット 2026-07-31 10.10.44.png" alt="お客様の感想">
+            <img class="testimonial-shot" src="スクリーンショット 2026-07-31 10.11.10.png" alt="お客様の感想">
+            <img class="testimonial-shot" src="スクリーンショット 2026-07-31 10.12.17.png" alt="お客様の感想">
+
+            <img class="testimonial-shot" src="スクリーンショット 2026-07-31 10.16.11.png" alt="お客様の感想">
+            <img class="testimonial-shot" src="スクリーンショット 2026-07-31 10.16.17.png" alt="お客様の感想">
+            <img class="testimonial-shot" src="スクリーンショット 2026-07-31 10.16.29.png" alt="お客様の感想">
+            <img class="testimonial-shot" src="スクリーンショット 2026-07-31 10.16.40.png" alt="お客様の感想">
+            <img class="testimonial-shot" src="スクリーンショット 2026-07-31 10.17.21.png" alt="お客様の感想">
+        </div>
+    </section>
+
+    <section id="section-flow">
+        <h2>🔮 無料鑑定を受け取るまで</h2>
+        <div class="step-list">
+            <div class="step-item">
+                <div class="step-num"></div>
+                <div class="step-body">
+                    <div class="title">下のボタンからLINE登録</div>
+                    <div>ボタンを押すだけで完了します。<br><br>無料鑑定を受け取ったあとは<br>ブロックして頂いても構いません。</div>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-num"></div>
+                <div class="step-body">
+                    <div class="title">無料霊視鑑定をお届け</div>
+                    <div>あなたのオーラと、<br>今のご縁について視た内容を<br>2日以内にお届けします。</div>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-num"></div>
+                <div class="step-body">
+                    <div class="title">ご希望の方は本鑑定へ</div>
+                    <div>もっと深く知りたい方だけ、<br>詳しい鑑定にお進みいただけます。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cta-block">
+        <p style="margin-bottom:10px;">あなたのオーラと<br>ご縁の行方、<br>私と一緒に視てみましょう。</p>
+        <a href="https://line.me/R/ti/p/%40126fuuwt" class="btn" id="cta-main">霊視鑑定を受ける</a>
+        <p class="note">登録後、自動で無料鑑定をお届けします。<br>いつでもブロックできます。</p>
+    </div>
+
+    <section id="section-faq">
+        <h2>🔮 よくある質問</h2>
+        <div class="faq-item">
+            <div class="q">本当に無料ですか?</div>
+            <div class="a">はい。登録後にお届けする鑑定は無料です。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">LINE登録すると、通知がたくさん来ますか?</div>
+            <div class="a">頻繁には来ません。<br><br>週1回ほど、お悩みに役立つ情報の<br>お届けをすることがあります。<br><br>不要であればいつでも<br>ブロックしていただけます。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">複雑な状況でも相談できますか?</div>
+            <div class="a">もちろんです。<br>不倫、音信不通、片思いなど、<br>どんな状況でも否定せずお受けしています。</div>
+        </div>
+    </section>
+
+    <div class="closing" id="section-closing">
+        <p>縁の糸は、<br>しっかりと運命の相手と<br>つながっています。</p>
+        <p>あとは、<br>あなたが勇気を出して<br>私と一緒に視るだけ。</p>
+        <p>その一歩を、<br>ここから始めましょう。</p>
+        <a href="https://line.me/R/ti/p/%40126fuuwt" class="btn" id="cta-closing">運命の相手との縁を<br>確認する</a>
+    </div>
+
+</div>
+
+<div class="sticky-cta" id="stickyCta">
+    <a href="https://line.me/R/ti/p/%40126fuuwt" class="btn" id="cta-sticky">霊視鑑定を受ける</a>
+</div>
+
+<script>
+(function () {
+  // セクションのフェードイン
+  var sections = document.querySelectorAll('section');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) e.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.15 });
+    sections.forEach(function (s) { io.observe(s); });
+  } else {
+    sections.forEach(function (s) { s.classList.add('is-visible'); });
+  }
+
+  // ファーストビューを過ぎたら追従CTAを表示。CTAゾーンに入ったら以降は表示しない
+  var sticky = document.getElementById('stickyCta');
+  var header = document.querySelector('.header');
+  var ctaBlock = document.querySelector('.cta-block');
+  var bgThread = document.getElementById('bg-thread');
+  if (sticky && header && 'IntersectionObserver' in window) {
+    var headerVisible = false;
+    var pastCta = false;
+    var updateSticky = function () {
+      if (headerVisible || pastCta) sticky.classList.remove('is-visible');
+      else sticky.classList.add('is-visible');
+    };
+    var hio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        headerVisible = e.isIntersecting;
+        if (bgThread) bgThread.classList.toggle('is-visible', headerVisible);
+      });
+      updateSticky();
+    }, { threshold: 0 });
+    hio.observe(header);
+
+    if (ctaBlock) {
+      var cio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { pastCta = true; updateSticky(); cio.disconnect(); }
+        });
+      }, { threshold: 0 });
+      cio.observe(ctaBlock);
+    }
+  }
+
+  // 追従する背景画像:「縁の糸」はTOP〜こんな事ありませんかの手前(上のheader監視で制御)、「祈るかな」は次のパート〜感想の手前
+  var bgKana = document.getElementById('bg-kana');
+  var philosophySection = document.getElementById('section-philosophy');
+  var acceptSection = document.getElementById('section-accept');
+  var trustSection = document.getElementById('section-trust');
+  if (bgKana && 'IntersectionObserver' in window) {
+    var philosophyVisible = false;
+    var acceptVisible = false;
+    var trustVisible = false;
+    var updateBgKana = function () {
+      if (trustVisible) bgKana.classList.remove('is-visible');
+      else if (philosophyVisible || acceptVisible) bgKana.classList.add('is-visible');
+      else bgKana.classList.remove('is-visible');
+    };
+    if (philosophySection) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { philosophyVisible = e.isIntersecting; });
+        updateBgKana();
+      }, { threshold: 0 }).observe(philosophySection);
+    }
+    if (acceptSection) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { acceptVisible = e.isIntersecting; });
+        updateBgKana();
+      }, { threshold: 0 }).observe(acceptSection);
+    }
+    if (trustSection) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { trustVisible = e.isIntersecting; });
+        updateBgKana();
+      }, { threshold: 0 }).observe(trustSection);
+    }
+  }
+})();
+</script>
+
+<!-- GA4 カスタム計測:LP閲覧/最後まで読んだか/CTAクリック [GA4-KANA-LP] -->
+<script>
+(function () {
+  function fire() {
+    var base = { persona: 'kana', page: 'free_kantei_lp' };
+    gtag('set', 'user_properties', { persona: 'kana' });
+    gtag('event', 'page_open', base);
+
+    var end = document.getElementById('section-closing');
+    if (end && 'IntersectionObserver' in window) {
+      var done = false;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && !done) { done = true; gtag('event', 'read_complete', base); io.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      io.observe(end);
+    }
+
+    document.querySelectorAll('.btn').forEach(function (b) {
+      b.addEventListener('click', function () {
+        gtag('event', 'cta_click', Object.assign({ cta_id: b.id || 'unknown' }, base));
+      });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire); else fire();
+})();
+</script>
+
+</body>
+</html>
