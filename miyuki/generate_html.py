@@ -390,6 +390,11 @@ def parse_txt(path):
         if m:
             guardian_name = m.group(1).strip()
             guardian_reading = m.group(2).strip()
+        else:
+            # Some texts give the guardian name with no reading in parens at all.
+            m2 = re.search(r"(?:あなたを|\S+?様を)守っているのは\s*\n\s*([^\n（(。]+)", body)
+            if m2:
+                guardian_name = m2.group(1).strip().rstrip("。")
 
     return {
         "name": name,
