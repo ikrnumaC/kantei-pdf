@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) : GA4 計測 [GA4-MIYUKI] -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHLDFT6DR7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JHLDFT6DR7');
+    </script>
+    <title>真仝様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+
+            .toc {
+                padding: 20px 15px;
+            }
+
+            .toc-title {
+                font-size: 1.1em;
+            }
+
+            .toc a {
+                font-size: 0.95em;
+                padding: 12px 6px 12px 36px;
+            }
+        }
+
+        /* ===== 演出：元素の背景（冒頭〜守護神登場まで） ===== */
+        .element-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../鑑定画像/ろうそく.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .element-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：守護神の背景（守護神登場〜本式内容の手前まで） ===== */
+        .deity-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/不動明王.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center 18%;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .deity-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：扉の背景（本式内容〜結びまで） ===== */
+        .door-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/ドア2.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .door-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：今後の流れ 季節背景 ===== */
+        .season-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .season-bg.is-visible { opacity: 0.4; }
+        #seasonSummerBg { background-image: url("../鑑定画像/夏.jpg"); }
+        #seasonAutumnBg { background-image: url("../鑑定画像/秋.jpg"); }
+
+        /* ===== 演出：パワーストーン背景 ===== */
+        .stone-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../素材/ガーネット.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .stone-bg.is-visible { opacity: 0.4; }
+
+        .deity-veil {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(15, 15, 46, 0.04) 0%, rgba(15, 15, 46, 0.15) 60%, rgba(15, 15, 46, 0.25) 100%),
+                linear-gradient(180deg, rgba(15, 15, 46, 0.06) 0%, rgba(15, 15, 46, 0.18) 100%);
+        }
+
+        /* ===== 演出：花びら ===== */
+        #petals {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="element-bg" id="elementBg"></div>
+    <div class="deity-bg" id="deityBg"></div>
+    <div class="door-bg" id="doorBg"></div>
+    <div class="season-bg" id="seasonSummerBg"></div>
+    <div class="season-bg" id="seasonAutumnBg"></div>
+    <div class="stone-bg" id="stoneBg"></div>
+    <div class="deity-veil"></div>
+    <canvas id="petals"></canvas>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">静かな炎が、揺るがぬ形を結ぶ時</h2>
+            <p class="cover-name">真仝様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 目次 -->
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-god">あなたを見守る神様</a></li>
+                <li><a href="#sec-1">1. 豊かさが動く刻</a></li>
+                <li><a href="#sec-2">2. 富が留まる器の作り方</a></li>
+                <li><a href="#sec-3">3. 静かな炎の活かし方</a></li>
+                <li><a href="#sec-4">4. 真仝様らしい選び方</a></li>
+                <li><a href="#sec-bonus">気になること</a></li>
+                <li><a href="#sec-flow">今後の流れ</a></li>
+                <li><a href="#sec-guardian">守護を受け取る方法</a></li>
+                <li><a href="#sec-stone">あなたを支えるパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
+        <div id="elementSentinel"></div>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">真仝様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂が、<br>本気で変わろうとしている。</p>
+            <p style="margin-bottom: 90px;">その強い意志が、<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先、<br>あなたが本当に知るべきことを、<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が、<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px;">真仝様と奥様が、<br>いい香りが漂うお店の中で、<br>並んで笑い合っている姿。</p>
+            <p style="margin-bottom: 90px;">それは、<br>2027年の秋から冬にかけて。</p>
+            <p style="margin-bottom: 90px;">準備を重ねてきた日々が、<br>少しずつ形になっていく頃です。</p>
+            <p style="margin-bottom: 90px;">一等当選という<br>大きな一点の答えよりも、</p>
+            <p style="margin-bottom: 90px;">そこに向かって<br>段階的に力が満ちていく流れが、<br>本質として視えています。</p>
+            <p style="margin-bottom: 90px;">その未来の兆しは、<br>濃く感じられます。</p>
+            <p style="margin-bottom: 90px;">そこに至るまでの道のりは、<br>決して平坦ではありません。</p>
+            <p style="margin-bottom: 90px;">手にした豊かさを、<br>どう留め、どう育てていくか。</p>
+            <p style="margin-bottom: 90px;">その後工程の方が、<br>実は大きなテーマになります。</p>
+            <p style="margin-bottom: 90px;">でも、<br>真仝様には、<br>それをやり遂げる力があります。</p>
+            <p style="margin-bottom: 0;">その力の理由も、<br>これから丁寧にお伝えしていきます。</p>
+        </div>
+
+        <div id="guardianSentinel"></div>
+        <div class="oracle-message" id="sec-god">
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは、<br><span style="color: #ffd966;">不動明王</span>（ふどうみょうおう）。</p>
+            <p style="margin-bottom: 90px;">昔、<br>迷いや欲望に飲み込まれ、<br>自分を見失う人々がいました。</p>
+            <p style="margin-bottom: 90px;">不動明王は、<br>その迷いごと焼き尽くす炎を背に、<br>揺るがない意志で立ち続けました。</p>
+            <p style="margin-bottom: 90px;">どんな困難にも動じず、<br>一度定めた道を、<br>最後まで守り抜く。</p>
+            <p style="margin-bottom: 90px;">その姿は、<br>迷える人の心をまっすぐに正す、<br>力強い導きとなりました。</p>
+            <p style="margin-bottom: 90px;">「揺るがない意志で<br>迷いを焼き払う神様」として、<br>今も各地のお寺に祀られています。</p>
+            <p style="margin-bottom: 0;">あなたを守っているのは、<br>まさにその不動明王の力です。</p>
+            <img src="../鑑定画像/不動明王.png" alt="不動明王" class="guardian-image">
+        </div>
+
+        <div id="essenceSentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px;">まず、<br>真仝様の本質について、<br>視えていることをお伝えします。</p>
+            <p style="margin-bottom: 90px;">真仝様は、<br>静かに灯り続ける、<br>一本のろうそくのような方です。</p>
+            <p style="margin-bottom: 90px;">その灯は、<br>一気に燃え上がることはありません。</p>
+            <p style="margin-bottom: 90px;">けれど、<br>どれだけ風が吹いても<br>消えることもありません。</p>
+            <p style="margin-bottom: 90px;">一度「これをやる」と決めたことは、<br>途中で放り出さず、<br>時間をかけてでも<br>最後まで育て上げてきた。</p>
+            <p style="margin-bottom: 90px;">それは、<br>真仝様の中に、<br>堅実に積み上げていく力が<br>生まれつき備わっているからです。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ。</p>
+            <p style="margin-bottom: 90px;">真仝様は、<br>お金や豊かさに対して、<br>人一倍まっすぐな感覚を持っています。</p>
+            <p style="margin-bottom: 90px;">ただ待っているだけでなく、<br>自分の技術や工夫で<br>豊かさを生み出していく。</p>
+            <p style="margin-bottom: 90px;">発酵料理や、<br>自家焙煎の珈琲というアイデアも、<br>偶然ではありません。</p>
+            <p style="margin-bottom: 90px;">それは、<br>真仝様の中にもとから流れている<br>「自分の手で作り出す力」の<br>自然な現れです。</p>
+            <p style="margin-bottom: 90px;">普通なら、<br>一つの分野に集中して<br>そこだけを深めていく人が多いものです。</p>
+            <p style="margin-bottom: 90px;">でも真仝様は違います。</p>
+            <p style="margin-bottom: 90px;">自分の意志だけで<br>一直線に押し進めるよりも、<br>まわりの流れやご縁に<br>自然と乗っていく時に、<br>一番大きな力を発揮するタイプです。</p>
+            <p style="margin-bottom: 90px;">だからこそ、<br>これまでの人生の中でも、<br>思いがけない人からの助けや<br>引き立てを受ける場面が何度もあった。</p>
+            <p style="margin-bottom: 90px;">それは運が良かったからではなく、<br>真仝様自身が、<br>そういう縁を引き寄せやすい<br>傾向を持っているからです。</p>
+            <p style="margin-bottom: 90px;">一方で、<br>真仝様の内側には、<br>高いプライドと<br>静かな自尊心もあります。</p>
+            <p style="margin-bottom: 90px;">普段は落ち着いて、<br>どっしりと構えているように<br>見えているかもしれません。</p>
+            <p style="margin-bottom: 90px;">でも本当は、<br>大きな夢を語る時ほど、</p>
+            <p style="margin-bottom: 90px;">「自分に本当にそれだけの<br>力があるのか」と、</p>
+            <p style="margin-bottom: 90px;">心の奥でそっと<br>自分を疑ってしまう。</p>
+            <p style="margin-bottom: 90px;">そういう一面を、<br>持っています。</p>
+            <p style="margin-bottom: 90px;">これは弱さではありません。</p>
+            <p style="margin-bottom: 90px;">真剣に向き合っているからこそ、<br>生まれる迷いです。</p>
+            <p style="margin-bottom: 90px;">最後に、<br>仕事や人との関わりの場面で、<br>つまずきやすい時期が<br>これまでも何度かあったのではないでしょうか。</p>
+            <p style="margin-bottom: 90px;">決断は早いのに、<br>そこから形にしていく過程で、<br>何度も作り直したり、<br>遠回りをしたりする。</p>
+            <p style="margin-bottom: 90px;">そんな流れに、<br>心当たりがあるかもしれません。</p>
+            <p style="margin-bottom: 90px;">これは、<br>真仝様が不器用だからではなく、<br>もともとの運命の中に<br>組み込まれているテーマだからです。</p>
+            <p style="margin-bottom: 90px;">一直線に進むよりも、<br>壊しては作り直し、<br>形を変えながら<br>本物に近づけていく。</p>
+            <p style="margin-bottom: 90px;">それが、<br>真仝様らしい進み方です。</p>
+            <p style="margin-bottom: 90px;">今回の開業という<br>大きな挑戦も、<br>その延長線上にあります。</p>
+            <p style="margin-bottom: 90px;">こうして見えてくる真仝様は、<br>決断力と粘り強さを併せ持ち、<br>まわりの縁を大切にしながら<br>豊かさを自分の手で<br>作り上げていける人です。</p>
+            <p style="margin-bottom: 0;">その本質が、<br>これからお伝えする<br>一つ一つの話の土台になっています。</p>
+        </div>
+
+        <div id="deitySentinel"></div>
+        <h2 class="emoji-header" id="sec-1">⛩️ 1. 豊かさが動く刻</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">真仝様の中には、<br>自分の技術や工夫で<br>豊かさを生み出していく力が、<br>もともと強く流れています。</p>
+            <p style="margin-bottom: 90px;">発酵料理や自家焙煎の珈琲という、<br>自分の手で価値を生み出すそのアイデアが、<br>真仝様の豊かさの源になっています。</p>
+            <p style="margin-bottom: 90px;">ここ数年、<br>新しいことに手を伸ばしたい、<br>何かを学び直したいという気持ちが、<br>静かに強くなっていた。</p>
+            <p style="margin-bottom: 90px;">それは偶然ではなく、<br>真仝様の運気の流れが、<br>すでにその方向へ<br>動き始めていた証です。</p>
+            <p style="margin-bottom: 90px;">一等当選という<br>夢のような出来事も、<br>今年の夏の終わりから秋にかけて、<br>大きな流れの中で<br>その可能性が強く動き始めます。</p>
+            <p style="margin-bottom: 90px;">そこから来年にかけて、<br>その流れが少しずつ<br>現実の形へと近づいていきます。</p>
+            <p style="margin-bottom: 90px;">具体的な時期については、<br>このあと詳しくお伝えしていきます。</p>
+            <p style="margin-bottom: 90px;">ただ一つ、<br>心に留めておいてほしいことがあります。</p>
+            <p style="margin-bottom: 90px;">真仝様の運命には、<br>「一気に手に入れる」ことよりも、<br>「手にしたものをどう育てるか」の方が、<br>本質的なテーマとして<br>組み込まれています。</p>
+            <p style="margin-bottom: 90px;">一等当選という<br>一点の結果に気持ちを固定しすぎると、<br>かえってその後の流れを<br>見失いやすくなります。</p>
+            <p style="margin-bottom: 0;">一等当選という夢そのものよりも、<br>豊かさが段階的に満ちていく、<br>その過程全体を、<br>どうか大切にしてください。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-2">⛩️ 2. 富が留まる器の作り方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">正直にお伝えします。</p>
+            <p style="margin-bottom: 90px;">真仝様の運命の中には、<br>豊かさが留まりにくい<br>一つの領域があります。</p>
+            <p style="margin-bottom: 90px;">住まいやお店といった<br>「場所」を司る部分が少し弱いです。</p>
+            <p style="margin-bottom: 90px;">これは、<br>お店を持つという今回のテーマにとって、<br>決して見過ごせないポイントです。</p>
+            <p style="margin-bottom: 90px;">せっかく手にした豊かさも、<br>留めておく器が整っていないと、<br>知らないうちに<br>外へ流れ出てしまいます。</p>
+            <p style="margin-bottom: 90px;">でも、<br>ここからが大切なところです。</p>
+            <p style="margin-bottom: 90px;">この「場所がまだ定まっていない」<br>という状態は、<br>弱点ではありません。</p>
+            <p style="margin-bottom: 90px;">真仝様の場所やお店は、<br>収入の動きと連動して<br>変化していく力を持っています。</p>
+            <p style="margin-bottom: 90px;">つまり、<br>豊かさが動き始めるからこそ、<br>場所が形づくられる。</p>
+            <p style="margin-bottom: 90px;">そういう順番なのです。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ、<br>良いお知らせがあります。</p>
+            <p style="margin-bottom: 90px;">来年、<br>その器を作るタイミングが、<br>すでに用意されています。</p>
+            <p style="margin-bottom: 90px;">その時期に向けて、<br>一つだけ意識してほしいことがあります。</p>
+            <p style="margin-bottom: 90px;">契約や初期投資の場面では、<br>勢いだけで決めず、<br>一つひとつを丁寧に<br>確認していくこと。</p>
+            <p style="margin-bottom: 0;">その慎重さこそが、<br>真仝様の器を、<br>より強く、より大きく<br>育てていく鍵になります。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-3">⛩️ 3. 静かな炎の活かし方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">真仝様は、<br>静かに、けれど絶えることなく<br>燃え続ける炎を持つ方です。</p>
+            <p style="margin-bottom: 90px;">一気に燃え上がる炎ではありません。</p>
+            <p style="margin-bottom: 90px;">風が吹いても消えず、<br>時間をかけてじっくりと<br>自分を燃やし続けていく。</p>
+            <p style="margin-bottom: 90px;">その炎のあり方は、<br>発酵という営みと<br>驚くほど似ています。</p>
+            <p style="margin-bottom: 90px;">発酵もまた、<br>一瞬で変化するものではありません。</p>
+            <p style="margin-bottom: 90px;">目に見えない時間の中で、<br>静かに、けれど確実に、<br>味わいが深まっていく。</p>
+            <p style="margin-bottom: 90px;">真仝様が、<br>発酵料理と自家焙煎の珈琲という<br>テーマにこれほど心を惹かれたのは、<br>偶然ではありません。</p>
+            <p style="margin-bottom: 90px;">それは、<br>真仝様自身の炎のあり方と、<br>発酵という営みのあり方が、<br>魂のレベルで<br>共鳴しているからです。</p>
+            <p style="margin-bottom: 90px;">そしてちょうど今、<br>真仝様の心と体の土台は、<br>静かに、確かに<br>満ちていく時期に入っています。</p>
+            <p style="margin-bottom: 90px;">表現すること、<br>人に感じたことを伝えることに、<br>向いている流れが、<br>今、強く整っています。</p>
+            <p style="margin-bottom: 90px;">発酵料理教室や、<br>お店という「伝える場」は、<br>今の真仝様の炎に、<br>とても合った形です。</p>
+            <p style="margin-bottom: 0;">遠回りを恐れず、<br>その炎を、<br>どうか静かに燃やし続けてください。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-4">⛩️ 4. 真仝様らしい選び方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">最後に、<br>真仝様らしい選び方について<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">真仝様の運命には、<br>人からの引き立てや、<br>思わぬ助けを受けやすい流れが、<br>生まれつき強く刻まれています。</p>
+            <p style="margin-bottom: 90px;">それも一度だけではなく、<br>人生の節目節目で<br>繰り返し訪れる流れです。</p>
+            <p style="margin-bottom: 90px;">これまでの人生でも、</p>
+            <p style="margin-bottom: 90px;">「あの時、あの人が<br>手を貸してくれたから今がある」</p>
+            <p style="margin-bottom: 90px;">そう感じる場面が、<br>一度や二度ではなかったはず。</p>
+            <p style="margin-bottom: 90px;">その力は、<br>今回の開業という挑戦でも、<br>必ず生きてきます。</p>
+            <p style="margin-bottom: 90px;">一人で全てを<br>背負い込む必要はありません。</p>
+            <p style="margin-bottom: 90px;">そして、<br>先ほどお伝えした、</p>
+            <p style="margin-bottom: 90px;">「大きな夢を語る時ほど、<br>心の奥でそっと自分を疑ってしまう」</p>
+            <p style="margin-bottom: 90px;">という一面。</p>
+            <p style="margin-bottom: 90px;">これは、<br>夢の場面だけでなく、<br>身近な方のことで<br>心を悩ませる時にも、<br>同じように表れます。</p>
+            <p style="margin-bottom: 90px;">一人で静かに<br>抱え込んでしまう。</p>
+            <p style="margin-bottom: 90px;">今、<br>お母様のことで<br>心を痛めていらっしゃるのも、<br>まさにこの一面が<br>表れている場面です。</p>
+            <p style="margin-bottom: 90px;">物を取られたと言われる、<br>お孫さんのことを<br>疑われてしまう。<br>とても悲しいことです⋯</p>
+            <p style="margin-bottom: 90px;">ただ、<br>これだけはお伝えしておきます。</p>
+            <p style="margin-bottom: 90px;">今、<br>真仝様は、<br>物事の主導権を<br>自分の手に取り戻しやすい<br>時期に入っています。</p>
+            <p style="margin-bottom: 90px;">お母様の状態に<br>振り回されるのではなく、<br>ご自身の生活のリズムを<br>守っていくことが、今なら出来ます。</p>
+            <p style="margin-bottom: 90px;">それは、<br>決して冷たいことではありません。</p>
+            <p style="margin-bottom: 90px;">むしろ、<br>真仝様自身の魂が、<br>今そう選ぶことを<br>求めているのです。</p>
+            <p style="margin-bottom: 90px;">そして先ほどお伝えした、<br>「思わぬ人からの助けを<br>受けやすい流れ」は、</p>
+            <p style="margin-bottom: 90px;">このお母様との関係の中でも、<br>同じように生きています。</p>
+            <p style="margin-bottom: 90px;">一人で全てを<br>抱え込もうとせず、<br>周りの力を<br>借りる選択をすること。</p>
+            <p style="margin-bottom: 90px;">お母様のちからも借りること。</p>
+            <p style="margin-bottom: 0;">それが、<br>今の真仝様の巡りに<br>最も合った、<br>真仝様らしい選び方です。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-bonus">🔮 気になること</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">これまでお伝えしてきたこと以外にも、<br>実はもう一つ、<br>視えているものがあります。</p>
+            <p style="margin-bottom: 90px;">無料鑑定では<br>お伝えしていなかった、<br>もう少し先の兆しです。</p>
+            <p style="margin-bottom: 90px;">まず、<br>一つ良いお知らせです。</p>
+            <p style="margin-bottom: 90px;">真仝様の運命には、<br>大きな揉め事や危険を<br>自然と丸く収めてくれる、<br>見えない守りの力が<br>もともと備わっています。</p>
+            <p style="margin-bottom: 90px;">これから先、<br>思いがけないトラブルに<br>巻き込まれそうになっても、<br>気づけば大事に至らず<br>静かに収まっていく。</p>
+            <p style="margin-bottom: 90px;">そんな流れが、<br>真仝様には備わっています。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ、<br>少しだけ<br>心に留めておいてほしいことがあります。</p>
+            <p style="margin-bottom: 90px;">真仝様は、<br>パートナーとの間で、<br>言葉や約束事、<br>書類のやり取りの中で、<br>すれ違いが起きやすい<br>一面を持っています。</p>
+            <p style="margin-bottom: 90px;">奥様と二人三脚で<br>歩んでいく今回の挑戦の中でも、</p>
+            <p style="margin-bottom: 90px;">「言ったつもり」<br>「聞いていたつもり」の<br>小さなズレが、<br>時々起こるかもしれません。</p>
+            <p style="margin-bottom: 90px;">もう一つ、<br>勢いに任せて<br>大きな判断をしてしまうと、<br>思わぬ出費につながりやすい<br>一面もあります。</p>
+            <p style="margin-bottom: 90px;">これはどちらも、<br>真仝様の魂の<br>根っこの深いところにある<br>傾向として視えているものです。</p>
+            <p style="margin-bottom: 90px;">今すぐの問題ではありません。</p>
+            <p style="margin-bottom: 90px;">これから数年、<br>特に大きな契約や<br>まとまったお金が動く場面で、<br>少しずつ表に出てくる<br>可能性が視えています。</p>
+            <p style="margin-bottom: 90px;">ただこれは、<br>非常に先の話です。</p>
+            <p style="margin-bottom: 90px;">今すぐ心配することは<br>何もありません。</p>
+            <p style="margin-bottom: 90px;">今回はここまで<br>お伝えするだけに<br>とどめておきます。</p>
+            <p style="margin-bottom: 0;">また別の機会に、<br>詳しくお伝えします。</p>
+        </div>
+
+        <h2 id="sec-flow">【今後の流れ】</h2>
+        <div id="flow1Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年8月</p>
+            <p style="margin-bottom: 90px;">この月は、<br>準備を整える時期です。</p>
+            <p style="margin-bottom: 90px;">真仝様が持つ、<br>自分の手で作り出す力が<br>最も出やすい月です。</p>
+            <p style="margin-bottom: 90px;">発酵料理や珈琲という、<br>「自分の手で作る」ことの<br>土台を整えるのに、<br>最も適した時期です。</p>
+            <p style="margin-bottom: 0;">大きく動くというより、<br>仕込みや下準備に<br>じっくり時間をかけてください。</p>
+        </div>
+
+        <div id="flow2Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年9月</p>
+            <p style="margin-bottom: 90px;">この月は、<br>連携がテーマになる時期です。</p>
+            <p style="margin-bottom: 90px;">奥様や、<br>一緒に歩む仲間との<br>意思疎通や役割分担が、<br>自然と問われる場面が<br>増えていきます。</p>
+            <p style="margin-bottom: 0;">一人で抱え込まず、<br>思っていることを<br>言葉にして伝えてみてください。</p>
+        </div>
+
+        <div id="flow3Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2026年10月　★守護神の月★</p>
+            <p style="margin-bottom: 90px;">この月、<br>不動明王の<br>揺るがない意志の後押しが、<br>一年の中で最も<br>強く流れ込んできます。</p>
+            <p style="margin-bottom: 90px;">これまで積み上げてきた<br>準備と連携の力が、<br>ここで大きく後押しされます。</p>
+            <p style="margin-bottom: 90px;">迷いが生まれても、<br>不動明王の炎が、<br>その迷いを焼き払ってくれる。</p>
+            <p style="margin-bottom: 90px;">そんな月として、<br>このひと月を<br>大切に過ごしてください。</p>
+            <p style="margin-bottom: 0;">具体的な決断や、<br>大きな一歩を踏み出すのに、<br>最も適した時期です。</p>
+        </div>
+
+        <div id="flow4Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2026年11月　★最重要の月★</p>
+            <p style="margin-bottom: 90px;">この月、<br>生まれ持った真仝様自身の<br>原点と重なる巡りが訪れます。</p>
+            <p style="margin-bottom: 90px;">8月からの準備、<br>9月からの連携、<br>10月の後押し。</p>
+            <p style="margin-bottom: 90px;">そのすべてが、<br>真仝様自身の原点の上で、<br>一つの形として<br>結実していく節目の月です。</p>
+            <p style="margin-bottom: 90px;">自分がなぜこの道を<br>選んだのかを、<br>もう一度静かに<br>思い出してみてください。</p>
+            <p style="margin-bottom: 0;">その答えの上に、<br>これから先の未来が<br>築かれていきます。</p>
+        </div>
+
+        <div id="flowEndSentinel"></div>
+        <div class="section">
+            <h2 style="margin-top: 0;">【今年、2026年の流れ】</h2>
+            <p style="margin-bottom: 90px;">今年2026年は、<br>真仝様にとって、<br>止まっていたものが<br>動き出す変動の年です。</p>
+            <p style="margin-bottom: 90px;">これまで静かに<br>温めてきたものが、<br>外へ向かって<br>一気に流れ出していく。</p>
+            <p style="margin-bottom: 0;">そんな年です。</p>
+        </div>
+
+        <div class="section">
+            <h2 style="margin-top: 0;">【来年、2027年の流れ】</h2>
+            <p style="margin-bottom: 90px;">来年2027年は、<br>今年とは違う<br>テーマに切り替わります。</p>
+            <p style="margin-bottom: 90px;">「場所を構える」ことが、<br>現実の出来事として<br>巡ってくる年です。</p>
+            <p style="margin-bottom: 0;">今年動き出した流れが、<br>来年、具体的な形として<br>根を下ろしていきます。</p>
+        </div>
+
+        <div id="guardianReturnSentinel"></div>
+        <h2 class="emoji-header" id="sec-guardian">⛩️ 守護を受け取る方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">そして、<br>安心してください。</p>
+            <p style="margin-bottom: 90px;">真仝様のことを<br>深く霊視した際、<br>特別な守護の力を、<br>真仝様の奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px;">それは、<br>不動明王の、<br>揺るがない意志の力です。</p>
+            <p style="margin-bottom: 90px;">この力は、<br>心の奥にある静かな迷いを焼き払い、<br>本来の落ち着きを取り戻し、<br>豊かさを留める流れを<br>整えていきます。</p>
+            <p style="margin-bottom: 90px;">今この文章を<br>読んでいる間にも、</p>
+            <p style="margin-bottom: 90px;">胸のあたりが<br>少し温かくなる。</p>
+            <p style="margin-bottom: 90px;">肩の力が<br>ふっと抜ける。</p>
+            <p style="margin-bottom: 90px;">そうした感覚があれば、<br>すでに守護の力が<br>届き始めている証です。</p>
+            <p style="margin-bottom: 90px;">これは、<br>何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px;">ただ受け取るだけで<br>大丈夫です。</p>
+            <p style="margin-bottom: 90px;">もし余裕がある時だけ、<br>以下のことを<br>試してみてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">【守護神のお寺へ行く】</p>
+            <p style="margin-bottom: 90px;">真仝様の守護神、<br>不動明王が祀られているお寺を、<br>お近くでお伝えします。</p>
+            <p style="margin-bottom: 90px;">光前寺（駒ヶ根市赤穂29）<br>成就寺（小諸市六供2-4-40）<br>寳性寺（北佐久郡軽井沢町長倉2331）<br>釈尊寺（小諸市大久保2250）<br>不動寺（須坂市米子町1057）</p>
+            <p style="margin-bottom: 90px;">参拝の際は、<br>お願い事を唱えるのではなく、<br>心の中でこの真言を<br>唱えてください。</p>
+            <p style="margin-bottom: 90px;">ノウマク サンマンダ バザラダン カン</p>
+            <p style="margin-bottom: 90px;">そして、</p>
+            <p style="margin-bottom: 90px;">「私は◯◯をします。<br>どうか見守っていてください」</p>
+            <p style="margin-bottom: 90px;">という形で<br>伝えてください。</p>
+            <p style="margin-bottom: 90px;">お願いを<br>叶えてもらうのではなく、<br>自分の歩みを<br>見守ってもらう。</p>
+            <p style="margin-bottom: 90px;">その姿勢が、<br>守護神との縁を<br>より深くします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">【朝に空を見上げる】</p>
+            <p style="margin-bottom: 90px;">朝、<br>空を見上げて、<br>深呼吸を一度。</p>
+            <p style="margin-bottom: 0;">それだけで、<br>守護の巡りは<br>さらに深くなります。</p>
+        </div>
+
+        <div id="stoneSentinel"></div>
+        <h2 class="emoji-header" id="sec-stone">⛩️ あなたを支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">真仝様には、<br>不動明王のご縁をお伝えし、<br>その力を<br>真仝様の奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px;">また、<br>守護神と縁のあるお寺と、<br>参拝の際に<br>力を取り入れる方法も<br>お伝えしました。</p>
+            <p style="margin-bottom: 90px;">基本的には、<br>これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>守護の力は<br>何もしなければ、<br>少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">なかなか時間が取れない、<br>お寺が遠くて<br>頻繁には行けない。</p>
+            <p style="margin-bottom: 90px;">そういう時期も<br>出てくるものです。</p>
+            <p style="margin-bottom: 90px;">そのような時に、<br>ぜひお勧めしたいのが、<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px;">守護神の力を石に宿し、<br>常に身近に<br>持ち歩くことができるように<br>なります。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>どんな石でも<br>よいわけではありません。</p>
+            <p style="margin-bottom: 90px;">真仝様が持つ<br>潜在的なエネルギーと、<br>不動明王の力が<br>共鳴しやすい石で<br>お作りする必要があります。</p>
+            <p style="margin-bottom: 0;">真仝様のエネルギーと<br>不動明王が共鳴しやすい石を、<br>四つお伝えします。</p>
+            <ul style="margin-bottom: 90px;">
+                <li><span style="color: #ffd966; font-weight: bold;">1. ガーネット</span><br>静かな情熱を守る<br>赤い石です。<br>真仝様の中で<br>静かに燃え続ける炎を<br>土台から支え、<br>不動明王の焼き尽くす炎の力とも<br>重なります。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">2. スモーキークォーツ</span><br>地に足をつける力を持つ石です。<br>大きな水の流れに<br>囲まれながらも<br>灯り続ける真仝様を、<br>静かに支える<br>土台になります。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">3. タイガーアイ</span><br>決断力と行動力を<br>後押しする石です。<br>真仝様の中にある<br>決断の力と、<br>動き始める流れの後押しに<br>寄り添います。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">4. シトリン</span><br>豊かさを呼び込み、<br>留める力を持つ石です。<br>場所という器を整えるテーマと、<br>チャンスを掴む才覚に<br>共鳴していきます。<br>この中から、<br>真仝様のエネルギーと<br>最もバランスが取れる組み合わせを、<br>私が選び、<br>一つずつ手作りで<br>仕上げます。<br>ご希望の方は、<br>「詳細希望」と<br>メッセージをお送りください。</li>
+            </ul>
+        </div>
+
+        <div id="closingSentinel"></div>
+        <h2 id="sec-closing">【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">真仝様、</p>
+            <p style="margin-bottom: 90px;">あなたの未来には、<br>奥様と並んで、<br>いい香りが漂うお店の中で<br>笑い合っている、<br>そんな日々へと続く道が<br>視えています。</p>
+            <p style="margin-bottom: 90px;">一等当選という<br>一点の答えよりも、<br>今年の夏の終わりから、<br>来年にかけて、<br>豊かさが段階的に<br>満ちていく流れそのものが、<br>真仝様の未来を<br>形作っていきます。</p>
+            <p style="margin-bottom: 90px;">今は、</p>
+            <p style="margin-bottom: 90px;">「本当に自分に<br>それだけの力があるのか」と、</p>
+            <p style="margin-bottom: 90px;">心の奥で<br>そっと自分を<br>疑っているかもしれません。</p>
+            <p style="margin-bottom: 90px;">でもそれは、<br>真仝様がこの夢に<br>本気で向き合っている証拠です。</p>
+            <p style="margin-bottom: 90px;">正しい感覚です。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>静かに、けれど絶えることなく<br>燃え続けられる人。</p>
+            <p style="margin-bottom: 90px;">一直線には進まなくても、<br>何度も形を変えながら、<br>本物に近づいていける人。</p>
+            <p style="margin-bottom: 90px;">その炎を、<br>どうか信じてください。</p>
+            <p style="margin-bottom: 90px;">大きな夢も、<br>お母様との関係も、<br>一人で抱え込む必要はありません。</p>
+            <p style="margin-bottom: 90px;">思わぬ人からの助けを<br>受け取りながら、<br>自分の生活のリズムを<br>守っていくこと。</p>
+            <p style="margin-bottom: 90px;">それが、<br>真仝様の幸せへの道。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">不動明王</span>が、<br>あなたを守っています。</p>
+            <p style="margin-bottom: 90px;">揺るがない意志で、<br>迷いを焼き払い、<br>あなたの灯を<br>まっすぐ導いていく。</p>
+            <p style="margin-bottom: 90px;">その力が、<br>今もあなたのそばにあります。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px;">静かな迷いを抱えたままでも、<br>前に進んでいい。</p>
+            <p style="margin-bottom: 90px;">守られている。</p>
+            <p style="margin-bottom: 90px;">その事実を、<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より、<br>遠隔守護祈祷を行い、<br>真仝様の幸せを願います。</p>
+            <p style="margin-bottom: 0;">真仝様の未来に、<br>豊かさと安心が<br>満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            var elementBg = document.getElementById('elementBg');
+            var deityBg = document.getElementById('deityBg');
+            var doorBg = document.getElementById('doorBg');
+            var seasonSummerBg = document.getElementById('seasonSummerBg');
+            var seasonAutumnBg = document.getElementById('seasonAutumnBg');
+            var stoneBg = document.getElementById('stoneBg');
+
+            var stages = [
+                { el: document.getElementById('elementSentinel'), bg: elementBg },
+                { el: document.getElementById('guardianSentinel'), bg: deityBg },
+                { el: document.getElementById('essenceSentinel'), bg: elementBg },
+                { el: document.getElementById('deitySentinel'), bg: doorBg },
+                { el: document.getElementById('flow1Sentinel'), bg: seasonSummerBg },
+                { el: document.getElementById('flow2Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flow3Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flow4Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flowEndSentinel'), bg: doorBg },
+                { el: document.getElementById('guardianReturnSentinel'), bg: deityBg },
+                { el: document.getElementById('stoneSentinel'), bg: stoneBg },
+                { el: document.getElementById('closingSentinel'), bg: doorBg }
+            ].filter(function (stage) { return !!stage.el; });
+            if (!stages.length) return;
+
+            var layers = [elementBg, deityBg, doorBg, seasonSummerBg, seasonAutumnBg, stoneBg];
+            function show(active) {
+                layers.forEach(function (el) {
+                    if (el === active) el.classList.add('is-visible');
+                    else el.classList.remove('is-visible');
+                });
+            }
+
+            function onScroll() {
+                var trigger = window.innerHeight * 0.65;
+                var active = null;
+                for (var i = 0; i < stages.length; i++) {
+                    if (stages[i].el.getBoundingClientRect().top < trigger) {
+                        active = stages[i].bg;
+                    }
+                }
+                show(active);
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+
+        /* ===== 演出：花びら ===== */
+        (function () {
+            var cv = document.getElementById('petals');
+            var ctx = cv.getContext('2d');
+            var W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+            var isMobile = window.innerWidth < 700;
+
+            function resize() {
+                W = window.innerWidth; H = window.innerHeight;
+                cv.width = W * dpr; cv.height = H * dpr;
+                cv.style.width = W + 'px'; cv.style.height = H + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            var petals = [];
+            var petalN = isMobile ? 14 : 24;
+            for (var i = 0; i < petalN; i++) {
+                petals.push({
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    s: 5 + Math.random() * 7,
+                    vy: 0.35 + Math.random() * 0.7,
+                    sway: Math.random() * Math.PI * 2,
+                    swayV: 0.008 + Math.random() * 0.014,
+                    rot: Math.random() * Math.PI * 2,
+                    rotV: (Math.random() - 0.5) * 0.03,
+                    hue: Math.random() < 0.6 ? 'light' : 'deep'
+                });
+            }
+            function drawPetal(p) {
+                ctx.save();
+                ctx.translate(p.x + Math.sin(p.sway) * 26, p.y);
+                ctx.rotate(p.rot);
+                var g = ctx.createRadialGradient(0, 0, 0, 0, 0, p.s);
+                if (p.hue === 'light') {
+                    g.addColorStop(0, 'rgba(255, 120, 80, 0.95)');
+                    g.addColorStop(1, 'rgba(255, 120, 80, 0.25)');
+                } else {
+                    g.addColorStop(0, 'rgba(210, 60, 40, 0.95)');
+                    g.addColorStop(1, 'rgba(210, 60, 40, 0.25)');
+                }
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, p.s, p.s * 0.62, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function tick() {
+                ctx.clearRect(0, 0, W, H);
+                for (var pi = 0; pi < petals.length; pi++) {
+                    var p = petals[pi];
+                    p.y += p.vy;
+                    p.sway += p.swayV;
+                    p.rot += p.rotV;
+                    if (p.y > H + 20) { p.y = -20; p.x = Math.random() * W; }
+                    drawPetal(p);
+                }
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        })();
+    </script>
+
+<!-- GA4 カスタム計測：誰が/最後まで読んだか/購入ボタン [GA4-MIYUKI] -->
+<script>
+(function () {
+  function fire() {
+    var seg = location.pathname.split('/').filter(Boolean);
+    var last = decodeURIComponent(seg[seg.length - 1] || '');
+    var id = /\.html?$/i.test(last) ? decodeURIComponent(seg[seg.length - 2] || 'unknown') : (last || 'unknown');
+    var base = { kantei_id: id, persona: 'miyuki' };
+    gtag('set', 'user_properties', { kantei_id: id, persona: 'miyuki' });
+    gtag('event', 'page_open', base);
+
+    var end = document.querySelector('.signature, .sign');
+    if (end && 'IntersectionObserver' in window) {
+      var done = false;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && !done) { done = true; gtag('event', 'read_complete', base); io.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      io.observe(end);
+    }
+
+    document.querySelectorAll('.cta-button, .btn').forEach(function (b) {
+      b.addEventListener('click', function () { gtag('event', 'cta_click', base); });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire); else fire();
+})();
+</script>
+
+</body>
+</html>
