@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) : GA4 計測 [GA4-MIYUKI] -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHLDFT6DR7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JHLDFT6DR7');
+    </script>
+    <title>久恵様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+
+            .toc {
+                padding: 20px 15px;
+            }
+
+            .toc-title {
+                font-size: 1.1em;
+            }
+
+            .toc a {
+                font-size: 0.95em;
+                padding: 12px 6px 12px 36px;
+            }
+        }
+
+        /* ===== 演出：元素の背景（冒頭〜守護神登場まで） ===== */
+        .element-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../鑑定画像/深い森.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .element-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：守護神の背景（守護神登場〜本式内容の手前まで） ===== */
+        .deity-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/大山祇神.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center 18%;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .deity-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：扉の背景（本式内容〜結びまで） ===== */
+        .door-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/ドア2.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .door-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：今後の流れ 季節背景 ===== */
+        .season-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .season-bg.is-visible { opacity: 0.4; }
+        #seasonAutumnBg { background-image: url("../鑑定画像/秋.jpg"); }
+        #seasonWinterBg { background-image: url("../鑑定画像/冬.jpg"); }
+
+        /* ===== 演出：パワーストーン背景 ===== */
+        .stone-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../素材/ペリドット.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .stone-bg.is-visible { opacity: 0.4; }
+
+        .deity-veil {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(15, 15, 46, 0.04) 0%, rgba(15, 15, 46, 0.15) 60%, rgba(15, 15, 46, 0.25) 100%),
+                linear-gradient(180deg, rgba(15, 15, 46, 0.06) 0%, rgba(15, 15, 46, 0.18) 100%);
+        }
+
+        /* ===== 演出：花びら ===== */
+        #petals {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="element-bg" id="elementBg"></div>
+    <div class="deity-bg" id="deityBg"></div>
+    <div class="door-bg" id="doorBg"></div>
+    <div class="season-bg" id="seasonAutumnBg"></div>
+    <div class="season-bg" id="seasonWinterBg"></div>
+    <div class="stone-bg" id="stoneBg"></div>
+    <div class="deity-veil"></div>
+    <canvas id="petals"></canvas>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">軽やかな足取りと、迎える新しい命</h2>
+            <p class="cover-name">久恵様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 目次 -->
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-god">あなたを見守る神様</a></li>
+                <li><a href="#sec-1">1. 波を越えて、根から立ち上がる時期</a></li>
+                <li><a href="#sec-2">2. 支える力は、もう備わっている</a></li>
+                <li><a href="#sec-3">3. 言葉にすることで、近くなる距離</a></li>
+                <li><a href="#sec-4">4. 養う力を、自分自身にも</a></li>
+                <li><a href="#sec-bonus">気になること</a></li>
+                <li><a href="#sec-flow">今後の流れ</a></li>
+                <li><a href="#sec-guardian">守護を受け取る方法</a></li>
+                <li><a href="#sec-stone">あなたを支えるパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
+        <div id="elementSentinel"></div>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">久恵様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂が、<br>本気で変わろうとしている。</p>
+            <p style="margin-bottom: 90px;">その強い意志が、<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先、<br>あなたが本当に知るべきことを、<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が、<br>一つの景色を見せてくれています。</p>
+            <p style="margin-bottom: 90px;">久恵様が、<br>重かった体の力みがすっと抜けて、<br>軽い足取りで台所に立っている姿。</p>
+            <p style="margin-bottom: 90px;">その隣には、<br>来年生まれてくる小さな命を抱いた娘様が、<br>安心した表情で座っている姿。</p>
+            <p style="margin-bottom: 90px;">それは、<br>2026年10月を越えた頃から。</p>
+            <p style="margin-bottom: 90px;">そして、<br>2027年の年明けに、<br>その景色がはっきりと形になっていく。</p>
+            <p style="margin-bottom: 90px;">その未来の兆しは、<br>濃く感じられます。</p>
+            <p style="margin-bottom: 90px;">そこに至るまでの道のりは、<br>決して平坦ではありません。</p>
+            <p style="margin-bottom: 90px;">前回の鑑定で<br>「7月頃から体が軽くなる」<br>とお伝えしていたはずなのに、<br>思うように良くならなかった。</p>
+            <p style="margin-bottom: 90px;">その理由も、<br>これから丁寧にお伝えしていきます。</p>
+            <p style="margin-bottom: 0;">でも、<br>久恵様には、<br>それを越えていく根の強さがあります。</p>
+        </div>
+
+        <div id="guardianSentinel"></div>
+        <div class="oracle-message" id="sec-god">
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは、<br><span style="color: #ffd966;">大山祇神</span>(おおやまつみのかみ)。</p>
+            <p style="margin-bottom: 90px;">昔、<br>山も森も、<br>それを見守る者がいない時代がありました。</p>
+            <p style="margin-bottom: 90px;">大山祇神は、<br>どっしりとその身を大地に据え、<br>木々を育て、水を蓄え、<br>そこに生きるすべてのものを<br>懐深く見守り続けました。</p>
+            <p style="margin-bottom: 90px;">その山があったからこそ、<br>麓に暮らす人々の命も、<br>里の実りも、守られてきた。</p>
+            <p style="margin-bottom: 90px;">「動じない強さで、<br>すべてを懐深く育む神様」として、<br>今も各地の山の神社に祀られています。</p>
+            <p style="margin-bottom: 0;">あなたを守っているのは、<br>まさにその大山祇神の力です。</p>
+            <img src="../鑑定画像/大山祇神.png" alt="大山祇神" class="guardian-image">
+        </div>
+
+        <div id="essenceSentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px;">まず、<br>久恵様の本質について、<br>視えていることをお伝えします。</p>
+            <p style="margin-bottom: 90px;">久恵様は、<br>大地に深く根を張り、<br>まっすぐ天へ伸びていく、<br>一本の巨木のような方です。</p>
+            <p style="margin-bottom: 90px;">その根の強さは、<br>生半可なものではありません。</p>
+            <p style="margin-bottom: 90px;">一度「この人を支える」と決めたら、<br>途中で投げ出すことなく、<br>最後までまっすぐ立ち続けてきた。</p>
+            <p style="margin-bottom: 90px;">頼られれば、<br>損得を考えるより先に、<br>体が動いてしまう。</p>
+            <p style="margin-bottom: 90px;">それは、<br>久恵様の中に、<br>生まれつき強く根を張る力が<br>備わっているからです。</p>
+            <p style="margin-bottom: 90px;">要領よく立ち回って、<br>うまく人に頼りながら<br>物事を進めていく人を見た時、<br>心のどこかで、<br>もやっとしてしまう。</p>
+            <p style="margin-bottom: 90px;">自分にはそれができない、<br>そうではなく、<br>そのやり方が<br>どうしても好きになれない。</p>
+            <p style="margin-bottom: 90px;">普通なら、<br>しんどい時は<br>誰かに寄りかかってもいいはずです。</p>
+            <p style="margin-bottom: 90px;">でも久恵様は、<br>しんどい時ほど<br>「大丈夫」と笑ってしまう。</p>
+            <p style="margin-bottom: 90px;">それは弱さではなく、<br>誰かを支えることに、<br>本気で向き合ってきた証です。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ。</p>
+            <p style="margin-bottom: 90px;">久恵様には、<br>家族から自然と頼られる、<br>強い引き寄せの力があります。</p>
+            <p style="margin-bottom: 90px;">これは偶然ではなく、<br>生まれ持った運命そのものが、<br>家族を守る立場を<br>裏付けています。</p>
+            <p style="margin-bottom: 90px;">だからこそ、<br>娘様のことも、<br>お店のことも、</p>
+            <p style="margin-bottom: 90px;">気づけば<br>ご自分のことのように<br>背負ってしまう。</p>
+            <p style="margin-bottom: 90px;">一方で、<br>久恵様の心の奥には、<br>語られにくい静かな緊張が<br>ずっと流れています。</p>
+            <p style="margin-bottom: 90px;">先を読みすぎて、<br>心配しなくていいことまで<br>先回りして案じてしまう。</p>
+            <p style="margin-bottom: 90px;">これは、<br>心配性だからではありません。</p>
+            <p style="margin-bottom: 90px;">大切な人を、<br>真剣に守ろうとするからこそ<br>生まれる緊張です。</p>
+            <p style="margin-bottom: 90px;">こうして見えてくる久恵様は、<br>根の強さと、<br>家族を懐深く支える力を併せ持ち、</p>
+            <p style="margin-bottom: 90px;">本来は、<br>実務的な力にも恵まれた方です。</p>
+            <p style="margin-bottom: 90px;">お金のやりくりや、<br>物事を段取りする力にも<br>長けています。</p>
+            <p style="margin-bottom: 0;">その本質が、<br>これからお伝えする<br>一つ一つの話の土台になっています。</p>
+        </div>
+
+        <div id="deitySentinel"></div>
+        <h2 class="emoji-header" id="sec-1">⛩️ 1. 波を越えて、根から立ち上がる時期</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">正直にお伝えします。</p>
+            <p style="margin-bottom: 90px;">前回の鑑定で<br>「7月頃から体が軽くなる」<br>とお伝えしていたのに、<br>思うように良くならなかった。</p>
+            <p style="margin-bottom: 90px;">頭痛、腹痛、下痢に加えて、<br>ヘルニアの痛みまで<br>ひどくなっている。</p>
+            <p style="margin-bottom: 90px;">この先の不安が<br>消えないのも、<br>当然のことです。</p>
+            <p style="margin-bottom: 90px;">まず、<br>なぜこうなっているのかを<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">久恵様の中には、<br>まっすぐ伸びようとする<br>強い力があります。</p>
+            <p style="margin-bottom: 90px;">でもその力を<br>潤す水が、<br>今とても少ない状態です。</p>
+            <p style="margin-bottom: 90px;">木は、<br>水に潤されて<br>初めて根を張れます。</p>
+            <p style="margin-bottom: 90px;">その水が足りないまま、<br>ご自分を後回しにして<br>枝を伸ばし続けてきた。</p>
+            <p style="margin-bottom: 90px;">その乾きが、<br>腹痛や下痢という形で<br>消化にまつわる領域に<br>出てきているのです。</p>
+            <p style="margin-bottom: 90px;">ヘルニアの痛みも、<br>偶然ではありません。</p>
+            <p style="margin-bottom: 90px;">久恵様の運命には、<br>体を鋭く傷つけるような<br>痛みが出やすい時期が重なっており、</p>
+            <p style="margin-bottom: 90px;">それが今、<br>体の痛みとして<br>表に出てきています。</p>
+            <p style="margin-bottom: 90px;">ここまでが、<br>今、久恵様の体に<br>起きていることです。</p>
+            <p style="margin-bottom: 90px;">そしてここからは、<br>良いお知らせです。</p>
+            <p style="margin-bottom: 90px;">久恵様の運命は、<br>一度沈む時期があっても、<br>本人の力で<br>強く立ち上がっていく流れを<br>生まれ持っています。</p>
+            <p style="margin-bottom: 90px;">今のこの時期は、<br>沈んだままではなく、<br>立ち上がる直前の<br>踏ん張りの時期です。</p>
+            <p style="margin-bottom: 90px;">回復の力は、<br>本来とても強い。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>その回復の力には<br>鋭い波が同居しています。</p>
+            <p style="margin-bottom: 90px;">良くなったと思ったら、<br>またぶり返す。</p>
+            <p style="margin-bottom: 90px;">前回の予告と<br>実際の体感がずれたのは、<br>「良くなる」という方向性が<br>間違っていたからではなく、</p>
+            <p style="margin-bottom: 90px;">この波を<br>まっすぐな一本道だと<br>お伝えしきれなかったからです。</p>
+            <p style="margin-bottom: 90px;">方向性そのものは、<br>間違っていません。</p>
+            <p style="margin-bottom: 90px;">そして、<br>本格的に「整った」と<br>実感できる節目が視えています。</p>
+            <p style="margin-bottom: 90px;">2026年10月。</p>
+            <p style="margin-bottom: 90px;">久恵様の生まれ持った力と、<br>今年の運気の流れが<br>一つに重なり合う月です。</p>
+            <p style="margin-bottom: 90px;">この月、<br>山の神である大山祇神の力が、<br>最も強く久恵様に<br>流れ込んできます。</p>
+            <p style="margin-bottom: 90px;">体の土台が、<br>ここで大きく定まります。</p>
+            <p style="margin-bottom: 90px;">そしてさらに、<br>2027年1月。</p>
+            <p style="margin-bottom: 90px;">久恵様自身の根の力が<br>一年でもっとも強くなる月に、</p>
+            <p style="margin-bottom: 90px;">これまで積み上げてきた流れが、<br>ご自分の足でしっかり立つ形として<br>定まっていきます。</p>
+            <p style="margin-bottom: 90px;">今は、<br>無理をせず整える時期。</p>
+            <p style="margin-bottom: 90px;">10月から一段落がつき、<br>1月で本格的に<br>立ち上がっていく。</p>
+            <p style="margin-bottom: 0;">その時間の流れを、<br>どうか心に置いておいてください。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-2">⛩️ 2. 支える力は、もう備わっている</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">久恵様には、<br>人を育て、世話をする力が、<br>生まれつき強く備わっています。</p>
+            <p style="margin-bottom: 90px;">それは、<br>「孫守り担当は自分だ」<br>という久恵様の言葉が、<br>単なる役割分担ではなく、</p>
+            <p style="margin-bottom: 90px;">久恵様の運命そのものに<br>刻まれた資質だということです。</p>
+            <p style="margin-bottom: 90px;">来年、<br>娘様が2人目を<br>迎えられる時。</p>
+            <p style="margin-bottom: 90px;">その時、<br>久恵様が孫守りを<br>無理なく担えるのか。</p>
+            <p style="margin-bottom: 90px;">これは、<br>久恵様が思っている以上に<br>はっきりとした答えが視えています。</p>
+            <p style="margin-bottom: 90px;">うまくやれます。</p>
+            <p style="margin-bottom: 90px;">娘様とお孫様との縁は、<br>もともと優しい形で<br>結ばれています。</p>
+            <p style="margin-bottom: 90px;">無理に構えなくても、<br>自然と良い関わりが<br>生まれやすい相性です。</p>
+            <p style="margin-bottom: 90px;">来年、<br>久恵様の運気は、<br>守り、庇護する力が<br>最大化する年と重なります。</p>
+            <p style="margin-bottom: 90px;">面倒を見る力が、<br>もっとも発揮される<br>一年になります。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>一つだけお伝えしておきたいことがあります。</p>
+            <p style="margin-bottom: 90px;">久恵様の運命の中には、<br>家という場所が<br>少し乱れやすい領域があり、</p>
+            <p style="margin-bottom: 90px;">その乱れが、<br>娘様の側の状況にも<br>影響を及ぼしやすい構造になっています。</p>
+            <p style="margin-bottom: 90px;">孫守りそのものが<br>うまくいかないのではありません。</p>
+            <p style="margin-bottom: 90px;">久恵様が、<br>「全部を一人で背負おう」と<br>力を入れすぎることで、</p>
+            <p style="margin-bottom: 90px;">かえって<br>ご自分の体力を<br>削ってしまいやすいのです。</p>
+            <p style="margin-bottom: 90px;">先ほどお伝えした<br>体の波のことを思い出してください。</p>
+            <p style="margin-bottom: 90px;">孫守りは、<br>久恵様の資質に<br>とても合っています。</p>
+            <p style="margin-bottom: 90px;">だからこそ、<br>すべてを一人で背負い込まず、<br>力の入れどころを<br>少し絞ってください。</p>
+            <p style="margin-bottom: 90px;">娘様に任せる部分は任せ、<br>ご自分の体を<br>最優先にしていい場面があります。</p>
+            <p style="margin-bottom: 0;">その配分ができた時、<br>久恵様も、<br>娘様も、<br>お孫様も、<br>みんなが穏やかでいられます。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-3">⛩️ 3. 言葉にすることで、近くなる距離</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから、<br>少し丁寧にお伝えしたいことがあります。</p>
+            <p style="margin-bottom: 90px;">久恵様の運命の中で、<br>もっとも重い領域として<br>視えているのが、</p>
+            <p style="margin-bottom: 90px;">家族が集まる場所における、<br>言葉のすれ違いです。</p>
+            <p style="margin-bottom: 90px;">こんな経験は<br>ありませんでしたか。</p>
+            <p style="margin-bottom: 90px;">娘様のことが心配で、<br>本当は優しく声をかけたいのに、<br>気づけば強い言い方になっていた。</p>
+            <p style="margin-bottom: 90px;">逆に、<br>言いたいことがあったのに、<br>飲み込んでしまって<br>言えなかった。</p>
+            <p style="margin-bottom: 90px;">これは、<br>久恵様が<br>不器用だからではありません。</p>
+            <p style="margin-bottom: 90px;">先を読みすぎて、<br>心配しなくていいことまで<br>案じてしまう内側の緊張が、</p>
+            <p style="margin-bottom: 90px;">言葉に出る時、<br>強くなりすぎたり、<br>逆に飲み込みすぎたりする形で<br>表れてしまうのです。</p>
+            <p style="margin-bottom: 90px;">そして、<br>久恵様の運命の中では、<br>今の期間、<br>家族の中の言葉のすれ違いという<br>テーマが<br>特に強く出やすくなっています。</p>
+            <p style="margin-bottom: 90px;">つまり、<br>これは一時的なものではなく、<br>今、特に重なって出やすいテーマだということです。</p>
+            <p style="margin-bottom: 90px;">でも、<br>だからこそ、<br>対処のしかたがあります。</p>
+            <p style="margin-bottom: 90px;">久恵様の内面の奥底には、<br>本来、<br>多才で社交的な、<br>豊かなエネルギーが流れています。</p>
+            <p style="margin-bottom: 90px;">根っこの部分では、<br>家族との縁を<br>誰よりも大切にしたい気持ちが<br>強いのです。</p>
+            <p style="margin-bottom: 90px;">その気持ちが、<br>表現の仕方によって<br>すれ違ってしまっているだけです。</p>
+            <p style="margin-bottom: 90px;">「察してもらう」のを<br>待つのではなく、</p>
+            <p style="margin-bottom: 90px;">あえて、<br>一言多く言葉にして<br>伝えてみてください。</p>
+            <p style="margin-bottom: 90px;">心配な気持ちも、<br>「心配しているよ」と<br>そのまま伝えていい。</p>
+            <p style="margin-bottom: 90px;">特に、<br>娘様が経営されている<br>お店のことについては、</p>
+            <p style="margin-bottom: 90px;">久恵様から<br>踏み込みすぎず、<br>まず聞き役に徹する場面を<br>増やしてみてください。</p>
+            <p style="margin-bottom: 90px;">娘様が自分から話したいことを、<br>久恵様が黙って<br>受け止めてあげる。</p>
+            <p style="margin-bottom: 90px;">その関わり方が、<br>今の久恵様と娘様の距離に、<br>もっとも合っています。</p>
+            <p style="margin-bottom: 90px;">言葉を惜しまないこと。</p>
+            <p style="margin-bottom: 0;">それだけで、<br>距離はゆっくりと<br>近づいていきます。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-4">⛩️ 4. 養う力を、自分自身にも</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">最後に、<br>久恵様らしい整え方について<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">久恵様の中にある、<br>人を育て、<br>養う力。</p>
+            <p style="margin-bottom: 90px;">それは本来、<br>自分自身をも<br>養うための力でもあります。</p>
+            <p style="margin-bottom: 90px;">久恵様は、<br>王のように人の上に立ち、<br>財を蓄え、<br>人を養い守る性質を、<br>生まれた時から<br>一生変わらぬ核として<br>持っています。</p>
+            <p style="margin-bottom: 90px;">その力を、<br>これまでずっと、<br>家族のためだけに<br>使い続けてきました。</p>
+            <p style="margin-bottom: 90px;">内面の奥深くには、<br>本来とても豊かで<br>エネルギッシュな一面があります。</p>
+            <p style="margin-bottom: 90px;">でもその奥に、<br>チクチクとした<br>焦りや落ち着かなさも<br>同居しています。</p>
+            <p style="margin-bottom: 90px;">がんばっているのに、<br>なぜかすっきりしない。</p>
+            <p style="margin-bottom: 90px;">それは、<br>養う力の向け先が、<br>ずっと外側だけに<br>偏っていたからです。</p>
+            <p style="margin-bottom: 90px;">これからのテーマは、<br>その力の一部を、<br>久恵様ご自身にも<br>向け直すことです。</p>
+            <p style="margin-bottom: 90px;">久恵様には、<br>これから先の人生に<br>福が増していく流れが<br>はっきりと視えています。</p>
+            <p style="margin-bottom: 90px;">人を支え、<br>養ってきた久恵様だからこそ、</p>
+            <p style="margin-bottom: 90px;">その力を自分にも向けた時、<br>今よりずっと<br>穏やかで満ちた日々が<br>訪れます。</p>
+            <p style="margin-bottom: 90px;">人の世話をする時間の一部を、<br>ご自分の休息や、<br>ご自分の楽しみのために<br>使ってみてください。</p>
+            <p style="margin-bottom: 90px;">それは、<br>わがままではありません。</p>
+            <p style="margin-bottom: 0;">久恵様の根を、<br>これからも<br>まっすぐ伸ばし続けるための、<br>必要な水です。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-bonus">🔮 気になること</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">これまでお伝えしてきたこと以外にも、<br>実はもう一つ、<br>視えているものがあります。</p>
+            <p style="margin-bottom: 90px;">無料鑑定では<br>お伝えしていなかった、<br>もう少し先の兆しです。</p>
+            <p style="margin-bottom: 90px;">まず、<br>一つ良いお知らせです。</p>
+            <p style="margin-bottom: 90px;">久恵様には、<br>目上の方や、<br>学びの場との縁が、</p>
+            <p style="margin-bottom: 90px;">これからも<br>途切れることなく<br>続いていく巡りが備わっています。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ、<br>少しだけ<br>心に留めておいてほしいことがあります。</p>
+            <p style="margin-bottom: 90px;">久恵様は、<br>誰にも言わずに、<br>小さな心配事をそっと一人で<br>抱え込んでしまう面をお持ちです。</p>
+            <p style="margin-bottom: 90px;">大きな問題としてではなく、<br>ふとした瞬間に訪れる、<br>小さなモヤモヤとして<br>これからも時々<br>顔を出しそうです。</p>
+            <p style="margin-bottom: 90px;">もう一つだけ、<br>軽く触れておきます。</p>
+            <p style="margin-bottom: 90px;">久恵様の運命の中には、<br>思いがけない形で、<br>住まいや身の回りの環境が<br>動く兆しも視えています。</p>
+            <p style="margin-bottom: 90px;">今すぐ<br>大きな変化があるわけでは<br>ありませんが、</p>
+            <p style="margin-bottom: 90px;">暮らしの場が<br>少しずつ形を変えていく可能性が、<br>遠くの方に見えています。</p>
+            <p style="margin-bottom: 90px;">これは今すぐの問題ではなく、<br>もっと根っこの深いところにある、<br>久恵様の運命の巡りとして<br>視えているものです。</p>
+            <p style="margin-bottom: 90px;">時期としては、<br>2028年以降にかけて<br>少しずつ表に出てくる可能性が視えています。</p>
+            <p style="margin-bottom: 90px;">ただこれは、<br>非常に先の話です。</p>
+            <p style="margin-bottom: 90px;">今すぐ心配することは<br>何もありません。</p>
+            <p style="margin-bottom: 90px;">今回はここまで<br>お伝えするだけに<br>とどめておきます。</p>
+            <p style="margin-bottom: 0;">また別の機会に、<br>詳しくお伝えできたらと思います。</p>
+        </div>
+
+        <h2 id="sec-flow">【今後の流れ】</h2>
+        <div id="flow1Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年9月</p>
+            <p style="margin-bottom: 90px;">この月は、<br>体と向き合う月です。</p>
+            <p style="margin-bottom: 90px;">体調や体質そのものに、<br>自然と意識が向きやすい時期です。</p>
+            <p style="margin-bottom: 90px;">無理に頑張るより、<br>整えることに<br>意識を向けてください。</p>
+            <p style="margin-bottom: 0;">大きな決断や<br>新しいことへの着手は、<br>少し先に回してもいい月です。</p>
+        </div>
+
+        <div id="flow2Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2026年10月　★守護神の月★</p>
+            <p style="margin-bottom: 90px;">この月、<br>大山祇神の<br>どっしりとした守りの力が、<br>一年の中でもっとも<br>強く流れ込んできます。</p>
+            <p style="margin-bottom: 90px;">久恵様の生まれ持った力と、<br>今年の運気の流れが<br>一つに重なり、</p>
+            <p style="margin-bottom: 90px;">体調、家族、<br>両方の面で、<br>これまでの不安定さが<br>一つの形に収まっていく<br>節目の月です。</p>
+            <p style="margin-bottom: 0;">無理のない範囲で、<br>体を休める時間を<br>意識してつくってください。</p>
+        </div>
+
+        <div id="flow3Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年11月</p>
+            <p style="margin-bottom: 90px;">この月は、<br>娘様やお孫様との縁が<br>動く月です。</p>
+            <p style="margin-bottom: 90px;">相談や報告、<br>体調の変化など、</p>
+            <p style="margin-bottom: 90px;">娘様の側から<br>何か動きが<br>出やすい時期です。</p>
+            <p style="margin-bottom: 0;">構えすぎず、<br>自然な流れとして<br>受け止めてください。</p>
+        </div>
+
+        <div id="flow4Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2027年1月　★最重要の月★</p>
+            <p style="margin-bottom: 90px;">この月、<br>久恵様自身の根の力が、<br>一年でもっとも強くなります。</p>
+            <p style="margin-bottom: 90px;">9月からの体との向き合い、<br>10月の守護、<br>11月の家族の動き。</p>
+            <p style="margin-bottom: 90px;">そのすべてが、<br>この月、<br>久恵様自身の足で<br>しっかり立つ形として<br>定まっていきます。</p>
+            <p style="margin-bottom: 90px;">孫守りも、<br>体調も、<br>娘様との距離も、</p>
+            <p style="margin-bottom: 0;">すべての土台が、<br>ここで固まります。</p>
+        </div>
+
+        <div id="flowEndSentinel"></div>
+        <div class="section">
+            <h2 style="margin-top: 0;">【今年、2026年の流れ】</h2>
+            <p style="margin-bottom: 90px;">今年2026年は、<br>久恵様にとって、<br>土台を固める年です。</p>
+            <p style="margin-bottom: 90px;">表舞台で大きく<br>動くというよりも、</p>
+            <p style="margin-bottom: 90px;">足元を堅実に<br>支えることに<br>意味がある年です。</p>
+            <p style="margin-bottom: 0;">10月に流れが一つに重なる節目を迎え、<br>後半に向けて<br>力が集まっていきます。</p>
+        </div>
+
+        <div class="section">
+            <h2 style="margin-top: 0;">【来年、2027年の流れ】</h2>
+            <p style="margin-bottom: 90px;">来年2027年は、<br>今の十年の力が<br>もっとも強く重なる年です。</p>
+            <p style="margin-bottom: 90px;">庇護し、<br>支える力が<br>最大化する一方で、</p>
+            <p style="margin-bottom: 90px;">体を切るような<br>鋭い波も<br>同時に強まります。</p>
+            <p style="margin-bottom: 90px;">孫守りや<br>家族を支える力が<br>本格的に発揮される、<br>実りの年です。</p>
+            <p style="margin-bottom: 0;">ただ、<br>無理をしすぎない配分を<br>どうか忘れないでください。</p>
+        </div>
+
+        <div id="guardianReturnSentinel"></div>
+        <h2 class="emoji-header" id="sec-guardian">⛩️ 守護を受け取る方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">そして、<br>安心してください。</p>
+            <p style="margin-bottom: 90px;">久恵様のことを<br>深く霊視した際、</p>
+            <p style="margin-bottom: 90px;">特別な守護の力を、<br>久恵様の奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px;">それは、<br>大山祇神の、<br>どっしりと動じない<br>山そのものの力です。</p>
+            <p style="margin-bottom: 90px;">この力は、<br>乾いた根に静かに水を通し、<br>無理に踏ん張ろうとする力みを鎮め、</p>
+            <p style="margin-bottom: 90px;">久恵様自身が<br>潤される流れを<br>整えていきます。</p>
+            <p style="margin-bottom: 90px;">今この文章を<br>読んでいる間にも、</p>
+            <p style="margin-bottom: 90px;">胸のあたりが<br>少し温かくなる。</p>
+            <p style="margin-bottom: 90px;">肩の力が<br>ふっと抜ける。</p>
+            <p style="margin-bottom: 90px;">そうした感覚があれば、<br>すでに守護の力が<br>届き始めている証です。</p>
+            <p style="margin-bottom: 90px;">これは、<br>何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px;">ただ受け取るだけで<br>大丈夫です。</p>
+            <p style="margin-bottom: 90px;">もし余裕がある時だけ、<br>以下のことを<br>試してみてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">【守護神の神社へ行く】</p>
+            <p style="margin-bottom: 90px;">久恵様の守護神、<br>大山祇神が祀られている神社を、<br>お近くでお伝えします。</p>
+            <p style="margin-bottom: 90px;">大村神社（伊賀市阿保1555）<br>牛庭神社（松阪市下蛸路町1281）<br>御厨神社（松阪市本町2304）<br>松阪神社（松阪市殿町1445）<br>意非多神社（松阪市西黒部町1746）</p>
+            <p style="margin-bottom: 90px;">参拝の際は、<br>お願い事を唱えるのではなく、<br>心の中でこの祝詞を<br>唱えてください。</p>
+            <p style="margin-bottom: 90px;">祓え給い、清め給え、<br>神ながら守り給い、幸え給え<br>（はらえたまい、きよめたまえ、<br>かむながらまもりたまい、さきわえたまえ）</p>
+            <p style="margin-bottom: 90px;">そして、</p>
+            <p style="margin-bottom: 90px;">「私は◯◯をします。<br>どうか見守っていてください」</p>
+            <p style="margin-bottom: 90px;">という形で<br>伝えてください。</p>
+            <p style="margin-bottom: 90px;">お願いを<br>叶えてもらうのではなく、<br>自分の歩みを<br>見守ってもらう。</p>
+            <p style="margin-bottom: 90px;">その姿勢が、<br>守護神との縁を<br>より深くします。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">【朝に空を見上げる】</p>
+            <p style="margin-bottom: 90px;">朝、<br>空を見上げて、<br>深呼吸を一度。</p>
+            <p style="margin-bottom: 90px;">それだけで、<br>守護の巡りは<br>さらに深くなります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">【水で清める】</p>
+            <p style="margin-bottom: 90px;">疲れた日は、<br>塩をひとつまみ入れたお風呂に。</p>
+            <p style="margin-bottom: 0;">乾いた根に、<br>少しずつ水を<br>戻していくように、<br>流れが整っていきます。</p>
+        </div>
+
+        <div id="stoneSentinel"></div>
+        <h2 class="emoji-header" id="sec-stone">⛩️ あなたを支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">久恵様には、<br>大山祇神のご縁をお伝えし、<br>その力を<br>久恵様の奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px;">また、<br>守護神と縁のある神社と、<br>参拝の際に<br>力を取り入れる方法も<br>お伝えしました。</p>
+            <p style="margin-bottom: 90px;">基本的には、<br>これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>守護の力は<br>何もしなければ、<br>少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">なかなか時間が取れない、<br>神社が遠くて<br>頻繁には行けない。</p>
+            <p style="margin-bottom: 90px;">そういう時期も<br>出てくるものです。</p>
+            <p style="margin-bottom: 90px;">そのような時に、<br>ぜひお勧めしたいのが、<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px;">守護神の力を石に宿し、<br>常に身近に<br>持ち歩くことができるように<br>なります。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>どんな石でも<br>よいわけではありません。</p>
+            <p style="margin-bottom: 90px;">久恵様が持つ<br>潜在的なエネルギーと、<br>大山祇神の力が<br>共鳴しやすい石で<br>お作りする必要があります。</p>
+            <p style="margin-bottom: 0;">久恵様のエネルギーと<br>大山祇神が共鳴しやすい石を、<br>四つお伝えします。</p>
+            <ul style="margin-bottom: 90px;">
+                <li><span style="color: #ffd966; font-weight: bold;">1. ペリドット</span><br>深い森や山を思わせる<br>緑の石です。<br>久恵様が纏う<br>深い森のような緑のオーラと、<br>大山祇神の山の力、<br>両方と静かに共鳴します。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">2. アクアマリン</span><br>澄んだ水を宿す石です。<br>乾きやすい久恵様の根に<br>潤いを届け、<br>体の落ち着きを<br>静かに支えます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">3. スモーキークォーツ</span><br>土台を安定させる石です。<br>家の中の乱れやすさを鎮め、<br>家族の場に<br>地に足のついた<br>安定感をもたらします。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">4. サンストーン</span><br>自分自身を<br>温め、労わる石です。<br>人を養う力を、<br>久恵様ご自身にも<br>向け直す後押しをします。<br>この中から、<br>久恵様のエネルギーと<br>最もバランスが取れる組み合わせを、<br>私が選び、<br>一つずつ手作りで<br>仕上げます。<br>ご希望の方は、<br>「詳細希望」と<br>メッセージをお送りください。</li>
+            </ul>
+        </div>
+
+        <div id="closingSentinel"></div>
+        <h2 id="sec-closing">【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">久恵様、</p>
+            <p style="margin-bottom: 90px;">あなたの未来には、<br>体の力みがすっと抜けて、</p>
+            <p style="margin-bottom: 90px;">娘様やお孫様と、<br>穏やかな時間を過ごす日々へと続く道が<br>視えています。</p>
+            <p style="margin-bottom: 90px;">前回の鑑定とのずれに、<br>不安を感じていらっしゃったかもしれません。</p>
+            <p style="margin-bottom: 90px;">でもそれは、<br>方向性が間違っていたのではなく、<br>一本道ではない、<br>波を伴う回復の途中にあったからです。</p>
+            <p style="margin-bottom: 90px;">正しい感覚です。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>大地に深く根を張り、<br>一度沈んでも<br>自分の代で<br>強く立ち上がっていける人。</p>
+            <p style="margin-bottom: 90px;">2026年10月に体と家族の土台が定まり、<br>2027年に、<br>その力が<br>本格的に実っていきます。</p>
+            <p style="margin-bottom: 90px;">孫守りも、<br>娘様との距離も、</p>
+            <p style="margin-bottom: 90px;">一人で全部を<br>背負い込む必要はありません。</p>
+            <p style="margin-bottom: 90px;">力を配分すること、<br>言葉を惜しまないこと。</p>
+            <p style="margin-bottom: 90px;">それが、<br>久恵様の幸せへの道。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">大山祇神</span>が、<br>あなたを守っています。</p>
+            <p style="margin-bottom: 90px;">どっしりと動じないその山の力で、<br>あなたの根を、<br>これからも支え続けていく。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px;">誰かを支える力の一部を、<br>どうかご自分にも<br>向けてください。</p>
+            <p style="margin-bottom: 90px;">守られている。</p>
+            <p style="margin-bottom: 90px;">その事実を、<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より、<br>遠隔守護祈祷を行い、<br>久恵様の幸せを願います。</p>
+            <p style="margin-bottom: 0;">久恵様の未来に、<br>穏やかさと安心が<br>満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            var elementBg = document.getElementById('elementBg');
+            var deityBg = document.getElementById('deityBg');
+            var doorBg = document.getElementById('doorBg');
+            var seasonAutumnBg = document.getElementById('seasonAutumnBg');
+            var seasonWinterBg = document.getElementById('seasonWinterBg');
+            var stoneBg = document.getElementById('stoneBg');
+
+            var stages = [
+                { el: document.getElementById('elementSentinel'), bg: elementBg },
+                { el: document.getElementById('guardianSentinel'), bg: deityBg },
+                { el: document.getElementById('essenceSentinel'), bg: elementBg },
+                { el: document.getElementById('deitySentinel'), bg: doorBg },
+                { el: document.getElementById('flow1Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flow2Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flow3Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flow4Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flowEndSentinel'), bg: doorBg },
+                { el: document.getElementById('guardianReturnSentinel'), bg: deityBg },
+                { el: document.getElementById('stoneSentinel'), bg: stoneBg },
+                { el: document.getElementById('closingSentinel'), bg: doorBg }
+            ].filter(function (stage) { return !!stage.el; });
+            if (!stages.length) return;
+
+            var layers = [elementBg, deityBg, doorBg, seasonAutumnBg, seasonWinterBg, stoneBg];
+            function show(active) {
+                layers.forEach(function (el) {
+                    if (el === active) el.classList.add('is-visible');
+                    else el.classList.remove('is-visible');
+                });
+            }
+
+            function onScroll() {
+                var trigger = window.innerHeight * 0.65;
+                var active = null;
+                for (var i = 0; i < stages.length; i++) {
+                    if (stages[i].el.getBoundingClientRect().top < trigger) {
+                        active = stages[i].bg;
+                    }
+                }
+                show(active);
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+
+        /* ===== 演出：花びら ===== */
+        (function () {
+            var cv = document.getElementById('petals');
+            var ctx = cv.getContext('2d');
+            var W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+            var isMobile = window.innerWidth < 700;
+
+            function resize() {
+                W = window.innerWidth; H = window.innerHeight;
+                cv.width = W * dpr; cv.height = H * dpr;
+                cv.style.width = W + 'px'; cv.style.height = H + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            var petals = [];
+            var petalN = isMobile ? 14 : 24;
+            for (var i = 0; i < petalN; i++) {
+                petals.push({
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    s: 5 + Math.random() * 7,
+                    vy: 0.35 + Math.random() * 0.7,
+                    sway: Math.random() * Math.PI * 2,
+                    swayV: 0.008 + Math.random() * 0.014,
+                    rot: Math.random() * Math.PI * 2,
+                    rotV: (Math.random() - 0.5) * 0.03,
+                    hue: Math.random() < 0.6 ? 'light' : 'deep'
+                });
+            }
+            function drawPetal(p) {
+                ctx.save();
+                ctx.translate(p.x + Math.sin(p.sway) * 26, p.y);
+                ctx.rotate(p.rot);
+                var g = ctx.createRadialGradient(0, 0, 0, 0, 0, p.s);
+                if (p.hue === 'light') {
+                    g.addColorStop(0, 'rgba(150, 200, 140, 0.95)');
+                    g.addColorStop(1, 'rgba(150, 200, 140, 0.25)');
+                } else {
+                    g.addColorStop(0, 'rgba(90, 150, 80, 0.95)');
+                    g.addColorStop(1, 'rgba(90, 150, 80, 0.25)');
+                }
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, p.s, p.s * 0.62, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function tick() {
+                ctx.clearRect(0, 0, W, H);
+                for (var pi = 0; pi < petals.length; pi++) {
+                    var p = petals[pi];
+                    p.y += p.vy;
+                    p.sway += p.swayV;
+                    p.rot += p.rotV;
+                    if (p.y > H + 20) { p.y = -20; p.x = Math.random() * W; }
+                    drawPetal(p);
+                }
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        })();
+    </script>
+
+<!-- GA4 カスタム計測：誰が/最後まで読んだか/購入ボタン [GA4-MIYUKI] -->
+<script>
+(function () {
+  function fire() {
+    var seg = location.pathname.split('/').filter(Boolean);
+    var last = decodeURIComponent(seg[seg.length - 1] || '');
+    var id = /\.html?$/i.test(last) ? decodeURIComponent(seg[seg.length - 2] || 'unknown') : (last || 'unknown');
+    var base = { kantei_id: id, persona: 'miyuki' };
+    gtag('set', 'user_properties', { kantei_id: id, persona: 'miyuki' });
+    gtag('event', 'page_open', base);
+
+    var end = document.querySelector('.signature, .sign');
+    if (end && 'IntersectionObserver' in window) {
+      var done = false;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && !done) { done = true; gtag('event', 'read_complete', base); io.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      io.observe(end);
+    }
+
+    document.querySelectorAll('.cta-button, .btn').forEach(function (b) {
+      b.addEventListener('click', function () { gtag('event', 'cta_click', base); });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire); else fire();
+})();
+</script>
+
+</body>
+</html>
