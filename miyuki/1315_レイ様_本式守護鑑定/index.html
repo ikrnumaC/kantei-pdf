@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) : GA4 計測 [GA4-MIYUKI] -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHLDFT6DR7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JHLDFT6DR7');
+    </script>
+    <title>レイ様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+
+            .toc {
+                padding: 20px 15px;
+            }
+
+            .toc-title {
+                font-size: 1.1em;
+            }
+
+            .toc a {
+                font-size: 0.95em;
+                padding: 12px 6px 12px 36px;
+            }
+        }
+
+        /* ===== 演出：元素の背景（冒頭〜守護神登場まで） ===== */
+        .element-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../鑑定画像/肥沃な大地.webp");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .element-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：守護神の背景（守護神登場〜本式内容の手前まで） ===== */
+        .deity-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/宇迦之御魂神.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center 18%;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .deity-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：扉の背景（本式内容〜結びまで） ===== */
+        .door-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/ドア2.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .door-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：今後の流れ 季節背景 ===== */
+        .season-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .season-bg.is-visible { opacity: 0.4; }
+        #seasonSummerBg { background-image: url("../鑑定画像/夏.jpg"); }
+        #seasonAutumnBg { background-image: url("../鑑定画像/秋.jpg"); }
+        #seasonWinterBg { background-image: url("../鑑定画像/冬.jpg"); }
+
+        /* ===== 演出：パワーストーン背景 ===== */
+        .stone-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../素材/シトリン.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .stone-bg.is-visible { opacity: 0.4; }
+
+        .deity-veil {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(15, 15, 46, 0.04) 0%, rgba(15, 15, 46, 0.15) 60%, rgba(15, 15, 46, 0.25) 100%),
+                linear-gradient(180deg, rgba(15, 15, 46, 0.06) 0%, rgba(15, 15, 46, 0.18) 100%);
+        }
+
+        /* ===== 演出：花びら ===== */
+        #petals {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="element-bg" id="elementBg"></div>
+    <div class="deity-bg" id="deityBg"></div>
+    <div class="door-bg" id="doorBg"></div>
+    <div class="season-bg" id="seasonSummerBg"></div>
+    <div class="season-bg" id="seasonAutumnBg"></div>
+    <div class="season-bg" id="seasonWinterBg"></div>
+    <div class="stone-bg" id="stoneBg"></div>
+    <div class="deity-veil"></div>
+    <canvas id="petals"></canvas>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">安心を受け取る力</h2>
+            <p class="cover-name">レイ様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 目次 -->
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-god">守護神について</a></li>
+                <li><a href="#sec-essence">レイ様という人について</a></li>
+                <li><a href="#sec-1">1. 子どもたちに流れる、時代の運気</a></li>
+                <li><a href="#sec-2">2. 見守る存在の、姿と伝言</a></li>
+                <li><a href="#sec-3">3. 懐の深さの活かし方</a></li>
+                <li><a href="#sec-4">4. 安心を育てる過ごし方</a></li>
+                <li><a href="#sec-bonus">気になること</a></li>
+                <li><a href="#sec-flow">今後の流れ</a></li>
+                <li><a href="#sec-guardian">守護を受け取る方法</a></li>
+                <li><a href="#sec-stone">あなたを支えるパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
+        <!-- 冒頭 -->
+        <div id="elementSentinel"></div>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">レイ様</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定を<br>お受けいただき<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">生まれたばかりの<br>星那様を胸に抱きながら<br>この子が生きていく時代を<br>案じるレイ様の想いが<br>まっすぐに私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先<br>レイ様が本当に知るべきことを<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <!-- あなたの未来に視えるもの -->
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">星那様を抱いたレイ様が<br>窓の外の光を見つめながら<br>肩の力がふっと抜けて<br>静かに微笑んでいる姿。</p>
+            <p style="margin-bottom: 90px;">「守らなきゃ」という気持ちの奥に<br>「もう大丈夫」という安心が<br>そっと広がっている横顔です。</p>
+            <p style="margin-bottom: 90px;">その景色が<br>現実として立ち上がる兆しが<br>強く感じられています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">最初の動きは<br>2026年の10月。</p>
+            <p style="margin-bottom: 90px;">これまで<br>子として守られてきた自分に<br>光があたると同時に<br>自分自身が<br>守る側であることへの自覚が<br>静かに深まっていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そして<br>2027年。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">生まれてから初めて巡ってくる<br>レイ様ご自身の本命の年に<br>この一年半かけて<br>積み重ねてきたものが<br>ひとつの安心という形になって<br>実を結んでいく兆しが<br>濃く<br>視えています。</p>
+            <p style="margin-bottom: 90px;">ただ<br>その道のりは<br>決して平坦ではありません。</p>
+            <p style="margin-bottom: 90px;">言葉にできない不安と<br>一度きちんと向き合う場面が<br>途中で訪れます。</p>
+            <p style="margin-bottom: 0;">でも<br>レイ様には<br>それを乗り越えて<br>受け取る力があります。</p>
+        </div>
+
+        <!-- 守護神について -->
+        <div id="guardianSentinel"></div>
+        <div class="oracle-message" id="sec-god">
+            <p style="margin-bottom: 90px;">その景色を見せてくれたのは<br><span style="color: #ffd966;">宇迦之御魂神</span>（うかのみたまのかみ）。</p>
+            <p style="margin-bottom: 90px;">昔、人々が<br>飢えと不作に苦しんでいた時代。</p>
+            <p style="margin-bottom: 90px;">宇迦之御魂神は<br>稲穂の力を人々に授け<br>どんな痩せた土地にも<br>実りをもたらしていった。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">一度実った土地は<br>その後も長く<br>人々の暮らしを<br>支え続けました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「与えて終わり」ではなく<br>「実り続ける仕組みそのものを守る神様」<br>として<br>今も伏見稲荷大社をはじめ<br>全国のお稲荷様に祀られています。</p>
+            <p style="margin-bottom: 0;">誰かを育て、支え続ける人の<br>そばに寄り添う神様として<br>レイ様のことを<br>ずっと見守ってきました。</p>
+            <img src="../鑑定画像/宇迦之御魂神.png" alt="宇迦之御魂神" class="guardian-image">
+        </div>
+
+        <!-- レイ様という人について -->
+        <div id="essenceSentinel"></div>
+        <h2 class="emoji-header" id="sec-essence">⛩️ レイ様という人について</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-weight: bold;">レイ様は<br>人より先に<br>場の空気の変化や<br>相手の心の揺れに<br>気づいてしまう人です。</p>
+            <p style="margin-bottom: 90px;">会話の途中で<br>相手の声のトーンが<br>少し変わっただけでも<br>すぐに感じ取ってしまう。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは<br>特別に敏感すぎるからではなく<br>生まれ持った感受性の鋭さを<br>ご自身で<br>しっかり使いこなしてきた<br>証です。</p>
+            <p style="margin-bottom: 90px;">普通なら<br>気づかないまま流れていくことも<br>レイ様はいつも<br>先回りして拾ってしまう。</p>
+            <p style="margin-bottom: 90px;">そして<br>気づいた分だけ<br>自分の中で<br>静かに引き受けてしまう。</p>
+            <p style="margin-bottom: 90px;">誰かに助けを求めるより先に<br>「私が何とかしよう」と<br>動いてしまう。</p>
+            <p style="margin-bottom: 90px;">それが<br>レイ様の土台にある力です。</p>
+            <p style="margin-bottom: 90px;">ご家族のことも<br>まわりの人のことも<br>気づけば<br>先に背負ってしまう。</p>
+            <p style="margin-bottom: 90px;">しんどい時ほど<br>「大丈夫」と<br>笑ってしまう。</p>
+            <p style="margin-bottom: 90px;">そんな瞬間が<br>これまでも幾度もありました。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ<br>レイ様の奥深くに<br>視えていることがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">レイ様を包む<br>守りの光は<br>生まれた瞬間から<br>とても強いんです。</p>
+            <p style="margin-bottom: 90px;">守りの光がこれほど集中しているのは<br>とてもめずらしいこと。</p>
+            <p style="margin-bottom: 90px;">だからこそ<br>レイ様はこれまで<br>大きな困難の中でも<br>一人でなんとか乗り越えてこられました。</p>
+            <p style="margin-bottom: 90px;">ただ<br>レイ様には<br>不安や心配ごとを<br>時間の経過とともに<br>自然に手放していく力が<br>生まれつきとても少ないです。</p>
+            <p style="margin-bottom: 90px;">多くの人は<br>時間が経てば<br>嫌な感情も<br>自然と薄れていきます。</p>
+            <p style="margin-bottom: 90px;">でも<br>レイ様は違います。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">意識して<br>向き合わない限り<br>不安はそのまま<br>胸の奥に残り続けてしまう。</p>
+            <p style="margin-bottom: 90px;">これは<br>弱さではなく<br>物事を<br>真剣に受け止める<br>誠実さの表れです。</p>
+            <p style="margin-bottom: 90px;">そしてレイ様は<br>家の中で静かに過ごしている時よりも<br>外の世界に出て<br>誰かと関わっている時にこそ<br>本来の力を発揮する人。</p>
+            <p style="margin-bottom: 90px;">困っている人がいれば<br>気づけば手を差し伸べていて<br>気づけば周りから<br>頼られる立場になっている。</p>
+            <p style="margin-bottom: 90px;">そんな場面が<br>これまでも多くありました。</p>
+            <p style="margin-bottom: 90px;">お金や情報の巡りについても<br>少し触れておきます。</p>
+            <p style="margin-bottom: 90px;">情報を集めすぎたり<br>考えすぎたりして<br>動きが止まってしまう場面が<br>時々あります。</p>
+            <p style="margin-bottom: 0;">お金の出入りにも波があり<br>増えたと思ったら<br>また形を変えて出ていく<br>そんな流れがあるようです。</p>
+        </div>
+
+        <!-- 1. 子どもたちに流れる、時代の運気 -->
+        <div id="deitySentinel"></div>
+        <h2 class="emoji-header" id="sec-1">⛩️ 1. 子どもたちに流れる、時代の運気</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">社会の形も<br>暮らし方もこれから<br>大きく変わっていく可能性があります。</p>
+            <p style="margin-bottom: 90px;">その不確かさを<br>不安に感じるのは<br>レイ様が<br>それだけ深く<br>この子の未来を<br>想っているからです。</p>
+            <p style="margin-bottom: 90px;">でも<br>ここで守護神が見せてくれているのは<br>外の時代の<br>不確かさではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">星那様ご自身の<br>内側にすでに刻まれている力です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">星那様は<br>成長する木が<br>輝く火に<br>照らされていくような<br>強い生命力を持って<br>生まれてきました。</p>
+            <p style="margin-bottom: 90px;">混沌とした時代の中でも<br>自ら伸び<br>自ら輝こうとする力を<br>すでに持っています。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">星那様には<br>どんな環境に置かれても<br>そこに安定を築いていく力が<br>生まれた瞬間から備わっています。</p>
+            <p style="margin-bottom: 90px;">外の世界がどれだけ揺れても<br>この子自身の中心は<br>しっかりと<br>根を張ってゆらがない。</p>
+            <p style="margin-bottom: 90px;">そんな姿が<br>はっきりと視えています。</p>
+            <p style="margin-bottom: 90px;">加えて今年は<br>星那様が<br>周りの人から<br>強く守られ<br>支えられる巡りの<br>真っただ中にあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">日本や時代の先行きという<br>外側の不確かさよりも<br>この子自身に<br>すでに刻まれている力の方が<br>ずっと強く働きます。</p>
+            <p style="margin-bottom: 0;">安心してください。</p>
+        </div>
+
+        <!-- 2. 見守る存在の、姿と伝言 -->
+        <h2 class="emoji-header" id="sec-2">⛩️ 2. 見守る存在の、姿と伝言</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから<br>レイ様を見守っている<br>存在の姿について<br>お伝えします。</p>
+            <p style="margin-bottom: 90px;">宇迦之御魂神は<br>稲穂の力を持つ神様であり<br>レイ様ご自身の性質と<br>根の深いところで<br>強く結びついています。</p>
+            <p style="margin-bottom: 90px;">光を纏いながら<br>静かに道を照らし<br>疲れた人の隣に<br>そっと寄り添って<br>その歩みを見守り続けている。</p>
+            <p style="margin-bottom: 90px;">そんな姿が<br>浮かび上がってきます。</p>
+            <p style="margin-bottom: 90px;">そしてこの存在が<br>今、レイ様に伝えたいと<br>思っている言葉があります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは<br>「あなたはもう十分に守ってきた」<br>ということば。</p>
+            <p style="margin-bottom: 90px;">家族のことも<br>まわりの人のことも<br>これまでずっと<br>一人で抱えてきました。</p>
+            <p style="margin-bottom: 90px;">その一つ一つを<br>この存在は<br>ずっと近くで見てきました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">だからこそ<br>今伝えたいのは<br>「一人で抱えなくていい」<br>という許しの言葉です。</p>
+            <p style="margin-bottom: 90px;">不安を感じた時<br>それを全部自分の中で<br>片付けようとしなくていい。</p>
+            <p style="margin-bottom: 90px;">そのままの気持ちを<br>差し出していい。</p>
+            <p style="margin-bottom: 90px;">そう<br>伝えてきています。</p>
+            <p style="margin-bottom: 90px;">これは<br>レイ様を弱いと言っているのではありません</p>
+            <p style="margin-bottom: 0;">むしろ<br>ここまで一人で守り続けてきた強さを<br>この存在は<br>誰よりも知っているからこその言葉です。</p>
+        </div>
+
+        <!-- 3. 懐の深さの活かし方 -->
+        <h2 class="emoji-header" id="sec-3">⛩️ 3. 懐の深さの活かし方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-weight: bold;">レイ様の<br>人を育て、受け入れる懐の深さは<br>生まれ持った<br>才能そのものです。</p>
+            <p style="margin-bottom: 90px;">これまで<br>大切な人や家族を<br>静かに育ててきた力も<br>ここから<br>子育てをしていく力も同じ<br>一つの才能から来ています。</p>
+            <p style="margin-bottom: 90px;">ただ<br>ここでもう一つ<br>お伝えしておきたいことが<br>あります。</p>
+            <p style="margin-bottom: 90px;">その懐の深さの<br>裏側には<br>全部を<br>自分の中だけで<br>処理しようとしてしまう<br>傾向があります。</p>
+            <p style="margin-bottom: 90px;">本当は<br>言葉にする力を<br>しっかり持っているのに<br>それを出し切れずに<br>心の中に留めてしまう。</p>
+            <p style="margin-bottom: 90px;">子育ての場面では<br>特にこの傾向が強く出やすく<br>自分自身を追い込みやすい<br>そんな巡りの中にいます。</p>
+            <p style="margin-bottom: 90px;">でも<br>ここで大切なお知らせがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">レイ様の周りにいる<br>友人や仲間との関わりは<br>これから<br>恩恵や豊かさとして<br>返ってきます。</p>
+            <p style="margin-bottom: 90px;">だからこそ<br>これまでのように<br>全部を<br>一人で抱え続けるのではなく<br>信頼できる人に<br>言葉にして預けていく。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その一歩を<br>踏み出した時<br>レイ様の懐の深さという才能は<br>これまで以上の<br>豊かさに変わっていきます。</p>
+            <p style="margin-bottom: 90px;">懐の深さは<br>変える必要がありません。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">変えるのは<br>たったひとつ<br>全部を自分の中で<br>背負うのをやめるということです。</p>
+        </div>
+
+        <!-- 4. 安心を育てる過ごし方 -->
+        <h2 class="emoji-header" id="sec-4">⛩️ 4. 安心を育てる過ごし方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここからは<br>今日から始められる<br>安心を育てる<br>過ごし方についてお伝えします。</p>
+            <p style="margin-bottom: 90px;">レイ様には<br>不安を静かに手放していく力が<br>生まれつき<br>少ないという特徴があります。</p>
+            <p style="margin-bottom: 90px;">だからこそ意識して<br>その力を<br>補っていく必要があります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">一つ目は<br>言葉にして書き出す時間を持つことです。</p>
+            <p style="margin-bottom: 90px;">胸の中にある想いを<br>ノートに書き出したり<br>声に出して<br>つぶやいたりするだけで<br>溜め込んでいたものが<br>少しずつ流れ出していきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">二つ目は<br>静かな時間を持つことです。</p>
+            <p style="margin-bottom: 90px;">赤ちゃんが眠っている間の<br>ほんの数分でも構いません。</p>
+            <p style="margin-bottom: 90px;">深く呼吸をして<br>ただ座るだけの時間が<br>レイ様の内側を<br>静かに整えていきます。</p>
+            <p style="margin-bottom: 90px;">そして今レイ様は<br>人生で一番重要な10年の<br>真っただ中にいます。</p>
+            <p style="margin-bottom: 90px;">内面が整うほど<br>子育ても<br>これからの毎日も<br>自然と良い流れに変わっていきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">三つ目は<br>土に触れる時間を持つことです。</p>
+            <p style="margin-bottom: 90px;">ベランダの植物に<br>水をやる時間でも<br>公園の土を<br>踏むのでも構いません。</p>
+            <p style="margin-bottom: 90px;">田畑の土のような<br>レイ様の性質を<br>じんわりと<br>満たしてくれます。</p>
+            <p style="margin-bottom: 0;">この三つを<br>少しずつ日々に取り入れることで<br>安心は着実に育っていきます。</p>
+        </div>
+
+        <!-- 気になること -->
+        <h2 class="emoji-header" id="sec-bonus">🔮 気になること</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">これまでお伝えしてきたこと以外にも<br>実はもう一つ<br>視えているものがあります。</p>
+            <p style="margin-bottom: 90px;">無料鑑定では<br>お伝えしていなかった<br>もう少し先にある兆しです。</p>
+            <p style="margin-bottom: 90px;">まず<br>良いお知らせです。</p>
+            <p style="margin-bottom: 90px;">星那様は<br>ご両親から<br>とても深い愛情を<br>注がれて育っていきます。</p>
+            <p style="margin-bottom: 90px;">ただ<br>その愛情が<br>こちらの想いほどには<br>伝わりにくく<br>すれ違いやすい<br>場面もあるようです。</p>
+            <p style="margin-bottom: 90px;">両親同士の間の<br>空気や状態が<br>知らず知らずのうちに<br>この子に<br>影響を与えることもあります。</p>
+            <p style="margin-bottom: 90px;">そしてもう一つ。</p>
+            <p style="margin-bottom: 90px;">星那様ご自身にも<br>レイ様と同じように<br>人一倍繊細な感受性が<br>受け継がれています。</p>
+            <p style="margin-bottom: 90px;">同じ感性でいきてきた先輩として<br>その点はフォローしてあげてください。</p>
+            <p style="margin-bottom: 90px;">これは<br>今すぐの問題ではなく<br>もっと先<br>思春期以降のどこかで<br>少しずつ表に出てくるものとして<br>視えているものです。</p>
+            <p style="margin-bottom: 90px;">今すぐ<br>心配することは何もありません。</p>
+            <p style="margin-bottom: 90px;">今回は<br>ここまでお伝えするだけに<br>とどめておきます。</p>
+            <p style="margin-bottom: 0;">また<br>別の機会に<br>詳しくお伝えできたらと思います。</p>
+        </div>
+
+        <!-- 今後の流れ -->
+        <h2 id="sec-flow">【今後の流れ】</h2>
+        <div id="flow1Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年8月:意識の変わり目の月</p>
+            <p style="margin-bottom: 90px;">立秋を過ぎ<br>これまで無意識に<br>溜め込んできたものに<br>気づき始めやすい時期です。</p>
+            <p style="margin-bottom: 0;">大きな行動を<br>起こすよりも<br>まずは<br>ご自身の状態を<br>静かに観察する月にしてください。</p>
+        </div>
+
+        <div id="flow2Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年9月:小さな整理の月</p>
+            <p style="margin-bottom: 90px;">お金や<br>情報まわりについて<br>小さな見直しや<br>整理が進みやすい時期です。</p>
+            <p style="margin-bottom: 0;">無理に<br>大きく動かそうとせず<br>気づいたところから<br>少しずつ整えていってください。</p>
+        </div>
+
+        <div id="flow3Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2026年10月:守護神の月</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここが<br>守護の力が<br>最も強く流れ込む月です。</p>
+            <p style="margin-bottom: 90px;">守られてきた子としての自分に<br>光があたると同時に<br>自分自身が<br>守る親であることへの自覚が<br>静かに深まっていきます。</p>
+            <p style="margin-bottom: 90px;">宇迦之御魂神の力が<br>土のように<br>じんわりと<br>満ちていく月です。</p>
+            <p style="margin-bottom: 90px;">大きな決断を<br>急ぐ必要はありません。</p>
+            <p style="margin-bottom: 0;">ただ<br>この時期に感じた気づきを<br>大切に心に留めておいてください。</p>
+        </div>
+
+        <div id="flow4Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2026年11月:最重要の月</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">レイ様の内面のテーマが<br>最も動く月です。</p>
+            <p style="margin-bottom: 90px;">抱えてきた不安に<br>一つの像が結ばれ<br>「これでいいんだ」という<br>気づきが訪れやすい時期です。</p>
+            <p style="margin-bottom: 90px;">ここで得た気づきが<br>2027年に向けた<br>大切な土台になります。</p>
+            <p style="margin-bottom: 0;">一人で抱え続けるのではなく<br>言葉にして誰かに預ける。<br>その一歩を<br>この月に<br>踏み出してみてください。</p>
+        </div>
+
+        <div id="flowEndSentinel"></div>
+        <div class="section">
+            <h2 style="margin-top: 0;">【今年(2026年)の流れ】</h2>
+            <p style="margin-bottom: 90px; font-weight: bold;">今年は<br>お子様を通じて<br>最も強い守りと豊かさが<br>流れ込む年です。</p>
+            <p style="margin-bottom: 0;">星那様の誕生という慶事が<br>今年の運気の<br>中心に据えられています。</p>
+        </div>
+
+        <div class="section">
+            <h2 style="margin-top: 0;">【来年(2027年)の流れ】</h2>
+            <p style="margin-bottom: 90px;">来年は<br>生まれてから初めて巡ってくる<br>レイ様ご自身の<br>本命の年です。</p>
+            <p style="margin-bottom: 90px;">言葉にできない不安と<br>一度きちんと向き合う場面が訪れる一方で<br>その感受性が<br>誰かに認められ<br>豊かさに転じる兆しも<br>同時に巡ってきます。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">緊張と<br>実りが同居する<br>大切な節目の年です。</p>
+        </div>
+
+        <!-- 守護を受け取る方法 -->
+        <div id="guardianReturnSentinel"></div>
+        <h2 class="emoji-header" id="sec-guardian">⛩️ 守護を受け取る方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">そして<br>安心してください。</p>
+            <p style="margin-bottom: 90px;">レイ様のことを<br>深く霊視した際<br>特別な守護の力を<br>レイ様の奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: 90px;">それは<br><span style="color: #ffd966;">宇迦之御魂神</span>の和魂の力です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">この力は<br>一人で抱え込んでしまう心を静め<br>言葉にして<br>手放していく流れを<br>整えていきます。</p>
+            <p style="margin-bottom: 90px;">今この文を<br>読んでいる間にも<br>胸が少し温かくなる</p>
+            <p style="margin-bottom: 90px;">肩が軽くなる</p>
+            <p style="margin-bottom: 90px;">眠気を感じる</p>
+            <p style="margin-bottom: 90px;">ふっと安心する。</p>
+            <p style="margin-bottom: 90px;">もしそのような感覚があれば<br>すでに守護の力が<br>届き始めている証です。</p>
+            <p style="margin-bottom: 90px;">これは<br>何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ただ<br>受け取るだけで大丈夫です。</p>
+            <p style="margin-bottom: 90px;">もし今<br>少しだけ時間があれば<br>一度静かに目を閉じてください。</p>
+            <p style="margin-bottom: 90px;">右手を<br>胸の中央に当て<br>左手を<br>お腹に添えて<br>ゆっくり三度呼吸をしてください。</p>
+            <p style="margin-bottom: 90px;">そして<br>心の中で</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">「私は守られている」<br>「私はもう一人で抱えなくていい」</p>
+            <p style="margin-bottom: 90px;">そう唱えてみてください。</p>
+            <p style="margin-bottom: 90px;">胸のあたりが少し温かくなる</p>
+            <p style="margin-bottom: 90px;">手がじんわりする</p>
+            <p style="margin-bottom: 90px;">安心感が広がる。</p>
+            <p style="margin-bottom: 90px;">その感覚があれば<br>すでに守護のエネルギーが<br>流れ始めています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">今のレイ様に<br>必要なのは<br>無理に頑張ることではありません。</p>
+            <p style="margin-bottom: 90px;">まずは<br>守護の流れを受け取り<br>それだけでも<br>運の流れは変わり始めます。</p>
+            <p style="margin-bottom: 90px;">もし<br>余裕がある時だけ<br>以下のことを試してみてください。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【守護神の神社へ行く】</p>
+            <p style="margin-bottom: 90px;">レイ様の守護神<br><span style="color: #ffd966;">宇迦之御魂神</span>が祀られている神社として<br>以下の5社が候補にあります。</p>
+            <p style="margin-bottom: 90px;">（お住まいが確認でき次第<br>最寄りの神社をあらためてお伝えします）</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">荷機稲荷神社（岐阜県瑞浪市稲津町小里560）<br>三枝神社（岐阜県高山市下切町2326）<br>陣屋稲荷神社（岐阜県高山市八軒町3-4）<br>金山稲荷神社（岐阜県高山市丹生川町森部1106）<br>荒城川神社（岐阜県高山市丹生川町森部279）</p>
+            <p style="margin-bottom: 90px;">参拝の際は<br>以下の祝詞を<br>心の中で<br>唱えてください。</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">祓え給い、清め給え、<br>神ながら守り給い、幸え給え</p>
+            <p style="margin-bottom: 90px;">（はらえたまい きよめたまえ<br>かむながらまもりたまい さきわえたまえ）</p>
+            <p style="margin-bottom: 90px;">そして<br>お願い事を唱えるのではなく</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">「私はこの子を守ります。<br>どうか見守っていてください」</p>
+            <p style="margin-bottom: 90px;">という形で<br>伝えてください。</p>
+            <p style="margin-bottom: 90px;">その姿勢が</p>
+            <p style="margin-bottom: 90px;">守護神との縁を<br>より深くします。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【朝に光を浴びる】</p>
+            <p style="margin-bottom: 90px;">朝、少しだけ<br>窓の外の光を浴びて<br>深呼吸を一度。</p>
+            <p style="margin-bottom: 90px;">それだけで<br>守護の巡りは<br>さらに深くなります。</p>
+
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【水で清める】</p>
+            <p style="margin-bottom: 90px;">疲れた日は<br>塩をひとつまみ入れたお風呂に。</p>
+            <p style="margin-bottom: 0;">流れが整っていきます。</p>
+        </div>
+
+        <!-- レイ様を支えるパワーストーン -->
+        <div id="stoneSentinel"></div>
+        <h2 class="emoji-header" id="sec-stone">⛩️ レイ様を支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">レイ様には<br>守護神のご縁をお伝えし<br>その力を奥底に置いてきました。</p>
+            <p style="margin-bottom: 90px;">また<br>守護神と縁のある神社と<br>参拝の際に力を取り入れる方法も<br>お伝えしました。</p>
+            <p style="margin-bottom: 90px;">基本的には<br>これで万全です。</p>
+            <p style="margin-bottom: 90px;">ただ<br>守護の力は<br>何もしなければ<br>少しずつ薄れていくものです。</p>
+            <p style="margin-bottom: 90px;">なかなか時間が取れない<br>神社が遠くて頻繁には行けない<br>という方も<br>いらっしゃると思います。</p>
+            <p style="margin-bottom: 90px;">そのような方に<br>ぜひお勧めしたいのが<br>パワーストーンの依代です。</p>
+            <p style="margin-bottom: 90px;">守護神の力を石に宿し<br>常に身近に<br>持ち歩くことができるようになります。</p>
+            <p style="margin-bottom: 90px;">ただ<br>どんな石でもよいわけではありません。</p>
+            <p style="margin-bottom: 90px;">レイ様が持つ潜在的なエネルギーと<br>守護神が共鳴しやすい石で<br>お作りする必要があります。</p>
+            <p style="margin-bottom: 90px;">レイ様のエネルギーと<br><span style="color: #ffd966;">宇迦之御魂神</span>が共鳴しやすい石を<br>4つお伝えします。</p>
+            <ul style="margin-bottom: 90px;">
+                <li><span style="color: #ffd966; font-weight: bold;">1. シトリン（黄水晶）</span><br>太陽の光を宿し<br>豊かさと実りを引き寄せる石です。<br>田畑を照らす夏の陽のような<br>レイ様の内側の温かさと<br>静かに響き合います。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">2. ラピスラズリ</span><br>深い青の中に<br>内なる声を言葉にする力を宿す石です。<br>言葉にできずにいた心配ごとを<br>そっと和らげてくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">3. アクアマリン（藍玉）</span><br>海の水を映したような<br>澄んだ青色を持つ石です。<br>レイ様に少ない水の力を補い<br>心の波を静かに鎮めてくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">4. ムーンストーン</span><br>月の光を宿し<br>感受性を優しく受け止める石です。<br>内面で強く動いている澄んだ感受性と<br>直接共鳴します。</li>
+            </ul>
+            <p style="margin-bottom: 90px;">この中から<br>レイ様のエネルギーと<br>最もバランスが取れる組み合わせを</p>
+            <p style="margin-bottom: 90px;">私が選び<br>1つずつ手作りで仕上げます。</p>
+            <p style="margin-bottom: 0;">ご希望の方は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <!-- 結びの言葉 -->
+        <div id="closingSentinel"></div>
+        <h2 id="sec-closing">【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">レイ様</p>
+            <p style="margin-bottom: 90px;">ここまで読んでくださって<br>ありがとうございます。</p>
+            <p style="margin-bottom: 90px;">星那様を抱きながら<br>窓の外の光をゆっくり眺め<br>肩の力がふっと抜けている<br>そんな瞬間がこれから訪れます。</p>
+            <p style="margin-bottom: 90px;">「守らなきゃ」という気持ちの奥に<br>「もう大丈夫」という安心が<br>静かに広がっていきます。</p>
+            <p style="margin-bottom: 90px;">今は<br>この子が生きていく時代への不安が<br>胸の中で渦を巻いているかもしれません。</p>
+            <p style="margin-bottom: 90px;">でもそれは<br>レイ様がこの子をそれだけ深く<br>大切に想っているからです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">正しい感覚です。</p>
+            <p style="margin-bottom: 90px;">レイ様は<br>これまでも<br>大切な人や家族を<br>静かに育ててきた人です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">そしてこれからは<br>全部を一人で背負うのではなく<br>言葉にして<br>まわりに預けていく。</p>
+            <p style="margin-bottom: 90px;">その一歩が<br>レイ様自身と<br>星那様の未来を<br>静かに支えていきます。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">宇迦之御魂神</span>が<br>レイ様を守っています。</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">「あなたはもう十分に守ってきた。<br>これからは<br>受け取る番です。」</p>
+            <p style="margin-bottom: 90px;">その言葉を<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">レイ様は<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">これまでたくさん背負ってきた分<br>これからはご自身も<br>大切にしていい。</p>
+            <p style="margin-bottom: 90px;">守られています。</p>
+            <p style="margin-bottom: 90px;">その事実を<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より<br>遠隔守護祈祷を行い<br>レイ様と<br>星那様の幸せを願います。</p>
+            <p style="margin-bottom: 0;">レイ様の未来に<br>豊かさと安心が満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            var elementBg = document.getElementById('elementBg');
+            var deityBg = document.getElementById('deityBg');
+            var doorBg = document.getElementById('doorBg');
+            var seasonSummerBg = document.getElementById('seasonSummerBg');
+            var seasonAutumnBg = document.getElementById('seasonAutumnBg');
+            var seasonWinterBg = document.getElementById('seasonWinterBg');
+            var stoneBg = document.getElementById('stoneBg');
+
+            var stages = [
+                { el: document.getElementById('elementSentinel'), bg: elementBg },
+                { el: document.getElementById('guardianSentinel'), bg: deityBg },
+                { el: document.getElementById('essenceSentinel'), bg: elementBg },
+                { el: document.getElementById('deitySentinel'), bg: doorBg },
+                { el: document.getElementById('flow1Sentinel'), bg: seasonSummerBg },
+                { el: document.getElementById('flow2Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flow3Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flow4Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flowEndSentinel'), bg: doorBg },
+                { el: document.getElementById('guardianReturnSentinel'), bg: deityBg },
+                { el: document.getElementById('stoneSentinel'), bg: stoneBg },
+                { el: document.getElementById('closingSentinel'), bg: doorBg }
+            ].filter(function (stage) { return !!stage.el; });
+            if (!stages.length) return;
+
+            var layers = [elementBg, deityBg, doorBg, seasonSummerBg, seasonAutumnBg, seasonWinterBg, stoneBg];
+            function show(active) {
+                layers.forEach(function (el) {
+                    if (el === active) el.classList.add('is-visible');
+                    else el.classList.remove('is-visible');
+                });
+            }
+
+            function onScroll() {
+                var trigger = window.innerHeight * 0.65;
+                var active = null;
+                for (var i = 0; i < stages.length; i++) {
+                    if (stages[i].el.getBoundingClientRect().top < trigger) {
+                        active = stages[i].bg;
+                    }
+                }
+                show(active);
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+
+        /* ===== 演出：花びら ===== */
+        (function () {
+            var cv = document.getElementById('petals');
+            var ctx = cv.getContext('2d');
+            var W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+            var isMobile = window.innerWidth < 700;
+
+            function resize() {
+                W = window.innerWidth; H = window.innerHeight;
+                cv.width = W * dpr; cv.height = H * dpr;
+                cv.style.width = W + 'px'; cv.style.height = H + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            var petals = [];
+            var petalN = isMobile ? 14 : 24;
+            for (var i = 0; i < petalN; i++) {
+                petals.push({
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    s: 5 + Math.random() * 7,
+                    vy: 0.35 + Math.random() * 0.7,
+                    sway: Math.random() * Math.PI * 2,
+                    swayV: 0.008 + Math.random() * 0.014,
+                    rot: Math.random() * Math.PI * 2,
+                    rotV: (Math.random() - 0.5) * 0.03,
+                    hue: Math.random() < 0.6 ? 'light' : 'deep'
+                });
+            }
+            function drawPetal(p) {
+                ctx.save();
+                ctx.translate(p.x + Math.sin(p.sway) * 26, p.y);
+                ctx.rotate(p.rot);
+                var g = ctx.createRadialGradient(0, 0, 0, 0, 0, p.s);
+                if (p.hue === 'light') {
+                    g.addColorStop(0, 'rgba(255, 220, 140, 0.95)');
+                    g.addColorStop(1, 'rgba(255, 220, 140, 0.25)');
+                } else {
+                    g.addColorStop(0, 'rgba(230, 170, 80, 0.95)');
+                    g.addColorStop(1, 'rgba(230, 170, 80, 0.25)');
+                }
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, p.s, p.s * 0.62, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function tick() {
+                ctx.clearRect(0, 0, W, H);
+                for (var pi = 0; pi < petals.length; pi++) {
+                    var p = petals[pi];
+                    p.y += p.vy;
+                    p.sway += p.swayV;
+                    p.rot += p.rotV;
+                    if (p.y > H + 20) { p.y = -20; p.x = Math.random() * W; }
+                    drawPetal(p);
+                }
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        })();
+    </script>
+
+<!-- GA4 カスタム計測：誰が/最後まで読んだか/購入ボタン [GA4-MIYUKI] -->
+<script>
+(function () {
+  function fire() {
+    var seg = location.pathname.split('/').filter(Boolean);
+    var last = decodeURIComponent(seg[seg.length - 1] || '');
+    var id = /\.html?$/i.test(last) ? decodeURIComponent(seg[seg.length - 2] || 'unknown') : (last || 'unknown');
+    var base = { kantei_id: id, persona: 'miyuki' };
+    gtag('set', 'user_properties', { kantei_id: id, persona: 'miyuki' });
+    gtag('event', 'page_open', base);
+
+    var end = document.querySelector('.signature, .sign');
+    if (end && 'IntersectionObserver' in window) {
+      var done = false;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && !done) { done = true; gtag('event', 'read_complete', base); io.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      io.observe(end);
+    }
+
+    document.querySelectorAll('.cta-button, .btn').forEach(function (b) {
+      b.addEventListener('click', function () { gtag('event', 'cta_click', base); });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire); else fire();
+})();
+</script>
+
+</body>
+</html>
