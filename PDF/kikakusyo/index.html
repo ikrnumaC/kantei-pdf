@@ -1,0 +1,3148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNS占い講座 企画書</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+    background: #f5f3f8;
+    color: #2a2438;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .slide {
+    display: none;
+    position: absolute;
+    inset: 0;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding-top: 5vh;
+    padding-bottom: 6rem;
+    animation: fadeIn 0.6s ease;
+    overflow-y: auto;
+  }
+
+  .slide.active { display: flex; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Common ── */
+  .bg-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .slide-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    font-weight: 600;
+    position: absolute;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+
+  .slide-title {
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #2a2438;
+  }
+
+  .deco-line {
+    width: 80px; height: 2px;
+    border-radius: 1px;
+    margin: 2.5rem auto 0;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 0.4em 1.2em;
+    border-radius: 999px;
+    margin-bottom: 2rem;
+    font-weight: 600;
+  }
+
+  /* step list */
+  .step-list {
+    width: min(560px, 90vw);
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .step-item {
+    border-radius: 14px;
+    padding: 1.1rem 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .step-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 0 2px 2px 0;
+  }
+
+  .step-item .s-num {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    min-width: 1.8rem;
+  }
+
+  .step-item .s-label {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 700;
+    color: #2a2438;
+  }
+
+  .step-item .s-sub {
+    font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+    font-weight: 500;
+    margin-top: 0.2rem;
+    display: block;
+  }
+
+  /* list grid */
+  .list-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    width: min(600px, 90vw);
+  }
+
+  .list-item {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 16px;
+    padding: 1.6rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+
+  .list-item .num {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1;
+  }
+
+  .list-item .label {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    color: #2a2438;
+  }
+
+  .list-item .sublabel {
+    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+    font-weight: 500;
+    display: block;
+    margin-top: 0.2rem;
+  }
+
+  /* ── Slide 1: Title ── */
+  .slide-1 {
+    background: linear-gradient(135deg, #f0eaf8 0%, #e8e0f4 40%, #f5f3f8 100%);
+    justify-content: center;
+    padding-top: 0;
+  }
+  .slide-1 .bg-glow { background: radial-gradient(circle, rgba(138,43,226,0.08) 0%, transparent 70%); }
+  .slide-1 .tag { color: #7c4dff; border: 1px solid rgba(124,77,255,0.3); background: rgba(124,77,255,0.06); }
+  .slide-1 .title {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.15;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .slide-1 .title .line1 {
+    display: block;
+    background: linear-gradient(135deg, #9c27b0, #7c4dff, #2196f3);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .slide-1 .title .line2 {
+    display: block;
+    font-size: 0.5em;
+    color: #7a7090;
+    -webkit-text-fill-color: #7a7090;
+    margin-top: 0.3em;
+    font-weight: 600;
+  }
+  .slide-1 .deco-line { background: linear-gradient(90deg, #7c4dff, #2196f3); }
+
+  /* ── Slide 2: 概要 ── */
+  .slide-2 { background: linear-gradient(135deg, #e8f0fa 0%, #f5f3f8 100%); }
+  .slide-2 .slide-label { color: #2196f3; }
+  .slide-2 .slide-title span {
+    background: linear-gradient(90deg, #2196f3, #7c4dff);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .slide-2 .list-item .num { color: #7c4dff; }
+  .slide-2 .list-item .sublabel { color: #2196f3; }
+
+  /* ── Slide 3: ターゲット ── */
+  .slide-3 { background: linear-gradient(135deg, #fce8ef 0%, #f5f3f8 100%); }
+  .slide-3 .slide-label { color: #e91e63; }
+  .slide-3 .slide-title span {
+    background: linear-gradient(90deg, #e91e63, #ff6d00);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .slide-3 .step-item {
+    background: #fff;
+    border: 1px solid rgba(233,30,99,0.12);
+    box-shadow: 0 2px 12px rgba(233,30,99,0.04);
+  }
+  .slide-3 .step-item::before { background: linear-gradient(180deg, #e91e63, #ff6d00); }
+  .slide-3 .s-num { color: #e91e63 !important; }
+
+  /* ── Slide 4: 設計方針 ── */
+  .slide-4 { background: linear-gradient(135deg, #e0f5ea 0%, #f5f3f8 100%); }
+  .slide-4 .slide-label { color: #00c853; }
+  .slide-4 .slide-title span {
+    background: linear-gradient(90deg, #00c853, #2196f3);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .slide-4 .step-item {
+    background: #fff;
+    border: 1px solid rgba(0,200,83,0.12);
+    box-shadow: 0 2px 12px rgba(0,200,83,0.04);
+  }
+  .slide-4 .step-item::before { background: linear-gradient(180deg, #00c853, #2196f3); }
+  .slide-4 .s-num { color: #00c853 !important; }
+  .slide-4 .s-sub { color: #2e7d32; }
+
+  /* ── Slide 5: 全体フロー ── */
+  .slide-5 { background: linear-gradient(135deg, #e8eefa 0%, #f5f3f8 100%); }
+  .slide-5 .slide-label { color: #5c6bc0; }
+  .slide-5 .slide-title span {
+    background: linear-gradient(90deg, #5c6bc0, #ab47bc);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .flow-horizontal {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    width: min(800px, 92vw);
+    justify-content: center;
+  }
+
+  .flow-card {
+    flex: 1;
+    border-radius: 16px;
+    padding: 2rem 1.4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .flow-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; right: 0;
+    height: 3px;
+    border-radius: 2px 2px 0 0;
+  }
+
+  .flow-card .fc-num {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+  }
+
+  .flow-card .fc-title {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 800;
+    color: #2a2438;
+    margin-bottom: 0.4rem;
+    white-space: nowrap;
+  }
+
+  .flow-card .fc-role {
+    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+    font-weight: 600;
+  }
+
+  .flow-arrow-h {
+    font-size: 1.5rem;
+    color: rgba(0,0,0,0.15);
+    padding: 0 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .fc-purple { background: #fff; border: 1px solid rgba(124,77,255,0.2); box-shadow: 0 2px 12px rgba(124,77,255,0.06); }
+  .fc-purple::before { background: linear-gradient(90deg, #7c4dff, #ab47bc); }
+  .fc-purple .fc-num { color: #7c4dff; }
+  .fc-purple .fc-role { color: #9c27b0; }
+
+  .fc-blue { background: #fff; border: 1px solid rgba(33,150,243,0.2); box-shadow: 0 2px 12px rgba(33,150,243,0.06); }
+  .fc-blue::before { background: linear-gradient(90deg, #2196f3, #5c6bc0); }
+  .fc-blue .fc-num { color: #2196f3; }
+  .fc-blue .fc-role { color: #1976d2; }
+
+  .fc-green { background: #fff; border: 1px solid rgba(0,200,83,0.2); box-shadow: 0 2px 12px rgba(0,200,83,0.06); }
+  .fc-green::before { background: linear-gradient(90deg, #00c853, #2196f3); }
+  .fc-green .fc-num { color: #00c853; }
+  .fc-green .fc-role { color: #2e7d32; }
+
+  .fc-orange { background: #fff; border: 1px solid rgba(255,109,0,0.2); box-shadow: 0 2px 12px rgba(255,109,0,0.06); }
+  .fc-orange::before { background: linear-gradient(90deg, #ff6d00, #ffab00); }
+  .fc-orange .fc-num { color: #ff6d00; }
+  .fc-orange .fc-role { color: #e65100; }
+
+  /* ── Week 01 共通 (purple) ── */
+  .w01 { background: linear-gradient(135deg, #f0eaf8 0%, #f5f3f8 100%); }
+  .w01 .slide-label { color: #9c27b0; }
+  .w01 .slide-title span {
+    background: linear-gradient(90deg, #9c27b0, #7c4dff);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .w01 .tag { color: #9c27b0; border: 1px solid rgba(156,39,176,0.3); background: rgba(156,39,176,0.06); }
+  .w01 .step-item {
+    background: #fff;
+    border: 1px solid rgba(156,39,176,0.1);
+    box-shadow: 0 2px 12px rgba(156,39,176,0.04);
+  }
+  .w01 .step-item::before { background: linear-gradient(180deg, #9c27b0, #7c4dff); }
+  .w01 .s-num { color: #9c27b0 !important; }
+  .w01 .s-sub { color: #7b1fa2; }
+
+  .session-theme {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 600;
+    text-align: center;
+    margin-top: 1rem;
+    line-height: 1.6;
+  }
+
+  /* ── w01 stat cards ── */
+  .stat-row {
+    display: flex;
+    gap: 1.2rem;
+    width: min(720px, 90vw);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    background: #fff;
+    border: 1px solid rgba(156,39,176,0.12);
+    border-radius: 16px;
+    padding: 1.6rem 2rem;
+    text-align: center;
+    flex: 1;
+    min-width: 180px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(156,39,176,0.06);
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #9c27b0, #7c4dff);
+    border-radius: 2px 2px 0 0;
+  }
+
+  .stat-card .sc-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #9c27b0;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-card .sc-value {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #9c27b0, #7c4dff);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+  }
+
+  .stat-card .sc-note {
+    font-size: 0.7rem;
+    color: #8a8098;
+    margin-top: 0.4rem;
+  }
+
+  /* w01 image row */
+  .img-row {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    width: min(800px, 92vw);
+  }
+
+  .slide-img {
+    max-height: 55vh;
+    max-width: 45%;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    object-fit: contain;
+  }
+
+  .slide-img-single {
+    max-height: 72vh;
+    max-width: 90%;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    object-fit: contain;
+  }
+
+  /* w01 sub heading */
+  .sub-heading {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 700;
+    color: #5a5068;
+    text-align: center;
+    margin: 1rem 0 0.8rem;
+  }
+
+  .sub-heading span {
+    background: linear-gradient(90deg, #9c27b0, #7c4dff);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    font-weight: 800;
+  }
+
+  /* w01 body text */
+  .w01-body {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    color: #7a7090;
+    text-align: center;
+    margin-top: 1.5rem;
+    line-height: 1.7;
+    width: min(560px, 85vw);
+  }
+
+  /* w01 profit compare */
+  .profit-compare {
+    display: flex;
+    gap: 1.2rem;
+    width: min(680px, 92vw);
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .profit-card {
+    flex: 1;
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.4rem 1.8rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    white-space: nowrap;
+  }
+
+  .profit-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; right: 0;
+    height: 3px;
+    border-radius: 2px 2px 0 0;
+  }
+
+  .profit-card .pc-biz {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .profit-card .pc-price {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    font-weight: 600;
+    color: #5a5068;
+    margin-bottom: 0.3rem;
+  }
+
+  .profit-card .pc-profit {
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 900;
+    line-height: 1.2;
+  }
+
+  .profit-card .pc-note {
+    font-size: 0.68rem;
+    color: #8a8098;
+    margin-top: 0.3rem;
+  }
+
+  .pc-low { border: 1px solid rgba(0,0,0,0.06); }
+  .pc-low::before { background: #bbb; }
+  .pc-low .pc-biz { color: #999; }
+  .pc-low .pc-profit { color: #999; }
+
+  .pc-high { border: 1px solid rgba(156,39,176,0.15); }
+  .pc-high::before { background: linear-gradient(90deg, #9c27b0, #7c4dff); }
+  .pc-high .pc-biz { color: #9c27b0; }
+  .pc-high .pc-profit {
+    background: linear-gradient(135deg, #9c27b0, #7c4dff);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .vs-text {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #ccc;
+    padding: 0 0.2rem;
+  }
+
+  /* w01 compare table */
+  .compare-row {
+    display: flex;
+    gap: 1.5rem;
+    width: min(640px, 90vw);
+    justify-content: center;
+  }
+
+  .compare-card {
+    flex: 1;
+    border-radius: 16px;
+    padding: 1.6rem 1.4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+
+  .compare-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; right: 0;
+    height: 3px;
+    border-radius: 2px 2px 0 0;
+  }
+
+  .compare-card .cc-title {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 800;
+    margin-bottom: 0.6rem;
+  }
+
+  .compare-card .cc-type {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+  }
+
+  .compare-card .cc-body {
+    font-size: clamp(0.78rem, 1.5vw, 0.88rem);
+    line-height: 1.7;
+    text-align: left;
+  }
+
+  .cc-uranai {
+    background: #fff;
+    border: 1px solid rgba(33,150,243,0.15);
+  }
+  .cc-uranai::before { background: linear-gradient(90deg, #2196f3, #5c6bc0); }
+  .cc-uranai .cc-title { color: #1976d2; }
+  .cc-uranai .cc-type { color: #2196f3; }
+  .cc-uranai .cc-body { color: #37474f; }
+
+  .cc-spiri {
+    background: #fff;
+    border: 1px solid rgba(156,39,176,0.15);
+  }
+  .cc-spiri::before { background: linear-gradient(90deg, #9c27b0, #e91e63); }
+  .cc-spiri .cc-title { color: #9c27b0; }
+  .cc-spiri .cc-type { color: #ab47bc; }
+  .cc-spiri .cc-body { color: #37474f; }
+
+  .w01-note {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 600;
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #6a607a;
+    line-height: 1.7;
+    width: min(600px, 88vw);
+  }
+
+  .w01-highlight {
+    display: inline;
+    background: linear-gradient(transparent 60%, rgba(156,39,176,0.12) 60%);
+    font-weight: 700;
+  }
+
+  /* w01 feature list */
+  .feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: min(560px, 90vw);
+  }
+
+  .feature-item {
+    background: #fff;
+    border: 1px solid rgba(156,39,176,0.1);
+    border-radius: 12px;
+    padding: 0.7rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 1px 8px rgba(156,39,176,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #9c27b0, #7c4dff);
+    border-radius: 0 2px 2px 0;
+  }
+
+  .feature-item .fi-main {
+    font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+    font-weight: 700;
+    color: #2a2438;
+  }
+
+  .feature-item .fi-arrow {
+    color: #9c27b0;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin: 0 0.3rem;
+    flex-shrink: 0;
+  }
+
+  .feature-item .fi-benefit {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    font-weight: 600;
+    color: #7c4dff;
+  }
+
+  /* slide center override */
+  .slide-center {
+    justify-content: center;
+    padding-top: 0;
+  }
+
+  /* w01 money flow vertical */
+  .money-flow-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: min(360px, 80vw);
+  }
+
+  .mfv-step {
+    width: 100%;
+    background: #fff;
+    border: 1px solid rgba(156,39,176,0.15);
+    border-radius: 16px;
+    padding: 1.4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 3px 14px rgba(156,39,176,0.06);
+  }
+
+  .mfv-step::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #9c27b0, #7c4dff);
+    border-radius: 2px 2px 0 0;
+  }
+
+  .mfv-label {
+    font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+    font-weight: 800;
+    color: #2a2438;
+  }
+
+  .mfv-arrow {
+    font-size: 1.2rem;
+    color: rgba(156,39,176,0.3);
+    padding: 0.5rem 0;
+  }
+
+  /* w01 funnel */
+  .funnel-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: min(480px, 88vw);
+  }
+
+  .funnel-item {
+    width: 100%;
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.3rem 1.8rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(156,39,176,0.05);
+  }
+
+  .funnel-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    border-radius: 0 2px 2px 0;
+  }
+
+  .fi-free { border: 1px solid rgba(0,200,83,0.2); }
+  .fi-free::before { background: #00c853; }
+  .fi-paid { border: 1px solid rgba(33,150,243,0.2); }
+  .fi-paid::before { background: #2196f3; }
+  .fi-upsell { border: 1px solid rgba(156,39,176,0.2); }
+  .fi-upsell::before { background: linear-gradient(180deg, #9c27b0, #7c4dff); }
+
+  .fn-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.4rem;
+  }
+
+  .fn-stage {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    font-weight: 800;
+    color: #2a2438;
+  }
+
+  .fn-price {
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    font-weight: 700;
+    color: #7c4dff;
+  }
+
+  .fn-detail {
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    color: #5a5068;
+    font-weight: 600;
+  }
+
+  .fn-people {
+    font-weight: 800;
+    color: #2a2438;
+    font-size: 1.1em;
+  }
+
+  .fn-rate {
+    font-weight: 800;
+    color: #9c27b0;
+    font-size: 1.1em;
+  }
+
+  .funnel-arrow {
+    font-size: 1rem;
+    color: rgba(156,39,176,0.25);
+    padding: 0.4rem 0;
+  }
+
+  /* w01 simulation table */
+  .sim-table {
+    width: min(560px, 90vw);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(156,39,176,0.06);
+    border: 1px solid rgba(156,39,176,0.1);
+  }
+
+  .sim-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1.3fr;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .sim-header-row {
+    background: rgba(156,39,176,0.04);
+  }
+
+  .sim-header-row .sim-cell {
+    font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+    font-weight: 700;
+    color: #9c27b0;
+    padding: 0.8rem 1rem;
+  }
+
+  .sim-cell {
+    padding: 1rem;
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    font-weight: 600;
+    color: #5a5068;
+    display: flex;
+    align-items: center;
+  }
+
+  .sim-stage {
+    font-weight: 700;
+    color: #2a2438;
+  }
+
+  .sim-amount {
+    font-weight: 700;
+    color: #7c4dff;
+  }
+
+  .sim-total-row {
+    background: rgba(156,39,176,0.04);
+    border-bottom: none;
+  }
+
+  .sim-total {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #9c27b0, #7c4dff);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* w01 sell layout */
+  .sell-layout {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    width: min(960px, 96vw);
+    justify-content: center;
+  }
+
+  .sell-img {
+    max-height: 70vh;
+    max-width: 40%;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  /* w01 sell cards */
+  .sell-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: min(600px, 92vw);
+  }
+
+  .sell-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.2rem 1.6rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sell-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    border-radius: 0 2px 2px 0;
+  }
+
+  .sell-free { border: 1px solid rgba(0,200,83,0.15); }
+  .sell-free::before { background: #00c853; }
+  .sell-paid { border: 1px solid rgba(33,150,243,0.15); }
+  .sell-paid::before { background: #2196f3; }
+  .sell-up { border: 1px solid rgba(156,39,176,0.15); }
+  .sell-up::before { background: linear-gradient(180deg, #9c27b0, #7c4dff); }
+
+  .sell-top {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .sell-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.25em 0.7em;
+    border-radius: 999px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .sell-free .sell-badge { color: #00c853; background: rgba(0,200,83,0.1); }
+  .sell-paid .sell-badge { color: #2196f3; background: rgba(33,150,243,0.1); }
+  .sell-up .sell-badge { color: #9c27b0; background: rgba(156,39,176,0.1); }
+
+  .sell-title {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    font-weight: 800;
+    color: #2a2438;
+    white-space: nowrap;
+  }
+
+  .sell-desc {
+    font-size: clamp(0.82rem, 1.8vw, 0.95rem);
+    color: #6a607a;
+    line-height: 1.6;
+    padding-left: 0.2rem;
+  }
+
+  /* w01 money flow horizontal (legacy) */
+  .money-flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    width: min(600px, 92vw);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .mf-step {
+    background: #fff;
+    border: 1px solid rgba(156,39,176,0.12);
+    border-radius: 14px;
+    padding: 1rem 1.4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(156,39,176,0.04);
+  }
+
+  .mf-step::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #9c27b0, #7c4dff);
+    border-radius: 2px 2px 0 0;
+  }
+
+  .mf-step .mf-label {
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    font-weight: 700;
+    color: #2a2438;
+  }
+
+  .mf-arrow {
+    font-size: 1rem;
+    color: rgba(156,39,176,0.3);
+    padding: 0 0.4rem;
+    flex-shrink: 0;
+  }
+
+  /* w01 route cards */
+  .route-list {
+    width: min(560px, 90vw);
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 1.2rem;
+  }
+
+  .route-item {
+    background: #fff;
+    border: 1px solid rgba(156,39,176,0.08);
+    border-radius: 12px;
+    padding: 0.85rem 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+  }
+
+  .route-item .ri-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .route-item .ri-text {
+    font-size: clamp(0.82rem, 1.8vw, 0.95rem);
+    font-weight: 600;
+    color: #5a5068;
+  }
+
+  .route-item.ri-mine {
+    border-color: rgba(156,39,176,0.25);
+    background: rgba(156,39,176,0.03);
+  }
+
+  .route-item.ri-mine .ri-text {
+    color: #7b1fa2;
+    font-weight: 700;
+  }
+
+  .ri-badge {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #9c27b0;
+    background: rgba(156,39,176,0.1);
+    padding: 0.2em 0.6em;
+    border-radius: 999px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  /* w01 tool grid */
+  .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.9rem;
+    width: min(560px, 90vw);
+  }
+
+  .tool-grid-2x2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    width: min(520px, 88vw);
+  }
+
+  .tool-grid-2x2 {
+    gap: 1.8rem;
+    width: min(600px, 90vw);
+  }
+
+  .tool-grid-2x2 .tool-card {
+    padding: 2.2rem 1.8rem;
+  }
+
+  .tool-grid-2x2 .tool-card .tc-icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .tool-grid-2x2 .tool-card .tc-name {
+    font-size: clamp(1.25rem, 3vw, 1.6rem);
+    margin-bottom: 0.4rem;
+  }
+
+  .tool-grid-2x2 .tool-card .tc-desc {
+    font-size: clamp(0.88rem, 1.8vw, 1rem);
+    color: #5a5068;
+  }
+
+  .tool-grid-2x2 .tool-card .tc-price {
+    font-size: clamp(0.92rem, 2vw, 1.1rem);
+    margin-top: 0.5rem;
+  }
+
+  .tool-card {
+    background: #fff;
+    border: 1px solid rgba(156,39,176,0.1);
+    border-radius: 14px;
+    padding: 1.2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(156,39,176,0.04);
+  }
+
+  .tool-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #9c27b0, #7c4dff);
+    border-radius: 2px 2px 0 0;
+  }
+
+  .tool-card .tc-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tool-card .tc-name {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    font-weight: 700;
+    color: #2a2438;
+    margin-bottom: 0.25rem;
+  }
+
+  .tool-card .tc-desc {
+    font-size: 0.68rem;
+    color: #8a7ca0;
+    font-weight: 500;
+  }
+
+  .tool-card .tc-price {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #7c4dff;
+    margin-top: 0.4rem;
+  }
+
+  /* w01 big stat */
+  .big-stat {
+    text-align: center;
+  }
+
+  .big-stat .bs-prefix {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: #7a7090;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .big-stat .bs-number {
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #9c27b0, #7c4dff, #2196f3);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+  }
+
+  .big-stat .bs-unit {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 700;
+  }
+
+  .big-stat .bs-suffix {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    color: #7a7090;
+    font-weight: 500;
+    margin-top: 0.6rem;
+  }
+
+  .big-stat-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    width: min(500px, 85vw);
+    justify-content: center;
+  }
+
+  .bs-pill {
+    background: #fff;
+    border: 1px solid rgba(156,39,176,0.15);
+    border-radius: 999px;
+    padding: 0.6rem 1.4rem;
+    font-size: clamp(0.78rem, 1.8vw, 0.9rem);
+    font-weight: 600;
+    color: #7c4dff;
+    box-shadow: 0 2px 8px rgba(156,39,176,0.06);
+  }
+
+  /* w01 roadmap mini */
+  .roadmap-mini {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    width: min(560px, 90vw);
+  }
+
+  .rm-item {
+    border-radius: 14px;
+    padding: 1rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  }
+
+  .rm-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 0 2px 2px 0;
+  }
+
+  .rm-item .rm-week {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    min-width: 2.6rem;
+  }
+
+  .rm-item .rm-title {
+    font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+    font-weight: 700;
+    color: #2a2438;
+  }
+
+  .rm-item .rm-desc {
+    font-size: 0.72rem;
+    font-weight: 500;
+    display: block;
+    margin-top: 0.15rem;
+  }
+
+  .rm-purple { background: #fff; border: 1px solid rgba(124,77,255,0.15); }
+  .rm-purple::before { background: linear-gradient(180deg, #9c27b0, #7c4dff); }
+  .rm-purple .rm-week { color: #9c27b0; }
+  .rm-purple .rm-desc { color: #7b1fa2; }
+
+  .rm-blue { background: #fff; border: 1px solid rgba(33,150,243,0.15); }
+  .rm-blue::before { background: linear-gradient(180deg, #2196f3, #5c6bc0); }
+  .rm-blue .rm-week { color: #2196f3; }
+  .rm-blue .rm-desc { color: #1976d2; }
+
+  .rm-green { background: #fff; border: 1px solid rgba(0,200,83,0.15); }
+  .rm-green::before { background: linear-gradient(180deg, #00c853, #2196f3); }
+  .rm-green .rm-week { color: #00c853; }
+  .rm-green .rm-desc { color: #2e7d32; }
+
+  .rm-orange { background: #fff; border: 1px solid rgba(255,109,0,0.15); }
+  .rm-orange::before { background: linear-gradient(180deg, #ffab00, #ff6d00); }
+  .rm-orange .rm-week { color: #ff6d00; }
+  .rm-orange .rm-desc { color: #e65100; }
+
+  .rm-current {
+    border-width: 2px;
+    border-color: rgba(156,39,176,0.35);
+    box-shadow: 0 4px 16px rgba(156,39,176,0.08);
+  }
+
+  .rm-current-badge {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #fff;
+    background: linear-gradient(135deg, #9c27b0, #7c4dff);
+    padding: 0.2em 0.6em;
+    border-radius: 999px;
+    margin-left: auto;
+  }
+
+  /* ── Week 02 (blue) ── */
+  .w02 { background: linear-gradient(135deg, #e8f0fa 0%, #f5f3f8 100%); }
+  .w02 .slide-label { color: #2196f3; }
+  .w02 .slide-title span {
+    background: linear-gradient(90deg, #2196f3, #5c6bc0);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .w02 .tag { color: #2196f3; border: 1px solid rgba(33,150,243,0.3); background: rgba(33,150,243,0.06); }
+  .w02 .step-item {
+    background: #fff;
+    border: 1px solid rgba(33,150,243,0.1);
+    box-shadow: 0 2px 12px rgba(33,150,243,0.04);
+  }
+  .w02 .step-item::before { background: linear-gradient(180deg, #2196f3, #5c6bc0); }
+  .w02 .s-num { color: #2196f3 !important; }
+  .w02 .s-sub { color: #1976d2; }
+
+  /* ── Week 03 (green) ── */
+  .w03 { background: linear-gradient(135deg, #e0f5ea 0%, #f5f3f8 100%); }
+  .w03 .slide-label { color: #00c853; }
+  .w03 .slide-title span {
+    background: linear-gradient(90deg, #00c853, #2196f3);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .w03 .tag { color: #00c853; border: 1px solid rgba(0,200,83,0.3); background: rgba(0,200,83,0.06); }
+  .w03 .step-item {
+    background: #fff;
+    border: 1px solid rgba(0,200,83,0.1);
+    box-shadow: 0 2px 12px rgba(0,200,83,0.04);
+  }
+  .w03 .step-item::before { background: linear-gradient(180deg, #00c853, #2196f3); }
+  .w03 .s-num { color: #00c853 !important; }
+  .w03 .s-sub { color: #2e7d32; }
+
+  /* ── Week 04 (orange) ── */
+  .w04 { background: linear-gradient(135deg, #fef3e4 0%, #f5f3f8 100%); }
+  .w04 .slide-label { color: #ff6d00; }
+  .w04 .slide-title span {
+    background: linear-gradient(90deg, #ff6d00, #ffab00);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .w04 .tag { color: #ff6d00; border: 1px solid rgba(255,109,0,0.3); background: rgba(255,109,0,0.06); }
+  .w04 .step-item {
+    background: #fff;
+    border: 1px solid rgba(255,109,0,0.1);
+    box-shadow: 0 2px 12px rgba(255,109,0,0.04);
+  }
+  .w04 .step-item::before { background: linear-gradient(180deg, #ffab00, #ff6d00); }
+  .w04 .s-num { color: #ff6d00 !important; }
+  .w04 .s-sub { color: #e65100; }
+
+  /* ── Template slide ── */
+  .slide-tmpl { background: linear-gradient(135deg, #ece4f8 0%, #f5f3f8 100%); }
+  .slide-tmpl .slide-label { color: #ab47bc; }
+  .slide-tmpl .slide-title span {
+    background: linear-gradient(90deg, #ab47bc, #9c27b0);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .flow-vertical {
+    width: min(500px, 90vw);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+  }
+
+  .fv-step {
+    width: 100%;
+    border-radius: 14px;
+    padding: 1.1rem 1.6rem;
+    text-align: center;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: 700;
+    color: #2a2438;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fv-step::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 0 2px 2px 0;
+  }
+
+  .fv-arrow { font-size: 0.75rem; color: rgba(156,39,176,0.3); padding: 0.3rem; }
+
+  .fv-1 { background: #fff; border: 1px solid rgba(171,71,188,0.15); }
+  .fv-1::before { background: #ab47bc; }
+  .fv-2 { background: #fff; border: 1px solid rgba(124,77,255,0.15); }
+  .fv-2::before { background: #7c4dff; }
+  .fv-3 { background: #fff; border: 1px solid rgba(33,150,243,0.15); }
+  .fv-3::before { background: #2196f3; }
+  .fv-4 { background: #fff; border: 1px solid rgba(0,200,83,0.15); }
+  .fv-4::before { background: #00c853; }
+  .fv-5 {
+    background: linear-gradient(135deg, rgba(233,30,99,0.04), rgba(255,109,0,0.04));
+    border: 1px solid rgba(233,30,99,0.2);
+  }
+  .fv-5::before { background: linear-gradient(180deg, #e91e63, #ff6d00); }
+  .fv-5 .fv-main {
+    background: linear-gradient(90deg, #e91e63, #ff6d00);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    font-size: clamp(1.1rem, 2.8vw, 1.35rem);
+  }
+
+  /* ── School value slide ── */
+  .slide-school { background: linear-gradient(135deg, #e8f0fa 0%, #f5f3f8 100%); }
+  .slide-school .slide-label { color: #2196f3; }
+  .slide-school .slide-title span {
+    background: linear-gradient(90deg, #2196f3, #5c6bc0);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .point-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: min(640px, 90vw);
+  }
+
+  .point-card {
+    background: #fff;
+    border: 1px solid rgba(33,150,243,0.12);
+    border-radius: 16px;
+    padding: 1.4rem 1.2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(33,150,243,0.04);
+  }
+
+  .point-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2196f3, #5c6bc0);
+    border-radius: 2px 2px 0 0;
+  }
+
+  .point-card .pc-icon {
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .point-card .pc-title {
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    font-weight: 700;
+    color: #2a2438;
+    margin-bottom: 0.3rem;
+  }
+
+  .point-card .pc-desc {
+    font-size: clamp(0.7rem, 1.3vw, 0.78rem);
+    color: #1976d2;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* ── CTA slide ── */
+  .slide-cta { background: linear-gradient(135deg, #fce8ef 0%, #fef3e4 50%, #f5f3f8 100%); justify-content: center; padding-top: 0; }
+
+  .cta-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+    text-align: center;
+  }
+
+  .cta-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    font-weight: 600;
+    color: #e91e63;
+    border: 1px solid rgba(233,30,99,0.2);
+    background: rgba(233,30,99,0.06);
+    padding: 0.4em 1.2em;
+    border-radius: 999px;
+  }
+
+  .cta-price {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 600;
+    color: #8a8098;
+  }
+
+  .cta-price .strike {
+    text-decoration: line-through;
+    text-decoration-color: rgba(233,30,99,0.5);
+  }
+
+  .cta-main {
+    font-size: clamp(3rem, 9vw, 6rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #e91e63, #ff6d00, #ffab00);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+  }
+
+  .cta-sub {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 600;
+    color: #8a8098;
+  }
+
+  .cta-deco {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, #e91e63, #ff6d00);
+    border-radius: 1px;
+  }
+
+  /* ── End slide ── */
+  .slide-end { background: linear-gradient(135deg, #f0eaf8 0%, #e8e0f4 40%, #f5f3f8 100%); justify-content: center; padding-top: 0; }
+  .slide-end .bg-glow { background: radial-gradient(circle, rgba(138,43,226,0.06) 0%, transparent 70%); }
+
+  .end-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.4rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .end-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    font-weight: 600;
+    color: #9c27b0;
+    border: 1px solid rgba(156,39,176,0.2);
+    background: rgba(156,39,176,0.06);
+    padding: 0.4em 1.2em;
+    border-radius: 999px;
+  }
+
+  .end-main {
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #9c27b0, #7c4dff, #2196f3);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+  }
+
+  .end-deco {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, #7c4dff, #2196f3);
+    border-radius: 1px;
+  }
+
+  .end-sub {
+    font-size: clamp(0.85rem, 2vw, 1.05rem);
+    font-weight: 500;
+    color: #8a8098;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Nav ── */
+  .nav {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 100;
+  }
+
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.15);
+    transition: all 0.3s;
+  }
+
+  .dot.active {
+    background: #7c4dff;
+    width: 20px;
+    border-radius: 3px;
+  }
+
+  .hint {
+    position: fixed;
+    bottom: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: rgba(0,0,0,0.2);
+    z-index: 100;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== -->
+<!-- Slide 1: タイトル     -->
+<!-- ==================== -->
+<section class="slide slide-1 active" data-index="0">
+  <div class="bg-glow"></div>
+  <div class="tag">Free Course</div>
+  <h1 class="title">
+    <span class="line1">SNS占い講座</span>
+    <span class="line2">全4回 無料講座</span>
+  </h1>
+  <div class="deco-line"></div>
+</section>
+
+<!-- ==================== -->
+<!-- Slide 2: 全4回の流れ  -->
+<!-- ==================== -->
+<section class="slide slide-5 slide-center" data-index="1">
+  <div class="slide-label">PROGRAM</div>
+  <h2 class="slide-title">全4回の<span>流れ</span></h2>
+  <div class="flow-horizontal">
+    <div class="flow-card fc-purple">
+      <div class="fc-num">WEEK 01</div>
+      <div class="fc-title">業界を知ろう</div>
+    </div>
+    <div class="flow-arrow-h">▶</div>
+    <div class="flow-card fc-blue">
+      <div class="fc-num">WEEK 02</div>
+      <div class="fc-title">占いの選び方</div>
+    </div>
+    <div class="flow-arrow-h">▶</div>
+    <div class="flow-card fc-green">
+      <div class="fc-num">WEEK 03</div>
+      <div class="fc-title">バズる投稿</div>
+    </div>
+    <div class="flow-arrow-h">▶</div>
+    <div class="flow-card fc-orange">
+      <div class="fc-num">WEEK 04</div>
+      <div class="fc-title">収益化</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================== -->
+<!-- ★ 第1回：占い業界を知ろう（詳細展開）    -->
+<!-- ======================================== -->
+
+<!-- Slide 6: 第1回 タイトル -->
+<section class="slide w01 slide-center" data-index="2">
+  <div class="slide-label">WEEK 01</div>
+  <h2 class="slide-title">第1回：<span>占い業界を知ろう</span></h2>
+  <div class="session-theme" style="color: #7a7090;">
+    「SNS占いって稼げるの？」の<br>不安を解消する回
+  </div>
+</section>
+
+<!-- Slide 7: ① 占い市場・スピリチュアル市場 -->
+<section class="slide w01" data-index="3">
+  <div class="slide-label">WEEK 01 — 01</div>
+  <h2 class="slide-title">占い市場は<span>めちゃめちゃ大きい</span></h2>
+  <img src="占い市場.png" alt="占い市場" class="slide-img-single">
+</section>
+
+<!-- Slide 8: ② 利益率 + SNS占いの特徴 -->
+<section class="slide w01" data-index="4">
+  <div class="slide-label">WEEK 01 — 02</div>
+  <h2 class="slide-title">占いは<span>利益率が異常に高い</span></h2>
+  <div class="profit-compare">
+    <div class="profit-card pc-low">
+      <div class="pc-biz">本屋さん</div>
+      <div class="pc-price">本を1冊売って</div>
+      <div class="pc-profit">数十円の利益</div>
+      <div class="pc-note">仕入れ・在庫あり</div>
+    </div>
+    <div class="vs-text">VS</div>
+    <div class="profit-card pc-high">
+      <div class="pc-biz">占い</div>
+      <div class="pc-price">9,800円で売ったら</div>
+      <div class="pc-profit">9,000円が利益</div>
+      <div class="pc-note">仕入原価なし・在庫なし・初期投資なし</div>
+    </div>
+  </div>
+  <h3 class="sub-heading">さらに <span>SNS占い</span> なら</h3>
+  <div class="feature-list">
+    <div class="feature-item">
+      <span class="fi-main">顔・声出し不要</span>
+      <span class="fi-arrow">→</span>
+      <span class="fi-benefit">副業がバレない</span>
+    </div>
+    <div class="feature-item">
+      <span class="fi-main">外注化ができる</span>
+      <span class="fi-arrow">→</span>
+      <span class="fi-benefit">時間がない人でも大丈夫</span>
+    </div>
+    <div class="feature-item">
+      <span class="fi-main">複数アカウント運用</span>
+      <span class="fi-arrow">→</span>
+      <span class="fi-benefit">ノウハウを使いまわせる</span>
+    </div>
+    <div class="feature-item">
+      <span class="fi-main">AIを活用できる</span>
+      <span class="fi-arrow">→</span>
+      <span class="fi-benefit">占いの知識がなくてもできる</span>
+    </div>
+    <div class="feature-item">
+      <span class="fi-main">時間拘束がない</span>
+      <span class="fi-arrow">→</span>
+      <span class="fi-benefit">返せる時に返せばOK</span>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 9: ③ 占いとスピリチュアルの違い -->
+<section class="slide w01" data-index="5">
+  <div class="slide-label">WEEK 01 — 03</div>
+  <h2 class="slide-title"><span>占い</span>と<span>スピリチュアル</span>の違い</h2>
+  <div class="compare-row">
+    <div class="compare-card cc-uranai">
+      <div class="cc-title">占い</div>
+      <div class="cc-type">まだ受け入れやすい</div>
+      <div class="cc-body">
+        統計・理論ベース<br>
+        四柱推命、西洋占星術など<br><br>
+        → 情報提供がメイン<br>
+        → 論理的・再現性がある
+      </div>
+    </div>
+    <div class="compare-card cc-spiri">
+      <div class="cc-title">スピリチュアル</div>
+      <div class="cc-type">怪しいイメージ強い</div>
+      <div class="cc-body">
+        感覚・霊的ベース<br>
+        霊視、チャネリングなど<br><br>
+        → 体験提供がメイン<br>
+        → 顧客単価が高い
+      </div>
+    </div>
+  </div>
+  <div class="w01-note">
+    SNS占いは実は<span class="w01-highlight">スピリチュアル寄り</span>が多い。<br>
+    表はスピリチュアル、裏は占いの理論で支える。<br>
+    その占いを<span class="w01-highlight">AIで補う</span>ことで、ブレずに占える。
+  </div>
+</section>
+
+<!-- Slide 10: スピリチュアル市場 -->
+<section class="slide w01" data-index="6">
+  <div class="slide-label">WEEK 01 — 04</div>
+  <h2 class="slide-title"><span>スピリチュアル</span>のほうが市場規模が大きい</h2>
+  <img src="スピリチュアル市場.png" alt="スピリチュアル市場" class="slide-img-single">
+</section>
+
+<!-- Slide 11: ⑤ 稼ぎ方はシンプル（縦フロー） -->
+<section class="slide w01 slide-center" data-index="7">
+  <div class="slide-label">WEEK 01 — 05</div>
+  <h2 class="slide-title">稼ぎ方は<span>シンプル</span></h2>
+  <div class="money-flow-vertical">
+    <div class="mfv-step">
+      <div class="mfv-label">無料鑑定</div>
+    </div>
+    <div class="mfv-arrow">▼</div>
+    <div class="mfv-step">
+      <div class="mfv-label">有料鑑定</div>
+    </div>
+    <div class="mfv-arrow">▼</div>
+    <div class="mfv-step">
+      <div class="mfv-label">アップセル</div>
+    </div>
+  </div>
+</section>
+
+<!-- 金額と成約率 -->
+<section class="slide w01" data-index="8">
+  <div class="slide-label">WEEK 01 — 06</div>
+  <h2 class="slide-title">具体的な<span>金額と成約率</span></h2>
+  <div class="funnel-list">
+    <div class="funnel-item fi-free">
+      <div class="fn-header">
+        <div class="fn-stage">無料鑑定</div>
+        <div class="fn-price">0円</div>
+      </div>
+      <div class="fn-detail">
+        まずはここから始める
+      </div>
+    </div>
+    <div class="funnel-arrow">▼</div>
+    <div class="funnel-item fi-paid">
+      <div class="fn-header">
+        <div class="fn-stage">有料鑑定</div>
+        <div class="fn-price">2,980円〜9,800円</div>
+      </div>
+      <div class="fn-detail">
+        成約率 <span class="fn-rate">6〜10%</span>
+      </div>
+    </div>
+    <div class="funnel-arrow">▼</div>
+    <div class="funnel-item fi-upsell">
+      <div class="fn-header">
+        <div class="fn-stage">アップセル</div>
+        <div class="fn-price">19,800円〜150,000円</div>
+      </div>
+      <div class="fn-detail">
+        有料購入者の <span class="fn-rate">約20%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 売上シミュレーション -->
+<section class="slide w01 slide-center" data-index="9">
+  <div class="slide-label">WEEK 01 — 07</div>
+  <h2 class="slide-title">100人に無料鑑定すると<span>…？</span></h2>
+  <div class="sim-table">
+    <div class="sim-row sim-header-row">
+      <div class="sim-cell"></div>
+      <div class="sim-cell">人数</div>
+      <div class="sim-cell">単価</div>
+      <div class="sim-cell">売上</div>
+    </div>
+    <div class="sim-row">
+      <div class="sim-cell sim-stage">有料鑑定</div>
+      <div class="sim-cell">8人</div>
+      <div class="sim-cell">4,980円</div>
+      <div class="sim-cell sim-amount">39,840円</div>
+    </div>
+    <div class="sim-row">
+      <div class="sim-cell sim-stage">アップセル</div>
+      <div class="sim-cell">2人</div>
+      <div class="sim-cell">49,800円</div>
+      <div class="sim-cell sim-amount">99,600円</div>
+    </div>
+    <div class="sim-row sim-total-row">
+      <div class="sim-cell sim-stage">合計</div>
+      <div class="sim-cell"></div>
+      <div class="sim-cell"></div>
+      <div class="sim-cell sim-total">約14万円</div>
+    </div>
+  </div>
+</section>
+
+<!-- 売るもの詳細 -->
+<section class="slide w01" data-index="10">
+  <div class="slide-label">WEEK 01 — 08</div>
+  <h2 class="slide-title">何を<span>売る</span>のか</h2>
+  <div class="sell-layout">
+    <img src="鑑定文.png" alt="鑑定文" class="sell-img">
+    <div class="sell-list">
+      <div class="sell-card sell-free">
+        <div class="sell-top">
+          <div class="sell-badge">無料鑑定</div>
+          <div class="sell-title">鑑定書（500〜2,000文字）</div>
+        </div>
+        <div class="sell-desc">結構ガチで鑑定する。ここで信頼を獲得するのが大事。</div>
+      </div>
+      <div class="sell-card sell-paid">
+        <div class="sell-top">
+          <div class="sell-badge">有料鑑定</div>
+          <div class="sell-title">鑑定書（4,000〜7,000文字）</div>
+        </div>
+        <div class="sell-desc">かなりしっかり鑑定。過去や将来のことも伝える。<br>必要なことを必要最低限書くのがコツ。</div>
+      </div>
+      <div class="sell-card sell-up">
+        <div class="sell-top">
+          <div class="sell-badge">アップセル</div>
+          <div class="sell-title">パワーストーンブレスレット</div>
+        </div>
+        <div class="sell-desc">原価率約30%。お客様に合わせてセレクト。</div>
+      </div>
+      <div class="sell-card sell-up">
+        <div class="sell-top">
+          <div class="sell-badge">アップセル</div>
+          <div class="sell-title">ヒーリング（1〜3ヶ月契約）</div>
+        </div>
+        <div class="sell-desc">遠隔ヒーリングでお客様を癒やす。原価率ほぼ0。</div>
+      </div>
+    </div>
+    <img src="ブレスレット.png" alt="ブレスレット" class="sell-img">
+  </div>
+</section>
+
+<!-- 他の副業との比較 -->
+<section class="slide w01" data-index="11">
+  <div class="slide-label">WEEK 01 — 09</div>
+  <h2 class="slide-title">他の副業と<span>比較</span>してみよう</h2>
+  <div style="width: min(780px, 94vw); display: flex; flex-direction: column; gap: 0.7rem;">
+    <!-- ヘッダー -->
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr 1.1fr; gap: 0.8rem; text-align: center; font-size: 1rem; font-weight: 800; color: #7a7090; letter-spacing: 0.05em;">
+      <div></div><div>アダルトアフィリ</div><div>せどり</div><div style="color: #fff; background: linear-gradient(135deg, #7c4dff, #5c6bc0); border-radius: 10px; padding: 0.4rem 0.8rem; font-size: 1.1rem;">SNS占い</div>
+    </div>
+    <!-- 初期費用 -->
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr 1.1fr; gap: 0.8rem; align-items: center;">
+      <div style="font-size: 1.05rem; font-weight: 700; color: #2a2438;">初期費用</div>
+      <div style="background: #fff; border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1rem; font-weight: 600; border: 1px solid rgba(0,0,0,0.06);">1アカウント750円<br><span style="color: #e53935;">×20〜30個</span></div>
+      <div style="background: #fff; border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1rem; font-weight: 600; border: 1px solid rgba(0,0,0,0.06);">仕入れ資金<br><span style="color: #e53935;">数万〜数百万円</span></div>
+      <div style="background: linear-gradient(135deg, rgba(124,77,255,0.10), rgba(92,107,192,0.10)); border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1.15rem; font-weight: 800; border: 2px solid rgba(124,77,255,0.3); box-shadow: 0 2px 12px rgba(124,77,255,0.12);"><span style="color: #7c4dff;">0〜3,000円</span></div>
+    </div>
+    <!-- 在庫リスク -->
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr 1.1fr; gap: 0.8rem; align-items: center;">
+      <div style="font-size: 1.05rem; font-weight: 700; color: #2a2438;">在庫リスク</div>
+      <div style="background: #fff; border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1rem; font-weight: 600; border: 1px solid rgba(0,0,0,0.06);">なし</div>
+      <div style="background: #fff; border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1rem; font-weight: 600; border: 1px solid rgba(0,0,0,0.06);"><span style="color: #e53935;">あり</span></div>
+      <div style="background: linear-gradient(135deg, rgba(124,77,255,0.10), rgba(92,107,192,0.10)); border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1.15rem; font-weight: 800; border: 2px solid rgba(124,77,255,0.3); box-shadow: 0 2px 12px rgba(124,77,255,0.12);"><span style="color: #7c4dff;">ほぼなし</span></div>
+    </div>
+    <!-- 利益率 -->
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr 1.1fr; gap: 0.8rem; align-items: center;">
+      <div style="font-size: 1.05rem; font-weight: 700; color: #2a2438;">利益率</div>
+      <div style="background: #fff; border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1rem; font-weight: 600; border: 1px solid rgba(0,0,0,0.06);">高い</div>
+      <div style="background: #fff; border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1rem; font-weight: 600; border: 1px solid rgba(0,0,0,0.06);"><span style="color: #e53935;">低い（8〜20%）</span></div>
+      <div style="background: linear-gradient(135deg, rgba(124,77,255,0.10), rgba(92,107,192,0.10)); border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1.15rem; font-weight: 800; border: 2px solid rgba(124,77,255,0.3); box-shadow: 0 2px 12px rgba(124,77,255,0.12);"><span style="color: #7c4dff;">90%以上</span></div>
+    </div>
+    <!-- 商品単価 -->
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr 1.1fr; gap: 0.8rem; align-items: center;">
+      <div style="font-size: 1.05rem; font-weight: 700; color: #2a2438;">商品単価</div>
+      <div style="background: #fff; border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1rem; font-weight: 600; border: 1px solid rgba(0,0,0,0.06);"><span style="color: #e53935;">300〜700円</span></div>
+      <div style="background: #fff; border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1rem; font-weight: 600; border: 1px solid rgba(0,0,0,0.06);"><span style="color: #e53935;">500〜3,000円</span></div>
+      <div style="background: linear-gradient(135deg, rgba(124,77,255,0.10), rgba(92,107,192,0.10)); border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1.15rem; font-weight: 800; border: 2px solid rgba(124,77,255,0.3); box-shadow: 0 2px 12px rgba(124,77,255,0.12);"><span style="color: #7c4dff;">高単価も可能</span></div>
+    </div>
+    <!-- 継続性 -->
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr 1.1fr; gap: 0.8rem; align-items: center;">
+      <div style="font-size: 1.05rem; font-weight: 700; color: #2a2438;">継続しやすさ</div>
+      <div style="background: #fff; border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1rem; font-weight: 600; border: 1px solid rgba(0,0,0,0.06);"><span style="color: #e53935;">あまりない</span></div>
+      <div style="background: #fff; border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1rem; font-weight: 600; border: 1px solid rgba(0,0,0,0.06);"><span style="color: #e53935;">資金がなくなったら終わり</span></div>
+      <div style="background: linear-gradient(135deg, rgba(124,77,255,0.10), rgba(92,107,192,0.10)); border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1.15rem; font-weight: 800; border: 2px solid rgba(124,77,255,0.3); box-shadow: 0 2px 12px rgba(124,77,255,0.12);"><span style="color: #7c4dff;">リピーター◎</span></div>
+    </div>
+    <!-- 人に言える？ -->
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr 1.1fr; gap: 0.8rem; align-items: center;">
+      <div style="font-size: 1.05rem; font-weight: 700; color: #2a2438;">人に言える？</div>
+      <div style="background: #fff; border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1rem; font-weight: 600; border: 1px solid rgba(0,0,0,0.06);"><span style="color: #e53935;">絶対に言えない</span></div>
+      <div style="background: #fff; border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1rem; font-weight: 600; border: 1px solid rgba(0,0,0,0.06);">ギリ言える</div>
+      <div style="background: linear-gradient(135deg, rgba(124,77,255,0.10), rgba(92,107,192,0.10)); border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 1.15rem; font-weight: 800; border: 2px solid rgba(124,77,255,0.3); box-shadow: 0 2px 12px rgba(124,77,255,0.12);"><span style="color: #7c4dff;">ギリ言える</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- いろんな流派 -->
+<section class="slide w01" data-index="12">
+  <div class="slide-label">WEEK 01 — 06</div>
+  <h2 class="slide-title">やり方には<span>いろんな流派</span>がある</h2>
+  <div class="route-list">
+    <div class="route-item">
+      <span class="ri-icon">🛒</span>
+      <span class="ri-text">メルカリ・ココナラで300円の少額鑑定 → 有料鑑定へ</span>
+    </div>
+    <div class="route-item">
+      <span class="ri-icon">💬</span>
+      <span class="ri-text">インスタのDMで無料鑑定をする人</span>
+    </div>
+    <div class="route-item">
+      <span class="ri-icon">📩</span>
+      <span class="ri-text">LINEに誘導して鑑定する人</span>
+    </div>
+    <div class="route-item ri-mine">
+      <span class="ri-icon">📱</span>
+      <span class="ri-text">スレッズ＋インスタで集客 → インスタDMで鑑定</span>
+      <span class="ri-badge">僕のやり方</span>
+    </div>
+    <div class="route-item">
+      <span class="ri-icon">📝</span>
+      <span class="ri-text">成功事例をnoteで販売 / コンサル / タロット教室（50万円）</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- Slide: PC1台でOK -->
+<section class="slide w01 slide-center" data-index="13">
+  <div class="slide-label">WEEK 01 — 07</div>
+  <div class="big-stat">
+    <div class="bs-prefix">始めるのに必要なもの</div>
+    <div class="bs-number">PC1台<span class="bs-unit">で</span>OK</div>
+  </div>
+</section>
+
+<!-- Slide: 具体的に必要なもの -->
+<section class="slide w01" data-index="14">
+  <div class="slide-label">WEEK 01 — 08</div>
+  <h2 class="slide-title">始めるのに<span>必要なもの</span></h2>
+  <div class="tool-grid tool-grid-2x2">
+    <div class="tool-card">
+      <div class="tc-icon">🤖</div>
+      <div class="tc-name">AI</div>
+      <div class="tc-desc">ChatGPT / Claude<br>占いの知識を補う</div>
+      <div class="tc-price">無料〜月3,000円</div>
+    </div>
+    <div class="tool-card">
+      <div class="tc-icon">🎨</div>
+      <div class="tc-name">Canva</div>
+      <div class="tc-desc">デザインツール<br>投稿画像の作成に</div>
+      <div class="tc-price">無料でOK</div>
+    </div>
+    <div class="tool-card">
+      <div class="tc-icon">📸</div>
+      <div class="tc-name">Instagram</div>
+      <div class="tc-desc">メインの集客媒体<br>占い系と相性◎</div>
+      <div class="tc-price">無料</div>
+    </div>
+    <div class="tool-card">
+      <div class="tc-icon">🧵</div>
+      <div class="tc-name">Threads</div>
+      <div class="tc-desc">テキストで集客<br>インスタと連携◎</div>
+      <div class="tc-price">無料</div>
+    </div>
+  </div>
+  <div class="w01-body" style="margin-top: 1.5rem; font-size: clamp(1.1rem, 2.5vw, 1.3rem); color: #2a2438; font-weight: 700;">
+    意外とお金がかからない。ほぼ0円でスタートできる。
+  </div>
+</section>
+
+<!-- Slide 12: ⑥ 自分の実績紹介 -->
+<section class="slide w01 slide-center" data-index="15">
+  <div class="slide-label">WEEK 01 — 09</div>
+  <h2 class="slide-title">売上の<span>リアル</span></h2>
+  <div class="big-stat">
+    <div class="bs-prefix">2〜3ヶ月目で</div>
+    <div class="bs-number">30<span class="bs-unit">〜</span>40<span class="bs-unit">万円</span></div>
+    <div class="bs-suffix" style="color: #2a2438;">特別な才能がなくても、着実に稼げる</div>
+  </div>
+  <img src="実績.png" alt="実績" style="max-height: 40vh; max-width: 88vw; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); object-fit: contain; margin-top: 1.5rem;">
+</section>
+
+<!-- Slide 13: ⑦ この4回で手に入るもの -->
+<section class="slide w01" data-index="16">
+  <div class="slide-label">WEEK 01 — 07</div>
+  <h2 class="slide-title">この4回で<span>手に入るもの</span></h2>
+  <div class="roadmap-mini">
+    <div class="rm-item rm-purple rm-current">
+      <span class="rm-week">WEEK 01</span>
+      <span class="rm-title">SNS占い業界の全体像と稼ぎ方の地図<span class="rm-desc">今ここ</span></span>
+      <span class="rm-current-badge">TODAY</span>
+    </div>
+    <div class="rm-item rm-blue">
+      <span class="rm-week">WEEK 02</span>
+      <span class="rm-title">自分に合った占いの選び方＋AIで誰でもできる方法<span class="rm-desc">占いの知識がなくても大丈夫</span></span>
+    </div>
+    <div class="rm-item rm-green">
+      <span class="rm-week">WEEK 03</span>
+      <span class="rm-title">バズる投稿の作り方＝フォロワー・集客の入り口<span class="rm-desc">伸びる投稿のパターンを掴む</span></span>
+    </div>
+    <div class="rm-item rm-orange">
+      <span class="rm-week">WEEK 04</span>
+      <span class="rm-title">無料→有料の導線設計＋売上を自動で増やす仕組み<span class="rm-desc">アカウント開設から最初の売上まで</span></span>
+    </div>
+  </div>
+  <div class="w01-note" style="margin-top: 1.2rem;">
+    今日ここに来た時点で、もう迷わなくていい。
+  </div>
+</section>
+
+<!-- ======================================== -->
+<!-- ★ 第2回：占いは何を選べばいい？（詳細）  -->
+<!-- ======================================== -->
+
+<!-- 第2回 タイトル -->
+<section class="slide w02 slide-center" data-index="17">
+  <div class="slide-label">WEEK 02</div>
+  <h2 class="slide-title">第2回：<span>占いは何を選べばいい？</span></h2>
+  <div class="session-theme" style="color: #7a7090;">
+    占いがわからなくても大丈夫<br>大事なのは"伝わるかどうか"
+  </div>
+</section>
+
+<!-- 第1回 まとめスライド -->
+<section class="slide w01 slide-center" data-index="18">
+  <div class="slide-label">WEEK 01 — まとめ</div>
+  <h2 class="slide-title">第1回の<span>振り返り</span></h2>
+  <div class="step-list">
+    <div class="step-item">
+      <span class="s-num">01</span>
+      <span class="s-label">占い市場はめちゃめちゃ大きい<span class="s-sub">スピリチュアル含め1兆円規模</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">02</span>
+      <span class="s-label">利益率が異常に高い<span class="s-sub">原価なし・在庫なし・初期投資なし</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">03</span>
+      <span class="s-label">SNS占いは副業向き<span class="s-sub">顔出し不要・時間拘束なし・AI活用OK</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">04</span>
+      <span class="s-label">稼ぎ方はシンプル<span class="s-sub">無料鑑定 → 有料鑑定 → アップセル</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- 第2回 今日のテーマ -->
+<section class="slide w02 slide-center" data-index="19">
+  <div class="slide-label">WEEK 02</div>
+  <h2 class="slide-title">今日のテーマ</h2>
+  <div style="font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; color: #1976d2; text-align: center; line-height: 1.5; margin-top: 1rem;">
+    どんな占いを<br>選べばいいのか？
+  </div>
+  <div class="session-theme" style="color: #7a7090; margin-top: 2rem;">
+    占いがわからなくても大丈夫<br>大事なのは"伝わるかどうか"
+  </div>
+</section>
+
+<!-- 第2回-01: 占術名だけ並べる -->
+<section class="slide w02 slide-center" data-index="20">
+  <div class="slide-label">WEEK 02 — 01</div>
+  <p style="font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 600; color: #7a7090; margin-bottom: 1.5rem;">みなさん、どんな占いを知ってますか？</p>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 1.2rem;">
+    <span style="font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; color: #2a2438;">血液型</span>
+    <span style="font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; color: #2a2438;">星座</span>
+    <span style="font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; color: #2a2438;">手相</span>
+    <span style="font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; color: #2a2438;">四柱推命…</span>
+  </div>
+</section>
+
+<!-- 第2回-02: 一般人は知らない -->
+<section class="slide w02 slide-center" data-index="21">
+  <div class="slide-label">WEEK 02 — 02</div>
+  <h2 style="font-size: clamp(2.4rem, 5.5vw, 3.5rem); font-weight: 800; color: #1976d2; text-align: center; line-height: 1.5;">
+    一般人は<br>どれも知らない
+  </h2>
+</section>
+
+<!-- 第2回-03: 占い人気ランキング画像 -->
+<section class="slide w02 slide-center" data-index="22">
+  <div class="slide-label">WEEK 02 — 03</div>
+  <img src="占い人気.png" alt="占い人気ランキング" style="max-height: 70vh; max-width: 88vw; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); object-fit: contain;">
+  <p style="margin-top: 1rem; font-size: 0.85rem; color: #888;">引用元：<a href="https://shufufu.jp/11602/" style="color: #2196f3;">https://shufufu.jp/11602/</a></p>
+</section>
+
+<!-- 第2回-03b: 初心者がやりがちなミス -->
+<section class="slide w02 slide-center" data-index="23">
+  <div class="slide-label">WEEK 02</div>
+  <h2 class="slide-title">初心者が<span>やりがちなミス</span></h2>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem; margin-top: 1rem;">
+    <div style="background: #fff; border-radius: 12px; padding: 1.2rem 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); text-align: center;">
+      <span style="font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 700; color: #2a2438;">とにかく難しい、<br>なんか権威的な占術を選ぶ</span>
+    </div>
+    <div style="font-size: 1.5rem; color: #1976d2;">▼</div>
+    <div style="background: #fff; border-radius: 12px; padding: 1.2rem 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); text-align: center;">
+      <span style="font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 700; color: #2a2438;">お客様が全然こない</span>
+    </div>
+    <div style="font-size: 1.5rem; color: #1976d2;">▼</div>
+    <div style="background: #ffebee; border-radius: 12px; padding: 1.2rem 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); text-align: center;">
+      <span style="font-size: clamp(1.4rem, 3.5vw, 1.8rem); font-weight: 800; color: #c62828;">占いって稼げないんだ…</span>
+    </div>
+  </div>
+</section>
+
+<!-- 第2回-04: 占い好きでも知らない -->
+<section class="slide w02 slide-center" data-index="24">
+  <div class="slide-label">WEEK 02 — 04</div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem; width: min(700px, 90vw);">
+    <p style="font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 700; color: #2a2438; text-align: center; line-height: 1.7; margin: 0;">
+      占いが好きな人でも<br><span style="color: #1976d2;">四柱推命</span>を知ってる人は少ない
+    </p>
+    <p style="font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 700; color: #2a2438; text-align: center; line-height: 1.7; margin: 0;">
+      もっと深い占術になると<br><span style="color: #1976d2;">誰も知らない</span>
+    </p>
+    <p style="font-size: clamp(1.8rem, 4.5vw, 2.6rem); font-weight: 800; color: #1976d2; text-align: center; margin: 0.5rem 0 0;">
+      → 難しい占術を出せばいい<br>って訳ではない
+    </p>
+    <p style="font-size: clamp(1rem, 2.5vw, 1.3rem); font-weight: 600; color: #555; text-align: center; margin: 0.5rem 0 0;">
+      大切なのは占術ではなく、<br>お客様をどうやって救うか。
+    </p>
+  </div>
+</section>
+
+<!-- 第2回-05: SNSで一番伸びるのは霊視 -->
+<section class="slide w02 slide-center" data-index="25">
+  <div class="slide-label">WEEK 02 — 05</div>
+  <h2 class="slide-title">SNSで一番伸びるのは<span>「霊視」</span></h2>
+  <div class="feature-list" style="width: min(520px, 88vw);">
+    <div class="feature-item" style="border-color: rgba(33,150,243,0.12);">
+      <span class="fi-main">占術に縛られない</span>
+      <span class="fi-arrow" style="color: #2196f3;">→</span>
+      <span class="fi-benefit" style="color: #1976d2;">広く取れる</span>
+    </div>
+    <div class="feature-item" style="border-color: rgba(33,150,243,0.12);">
+      <span class="fi-main">「見えます」の一言で</span>
+      <span class="fi-arrow" style="color: #2196f3;">→</span>
+      <span class="fi-benefit" style="color: #1976d2;">コンテンツになる</span>
+    </div>
+    <div class="feature-item" style="border-color: rgba(33,150,243,0.12);">
+      <span class="fi-main">SNSとの相性</span>
+      <span class="fi-arrow" style="color: #2196f3;">→</span>
+      <span class="fi-benefit" style="color: #1976d2;">抜群</span>
+    </div>
+  </div>
+</section>
+
+<!-- 第2回-05b: 霊視の実例 -->
+<section class="slide w02 slide-center" data-index="26">
+  <div class="slide-label">WEEK 02</div>
+  <div style="display: flex; align-items: center; justify-content: center; gap: 2rem; width: 95vw; max-width: 1100px;">
+    <img src="れいし.jpg" alt="霊視1" style="height: 70vh; max-width: 45%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); object-fit: contain;">
+    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+      <img src="れいし.webp" alt="霊視2" style="width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); object-fit: contain;">
+      <img src="れいし2.jpg" alt="霊視3" style="width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); object-fit: contain;">
+    </div>
+  </div>
+</section>
+
+<!-- 第2回-06: でも霊視なんてできない -->
+<section class="slide w02 slide-center" data-index="27">
+  <div class="slide-label">WEEK 02 — 06</div>
+  <h2 style="font-size: clamp(2.4rem, 5.5vw, 3.5rem); font-weight: 800; color: #2a2438; text-align: center; line-height: 1.5;">
+    でも霊視なんて<br><span style="color: #1976d2;">できない…</span>
+  </h2>
+</section>
+
+<!-- 第2回-06b: じゃあ霊視はやらなくて大丈夫 -->
+<section class="slide w02 slide-center" data-index="28">
+  <div class="slide-label">WEEK 02</div>
+  <h2 style="font-size: clamp(2.4rem, 5.5vw, 3.5rem); font-weight: 800; color: #1976d2; text-align: center; line-height: 1.5;">
+    じゃあ霊視は<br>やらなくて大丈夫！
+  </h2>
+</section>
+
+<!-- 第2回-06c: お客さん側と自分側 -->
+<section class="slide w02 slide-center" data-index="29">
+  <div class="slide-label">WEEK 02</div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+    <div style="display: flex; align-items: center; gap: 1.5rem;">
+      <span style="font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 600; color: #7a7090; min-width: 180px; text-align: right;">お客さんが見る側</span>
+      <span style="font-size: clamp(2.4rem, 5vw, 3.5rem); font-weight: 800; color: #9c27b0;">霊視</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 1.5rem;">
+      <span style="font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 600; color: #7a7090; min-width: 180px; text-align: right;">自分が使う側</span>
+      <span style="font-size: clamp(2.4rem, 5vw, 3.5rem); font-weight: 800; color: #1976d2;">占い</span>
+    </div>
+  </div>
+</section>
+
+<!-- 第2回-07: 裏と表を使い分ける戦略 -->
+<section class="slide w02" data-index="30">
+  <div class="slide-label">WEEK 02 — 07</div>
+  <h2 class="slide-title">裏と表を<span>使い分ける</span>戦略</h2>
+  <div style="display: flex; align-items: flex-start; gap: 1.5rem; justify-content: center; width: min(1100px, 96vw);">
+    <img src="霊視.png" alt="霊視" style="max-height: 65vh; max-width: 30%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); object-fit: contain; flex-shrink: 0;">
+    <div style="display: flex; flex-direction: column; gap: 1rem; flex: 1;">
+      <div class="compare-card cc-spiri" style="border-color: rgba(33,150,243,0.2);">
+        <div class="cc-title" style="color: #1976d2;">表：霊視</div>
+        <div class="cc-type" style="color: #2196f3;">FRONT — お客さんが見る側</div>
+        <div class="cc-body">
+          伝わりやすい<br>
+          多くの方の目に触れる<br>
+          お客様がきやすい<br>
+          占いに興味はないけど<br>
+          救われたい方が来る
+        </div>
+      </div>
+      <div class="compare-card cc-uranai">
+        <div class="cc-title">裏：四柱推命</div>
+        <div class="cc-type">BACK — 自分だけが使う側</div>
+        <div class="cc-body">
+          精度を保つ<br>
+          理論に裏付けがある<br>
+          どんなお客さんでも対応できる<br>
+          AIで鑑定文を量産できる<br>
+          本当にあってるのか…？<br>
+          みたいな疑問が湧きにくい
+        </div>
+      </div>
+    </div>
+    <img src="四柱推命.jpg" alt="四柱推命" style="max-height: 65vh; max-width: 30%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); object-fit: contain; flex-shrink: 0;">
+  </div>
+</section>
+
+<!-- 第2回-08: AIが占いをサポート -->
+<section class="slide w02 slide-center" data-index="31">
+  <div class="slide-label">WEEK 02 — 08</div>
+  <h2 class="slide-title"><span>AI</span>が占いをサポートするから<br><span>誰でもできる</span></h2>
+  <div class="step-list" style="width: min(520px, 88vw);">
+    <div class="step-item" style="background: #fff; border-color: rgba(33,150,243,0.1); box-shadow: 0 2px 12px rgba(33,150,243,0.04);">
+      <span class="s-label">占いの知識がなくてもAIが補ってくれる</span>
+    </div>
+    <div class="step-item" style="background: #fff; border-color: rgba(33,150,243,0.1); box-shadow: 0 2px 12px rgba(33,150,243,0.04);">
+      <span class="s-label">最初から難しい占術を学ぶ必要はない</span>
+    </div>
+    <div class="step-item" style="background: #fff; border-color: rgba(33,150,243,0.1); box-shadow: 0 2px 12px rgba(33,150,243,0.04);">
+      <span class="s-label">自信をもって占いができる</span>
+    </div>
+  </div>
+  <p style="font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 700; color: #2a2438; text-align: center; margin-top: 2rem;">
+    でも注意してほしい点が一つ…
+  </p>
+</section>
+
+<!-- 第2回-09: AIはあくまで補助ツール -->
+<section class="slide w02 slide-center" data-index="32">
+  <div class="slide-label">WEEK 02 — 09</div>
+  <h2 style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: #d32f2f; text-align: center; margin-bottom: 1.5rem;">
+    AIはあくまでも<span style="color: #1976d2;">補助ツール</span>！
+  </h2>
+  <p style="font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 700; color: #2a2438; text-align: center; line-height: 1.8; margin: 0 0 2rem;">
+    AIに突っ込んで、出た文章を<br>そのまま横流しするのは<span style="color: #d32f2f;">言語道断</span>
+  </p>
+  <div style="background: #fff; border-radius: 16px; padding: 1.5rem 2rem; box-shadow: 0 2px 16px rgba(33,150,243,0.08); border: 2px solid rgba(33,150,243,0.15); width: min(600px, 88vw);">
+    <p style="font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 700; color: #1976d2; text-align: center; line-height: 1.8; margin: 0;">
+      占いはあくまで<span style="font-size: 120%;">寄り添い</span><br>
+      相手の悩みに親身に寄り添って<br>
+      解決のために一歩踏み出せる様に<br>
+      <span style="font-size: 120%;">背中を押すことが大事</span>
+    </p>
+  </div>
+</section>
+
+<!-- 第2回-10: 実際の鑑定文① -->
+<section class="slide w02 slide-center" data-index="33">
+  <div class="slide-label">WEEK 02 — 10</div>
+  <h2 class="slide-title">実際の<span>鑑定文①</span></h2>
+  <img src="参考鑑定文.png" alt="参考鑑定文" style="width: min(520px, 85vw); border-radius: 14px; box-shadow: 0 4px 20px rgba(33,150,243,0.12);">
+</section>
+
+<!-- 第2回-10b: 実際の鑑定文② -->
+<section class="slide w02 slide-center" data-index="34">
+  <div class="slide-label">WEEK 02 — 10</div>
+  <h2 class="slide-title">実際の<span>鑑定文②</span></h2>
+  <img src="参考鑑定文2.png" alt="参考鑑定文2" style="width: min(520px, 85vw); border-radius: 14px; box-shadow: 0 4px 20px rgba(33,150,243,0.12);">
+</section>
+
+<!-- 第2回-11: 実際の鑑定フロー -->
+<section class="slide w02" data-index="35">
+  <div class="slide-label">WEEK 02 — 11</div>
+  <h2 class="slide-title">実際の<span>鑑定フロー</span></h2>
+  <div style="display: flex; align-items: center; justify-content: center; gap: 3rem; width: min(900px, 94vw);">
+    <!-- 左: 命式画像 -->
+    <img src="命式.png" alt="命式表" style="width: min(340px, 38vw); border-radius: 12px; box-shadow: 0 3px 16px rgba(33,150,243,0.10);">
+    <!-- 中央: フロー -->
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 0;">
+      <div style="width: 100%; background: #fff; border: 1px solid rgba(33,150,243,0.15); border-radius: 14px; padding: 0.9rem 2rem; text-align: center; position: relative; box-shadow: 0 2px 10px rgba(33,150,243,0.06); overflow: hidden;">
+        <div style="height: 3px; position: absolute; left: 0; top: 0; right: 0; background: linear-gradient(90deg, #2196f3, #5c6bc0);"></div>
+        <div style="font-size: 1.25rem; font-weight: 700; color: #2a2438;">お客様の情報を聞く</div>
+      </div>
+      <div style="font-size: 1.2rem; color: rgba(33,150,243,0.4); padding: 0.3rem 0;">▼</div>
+      <div style="width: 100%; background: #fff; border: 1px solid rgba(33,150,243,0.15); border-radius: 14px; padding: 0.9rem 2rem; text-align: center; position: relative; box-shadow: 0 2px 10px rgba(33,150,243,0.06); overflow: hidden;">
+        <div style="height: 3px; position: absolute; left: 0; top: 0; right: 0; background: linear-gradient(90deg, #2196f3, #5c6bc0);"></div>
+        <div style="font-size: 1.25rem; font-weight: 700; color: #2a2438;">命式を調べる</div>
+      </div>
+      <div style="font-size: 1.2rem; color: rgba(33,150,243,0.4); padding: 0.3rem 0;">▼</div>
+      <div style="width: 100%; background: #fff; border: 1px solid rgba(33,150,243,0.15); border-radius: 14px; padding: 0.9rem 2rem; text-align: center; position: relative; box-shadow: 0 2px 10px rgba(33,150,243,0.06); overflow: hidden;">
+        <div style="height: 3px; position: absolute; left: 0; top: 0; right: 0; background: linear-gradient(90deg, #2196f3, #5c6bc0);"></div>
+        <div style="font-size: 1.25rem; font-weight: 700; color: #2a2438;">命式情報を元に<br>AIに鑑定文章を作ってもらう</div>
+      </div>
+      <div style="font-size: 1.2rem; color: rgba(33,150,243,0.4); padding: 0.3rem 0;">▼</div>
+      <div style="width: 100%; background: #fff; border: 1px solid rgba(33,150,243,0.15); border-radius: 14px; padding: 0.9rem 2rem; text-align: center; position: relative; box-shadow: 0 2px 10px rgba(33,150,243,0.06); overflow: hidden;">
+        <div style="height: 3px; position: absolute; left: 0; top: 0; right: 0; background: linear-gradient(90deg, #2196f3, #5c6bc0);"></div>
+        <div style="font-size: 1.25rem; font-weight: 700; color: #2a2438;">内容がおかしくないか<br>寄り添えているか<br>背中を押せているかチェック</div>
+      </div>
+      <div style="font-size: 1.2rem; color: rgba(33,150,243,0.4); padding: 0.3rem 0;">▼</div>
+      <div style="width: 100%; background: #fff; border: 1px solid rgba(33,150,243,0.15); border-radius: 14px; padding: 0.9rem 2rem; text-align: center; position: relative; box-shadow: 0 2px 10px rgba(33,150,243,0.06); overflow: hidden;">
+        <div style="height: 3px; position: absolute; left: 0; top: 0; right: 0; background: linear-gradient(90deg, #2196f3, #5c6bc0);"></div>
+        <div style="font-size: 1.25rem; font-weight: 700; color: #2a2438;">お客様にお渡し</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 第2回-12: お客様の感想 -->
+<section class="slide w02" data-index="36">
+  <div class="slide-label">WEEK 02 — 12</div>
+  <h2 class="slide-title">お客様の<span>感想</span></h2>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 1.2rem; width: min(500px, 85vw);">
+    <img src="感想1.png" alt="感想1" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(33,150,243,0.12); object-fit: contain;">
+    <img src="感想2.jpg" alt="感想2" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(33,150,243,0.12); object-fit: contain;">
+    <img src="感想3.jpg" alt="感想3" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(33,150,243,0.12); object-fit: contain;">
+  </div>
+</section>
+
+<!-- 第2回-13: オーダー＆実績 -->
+<section class="slide w02" data-index="37">
+  <div class="slide-label">WEEK 02 — 13</div>
+  <h2 class="slide-title">実際の<span>オーダーと実績</span></h2>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; width: min(700px, 90vw);">
+    <img src="オーダー.png" alt="オーダー" style="width: 100%; border-radius: 14px; box-shadow: 0 4px 20px rgba(33,150,243,0.12);">
+    <img src="実績.png" alt="実績" style="width: 100%; border-radius: 14px; box-shadow: 0 4px 20px rgba(33,150,243,0.12);">
+  </div>
+</section>
+
+<!-- 第2回-14: 実際のやりとり -->
+<section class="slide w02 slide-center" data-index="38">
+  <div class="slide-label">WEEK 02 — 14</div>
+  <h2 class="slide-title">実際の<span>やりとり</span></h2>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 1.2rem; width: min(500px, 85vw);">
+    <img src="001.jpg" alt="やりとり1" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(33,150,243,0.12); object-fit: contain;">
+    <img src="002.jpg" alt="やりとり2" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(33,150,243,0.12); object-fit: contain;">
+    <img src="003.jpg" alt="やりとり3" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(33,150,243,0.12); object-fit: contain;">
+    <img src="004.jpg" alt="やりとり4" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(33,150,243,0.12); object-fit: contain;">
+    <img src="005.jpg" alt="やりとり5" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(33,150,243,0.12); object-fit: contain;">
+  </div>
+</section>
+
+<!-- 第2回-15: 次に気になるのは -->
+<section class="slide w02 slide-center" data-index="39">
+  <div class="slide-label">WEEK 02</div>
+  <div style="font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; color: #2a2438; text-align: center; line-height: 1.8;">
+    次に気になるのは<br>
+    <span style="font-size: 120%; color: #1976d2;">本当に無料鑑定が来るのか</span><br>
+    <span style="font-size: 120%; color: #1976d2;">どうやったら無料鑑定が来るのか</span><br>
+    <span style="margin-top: 0.5rem; display: inline-block;">ですよね！</span>
+  </div>
+</section>
+
+<!-- 第2回-16: 僕がやっているのは -->
+<section class="slide w02 slide-center" data-index="40">
+  <div class="slide-label">WEEK 02</div>
+  <p style="font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 600; color: #7a7090; margin-bottom: 1rem;">僕がやっているのは</p>
+  <h2 style="font-size: clamp(2.4rem, 5.5vw, 3.5rem); font-weight: 800; color: #1976d2; text-align: center; margin-bottom: 1.5rem;">
+    スレッズ運用
+  </h2>
+  <p style="font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 600; color: #2a2438; text-align: center; line-height: 1.8;">
+    スレッズで占いのお客様を集めて、<br>インスタのDMで鑑定しています。
+  </p>
+</section>
+
+<!-- 第2回-17: スレッズでの認知度 -->
+<section class="slide w02 slide-center" data-index="41">
+  <div class="slide-label">WEEK 02</div>
+  <div style="font-size: clamp(1.8rem, 4.5vw, 2.8rem); font-weight: 700; color: #2a2438; text-align: center; line-height: 1.8;">
+    なので<br>
+    <span style="font-size: 110%; color: #1976d2;">スレッズでの認知度を上げること</span><br>
+    <span style="font-size: 100%; color: #2a2438;">=</span><br>
+    <span style="font-size: 110%; color: #1976d2;">スレッズでバズる投稿を<br>沢山することが大切</span>
+  </div>
+</section>
+
+<!-- Slide 20: 毎回の流れ -->
+<!-- ======================================== -->
+<!-- ★ 第3回：バズる占い投稿の作り方         -->
+<!-- ======================================== -->
+
+<!-- Slide 16: 第3回 タイトル -->
+<section class="slide w03 slide-center" data-index="42">
+  <div class="slide-label">WEEK 03</div>
+  <h2 class="slide-title">第3回：<span>バズる占い投稿の作り方</span></h2>
+  <div class="session-theme" style="color: #7a7090;">
+    なぜバズらせないといけないのか？<br>＋バズ投稿実践
+  </div>
+  <img src="バズ.png" alt="合計閲覧数" style="max-height: 35vh; max-width: 60vw; border-radius: 12px; box-shadow: 0 4px 20px rgba(76,175,80,0.12); object-fit: contain; margin-top: 1.5rem;">
+</section>
+
+<!-- Slide 17: 第3回 内容 -->
+<section class="slide w03" data-index="43">
+  <div class="slide-label">WEEK 03 — CONTENTS</div>
+  <h2 class="slide-title"><span>第3回</span>の内容</h2>
+  <div class="step-list">
+    <div class="step-item">
+      <span class="s-num">01</span>
+      <span class="s-label">なぜバズらせないといけないのか<span class="s-sub">フォロワー少ない＝お店に誰も来ない状態</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">02</span>
+      <span class="s-label">伸びてる投稿をみんなで分析<span class="s-sub">占い系＋他ジャンルのバズ投稿を紹介</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">03</span>
+      <span class="s-label">共通点の答え合わせ＋キャッチコピーの型<span class="s-sub">最初は何も考えずにパクってOK</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">04</span>
+      <span class="s-label">アカウントの属性を意識する<span class="s-sub">属性によって伸びるもの・伸びないものがある</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- Slide: 第3回 ① 収益のポイント -->
+<section class="slide w03" data-index="44">
+  <div class="slide-label">WEEK 03 — 01</div>
+  <h2 class="slide-title">SNS占い収益の<span>ポイント</span></h2>
+  <div class="w01-note" style="color: #5a5068; margin-bottom: 1rem;">
+    結論
+  </div>
+  <div style="font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; color: #e53935; text-align: center; margin-bottom: 0.5rem;">
+    無料鑑定の数
+  </div>
+  <div style="font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 700; color: #5a5068; text-align: center;">
+    をいかに沢山取るか
+  </div>
+</section>
+
+<!-- Slide: 第3回 入れ墨画像 -->
+<section class="slide w03 slide-center" data-index="45">
+  <img src="入れ墨.png" alt="入れ墨レベルで大事" class="slide-img-single" style="max-height: 85vh; max-width: 90vw;">
+</section>
+
+<!-- Slide: 第3回 ② 収益フロー（1枚目） -->
+<section class="slide w03" data-index="46">
+  <div class="slide-label">WEEK 03 — 02</div>
+  <h2 class="slide-title"><span>SNS占い</span>で収益が発生する流れ</h2>
+  <div class="money-flow-vertical" style="width: min(480px, 90vw);">
+    <div class="mfv-step" style="border-color: rgba(0,200,83,0.15); box-shadow: 0 3px 14px rgba(0,200,83,0.06);">
+      <div class="mfv-label">無料鑑定が沢山くる</div>
+    </div>
+    <div class="mfv-arrow" style="color: rgba(0,200,83,0.3);">▼</div>
+    <div class="mfv-step" style="border-color: rgba(33,150,243,0.15); box-shadow: 0 3px 14px rgba(33,150,243,0.06);">
+      <div class="mfv-label">有料鑑定</div>
+    </div>
+    <div class="mfv-arrow" style="color: rgba(0,200,83,0.3);">▼</div>
+    <div class="mfv-step" style="border-color: rgba(156,39,176,0.15); box-shadow: 0 3px 14px rgba(156,39,176,0.06);">
+      <div class="mfv-label">アップセル</div>
+    </div>
+  </div>
+  <div class="w01-note" style="color: #2e7d32; margin-top: 1.5rem;">
+    無料鑑定が沢山来れば来るほど<br>
+    <span style="font-weight: 800; color: #e53935;">有料鑑定は売れる</span>
+  </div>
+</section>
+
+<!-- Slide: 第3回 ② 収益フロー（2枚目・全体） -->
+<section class="slide w03" data-index="47">
+  <div class="slide-label">WEEK 03 — 03</div>
+  <h2 class="slide-title">じゃあどうやって<span>無料鑑定を集めるか</span></h2>
+  <div class="money-flow-vertical" style="width: min(480px, 90vw);">
+    <div class="mfv-step" style="border-color: rgba(229,57,53,0.15); box-shadow: 0 3px 14px rgba(229,57,53,0.06);">
+      <div class="mfv-label" style="color: #e53935;">スレッズで投稿が伸びる</div>
+    </div>
+    <div class="mfv-arrow" style="color: rgba(0,200,83,0.3);">▼</div>
+    <div class="mfv-step" style="border-color: rgba(229,57,53,0.15); box-shadow: 0 3px 14px rgba(229,57,53,0.06);">
+      <div class="mfv-label" style="color: #e53935;">無料鑑定の募集を沢山する</div>
+    </div>
+    <div class="mfv-arrow" style="color: rgba(0,200,83,0.3);">▼</div>
+    <div class="mfv-step" style="border-color: rgba(0,200,83,0.15); box-shadow: 0 3px 14px rgba(0,200,83,0.06);">
+      <div class="mfv-label">無料鑑定が沢山くる</div>
+    </div>
+    <div class="mfv-arrow" style="color: rgba(0,200,83,0.3);">▼</div>
+    <div class="mfv-step" style="border-color: rgba(33,150,243,0.15); box-shadow: 0 3px 14px rgba(33,150,243,0.06);">
+      <div class="mfv-label">有料鑑定</div>
+    </div>
+    <div class="mfv-arrow" style="color: rgba(0,200,83,0.3);">▼</div>
+    <div class="mfv-step" style="border-color: rgba(156,39,176,0.15); box-shadow: 0 3px 14px rgba(156,39,176,0.06);">
+      <div class="mfv-label">アップセル</div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide: 第3回 ③ 初心者の落とし穴 -->
+<section class="slide w03" data-index="48">
+  <div class="slide-label">WEEK 03 — 04</div>
+  <h2 class="slide-title">初心者が<span>陥りがちな罠</span></h2>
+  <div style="font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 800; color: #e53935; text-align: center; margin-bottom: 1.5rem;">
+    小手先で難しいところに挑戦しがち
+  </div>
+  <div class="feature-list" style="margin-bottom: 1.5rem;">
+    <div class="feature-item" style="border-color: rgba(0,0,0,0.08); box-shadow: 0 1px 8px rgba(0,0,0,0.04);">
+      <span class="fi-main" style="color: #666;">アカウントの内容にこだわる</span>
+    </div>
+    <div class="feature-item" style="border-color: rgba(0,0,0,0.08); box-shadow: 0 1px 8px rgba(0,0,0,0.04);">
+      <span class="fi-main" style="color: #666;">noteを書いちゃったりする</span>
+    </div>
+    <div class="feature-item" style="border-color: rgba(0,0,0,0.08); box-shadow: 0 1px 8px rgba(0,0,0,0.04);">
+      <span class="fi-main" style="color: #666;">占術に悩む</span>
+    </div>
+    <div class="feature-item" style="border-color: rgba(0,0,0,0.08); box-shadow: 0 1px 8px rgba(0,0,0,0.04);">
+      <span class="fi-main" style="color: #666;">無料鑑定の文章を磨く</span>
+    </div>
+    <div class="feature-item" style="border-color: rgba(0,0,0,0.08); box-shadow: 0 1px 8px rgba(0,0,0,0.04);">
+      <span class="fi-main" style="color: #666;">1回でバズる投稿を作ろうとする</span>
+    </div>
+  </div>
+  <div style="font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 700; color: #999; text-align: center;">
+    全部あまり重要ではない
+  </div>
+</section>
+
+<!-- Slide: 第3回 重要なのは -->
+<section class="slide w03" data-index="49">
+  <div class="slide-label">WEEK 03 — 05</div>
+  <h2 class="slide-title"><span>重要</span>なのは…</h2>
+  <div style="display: flex; flex-direction: column; gap: 2rem; align-items: center; margin-top: 1rem;">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <div style="background: #fff; border: 2px solid rgba(0,200,83,0.3); border-radius: 16px; padding: 1.2rem 2rem; box-shadow: 0 3px 14px rgba(0,200,83,0.08);">
+        <div style="font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 800; color: #00c853;">伸びる投稿</div>
+      </div>
+      <div style="font-size: 2rem; font-weight: 900; color: #e53935;">×</div>
+      <div style="background: #fff; border: 2px solid rgba(229,57,53,0.3); border-radius: 16px; padding: 1.2rem 2rem; box-shadow: 0 3px 14px rgba(229,57,53,0.08);">
+        <div style="font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 800; color: #e53935;">投稿回数</div>
+      </div>
+    </div>
+    <div style="font-size: 1.5rem; color: #999;">と</div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <div style="background: #fff; border: 2px solid rgba(0,200,83,0.3); border-radius: 16px; padding: 1.2rem 2rem; box-shadow: 0 3px 14px rgba(0,200,83,0.08);">
+        <div style="font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 800; color: #00c853;">無料鑑定募集</div>
+      </div>
+      <div style="font-size: 2rem; font-weight: 900; color: #e53935;">×</div>
+      <div style="background: #fff; border: 2px solid rgba(229,57,53,0.3); border-radius: 16px; padding: 1.2rem 2rem; box-shadow: 0 3px 14px rgba(229,57,53,0.08);">
+        <div style="font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 800; color: #e53935;">募集回数</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide: 第3回 ④ 分析ワーク -->
+<section class="slide w03" data-index="50">
+  <div class="slide-label">WEEK 03 — 06</div>
+  <h2 class="slide-title">伸びてる投稿を<span>分析</span></h2>
+  <div style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center;">
+    <img src="バズ1.png" alt="バズ1" style="max-height: 35vh; max-width: 90vw; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); object-fit: contain;">
+    <img src="バズ2.png" alt="バズ2" style="max-height: 50vh; max-width: 90vw; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); object-fit: contain;">
+    <img src="バズ3.png" alt="バズ3" style="max-height: 50vh; max-width: 90vw; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); object-fit: contain;">
+  </div>
+</section>
+
+<!-- Slide: 第3回 実際に見にいってみよう -->
+<section class="slide w03" data-index="51">
+  <div class="slide-label">WEEK 03 — 07</div>
+  <h2 class="slide-title"><span>実際に見にいってみよう</span></h2>
+</section>
+
+<!-- Slide: 第3回 ⑤ アカウント属性 -->
+<section class="slide w03" data-index="52">
+  <div class="slide-label">WEEK 03 — 08</div>
+  <h2 class="slide-title">バズった投稿をパクる <span>≠ 伸びる</span></h2>
+  <div class="step-list">
+    <div class="step-item">
+      <span class="s-num">01</span>
+      <span class="s-label">アカウントの属性によっては、<br>伸びたり伸びなかったり<span class="s-sub">金運系のアカウントで恋愛系のバズった投稿を真似る → 伸びない</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">02</span>
+      <span class="s-label">投稿によって伸びるタイミング、<br>伸びないタイミングがある<span class="s-sub">半年前にやたらと流行った投稿 → 今やっても伸びない可能性がある</span></span>
+    </div>
+  </div>
+  <div style="margin-top: 2rem; text-align: center;">
+    <div style="font-size: clamp(1.3rem, 3vw, 1.6rem); font-weight: 700; color: #e53935; margin-bottom: 1.5rem;">
+      何も考えずにパクる<br>→ 全然伸びない
+    </div>
+    <div style="font-size: clamp(1.3rem, 3vw, 1.6rem); font-weight: 700; color: #00c853; line-height: 1.8;">
+      自分の属性、ペルソナにあった投稿をパクる<br>
+      自分の属性とは違う投稿を、<br>自分の属性に変えちゃう<br>→ 伸びる
+    </div>
+  </div>
+</section>
+
+<!-- Slide: 第3回 ⑥ 実際の運用 -->
+<section class="slide w03" data-index="53">
+  <div class="slide-label">WEEK 03 — 09</div>
+  <h2 class="slide-title">実際の運用：<span>意外とめんどくさい</span></h2>
+  <div class="step-list">
+    <div class="step-item">
+      <span class="s-num">01</span>
+      <span class="s-label">1日に5〜30投稿<span class="s-sub">数をこなすことが大事</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">02</span>
+      <span class="s-label">伸びないやつは除外<span class="s-sub">また新しい文章を作ってテスト</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">03</span>
+      <span class="s-label">ツールでバズ投稿を収集<span class="s-sub">簡単に参考事例を集められる</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">04</span>
+      <span class="s-label">AIで自分風に書き換え<span class="s-sub">一発で自分のアカウントっぽく変換</span></span>
+    </div>
+  </div>
+  <div style="font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 800; color: #00c853; text-align: center; margin-top: 1.5rem;">
+    だからAIを使って効率化！
+  </div>
+</section>
+
+<!-- Slide: 第3回 ⑦ AIの差 -->
+<section class="slide w03" data-index="54">
+  <div class="slide-label">WEEK 03 — 10</div>
+  <h2 class="slide-title"><span>AI</span>を使う人と使わない人</h2>
+  <div class="compare-row">
+    <div class="compare-card" style="background: #fff; border: 1px solid rgba(0,0,0,0.08);">
+      <div class="cc-title" style="color: #999;">AIを使わない人</div>
+      <div class="cc-body" style="color: #666; text-align: center; line-height: 1.6; font-size: clamp(1rem, 2.2vw, 1.2rem);">
+        ちまちま自分なりに作業<br>
+        <span style="color: #e53935;">↓</span><br>
+        時間がかかる<br>
+        <span style="color: #e53935;">↓</span><br>
+        なかなか結果が出ない<br>
+        <span style="color: #e53935;">↓</span><br>
+        モチベが上がらない<br>
+        <span style="color: #e53935;">↓</span><br>
+        <span style="font-weight: 800; color: #e53935; font-size: 1.3em;">諦める</span>
+      </div>
+    </div>
+    <div class="compare-card" style="background: #fff; border: 1px solid rgba(0,200,83,0.2);">
+      <div class="cc-title" style="color: #00c853;">AIを使える人</div>
+      <div class="cc-body" style="color: #37474f; text-align: center; line-height: 1.6; font-size: clamp(1rem, 2.2vw, 1.2rem);">
+        大量にデータを集めて<br>大量に捌いて<br>高速でPDCAを回す<br>
+        <span style="color: #00c853;">↓</span><br>
+        良い結果も悪い結果も<br>すぐに出る<br>
+        <span style="color: #00c853;">↓</span><br>
+        AIを使って改善<br>
+        <span style="color: #00c853;">↓</span><br>
+        結果が出る<br>
+        <span style="color: #00c853;">↓</span><br>
+        モチベが上がる<br>
+        <span style="color: #00c853;">↓</span><br>
+        <span style="font-weight: 800; color: #00c853; font-size: 1.3em;">稼げる</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide: 第3回 ⑧ 才能と努力 -->
+<section class="slide w03" data-index="55">
+  <div class="slide-label">WEEK 03 — 11</div>
+  <h2 class="slide-title"><span>才能</span>は努力でカバーできる</h2>
+  <div class="w01-note" style="color: #5a5068; margin-bottom: 1rem;">
+    アカウントが伸びる・伸びないは<br>才能も大事だけど…
+  </div>
+  <div class="stat-card" style="border-color: rgba(0,200,83,0.12); box-shadow: 0 2px 16px rgba(0,200,83,0.06); max-width: 500px; padding: 1.2rem 2rem;">
+    <div class="sc-label" style="color: #00c853;">努力の量を爆発的に増やせるのが</div>
+    <div class="sc-value" style="background: linear-gradient(135deg, #00c853, #2196f3); -webkit-background-clip: text; background-clip: text;">AI</div>
+    <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-top: 1rem;">
+      <img src="chatgpt.webp" alt="ChatGPT" style="height: 80px; border-radius: 8px;">
+      <img src="Claude.webp" alt="Claude" style="height: 80px; border-radius: 8px;">
+      <img src="gemini.jpg" alt="Gemini" style="height: 80px; border-radius: 8px;">
+    </div>
+  </div>
+  <div class="w01-note" style="color: #e53935; margin-top: 1rem; font-weight: 700;">
+    努力量をAIで爆発的に増幅させないと<br>副業で効率的に稼ぐのは難しい。
+  </div>
+</section>
+
+<!-- Slide: 第3回 ⑨ まとめ -->
+<section class="slide w03" data-index="56">
+  <div class="slide-label">WEEK 03 — SUMMARY</div>
+  <h2 class="slide-title">第3回<span>まとめ</span></h2>
+  <div class="step-list">
+    <div class="step-item">
+      <span class="s-num">01</span>
+      <span class="s-label">全ての収益は「無料鑑定の数」から始まる<span class="s-sub">小手先のことより、まず数を集める</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">02</span>
+      <span class="s-label">伸びる投稿 × 投稿回数 が全て<span class="s-sub">バズ投稿を分析して、とにかく数をこなす</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">03</span>
+      <span class="s-label">完璧を目指さない、PDCAを高速で回す<span class="s-sub">「多分こうかな」でやってみて、改善を繰り返す</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">04</span>
+      <span class="s-label">AIを使って効率化は必須<span class="s-sub">副業で時間がない人こそ、AIで努力量を増幅させる</span></span>
+    </div>
+  </div>
+  <div style="font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 700; color: #00c853; text-align: center; margin-top: 1.5rem;">
+    お金も稼げて、AIスキルも身につく<br>一石二鳥なのがSNS占い
+  </div>
+</section>
+
+<!-- ======================================== -->
+<!-- ★ 第4回：収益化の仕組みを作ろう         -->
+<!-- ======================================== -->
+
+<!-- Slide 18: 第4回 タイトル -->
+<section class="slide w04" data-index="57">
+  <div class="slide-label">WEEK 04</div>
+  <h2 class="slide-title">第4回：<span>収益化の仕組みを作ろう</span></h2>
+  <div class="session-theme" style="color: #7a7090;">
+    売上の作り方と<br>さらに伸ばす仕組み
+  </div>
+</section>
+
+<!-- Slide: 第3回の振り返り -->
+<section class="slide w04" data-index="58">
+  <div class="slide-label">WEEK 03 — REVIEW</div>
+  <h2 class="slide-title">前回の<span>振り返り</span></h2>
+  <div class="step-list">
+    <div class="step-item">
+      <span class="s-num">01</span>
+      <span class="s-label">なぜバズらせないといけないのか<span class="s-sub">フォロワー少ない＝お店に誰も来ない状態</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">02</span>
+      <span class="s-label">伸びてる投稿を分析＋キャッチコピーの型<span class="s-sub">最初は何も考えずにパクってOK</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">03</span>
+      <span class="s-label">アカウントの属性を意識する<span class="s-sub">属性によって伸びるもの・伸びないものがある</span></span>
+    </div>
+  </div>
+  <div class="w01-note" style="color: #e65100; margin-top: 1.5rem;">
+    結論：<span style="font-weight: 800; color: #ff6d00;">無料鑑定の数</span>をいかに沢山取るか
+  </div>
+</section>
+
+<!-- Slide 19: 第4回 内容 -->
+<section class="slide w04" data-index="59">
+  <div class="slide-label">WEEK 04 — CONTENTS</div>
+  <h2 class="slide-title"><span>第4回</span>の内容</h2>
+  <div class="step-list">
+    <div class="step-item">
+      <span class="s-num">01</span>
+      <span class="s-label">売上を上げるまでの導線<span class="s-sub">SNS投稿→フォロー→LINE→無料鑑定→有料鑑定</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">02</span>
+      <span class="s-label">アップセル・ダウンセルの仕組み<span class="s-sub">売上をさらに伸ばす具体例を解説</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- Slide: 売上を上げるまでの流れ -->
+<section class="slide w04" data-index="60">
+  <div class="slide-label">WEEK 04 — 01</div>
+  <h2 class="slide-title">売上を上げるまでの<span>流れ</span></h2>
+  <div class="w01-note" style="color: #e65100; margin-bottom: 1.5rem;">
+    流派によっていろいろ！
+  </div>
+  <div class="flow-horizontal" style="gap: 1.5rem; flex-wrap: wrap; align-items: flex-start;">
+    <div class="flow-card fc-orange" style="min-width: 200px; padding: 1.2rem;">
+      <div class="fc-num">パターン1</div>
+      <div class="fc-title" style="font-size: 1rem;">メルカリ・ココナラ</div>
+      <div class="fc-role" style="display: flex; flex-direction: column; align-items: center; gap: 0.2rem; margin-top: 0.8rem; line-height: 1.4;">
+        <span>安く販売</span>
+        <span style="color: rgba(255,109,0,0.4);">▼</span>
+        <span>アップセル</span>
+        <span style="color: rgba(255,109,0,0.4);">▼</span>
+        <span>パワーストーン等</span>
+      </div>
+    </div>
+    <div class="flow-card fc-orange" style="min-width: 200px; padding: 1.2rem;">
+      <div class="fc-num">パターン2</div>
+      <div class="fc-title" style="font-size: 1rem;">スレッズ→公式LINE</div>
+      <div class="fc-role" style="display: flex; flex-direction: column; align-items: center; gap: 0.2rem; margin-top: 0.8rem; line-height: 1.4;">
+        <span>スレッズ</span>
+        <span style="color: rgba(255,109,0,0.4);">▼</span>
+        <span>公式ライン</span>
+        <span style="color: rgba(255,109,0,0.4);">▼</span>
+        <span>無料鑑定</span>
+      </div>
+    </div>
+    <div class="flow-card fc-orange" style="min-width: 200px; padding: 1.2rem;">
+      <div class="fc-num">パターン3</div>
+      <div class="fc-title" style="font-size: 1rem;">スレッズ→インスタDM</div>
+      <div class="fc-role" style="display: flex; flex-direction: column; align-items: center; gap: 0.2rem; margin-top: 0.8rem; line-height: 1.4;">
+        <span>スレッズ</span>
+        <span style="color: rgba(255,109,0,0.4);">▼</span>
+        <span>インスタDM</span>
+        <span style="color: rgba(255,109,0,0.4);">▼</span>
+        <span>無料鑑定</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide: スレッズやインスタ集客がおすすめ -->
+<section class="slide w04" data-index="61">
+  <div class="slide-label">WEEK 04 — 01</div>
+  <h2 class="slide-title"><span>スレッズやインスタ</span>集客がおすすめ！</h2>
+  <div class="step-list" style="margin-top: 1rem;">
+    <div class="step-item">
+      <span class="s-num">01</span>
+      <span class="s-label">無料で鑑定ができる</span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">02</span>
+      <span class="s-label">ユーザーに占いに興味がある女性が多い</span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">03</span>
+      <span class="s-label">SNSだから人が沢山いる</span>
+    </div>
+  </div>
+</section>
+
+<!-- Slide: ココナラ・メルカリをやらない理由 -->
+<section class="slide w04" data-index="62">
+  <div class="slide-label">WEEK 04 — 01</div>
+  <h2 class="slide-title">僕が<span>ココナラ・メルカリ</span>をやらない理由</h2>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem; width: min(500px, 90vw);">
+    <div class="profit-card pc-low" style="width: 100%;">
+      <div class="pc-biz">ココナラ・メルカリ</div>
+      <div class="pc-profit" style="font-size: 1.2rem;">少額でも売れる占いにしないといけない</div>
+    </div>
+    <div style="font-size: 1.2rem; font-weight: 800; color: rgba(255,109,0,0.6);">VS</div>
+    <div class="profit-card pc-high" style="width: 100%;">
+      <div class="pc-biz">スレッズ</div>
+      <div class="pc-profit" style="font-size: 1.2rem;">無料だから気軽に受けてくれる</div>
+      <div class="pc-note" style="font-size: 0.9rem;">価値を感じたら有料鑑定を買ってくれる</div>
+    </div>
+  </div>
+  <div class="w01-note" style="color: #e65100; margin-top: 1.5rem;">
+    結論：<span style="font-weight: 800; color: #ff6d00;">どの方法でもOK！</span><br>
+    でも<span style="font-weight: 800; color: #ff6d00;">1つの方法に集中</span>すること！！
+  </div>
+</section>
+
+<!-- Slide: 実際どんな感じで売れるか -->
+<section class="slide w04 slide-center" data-index="63">
+  <div class="slide-label">WEEK 04 — 01</div>
+  <div style="font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 800; color: #5a5068; text-align: center;">
+    実際どんな感じで売れるのか<br>
+    <span style="background: linear-gradient(90deg, #ff6d00, #ffab00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">気になりませんか…？</span>
+  </div>
+</section>
+
+<!-- Slide: 実際のやり取りを再現 -->
+<section class="slide w04" data-index="64">
+  <div class="slide-label">WEEK 04 — 01</div>
+  <h2 class="slide-title">実際の<span>やり取り</span>を再現</h2>
+  <div class="money-flow-vertical" style="width: min(400px, 85vw);">
+    <div class="mfv-step" style="border-color: rgba(255,109,0,0.15); box-shadow: 0 3px 14px rgba(255,109,0,0.06); padding: 0.8rem;">
+      <div class="mfv-label" style="font-size: 0.95rem;">インスタをフォロー＆DM</div>
+    </div>
+    <div class="mfv-arrow" style="color: rgba(255,109,0,0.3); font-size: 0.7rem;">▼</div>
+    <div class="mfv-step" style="border-color: rgba(255,109,0,0.15); box-shadow: 0 3px 14px rgba(255,109,0,0.06); padding: 0.8rem;">
+      <div class="mfv-label" style="font-size: 0.95rem;">無料鑑定の情報を聞く</div>
+    </div>
+    <div class="mfv-arrow" style="color: rgba(255,109,0,0.3); font-size: 0.7rem;">▼</div>
+    <div class="mfv-step" style="border-color: rgba(255,109,0,0.15); box-shadow: 0 3px 14px rgba(255,109,0,0.06); padding: 0.8rem;">
+      <div class="mfv-label" style="font-size: 0.95rem;">無料鑑定の実施</div>
+    </div>
+    <div class="mfv-arrow" style="color: rgba(255,109,0,0.3); font-size: 0.7rem;">▼</div>
+    <div class="mfv-step" style="border-color: rgba(255,171,0,0.15); box-shadow: 0 3px 14px rgba(255,171,0,0.06); padding: 0.8rem;">
+      <div class="mfv-label" style="font-size: 0.95rem;">おわり or 有料鑑定の購入</div>
+    </div>
+    <div class="mfv-arrow" style="color: rgba(255,109,0,0.3); font-size: 0.7rem;">▼</div>
+    <div class="mfv-step" style="border-color: rgba(255,171,0,0.2); box-shadow: 0 3px 14px rgba(255,171,0,0.08); padding: 0.8rem;">
+      <div class="mfv-label" style="font-size: 0.95rem; color: #ff6d00;">アップセルの購入</div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide: 想像してみてください -->
+<section class="slide w04 slide-center" data-index="65">
+  <div class="slide-label">WEEK 04 — 01</div>
+  <div style="font-size: clamp(1rem, 2.5vw, 1.3rem); font-weight: 600; color: #8a8098; text-align: center; margin-bottom: 1rem;">
+    一度、どんな風になりそうか<br>想像してみてください。
+  </div>
+  <div style="font-size: clamp(1.3rem, 3.5vw, 2rem); font-weight: 800; color: #2a2438; text-align: center; line-height: 1.6;">
+    もしあなたが<span style="color: #ff6d00;">9,800円</span>の有料鑑定を<br>
+    全く会ったこともない、<br>
+    声を聞いたこともない方に販売する場合<br><br>
+    <span style="background: linear-gradient(90deg, #ff6d00, #ffab00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">なんと言って売りますか…？</span>
+  </div>
+</section>
+
+<!-- Slide: 実際のやり取り画像1 -->
+<section class="slide w04 slide-center" data-index="66">
+  <div class="slide-label">WEEK 04 — 01</div>
+  <h2 class="slide-title">こちらが<span>実際のやり取り</span>です</h2>
+  <img src="yaritori001.jpg" alt="やり取り1" class="slide-img-single" style="max-height: 60vh;">
+</section>
+
+<!-- Slide: 実際のやり取り画像2 -->
+<section class="slide w04 slide-center" data-index="67">
+  <div class="slide-label">WEEK 04 — 01</div>
+  <h2 class="slide-title">こちらが<span>実際のやり取り</span>です</h2>
+  <img src="yaritori002.jpg" alt="やり取り2" class="slide-img-single" style="max-height: 60vh;">
+</section>
+
+<!-- Slide: 実際のやり取り画像3 -->
+<section class="slide w04 slide-center" data-index="68">
+  <div class="slide-label">WEEK 04 — 01</div>
+  <h2 class="slide-title">こちらが<span>実際のやり取り</span>です</h2>
+  <img src="yaritori003.jpg" alt="やり取り3" class="slide-img-single" style="max-height: 60vh;">
+</section>
+
+<!-- Slide: 有料鑑定の販売は不思議 -->
+<section class="slide w04" data-index="69">
+  <div class="slide-label">WEEK 04 — 01</div>
+  <h2 class="slide-title">有料鑑定の販売は<span>不思議な感じ</span></h2>
+  <div class="flow-horizontal" style="gap: 2rem;">
+    <div class="flow-card fc-orange" style="flex: 1;">
+      <div class="fc-num">パターン1</div>
+      <div class="fc-title" style="font-size: 1.1rem;">無料鑑定を送る</div>
+      <div class="fc-role">↓</div>
+      <div class="fc-title" style="font-size: 1.1rem; color: #ff6d00;">即購入</div>
+    </div>
+    <div class="flow-card fc-orange" style="flex: 1;">
+      <div class="fc-num">パターン2</div>
+      <div class="fc-title" style="font-size: 1.1rem;">無料鑑定を送る</div>
+      <div class="fc-role">↓</div>
+      <div class="fc-title" style="font-size: 1.1rem;">熱い感想が来る</div>
+      <div class="fc-role">↓</div>
+      <div class="fc-title" style="font-size: 1.1rem; color: #ff6d00;">購入される</div>
+    </div>
+  </div>
+  <div class="w01-note" style="color: #e65100; margin-top: 1.5rem;">
+    沢山やり取りをしたり、<br>
+    細やかなやり取り、<span style="font-weight: 800; color: #ff6d00;">セールスの文章は不要</span>です。
+  </div>
+</section>
+
+<!-- Slide: AIで作っている -->
+<section class="slide w04 slide-center" data-index="70">
+  <div class="slide-label">WEEK 04 — 01</div>
+  <h2 class="slide-title">しかもこの文章は<span>ほぼAI</span>で作っています</h2>
+  <div style="font-size: clamp(1rem, 2.5vw, 1.3rem); font-weight: 600; color: #5a5068; text-align: center; margin-bottom: 1.5rem;">
+    自動返信＆AIが作った文章で<br>
+    <span style="font-size: 1.5em; font-weight: 800; color: #ff6d00;">9,800円</span>の鑑定文が売れます。
+  </div>
+  <div class="stat-row">
+    <div class="stat-card" style="border-color: rgba(255,109,0,0.12);">
+      <div class="sc-label" style="color: #ff6d00;">原価</div>
+      <div class="sc-value" style="background: linear-gradient(135deg, #ff6d00, #ffab00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">ほぼ0円</div>
+    </div>
+    <div class="stat-card" style="border-color: rgba(255,109,0,0.12);">
+      <div class="sc-label" style="color: #ff6d00;">利益率</div>
+      <div class="sc-value" style="background: linear-gradient(135deg, #ff6d00, #ffab00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">80〜90%</div>
+    </div>
+  </div>
+  <div class="w01-note" style="color: #e65100; margin-top: 1.5rem;">
+    しかも、ここで終わりじゃありません
+  </div>
+</section>
+
+<!-- Slide: アップセル等の予告 -->
+<section class="slide w04 slide-center" data-index="71">
+  <div class="slide-label">WEEK 04 — 02</div>
+  <div class="step-list" style="width: min(400px, 90vw);">
+    <div class="step-item">
+      <span class="s-num">01</span>
+      <span class="s-label">アップセル</span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">02</span>
+      <span class="s-label">クロスセル</span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">03</span>
+      <span class="s-label">ダウンセル</span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">04</span>
+      <span class="s-label">ローンチ</span>
+    </div>
+  </div>
+  <div class="w01-note" style="color: #8a8098; margin-top: 1.5rem;">
+    が控えています。<br>専門用語なので次のページで説明します。
+  </div>
+</section>
+
+<!-- Slide: 用語説明 -->
+<section class="slide w04" data-index="72">
+  <div class="slide-label">WEEK 04 — 02</div>
+  <h2 class="slide-title"><span>売上を伸ばす</span>4つの手法</h2>
+  <div class="step-list">
+    <div class="step-item">
+      <span class="s-num">01</span>
+      <span class="s-label">アップセル<span class="s-sub">購入者にさらなるサービスを提供<br>（醤油ラーメン→特製ラーメンにしませんか？）</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">02</span>
+      <span class="s-label">クロスセル<span class="s-sub">購入者に補助的なサービスを提供<br>（煮卵、チャーシューご飯はいかが？）</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">03</span>
+      <span class="s-label">ダウンセル<span class="s-sub">購入しなかった方に安いサービスを提供<br>（ハーフチャーシュー丼だけでもどう？）</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">04</span>
+      <span class="s-label">ローンチ<span class="s-sub">フォロワーの方に何か売る戦略<br>（新商品！激ニボラーメン発売開始！）</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- Slide: 具体例 -->
+<section class="slide w04" data-index="73">
+  <div class="slide-label">WEEK 04 — 02</div>
+  <h2 class="slide-title"><span>実際</span>どうやるか</h2>
+  <div class="w01-note" style="color: #5a5068; margin-bottom: 1rem; line-height: 1.8;">
+    有料鑑定を買ってくださった方に<br>
+    <span style="color: #ff6d00; font-weight: 700;">ヒーリング、パワーストーン、除霊、浄化サービス</span>を販売したり<br><br>
+    パワーストーンを買ってくださった方に<br>
+    <span style="color: #ff6d00; font-weight: 700;">浄化サービス</span>を販売したり<br><br>
+    <span style="color: #ff6d00; font-weight: 700;">遠隔ヒーリング</span>を販売したり…
+  </div>
+  <div style="font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 800; color: #2a2438; text-align: center; margin-top: 1rem;">
+    いろんな方法でサービスを提供して<br>
+    お客様からお金をもらうことができるのが<br>
+    <span style="background: linear-gradient(90deg, #ff6d00, #ffab00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">SNS占い</span>なんです。
+  </div>
+</section>
+
+<!-- Slide: 実際に提供しているサービス -->
+<section class="slide w04" data-index="74">
+  <div class="slide-label">WEEK 04 — 02</div>
+  <h2 class="slide-title">実際に僕が<span>提供しているサービス</span></h2>
+  <div style="display: flex; flex-direction: column; gap: 1rem; width: min(450px, 90vw);">
+    <div class="profit-card pc-high" style="width: 100%;">
+      <div class="pc-biz" style="font-size: 1.3rem;">パワーストーン販売</div>
+      <div class="pc-price">松竹梅で販売</div>
+      <div class="pc-profit" style="font-size: 1.1rem;">6万円〜2万円</div>
+      <div class="pc-note">原価率30％程度</div>
+    </div>
+    <div class="profit-card pc-high" style="width: 100%;">
+      <div class="pc-biz" style="font-size: 1.3rem;">遠隔オーラ調整</div>
+      <div class="pc-price">サービス提供</div>
+      <div class="pc-profit" style="font-size: 1.1rem;">3,980円</div>
+      <div class="pc-note">原価率0%</div>
+    </div>
+    <div class="profit-card pc-high" style="width: 100%;">
+      <div class="pc-biz" style="font-size: 1.3rem;">ピンポイント鑑定</div>
+      <div class="pc-price">サービス提供</div>
+      <div class="pc-profit" style="font-size: 1.1rem;">4,980円</div>
+      <div class="pc-note">原価率0%</div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide: これは見せたくないんですが -->
+<section class="slide w04 slide-center" data-index="75">
+  <div class="slide-label">WEEK 04 — 02</div>
+  <h2 class="slide-title">これは見せたくないんですが…<br><span>実際のやり取り</span>をお見せします</h2>
+</section>
+
+<!-- Slide: 実際のやり取り画像4 -->
+<section class="slide w04 slide-center" data-index="76">
+  <div class="slide-label">WEEK 04 — 02</div>
+  <img src="yaritori004.jpg" alt="やり取り4" class="slide-img-single" style="max-height: 70vh;">
+</section>
+
+<!-- Slide: アップセルの流れ -->
+<section class="slide w04" data-index="77">
+  <div class="slide-label">WEEK 04 — 02</div>
+  <h2 class="slide-title"><span>アップセル</span>の流れ</h2>
+  <div style="display: flex; gap: 2.5rem; width: min(640px, 90vw); margin: 0 auto;">
+    <div style="flex: 1; max-width: 280px;">
+      <div style="color: #ff6d00; margin-bottom: 0.8rem; font-weight: 700; font-size: 1.3rem; text-align: center;">パワーストーン</div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.3rem;">
+        <div style="background: #fff; border: 1px solid rgba(255,109,0,0.15); border-radius: 8px; padding: 0.7rem 1rem; font-size: 1.15rem; text-align: center; width: 100%;">有料鑑定を販売</div>
+        <div style="color: rgba(255,109,0,0.4); font-size: 0.8rem;">▼</div>
+        <div style="background: #fff; border: 1px solid rgba(255,109,0,0.15); border-radius: 8px; padding: 0.7rem 1rem; font-size: 1.15rem; text-align: center; width: 100%;">鑑定文に説明</div>
+        <div style="color: rgba(255,109,0,0.4); font-size: 0.8rem;">▼</div>
+        <div style="background: #fff; border: 1px solid rgba(255,109,0,0.15); border-radius: 8px; padding: 0.7rem 1rem; font-size: 1.15rem; text-align: center; width: 100%;">詳細を案内</div>
+        <div style="color: rgba(255,109,0,0.4); font-size: 0.8rem;">▼</div>
+        <div style="background: #fff; border: 1px solid rgba(255,171,0,0.2); border-radius: 8px; padding: 0.7rem 1rem; font-size: 1.15rem; text-align: center; width: 100%; color: #ff6d00; font-weight: 600;">購入される</div>
+      </div>
+    </div>
+    <div style="flex: 1; max-width: 280px;">
+      <div style="color: #ff6d00; margin-bottom: 0.8rem; font-weight: 700; font-size: 1.3rem; text-align: center;">遠隔オーラ調整</div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.3rem;">
+        <div style="background: #fff; border: 1px solid rgba(255,109,0,0.15); border-radius: 8px; padding: 0.7rem 1rem; font-size: 1.15rem; text-align: center; width: 100%;">フォロワーにDM</div>
+        <div style="color: rgba(255,109,0,0.4); font-size: 0.8rem;">▼</div>
+        <div style="background: #fff; border: 1px solid rgba(255,109,0,0.15); border-radius: 8px; padding: 0.7rem 1rem; font-size: 1.15rem; text-align: center; width: 100%;">オーラ調整の説明</div>
+        <div style="color: rgba(255,109,0,0.4); font-size: 0.8rem;">▼</div>
+        <div style="background: #fff; border: 1px solid rgba(255,109,0,0.15); border-radius: 8px; padding: 0.7rem 1rem; font-size: 1.15rem; text-align: center; width: 100%;">購入→実施</div>
+        <div style="color: rgba(255,109,0,0.4); font-size: 0.8rem;">▼</div>
+        <div style="background: #fff; border: 1px solid rgba(255,171,0,0.2); border-radius: 8px; padding: 0.7rem 1rem; font-size: 1.15rem; text-align: center; width: 100%; color: #ff6d00; font-weight: 600;">フォローメッセージ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide: まとめ -->
+<section class="slide w04" data-index="78">
+  <div class="slide-label">WEEK 04 — SUMMARY</div>
+  <h2 class="slide-title">第4回の<span>まとめ</span></h2>
+  <div class="step-list">
+    <div class="step-item">
+      <span class="s-num">01</span>
+      <span class="s-label">無料鑑定→有料鑑定は<span class="s-sub">特に売り込まなくてもちゃんと売れる</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">02</span>
+      <span class="s-label">有料鑑定を受けてくださった方には<span class="s-sub">追加のサービスを売って売上を伸ばす</span></span>
+    </div>
+    <div class="step-item">
+      <span class="s-num">03</span>
+      <span class="s-label">購入しなかった方には<span class="s-sub">新しいサービスを提供して売上を伸ばす</span></span>
+    </div>
+  </div>
+  <div style="font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 800; text-align: center; margin-top: 2rem;">
+    これが<span style="background: linear-gradient(90deg, #ff6d00, #ffab00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">SNS占いの売上の伸ばし方</span>です！
+  </div>
+</section>
+
+<!-- Nav -->
+<div class="nav" id="nav"></div>
+<div class="hint">CLICK TO ADVANCE</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const navEl  = document.getElementById('nav');
+  let current  = 0;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    navEl.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll('.dot');
+
+  function goTo(index) {
+    if (index < 0 || index >= slides.length) return;
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = index;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  document.body.addEventListener('click', () => {
+    goTo((current + 1) % slides.length);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') goTo(current + 1);
+    if (e.key === 'ArrowLeft') goTo(current - 1);
+  });
+</script>
+</body>
+</html>
