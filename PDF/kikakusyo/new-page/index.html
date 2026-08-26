@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>待たずに獲りにいく。インスタ&スレッズ集客</title>
+<style>
+  :root{
+    --bg: #f4f8f1;
+    --bg2: #e8f1e3;
+    --ink: #2a3527;
+    --gold: #6f9c5f;
+    --gold-soft: rgba(111,156,95,0.7);
+    --plum: #4f8a82;
+    --rose: #c17a56;
+    --ivory: #2a3527;
+    --card: rgba(60,90,50,0.05);
+    --card-border: rgba(60,90,50,0.14);
+    --muted: #6e7d68;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ height:100%; }
+  body{
+    background: radial-gradient(ellipse at 20% 10%, var(--bg2) 0%, var(--bg) 55%),
+                var(--bg);
+    color: var(--ivory);
+    font-family: 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+    overflow: hidden;
+    width: 100vw; height: 100vh;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+  }
+
+  .serif{
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', '游明朝', serif;
+  }
+
+  .glow{
+    position:fixed; border-radius:50%; pointer-events:none; z-index:0;
+    filter: blur(70px);
+  }
+  .glow-gold{ width:560px; height:560px; background: radial-gradient(circle, rgba(111,156,95,0.20), transparent 70%);
+    top:-140px; right:-140px; }
+  .glow-plum{ width:520px; height:520px; background: radial-gradient(circle, rgba(79,138,130,0.16), transparent 70%);
+    bottom:-160px; left:-120px; }
+
+  #stage{
+    position: relative; z-index: 1;
+    width: 100vw; height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 6vw 8vw;
+  }
+
+  .slide{
+    width: 100%; max-width: 980px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: rise 0.5s ease;
+  }
+  .slide.active{ display:flex; }
+
+  @keyframes rise{
+    from{ opacity:0; transform: translateY(16px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  .tag{
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    color: var(--gold-soft);
+    border: 1px solid rgba(111,156,95,0.4);
+    padding: 0.5em 1.4em;
+    border-radius: 999px;
+    margin-bottom: 2.2rem;
+    text-transform: uppercase;
+  }
+
+  h1.title{
+    font-size: clamp(2.3rem, 5.4vw, 4rem);
+    line-height: 1.4;
+    font-weight: 700;
+  }
+  h1.title .accent{
+    color: var(--gold);
+  }
+
+  h2.sub{
+    margin-top: 1.6rem;
+    font-size: clamp(1rem, 1.6vw, 1.3rem);
+    color: var(--muted);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+
+  .divider{
+    width: 46px; height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--plum));
+    margin: 2rem auto;
+  }
+
+  .heading{
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    margin-bottom: 2.4rem;
+  }
+  .heading .accent{ color: var(--gold); }
+
+  ul.bullets{
+    list-style: none;
+    display: flex; flex-direction: column; gap: 1.1rem;
+    width: 100%;
+  }
+  ul.bullets li{
+    font-size: clamp(1.05rem, 2vw, 1.5rem);
+    line-height: 1.6;
+    padding: 1rem 1.4rem;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-left: 3px solid var(--gold);
+    border-radius: 6px;
+    text-align: left;
+  }
+  ul.bullets li .small{
+    display:block; margin-top:0.35rem; font-size:0.85rem; color: var(--muted); font-weight:400;
+  }
+
+  ul.bullets.plain{ gap: 0.9rem; align-items: center; }
+  ul.bullets.plain li{
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: center;
+    font-size: clamp(1.15rem, 2.2vw, 1.65rem);
+  }
+
+  .statement{
+    font-size: clamp(1.6rem, 4vw, 2.7rem);
+    line-height: 1.75;
+    font-weight: 700;
+  }
+  .statement .accent{ color: var(--gold); }
+  .statement .plum{ color: var(--plum); }
+  .statement-note{
+    margin-top: 1.8rem;
+    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+    color: var(--muted);
+    line-height: 1.8;
+  }
+  .statement-pre{
+    margin-bottom: 1.2rem;
+    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+    color: var(--gold-soft);
+    letter-spacing: 0.15em;
+  }
+
+  .quote-mark{ font-size: 3rem; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; font-family: serif; }
+
+  .steps{
+    display:flex; flex-direction:column; gap: 1rem; width:100%;
+  }
+  .step{
+    display:flex; align-items:center; gap:1.2rem;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    text-align:left;
+  }
+  .step .num{
+    flex-shrink:0;
+    width: 2.4rem; height:2.4rem;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background: linear-gradient(135deg, var(--gold), var(--plum));
+    color: #fdfdf9;
+    font-weight:700;
+    font-size:1.1rem;
+  }
+  .step .txt{ font-size: clamp(0.95rem, 1.8vw, 1.25rem); line-height:1.55; }
+  .step .txt .small{ display:block; font-size:0.8rem; color:var(--muted); margin-top:0.3rem; }
+  .step-arrow{ color: var(--gold-soft); font-size:1.2rem; text-align:center; }
+
+  .pyramid{
+    display:flex; flex-direction:column; gap:0.65rem; width:100%; align-items:center;
+  }
+  .prow{
+    padding: 0.75rem 1.2rem;
+    border-radius: 8px;
+    font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+    background: var(--card);
+    border: 1px solid var(--card-border);
+  }
+  .prow .label{ font-size:0.72rem; color:var(--gold-soft); letter-spacing:0.15em; display:block; margin-bottom:0.3rem; }
+  .prow.narrow{ width: 46%; border-left:3px solid var(--gold); }
+  .prow.wide{ width: 92%; border-left:3px solid var(--muted); }
+  .prow.plain{
+    background:none; border:none; border-radius:0; border-left:none;
+    padding: 0.45rem 0;
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+  }
+  .prow.plain .label{ font-size:0.85rem; color:var(--plum); font-weight:600; }
+
+  .compare{
+    display:flex; gap: 2.5rem; justify-content:center; width:100%; flex-wrap:wrap;
+  }
+  .compare .card{
+    flex:1; min-width: 240px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+  }
+  .compare .card .label{ font-size:0.9rem; color:var(--muted); margin-bottom:0.8rem; }
+  .compare .card .num{ font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight:800; }
+  .compare .card.hi .num{ color: var(--gold); }
+  .compare .vs{ align-self:center; color:var(--muted); font-size:1.2rem; }
+
+  .imgpair{
+    display:flex; gap: 2rem; justify-content:center; width:100%; flex-wrap:wrap;
+  }
+  .imgpair .col{
+    flex:1; min-width: 220px; max-width: 380px;
+    display:flex; flex-direction:column; align-items:center; gap: 0.9rem;
+  }
+  .imgpair .col .label{
+    font-size:0.85rem; letter-spacing:0.1em; color: var(--muted);
+  }
+  .imgpair .col img{
+    width:100%; max-height: 46vh;
+    object-fit: contain;
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    background: var(--card);
+  }
+  .imgpair .col.big{ max-width: 550px; }
+  .imgpair .col.big img{ max-height: 65vh; }
+
+  .imgpair.vertical{ flex-direction: column; align-items:center; }
+
+  .imgpair.large{ gap: 0.8rem; }
+  .imgpair.large .col{ max-width: 1200px; }
+  .imgpair.large .col img{ max-height: 98vh; }
+
+  .single-img{ width:100%; display:flex; align-items:center; justify-content:center; }
+  .single-img img{
+    max-width: 100%; max-height: 88vh;
+    object-fit: contain;
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    background: var(--card);
+  }
+
+  .dialogue{
+    display:flex; flex-direction:column; gap:1.4rem; width:100%;
+  }
+  .dbox{
+    text-align:left;
+    padding: 1.1rem 1.4rem;
+    border-radius: 8px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+  }
+  .dbox .who{ font-size:0.75rem; letter-spacing:0.15em; color:var(--muted); margin-bottom:0.5rem; }
+  .dbox.bad{ border-left:3px solid var(--rose); }
+  .dbox.good{ border-left:3px solid var(--gold); }
+  .dbox p{ font-size: clamp(0.95rem, 1.7vw, 1.15rem); line-height:1.7; }
+
+  .closing .title{ font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight:800; }
+  .closing .note{ margin-top:1.6rem; color:var(--muted); font-size:1rem; line-height:1.9; }
+
+  /* nav */
+  #progress{
+    position: fixed; top:0; left:0; height:2px;
+    background: linear-gradient(90deg, var(--gold), var(--plum));
+    z-index: 5; transition: width 0.3s ease;
+  }
+  #counter{
+    position: fixed; bottom: 1.6rem; right: 1.8rem;
+    font-size: 0.8rem; color: var(--muted);
+    letter-spacing: 0.1em; z-index: 5;
+    font-variant-numeric: tabular-nums;
+  }
+  #counter .cur{ color: var(--gold); }
+
+  .navhint{
+    position: fixed; bottom: 1.6rem; left: 1.8rem;
+    font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; z-index:5;
+  }
+
+  .arrowbtn{
+    position: fixed; top:50%; transform: translateY(-50%);
+    width: 42px; height:42px; border-radius:50%;
+    background: rgba(60,90,50,0.05);
+    border: 1px solid rgba(60,90,50,0.14);
+    color: var(--ivory);
+    display:flex; align-items:center; justify-content:center;
+    font-size: 1.1rem; z-index: 5; cursor:pointer;
+    transition: background 0.2s ease, opacity 0.2s ease;
+    opacity: 0.55;
+  }
+  .arrowbtn:hover{ background: rgba(111,156,95,0.18); opacity:1; }
+  #prevBtn{ left: 1.6rem; }
+  #nextBtn{ right: 1.6rem; }
+
+  @media (max-width: 640px){
+    .arrowbtn{ display:none; }
+    #stage{ padding: 8vw 6vw; }
+    .compare{ gap:1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="glow glow-gold"></div>
+<div class="glow glow-plum"></div>
+
+<div id="progress" style="width:0%"></div>
+<div id="stage"></div>
+<div class="navhint">← → または クリックで進む</div>
+<div id="counter"><span class="cur">1</span> / <span class="total"></span></div>
+<div class="arrowbtn" id="prevBtn">‹</div>
+<div class="arrowbtn" id="nextBtn">›</div>
+
+<script>
+const SLIDES = [
+  { type:'title',
+    tag:'SNS占い集客セミナー',
+    title:['待たずに','<span class="accent">獲りにいく。</span>'],
+    sub:'インスタ&スレッズ集客モデル' },
+
+  { type:'bullets',
+    heading:'今日お伝えすること',
+    plain:true,
+    items:[
+      'HPとかを作って<b>待つ型</b>ではなく',
+      'ココナラとかで<b>待つ型</b>ではなく',
+      '積極的に<span style="color:var(--gold)">お客様を捕まえにいく型</span>のやり方'
+    ] },
+
+  { type:'statement',
+    text:'占いの数を<span class="accent">こなしたい</span>&<br>占いで<span class="accent">売上を上げたい</span>人へ' },
+
+  { type:'statement',
+    text:'これから、<span class="accent">1つのモデルケース</span>を<br>お話しします。',
+    note:'最高というわけでもないし、絶対やれとも言いません。<br>でも、他と比べてかなり速く・比較的簡単に結果を出せる方法です。' },
+
+  { type:'bullets',
+    heading:'まず、心構えだけ',
+    plain:true,
+    items:[
+      '自分に合わないと思ったらやらなくてOK',
+      'まずは<b>インストールだけ</b>、何も考えずにしてください',
+      '途中で嫌な事を言うかもしれませんが、<br><br><span style="color:var(--gold)">一度受け入れてみて</span>ください'
+    ] },
+
+  { type:'statement',
+    text:'僕がやっている方法は<br><span class="accent">インスタ&スレッズ集客</span>です。' },
+
+  { type:'imagepair',
+    heading:'スレッズって知ってますか？',
+    left:{ label:'Instagram', src:'インスタ.png' },
+    right:{ label:'Threads', src:'スレッズ.png', big:true },
+    note:'インスタは<span style="color:var(--gold)">画像や動画</span>、スレッズは主に<span style="color:var(--plum)">文章</span>でみなさん交流しています' },
+
+  { type:'steps',
+    heading:'やり方はとってもシンプル',
+    items:[
+      'インスタでリール動画を投稿して、コメントで無料鑑定を集める',
+      'スレッズに投稿して無料鑑定を集める',
+      '無料鑑定を受けてくださった方に有料鑑定をオファーする'
+    ] },
+
+  { type:'statement',
+    quote:true,
+    pretext:'注意点',
+    text:'完璧に<span class="accent">真似しない</span>と<br>うまくいかない。',
+    note:'シンプル故にごまかしが効かない。料理と同じなんです。' },
+
+  { type:'bullets',
+    heading:'ココナラやメルカリを見たことありますか？',
+    plain:true,
+    items:[
+      '上位の人も、中位の人も、大体同じ様な事を言っている',
+      'つまり売れる人には売れる<span style="color:var(--gold)">「型」</span>がある',
+      '型に沿えば、自分も比較的楽に売上を上げられる'
+    ] },
+
+  { type:'image', src:'プラチナ.png' },
+  { type:'image', src:'プラチナ2.png' },
+  { type:'image', src:'ゴールド.png' },
+  { type:'image', src:'初心者.png' },
+
+  { type:'steps',
+    heading:'守破離という言葉を知っていますか？',
+    arrows:true,
+    items:[
+      '守 — まずはお師匠さんの言うことを守る',
+      '破 — 次の段階でそれを破る',
+      '離 — お師匠さんから離れて、自分の道を見つける'
+    ] },
+
+  { type:'bullets',
+    heading:'これが副業で成果を出すために<br>一番最初にインストールしておいてほしい気持ちです',
+    items:[
+      'うまくやっている人の事を真似する',
+      'うまくやっている人がやっている様にやる',
+      'オリジナリティーを出さない',
+      '自分なり、自分らしさを一旦捨てる'
+    ],
+    note:'そんな気持ちもぜひ持ってください。' },
+
+  { type:'bullets',
+    heading:'でも、鑑定の中身まで一緒である必要はない',
+    items:[
+      '<span style="color:var(--gold)">芯</span>の部分（男女関係・お仕事・家族・不倫など）は独自性を出してOK',
+      '<span style="color:var(--plum)">側</span>の部分は、徹底的に世の中が求めているものを意識する'
+    ] },
+
+  { type:'steps',
+    heading:'基本の流れ',
+    items:[
+      'スレッズで伸びる型の投稿をする',
+      'スレッズで無料鑑定の募集をする（インスタDM or 公式LINE）',
+      'お客様から情報を頂いて、無料で鑑定する',
+      '鑑定文を文章で送る（AI活用OK）、有料鑑定のオファーを入れる',
+      '有料鑑定の中にアップセルのオファーを入れる'
+    ] },
+
+  { type:'bullets',
+    heading:'皆さんの認識と違うところ',
+    plain:true,
+    items:[
+      '<span style="font-size:1.35em; color:var(--gold)">「最初に無料である程度鑑定すること」</span>',
+      'とにかく数を集めたいなら<b>無料が一番</b>'
+    ],
+    note:'無料で経験やレビューを集めると、占い師としての経験・自信につながる。<br>（悪い話、無料でやったら多少外してもいいんです）' },
+
+  { type:'statement',
+    pretext:'ここから',
+    text:'具体的に<span class="accent">どんなアカウント</span>を作って<br>どんな投稿をするのか<br>一緒にみていきましょう。' },
+
+  { type:'statement',
+    quote:true,
+    pretext:'もう一度',
+    text:'完璧に<span class="accent">真似しない</span>と<br>うまくいかない。' },
+
+  { type:'bullets',
+    heading:'どんなアカウントを作るか',
+    items:[
+      '紫微斗数ができる人としてのアカウントは<span style="color:var(--rose)">おすすめしない</span>',
+      '霊視・スピリチュアル・オーラなど、見えない力を持つ人が<span style="color:var(--gold)">大衆受け</span>する',
+      '理由はシンプル — 楽に売上をあげるため'
+    ] },
+
+  { type:'pyramid',
+    heading:'世の一般女性が知っている占いは？',
+    plain:true,
+    rows:[
+      { label:'誰でも知ってる', text:'星座占い・血液型占い・干支占い・おみくじ', w:'wide' },
+      { label:'詳しい人でも', text:'動物占い', w:'wide' },
+      { label:'ハマっている人で', text:'タロット・ホロスコープ', w:'narrow' },
+      { label:'本当に詳しい人だけ', text:'四柱推命・紫微斗数・数秘術', w:'narrow' }
+    ],
+    note:'紫微斗数のアカウントを作った時点で、相手にするお客様がかなり狭くなってしまいます。' },
+
+  { type:'compare',
+    heading:'業界の規模を比べてみる',
+    left:{ label:'占い業界（年間）', num:'977億円', img:'占い.jpg' },
+    right:{ label:'スピリチュアル業界（年間）', num:'4.2兆円', hi:true, img:'スピリチュアル.jpg' },
+    note:'ここからみても、スピリチュアルでスタートすることをおすすめします。' },
+
+  { type:'statement',
+    text:'表面は<span class="plum">スピリチュアル</span>なパワー<br>内面は<span class="accent">紫微斗数</span>を使った精緻な分析',
+    note:'あやしいスピリチュアルな人ではなく、ちゃんとした人になれます。<br>実績がついたら紫微斗数を出してもOK。<br>最初から出すのはおすすめしません。' },
+
+  { type:'dialogue',
+    heading:'紫微斗数、実は可愛くないんです',
+    boxes:[
+      { who:'紫微斗数トーク（NG）', text:'命宮に七殺があって…父母宮に火星があるから…子女宮に化忌があるので…', bad:true },
+      { who:'求められているトーク（OK）', text:'自立心が強いんですね〜。<br>とってもモテるんですけど、関係が続きにくい…<br>でも◯◯したら長続きする彼氏と出会えますよ', bad:false }
+    ],
+    note:'専門用語ではなく、結論と対策を知りたいのです。' },
+
+  { type:'statement',
+    text:'目的地は、<br><span class="accent">お客様を応援すること。</span>',
+    note:'スピリチュアルも紫微斗数も、目的地は一緒。<br>なぞの力を出すか、<br>命盤から視えることを伝えるか、<br>手段が違うだけです。' },
+
+  { type:'bullets',
+    heading:'まずはスピリチュアルなアカウントを作る',
+    items:[] },
+
+  { type:'imagegroup',
+    vertical:true, big:true,
+    items:['スレッズアカウント1.png','スレッズアカウント2.png'] },
+
+  { type:'imagegroup',
+    vertical:true, big:true,
+    items:['スレッズアカウント3.png','スレッズアカウント4.png'] },
+
+  { type:'bullets',
+    heading:'投稿で大事なこと',
+    plain:true,
+    items:[
+      '<span style="color:var(--gold)">インプレッションを集める投稿</span>をすること',
+      'そこにも「型」がある',
+      'その型を徹底的に真似する'
+    ] },
+
+  { type:'imagegroup',
+    vertical:true,
+    items:['投稿例1.png','投稿例2.png'] },
+
+  { type:'imagegroup',
+    vertical:true,
+    items:['投稿例3.png','投稿例4.png'] },
+
+  { type:'steps',
+    heading:'無料鑑定の募集〜鑑定結果まで',
+    items:[
+      '無料鑑定を募集する'
+    ],
+    images:['ルナ1.png','ルナ2.png','ルナ3.png'] },
+
+  { type:'steps',
+    startNum:2,
+    items:[
+      'インスタDMか公式LINEに誘導し、お客様の個人情報を聞く'
+    ],
+    images:['具体的相談.jpg'],
+    imagesBig:true },
+
+  { type:'steps',
+    startNum:3,
+    items:[
+      '紫微斗数で占いを行う'
+    ],
+    images:['紫微斗数.png'],
+    imagesBig:true },
+
+  { type:'steps',
+    startNum:4,
+    items:[
+      '鑑定結果をお客様に返す（鑑定文はAIと伴走しながら作成）'
+    ],
+    images:['鑑定結果.png'],
+    imagesBig:true,
+    note:'生年月日は分かっても、出生時間が分からないお客様も多いので、対応はごう先生にアドバイスをもらってください。' },
+
+  { type:'imagegroup',
+    vertical:true,
+    items:['売れた.jpg','売れた2.jpg'] },
+
+  { type:'closing',
+    title:'これで一連の流れをお伝えしました',
+    note:'ここから先、具体的にやることはまだ色々あります。<br>興味がある方が多ければ、追加のセミナーも検討します。<br><br><span style="font-size:1.3em">感想や質問、ぜひたくさんお聞かせください！</span>' }
+];
+
+let idx = 0;
+const stage = document.getElementById('stage');
+const total = SLIDES.length;
+document.querySelector('.total').textContent = total;
+
+function esc(s){ return s; }
+
+function renderSlide(s){
+  const wrap = document.createElement('div');
+  wrap.className = 'slide active';
+
+  if(s.type === 'title'){
+    wrap.innerHTML = `
+      <div class="tag">${s.tag}</div>
+      <h1 class="title serif">${s.title.join('<br>')}</h1>
+      <h2 class="sub">${s.sub}</h2>`;
+  }
+  else if(s.type === 'bullets'){
+    wrap.innerHTML = `
+      ${s.heading ? `<div class="heading serif">${s.heading}</div>` : ''}
+      <ul class="bullets${s.plain ? ' plain' : ''}">
+        ${s.items.map(it => `<li>${it}</li>`).join('')}
+      </ul>
+      ${s.note ? `<div class="statement-note">${s.note}</div>` : ''}`;
+  }
+  else if(s.type === 'statement'){
+    wrap.innerHTML = `
+      ${s.pretext ? `<div class="statement-pre">${s.pretext}</div>` : ''}
+      <div class="statement serif">${s.text}</div>
+      ${s.note ? `<div class="statement-note">${s.note}</div>` : ''}`;
+  }
+  else if(s.type === 'steps'){
+    wrap.innerHTML = `
+      ${s.heading ? `<div class="heading serif">${s.heading}</div>` : ''}
+      <div class="steps">
+        ${s.items.map((it,i) => `
+          <div class="step">
+            <div class="num">${(s.startNum || 1)+i}</div>
+            <div class="txt">${it}</div>
+          </div>`).join(s.arrows ? '<div class="step-arrow">↓</div>' : '')}
+      </div>
+      ${s.images ? `<div class="imgpair" style="margin-top:1.6rem">${s.images.map(src => `<div class="col${s.imagesBig ? ' big' : ''}"><img src="${src}" alt=""></div>`).join('')}</div>` : ''}
+      ${s.note ? `<div class="statement-note">${s.note}</div>` : ''}`;
+  }
+  else if(s.type === 'pyramid'){
+    wrap.innerHTML = `
+      ${s.heading ? `<div class="heading serif">${s.heading}</div>` : ''}
+      <div class="pyramid">
+        ${s.rows.map(r => `
+          <div class="prow ${r.w}${s.plain ? ' plain' : ''}">
+            <span class="label">${r.label}</span>
+            ${r.text}
+          </div>`).join('')}
+      </div>
+      ${s.note ? `<div class="statement-note">${s.note}</div>` : ''}`;
+  }
+  else if(s.type === 'compare'){
+    wrap.innerHTML = `
+      ${s.heading ? `<div class="heading serif">${s.heading}</div>` : ''}
+      <div class="compare">
+        <div class="card"><div class="label">${s.left.label}</div><div class="num">${s.left.num}</div></div>
+        <div class="vs">VS</div>
+        <div class="card hi"><div class="label">${s.right.label}</div><div class="num">${s.right.num}</div></div>
+      </div>
+      ${(s.left.img || s.right.img) ? `
+      <div class="imgpair" style="margin-top:1.6rem">
+        ${s.left.img ? `<div class="col"><img src="${s.left.img}" alt=""></div>` : ''}
+        ${s.right.img ? `<div class="col"><img src="${s.right.img}" alt=""></div>` : ''}
+      </div>` : ''}
+      ${s.note ? `<div class="statement-note">${s.note}</div>` : ''}`;
+  }
+  else if(s.type === 'imagepair'){
+    wrap.innerHTML = `
+      ${s.heading ? `<div class="heading serif">${s.heading}</div>` : ''}
+      <div class="imgpair${s.large ? ' large' : ''}">
+        <div class="col${s.left.big ? ' big' : ''}"><img src="${s.left.src}" alt="${s.left.label}"><div class="label">${s.left.label}</div></div>
+        <div class="col${s.right.big ? ' big' : ''}"><img src="${s.right.src}" alt="${s.right.label}"><div class="label">${s.right.label}</div></div>
+      </div>
+      ${s.note ? `<div class="statement-note">${s.note}</div>` : ''}`;
+  }
+  else if(s.type === 'image'){
+    wrap.innerHTML = `
+      ${s.heading ? `<div class="heading serif">${s.heading}</div>` : ''}
+      <div class="single-img"><img src="${s.src}" alt=""></div>
+      ${s.note ? `<div class="statement-note">${s.note}</div>` : ''}`;
+  }
+  else if(s.type === 'imagegroup'){
+    wrap.innerHTML = `
+      ${s.heading ? `<div class="heading serif">${s.heading}</div>` : ''}
+      <div class="imgpair${s.vertical ? ' vertical' : ''}">
+        ${s.items.map(src => `<div class="col${s.big ? ' big' : ''}"><img src="${src}" alt=""></div>`).join('')}
+      </div>
+      ${s.note ? `<div class="statement-note">${s.note}</div>` : ''}`;
+  }
+  else if(s.type === 'dialogue'){
+    wrap.innerHTML = `
+      ${s.heading ? `<div class="heading serif">${s.heading}</div>` : ''}
+      <div class="dialogue">
+        ${s.boxes.map(b => `
+          <div class="dbox ${b.bad ? 'bad' : 'good'}">
+            <div class="who">${b.who}</div>
+            <p>${b.text}</p>
+          </div>`).join('')}
+      </div>
+      ${s.note ? `<div class="statement-note">${s.note}</div>` : ''}`;
+  }
+  else if(s.type === 'closing'){
+    wrap.innerHTML = `
+      <div class="closing">
+        <div class="title serif">${s.title}</div>
+        <div class="divider"></div>
+        <div class="note">${s.note}</div>
+      </div>`;
+  }
+  return wrap;
+}
+
+function show(i){
+  idx = Math.max(0, Math.min(total - 1, i));
+  stage.innerHTML = '';
+  stage.appendChild(renderSlide(SLIDES[idx]));
+  document.querySelector('.cur').textContent = idx + 1;
+  document.getElementById('progress').style.width = ((idx+1)/total*100) + '%';
+}
+
+function next(){ if(idx < total-1) show(idx+1); }
+function prev(){ if(idx > 0) show(idx-1); }
+
+document.body.addEventListener('click', (e) => {
+  if(e.target.closest('.arrowbtn')) return;
+  const x = e.clientX / window.innerWidth;
+  if(x < 0.3) prev(); else next();
+});
+
+document.getElementById('nextBtn').addEventListener('click', (e) => { e.stopPropagation(); next(); });
+document.getElementById('prevBtn').addEventListener('click', (e) => { e.stopPropagation(); prev(); });
+
+window.addEventListener('keydown', (e) => {
+  if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)) next();
+  else if(['ArrowLeft','ArrowUp','Backspace','PageUp'].includes(e.key)) prev();
+});
+
+show(0);
+</script>
+</body>
+</html>
