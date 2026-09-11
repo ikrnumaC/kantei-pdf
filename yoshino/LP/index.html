@@ -1,0 +1,497 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>星詠み霊視鑑定</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --midnight:#06081a; --gold:#c9a961; --gold-lit:#f2e3b6;
+  --paper:#e8e0cd; --dim:#9a9ab5; --line:#06C755;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--midnight);color:var(--paper);
+  font-family:"Zen Kaku Gothic New",system-ui,sans-serif;line-height:1.9;overflow-x:hidden}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(1.4px 1.4px at 12% 18%,#fff8,transparent),
+    radial-gradient(1.2px 1.2px at 78% 12%,#fff6,transparent),
+    radial-gradient(1.6px 1.6px at 34% 62%,#fff5,transparent),
+    radial-gradient(1.1px 1.1px at 88% 48%,#fff7,transparent),
+    radial-gradient(1.3px 1.3px at 55% 88%,#fff4,transparent),
+    radial-gradient(1.2px 1.2px at 66% 34%,#fff5,transparent),
+    radial-gradient(900px 600px at 50% -10%,#1d2350,transparent);
+}
+main{position:relative;z-index:1}
+.wrap{width:min(880px,92vw);margin-inline:auto}
+
+/* ── 導入 ───────────────── */
+.opening{min-height:100svh;display:grid;place-content:center;text-align:center;padding:7vh 0 6vh}
+.brand{font-family:"Shippori Mincho",serif;font-size:.9rem;font-weight:600;letter-spacing:.55em;color:var(--gold);
+  margin-bottom:2.6rem;text-indent:.55em;text-shadow:0 0 18px #c9a96155}
+.lead{font-family:"Shippori Mincho",serif;font-size:clamp(1.9rem,7vw,3.1rem);
+  font-weight:800;line-height:1.7;margin-bottom:1.6rem;letter-spacing:.02em;
+  background:linear-gradient(180deg,#fff6da,#f2e3b6 45%,#c9a961);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 20px #c9a96144)}
+.lead em{font-style:normal;-webkit-text-fill-color:var(--gold-lit);color:var(--gold-lit)}
+.lead-sub{color:#c9c5dc;font-size:1.05rem;line-height:1.95;max-width:30em;margin-inline:auto;white-space:pre-line}
+
+/* ステップ共通 */
+.step{transition:opacity .6s,transform .6s}
+.step.hidden{display:none}
+.step-head{font-family:"Shippori Mincho",serif;font-size:1.3rem;font-weight:700;color:var(--gold-lit);margin:3.4rem 0 2rem;text-shadow:0 0 20px #c9a96133}
+.step-head small{display:block;color:var(--dim);font-size:.82rem;letter-spacing:.12em;margin-top:.6rem;text-shadow:none}
+
+/* ── 三つの扉 ───────────────── */
+.deck{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,2.2vw,20px);perspective:1600px}
+.card{border:0;padding:0;background:none;cursor:pointer;display:block;text-align:center;
+  transform:translateY(40px);opacity:0;
+  transition:transform .7s cubic-bezier(.2,.8,.25,1),opacity .6s;transition-delay:var(--d)}
+.deck.dealt .card{transform:none;opacity:1}
+.card-inner{position:relative;width:100%;aspect-ratio:2/3;transform-style:preserve-3d;
+  transition:transform .85s cubic-bezier(.4,.1,.2,1)}
+.cap{font-family:"Shippori Mincho",serif;font-size:.92rem;color:var(--paper);
+  margin-top:.9rem;line-height:1.6}
+.cap small{display:block;font-family:"Zen Kaku Gothic New",sans-serif;
+  color:var(--dim);font-size:.74rem;margin-top:.25rem;line-height:1.7}
+.deck.picked .cap{opacity:0;transition:opacity .4s}
+.deck.picked .chosen .cap{opacity:1;color:var(--gold-lit)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:8px;
+  border:1px solid var(--el);box-shadow:0 10px 30px #0009,inset 0 0 40px #0006;
+  background-size:cover;background-position:center;overflow:hidden}
+.back{background-image:var(--img);background-color:#160d28}
+.back.noimg{background:
+    repeating-linear-gradient(45deg,#ffffff0a 0 6px,transparent 6px 12px),
+    radial-gradient(120% 90% at 50% 20%,color-mix(in srgb,var(--el) 28%,transparent),transparent 70%),
+    linear-gradient(160deg,#1d1430,#0d0a1c 65%,#191128)}
+.back.noimg::before{content:"";position:absolute;inset:9px;
+  border:1px solid color-mix(in srgb,var(--el) 55%,transparent);border-radius:4px}
+.back.noimg::after{content:"✦";position:absolute;inset:0;display:grid;place-content:center;
+  color:var(--el);font-size:1.3rem;text-shadow:0 0 16px var(--el);opacity:.9}
+.front{transform:rotateY(180deg);background-image:var(--imgFront);background-color:#0d0a1c;
+  display:grid;place-content:center;gap:.4rem;font-family:"Shippori Mincho",serif;padding:.6rem}
+.front.noimg{background:
+    radial-gradient(110% 80% at 50% 25%,color-mix(in srgb,var(--star) 42%,transparent),transparent 72%),
+    linear-gradient(165deg,#241a34,#0d0a1c)}
+.front .mark{font-size:clamp(1.7rem,3.6vw,2.3rem);line-height:1;color:var(--star);
+  text-shadow:0 0 24px var(--star)}
+.front .nm{font-size:.82rem;letter-spacing:.2em;color:var(--paper);text-indent:.2em}
+.deck.dealt .card:hover,.deck.dealt .card:focus-visible{transform:translateY(-16px);transition-delay:0s;outline:none}
+.deck.dealt .card:focus-visible .face{box-shadow:0 0 0 2px var(--gold-lit),0 10px 30px #0009}
+.deck.picked .card{pointer-events:none}
+.deck.picked .card:not(.chosen){opacity:.14;transform:scale(.92);transition-delay:0s}
+.card.chosen .card-inner{transform:rotateY(180deg);transition-delay:.15s}
+.card.chosen .face{box-shadow:0 0 34px color-mix(in srgb,var(--star) 60%,transparent),0 10px 30px #0009}
+
+/* ── 生年月日 ───────────────── */
+.birth{max-width:31em;margin-inline:auto}
+.fields{display:flex;justify-content:center;align-items:flex-end;gap:.6rem;flex-wrap:wrap}
+.field{display:flex;align-items:baseline;gap:.35rem}
+.field input,.field select{
+  font-family:"Shippori Mincho",serif;font-size:1.05rem;color:var(--paper);
+  background:#ffffff0d;border:1px solid #ffffff26;border-radius:4px;
+  padding:.6rem .7rem;text-align:center;appearance:none}
+.field input{width:6.2rem}
+.field select{width:4.6rem}
+.field input:focus,.field select:focus{outline:2px solid var(--gold);outline-offset:1px}
+.field select option{background:#12142c;color:var(--paper)}
+.field span{color:var(--dim);font-size:.85rem}
+.submit{margin-top:2rem;font-family:"Shippori Mincho",serif;font-size:1.1rem;font-weight:700;letter-spacing:.2em;
+  color:#1a1023;background:linear-gradient(180deg,#f9ecc4,#c9a961);border:0;border-radius:999px;
+  padding:1.05rem 3.2rem;cursor:pointer;box-shadow:0 10px 32px #c9a96155;
+  transition:transform .2s,box-shadow .3s}
+.submit:hover,.submit:focus-visible{transform:translateY(-2px);box-shadow:0 12px 44px #c9a96177}
+.err{color:#e39191;font-size:.82rem;margin-top:.9rem;min-height:1.4em}
+.privacy{color:var(--dim);font-size:.74rem;margin-top:1rem}
+
+/* ── 結果 ───────────────── */
+.reading{max-width:33em;margin:2.4rem auto 0}
+.deck.picked .chosen{transform:scale(1.04)}
+.deck.picked .chosen .cap{color:var(--gold-lit)}
+.teaser{font-size:1.05rem;text-align:center;line-height:2;white-space:pre-line}
+.hook{font-size:1.05rem;text-align:center;margin-top:1.2rem;padding-top:1.2rem;
+  border-top:1px solid #c9a96133;color:var(--gold-lit);line-height:2;white-space:pre-line}
+.locked{position:relative;margin-top:.4rem;border:1px solid #c9a96133;border-radius:10px;
+  background:linear-gradient(180deg,#ffffff0d,transparent);padding:1.9rem 1.6rem;text-align:left;
+  box-shadow:0 14px 34px #00000055}
+.locked::before,.locked::after{content:"";position:absolute;width:22px;height:22px;
+  border:2px solid var(--gold);opacity:.75;pointer-events:none}
+.locked::before{top:-2px;left:-2px;border-right:0;border-bottom:0}
+.locked::after{bottom:-2px;right:-2px;border-left:0;border-top:0}
+.locked .blur{filter:blur(1.6px);opacity:.85;user-select:none;font-size:1.02rem;line-height:2.15;white-space:pre-line}
+.locked .veil{position:absolute;inset:0;display:grid;align-content:end;justify-items:center;gap:.4rem;
+  padding-bottom:1.5rem;
+  background:linear-gradient(180deg,#06081a00 0%,#06081a00 46%,#06081a99 78%,#06081ae8 100%)}
+.locked .veil span{font-family:"Shippori Mincho",serif;color:var(--gold-lit);font-size:1.1rem;font-weight:700}
+.locked .veil small{color:var(--dim);font-size:.8rem}
+
+/* ── LINE CTA ───────────────── */
+.line-cta{text-align:center;margin:2.8rem auto 0;max-width:34em}
+.line-cta p{color:var(--dim);font-size:.94rem;margin-bottom:1.3rem}
+.line-btn{position:relative;display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;
+  background:var(--line);color:#fff;font-weight:700;font-size:1.1rem;letter-spacing:.06em;
+  padding:1.1rem 2.8rem;border-radius:999px;box-shadow:0 10px 34px #06c75550;
+  transition:transform .2s,box-shadow .3s}
+.line-btn:hover,.line-btn:focus-visible{transform:translateY(-2px);box-shadow:0 12px 42px #06c75577}
+.line-btn svg{width:22px;height:22px;fill:#fff;flex:none}
+.line-note{color:var(--dim);font-size:.78rem;margin-top:1.1rem}
+
+/* ── 本文 ───────────────── */
+section{padding:10vh 0}
+.h{font-family:"Shippori Mincho",serif;font-weight:800;
+  font-size:clamp(1.6rem,5vw,2.3rem);text-align:center;margin-bottom:1rem;letter-spacing:.03em;
+  padding:1rem 1rem;border-radius:8px;color:var(--gold-lit);
+  background:linear-gradient(90deg,#06081a00,#1d2350cc 18%,#2a2f66cc 50%,#1d2350cc 82%,#06081a00)}
+.h-sub{text-align:center;color:var(--dim);font-size:.95rem;margin-bottom:3.4rem}
+.grid{display:grid;gap:1.4rem;grid-template-columns:repeat(2,1fr)}
+.topic{position:relative;border-radius:12px;overflow:hidden;box-shadow:0 14px 34px #00000055;
+  border:1px solid #ffffff14}
+.topic-tag{position:absolute;top:0;left:0;font-family:"Shippori Mincho",serif;font-weight:800;
+  font-size:.8rem;letter-spacing:.06em;color:#241a10;
+  background:linear-gradient(180deg,#f9ecc4,#c9a961);
+  padding:.32rem 1.1rem .32rem 1rem;border-radius:0 0 10px 0;box-shadow:0 4px 10px #0005}
+.topic h3{font-family:"Shippori Mincho",serif;font-size:1.22rem;color:#fff;font-weight:700;
+  padding:2.3rem 1.5rem .9rem;margin:0}
+.topic ul{list-style:none;font-size:.94rem;color:#f1eee2cc;padding:0 1.5rem 1.6rem}
+.topic li{padding-left:1.2em;text-indent:-1.2em;margin-bottom:.55rem;line-height:1.7}
+.topic li::before{content:"—　";color:#f2e3b6}
+.topic-love{background:linear-gradient(165deg,#6b2c4c,#2c1220 78%)}
+.topic-self{background:linear-gradient(165deg,#20456b,#0f1e30 78%)}
+.topic-turn{background:linear-gradient(165deg,#245a3e,#0e2418 78%)}
+.topic-life{background:linear-gradient(165deg,#5c4318,#241b0a 78%)}
+.voices{display:grid;gap:1.7rem;max-width:44em;margin-inline:auto}
+.voice{position:relative;border:1px solid #c9a96133;border-radius:12px;
+  background:linear-gradient(160deg,#4a381c88,#1c190e88);
+  box-shadow:0 14px 34px #00000055;padding:1.7rem 1.8rem}
+.voice p{font-size:1.03rem;line-height:2;white-space:pre-line;color:#f5f1e4}
+.voice cite{display:block;margin-top:.9rem;color:var(--gold-lit);font-size:.85rem;font-weight:600;font-style:normal}
+
+@media(max-width:420px){ .front .nm{font-size:.72rem;letter-spacing:.12em} }
+@media(max-width:480px){ .grid{grid-template-columns:1fr} }
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}html{scroll-behavior:auto}}
+</style>
+
+<main>
+<section class="opening wrap">
+  <p class="brand">星詠み霊視鑑定</p>
+  <h1 class="lead">あなたを導く星と<br><em>未来を霊視します</em></h1>
+  <p class="lead-sub">あなたを導く星は決まっています。
+水星、金星、火星、木星、土星
+あなたの星がどれなのか、
+そしてその動きから
+あなたの未来を見通します</p>
+
+  <!-- STEP 1：生年月日 -->
+  <div class="step" id="step1">
+    <p class="step-head">生まれた日を教えてください。<small>あなたが持って生まれた星を割り出します</small></p>
+    <div class="birth">
+      <div class="fields">
+        <div class="field"><input type="number" id="by" inputmode="numeric" placeholder="1990" min="1900" max="2026" aria-label="生まれた年"><span>年</span></div>
+        <div class="field"><select id="bm" aria-label="生まれた月"></select><span>月</span></div>
+        <div class="field"><select id="bd" aria-label="生まれた日"></select><span>日</span></div>
+      </div>
+      <p class="err" id="err" role="alert"></p>
+      <button class="submit" id="go">次へ進む</button>
+      <p class="privacy">入力された内容は鑑定のためだけに使われます。</p>
+    </div>
+  </div>
+
+  <!-- STEP 2：扉を選ぶ -->
+  <div class="step hidden" id="step2">
+    <p class="step-head">今いちばん知りたいことは、どれですか。<small>一枚めくると、あなたの星が現れます</small></p>
+    <div class="deck" id="deck" role="group" aria-label="三枚から一枚選ぶ"></div>
+  </div>
+
+  <!-- STEP 3：結果 -->
+  <div class="step hidden" id="step3">
+    <div class="reading" aria-live="polite">
+      <p class="teaser" id="r-teaser"></p>
+      <p class="hook" id="r-hook"></p>
+
+      <div class="locked">
+        <p class="blur" id="r-more"></p>
+        <div class="veil">
+          <span>この続きは公式LINEで</span>
+          <small>あなた専用の鑑定文をお届けします</small>
+        </div>
+      </div>
+
+      <div class="line-cta">
+        <a class="line-btn" href="#">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.5 2 2 5.7 2 10.2c0 4 3.6 7.4 8.4 8 .3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6C21.8 13.5 22 11.9 22 10.2 22 5.7 17.5 2 12 2z"/></svg>
+          LINEで結果を受け取る
+        </a>
+        <p class="line-note">友だち追加は無料。ブロックはいつでもできます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2 class="h">この鑑定でお伝えすること</h2>
+  <p class="h-sub">星詠みの力を使うと、次のようなことがわかります</p>
+  <div class="grid">
+    <div class="topic topic-love">
+      <span class="topic-tag">No.01</span>
+      <h3>これからの恋</h3>
+      <ul>
+        <li>その人と続くのか、終わるのか</li>
+        <li>言葉にされていない相手の気持ち</li>
+        <li>次に出会う人はどんな人か</li>
+        <li>もう一度やり直せる余地があるか</li>
+      </ul>
+    </div>
+    <div class="topic topic-self">
+      <span class="topic-tag">No.02</span>
+      <h3>あなたという人</h3>
+      <ul>
+        <li>本当は何を大事にしている人なのか</li>
+        <li>知らないうちに我慢していること</li>
+        <li>人との距離のちょうどいい取り方</li>
+        <li>力を発揮できる場所、削られる場所</li>
+      </ul>
+    </div>
+    <div class="topic topic-turn">
+      <span class="topic-tag">No.03</span>
+      <h3>これから訪れる転機</h3>
+      <ul>
+        <li>流れが変わるのはいつ頃か</li>
+        <li>1年後、あなたは何をしているか</li>
+        <li>今の苦しさが抜ける時期</li>
+        <li>動くべき時と、待つべき時</li>
+      </ul>
+    </div>
+    <div class="topic topic-life">
+      <span class="topic-tag">No.04</span>
+      <h3>これからの人生</h3>
+      <ul>
+        <li>この先どこへ向かうことになるのか</li>
+        <li>生まれ持った役割は何か</li>
+        <li>人生の後半で手にするもの</li>
+        <li>今の選択が10年後どう効いてくるか</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2 class="h">受けた方の声</h2>
+  <p class="h-sub">100名の方に受けて頂きました</p>
+  <div class="voices">
+    <blockquote class="voice">
+      <p>生年月日を入れただけなのに、誰にも言ってない悩みを言い当てられました。
+当たっているというより、頭の中を覗かれたような感覚です。
+今どうすればいいかまで書かれていたので、そのとおりに動いてみようと思います。</p>
+      <cite>30代 女性</cite>
+    </blockquote>
+    <blockquote class="voice">
+      <p>半信半疑で受けたのですが、読み進めるうちに手が止まりました。
+夫との関係も、お金のことも、思い当たることばかりで。
+占いというより、今の自分の状態をそのまま言葉にしてもらった感覚に近いです。</p>
+      <cite>34歳 女性</cite>
+    </blockquote>
+    <blockquote class="voice">
+      <p>占いは好きでよく見てもらうほうですが、ここまで具体的に返ってくるとは思いませんでした。
+今後の人生の指針として、とても役立ちました。
+迷ったらまたお願いします。</p>
+      <cite>40代 男性</cite>
+    </blockquote>
+  </div>
+
+  <div class="line-cta">
+    <a class="line-btn" href="#">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.5 2 2 5.7 2 10.2c0 4 3.6 7.4 8.4 8 .3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6C21.8 13.5 22 11.9 22 10.2 22 5.7 17.5 2 12 2z"/></svg>
+      無料で鑑定を受け取る
+    </a>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* =========================================================
+   1. 設定
+   ========================================================= */
+const LINE_URL = "#";   // ← 公式LINEの友だち追加URLに差し替え
+
+/* 三枚の扉。back に画像URLを入れると裏面が差し替わります（空なら仮デザイン） */
+const DOORS = [
+  {key:"love",   name:"恋愛について",       desc:"好きな人、今の関係のこと",     color:"#c98aa8", back:"伏せ.jpeg"},
+  {key:"work",   name:"仕事とお金について", desc:"働き方、収入、進む場所のこと", color:"#8aa6c9", back:"伏せ.jpeg"},
+  {key:"future", name:"これからの人生",     desc:"生き方、役割、この先のこと",   color:"#c9a961", back:"伏せ.jpeg"}
+];
+
+/* 五つの星。天干10種を2つずつ畳んだもの。img に画像URLを入れると表面が差し替わります */
+const STARS = [
+  {key:"wood", el:"木", name:"木星", sym:"♃", color:"#4f9d69", img:"木星.jpeg"},
+  {key:"fire", el:"火", name:"火星", sym:"♂", color:"#d1533f", img:"火星.jpeg"},
+  {key:"earth", el:"土", name:"土星", sym:"♄", color:"#c69b52", img:"土星.jpeg"},
+  {key:"metal", el:"金", name:"金星", sym:"♀", color:"#cfd3dc", img:"金星.jpeg"},
+  {key:"water", el:"水", name:"水星", sym:"☿", color:"#4a7fb5", img:"水星.jpeg"}
+];
+
+/* 扉 × 星（3×5＝15通り）
+   good … その扉におけるその星の長所
+   hook … 「ただ」で始まり「それはもう視えていて——」で切る引き
+   more … ぼかしの下に見える続き。読ませないが、続きがあることを示す
+   ───────────────────────────────────────── */
+const LINES = {
+  love:{
+    wood:{good:"木星のあなたは、恋を育てられる人です。\n出会った瞬間の熱で走るのではなく、時間をかけて信頼を積み上げていける。\nそばにいるほど手放せない魅力の持ち方です。",
+          hook:"ただ、その育てる力は、待ちすぎる形にも転びやすい。\nあなたが今どちらに傾いているかも、それはもう視えていて——",
+          more:"あなたが動きを変えるべき時期は決まっています。\nそこを過ぎてしまうと、育ててきたものが実らないまま形を変えます。\n今のあなたに必要なのは、待つことでも急ぐことでもなく、"},
+    fire:{good:"火星のあなたは、人を本気にさせる力を持っています。\n好きになれば隠さないし、その正直さが相手を動かす。\n駆け引きの上手さより、熱量で証明していく。",
+          hook:"ただ、その熱は時に相手を焼き尽くす。\n噛み合わないと思ってもそれに気付けない、\nそこからいつも恋が破綻していくのですが——",
+          more:"あなたの熱が正しく届く相手には、共通した特徴があります。\n逆に、どれだけ想っても返ってこない相手の型もはっきりしています。\nその見分け方と、あなたが次に熱を向けるべき時期は、"},
+    earth:{good:"土星のあなたは、安心できる場所になれる人。\n派手さではなく、なんでもない日常が心地良い。\nあなたのそばでは、人は素の自分に戻れます。",
+          hook:"ただ、支える側に回りすぎると、その優しさは重さに変わります。\n重くならない方法はもう視えていて——",
+          more:"あなたが尽くしても返ってこない相手と、返してくれる相手には、はっきりした違いがあります。\nその線をどこに引けば関係が軽くなるのか、そしてあなたが我慢をやめても失われないものが何かは、"},
+    metal:{good:"金星のあなたは、自分の価値を下げない恋ができる人。\n付き合う人をはっきり決めるから、あなたを選ぶ人は本気になる。\n人を見る目も確かです。",
+          hook:"ただ、その目が曇るときが、人生に何度かあります。\nあなたにとってそれがいつなのかも、それはもう視えていて——",
+          more:"曇っているあいだに選んだものは、後になって重さに変わります。\nあなたの目が澄む時期と、そのあいだに手放しておくべきものが何か。\n生まれた日にはそこまで刻まれていて、"},
+    water:{good:"水星のあなたは、言われる前に気持ちを察せる人。\nちょうどいい距離を読めるから、一緒にいて疲れさせない。\nあなたの恋は、こじれにくい。",
+          hook:"ただ、察せる人ほど、言葉にしないまま抱えこむ。\n本当は伝えるべきことについても、それはもう視えていて——",
+          more:"その一言を出す時期を間違えると、あなたの読みの良さがそのまま裏目に出ます。\nいつ、どんな形で伝えれば流れが変わるのか。\nあなたの星が示している答えは、"}
+  },
+  work:{
+    wood:{good:"木星のあなたは、時間をかけて実力を伸ばせる人\n覚えたことを、次に繋げられる。\n数年単位で見たとき、いちばん遠くまで行くのはあなたです。",
+          hook:"ただ、その伸びしろは、置かれる場所によって変わります。\nあなたに合う土がどれかも、それはもう視えていて——",
+          more:"今いる場所であと何年伸びられるのか、それとも移したほうが早いのか。\nその分かれ目になる年と、あなたが根を張り直すのに適した環境の条件は、"},
+    fire:{good:"火星のあなたは、決めて動ける人です。\n人が迷っているうちに一歩目を出せるから、機会を逃さない。\n勢いが要る場面で、あなたの右に出る人はいません。",
+          hook:"ただ、その力は使い方を間違えると続きません。\nあなたの熱が保つ限界も、それはもう視えていて——",
+          more:"走り続けられる期間と、必ず一度止まる時期が交互に来ます。\nその周期を知らないまま動くと、いちばん大事な場面で燃料が切れます。\nあなたの周期がどうなっているかは、"},
+    earth:{good:"土星のあなたは、任せられる人です。\n地味な仕事を投げ出さない。見ている人は必ずいます。\nその積み上げが、最後にしっかり評価される。",
+          hook:"ただ、任される力は、そのまま抱えすぎる形にも転びます。\nあなたが手放していいものが何かも、それはもう視えていて——",
+          more:"積み上げが評価に変わる時期は決まっています。\nそこまでに荷を降ろせているかどうかで、受け取れる大きさが変わります。\nあなたにとってその年がいつで、何から降ろすべきかは、"},
+    metal:{good:"金星のあなたは、質で評価される人です。\n数をこなすより、ひとつを丁寧に仕上げるほうが合っている。\n安売りしない姿勢が、あなたの価値を守ります。",
+          hook:"ただ、選び抜く力は、優柔不断と表裏一体。\nあなたが今どちらに寄っているかも、それはもう視えていて——",
+          more:"絞ったときに伸びるものと、広げたまま抱えると価値が下がるもの。\nあなたの場合はその境目がはっきりしています。\n何を残せば評価と収入が噛み合うのかは、"},
+    water:{good:"水星のあなたは、流れを読める人です。\n変化に人より早く気づき、必要なものが自然と集まってくる。\nだから大きな失敗を踏みません。",
+          hook:"ただ、読める人ほど、動く一歩が遅れます。\nあなたにとっての波の時期も、それはもう視えていて——",
+          more:"流れが変わる合図はすでに出ています。\nただ、あなたが乗れる波と見送るべき波は別物です。\nその違いと、次に来る波がいつなのかは、"}
+  },
+  future:{
+    wood:{good:"木星のあなたは、後半で伸びる人生です。\n早くに完成しないぶん、年を重ねるほど厚みが出る。\n人を育てる側に回ったとき、本来の役割が始まります。",
+          hook:"ただ、その役割に入る前に、一度置いていくものがあります。\nそれが何かも、それはもう視えていて——",
+          more:"置いていく時期を先延ばしにするほど、本来の役割が始まるのが遅れます。\nあなたにとってその節目がいつで、何を手放したときに人生の後半が動き出すのかは、"},
+    fire:{good:"火星のあなたは、大きく動く人生です。\n枠に収まるようにはできていません。\n持って生まれた熱は、必ず使い道があります。",
+          hook:"その時期に備えがあるかどうかで、結果は大きく変わります。\nあなたが動く年も、それはもう視えていて——",
+          more:"その年をどう迎えるかで、同じ熱が飛躍にも消耗にも変わります。\n準備に使える期間はあと何年あるのか、そして何を整えておけばいいのかは、"},
+    earth:{good:"土星のあなたは、最後に返ってくる人生です。\n若いうちは報われにくいぶん、積んだものが後半でまとめて形になる。\nあなたの努力は、ひとつも無駄になりません。",
+          hook:"ただ、返ってくるまでには越える山があります。\nそれがどれくらい続くのかも、それはもう視えていて——",
+          more:"耐える時期の長さと、そこを抜けたあとに戻ってくるものの大きさは釣り合っています。\nあなたの場合、それが何年で明けるのか。\nそして今のうちに積んでおくべきものは、"},
+    metal:{good:"金星のあなたは、減らすほど良くなる人生です。\n多くを持つより、選び抜いたものと生きるほうが合っている。\n年を重ねるほど、その生き方が強みに変わります。",
+          hook:"ただ、手放す順番を間違えると、余計に時間がかかります。\nあなたが最初に置くべきものも、それはもう視えていて——",
+          more:"減らすほど良くなる人生でも、順番だけは選べません。\n先に手放すべきものと、最後まで持っておくべきもの。\nその並びと、身軽になったあとに来るものが何かは、"},
+    water:{good:"水星のあなたは、流れに運ばれていく人生です。\n自分で選んだつもりのない場所に、良いものが用意されている。\nそれはあなたが流れを読めるからです。",
+          hook:"ただ、大きく流れが変わる節目が、この先に一度あります。\nそれがいつ、何をきっかけに来るのかも、それはもう視えていて——",
+          more:"その変化はあなたが選ぶ形では来ません。\n向こうから来たときに逆らうか、任せるかで、着く場所が変わります。\n節目の年と、そのときに取るべき態度は、"}
+  }
+};
+
+/* =========================================================
+   2. 日柱の天干 → 星
+   ANCHOR は甲子の日。2024-01-01 で照合済み
+   ========================================================= */
+const ANCHOR = Date.UTC(2024, 0, 1);
+
+function starOf(y, m, d){
+  const days = Math.round((Date.UTC(y, m - 1, d) - ANCHOR) / 86400000);
+  const stem = (((days % 60) + 60) % 60) % 10;   // 0=甲 … 9=癸
+  return { stem, star: STARS[Math.floor(stem / 2)] };
+}
+
+/* =========================================================
+   3. STEP 1：生年月日
+   ========================================================= */
+let myStar = null, myStem = null, chosenDoor = null;
+
+const bm=document.getElementById("bm"), bd=document.getElementById("bd");
+for(let i=1;i<=12;i++) bm.add(new Option(i,i));
+function fillDays(){
+  const y=+document.getElementById("by").value||2000, m=+bm.value;
+  const last=new Date(y,m,0).getDate(), keep=+bd.value||1;
+  bd.innerHTML="";
+  for(let i=1;i<=last;i++) bd.add(new Option(i,i));
+  bd.value=Math.min(keep,last);
+}
+bm.addEventListener("change",fillDays);
+document.getElementById("by").addEventListener("change",fillDays);
+fillDays();
+
+document.getElementById("go").addEventListener("click",()=>{
+  const y=+document.getElementById("by").value, m=+bm.value, d=+bd.value;
+  const err=document.getElementById("err");
+  const thisYear=new Date().getFullYear();
+  if(!y||y<1900||y>thisYear){ err.textContent="生まれた年を正しく入力してください。"; return; }
+  const chk=new Date(y,m-1,d);
+  if(chk.getFullYear()!==y||chk.getMonth()!==m-1||chk.getDate()!==d){
+    err.textContent="その日付は存在しません。"; return;
+  }
+  err.textContent="";
+  const r = starOf(y,m,d);
+  myStar = r.star; myStem = r.stem;
+  buildDeck();
+  document.getElementById("step1").classList.add("hidden");
+  const s2=document.getElementById("step2");
+  s2.classList.remove("hidden");
+  s2.scrollIntoView({block:"center",behavior:"smooth"});
+  requestAnimationFrame(()=>setTimeout(()=>deck.classList.add("dealt"),150));
+});
+
+/* =========================================================
+   4. STEP 2：扉を選ぶ → 星が現れる
+   ========================================================= */
+const deck = document.getElementById("deck");
+
+function buildDeck(){
+  deck.innerHTML="";
+  deck.classList.remove("dealt","picked");
+  DOORS.forEach((c,i)=>{
+    const b=document.createElement("button");
+    b.className="card";
+    b.style.setProperty("--d",(i*120)+"ms");
+    b.style.setProperty("--el",c.color);        // カードの縁は扉ごとの色
+    b.style.setProperty("--star",myStar.color); // めくった先の惑星の色
+    if(c.back)      b.style.setProperty("--img","url("+c.back+")");
+    if(myStar.img)  b.style.setProperty("--imgFront","url("+myStar.img+")");
+    b.setAttribute("aria-label",c.name+"を選ぶ");
+    b.innerHTML=`<div class="card-inner">
+        <div class="face back${c.back?"":" noimg"}"></div>
+        <div class="face front${myStar.img?"":" noimg"}">
+          ${myStar.img?"":`<span class="mark">${myStar.sym}</span><span class="nm">${myStar.name}</span>`}
+        </div>
+      </div>
+      <div class="cap">${c.name}<small>${c.desc}</small></div>`;
+    b.addEventListener("click",()=>pickDoor(b,c));
+    deck.appendChild(b);
+  });
+}
+
+function pickDoor(el, door){
+  if(deck.classList.contains("picked"))return;
+  chosenDoor = door;
+  deck.classList.add("picked");
+  el.classList.add("chosen");
+
+  setTimeout(()=>{
+    const t = LINES[door.key][myStar.key];
+    document.getElementById("r-teaser").textContent = t.good;
+    document.getElementById("r-hook").textContent   = t.hook;
+    document.getElementById("r-more").textContent   = t.more;
+
+    document.querySelectorAll(".line-btn").forEach(a=>{
+      a.href = LINE_URL === "#" ? "#"
+        : `${LINE_URL}?door=${door.key}&star=${myStar.key}&stem=${myStem}`;
+    });
+
+    const s3=document.getElementById("step3");
+    s3.classList.remove("hidden");
+    s3.scrollIntoView({block:"center",behavior:"smooth"});
+  },1400);
+}
+</script>
