@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>あゆ様専用鑑定書</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:target {
+    scroll-margin-top: 20px;
+}
+
+body {
+    font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+    line-height: 2;
+    background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+    color: #2d2d2d;
+    padding: 40px 20px;
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* ===== 演出：背景クロスフェード ===== */
+.kana-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    background-image: url('../images/かな.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center 65%;
+    filter: blur(1px) brightness(1.05) saturate(1.05);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.4s ease;
+}
+.kana-bg.is-visible { opacity: 0.5; }
+
+.element-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -4;
+    background-image: url('../images/強い土.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(1.5px) brightness(1.05) saturate(1.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.4s ease;
+}
+.element-bg.is-visible { opacity: 0.55; }
+
+.deity-bg {
+    position: fixed; inset: 0; z-index: -3;
+    background-image: url('../images/強い木.png');
+    background-repeat: no-repeat; background-size: cover; background-position: center;
+    filter: blur(1.5px) brightness(1.05) saturate(1.1);
+    opacity: 0; pointer-events: none; transition: opacity 1.4s ease;
+}
+.deity-bg.is-visible { opacity: 0.55; }
+
+.door-bg {
+    position: fixed; inset: 0; z-index: -3;
+    background-image: url('../images/曼荼羅.png');
+    background-repeat: no-repeat; background-size: cover; background-position: center;
+    filter: blur(1.5px) brightness(1.05) saturate(1.1);
+    opacity: 0; pointer-events: none; transition: opacity 1.4s ease;
+}
+.door-bg.is-visible { opacity: 0.45; }
+
+/* ===== 演出：季節背景 ===== */
+.season-bg {
+    position: fixed; inset: 0; z-index: -4;
+    background-repeat: no-repeat; background-size: cover; background-position: center;
+    filter: blur(1.5px) brightness(0.85);
+    opacity: 0; pointer-events: none; transition: opacity 1.4s ease;
+}
+.season-bg.is-visible { opacity: 0.4; }
+#seasonAutumnBg { background-image: url('../images/秋.jpg'); }
+#seasonWinterBg { background-image: url('../images/冬.jpg'); }
+
+/* ===== 演出：パワーストーン背景 ===== */
+.stone-bg {
+    position: fixed; inset: 0; z-index: -4;
+    background-repeat: no-repeat; background-size: cover; background-position: center;
+    filter: blur(1.5px) brightness(0.85);
+    opacity: 0; pointer-events: none; transition: opacity 1.4s ease;
+}
+.stone-bg.is-visible { opacity: 0.4; }
+#stoneCarnelianBg { background-image: url('../images/カーネリアン.png'); }
+
+.bg-veil {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 50% 20%, rgba(250, 248, 245, 0.1) 0%, rgba(250, 248, 245, 0.25) 60%, rgba(250, 248, 245, 0.4) 100%),
+        linear-gradient(180deg, rgba(255, 245, 235, 0.12) 0%, rgba(249, 243, 255, 0.28) 100%);
+}
+
+/* ===== 表紙ページ ===== */
+.cover-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.cover-page::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background-image: url('../images/曼荼羅.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.cover-page > * {
+    position: relative;
+    z-index: 1;
+}
+
+.cover-recipient {
+    font-size: 48px;
+    font-weight: 300;
+    color: #c9a05d;
+    margin-bottom: 20px;
+    letter-spacing: 8px;
+}
+
+.cover-title {
+    font-size: 56px;
+    font-weight: 700;
+    color: #c9a05d;
+    margin-bottom: 60px;
+    letter-spacing: 4px;
+}
+
+.cover-subtitle {
+    font-size: 18px;
+    color: #8b6f9c;
+    letter-spacing: 3px;
+    margin-bottom: 80px;
+}
+
+.cover-appraiser {
+    font-size: 20px;
+    color: #6d6d6d;
+    letter-spacing: 2px;
+}
+
+/* ===== コンテンツページ ===== */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 60px 50px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    color: #c9a05d;
+    margin-bottom: 15px;
+    letter-spacing: 3px;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 150px;
+    height: 2px;
+    background: #c9a05d;
+    margin: 20px auto 0;
+}
+
+.subtitle {
+    text-align: center;
+    color: #8b6f9c;
+    font-size: 16px;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #c9a05d;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e8d5b7;
+    text-align: center;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #8b6f9c;
+    margin-top: 40px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #e8d5b7;
+    margin: 40px 0;
+}
+
+/* ===== オーラセクション ===== */
+.aura-section {
+    padding: 40px;
+    margin: 30px 0;
+    border-radius: 10px;
+    background-color: #f9f3ff;
+    border: 2px solid #e8d5b7;
+}
+
+/* ===== ボックス装飾 ===== */
+.header-info {
+    background: #fff9f0;
+    border: 2px solid #e8d5b7;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 30px 0;
+}
+
+.important-box {
+    background: #fffef5;
+    border: 2px solid #d4a574;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 30px 0;
+}
+
+.magic-word-box {
+    background: #f9f3ff;
+    border: 2px dashed #c9a0dc;
+    border-radius: 10px;
+    padding: 35px;
+    margin: 30px 0;
+    white-space: pre-line;
+}
+
+.sign-box {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid #e8d5b7;
+}
+
+.toc {
+    background: #fff9f0;
+    border: 2px solid #e8d5b7;
+    border-radius: 10px;
+    padding: 35px 30px;
+    margin: 40px 0 60px;
+}
+
+.toc-title {
+    text-align: center;
+    font-size: 22px;
+    color: #c9a05d;
+    margin-bottom: 25px;
+    letter-spacing: 4px;
+    font-weight: 700;
+}
+
+.toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc li {
+    margin-bottom: 14px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.toc li:last-child {
+    margin-bottom: 0;
+}
+
+.toc a {
+    color: #8b6f9c;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+
+.toc a:hover {
+    color: #c9a05d;
+}
+
+strong {
+    color: #000000;
+    font-weight: 700;
+}
+
+/* ===== スマホレスポンシブ ===== */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 8px 0;
+        line-height: 1.8;
+    }
+
+    .cover-page { min-height: 100vh; padding: 20px; }
+    .cover-page::before { width: 200px; height: 200px; }
+    .cover-recipient { font-size: 32px; letter-spacing: 4px; margin-bottom: 15px; }
+    .cover-title { font-size: 36px; letter-spacing: 2px; margin-bottom: 40px; }
+    .cover-subtitle { font-size: 14px; letter-spacing: 2px; margin-bottom: 60px; }
+    .cover-appraiser { font-size: 16px; }
+
+    .container { padding: 24px 14px; border-radius: 10px; max-width: 100%; }
+
+    h1 { font-size: 24px; letter-spacing: 2px; }
+    h2 { font-size: 22px; margin-top: 50px; margin-bottom: 30px; }
+    h3 { font-size: 18px; margin-top: 30px; margin-bottom: 20px; }
+    p { font-size: 16px; margin-bottom: 40px; }
+    .subtitle { font-size: 14px; margin-bottom: 30px; }
+
+    .aura-section { padding: 20px 14px; margin: 16px 0; }
+    .header-info,
+    .important-box,
+    .magic-word-box,
+    .toc { padding: 20px 14px; margin: 16px 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="kana-bg" id="kanaBg"></div>
+<div class="element-bg" id="elementBg"></div>
+<div class="deity-bg" id="deityBg"></div>
+<div class="door-bg" id="doorBg"></div>
+<div class="season-bg" id="seasonAutumnBg"></div>
+<div class="season-bg" id="seasonWinterBg"></div>
+<div class="stone-bg" id="stoneCarnelianBg"></div>
+<div class="bg-veil"></div>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">あゆ様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>あゆ様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <div class="toc">
+        <div class="toc-title">— 目次 —</div>
+        <ul>
+            <li><a href="#sec-you">🔮 あなたについて</a></li>
+            <li><a href="#sec-partner">🔮 お相手について</a></li>
+            <li><a href="#sec-here">🔮 ここからお伝えしていくこと</a></li>
+            <li><a href="#sec-concern">🔮 気になること</a></li>
+            <li><a href="#sec-turn">🔮 運命の転機</a></li>
+            <li><a href="#sec-action">🔮 今からできること</a></li>
+            <li><a href="#sec-support">🔑 心を守るサポート</a></li>
+            <li><a href="#sec-last">最後に</a></li>
+        </ul>
+    </div>
+
+    <div id="kanaSentinel"></div>
+
+    <p>あゆ様</p>
+
+    <p>この度は本鑑定にお進みいただき<br>
+    心より感謝申し上げます。</p>
+
+    <p>「このまま待っていたら<br>
+    連絡は来るんだろうか」</p>
+
+    <p>「としくんは今私のことを<br>
+    どう思ってるんだろう」</p>
+
+    <p>「自分から動いた方が<br>
+    いいんだろうか」</p>
+
+    <p>その揺れる想い<br>
+    痛いほど伝わってきます。</p>
+
+    <p>無料鑑定では<br>
+    あゆ様のオーラに<br>
+    どっしりとしたアンバーが<br>
+    視えていること。</p>
+
+    <p>そして<br>
+    一度向き合うと決めた人には<br>
+    最後まで筋を通す<br>
+    その真面目さについて<br>
+    お伝えしました。</p>
+
+    <p>この縁に灯った想いは<br>
+    まだ消えていない。</p>
+
+    <p>そこまでは<br>
+    無料鑑定でお伝えした通りです。</p>
+
+    <p>今回は、そこからさらに<br>
+    踏み込んで視ていきますね。</p>
+
+    <p>まず、あゆ様が一番<br>
+    知りたいこと。</p>
+
+    <p>はっきりお伝えします。</p>
+
+    <p><strong>結論から言います。</strong></p>
+
+    <p>この縁は<br>
+    <strong>まだ終わっていません。</strong></p>
+
+    <p>としくんの中にある想いも<br>
+    消えていないことが<br>
+    はっきりと視えています。</p>
+
+    <p>ただ<br>
+    としくんは今<br>
+    自分の足で立つことに<br>
+    精一杯な時期にいます。</p>
+
+    <p>そこに<br>
+    「名前をつけて」<br>
+    「約束して」と迫るほど</p>
+
+    <p>としくんは<br>
+    殻を固くしてしまう。</p>
+
+    <p>あゆ様のどっしりとした<br>
+    アンバーのオーラは<br>
+    本来、相手を包み込み<br>
+    安心させる力を持っています。</p>
+
+    <p>でも今は<br>
+    その包容力が<br>
+    「待つ」という<br>
+    受け身の形に<br>
+    偏りすぎてしまっているんです。</p>
+
+    <p>つまり<br>
+    今のあゆ様に必要なのは</p>
+
+    <p>待つことでも<br>
+    追うことでもなく</p>
+
+    <p>「軽く、負担のない形で」<br>
+    自分から小さな一歩を<br>
+    差し出すこと。</p>
+
+    <p>なぜこう視えるのか。</p>
+
+    <p>その理由は<br>
+    あゆ様のオーラそのものに<br>
+    はっきりと出ています。</p>
+
+    <p>ここから、順番に<br>
+    詳しくお伝えしていきますね。</p>
+
+    <div id="elementSentinel"></div>
+    <h2 id="sec-you">🔮 あなたについて</h2>
+
+    <p>あゆ様のオーラを<br>
+    あらためて深く<br>
+    視させていただきました。</p>
+
+    <div class="aura-section aura-earth">
+        <p>どっしりと構え<br>
+        動じない<br>
+        山のようなアンバー。</p>
+
+        <p>誰かが弱音を吐いたとき<br>
+        何も言わず<br>
+        ただそばにいて<br>
+        受け止める。</p>
+
+        <p>そういう包容力が<br>
+        もともと備わっている方です。</p>
+
+        <p>一度向き合うと決めた人には<br>
+        最後まで誠実に筋を通す。</p>
+
+        <p>その真面目さがあるからこそ<br>
+        あゆ様がそこにいると<br>
+        相手の心が<br>
+        静かにほどけていく。</p>
+
+        <p>ただ、その分だけ<br>
+        オーラの中に今<br>
+        大きく欠けているものがあります。</p>
+
+        <p>火のオーラです。</p>
+
+        <p>火のオーラは<br>
+        気持ちの温度を<br>
+        そのまま外に出す力そのもの。</p>
+
+        <p>この火のオーラが<br>
+        少ないことが</p>
+
+        <p>今回、想いを<br>
+        伝えきれずにいる<br>
+        一番の根っこにある<br>
+        原因なんです。</p>
+
+        <p>火のオーラが少ないと<br>
+        本当の気持ちを<br>
+        言葉にする前に<br>
+        一度しまい込んでしまう。</p>
+
+        <p>「彼女になりたい」と<br>
+        伝えた大切な一言を</p>
+
+        <p>自分から冗談にして<br>
+        引っ込めてしまった。</p>
+
+        <p>あの時の行動にも<br>
+        この火の少なさが<br>
+        静かに関わっています。</p>
+    </div>
+
+    <p>逆に言えば<br>
+    この火のオーラさえ補われれば</p>
+
+    <p>思ったことを<br>
+    その場で言葉にする<br>
+    軽やかさが戻ってきます。</p>
+
+    <p>冗談にして<br>
+    引っ込めてしまう前に</p>
+
+    <p>素直な気持ちを<br>
+    そのまま渡せるように<br>
+    なるんです。</p>
+
+    <p>魂の奥をさらに深く視ると<br>
+    あゆ様には</p>
+
+    <p>堅実に積み上げる力と<br>
+    筋を通す誠実さ</p>
+
+    <p>その両方が<br>
+    宿っています。</p>
+
+    <p>だから<br>
+    本当に大切な相手には<br>
+    最後まで<br>
+    向き合い続けられる。</p>
+
+    <p>いざという時には<br>
+    決して逃げない</p>
+
+    <p>そういう魂を<br>
+    持っている方です。</p>
+
+    <p>ただ、この誠実さが<br>
+    不安の中に置かれると</p>
+
+    <p>相手を優先しすぎて<br>
+    自分の気持ちを<br>
+    後回しにしてしまう<br>
+    側面もあります。</p>
+
+    <p>そして今<br>
+    あゆ様は</p>
+
+    <p>新しい魅力が<br>
+    花開いていく<strong>10年</strong>の入り口に<br>
+    立っています。</p>
+
+    <p>これまで見えなかった魅力が<br>
+    自然とにじみ出て</p>
+
+    <p>人を惹きつけやすくなる<br>
+    そういう時期です。</p>
+
+    <p>その中でも今年という年は<br>
+    存在感がひときわ<br>
+    輝く年でもあります。</p>
+
+    <p>大事な人間関係の中で<br>
+    「求められる」</p>
+
+    <p>そんな経験が<br>
+    増えていく年なんです。</p>
+
+    <p>さらに、魂の奥を視ると<br>
+    あゆ様は本来</p>
+
+    <p>一人で突き進むよりも<br>
+    誰かとの関わりの中で<br>
+    力が引き出される人です。</p>
+
+    <p>黙って我慢するより<br>
+    きちんと言葉にして伝えた時にこそ</p>
+
+    <p>縁は深まっていく。</p>
+
+    <p>でも、<br>
+    このまま何もしなければ</p>
+
+    <p>その魅力も<br>
+    伝える力も<br>
+    内側にしまわれたままに<br>
+    なってしまう。</p>
+
+    <p>でも<br>
+    火のオーラを少しずつ補い</p>
+
+    <p>思ったことを<br>
+    その場で<br>
+    言葉にしていけば</p>
+
+    <p>あとの季節に向けて<br>
+    扉は確かに<br>
+    開いていきます。</p>
+
+    <p>その先に</p>
+
+    <p>としくんと<br>
+    名前のついた<br>
+    穏やかな関係を<br>
+    築いている未来が</p>
+
+    <p>視えています。</p>
+
+    <div id="guardianSentinel"></div>
+    <h2 id="sec-partner">🔮 お相手について</h2>
+
+    <p>次に<br>
+    あゆ様が想いを寄せる</p>
+
+    <p>としくんの今の状態を<br>
+    視させていただきました。</p>
+
+    <div class="aura-section aura-wood">
+        <p>としくんは<br>
+        自由に成長し続ける<br>
+        木のオーラを持つ人です。</p>
+
+        <p>大木のように<br>
+        力強く根を張った<br>
+        まっすぐな緑。</p>
+
+        <p>自分の足で立って<br>
+        進んでいける<br>
+        意志の強い人です。</p>
+
+        <p>ただ、その分だけ<br>
+        オーラの中に<br>
+        欠けているものがあります。</p>
+
+        <p>土のオーラです。</p>
+
+        <p>土のオーラは<br>
+        今ある関係を<br>
+        現実として引き受ける<br>
+        落ち着きそのもの。</p>
+
+        <p>この土のオーラが<br>
+        少ないことが</p>
+
+        <p>「関係に名前がついたら<br>
+        もう会えないとなった時<br>
+        お互い傷つく」</p>
+
+        <p>そう口にした<br>
+        としくんの慎重さの<br>
+        正体なんです。</p>
+
+        <p>決めきる前の気持ちを<br>
+        誰にも見せず</p>
+
+        <p>ひとりで<br>
+        抱え込んでしまう。</p>
+
+        <p>それは<br>
+        あゆ様を嫌っているからやなくて</p>
+
+        <p>自分の中で<br>
+        答えが出るまで<br>
+        動けない不器用さなんです。</p>
+    </div>
+
+    <p>としくんは今<br>
+    自分のペースを守りたい<br>
+    充実期の真っ只中にいます。</p>
+
+    <p>実力を発揮できる<br>
+    安定した時期である一方で</p>
+
+    <p>今のあり方を<br>
+    変えたくない気持ちが強く</p>
+
+    <p>それが<br>
+    「距離を取る」という形に<br>
+    出てしまっているんです。</p>
+
+    <p>としくんの魂を<br>
+    さらに深く視ると</p>
+
+    <p>としくんは今<br>
+    自分の中心を<br>
+    まだ定めきれていない<br>
+    時期にもいます。</p>
+
+    <p>だからこそ<br>
+    あゆ様のどっしりとした<br>
+    アンバーのオーラが</p>
+
+    <p>としくんにとって<br>
+    支えになれる<br>
+    時期でもあるんです。</p>
+
+    <p>ただ<br>
+    としくんの木のオーラは</p>
+
+    <p>あゆ様の土を<br>
+    揺さぶるように<br>
+    働く力を持っています。</p>
+
+    <p>追えば追うほど<br>
+    としくんが硬直し</p>
+
+    <p>距離を置けば置くほど<br>
+    その情は消えずに<br>
+    残ってしまう。</p>
+
+    <p>そういう、ねじれた<br>
+    縁の中に<br>
+    二人はいるんです。</p>
+
+    <p>今のとしくんの目に<br>
+    あゆ様がどう映っているか。</p>
+
+    <p>正直に言うと<br>
+    今は少し<br>
+    霧がかかったように<br>
+    映っています。</p>
+
+    <p>「本音を見せてくれない人」</p>
+
+    <p>そんなふうに<br>
+    見えているかもしれません。</p>
+
+    <p>でも<br>
+    あゆ様のオーラが整い</p>
+
+    <p>素直な気持ちを<br>
+    そのまま渡せるように<br>
+    なった時</p>
+
+    <p>としくんの目に映る<br>
+    あゆ様は<br>
+    大きく変わっていきます。</p>
+
+    <p>「安心して<br>
+    自分の弱さも見せられる人」</p>
+
+    <p>そう感じた瞬間</p>
+
+    <p>としくんの中で<br>
+    閉じていた扉が<br>
+    静かに緩み始めます。</p>
+
+    <p>あゆ様が変われば<br>
+    としくんも<br>
+    変わり始めるんです。</p>
+
+    <div id="doorSentinel"></div>
+    <h2 id="sec-here">🔮 ここからお伝えしていくこと</h2>
+
+    <p>無料鑑定の最後に<br>
+    お伝えすると<br>
+    お約束したことを</p>
+
+    <p>ここから一つずつ<br>
+    視ていきますね。</p>
+
+    <h3>【としくんが今、本当に感じていること】</h3>
+
+    <p>としくんの魂が<br>
+    今、抱えているのは</p>
+
+    <p>「本気にはなりたい。<br>
+    でも、名前をつけて<br>
+    失敗したらどうしよう」</p>
+
+    <p>そういう<br>
+    恐れに近い迷いです。</p>
+
+    <p>8月に会った時<br>
+    「そうよ」と<br>
+    答えたあの瞬間</p>
+
+    <p>としくんの気持ちに<br>
+    嘘はありませんでした。</p>
+
+    <p>ただ、その直後に<br>
+    「関係に名前がついたら」<br>
+    と口にしたのは</p>
+
+    <p>本音を伝えた自分に<br>
+    怖くなってしまった<br>
+    その揺り戻しなんです。</p>
+
+    <p>連絡が減ったのも</p>
+
+    <p>あゆ様への想いが<br>
+    冷めたからやなくて</p>
+
+    <p>自分の気持ちの大きさに<br>
+    としくん自身が<br>
+    戸惑っている状態。</p>
+
+    <p>今、としくんの<strong>魂</strong>は<br>
+    静かに<br>
+    揺れ続けています。</p>
+
+    <h3>【あゆ様のオーラの調整方法】</h3>
+
+    <p>あゆ様に必要なのは<br>
+    火のオーラを補うこと。</p>
+
+    <p>魂のレベルでお伝えするなら</p>
+
+    <p>「結果が見えなくても<br>
+    今の気持ちをそのまま言葉にする」</p>
+
+    <p>という在り方を<br>
+    育てることです。</p>
+
+    <p>冗談にして<br>
+    引っ込めるのやなくて</p>
+
+    <p>小さな一言でいいから<br>
+    素直な温度を<br>
+    そのまま渡していく。</p>
+
+    <p>それは<br>
+    無理に押し切ることやなくて</p>
+
+    <p>今の想いを<br>
+    大切にしたまま<br>
+    少しずつ距離を縮めていく</p>
+
+    <p>そういう静かな勇気の<br>
+    持ち方なんです。</p>
+
+    <p>この勇気が育った時<br>
+    あゆ様のオーラに</p>
+
+    <p>軽やかさが<br>
+    戻り始めます。</p>
+
+    <h3>【オーラが整った先に広がる景色】</h3>
+
+    <p>火のオーラの温かさが<br>
+    戻った時</p>
+
+    <p>としくんとの<br>
+    何気ないやり取りの中で</p>
+
+    <p>思ったことを<br>
+    そのまま<br>
+    言葉にできている自分。</p>
+
+    <p>「彼女になりたい」と<br>
+    もう一度<br>
+    自然に言える日が</p>
+
+    <p>そう遠くない未来に訪れます。</p>
+
+    <p>名前のついた<br>
+    穏やかな関係の中で</p>
+
+    <p>二人で<br>
+    次の約束を<br>
+    決めている姿。</p>
+
+    <p>このあとお伝えする<br>
+    運命の転機の中で</p>
+
+    <p>その景色がどう形になっていくかを<br>
+    具体的に視ていきますね。</p>
+
+    <h3>【霊視で視えた、もう一つの重要な問題】</h3>
+
+    <p>としくん自身も<br>
+    うっすら<br>
+    感じているはずです。</p>
+
+    <p>今の迷いは<br>
+    あゆ様への<br>
+    気持ちの問題だけやないんです。</p>
+
+    <p>誰かと向き合う前に<br>
+    まず自分自身と<br>
+    向き合わなあかん</p>
+
+    <p>そういう時期の中に<br>
+    としくんは迷い込んでいます。</p>
+
+    <p>だから<br>
+    今すぐ答えを急かすんやなくて</p>
+
+    <p>としくんが<br>
+    自分の中心を<br>
+    少しずつ整えていく時間も</p>
+
+    <p>一緒に<br>
+    見守ってあげてほしいんです。</p>
+
+    <p>具体的な接し方は<br>
+    この後の<br>
+    「今からできること」で</p>
+
+    <p>詳しくお伝えしますね。</p>
+
+    <h2 id="sec-concern">🔮 気になること</h2>
+
+    <p>これまでお伝えしてきたこと以外にも<br>
+    実はもう一つ<br>
+    視えているものがあります。</p>
+
+    <p>無料鑑定では<br>
+    お伝えしていなかった<br>
+    もう少し先の兆しです。</p>
+
+    <p>あゆ様の<br>
+    住まいや暮らしの<br>
+    基盤に関わる部分に</p>
+
+    <p>小さなひっかかりのような<br>
+    ものが視えます。</p>
+
+    <p>積み上げてきたものが<br>
+    思うように<br>
+    形にならない</p>
+
+    <p>そういう感覚に<br>
+    心当たりが<br>
+    あるかもしれません。</p>
+
+    <p>これは<br>
+    としくんとの<br>
+    今回のご縁とは<br>
+    別の場所にある</p>
+
+    <p>もっと根っこの<br>
+    深いところにある<br>
+    流れとして<br>
+    視えているものです。</p>
+
+    <p>ただこれは<br>
+    非常に先の話です。</p>
+
+    <p>今すぐ心配することは<br>
+    何もありません。</p>
+
+    <p>今回はここまで<br>
+    お伝えするだけに<br>
+    とどめておきますね。</p>
+
+    <p>また別の機会に<br>
+    詳しくお伝え<br>
+    できたらと思います。</p>
+
+    <h2 id="sec-turn">🔮 運命の転機</h2>
+
+    <p>今、新しい魅力が<br>
+    花開いていく<strong>10年</strong>の入り口に<br>
+    あゆ様は立っていて</p>
+
+    <p>その先、特に重要な<br>
+    四つの月を<br>
+    順にお伝えします。</p>
+
+    <div id="seasonAutumnSentinel"></div>
+    <h3>2026年10月</h3>
+
+    <p>土の力が<br>
+    強く満ちる月です。</p>
+
+    <p>この時期は<br>
+    「動く」より<br>
+    「整える」ことに<br>
+    集中してほしい月。</p>
+
+    <p>直接的なアプローチは<br>
+    控えめにして</p>
+
+    <p>自分の生活や気持ちを<br>
+    安定させることを<br>
+    優先してください。</p>
+
+    <p>表立った進展は<br>
+    まだ薄いですが</p>
+
+    <p>としくんの中で</p>
+
+    <p>「あゆさんは安定した存在」</p>
+
+    <p>という印象が<br>
+    静かに積み上がって<br>
+    いきます。</p>
+
+    <div id="seasonWinterSentinel"></div>
+    <h3>2026年12月</h3>
+
+    <p>判断力が<br>
+    増していく月ですが</p>
+
+    <p>一つだけ<br>
+    気をつけてほしいことがあります。</p>
+
+    <p>この月は<br>
+    としくんが<br>
+    最も守りに入りやすい時期です。</p>
+
+    <p>「関係をはっきりさせたい」<br>
+    と迫ったり</p>
+
+    <p>連絡が減ったことを<br>
+    責めたりすると</p>
+
+    <p>積み上げてきたものが<br>
+    一度に崩れてしまいます。</p>
+
+    <p>気持ちが動いても<br>
+    一晩置いてから言葉にする。</p>
+
+    <p>それだけを<br>
+    意識してください。</p>
+
+    <h3>最重要月 2027年1月</h3>
+
+    <p>なぜこの月が<br>
+    特別なのか。</p>
+
+    <p>あゆ様には<br>
+    迷いを晴らす<br>
+    澄んだエネルギーが巡り</p>
+
+    <p>としくんには<br>
+    足りなかった<br>
+    地に足のつくエネルギーが<br>
+    巡ってくるからです。</p>
+
+    <p>二人の<strong>運命</strong>が<br>
+    最も近づく一ヶ月なんです。</p>
+
+    <p>としくんの側から<br>
+    連絡や約束の話が</p>
+
+    <p>自然と増えていく<br>
+    可能性が高い月。</p>
+
+    <p>あゆ様が<br>
+    「重くない一言」を送ると</p>
+
+    <p>思った以上に<br>
+    素直な反応が<br>
+    返ってくるはずです。</p>
+
+    <p>心構えとして<br>
+    お伝えしたいのは</p>
+
+    <p>軽く近況を伝える形で<br>
+    先に連絡を<br>
+    送ってみること。</p>
+
+    <p>会えた時は<br>
+    彼の話を<br>
+    急かさず最後まで聞くこと。</p>
+
+    <p>会う約束は<br>
+    小さな用事レベルに留めて</p>
+
+    <p>名前や将来を迫らないこと。</p>
+
+    <p>同じ問いかけを<br>
+    何度も繰り返さないこと。</p>
+
+    <p>としくんが<br>
+    自分から答えを<br>
+    出したくなる空気が</p>
+
+    <p>この月、<br>
+    確かに整います。</p>
+
+    <h3>2027年2月</h3>
+
+    <p><strong>1月</strong>に動いた<br>
+    関係の温度が</p>
+
+    <p>実を結んでいるかを<br>
+    見極める<br>
+    確認の時期です。</p>
+
+    <p>急いで答えを<br>
+    出そうとせず</p>
+
+    <p>その関係の温度を<br>
+    静かに見極めてください。</p>
+
+    <p>焦らなくていい。</p>
+
+    <p>ただ<br>
+    待つだけでもない。</p>
+
+    <p>そういう心持ちで<br>
+    迎えてほしい<br>
+    一ヶ月です。</p>
+
+    <h3>その先の未来</h3>
+
+    <p><strong>2027年</strong>は<br>
+    「関係を現実の形にする年」です。</p>
+
+    <p>としくんの中にも<br>
+    安定のエネルギーが<br>
+    巡りやすくなり</p>
+
+    <p>交際や約束という<br>
+    具体的な一歩に<br>
+    進みやすい年になります。</p>
+
+    <p><strong>2028年</strong>は<br>
+    「積み上げてきたものを<br>
+    確立する年」です。</p>
+
+    <p>結婚や同棲という<br>
+    次の現実的な話が</p>
+
+    <p>出やすくなる年になります。</p>
+
+    <p><strong>最も大切なのは</strong></p>
+
+    <p><strong>2027年1月</strong>の巡りを<br>
+    どう迎えるかです。</p>
+
+    <p>そこまでの数ヶ月<br>
+    火のオーラを整えながら</p>
+
+    <p>過ごしてほしいんです。</p>
+
+    <div id="doorSentinel2"></div>
+    <h2 id="sec-action">🔮 今からできること</h2>
+
+    <p>ここまで<br>
+    運命の流れと</p>
+
+    <p>これから訪れる転機を<br>
+    お伝えしました。</p>
+
+    <p>ただ、一つだけ<br>
+    知っておいてほしいことがあります。</p>
+
+    <p>運命は<br>
+    ただ待っているだけでは<br>
+    動きません。</p>
+
+    <p>巡りがどれだけ整っても</p>
+
+    <p>あゆ様ご自身のオーラが<br>
+    整っていなければ</p>
+
+    <p>その流れを<br>
+    掴むことはできないんです。</p>
+
+    <p>だからこそここからは</p>
+
+    <p>あゆ様が今日から<br>
+    ご自身の手で<br>
+    運命を動かしていくための</p>
+
+    <p>具体的なアクションを<br>
+    お伝えしていきます。</p>
+
+    <h3>【火のオーラを補う】</h3>
+
+    <p>火のオーラは<br>
+    気持ちの温度を<br>
+    そのまま外に出す<br>
+    力そのものです。</p>
+
+    <p>・赤やオレンジ系の<br>
+    　服や小物を<br>
+    　日常に取り入れる</p>
+
+    <p>・日中、太陽の光を<br>
+    　浴びる時間を作る</p>
+
+    <p>　→ しまい込みがちな気持ちが<br>
+    　　少しずつ<br>
+    　　表に出やすくなります</p>
+
+    <p>・思ったことを<br>
+    　その場で<br>
+    　小さく言葉にする<br>
+    　練習をする</p>
+
+    <p>　やり方はシンプルです。</p>
+
+    <p>　「今日、嬉しかったこと」を<br>
+    　一つだけ</p>
+
+    <p>　その日のうちに<br>
+    　誰かに話してみる。</p>
+
+    <p>　→ 冗談にして<br>
+    　　引っ込める癖が<br>
+    　　少しずつ緩んでいきます</p>
+
+    <h3>【気をつけてほしいこと】</h3>
+
+    <p>・気持ちが揺れた時に<br>
+    　連絡を我慢しすぎてしまうこと</p>
+
+    <p>これには理由があります。</p>
+
+    <p>黙って我慢することが<br>
+    あゆ様の誠実さの<br>
+    表れである一方</p>
+
+    <p>それが続くと<br>
+    としくんに<br>
+    本音が伝わらないまま</p>
+
+    <p>時間だけが<br>
+    過ぎてしまいます。</p>
+
+    <p>意識したいのは<br>
+    この2つです。</p>
+
+    <p>・気持ちが揺れたら<br>
+    　一晩置いてから<br>
+    　短い言葉で伝える</p>
+
+    <p>・我慢した気持ちを<br>
+    　日記に書き出してから人に話す</p>
+
+    <p>溜め込まず<br>
+    流していく習慣が</p>
+
+    <p>火のオーラを育てる<br>
+    一番の土台になります。</p>
+
+    <h3>【正直にお伝えしたいこと】</h3>
+
+    <p>ここまでお伝えした<br>
+    調整法で</p>
+
+    <p>少しずつオーラは<br>
+    整い始めます。</p>
+
+    <p>ただ、正直に言うと</p>
+
+    <p>火のオーラが<br>
+    ここまで少ない状態は</p>
+
+    <p>日常の調整だけでは<br>
+    補いきれない部分があります。</p>
+
+    <p>赤い色を身につける<br>
+    太陽の光を浴びる。</p>
+
+    <p>これらは<br>
+    「維持する力」には<br>
+    なりますが</p>
+
+    <p>ゼロから補う力としては<br>
+    どうしても<br>
+    限界があるんです。</p>
+
+    <p>もし本気で<br>
+    <strong>2027年1月</strong>までに<br>
+    オーラを整えたいなら</p>
+
+    <p>もう一つ<br>
+    お伝えしたい方法があります。</p>
+
+    <div id="stoneSentinel"></div>
+    <h2 id="sec-support">🔑 心を守るサポート</h2>
+
+    <p>ここまでお伝えしてきた通り</p>
+
+    <p>あゆ様のオーラには<br>
+    火のオーラが<br>
+    少ない状態です。</p>
+
+    <p>これが今の状況の<br>
+    根っこにある原因であり</p>
+
+    <p><strong>2027年1月</strong>のチャンスを掴むために<br>
+    <strong>最も整えるべき部分</strong>です。</p>
+
+    <p>火のオーラが整うと</p>
+
+    <p>・思ったことを<br>
+    　その場で<br>
+    　素直に言葉にできるようになる</p>
+
+    <p>・としくんに<br>
+    　軽い連絡を送る時<br>
+    　迷わず送信できるようになる</p>
+
+    <p>・冗談にして<br>
+    　引っ込めてしまう癖が<br>
+    　少しずつなくなる</p>
+
+    <p>・「待つ」ことへの<br>
+    　不安が和らぐ</p>
+
+    <p>・静かな自信を持って<br>
+    　<strong>2027年1月</strong>の巡りを<br>
+    　迎えられるようになる</p>
+
+    <p>日常の調整法に加えて</p>
+
+    <p>本格的にオーラを補うために<br>
+    パワーストーンを<br>
+    お守りとして取り入れる<br>
+    方法があります。</p>
+
+    <p>あゆ様のオーラに合わせて<br>
+    三つのプランを<br>
+    ご用意しました。</p>
+
+    <div class="important-box">
+        <h3>【運命を動かすプラン】</h3>
+        <p><strong>2027年1月</strong>の転機を<br>
+        本気で掴みたい方へ</p>
+
+        <p>・<strong>カーネリアン</strong><br>
+        　少ない火のオーラを補い、想いを言葉に変える力を灯す</p>
+
+        <p>・<strong>サンストーン</strong><br>
+        　温かい火のあかりを補い、素直な表現力を育てる</p>
+
+        <p>・<strong>グリーンアベンチュリン</strong><br>
+        　火を育てる木のオーラを補い、行動の後押しをする</p>
+
+        <p>・<strong>スモーキークォーツ</strong><br>
+        　感情の揺れを鎮め、地に足のついた落ち着きを育てる</p>
+
+        <p><strong>2027年1月</strong>の転機を<br>
+        最高の状態で迎えられ、</p>
+
+        <p>「彼女になりたい」を<br>
+        もう一度<br>
+        自然に言葉にできるようになります。</p>
+
+        <h3>【流れを整えるプラン】</h3>
+        <p>まずは心を<br>
+        安定させたい方へ</p>
+
+        <p>・<strong>カーネリアン</strong><br>
+        　少ない火のオーラを補い、気持ちを言葉にする勇気を育てる</p>
+
+        <p>・<strong>グリーンアベンチュリン</strong><br>
+        　行動する軽やかさを補い、一歩を踏み出す力を支える</p>
+
+        <p>・<strong>スモーキークォーツ</strong><br>
+        　感情の揺れを鎮め、焦りを穏やかに変える</p>
+
+        <p>期待できる変化：</p>
+
+        <p>としくんの言動に<br>
+        振り回される頻度が<br>
+        減っていく</p>
+
+        <p>自分の気持ちの温度を<br>
+        落ち着いて<br>
+        整えられるようになる</p>
+
+        <h3>【日々のお守りプラン】</h3>
+        <p>まずは<br>
+        言葉にできない<br>
+        もどかしさを和らげたい方へ</p>
+
+        <p>・<strong>カーネリアン</strong><br>
+        　少ない火のオーラを補い、心を軽くする</p>
+
+        <p>・<strong>スモーキークォーツ</strong><br>
+        　連絡を待つ焦りを吸い取り、穏やかな安心に変える</p>
+
+        <p>期待できる変化：</p>
+
+        <p>連絡を待つ時間の<br>
+        苦しさが<br>
+        和らいでいく</p>
+
+        <p>実は、【運命を動かすプラン】を<br>
+        選ばれる方が最も多く</p>
+
+        <p>全体の約<strong>70%</strong>を<br>
+        占めています。</p>
+
+        <p>「2027年1月の転機を<br>
+        本気で掴みたいから<br>
+        中途半端にしたくない」</p>
+
+        <p>というお声が<br>
+        多いです。</p>
+
+        <p><strong>2027年1月</strong>に向けて<br>
+        今から整え始めることで</p>
+
+        <p>石の力が<br>
+        ちょうど馴染んだ状態で<br>
+        最重要月を迎えられます。</p>
+
+        <p>もし興味がありましたら</p>
+
+        <p>「詳細希望」と<br>
+        送っていただければ</p>
+
+        <p>あゆ様専用の<br>
+        石の組み合わせをお伝えしますね。</p>
+    </div>
+
+    <div id="doorSentinel3"></div>
+    <h2 id="sec-last">最後に</h2>
+
+    <p>あゆ様。</p>
+
+    <p>今、あなたは<br>
+    大切な岐路に<br>
+    立っています。</p>
+
+    <p>このまま<br>
+    答えの出ない毎日を<br>
+    繰り返していくか。</p>
+
+    <p>それとも<br>
+    火のオーラを整えて</p>
+
+    <p>としくんとの縁に<br>
+    自分から<br>
+    軽く踏み出していくか。</p>
+
+    <p>選ぶのは<br>
+    あゆ様ご自身です。</p>
+
+    <p>冗談にして<br>
+    引っ込めてしまった<br>
+    あの一言は</p>
+
+    <p>弱さやありません。</p>
+
+    <p>相手の気持ちを<br>
+    大切に扱える<br>
+    何よりの証です。</p>
+
+    <p>ただ、私には<br>
+    視えています。</p>
+
+    <p><strong>2027年</strong>の初め<br>
+    穏やかな空気の中で</p>
+
+    <p>としくんと<br>
+    自然に言葉を<br>
+    交わしているあゆ様の姿が。</p>
+
+    <p>「彼女になりたい」</p>
+
+    <p>その言葉を<br>
+    笑って伝えられる日が</p>
+
+    <p>そう遠くない未来に<br>
+    視えています。</p>
+
+    <p>「あの時、動いてよかった」</p>
+
+    <p>そう、心から<br>
+    思える未来が<br>
+    視えています。</p>
+
+    <p>その未来への道<br>
+    私が照らし続けますね。</p>
+
+    <div class="sign-box">
+        <p>心からの愛と光を込めて。<br>かな</p>
+    </div>
+
+</div>
+
+<script>
+(function () {
+    var kanaBg = document.getElementById('kanaBg');
+    var elementBg = document.getElementById('elementBg');
+    var deityBg = document.getElementById('deityBg');
+    var doorBg = document.getElementById('doorBg');
+    var seasonAutumnBg = document.getElementById('seasonAutumnBg');
+    var seasonWinterBg = document.getElementById('seasonWinterBg');
+    var stoneCarnelianBg = document.getElementById('stoneCarnelianBg');
+
+    var stages = [
+        { el: document.getElementById('kanaSentinel'), bg: kanaBg },
+        { el: document.getElementById('elementSentinel'), bg: elementBg },
+        { el: document.getElementById('guardianSentinel'), bg: deityBg },
+        { el: document.getElementById('doorSentinel'), bg: doorBg },
+        { el: document.getElementById('seasonAutumnSentinel'), bg: seasonAutumnBg },
+        { el: document.getElementById('seasonWinterSentinel'), bg: seasonWinterBg },
+        { el: document.getElementById('doorSentinel2'), bg: doorBg },
+        { el: document.getElementById('stoneSentinel'), bg: stoneCarnelianBg },
+        { el: document.getElementById('doorSentinel3'), bg: doorBg }
+    ].filter(function (stage) { return !!stage.el; });
+    if (!stages.length) return;
+
+    var layers = [kanaBg, elementBg, deityBg, doorBg, seasonAutumnBg, seasonWinterBg, stoneCarnelianBg];
+    function show(active) {
+        layers.forEach(function (el) {
+            if (el === active) el.classList.add('is-visible');
+            else el.classList.remove('is-visible');
+        });
+    }
+
+    function onScroll() {
+        var trigger = window.innerHeight * 0.65;
+        var active = null;
+        for (var i = 0; i < stages.length; i++) {
+            if (stages[i].el.getBoundingClientRect().top < trigger) {
+                active = stages[i].bg;
+            }
+        }
+        show(active);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
+</script>
+
+</body>
+</html>
