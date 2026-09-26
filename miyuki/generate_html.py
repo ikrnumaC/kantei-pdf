@@ -386,13 +386,13 @@ def parse_txt(path):
     if not guardian_name:
         # look for "あなたを守っているのは\n<NAME>（<reading>）" (parens may be on next line)
         # Some texts use "<name>様を守っているのは" instead of "あなたを守っているのは".
-        m = re.search(r"(?:あなたを|\S+?様を)守っているのは\s*\n\s*([^\n（(]+?)\s*\n?\s*[（(]([^）)]+)[）)]", body)
+        m = re.search(r"(?:あなたを|\S+?様を)守っているのは[、,]?\s*\n\s*([^\n（(]+?)\s*\n?\s*[（(]([^）)]+)[）)]", body)
         if m:
             guardian_name = m.group(1).strip()
             guardian_reading = m.group(2).strip()
         else:
             # Some texts give the guardian name with no reading in parens at all.
-            m2 = re.search(r"(?:あなたを|\S+?様を)守っているのは\s*\n\s*([^\n（(。]+)", body)
+            m2 = re.search(r"(?:あなたを|\S+?様を)守っているのは[、,]?\s*\n\s*([^\n（(。]+)", body)
             if m2:
                 guardian_name = m2.group(1).strip().rstrip("。")
 
