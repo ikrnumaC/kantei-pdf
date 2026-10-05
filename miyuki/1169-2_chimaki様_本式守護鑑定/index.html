@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) : GA4 計測 [GA4-MIYUKI] -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHLDFT6DR7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JHLDFT6DR7');
+    </script>
+    <title>chimaki様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+
+            .toc {
+                padding: 20px 15px;
+            }
+
+            .toc-title {
+                font-size: 1.1em;
+            }
+
+            .toc a {
+                font-size: 0.95em;
+                padding: 12px 6px 12px 36px;
+            }
+        }
+
+        /* ===== 演出：元素の背景（冒頭〜守護神登場まで） ===== */
+        .element-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../鑑定画像/若葉.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .element-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：守護神の背景（守護神登場〜本式内容の手前まで） ===== */
+        .deity-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/木花咲耶姫.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center 18%;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .deity-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：扉の背景（本式内容〜結びまで） ===== */
+        .door-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/ドア2.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .door-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：今後の流れ 季節背景 ===== */
+        .season-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .season-bg.is-visible { opacity: 0.4; }
+        #seasonAutumnBg { background-image: url("../鑑定画像/秋.jpg"); }
+        #seasonWinterBg { background-image: url("../鑑定画像/冬.jpg"); }
+
+        /* ===== 演出：パワーストーン背景 ===== */
+        .stone-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../素材/ラリマー.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .stone-bg.is-visible { opacity: 0.4; }
+
+        .deity-veil {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(15, 15, 46, 0.04) 0%, rgba(15, 15, 46, 0.15) 60%, rgba(15, 15, 46, 0.25) 100%),
+                linear-gradient(180deg, rgba(15, 15, 46, 0.06) 0%, rgba(15, 15, 46, 0.18) 100%);
+        }
+
+        /* ===== 演出：花びら ===== */
+        #petals {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="element-bg" id="elementBg"></div>
+    <div class="deity-bg" id="deityBg"></div>
+    <div class="door-bg" id="doorBg"></div>
+    <div class="season-bg" id="seasonAutumnBg"></div>
+    <div class="season-bg" id="seasonWinterBg"></div>
+    <div class="stone-bg" id="stoneBg"></div>
+    <div class="deity-veil"></div>
+    <canvas id="petals"></canvas>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">揺れを置いて歩く道</h2>
+            <p class="cover-name">chimaki様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 目次 -->
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-path">あなたが歩いてきた道</a></li>
+                <li><a href="#sec-now">今のchimaki様</a></li>
+                <li><a href="#sec-deity">あなたの守護神</a></li>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-1">1. 彼の本当の気持ち</a></li>
+                <li><a href="#sec-2">2. 縁が動く瞬間</a></li>
+                <li><a href="#sec-3">3. chimaki様の一途さの活かし方</a></li>
+                <li><a href="#sec-4">4. chimaki様らしい進み方</a></li>
+                <li><a href="#sec-flow">今後の四ヶ月</a></li>
+                <li><a href="#sec-bonus">もう少し先に視えていること</a></li>
+                <li><a href="#sec-guardian">守護を受け取る方法</a></li>
+                <li><a href="#sec-stone">あなたと響き合うパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
+        <div id="elementSentinel"></div>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">chimaki様</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">「今の進め方で良いのでしょうか？」</p>
+            <p style="margin-bottom: 90px;">いただいたこの言葉を読んだとき<br>chimaki様がどれほど長いあいだ<br>一人で想いを抱えて歩いてこられたのか<br>その重みがまっすぐ胸に届きました。</p>
+            <p style="margin-bottom: 90px;">前回ご縁をいただいた<br>あの方との今の距離について<br>もう一度守護神とつながり<br>霊視を進めていくと<br>守護神は何度も同じところへ<br>私の意識を引き戻してきました。</p>
+            <p style="margin-bottom: 90px;">「信じたいのに、なぜ揺れるのだろう」</p>
+            <p style="margin-bottom: 90px;">chimaki様がずっと心の奥で抱えてきた<br>その問いの答えが、そこにありました。</p>
+            <p style="margin-bottom: 0;">その答えにたどり着くために<br>まずはchimaki様が歩いてきた道から<br>お伝えしていきますね。</p>
+        </div>
+
+        <h2 id="sec-path">【あなたが歩いてきた道】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">chimaki様の背中を視ていると<br>外ではいつも控えめに<br>周りの空気に合わせながら<br>一番近い人の前でだけ<br>気持ちが大きく揺れる<br>そんな歩き方をしてきた人だと<br>伝わってきます。</p>
+            <p style="margin-bottom: 90px;">甘えてもいい場面でも<br>先に自分で何とかしてしまう。</p>
+            <p style="margin-bottom: 90px;">寄りかかれる場所を探すより<br>自分の足元を自分で固める方を<br>選び続けてきました。</p>
+            <p style="margin-bottom: 90px;">そして気づけば<br>「ちゃんとしなければ」という思いを<br>ずいぶん長いあいだ<br>一人で背負ってこられたはずです。</p>
+            <p style="margin-bottom: 90px;">ここ十年ほどは<br>人とのご縁を一つずつ<br>丁寧に積み上げてきた日々でした。</p>
+            <p style="margin-bottom: 90px;">その積み重ねの上に<br>今の暮らしがあります。</p>
+            <p style="margin-bottom: 90px;">そして今、chimaki様は<br>外へ出て人と会うほど<br>自分の世界が広がっていく<br>そんな十年に入ったところです。</p>
+            <p style="margin-bottom: 90px;">出かける先が増えたり<br>新しい顔ぶれと言葉を交わしたり<br>そんな場面が増えているはずです。</p>
+            <p style="margin-bottom: 90px;">あの方とのご縁も<br>その歩みの中で生まれました。</p>
+            <p style="margin-bottom: 90px;">ただ、その背中を視ていて<br>一つ気づいたことがあります。</p>
+            <p style="margin-bottom: 0;">chimaki様はずっと<br>揺れた気持ちを自分の中にしまう側を<br>歩いてきた人なのです。</p>
+        </div>
+
+        <h2 id="sec-now">【今のchimaki様】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">その歩き方は<br>今のchimaki様にも<br>そのまま続いています。</p>
+            <p style="margin-bottom: 90px;">「大丈夫ですか」と<br>声をかけられる前から<br>もう笑顔を作っていませんか。</p>
+            <p style="margin-bottom: 90px;">しんどい日ほど<br>「大丈夫です」と先に言ってしまう。</p>
+            <p style="margin-bottom: 90px;">言いたいことが胸に浮かんでも<br>頭の中で何度も言い方を考えて<br>結局「やめておこう」としまい込む。</p>
+            <p style="margin-bottom: 90px;">一人になった夜に<br>ようやくその続きを<br>考え始めているはずです。</p>
+            <p style="margin-bottom: 90px;">あの方の反応が嬉しかったのに<br>すぐに「気のせいかもしれない」と<br>自分で打ち消してしまう。</p>
+            <p style="margin-bottom: 90px;">先に笑う。</p>
+            <p style="margin-bottom: 90px;">先に飲み込む。</p>
+            <p style="margin-bottom: 90px;">先に打ち消す。</p>
+            <p style="margin-bottom: 90px;">どれも、相手を困らせたくない<br>急かしたくないという<br>chimaki様の優しさです。</p>
+            <p style="margin-bottom: 90px;">でも、この三つには<br>共通していることがあります。</p>
+            <p style="margin-bottom: 90px;">胸の中で揺れたものが<br>外に出る前に<br>「大丈夫」の一言で<br>蓋をされていること。</p>
+            <p style="margin-bottom: 90px;">それが長く続いた結果<br>一つの癖ができていました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">chimaki様は<br>揺れた気持ちに「大丈夫」と蓋をして<br>そのまま自分の中にしまい込む人。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">名づけるなら<br>「大丈夫の蓋」です。</p>
+            <p style="margin-bottom: 90px;">この癖があると<br>こんなことが起きやすくなります。</p>
+            <p style="margin-bottom: 90px;">弱音を聞いてもらう人を<br>思い浮かべようとして<br>誰の顔も浮かばない。</p>
+            <p style="margin-bottom: 90px;">人に話すより<br>自分の中で整理した方が早い。</p>
+            <p style="margin-bottom: 90px;">揺れていることを悟られないよう<br>いつもの顔で過ごしてしまう。</p>
+            <p style="margin-bottom: 90px;">そして夜、一人になってから<br>胸にたまったものの重さに気づく。</p>
+            <p style="margin-bottom: 90px;">思い当たるところはありませんか。</p>
+            <p style="margin-bottom: 90px;">蓋をされた揺れは<br>消えずに胸の中に残ります。</p>
+            <p style="margin-bottom: 90px;">信じたいのに揺れてしまうのは<br>想いが足りないからではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">置き場のない揺れが<br>胸の中にたまっているからです。</p>
+            <p style="margin-bottom: 90px;">実はこの「大丈夫の蓋」こそ<br>守護神が何度も<br>私の意識を引き戻した場所でした。</p>
+            <p style="margin-bottom: 90px;">今回の鑑定の<br>すべての鍵になります。</p>
+            <p style="margin-bottom: 0;">では、そんなchimaki様を<br>守護しているのは<br>どんな神様なのでしょうか。</p>
+        </div>
+
+        <div id="guardianSentinel"></div>
+        <h2 id="sec-deity">【あなたの守護神】</h2>
+        <div class="oracle-message" id="sec-god">
+            <p style="margin-bottom: 90px;">chimaki様を守っているのは<br><span style="color: #ffd966;">木花咲耶姫</span>（このはなさくやひめ）。</p>
+            <p style="margin-bottom: 90px;">桜の花の神様であり<br>富士山の神様として祀られる<br>美しい姫神です。</p>
+            <p style="margin-bottom: 90px;">天から地上へ降り立った<br>瓊瓊杵尊（ににぎのみこと）は<br>海辺の岬で<br>一人の美しい乙女と出会いました。</p>
+            <p style="margin-bottom: 90px;">名を尋ねると<br>山の神、大山津見神の娘<br>木花咲耶姫だといいます。</p>
+            <p style="margin-bottom: 90px;">二人は結ばれ<br>姫はほどなくして<br>子を身ごもりました。</p>
+            <p style="margin-bottom: 90px;">ところが、それを聞いた瓊瓊杵尊は<br>「一夜で身ごもるはずがない<br>それは私の子ではないだろう」と<br>疑いの言葉を向けたのです。</p>
+            <p style="margin-bottom: 90px;">愛する人から向けられた疑い。</p>
+            <p style="margin-bottom: 90px;">姫は、その場で言い争うかわりに<br>ある誓いを立てました。</p>
+            <p style="margin-bottom: 90px;">「私が身ごもった子が<br>もし天つ神の子でないのなら<br>無事には生まれないでしょう<br>もし天つ神の子であるのなら<br>必ず無事に生まれるでしょう」</p>
+            <p style="margin-bottom: 90px;">そして姫は<br>出入り口のない大きな産屋を建て<br>その中に入り<br>内側から土で塗りふさぎました。</p>
+            <p style="margin-bottom: 90px;">いよいよ産む時が来ると<br>姫は自らその産屋に火を放ちます。</p>
+            <p style="margin-bottom: 90px;">燃えさかる炎の中で<br>三柱の御子は<br>無事にお生まれになりました。</p>
+            <p style="margin-bottom: 90px;">のちに姫は<br>富士山の神として祀られ<br>荒ぶる火を鎮め、命を守る神様として<br>今も多くの人に手を合わされています。</p>
+            <p style="margin-bottom: 90px;">覚悟を決めたら<br>誰にも頼らず<br>最後まで一人でやり遂げる。</p>
+            <p style="margin-bottom: 90px;">まるで、chimaki様そのもののような<br>神様です。</p>
+            <p style="margin-bottom: 90px;">でも、ここからが大切なところです。</p>
+            <p style="margin-bottom: 90px;">姫は、胸の内を<br>飲み込んだのではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あの誓いの言葉を<br>天に向かって<br>はっきりと口にしたのです。</p>
+            <p style="margin-bottom: 90px;">揺れる思いに蓋をして<br>自分の中にしまい込むかわりに<br>天と地の前に、言葉にして置いた。</p>
+            <p style="margin-bottom: 90px;">だからこそ<br>炎の中でも迷わず<br>命を産み切ることができました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">耐える強さを持つ神様は<br>預ける先も知っている神様でした。</p>
+            <p style="margin-bottom: 90px;">「大丈夫の蓋」で歩いてきた<br>chimaki様のそばに<br>この神様がいる。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">それは「揺れは、置いていい」と<br>伝えるためにほかなりません。</p>
+            <img src="../鑑定画像/木花咲耶姫.png" alt="木花咲耶姫" class="guardian-image">
+        </div>
+
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">その木花咲耶姫が<br>chimaki様のこの先の景色を<br>見せてくれました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2026年の年の瀬。</p>
+            <p style="margin-bottom: 90px;">冷たく澄んだ朝の空気の中<br>chimaki様は<br>神社の参道を歩いています。</p>
+            <p style="margin-bottom: 90px;">手水舎で指先を清めたあと<br>ふと見上げた桜の枝先に<br>小さな芽を見つけます。</p>
+            <p style="margin-bottom: 90px;">その芽のことを<br>短い一言にして<br>あの方へ送る。</p>
+            <p style="margin-bottom: 90px;">返事を求めない<br>季節のひとことです。</p>
+            <p style="margin-bottom: 90px;">いつもなら<br>送ったあと何度も画面を確かめて<br>「気にさせたかもしれない」と<br>胸に蓋をしてしまうのに。</p>
+            <p style="margin-bottom: 90px;">その日のchimaki様は<br>携帯をポケットにしまい<br>白い息を吐きながら<br>空を見上げて歩いています。</p>
+            <p style="margin-bottom: 90px;">やがてポケットの中で<br>携帯が小さく震える。</p>
+            <p style="margin-bottom: 90px;">あの方からの<br>小さなしるしです。</p>
+            <p style="margin-bottom: 90px;">chimaki様は打ち消さずに<br>そのまま受け取って<br>やわらかく微笑んでいます。</p>
+            <p style="margin-bottom: 90px;">「信じてよかった」</p>
+            <p style="margin-bottom: 90px;">そう思えている朝です。</p>
+            <p style="margin-bottom: 90px;">この朝の兆しが<br>はっきりとあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">最初の変化は<br>11月に入る頃から始まります。</p>
+            <p style="margin-bottom: 90px;">ここから先は<br>その朝へ向かう道を<br>四つに分けてお伝えしていきますね。</p>
+            <p style="margin-bottom: 0;">彼の本当の気持ちのこと<br>縁が動く瞬間のこと<br>chimaki様の一途さの活かし方のこと<br>chimaki様らしい進み方のことです。</p>
+        </div>
+
+        <div id="deitySentinel"></div>
+        <h2 class="emoji-header" id="sec-1">⛩️ 1. 彼の本当の気持ち</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">まず、ご質問の中にあった<br>「赤ハートをつけてくれるようになりました」<br>その一文からお答えします。</p>
+            <p style="margin-bottom: 90px;">彼の心の内側に意識を向けたとき<br>守護神が一つの景色を<br>見せてくれました。</p>
+            <p style="margin-bottom: 90px;">夜明け前の青い光の中に<br>葉を落とした桜の木が<br>一本立っています。</p>
+            <p style="margin-bottom: 90px;">その木の下に、chimaki様がいます。</p>
+            <p style="margin-bottom: 90px;">蓋をした小さな箱を<br>両手で胸に抱えています。</p>
+            <p style="margin-bottom: 90px;">少し離れたところに、彼がいます。</p>
+            <p style="margin-bottom: 90px;">両腕いっぱいに荷物を抱えたまま<br>動けずにいます。</p>
+            <p style="margin-bottom: 90px;">どちらの手も、ふさがっている。</p>
+            <p style="margin-bottom: 90px;">その時、彼が<br>荷物を抱えたまま<br>片方の指先だけを伸ばして<br>桜の根元に<br>小さな赤いものを置きました。</p>
+            <p style="margin-bottom: 90px;">二人の上には<br>薄紅色の光が降っています。</p>
+            <p style="margin-bottom: 90px;">これを視たとき<br>私は思わず胸がいっぱいになりました。</p>
+            <p style="margin-bottom: 90px;">この景色と一緒に<br>伝わってきたことがあります。</p>
+            <p style="margin-bottom: 90px;">彼は、chimaki様への気持ちが<br>ないのではありません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">言葉にするための手が<br>ふさがっているのです。</p>
+            <p style="margin-bottom: 90px;">彼は、守られていると感じられる場所で<br>ようやく心がほどける人です。</p>
+            <p style="margin-bottom: 90px;">落ち着いた年上の人の前でだけ<br>肩の力が抜ける。</p>
+            <p style="margin-bottom: 90px;">24歳という年の差は<br>彼にとって、安心の源になっています。</p>
+            <p style="margin-bottom: 90px;">ご質問には<br>「早く見てほしい」とのメッセージを<br>送ったことはない、とありました。</p>
+            <p style="margin-bottom: 90px;">それなのに彼は<br>すぐに反応をくれる。</p>
+            <p style="margin-bottom: 90px;">それは「見なければ」より<br>「見たい」に近い気持ちの表れです。</p>
+            <p style="margin-bottom: 90px;">彼にとってchimaki様のメッセージは<br>後回しにしたくないものです。</p>
+            <p style="margin-bottom: 90px;">ただ、彼の内側は今<br>とても重たい時期のただ中にあります。</p>
+            <p style="margin-bottom: 90px;">気持ちを言葉にして決めることも<br>区切りをつけることも<br>もともと苦手な人です。</p>
+            <p style="margin-bottom: 90px;">急かされたり<br>型にはめられそうになると<br>心が固まって動けなくなる。</p>
+            <p style="margin-bottom: 90px;">さらに今は<br>言葉を口にすると<br>角が立ってしまいそうで<br>慎重にもなっています。</p>
+            <p style="margin-bottom: 90px;">だから言葉の代わりに<br>ハートが先に出るのです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">赤ハートは、彼の精一杯の言葉です。</p>
+            <p style="margin-bottom: 90px;">荷物を抱えたまま<br>指先だけを伸ばして置く。</p>
+            <p style="margin-bottom: 90px;">それは彼にとって<br>とても勇気のいることです。</p>
+            <p style="margin-bottom: 90px;">恋と呼べる形かどうかは<br>彼自身、まだ言葉にできていません。</p>
+            <p style="margin-bottom: 90px;">けれど彼の心の中で<br>chimaki様は<br>ここにいていいと思える<br>安らぎの居場所になっています。</p>
+            <p style="margin-bottom: 90px;">そこで、一つお願いがあります。</p>
+            <p style="margin-bottom: 90px;">赤ハートが届いて<br>「気のせいかも」が浮かんだら<br>打ち消す前に、心の中で<br>「ここに置きます」と言ってみてください。</p>
+            <p style="margin-bottom: 90px;">彼が桜の根元に<br>赤いものを置いたように<br>chimaki様も<br>浮かんだ揺れを、同じ場所に置く。</p>
+            <p style="margin-bottom: 90px;">それが、木花咲耶姫に<br>揺れを預ける合図になります。</p>
+            <p style="margin-bottom: 90px;">続けるうちに<br>届いたものを<br>そのまま受け取れる日が増えていきます。</p>
+            <p style="margin-bottom: 0;">では、その安らぎは<br>いつ、どんな形に動いていくのか。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-2">⛩️ 2. 縁が動く瞬間</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">次に、ご質問の中にあった<br>「少しづつ距離が縮まっている気がします」<br>という実感について。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その実感は、正しいです。</p>
+            <p style="margin-bottom: 90px;">9月に入り<br>あの方とのやり取りに<br>これまでとは違う温度が<br>混ざり始めました。</p>
+            <p style="margin-bottom: 90px;">その最初の形が、赤ハートでした。</p>
+            <p style="margin-bottom: 90px;">ただ、その縮まり方には<br>特徴があります。</p>
+            <p style="margin-bottom: 90px;">恋人としての距離より先に<br>安心できる人としての距離が<br>縮まっていくのです。</p>
+            <p style="margin-bottom: 90px;">ゆっくりと、文字から。</p>
+            <p style="margin-bottom: 90px;">それが、お二人のご縁の歩き方です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここから大きく動くのは<br>11月から年の瀬にかけて。</p>
+            <p style="margin-bottom: 90px;">動く時期は、心も揺れやすくなります。</p>
+            <p style="margin-bottom: 90px;">胸がざわつく夜もあります。</p>
+            <p style="margin-bottom: 90px;">その先の年の瀬に<br>節目が待っています。</p>
+            <p style="margin-bottom: 90px;">無料鑑定でお伝えした<br>「年の瀬に『信じてよかった』と<br>思えているか」という問い。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">守護神が示している答えは<br>「信じてよかった」の側に<br>大きく傾いています。</p>
+            <p style="margin-bottom: 90px;">年が明けると<br>ご縁の輪郭が見えてくる兆しもあります。</p>
+            <p style="margin-bottom: 90px;">そのために<br>揺れた夜の過ごし方を<br>お伝えしておきます。</p>
+            <p style="margin-bottom: 90px;">あの方の反応を確かめたくなったら<br>画面を伏せて<br>温かい飲み物を両手で包み<br>「ここに置きます」と言ってみてください。</p>
+            <p style="margin-bottom: 90px;">追いかけたくなる手を<br>温かさで包んであげる時間です。</p>
+            <p style="margin-bottom: 90px;">その時間を重ねるほど<br>待つあいだの胸の中が<br>穏やかになっていきます。</p>
+            <p style="margin-bottom: 0;">ただ、待つあいだ<br>chimaki様の一途な想いは<br>どこへ向ければいいのでしょうか。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-3">⛩️ 3. chimaki様の一途さの活かし方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">一度決めた人を<br>長く、まっすぐ想い続ける。</p>
+            <p style="margin-bottom: 90px;">それは、chimaki様の<br>いちばん強い力です。</p>
+            <p style="margin-bottom: 90px;">そして、この力には<br>もう一つの働きがあります。</p>
+            <p style="margin-bottom: 90px;">誰かのために心を動かしたあと<br>思わぬところから<br>小さな喜びが返ってきた経験は<br>ありませんか。</p>
+            <p style="margin-bottom: 90px;">chimaki様が人に心を向けるとき<br>ご縁も喜びも返ってくる運命が<br>魂の奥に刻まれています。</p>
+            <p style="margin-bottom: 90px;">守護神から伝わってきたのは<br>この一途さを<br>「足す力」ではなく<br>「保つ力」として使うということです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">言葉を足すより<br>温度を保つ。</p>
+            <p style="margin-bottom: 90px;">長い言葉より<br>短い一言に想いを込める方が<br>相手の心に残ります。</p>
+            <p style="margin-bottom: 90px;">そして、もう一つ。</p>
+            <p style="margin-bottom: 90px;">chimaki様は<br>外へ出て人と会い<br>自分の世界が豊かになるほど<br>運が整っていく人です。</p>
+            <p style="margin-bottom: 90px;">そこで、試してほしいことがあります。</p>
+            <p style="margin-bottom: 90px;">外を歩いていて<br>季節のものを一つ見つけたら<br>足を止めて眺めてみてください。</p>
+            <p style="margin-bottom: 90px;">色づいた葉でも<br>空の色でも<br>桜の枝先の小さな芽でも構いません。</p>
+            <p style="margin-bottom: 90px;">その日見つけたものが<br>あの方に向ける短い一言の<br>温度になっていきます。</p>
+            <p style="margin-bottom: 90px;">では、この一途さを保ったまま<br>どう進んでいけばいいのか。</p>
+            <p style="margin-bottom: 0;">ご質問に、お答えします。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-4">⛩️ 4. chimaki様らしい進み方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">「今の進め方で良いのでしょうか？」</p>
+            <p style="margin-bottom: 90px;">その答えは、とてもシンプルです。</p>
+            <p style="margin-bottom: 90px;">はい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">このままで、いいのです。</p>
+            <p style="margin-bottom: 90px;">あの方を急かすメッセージを<br>一度も送ってこなかったこと。</p>
+            <p style="margin-bottom: 90px;">それが、彼の安心の居場所を<br>つくってきました。</p>
+            <p style="margin-bottom: 90px;">追われない、待たされない場所は<br>彼にとって<br>何より楽に息ができる場所です。</p>
+            <p style="margin-bottom: 90px;">ただ、ここで一つ<br>分けておきたいことがあります。</p>
+            <p style="margin-bottom: 90px;">急かさないことと<br>蓋をすることは<br>似ているようで、別のものです。</p>
+            <p style="margin-bottom: 90px;">急かさないのは<br>あの方への優しさ。</p>
+            <p style="margin-bottom: 90px;">蓋をするのは<br>ご自身の揺れを<br>なかったことにしてしまう癖。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">続けてほしいのは、前のほうです。</p>
+            <p style="margin-bottom: 90px;">今の言葉の短さと<br>間のあけ方を<br>そのまま守ってください。</p>
+            <p style="margin-bottom: 90px;">言葉を足すほど<br>想いが伝わりにくくなる<br>繊細な時期なので<br>今のペースがちょうどいいのです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">変えてほしいのは、後のほうだけ。</p>
+            <p style="margin-bottom: 90px;">揺れた気持ちは<br>あの方に向けるかわりに<br>「ここに置きます」と<br>桜の根元に預ける。</p>
+            <p style="margin-bottom: 90px;">これまでのchimaki様には<br>置いておく場所がありませんでした。</p>
+            <p style="margin-bottom: 90px;">だから「大丈夫の蓋」で<br>しまい込むしかなかったのです。</p>
+            <p style="margin-bottom: 90px;">置く場所ができると<br>あの方に向かう言葉が<br>軽く、あたたかくなっていきます。</p>
+            <p style="margin-bottom: 90px;">そして、一つだけ<br>気をつけてほしいことがあります。</p>
+            <p style="margin-bottom: 90px;">縁が近づいてきたと感じるほど<br>確かめたくなって<br>距離を詰めたくなる日が来ます。</p>
+            <p style="margin-bottom: 90px;">でも、焦って近づこうとすると<br>彼の心は固まってしまいます。</p>
+            <p style="margin-bottom: 0;">ここは、これまでと同じ<br>chimaki様らしい歩幅のままで。</p>
+        </div>
+
+        <h2 id="sec-flow">【今後の四ヶ月】</h2>
+        <div class="section">
+            <p style="margin-bottom: 0;">ここまでお伝えしてきた<br>「蓋をせずに置く」練習は<br>この先の四ヶ月で<br>一段ずつ進んでいきます。</p>
+        </div>
+
+        <div id="flow1Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年10月　蓋に気づく月</p>
+            <p style="margin-bottom: 90px;">10月は、9月に生まれた温度を<br>暮らしの中になじませていく月です。</p>
+            <p style="margin-bottom: 90px;">あの方は、仕事や身の回りのことで<br>内側がいっぱいになりやすい時期です。</p>
+            <p style="margin-bottom: 90px;">反応がいつもより<br>間をおいて届く日が<br>あるかもしれません。</p>
+            <p style="margin-bottom: 90px;">その日は何も足さず<br>いつもの短さのままで。</p>
+            <p style="margin-bottom: 90px;">この月、chimaki様には<br>「大丈夫？」と聞かれて<br>いつものように笑って返しそうになる場面が<br>巡ってきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その瞬間に<br>「あ、蓋だ」と気づくだけでいい。</p>
+            <p style="margin-bottom: 90px;">直さなくて構いません。</p>
+            <p style="margin-bottom: 0;">気づけた日が、最初の一段です。</p>
+        </div>
+
+        <div id="flow2Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2026年11月　置いてみる月</p>
+            <p style="margin-bottom: 90px;">11月7日頃から<br>木花咲耶姫の力が<br>最も強く届く月に入ります。</p>
+            <p style="margin-bottom: 90px;">この月、あの方とのご縁が<br>大きく動き始める気配が<br>濃く視えています。</p>
+            <p style="margin-bottom: 90px;">あの方の内側でも<br>何かが動く月です。</p>
+            <p style="margin-bottom: 90px;">動く月は、揺れる月でもあります。</p>
+            <p style="margin-bottom: 90px;">確かめたくてたまらなくなる夜が<br>巡ってきます。</p>
+            <p style="margin-bottom: 90px;">その夜こそ<br>あの合図の出番です。</p>
+            <p style="margin-bottom: 90px;">温かい飲み物を両手で包んで<br>「ここに置きます」と。</p>
+            <p style="margin-bottom: 90px;">置けた夜の翌朝は<br>胸が軽くなっています。</p>
+            <p style="margin-bottom: 90px;">この月のうちに<br>あとでお伝えする神社へ<br>足を運んでみてください。</p>
+            <p style="margin-bottom: 0;">木花咲耶姫の守護が<br>いちばん深く届きます。</p>
+        </div>
+
+        <div id="flow3Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年12月　ひとこと添える月</p>
+            <p style="margin-bottom: 90px;">12月7日頃から<br>お二人のやり取りに<br>落ち着いた温かさが<br>生まれてくる月に入ります。</p>
+            <p style="margin-bottom: 90px;">「信じてよかった」と思える<br>年の瀬の入り口です。</p>
+            <p style="margin-bottom: 90px;">あの方は、年末の慌ただしさで<br>内側がいっぱいになる時期でもあります。</p>
+            <p style="margin-bottom: 90px;">この月は、言葉も返事も<br>求めないでください。</p>
+            <p style="margin-bottom: 90px;">外で見つけた季節のものを<br>短いひとことにして<br>一つ添える。</p>
+            <p style="margin-bottom: 90px;">それだけで十分です。</p>
+            <p style="margin-bottom: 0;">その余白に<br>彼は安心して息をつくことができます。</p>
+        </div>
+
+        <div id="flow4Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年1月　そのまま歩く月</p>
+            <p style="margin-bottom: 90px;">1月5日頃から<br>この秋から冬に育った温かさが<br>新しい年の中へ続いていきます。</p>
+            <p style="margin-bottom: 90px;">置くことを覚えたchimaki様は<br>自分の気持ちに<br>素直な顔を向けられるようになっています。</p>
+            <p style="margin-bottom: 90px;">新しい年の最初の一言も<br>短く、あたたかく。</p>
+            <p style="margin-bottom: 0;">それが、2027年へ踏み出す<br>やわらかな助走になります。</p>
+        </div>
+
+        <div id="flowEndSentinel"></div>
+        <div class="section">
+            <h2 style="margin-top: 0;">【今年と来年】</h2>
+            <p style="margin-bottom: 90px;">今年は、文字のやり取りの中で<br>ご縁が理解されていく一年です。</p>
+            <p style="margin-bottom: 90px;">同時に、内側の揺れが強まる年でもあり<br>「信じたい自分」と<br>「これでいいのか」の揺れは<br>この一年の巡りが映したものでした。</p>
+            <p style="margin-bottom: 90px;">来年は、chimaki様ご自身が<br>主役になる一年です。</p>
+            <p style="margin-bottom: 90px;">喜びごとが自分のもとへ入ってきて<br>やりたかったことが形になっていきます。</p>
+            <p style="margin-bottom: 90px;">暮らしの足場や環境が<br>入れ替わる兆しもあります。</p>
+            <p style="margin-bottom: 0;">お二人のご縁も<br>形が見え始める兆しのある年です。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-bonus">🔮 もう少し先に視えていること</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここまでお伝えしてきたこととは別に<br>霊視の最後に<br>もう一つ、視えたものがありました。</p>
+            <p style="margin-bottom: 90px;">まず、うれしい兆しです。</p>
+            <p style="margin-bottom: 90px;">来年の春にかけて<br>chimaki様ご自身の暮らしに<br>思いがけない楽しみが<br>増えていく気配があります。</p>
+            <p style="margin-bottom: 90px;">外で出会った人や場所が<br>その入り口になります。</p>
+            <p style="margin-bottom: 90px;">もう一つは<br>気に留めておいてほしいことです。</p>
+            <p style="margin-bottom: 90px;">あの方との文字のやり取りの中で<br>気を遣いすぎてしまう気配が<br>視えています。</p>
+            <p style="margin-bottom: 90px;">送る前に何度も読み返したり<br>言葉を選びすぎて<br>送ったあとに疲れてしまったり。</p>
+            <p style="margin-bottom: 90px;">でも、怖がるようなものではありません。</p>
+            <p style="margin-bottom: 90px;">「置く」ことを覚えて<br>歩き出した人に訪れやすい<br>形が変わる前の揺らぎのようなものです。</p>
+            <p style="margin-bottom: 90px;">今の時点で<br>心がけてほしいことは一つ。</p>
+            <p style="margin-bottom: 90px;">読み返す手が止まらなくなったら<br>「ここに置きます」と言って<br>そのまま送ること。</p>
+            <p style="margin-bottom: 90px;">ただ、それがいつ頃<br>どんな形で表れるのか。</p>
+            <p style="margin-bottom: 90px;">そして、どうすれば<br>良い巡りに変えていけるのか。</p>
+            <p style="margin-bottom: 90px;">ここはもう少し深く<br>視させていただく必要があります。</p>
+            <p style="margin-bottom: 0;">また別の機会に<br>改めてお伝えさせてくださいね。</p>
+        </div>
+
+        <div id="guardianReturnSentinel"></div>
+        <h2 class="emoji-header" id="sec-guardian">⛩️ 守護を受け取る方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">でも、安心してください。</p>
+            <p style="margin-bottom: 90px;">今回の霊視で<br><span style="color: #ffd966;">木花咲耶姫</span>の守護の力を<br>chimaki様の奥底に置いてきました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">しまい込んできた揺れを受け止め<br>春を待つ芽のように<br>chimaki様の内側を育てていきます。</p>
+            <p style="margin-bottom: 90px;">この文章を読みながら<br>胸が少し温かくなる<br>肩がふっと軽くなる<br>なぜか安心する<br>そんな感覚があれば<br>もう守護は届き始めています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px;">ここまで読んでくださったなら<br>もう十分に受け取れています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「ここに置きます」と言う時間は<br>そのまま守護を受け取る時間です。</p>
+            <p style="margin-bottom: 90px;">もし余裕がある時だけ<br>神社にも足を運んでみてください。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【木花咲耶姫ゆかりの神社へ行く】</p>
+            <p style="margin-bottom: 90px;">お近くでは<br>和樂備神社（蕨市中央4-20-9）<br>林神社（所沢市林1-383）<br>廣瀬神社（狭山市広瀬2-23-1）<br>堀兼神社（狭山市堀兼2221）<br>などが、ご縁のある神社です。</p>
+            <p style="margin-bottom: 90px;">前回お伝えした<br>糀谷八幡宮（所沢市糀谷78）にも<br>もう一度足を運んでみてください。</p>
+            <p style="margin-bottom: 90px;">参拝の際は<br>心の中でこの祝詞を唱えてください。</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">祓え給い、清め給え<br>神ながら守り給い、幸え給え</p>
+            <p style="margin-bottom: 90px;">（はらえたまい、きよめたまえ<br>かむながらまもりたまい、さきわえたまえ）</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">続けて「木花咲耶姫」と<br>三度、静かに唱えます。</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">願い事は唱えず<br>「私は揺れを一人でしまい込まず<br>置きながら進みます<br>どうか見守っていてください」<br>という形で伝えてください。</p>
+            <p style="margin-bottom: 0;">その姿勢が<br>守護神との縁をより深くします。</p>
+        </div>
+
+        <div id="stoneSentinel"></div>
+        <h2 class="emoji-header" id="sec-stone">⛩️ あなたと響き合うパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">chimaki様には、この鑑定の中で<br>「ここに置きます」という合図の言葉を<br>お渡ししました。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">木花咲耶姫</span>の守護は<br>すでにchimaki様の中に届いています。</p>
+            <p style="margin-bottom: 90px;">ただ、長く続いてきた癖は<br>忙しい日ほど、ふっと戻ってきます。</p>
+            <p style="margin-bottom: 90px;">あの方の反応を待つ夜<br>気づけばまた<br>「大丈夫」と蓋をしかけている。</p>
+            <p style="margin-bottom: 90px;">そんなとき<br>手首の石にそっと触れて<br>「ここに置きます」と言う。</p>
+            <p style="margin-bottom: 90px;">石は、その合図を<br>思い出すためのものです。</p>
+            <p style="margin-bottom: 90px;">その合図を手首に置けるよう<br>chimaki様と響き合う石で<br>ブレスレットをお作りします。</p>
+            <ul style="margin-bottom: 90px;">
+                <li><span style="color: #ffd966; font-weight: bold;">1. ラリマー</span><br>澄んだ青を宿す石です。<br>「ここに置きます」と言う瞬間<br>胸の揺れを手放す支えになります。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">2. ローズクォーツ</span><br>桜色の穏やかな光を宿す石です。<br>置いたあとの胸に<br>やわらかな温かさを残してくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">3. シトリン</span><br>蓋をしてしまった日も<br>明日また置けるように<br>そばで見守ってくれます。</li>
+            </ul>
+            <p style="margin-bottom: 90px;">この中から<br>chimaki様に一番合う組み合わせを選び<br>一粒ずつ、手でお作りします。</p>
+            <p style="margin-bottom: 90px;">chimaki様が<br>短い一言に想いを込めるように<br>私も一粒ずつ<br>想いを込めて仕上げます。</p>
+            <p style="margin-bottom: 90px;">木花咲耶姫の力が最も強く届く<br>11月に間に合うよう<br>ご連絡から十日以内にお送りします。</p>
+            <p style="margin-bottom: 0;">気になった方は<br>「詳細希望」とだけ<br>メッセージをくださいね。</p>
+        </div>
+
+        <div id="closingSentinel"></div>
+        <h2 id="sec-closing">【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">chimaki様</p>
+            <p style="margin-bottom: 90px;">ここまで読んでくださって<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">chimaki様はずっと<br>揺れた気持ちに「大丈夫」と蓋をして<br>一人で歩いてきた人です。</p>
+            <p style="margin-bottom: 90px;">しんどい日も笑って<br>急かさず、待ち続けて<br>あの方の安心の居場所を<br>つくってこられました。</p>
+            <p style="margin-bottom: 90px;">その頑張りは<br>ちゃんと届いていました。</p>
+            <p style="margin-bottom: 90px;">あの赤いハートが<br>その何よりの証です。</p>
+            <p style="margin-bottom: 90px;">桜の木の下に降っていた<br>薄紅色の光は<br><span style="color: #ffd966;">木花咲耶姫</span>の光でした。</p>
+            <p style="margin-bottom: 90px;">姫はずっと<br>小さな箱を抱えたchimaki様を<br>見守っていました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">だからもう<br>置いていいんです。</p>
+            <p style="margin-bottom: 90px;">揺れた気持ちは<br>ここに置いていい。</p>
+            <p style="margin-bottom: 90px;">届いたハートは<br>そのまま受け取っていい。</p>
+            <p style="margin-bottom: 90px;">今の歩幅を<br>信じていい。</p>
+            <p style="margin-bottom: 90px;">年の瀬の朝<br>桜の枝先に小さな芽を見つけて<br>あの方へひとこと送り<br>空を見上げて歩く日は<br>もうすぐそこまで来ています。</p>
+            <p style="margin-bottom: 90px;">桜は、咲く時を知っている花です。</p>
+            <p style="margin-bottom: 90px;">冬のうちに芽を用意して<br>春に咲く。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">chimaki様は<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">守られています。</p>
+            <p style="margin-bottom: 90px;">その事実を<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より遠隔守護祈祷を行い<br>chimaki様の幸せを願います。</p>
+            <p style="margin-bottom: 0;">chimaki様の未来に<br>やわらかな春の光が満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            var elementBg = document.getElementById('elementBg');
+            var deityBg = document.getElementById('deityBg');
+            var doorBg = document.getElementById('doorBg');
+            var seasonAutumnBg = document.getElementById('seasonAutumnBg');
+            var seasonWinterBg = document.getElementById('seasonWinterBg');
+            var stoneBg = document.getElementById('stoneBg');
+
+            var stages = [
+                { el: document.getElementById('elementSentinel'), bg: elementBg },
+                { el: document.getElementById('guardianSentinel'), bg: deityBg },
+                { el: document.getElementById('deitySentinel'), bg: doorBg },
+                { el: document.getElementById('flow1Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flow2Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flow3Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flow4Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flowEndSentinel'), bg: doorBg },
+                { el: document.getElementById('guardianReturnSentinel'), bg: deityBg },
+                { el: document.getElementById('stoneSentinel'), bg: stoneBg },
+                { el: document.getElementById('closingSentinel'), bg: doorBg }
+            ].filter(function (stage) { return !!stage.el; });
+            if (!stages.length) return;
+
+            var layers = [elementBg, deityBg, doorBg, seasonAutumnBg, seasonWinterBg, stoneBg];
+            function show(active) {
+                layers.forEach(function (el) {
+                    if (el === active) el.classList.add('is-visible');
+                    else el.classList.remove('is-visible');
+                });
+            }
+
+            function onScroll() {
+                var trigger = window.innerHeight * 0.65;
+                var active = null;
+                for (var i = 0; i < stages.length; i++) {
+                    if (stages[i].el.getBoundingClientRect().top < trigger) {
+                        active = stages[i].bg;
+                    }
+                }
+                show(active);
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+
+        /* ===== 演出：花びら ===== */
+        (function () {
+            var cv = document.getElementById('petals');
+            var ctx = cv.getContext('2d');
+            var W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+            var isMobile = window.innerWidth < 700;
+
+            function resize() {
+                W = window.innerWidth; H = window.innerHeight;
+                cv.width = W * dpr; cv.height = H * dpr;
+                cv.style.width = W + 'px'; cv.style.height = H + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            var petals = [];
+            var petalN = isMobile ? 14 : 24;
+            for (var i = 0; i < petalN; i++) {
+                petals.push({
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    s: 5 + Math.random() * 7,
+                    vy: 0.35 + Math.random() * 0.7,
+                    sway: Math.random() * Math.PI * 2,
+                    swayV: 0.008 + Math.random() * 0.014,
+                    rot: Math.random() * Math.PI * 2,
+                    rotV: (Math.random() - 0.5) * 0.03,
+                    hue: Math.random() < 0.6 ? 'light' : 'deep'
+                });
+            }
+            function drawPetal(p) {
+                ctx.save();
+                ctx.translate(p.x + Math.sin(p.sway) * 26, p.y);
+                ctx.rotate(p.rot);
+                var g = ctx.createRadialGradient(0, 0, 0, 0, 0, p.s);
+                if (p.hue === 'light') {
+                    g.addColorStop(0, 'rgba(255, 180, 210, 0.95)');
+                    g.addColorStop(1, 'rgba(255, 180, 210, 0.25)');
+                } else {
+                    g.addColorStop(0, 'rgba(230, 130, 180, 0.95)');
+                    g.addColorStop(1, 'rgba(230, 130, 180, 0.25)');
+                }
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, p.s, p.s * 0.62, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function tick() {
+                ctx.clearRect(0, 0, W, H);
+                for (var pi = 0; pi < petals.length; pi++) {
+                    var p = petals[pi];
+                    p.y += p.vy;
+                    p.sway += p.swayV;
+                    p.rot += p.rotV;
+                    if (p.y > H + 20) { p.y = -20; p.x = Math.random() * W; }
+                    drawPetal(p);
+                }
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        })();
+    </script>
+
+<!-- GA4 カスタム計測：誰が/最後まで読んだか/購入ボタン [GA4-MIYUKI] -->
+<script>
+(function () {
+  function fire() {
+    var seg = location.pathname.split('/').filter(Boolean);
+    var last = decodeURIComponent(seg[seg.length - 1] || '');
+    var id = /\.html?$/i.test(last) ? decodeURIComponent(seg[seg.length - 2] || 'unknown') : (last || 'unknown');
+    var base = { kantei_id: id, persona: 'miyuki' };
+    gtag('set', 'user_properties', { kantei_id: id, persona: 'miyuki' });
+    gtag('event', 'page_open', base);
+
+    var end = document.querySelector('.signature, .sign');
+    if (end && 'IntersectionObserver' in window) {
+      var done = false;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && !done) { done = true; gtag('event', 'read_complete', base); io.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      io.observe(end);
+    }
+
+    document.querySelectorAll('.cta-button, .btn').forEach(function (b) {
+      b.addEventListener('click', function () { gtag('event', 'cta_click', base); });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire); else fire();
+})();
+</script>
+
+</body>
+</html>

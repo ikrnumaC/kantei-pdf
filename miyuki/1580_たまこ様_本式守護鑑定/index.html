@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) : GA4 計測 [GA4-MIYUKI] -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHLDFT6DR7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JHLDFT6DR7');
+    </script>
+    <title>たまこ様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+
+            .toc {
+                padding: 20px 15px;
+            }
+
+            .toc-title {
+                font-size: 1.1em;
+            }
+
+            .toc a {
+                font-size: 0.95em;
+                padding: 12px 6px 12px 36px;
+            }
+        }
+
+        /* ===== 演出：元素の背景（冒頭〜守護神登場まで） ===== */
+        .element-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../鑑定画像/深い森.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .element-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：守護神の背景（守護神登場〜本式内容の手前まで） ===== */
+        .deity-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/五十猛命.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center 18%;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .deity-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：扉の背景（本式内容〜結びまで） ===== */
+        .door-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/ドア2.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .door-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：今後の流れ 季節背景 ===== */
+        .season-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .season-bg.is-visible { opacity: 0.4; }
+        #seasonAutumnBg { background-image: url("../鑑定画像/秋.jpg"); }
+        #seasonWinterBg { background-image: url("../鑑定画像/冬.jpg"); }
+
+        /* ===== 演出：パワーストーン背景 ===== */
+        .stone-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../素材/宝石.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .stone-bg.is-visible { opacity: 0.4; }
+
+        .deity-veil {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(15, 15, 46, 0.04) 0%, rgba(15, 15, 46, 0.15) 60%, rgba(15, 15, 46, 0.25) 100%),
+                linear-gradient(180deg, rgba(15, 15, 46, 0.06) 0%, rgba(15, 15, 46, 0.18) 100%);
+        }
+
+        /* ===== 演出：花びら ===== */
+        #petals {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="element-bg" id="elementBg"></div>
+    <div class="deity-bg" id="deityBg"></div>
+    <div class="door-bg" id="doorBg"></div>
+    <div class="season-bg" id="seasonAutumnBg"></div>
+    <div class="season-bg" id="seasonWinterBg"></div>
+    <div class="stone-bg" id="stoneBg"></div>
+    <div class="deity-veil"></div>
+    <canvas id="petals"></canvas>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">預けた手に、種が置かれる時</h2>
+            <p class="cover-name">たまこ様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 目次 -->
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-path">あなたが歩いてきた道</a></li>
+                <li><a href="#sec-now">今のたまこ様</a></li>
+                <li><a href="#sec-god">あなたの守護神</a></li>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-1">1. 転機が訪れる時</a></li>
+                <li><a href="#sec-2">2. 根を張り直す場所</a></li>
+                <li><a href="#sec-3">3. たまこ様のまっすぐさの活かし方</a></li>
+                <li><a href="#sec-4">4. たまこ様らしい整え方</a></li>
+                <li><a href="#sec-bonus">もう少し先に視えていること</a></li>
+                <li><a href="#sec-flow">今後の四ヶ月</a></li>
+                <li><a href="#sec-year">今年と来年</a></li>
+                <li><a href="#sec-guardian">守護を受け取る方法</a></li>
+                <li><a href="#sec-stone">あなたと響き合うパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
+        <div id="elementSentinel"></div>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">たまこ様</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">「授業は決して上手くなくて<br>板書も泣きたいほど下手くそ。」</p>
+            <p style="margin-bottom: 90px;">いただいたこの言葉を読んだとき<br>たまこ様がどれほど長いあいだ<br>一人で自分に厳しい目を向けながら<br>教壇に立ち続けてこられたのか<br>その重みがまっすぐ胸に届きました。</p>
+            <p style="margin-bottom: 90px;">今回、たまこ様の守護神とつながり<br>霊視を進めていくと<br>守護神は何度も同じところへ<br>私の意識を引き戻してきました。</p>
+            <p style="margin-bottom: 90px;">「これだけ立ち続けてきたのに<br>どうして私は<br>自分に合格点を出せないのだろう」</p>
+            <p style="margin-bottom: 90px;">たまこ様がずっと心の奥で抱えてきた<br>その問いの答えが、そこにありました。</p>
+            <p style="margin-bottom: 90px;">娘様についてのご質問には<br>四つ目の章でしっかりお答えしますね。</p>
+            <p style="margin-bottom: 0;">その答えにたどり着くために<br>まずはたまこ様が歩いてきた道から<br>お伝えしていきますね。</p>
+        </div>
+
+        <h2 id="sec-path">【あなたが歩いてきた道】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">若い頃のたまこ様は<br>人の輪の真ん中に自然と立って<br>その場の空気を明るく動かす人でした。</p>
+            <p style="margin-bottom: 90px;">やがてたまこ様は<br>華やかに前へ出ることよりも<br>一つずつ確かなものを積み上げる道を<br>選ぶようになりました。</p>
+            <p style="margin-bottom: 90px;">そして三十代の半ばから<br>四十代の半ばにかけて<br>家のことや暮らしの土台を整えることに<br>力を注いだ十年がありました。</p>
+            <p style="margin-bottom: 90px;">守護神が、一つの景色を<br>見せてくれています。</p>
+            <p style="margin-bottom: 90px;">娘様が寝静まった夜<br>台所の灯りの下で教材を広げ<br>明日の準備を一人で進めている<br>たまこ様の背中です。</p>
+            <p style="margin-bottom: 90px;">書いたものや伝えたことに<br>思うような手応えが返ってこなくて<br>胸の中で唇を噛んだ日も<br>あったはずです。</p>
+            <p style="margin-bottom: 90px;">それでも投げ出さずに<br>家の暮らしもお仕事も<br>守り続けてこられました。</p>
+            <p style="margin-bottom: 90px;">今の暮らしの安心も<br>今の教える力も<br>すべて、その歩みの上にあります。</p>
+            <p style="margin-bottom: 90px;">ただ、その背中を視ていて<br>一つ気づいたことがあります。</p>
+            <p style="margin-bottom: 0;">たまこ様は、ずっと<br>「ひとりで立ち続ける」道を<br>歩いてきた人なのです。</p>
+        </div>
+
+        <h2 id="sec-now">【今のたまこ様】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">その歩き方は、今のたまこ様にも<br>そのまま続いています。</p>
+            <p style="margin-bottom: 90px;">授業が終わったあと<br>うまくいった場面よりも<br>乱れた板書の字や言い淀んだ一言のほうを<br>頭の中で何度も再生していませんか。</p>
+            <p style="margin-bottom: 90px;">職場で疲れていても<br>「大丈夫です」と笑って<br>愚痴や弱音は誰にも渡さず<br>家に帰ってから<br>自分の中だけで整えていませんか。</p>
+            <p style="margin-bottom: 90px;">大切な人のことになると<br>「こうしたほうがいい」が先に出て<br>あとから「きつかったかな」と<br>一人で反省する夜があるはずです。</p>
+            <p style="margin-bottom: 90px;">自分の授業を、一人で採点する。</p>
+            <p style="margin-bottom: 90px;">つらさは、一人で飲み込む。</p>
+            <p style="margin-bottom: 90px;">大切な人への言葉も、一人で振り返る。</p>
+            <p style="margin-bottom: 90px;">どれも、たまこ様の誠実さです。</p>
+            <p style="margin-bottom: 90px;">でも、この三つには<br>共通していることがあります。</p>
+            <p style="margin-bottom: 90px;">どの場面にも<br>たまこ様のほかに<br>誰も登場していません。</p>
+            <p style="margin-bottom: 90px;">一人で受け止めて<br>一人で点数をつけて<br>一人で片づけている。</p>
+            <p style="margin-bottom: 90px;">それが長く続いた結果<br>一つの癖ができていました。</p>
+            <p style="margin-bottom: 90px;">「ひとりで背負って<br>ひとりで採点する」癖です。</p>
+            <p style="margin-bottom: 90px;">助けを申し出てもらっても<br>「大丈夫です」<br>「自分でやります」と<br>先に答えてしまう。</p>
+            <p style="margin-bottom: 90px;">褒められても<br>「いえいえ」と手を振って<br>受け取らずに流してしまう。</p>
+            <p style="margin-bottom: 90px;">体の痛みも<br>「人に言うほどのことじゃない」と<br>自分の中にしまっている。</p>
+            <p style="margin-bottom: 90px;">「向いていないのかもしれない」と思う日も<br>誰にも言わず<br>そのまま教壇に立っている。</p>
+            <p style="margin-bottom: 90px;">思い当たるところはありませんか。</p>
+            <p style="margin-bottom: 90px;">実はこの癖こそが<br>守護神が何度も<br>私の意識を引き戻した場所でした。</p>
+            <p style="margin-bottom: 90px;">ここが、今回の鑑定の鍵になります。</p>
+            <p style="margin-bottom: 0;">では、そんなたまこ様を守護しているのは<br>どんな神様なのでしょうか。</p>
+        </div>
+
+        <div id="guardianSentinel"></div>
+        <h2 id="sec-god">【あなたの守護神】</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">たまこ様を守っているのは<br><span style="color: #ffd966;">五十猛命</span>（いそたけるのみこと）。</p>
+            <p style="margin-bottom: 90px;">荒ぶる神として知られる<br>素戔嗚尊（すさのおのみこと）の御子です。</p>
+            <p style="margin-bottom: 90px;">日本書紀には<br>父の素戔嗚尊とともに<br>海の向こうの新羅（しらぎ）の地へ渡ったとき<br>五十猛命がたくさんの樹の種を<br>携えていたと記されています。</p>
+            <p style="margin-bottom: 90px;">けれど、その地には<br>種を植えませんでした。</p>
+            <p style="margin-bottom: 90px;">一粒も残さず持ち帰り<br>筑紫（つくし）の国から蒔きはじめて<br>大八洲（おおやしま）の国のすみずみまで<br>種を広げていきました。</p>
+            <p style="margin-bottom: 90px;">青々とした山にならなかった土地は<br>ないほどだったと伝わります。</p>
+            <p style="margin-bottom: 90px;">その働きから<br>五十猛命は「有功（いさおし）の神」<br>つまり、大きな功績を立てた神様と<br>たたえられました。</p>
+            <p style="margin-bottom: 90px;">荒れた土地に、一粒ずつ種を蒔き<br>緑に変えていく神様。</p>
+            <p style="margin-bottom: 90px;">授かった役目を<br>最後までまっすぐに持ち続けた神様。</p>
+            <p style="margin-bottom: 90px;">たまこ様の魂の色が<br>深い森の緑であるのは<br>この神様が緑に変えた大地と<br>同じ色だからかもしれません。</p>
+            <p style="margin-bottom: 90px;">まるで、たまこ様そのもののような<br>神様です。</p>
+            <p style="margin-bottom: 90px;">でも、ここからが大切なところです。</p>
+            <p style="margin-bottom: 90px;">日本書紀には<br>木の種を広めたのは<br>五十猛命一柱だけではなかったと<br>記されています。</p>
+            <p style="margin-bottom: 90px;">妹神の大屋津姫命（おおやつひめのみこと）と<br>抓津姫命（つまつひめのみこと）。</p>
+            <p style="margin-bottom: 90px;">この二柱の神様も<br>一緒に木の種を蒔き広げ<br>三柱そろって、のちに<br>紀伊の国に祀られたと伝わります。</p>
+            <p style="margin-bottom: 90px;">青い山は、一柱の手だけで<br>生まれたのではありません。</p>
+            <p style="margin-bottom: 90px;">種を蒔く神様は<br>分け合う神様でもあったのです。</p>
+            <p style="margin-bottom: 90px;">「ひとりで背負って<br>ひとりで採点する」癖で歩いてきた<br>たまこ様のそばに、この神様がいる。</p>
+            <p style="margin-bottom: 0;">それは「ひとりで立たなくていい」<br>「預けていい」と<br>伝えるためにほかなりません。</p>
+            <img src="../鑑定画像/五十猛命.png" alt="五十猛命" class="guardian-image">
+        </div>
+
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">その五十猛命が<br>たまこ様のこの先の景色を<br>見せてくれました。</p>
+            <p style="margin-bottom: 90px;">2028年、新芽がいっせいにふくらむ<br>春の頃に視えている景色です。</p>
+            <p style="margin-bottom: 90px;">晴れた休日の午後<br>緑の濃い山道を<br>たまこ様が娘様と並んで歩いています。</p>
+            <p style="margin-bottom: 90px;">娘様の頬には、ほんのり赤みがさして<br>新しい働き方の話を<br>笑いながら話しています。</p>
+            <p style="margin-bottom: 90px;">いつものたまこ様なら<br>「こうしたほうがいい」と<br>先に口を開いてしまうところ。</p>
+            <p style="margin-bottom: 90px;">けれどその日は<br>「うん」と聞いて<br>ただ隣を歩いています。</p>
+            <p style="margin-bottom: 90px;">「お母さんの仕事は、どうなの？」と聞かれて<br>「同僚の先生に頼んで<br>ずいぶん楽になったよ」と<br>肩の力を抜いて笑っている。</p>
+            <p style="margin-bottom: 90px;">そして、ふと気づきます。</p>
+            <p style="margin-bottom: 90px;">痛みを気にしながら上っていた坂を<br>いつのまにか<br>軽い足取りで上りきっていることに。</p>
+            <p style="margin-bottom: 90px;">その兆しが、はっきりと視えています。</p>
+            <p style="margin-bottom: 90px;">最初の変化が訪れるのは<br>今年の秋が深まる11月の頃です。</p>
+            <p style="margin-bottom: 90px;">ここから先は<br>この山道へ向かう道を<br>四つに分けてお伝えしていきますね。</p>
+            <p style="margin-bottom: 0;">転機が訪れる時のこと<br>根を張り直す場所のこと<br>まっすぐさの活かし方のこと<br>娘様とご自身の整え方のことです。</p>
+        </div>
+
+        <div id="deitySentinel"></div>
+        <h2 class="emoji-header" id="sec-1">⛩️ 1. 転機が訪れる時</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">他校の先生方が見にくる授業。</p>
+            <p style="margin-bottom: 90px;">そんな大切な時期に<br>サポート役の先生が突然お休みに入られて<br>どれほど心細かったことでしょう。</p>
+            <p style="margin-bottom: 90px;">守護神にこの授業のことを尋ねたとき<br>もう一つの景色を見せられました。</p>
+            <p style="margin-bottom: 90px;">授業を迎える前の、誰もいない教室。</p>
+            <p style="margin-bottom: 90px;">黒板の前にたまこ様が一人で立ち<br>白いチョークを強く握りしめています。</p>
+            <p style="margin-bottom: 90px;">その隣に、五十猛命が立っていました。</p>
+            <p style="margin-bottom: 90px;">腕いっぱいに種の袋を抱えて<br>たまこ様の手が空くのを待っています。</p>
+            <p style="margin-bottom: 90px;">けれど、たまこ様の手は<br>チョークでふさがっていて<br>その種を受け取れずにいます。</p>
+            <p style="margin-bottom: 90px;">これを視たとき<br>私は思わず胸が詰まりました。</p>
+            <p style="margin-bottom: 90px;">この光景と一緒に<br>伝わってきたことがあります。</p>
+            <p style="margin-bottom: 90px;">授業が不安なのは<br>力が足りないからではありません。</p>
+            <p style="margin-bottom: 90px;">一人で全部を抱えようとしているから<br>重いのです。</p>
+            <p style="margin-bottom: 90px;">サポート役の先生がお休みに入っても<br>助けがなくなったわけではないです。</p>
+            <p style="margin-bottom: 90px;">たまこ様には<br>困ったとき、手を差し出してくれる人が現れる<br>そんな運命が刻まれています。</p>
+            <p style="margin-bottom: 90px;">「みなさんに助けられながら」と<br>ご相談に書いてくださいましたね。</p>
+            <p style="margin-bottom: 90px;">その予感は、当たっています。</p>
+            <p style="margin-bottom: 90px;">授業が終わったとき<br>「大成功だった」と思えている方向が<br>強く感じられます。</p>
+            <p style="margin-bottom: 90px;">今年は、たまこ様が書いたもの<br>伝えたことが<br>評価として返ってきやすい年だからです。</p>
+            <p style="margin-bottom: 90px;">そこで、一つだけ<br>やってみてほしいことがあります。</p>
+            <p style="margin-bottom: 90px;">授業の前に<br>手伝ってくれそうな先生に<br>具体的な一つを<br>「ここ、お願いします」と預けてください。</p>
+            <p style="margin-bottom: 90px;">プリントの準備でも<br>時間の管理でも<br>板書の一部でもかまいません。</p>
+            <p style="margin-bottom: 90px;">その一言が<br>チョークを握りしめた手を<br>一つ空けていきます。</p>
+            <p style="margin-bottom: 90px;">空いた手に<br>五十猛命は種を置いてくれます。</p>
+            <p style="margin-bottom: 90px;">続けるうちに<br>授業のあとの採点が<br>「あそこがダメだった」から<br>「意外と楽しかったな」に変わっていきます。</p>
+            <p style="margin-bottom: 90px;">では、辞めるか、続けるか。</p>
+            <p style="margin-bottom: 90px;">その答えは<br>今は急いで出さなくて大丈夫です。</p>
+            <p style="margin-bottom: 90px;">今年と来年は<br>動くより、根を張る二年です。</p>
+            <p style="margin-bottom: 90px;">新しい場所へ踏み出す決断は<br>焦って決めるほど<br>空回りしやすい巡りにあります。</p>
+            <p style="margin-bottom: 90px;">本当の転機は<br>2028年に入ってから訪れる兆しがあります。</p>
+            <p style="margin-bottom: 90px;">そこから、人と関わる力が<br>大きく開いていく十年が始まります。</p>
+            <p style="margin-bottom: 90px;">もし新しい場所へ向かうなら<br>そのときが一番よい時期です。</p>
+            <p style="margin-bottom: 90px;">年の瀬には<br>答えの向きが見えはじめますので<br>詳しくは、あとの四ヶ月でお伝えしますね。</p>
+            <p style="margin-bottom: 90px;">その前に、ご自身の体と心の状態を<br>知っておくことが大切です。</p>
+            <p style="margin-bottom: 90px;">これは四つ目の章でお話しします。</p>
+            <p style="margin-bottom: 0;">ところで、続けるにしても変えるにしても<br>たまこ様のまっすぐさが<br>一番芽吹く場所は、どこなのでしょうか。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-2">⛩️ 2. 根を張り直す場所</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">「仕事は向いてないと思いながら」と<br>書いてくださいました。</p>
+            <p style="margin-bottom: 90px;">でも、はっきりお伝えします。</p>
+            <p style="margin-bottom: 90px;">たまこ様は、向いていないのではありません。</p>
+            <p style="margin-bottom: 90px;">人に教え、守り、導く力は<br>たまこ様の魂の一番深いところに<br>刻まれています。</p>
+            <p style="margin-bottom: 90px;">人前に立つと<br>その場の空気ごと動かす華やかさも<br>持っています。</p>
+            <p style="margin-bottom: 90px;">では、なぜ「向いていない」と<br>感じてしまうのでしょうか。</p>
+            <p style="margin-bottom: 90px;">頭の中にあるものを<br>そのまま形にして外に出すことが<br>少しだけ不器用です。</p>
+            <p style="margin-bottom: 90px;">板書の字が思うように整わないのも<br>そこから来ています。</p>
+            <p style="margin-bottom: 90px;">そこに、自分への採点の厳しさが<br>加わります。</p>
+            <p style="margin-bottom: 90px;">不器用な部分だけを拾い上げて<br>「泣きたいほど下手」と<br>自分で点数をつけてしまう。</p>
+            <p style="margin-bottom: 90px;">あの癖が、ここにも顔を出していました。</p>
+            <p style="margin-bottom: 90px;">「向いていない」の正体は<br>たった一人の審査員が<br>厳しすぎることだったのです。</p>
+            <p style="margin-bottom: 90px;">では、たまこ様の力が最も芽吹くのは<br>どこでしょうか。</p>
+            <p style="margin-bottom: 90px;">守護神から伝わってきたのは<br>一人ひとりに向き合う時間です。</p>
+            <p style="margin-bottom: 90px;">質問に来た生徒さんの話を<br>じっくり聴く時間。</p>
+            <p style="margin-bottom: 90px;">悩んでいる後輩の隣に座る時間。</p>
+            <p style="margin-bottom: 90px;">全員から一度に評価される場よりも<br>目の前の一人の話を聴く場で<br>たまこ様の力は、何倍にもなります。</p>
+            <p style="margin-bottom: 90px;">授業を続けるとしても<br>新しい場所へ向かうとしても<br>この時間を増やしていくことが<br>根を張り直す一番の近道です。</p>
+            <p style="margin-bottom: 90px;">ここでは、採点の役を<br>相手にもお願いしてみます。</p>
+            <p style="margin-bottom: 90px;">授業の終わりに<br>生徒さんか同僚の先生に<br>「分かりにくいところはなかった？」と<br>一言たずねてみてください。</p>
+            <p style="margin-bottom: 90px;">続けるうちに<br>「板書が下手」と思っていたところを<br>実は誰も気にしていなかったと<br>気づく日がきます。</p>
+            <p style="margin-bottom: 90px;">「先生の説明、分かりやすかったです」<br>という声が返ってくることもあるでしょう。</p>
+            <p style="margin-bottom: 0;">ただ、この力を伸ばしていくために<br>一番大切なことがあります。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-3">⛩️ 3. たまこ様のまっすぐさの活かし方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">たまこ様には<br>最後まで立ち続ける力があります。</p>
+            <p style="margin-bottom: 90px;">その力は、これまでの歩みの中で<br>誰にも負けないほど磨かれてきました。</p>
+            <p style="margin-bottom: 90px;">今は、その教える力に<br>ご縁と後押しが集まってくる時期の<br>仕上げのところにいます。</p>
+            <p style="margin-bottom: 90px;">たまこ様は、大きな木のような人です。</p>
+            <p style="margin-bottom: 90px;">風が吹いても折れない<br>まっすぐな幹を持っています。</p>
+            <p style="margin-bottom: 90px;">けれど、大きな木ほど<br>その根は、目に見えないところで<br>水と土に支えられているものです。</p>
+            <p style="margin-bottom: 90px;">たまこ様の根も同じです。</p>
+            <p style="margin-bottom: 90px;">幹は自分の力で立っていても<br>足元は、人の助けで保たれています。</p>
+            <p style="margin-bottom: 90px;">だから、一人で全部を背負うほど<br>消耗してしまいます。</p>
+            <p style="margin-bottom: 90px;">これまでのたまこ様は<br>「一人で立ち続ける力」として<br>まっすぐさを使ってきました。</p>
+            <p style="margin-bottom: 90px;">これからは<br>「受け取りながら立ち続ける力」へ<br>使い方を変えるときです。</p>
+            <p style="margin-bottom: 90px;">今年と来年は<br>内側で根を張る期間。</p>
+            <p style="margin-bottom: 90px;">その先で、枝が広がり<br>新しい芽が出てきます。</p>
+            <p style="margin-bottom: 90px;">たまこ様の魂には<br>何度でもゼロから生まれ変わる力が<br>刻まれています。</p>
+            <p style="margin-bottom: 90px;">だから、自分のために<br>選び直していいのです。</p>
+            <p style="margin-bottom: 90px;">そして、弱音を預けられる相手は<br>すでに近くにいます。</p>
+            <p style="margin-bottom: 90px;">一日の終わりに<br>信頼できる人に<br>「今日はちょっと疲れた」と<br>一言だけ伝えてみてください。</p>
+            <p style="margin-bottom: 90px;">答えやアドバイスは<br>求めなくてかまいません。</p>
+            <p style="margin-bottom: 90px;">ひとりで片づけてきた一日に<br>初めて、誰かが登場します。</p>
+            <p style="margin-bottom: 90px;">それだけで<br>肩にのっていた重さが軽くなっていきます。</p>
+            <p style="margin-bottom: 90px;">ただ、預けることが<br>一番むずかしい相手がいます。</p>
+            <p style="margin-bottom: 0;">たまこ様が今<br>いちばん力になりたいと願っている方です。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-4">⛩️ 4. たまこ様らしい整え方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">「彼女が健康でイキイキと<br>働けるようになるために<br>私ができることはありますか？」</p>
+            <p style="margin-bottom: 90px;">ご質問いただいた<br>充希様への関わり方について<br>お答えしますね。</p>
+            <p style="margin-bottom: 90px;">その答えは<br>「何かを足すこと」より<br>「何かを手放すこと」にありました。</p>
+            <p style="margin-bottom: 90px;">まず、充希様のことです。</p>
+            <p style="margin-bottom: 90px;">充希様は、お母様と同じように<br>自分の足でまっすぐ立とうとする人です。</p>
+            <p style="margin-bottom: 90px;">頑張る力は、とても強い。</p>
+            <p style="margin-bottom: 90px;">けれど、休むこと、守られることを<br>自分に許せない人でもあります。</p>
+            <p style="margin-bottom: 90px;">今年一年に<br>新しいお仕事、新しい暮らし<br>新しい人間関係が<br>一度に押し寄せました。</p>
+            <p style="margin-bottom: 90px;">慣れない仕事の重さを<br>まっすぐに受け止めて<br>それでも休めずに<br>走り続けてしまいました。</p>
+            <p style="margin-bottom: 90px;">疲れ果てて当然でした。</p>
+            <p style="margin-bottom: 90px;">充希様が実家に戻ってきたのは<br>逃げたのではありません。</p>
+            <p style="margin-bottom: 90px;">足りなかった休息を<br>取り戻しに来たのです。</p>
+            <p style="margin-bottom: 90px;">充希様にとって、お母様のそばは<br>乾いた木に<br>水がしみこんでいくような場所です。</p>
+            <p style="margin-bottom: 90px;">たまこ様は<br>人を守り育てる力を持った人だからです。</p>
+            <p style="margin-bottom: 90px;">では、「厳しいことをいう私は<br>避けられがち」というご相談について。</p>
+            <p style="margin-bottom: 90px;">充希様は、お母様の言葉を<br>人一倍まっすぐに受け止める人です。</p>
+            <p style="margin-bottom: 90px;">「こうしたほうがいい」という一言が<br>他の人の何倍も重く胸に残ります。</p>
+            <p style="margin-bottom: 90px;">避けているのは<br>お母様が嫌いだからではないのです。</p>
+            <p style="margin-bottom: 90px;">今は、言葉を受け止める余力が<br>残っていません。</p>
+            <p style="margin-bottom: 90px;">たまこ様の厳しさは、愛情の形です。</p>
+            <p style="margin-bottom: 90px;">ただ、今の充希様には<br>その愛情を<br>別の形で渡す必要があります。</p>
+            <p style="margin-bottom: 90px;">ご質問への答えは、次の三つです。</p>
+            <p style="margin-bottom: 90px;">一つめは、助言を減らして聴くことです。</p>
+            <p style="margin-bottom: 90px;">解決しようとしなくて大丈夫です。</p>
+            <p style="margin-bottom: 90px;">助言を口にしたくなったら<br>先に「そうなんだ」と言ってみてください。</p>
+            <p style="margin-bottom: 90px;">そして、温かい飲み物をそっと置く。</p>
+            <p style="margin-bottom: 90px;">その一言が<br>充希様への、いちばんの水になります。</p>
+            <p style="margin-bottom: 90px;">一緒に暮らしていた彼のことも<br>評価せず、否定せず<br>話してくれたときに聞くだけにします。</p>
+            <p style="margin-bottom: 90px;">お母様が否定すると<br>心の距離が遠くなってしまうからです。</p>
+            <p style="margin-bottom: 90px;">二つめは、安心して休める環境を<br>整えることです。</p>
+            <p style="margin-bottom: 90px;">睡眠、温かい食事、急かされない時間。</p>
+            <p style="margin-bottom: 90px;">回復は、まず休むところから始まります。</p>
+            <p style="margin-bottom: 90px;">三つめは、専門家へのつなぎ役です。</p>
+            <p style="margin-bottom: 90px;">充希様の運には<br>専門家の助けと、支えてくれる人が<br>すぐそばに用意されています。</p>
+            <p style="margin-bottom: 90px;">今かかっている医療を大切にしながら<br>お医者様やカウンセラーとの間を<br>橋渡しするのは<br>たまこ様の大切な役目です。</p>
+            <p style="margin-bottom: 90px;">回復の時期は<br>今年のうちは、休むことを最優先に。</p>
+            <p style="margin-bottom: 90px;">来年は、内側を整えながら小さく外へ。</p>
+            <p style="margin-bottom: 90px;">本格的に、イキイキと働けるようになるのは<br>2028年以降に、その兆しが視えています。</p>
+            <p style="margin-bottom: 90px;">焦らなくて大丈夫です。</p>
+            <p style="margin-bottom: 90px;">次に、たまこ様ご自身の体のことです。</p>
+            <p style="margin-bottom: 90px;">「リウマチなのか更年期障害なのか<br>はっきりしない関節の痛み」とのこと。</p>
+            <p style="margin-bottom: 90px;">病名や診断を述べることは<br>私にはできません。</p>
+            <p style="margin-bottom: 90px;">検査や診察は<br>そのまま大切に続けることが第一です。</p>
+            <p style="margin-bottom: 90px;">ただ、視えていることがあります。</p>
+            <p style="margin-bottom: 90px;">たまこ様は、抱え込んだものが<br>体にも現れやすい人です。</p>
+            <p style="margin-bottom: 90px;">そして今年は<br>体の不安が浮かびやすい巡り合わせです。</p>
+            <p style="margin-bottom: 90px;">お父様のことを思い出して<br>ソワソワしてしまうのも<br>そのせいです。</p>
+            <p style="margin-bottom: 90px;">この不安は、今年がいちばん強く<br>来年はやわらいでいきます。</p>
+            <p style="margin-bottom: 90px;">たまこ様の体には<br>回復する底力も備わっています。</p>
+            <p style="margin-bottom: 90px;">抱え込んでいたものを<br>一つずつ手放していくほどに<br>軽くなっていく方向が視えています。</p>
+            <p style="margin-bottom: 90px;">そして、お母様が先に整うことが<br>充希様の回復の土台になります。</p>
+            <p style="margin-bottom: 0;">ご自身の心と体を労わることは<br>充希様のためでもあります。</p>
+        </div>
+
+        <h2 id="sec-flow">【今後の四ヶ月】</h2>
+        <div id="flow0Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 0;">ここまでお伝えしてきた「預ける練習」は<br>この先の四ヶ月で<br>一段ずつ進んでいきます。</p>
+        </div>
+
+        <div id="flow1Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年10月：採点を渡してみる月</p>
+            <p style="margin-bottom: 90px;">人前に立つ場面に、追い風が吹く月です。</p>
+            <p style="margin-bottom: 90px;">言葉が、いつもより出やすくなります。</p>
+            <p style="margin-bottom: 90px;">ただ、その分<br>「あそこがダメだった」という自己採点も<br>強くなりやすい月です。</p>
+            <p style="margin-bottom: 90px;">授業や会議のあとに<br>反省が止まらなくなる場面が巡ってきます。</p>
+            <p style="margin-bottom: 0;">そのときは、点数をつける前に<br>「分かりにくいところはなかった？」と<br>誰かに聞いてみてください。</p>
+        </div>
+
+        <div id="flow2Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2026年11月：守護神の月・弱音を預ける月</p>
+            <p style="margin-bottom: 90px;">五十猛命の力が<br>最も強く、たまこ様のもとへ届く月です。</p>
+            <p style="margin-bottom: 90px;">乾いた土に水がしみこむように<br>学びと休息が深く入っていきます。</p>
+            <p style="margin-bottom: 90px;">動けなかった一歩が、軽くなる月です。</p>
+            <p style="margin-bottom: 90px;">ただ、心が揺れやすい日もあります。</p>
+            <p style="margin-bottom: 90px;">ふとした夜に<br>関節の痛みやお父様のことが頭をよぎって<br>ソワソワする場面が巡ってくるでしょう。</p>
+            <p style="margin-bottom: 90px;">そんなときは、一人で抱えずに<br>「今日は、ちょっと不安」と<br>一言だけ誰かに預けてください。</p>
+            <p style="margin-bottom: 90px;">診察や検査は<br>この月を待たずに続けてください。</p>
+            <p style="margin-bottom: 90px;">そのうえで、この月は<br>ご自身の体の状態を<br>落ち着いて受け止めやすい月です。</p>
+            <p style="margin-bottom: 90px;">娘様にも、五十猛命の守護が<br>届いていきます。</p>
+            <p style="margin-bottom: 0;">何も言わずに<br>同じ部屋で過ごす時間を<br>大切にしてください。</p>
+        </div>
+
+        <div id="flow3Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年12月：一人で決めない月</p>
+            <p style="margin-bottom: 90px;">年の瀬に、お仕事の答えが<br>動きはじめる月です。</p>
+            <p style="margin-bottom: 90px;">「辞めるか、続けるか」<br>その答えの向きが見えはじめます。</p>
+            <p style="margin-bottom: 90px;">ただ、これは「決める月」というより<br>「向きが見える月」です。</p>
+            <p style="margin-bottom: 90px;">年末の職場で<br>来年度のことを聞かれる場面が<br>巡ってくることがあります。</p>
+            <p style="margin-bottom: 0;">そのときは、その場で一人で決めずに<br>信頼できる人に話してから<br>返事をしてください。</p>
+        </div>
+
+        <div id="flow4Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年1月：採点しない月</p>
+            <p style="margin-bottom: 90px;">年末年始を経て、整える月です。</p>
+            <p style="margin-bottom: 90px;">一年の疲れを手放してください。</p>
+            <p style="margin-bottom: 90px;">この月は、「今年は何ができたか」の<br>採点をしないでください。</p>
+            <p style="margin-bottom: 90px;">「ここまで来た」と<br>自分に言ってあげるだけで十分です。</p>
+            <p style="margin-bottom: 0;">娘様と過ごす時間も<br>この月は、特別な意味を持ちます。</p>
+        </div>
+
+        <div id="flowEndSentinel"></div>
+        <div class="section" id="sec-year">
+            <h2 style="margin-top: 0;">【今年と来年】</h2>
+            <p style="margin-bottom: 90px;">2026年は<br>たまこ様自身に光が当たる年です。</p>
+            <p style="margin-bottom: 90px;">授業やお仕事は<br>評価として返ってきやすい年です。</p>
+            <p style="margin-bottom: 90px;">体の不安が浮かびやすい年でもありますが<br>年が明ければ、やわらいでいきます。</p>
+            <p style="margin-bottom: 90px;">2027年は、根を張る一年です。</p>
+            <p style="margin-bottom: 90px;">大きな決断を急がなくていい。</p>
+            <p style="margin-bottom: 90px;">春の4月頃には<br>学びと人の助けがそろって<br>暮らしの足元が固まる節目になりそうです。</p>
+            <p style="margin-bottom: 90px;">あの山道で<br>並んで歩いてくれていたのは<br>娘様でしたね。</p>
+            <p style="margin-bottom: 90px;">お仕事の場では<br>手を差し出してくれる先生方が<br>すぐ隣にいます。</p>
+            <p style="margin-bottom: 0;">たまこ様が頼ってもいい人は<br>思っているよりずっと近くにいます。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-bonus">🔮 もう少し先に視えていること</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここまでお伝えしてきたこととは別に<br>霊視の最後に<br>二つ、視えたものがありました。</p>
+            <p style="margin-bottom: 90px;">一つは、うれしい兆しです。</p>
+            <p style="margin-bottom: 90px;">新しい十年が始まる頃に<br>「一緒に働きたい」と<br>声をかけてくれる人が現れる気配です。</p>
+            <p style="margin-bottom: 90px;">人と関わる場で<br>たまこ様の力が開いていきます。</p>
+            <p style="margin-bottom: 90px;">もう一つは<br>気に留めておいてほしいことです。</p>
+            <p style="margin-bottom: 90px;">来年、お仕事の場で<br>「伝えたつもり」が相手に違う形で届き<br>同僚の先生との間で<br>言葉の受け取り方がすれ違う場面が<br>巡ってくるかもしれません。</p>
+            <p style="margin-bottom: 90px;">また、新しい場所の条件の話になったとき<br>どちらを選ぶか迷う場面もありそうです。</p>
+            <p style="margin-bottom: 90px;">怖がるようなものではありません。</p>
+            <p style="margin-bottom: 90px;">預けて歩き出した人に訪れやすい<br>形が変わる前の揺らぎのようなものです。</p>
+            <p style="margin-bottom: 90px;">今の時点で<br>心がけてほしいことは一つです。</p>
+            <p style="margin-bottom: 90px;">大事な話をするときは<br>「ここまで、伝わっていますか？」と<br>一度だけ聞き返してみてください。</p>
+            <p style="margin-bottom: 90px;">ただ、それがいつ頃<br>どんな形で表れるのか。</p>
+            <p style="margin-bottom: 90px;">そして、どうすれば<br>良い流れに変えていけるのか。</p>
+            <p style="margin-bottom: 90px;">ここは、もう少し深く<br>視させていただく必要があります。</p>
+            <p style="margin-bottom: 0;">また別の機会に<br>改めてお伝えさせてくださいね。</p>
+        </div>
+
+        <div id="guardianReturnSentinel"></div>
+        <h2 class="emoji-header" id="sec-guardian">⛩️ 守護を受け取る方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">でも、大丈夫です。</p>
+            <p style="margin-bottom: 90px;">今回の霊視で<br><span style="color: #ffd966;">五十猛命</span>の守護の力を<br>たまこ様の奥底に置いてきました。</p>
+            <p style="margin-bottom: 90px;">たまこ様の足元に水を通し<br>芽吹きを支えながら<br>必要な助けが巡ってくるよう整えていきます。</p>
+            <p style="margin-bottom: 90px;">この文章を読みながら<br>胸が少し温かくなる<br>肩がふっと軽くなる<br>なぜか安心する<br>そんな感覚があれば<br>もう守護は届き始めています。</p>
+            <p style="margin-bottom: 90px;">何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px;">ここまで読んでくださったなら<br>もう十分に受け取れています。</p>
+            <p style="margin-bottom: 90px;">もし余裕がある時だけ<br>次のことを試してみてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">【五十猛命ゆかりの神社へ行く】</p>
+            <p style="margin-bottom: 90px;">大依羅神社（大阪市住吉区庭井2-18-16）<br>五社神社（池田市鉢塚2-4-28）<br>細川神社（池田市吉田町1）<br>走落神社（豊能郡豊能町木代303-2）<br>などが、ご縁のある神社です。</p>
+            <p style="margin-bottom: 90px;">どこか一つ<br>ご縁を感じる神社へ<br>お参りしてみてください。</p>
+            <p style="margin-bottom: 90px;">参拝の際は<br>心の中でこの祝詞を唱えてください。</p>
+            <p style="margin-bottom: 90px;">祓え給い、清め給え<br>神ながら守り給い、幸え給え<br>（はらえたまい、きよめたまえ<br>かむながらまもりたまい、さきわえたまえ）</p>
+            <p style="margin-bottom: 90px;">願い事は唱えず<br>「これまで見守ってくださって<br>ありがとうございます<br>これからは私も<br>ひとりで抱え込まず<br>お願いしながら歩いていきます<br>どうか見守っていてください」<br>という形で伝えてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">【朝に木を見上げる】</p>
+            <p style="margin-bottom: 90px;">朝、窓を開けて<br>近くの木や緑を見上げ<br>深呼吸を一度。</p>
+            <p style="margin-bottom: 0;">五十猛命の力とつながる<br>小さな儀式です。</p>
+        </div>
+
+        <div id="stoneSentinel"></div>
+        <h2 class="emoji-header" id="sec-stone">⛩️ あなたと響き合うパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">たまこ様には、この鑑定の中で<br>「お願いします」という合図の言葉を<br>お渡ししました。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">五十猛命</span>の守護は<br>すでにたまこ様の中に届いています。</p>
+            <p style="margin-bottom: 90px;">ただ、長く続いてきた癖は<br>忙しい日ほど、ふっと戻ってきます。</p>
+            <p style="margin-bottom: 90px;">授業の準備が重なった日<br>気づけばまた<br>全部を一人で抱えようとしている。</p>
+            <p style="margin-bottom: 90px;">そんなとき<br>手首の石にそっと触れて<br>「ここ、お願いします」と言う。</p>
+            <p style="margin-bottom: 90px;">石は、その合図を<br>思い出すためのものです。</p>
+            <p style="margin-bottom: 90px;">その合図を手首に置けるよう<br>たまこ様と響き合う石で<br>ブレスレットをお作りします。</p>
+            <ul style="margin-bottom: 90px;">
+                <li><span style="color: #ffd966; font-weight: bold;">1. アマゾナイト</span><br>深い森の緑を宿す石です。<br>「お願いします」と言う瞬間<br>その一言を口にする声を支えてくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">2. アクアマリン</span><br>澄んだ水の色を宿す石です。<br>預けたあとの胸を<br>軽くしてくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">3. グリーンアベンチュリン</span><br>新芽の色を宿す石です。<br>言えなかった日も<br>明日また言えるように<br>そばで見守ってくれます。</li>
+            </ul>
+            <p style="margin-bottom: 90px;">この中から<br>たまこ様に一番合う組み合わせを選び<br>一粒ずつ、手で編んでお作りします。</p>
+            <p style="margin-bottom: 90px;">たまこ様が<br>一人ひとりの生徒さんに<br>向き合ってこられたように<br>私も一粒ずつ<br>想いを込めて仕上げます。</p>
+            <p style="margin-bottom: 90px;">五十猛命の力が最も強く届く<br>11月に間に合うよう<br>ご連絡から十日以内にお送りします。</p>
+            <p style="margin-bottom: 0;">気になった方は<br>「詳細希望」とだけ<br>メッセージをくださいね。</p>
+        </div>
+
+        <div id="closingSentinel"></div>
+        <h2 id="sec-closing">【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">たまこ様</p>
+            <p style="margin-bottom: 90px;">ここまで読んでくださって<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">ひとりで背負って<br>ひとりで採点して<br>それでも最後まで立ち続けてきた<br>たまこ様。</p>
+            <p style="margin-bottom: 90px;">その頑張りは<br>ちゃんと届いていました。</p>
+            <p style="margin-bottom: 90px;">授業の準備をしていた夜も<br>娘様を見守っていた日々も<br>すべて、確かに積み重なっています。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">五十猛命</span>は<br>チョークを握りしめた手のそばで<br>種を抱えて、ずっと待っていました。</p>
+            <p style="margin-bottom: 90px;">だからもう<br>預けていいんです。</p>
+            <p style="margin-bottom: 90px;">「お願いします」と<br>言っていい。</p>
+            <p style="margin-bottom: 90px;">自分に、点数をつけなくていい。</p>
+            <p style="margin-bottom: 90px;">自分のために<br>選んでいい。</p>
+            <p style="margin-bottom: 90px;">あの山道を<br>娘様と並んで歩く日へ<br>道は続いています。</p>
+            <p style="margin-bottom: 90px;">五十猛命が荒れた土地を<br>青い山に変えたように<br>たまこ様と娘様の足元にも<br>時間をかけて、緑が戻っていきます。</p>
+            <p style="margin-bottom: 90px;">たまこ様は、幸せになっていい。</p>
+            <p style="margin-bottom: 90px;">守られています。</p>
+            <p style="margin-bottom: 90px;">その事実を<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より遠隔守護祈祷を行い<br>たまこ様の幸せを願います。</p>
+            <p style="margin-bottom: 0;">たまこ様の未来に<br>緑が満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            var elementBg = document.getElementById('elementBg');
+            var deityBg = document.getElementById('deityBg');
+            var doorBg = document.getElementById('doorBg');
+            var seasonAutumnBg = document.getElementById('seasonAutumnBg');
+            var seasonWinterBg = document.getElementById('seasonWinterBg');
+            var stoneBg = document.getElementById('stoneBg');
+
+            var stages = [
+                { el: document.getElementById('elementSentinel'), bg: elementBg },
+                { el: document.getElementById('guardianSentinel'), bg: deityBg },
+                { el: document.getElementById('deitySentinel'), bg: doorBg },
+                { el: document.getElementById('flow0Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flow1Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flow2Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flow3Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flow4Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flowEndSentinel'), bg: doorBg },
+                { el: document.getElementById('guardianReturnSentinel'), bg: deityBg },
+                { el: document.getElementById('stoneSentinel'), bg: stoneBg },
+                { el: document.getElementById('closingSentinel'), bg: doorBg }
+            ].filter(function (stage) { return !!stage.el; });
+            if (!stages.length) return;
+
+            var layers = [elementBg, deityBg, doorBg, seasonAutumnBg, seasonWinterBg, stoneBg];
+            function show(active) {
+                layers.forEach(function (el) {
+                    if (el === active) el.classList.add('is-visible');
+                    else el.classList.remove('is-visible');
+                });
+            }
+
+            function onScroll() {
+                var trigger = window.innerHeight * 0.65;
+                var active = null;
+                for (var i = 0; i < stages.length; i++) {
+                    if (stages[i].el.getBoundingClientRect().top < trigger) {
+                        active = stages[i].bg;
+                    }
+                }
+                show(active);
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+
+        /* ===== 演出：花びら ===== */
+        (function () {
+            var cv = document.getElementById('petals');
+            var ctx = cv.getContext('2d');
+            var W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+            var isMobile = window.innerWidth < 700;
+
+            function resize() {
+                W = window.innerWidth; H = window.innerHeight;
+                cv.width = W * dpr; cv.height = H * dpr;
+                cv.style.width = W + 'px'; cv.style.height = H + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            var petals = [];
+            var petalN = isMobile ? 14 : 24;
+            for (var i = 0; i < petalN; i++) {
+                petals.push({
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    s: 5 + Math.random() * 7,
+                    vy: 0.35 + Math.random() * 0.7,
+                    sway: Math.random() * Math.PI * 2,
+                    swayV: 0.008 + Math.random() * 0.014,
+                    rot: Math.random() * Math.PI * 2,
+                    rotV: (Math.random() - 0.5) * 0.03,
+                    hue: Math.random() < 0.6 ? 'light' : 'deep'
+                });
+            }
+            function drawPetal(p) {
+                ctx.save();
+                ctx.translate(p.x + Math.sin(p.sway) * 26, p.y);
+                ctx.rotate(p.rot);
+                var g = ctx.createRadialGradient(0, 0, 0, 0, 0, p.s);
+                if (p.hue === 'light') {
+                    g.addColorStop(0, 'rgba(180, 230, 150, 0.95)');
+                    g.addColorStop(1, 'rgba(180, 230, 150, 0.25)');
+                } else {
+                    g.addColorStop(0, 'rgba(120, 180, 90, 0.95)');
+                    g.addColorStop(1, 'rgba(120, 180, 90, 0.25)');
+                }
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, p.s, p.s * 0.62, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function tick() {
+                ctx.clearRect(0, 0, W, H);
+                for (var pi = 0; pi < petals.length; pi++) {
+                    var p = petals[pi];
+                    p.y += p.vy;
+                    p.sway += p.swayV;
+                    p.rot += p.rotV;
+                    if (p.y > H + 20) { p.y = -20; p.x = Math.random() * W; }
+                    drawPetal(p);
+                }
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        })();
+    </script>
+
+<!-- GA4 カスタム計測：誰が/最後まで読んだか/購入ボタン [GA4-MIYUKI] -->
+<script>
+(function () {
+  function fire() {
+    var seg = location.pathname.split('/').filter(Boolean);
+    var last = decodeURIComponent(seg[seg.length - 1] || '');
+    var id = /\.html?$/i.test(last) ? decodeURIComponent(seg[seg.length - 2] || 'unknown') : (last || 'unknown');
+    var base = { kantei_id: id, persona: 'miyuki' };
+    gtag('set', 'user_properties', { kantei_id: id, persona: 'miyuki' });
+    gtag('event', 'page_open', base);
+
+    var end = document.querySelector('.signature, .sign');
+    if (end && 'IntersectionObserver' in window) {
+      var done = false;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && !done) { done = true; gtag('event', 'read_complete', base); io.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      io.observe(end);
+    }
+
+    document.querySelectorAll('.cta-button, .btn').forEach(function (b) {
+      b.addEventListener('click', function () { gtag('event', 'cta_click', base); });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire); else fire();
+})();
+</script>
+
+</body>
+</html>
