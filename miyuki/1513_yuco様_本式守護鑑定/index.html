@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) : GA4 計測 [GA4-MIYUKI] -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHLDFT6DR7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JHLDFT6DR7');
+    </script>
+    <title>yuco様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+
+            .toc {
+                padding: 20px 15px;
+            }
+
+            .toc-title {
+                font-size: 1.1em;
+            }
+
+            .toc a {
+                font-size: 0.95em;
+                padding: 12px 6px 12px 36px;
+            }
+        }
+
+        /* ===== 演出：元素の背景（冒頭〜守護神登場まで） ===== */
+        .element-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../鑑定画像/大地.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .element-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：守護神の背景（守護神登場〜本式内容の手前まで） ===== */
+        .deity-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/宇迦之御魂神.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center 18%;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .deity-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：扉の背景（本式内容〜結びまで） ===== */
+        .door-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/ドア2.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .door-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：今後の流れ 季節背景 ===== */
+        .season-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .season-bg.is-visible { opacity: 0.4; }
+        #seasonSummerBg { background-image: url("../鑑定画像/夏.jpg"); }
+        #seasonAutumnBg { background-image: url("../鑑定画像/秋.jpg"); }
+        #seasonWinterBg { background-image: url("../鑑定画像/冬.jpg"); }
+
+        /* ===== 演出：パワーストーン背景 ===== */
+        .stone-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../素材/カーネリアン.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .stone-bg.is-visible { opacity: 0.4; }
+
+        .deity-veil {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(15, 15, 46, 0.04) 0%, rgba(15, 15, 46, 0.15) 60%, rgba(15, 15, 46, 0.25) 100%),
+                linear-gradient(180deg, rgba(15, 15, 46, 0.06) 0%, rgba(15, 15, 46, 0.18) 100%);
+        }
+
+        /* ===== 演出：花びら ===== */
+        #petals {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="element-bg" id="elementBg"></div>
+    <div class="deity-bg" id="deityBg"></div>
+    <div class="door-bg" id="doorBg"></div>
+    <div class="season-bg" id="seasonSummerBg"></div>
+    <div class="season-bg" id="seasonAutumnBg"></div>
+    <div class="season-bg" id="seasonWinterBg"></div>
+    <div class="stone-bg" id="stoneBg"></div>
+    <div class="deity-veil"></div>
+    <canvas id="petals"></canvas>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">凍った土に、最初の陽が差す時</h2>
+            <p class="cover-name">yuco様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-path">あなたが歩いてきた道</a></li>
+                <li><a href="#sec-now">今のyuco様</a></li>
+                <li><a href="#sec-god">あなたの守護神</a></li>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-1">1. 体が整っていく時期</a></li>
+                <li><a href="#sec-2">2. 疲れが沈んだ流れ</a></li>
+                <li><a href="#sec-3">3. yuco様らしい整え方</a></li>
+                <li><a href="#sec-4">4. 温もりの取り入れ方</a></li>
+                <li><a href="#sec-flow">今後の四ヶ月</a></li>
+                <li><a href="#sec-year">今年と来年</a></li>
+                <li><a href="#sec-more">もう少し先に視えていること</a></li>
+                <li><a href="#sec-guardian">守護を受け取る方法</a></li>
+                <li><a href="#sec-stone">あなたと響き合うパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
+        <div id="elementSentinel"></div>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">yuco様</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">「今後の人生について」<br>「6年ぐらい体調不良に悩んでいます」</p>
+            <p style="margin-bottom: 90px;">いただいたこの言葉を読んだとき<br>yuco様がどれほど長いあいだ<br>重さを抱えたまま<br>日々の暮らしを回し続けてきたのか<br>その重みがまっすぐ胸に届きました。</p>
+            <p style="margin-bottom: 90px;">今回、yuco様の守護神とつながり<br>霊視を進めていくと<br>守護神は何度も同じところへ<br>私の意識を引き戻してきました。</p>
+            <p style="margin-bottom: 90px;">「どうして私は<br>いつもこんなに疲れているのだろう」</p>
+            <p style="margin-bottom: 90px;">yuco様がずっと心の奥で抱えてきた<br>その問いの答えが、そこにありました。</p>
+            <p style="margin-bottom: 0;">その答えにたどり着くために<br>まずはyuco様が歩いてきた道から<br>お伝えしていきますね。</p>
+        </div>
+
+
+        <h2 id="sec-path">【あなたが歩いてきた道】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">yuco様の歩いてきた道を視ていくと<br>いつも誰かの隣にいる背中が見えます。</p>
+            <p style="margin-bottom: 90px;">ご家族の気持ち。<br>身近な方の疲れ。<br>周りの方の困りごと。</p>
+            <p style="margin-bottom: 90px;">yuco様は、それらを<br>まず最初に受け止める役を<br>長いあいだ引き受けてこられました。</p>
+            <p style="margin-bottom: 90px;">誰かが話したいとき<br>自然と話を聞く側に回っている。</p>
+            <p style="margin-bottom: 90px;">誰かが困っているとき<br>頼まれる前に、体が先に動いている。</p>
+            <p style="margin-bottom: 90px;">そんな10年あまりでした。</p>
+            <p style="margin-bottom: 90px;">そして、約6年前。</p>
+            <p style="margin-bottom: 90px;">体が「少し立ち止まって」と<br>小さく声をあげはじめたのも<br>その歩みの途中のことでした。</p>
+            <p style="margin-bottom: 90px;">今の暮らしの安心も<br>周りの方がyuco様を頼りにしているのも<br>すべてその歩みの上にあります。</p>
+            <p style="margin-bottom: 90px;">ただ、その背中を視ていて<br>一つ気づいたことがあります。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">yuco様は、ずっと<br>自分を温める番を<br>いちばん最後に回してきた人なのです。</p>
+        </div>
+
+        <h2 id="sec-now">【今のyuco様】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">その歩き方は、今のyuco様にも<br>そのまま続いています。</p>
+            <p style="margin-bottom: 90px;">誰かが疲れた顔をしていると<br>何も言われないうちに、お茶を淹れたり<br>用事を引き取ったりしていませんか。</p>
+            <p style="margin-bottom: 90px;">体がだるい日でも<br>人の前では「大丈夫です」と笑って<br>家に帰ってから、ようやく座り込む。</p>
+            <p style="margin-bottom: 90px;">そんな日がありませんか。</p>
+            <p style="margin-bottom: 90px;">そして夜、布団に入ってから<br>昼間に言われた一言や<br>言えなかった一言を<br>何度も思い返していませんか。</p>
+            <p style="margin-bottom: 90px;">察して、先に動く。<br>笑って、大丈夫と言う。<br>夜に、ひとりで飲み込む。</p>
+            <p style="margin-bottom: 90px;">どれもyuco様の優しさです。</p>
+            <p style="margin-bottom: 90px;">でも、この三つには<br>共通していることがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">どれも、自分の疲れを<br>いちばん後ろに回しているのです。</p>
+            <p style="margin-bottom: 90px;">それが長く続いた結果<br>一つの癖ができていました。</p>
+            <p style="margin-bottom: 90px;">yuco様は受け止めたものを外に出さず<br>「まだ大丈夫」としまい込む癖を<br>お持ちなのです。</p>
+            <p style="margin-bottom: 90px;">こんな場面は、ありませんか。</p>
+            <p style="margin-bottom: 90px;">疲れを感じても<br>「年のせい」「気のせい」と言い聞かせる。</p>
+            <p style="margin-bottom: 90px;">体の声より先に<br>頼まれごとへ返事をしてしまう。</p>
+            <p style="margin-bottom: 90px;">悩みを話すときも<br>「たいしたことないの」と<br>小さくして話してしまう。</p>
+            <p style="margin-bottom: 90px;">ゆっくり休んでいる自分に<br>どこか申し訳なさを感じてしまう。</p>
+            <p style="margin-bottom: 90px;">思い当たるところはありませんか。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">yuco様は、弱い人ではありません。</p>
+            <p style="margin-bottom: 90px;">受け止める力が人一倍大きいから<br>しまい込む量も、人一倍多かったのです。</p>
+            <p style="margin-bottom: 90px;">実はこの癖こそが<br>守護神が何度も<br>私の意識を引き戻した場所でした。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ここが、今回の鑑定の鍵になります。</p>
+            <p style="margin-bottom: 0;">では、そんなyuco様を<br>守護しているのは<br>どんな神様なのでしょうか。</p>
+        </div>
+
+        <div id="guardianSentinel"></div>
+        <h2 id="sec-god">【あなたの守護神】</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">yuco様を守っているのは<br><span style="color: #ffd966;">宇迦之御魂神</span>（うかのみたまのかみ）。</p>
+            <p style="margin-bottom: 90px;">稲荷神社の神様として<br>お稲荷さんの名で親しまれている神様です。</p>
+            <p style="margin-bottom: 90px;">古事記では<br>須佐之男命と神大市比売の御子として<br>語られています。</p>
+            <p style="margin-bottom: 90px;">「宇迦」とは、食べ物を意味する古い言葉。</p>
+            <p style="margin-bottom: 90px;">人が生きていくための食と<br>田に実る稲を守る神様です。</p>
+            <p style="margin-bottom: 90px;">京都の伏見には、今から1300年あまり前の<br>和銅4年（711年）2月の初午の日に<br>御神が稲荷山の峰にお降りになったと<br>伝えられています。</p>
+            <p style="margin-bottom: 90px;">「稲が成る」から、稲荷。</p>
+            <p style="margin-bottom: 90px;">その名のとおり、人々は春に種を蒔くとき<br>秋に実りを収めたとき<br>台所に火を入れるとき<br>商いの一日を始めるとき<br>いつもこの神様に手を合わせてきました。</p>
+            <p style="margin-bottom: 90px;">1300年のあいだ、毎日<br>数えきれない人の願いが<br>この神様のもとへ届いてきました。</p>
+            <p style="margin-bottom: 90px;">どれほど多くの声が届いても<br>どの願いも、まず受け止める。</p>
+            <p style="margin-bottom: 90px;">まるでyuco様そのもののような神様です。</p>
+            <p style="margin-bottom: 90px;">でも、ここからが大切なところです。</p>
+            <p style="margin-bottom: 90px;">稲を育てる田には<br>大切な約束事があります。</p>
+            <p style="margin-bottom: 90px;">秋に実りを手放したあと<br>田は冬のあいだ、じっと休みます。</p>
+            <p style="margin-bottom: 90px;">霜が降りて、土が凍る季節。</p>
+            <p style="margin-bottom: 90px;">その土の中で、種は眠っています。</p>
+            <p style="margin-bottom: 90px;">そして人は、春の日が<br>土をやわらかく温めるまで<br>決して種を蒔きません。</p>
+            <p style="margin-bottom: 90px;">凍ったままの土に種を蒔いても<br>芽は出ないことを<br>田を守ってきた人々は知っているからです。</p>
+            <p style="margin-bottom: 90px;">2月の初午が<br>田仕事を始める前に<br>その年の実りを祈る日とされてきたのは<br>そのためです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">実りを与える神様は<br>土を休ませ、温める神様でもあるのです。</p>
+            <p style="margin-bottom: 90px;">「しまい込む癖」で歩いてきた<br>yuco様のそばに、この神様がいる。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">それは「まず、あなたの土を温めていい」と<br>伝えるためにほかなりません。</p>
+            <img src="../鑑定画像/宇迦之御魂神.png" alt="宇迦之御魂神" class="guardian-image">
+        </div>
+
+        <div id="essenceSentinel"></div>
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">その宇迦之御魂神が<br>yuco様のこの先の景色を<br>見せてくれています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2027年の2月。</p>
+            <p style="margin-bottom: 90px;">春の気配が<br>ほんの少し空気に混じりはじめた朝です。</p>
+            <p style="margin-bottom: 90px;">台所の窓から差し込んだ光が<br>テーブルの下の足元まで届いています。</p>
+            <p style="margin-bottom: 90px;">yuco様は、椅子に座っています。</p>
+            <p style="margin-bottom: 90px;">目の前には<br>湯気をたてる朝のお椀。</p>
+            <p style="margin-bottom: 90px;">いつもなら、座る前に<br>洗い物や誰かの用事へ<br>先に動いてしまう人が<br>その朝は「ひと息いれます」と座ったまま<br>お椀を両手で包んで<br>最後のひと口まで味わっているのです。</p>
+            <p style="margin-bottom: 90px;">足元はぽかぽかと温かく<br>お腹の奥にも、やわらかい温もりが<br>ゆっくり広がっています。</p>
+            <p style="margin-bottom: 90px;">そこへ、電話が鳴ります。</p>
+            <p style="margin-bottom: 90px;">電話の向こうの息子さんの声が<br>いつもより少し明るい。</p>
+            <p style="margin-bottom: 90px;">その声を聞くyuco様の肩から<br>ふっと力が抜けていくのが視えます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">自分を温める番を<br>いちばん先にした朝の景色です。</p>
+            <p style="margin-bottom: 90px;">最初の変化は<br>今年の冬至の頃、yuco様の誕生日の<br>あたりから動きはじめます。</p>
+            <p style="margin-bottom: 90px;">ここから先は、この朝へ向かう道を<br>四つに分けてお伝えしていきますね。</p>
+            <p style="margin-bottom: 0;">体が整っていく時期のこと<br>疲れが沈んでいった道筋のこと<br>yuco様らしい整え方と、息子さんのこと<br>毎日の暮らしに温もりを入れるコツです。</p>
+        </div>
+
+        <div id="deitySentinel"></div>
+        <h2 class="emoji-header" id="sec-1">⛩️1　体が整っていく時期</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">まず、いちばん気になっているのは<br>「いつ頃、この重さが軽くなっていくのか」<br>ということですよね。</p>
+            <p style="margin-bottom: 90px;">その答えをお伝えする前に<br>守護神がいちばん最初に<br>私に見せてくれた景色があります。</p>
+            <p style="margin-bottom: 90px;">霜の降りた冬の田んぼ。</p>
+            <p style="margin-bottom: 90px;">その真ん中に、yuco様が立っています。</p>
+            <p style="margin-bottom: 90px;">白い息を吐きながら<br>それでも「大丈夫」と<br>笑って立っている姿です。</p>
+            <p style="margin-bottom: 90px;">足元の土はかたく凍っていて<br>その下では、小さな種が<br>じっと眠っています。</p>
+            <p style="margin-bottom: 90px;">これを視たとき<br>私は思わず胸が詰まりました。</p>
+            <p style="margin-bottom: 90px;">この光景と一緒に<br>伝わってきたことがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">6年のあいだ体が重かったのは<br>頑張りが足りなかったせいではありません。</p>
+            <p style="margin-bottom: 90px;">日を受けて温まる番が<br>いつも、いちばん最後に回されていたのです。</p>
+            <p style="margin-bottom: 90px;">ここでも「まだ大丈夫」としまい込む癖が<br>出ていたのです。</p>
+            <p style="margin-bottom: 90px;">正直にお伝えすると<br>来年、2027年は<br>体や気持ちに<br>揺れが出やすい1年になります。</p>
+            <p style="margin-bottom: 90px;">でも、不安にならなくて大丈夫です。</p>
+            <p style="margin-bottom: 90px;">凍った土が溶けるときは<br>一度、ぬかるむ日があります。</p>
+            <p style="margin-bottom: 90px;">そんな日は、先へ進まずに<br>休む日にすればいいのです。</p>
+            <p style="margin-bottom: 90px;">そして、温もりの入口はもう開いています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">今年の半ばに<br>yuco様の人生の巡りが切り替わり<br>これまで温もりが入りにくかった体に<br>最初の温もりが入りはじめました。</p>
+            <p style="margin-bottom: 90px;">しかも、今の10年は<br>体と向き合ったことが<br>そのまま実りになって返ってくる10年。</p>
+            <p style="margin-bottom: 90px;">体を整えようとするyuco様の歩みを<br>後押しする力が、強く集まっています。</p>
+            <p style="margin-bottom: 90px;">さらに2028年には<br>長く引っかかっていたものがほどけて<br>体が軽くなったと<br>はっきり実感できる年になる兆しがあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">ですから今は「仕込みの時間」です。</p>
+            <p style="margin-bottom: 90px;">焦って決断しなくていい。<br>体の声を、聞くことが先です。</p>
+            <p style="margin-bottom: 90px;">そのために、今日からできる<br>小さなことを一つだけ。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">「まだ大丈夫」という言葉が<br>心の中で浮かんだとき<br>その後ろに「ひと息いれます」を<br>足してみてください。</p>
+            <p style="margin-bottom: 90px;">椅子に腰を下ろして<br>ゆっくり3回、息を吐くだけで十分です。</p>
+            <p style="margin-bottom: 90px;">その一言が<br>受け止める側だったyuco様が<br>自分を温める側へ回る<br>最初の扉になります。</p>
+            <p style="margin-bottom: 90px;">ただ、頭では分かっていても<br>受け止める習慣は<br>そう簡単には変わりませんよね。</p>
+            <p style="margin-bottom: 0;">では、そもそも<br>疲れはどんな道筋で<br>yuco様の奥へ沈んでいったのでしょうか。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-2">⛩️2　疲れが沈んだ流れ</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が教えてくれたのは<br>yuco様の疲れの正体でした。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">その疲れは、弱さではありません。</p>
+            <p style="margin-bottom: 90px;">守護の強い人が<br>受け止め続けてきた愛情の跡です。</p>
+            <p style="margin-bottom: 90px;">yuco様は、人の気持ちを<br>細やかに感じ取る力が<br>とても強い人です。</p>
+            <p style="margin-bottom: 90px;">それは、霊視で視ていても<br>はっきりと感じられました。</p>
+            <p style="margin-bottom: 90px;">目に見えないものや<br>場の気配にまで届く、深い感受性。</p>
+            <p style="margin-bottom: 90px;">だからこそ<br>家族のことも、身近な方のことも<br>自然と受け止めてしまう。</p>
+            <p style="margin-bottom: 90px;">ただ、その感じ取った分を<br>外へ出す前に<br>お腹の奥へしまい込んでしまう。</p>
+            <p style="margin-bottom: 90px;">それが、yuco様の歩き方でした。</p>
+            <p style="margin-bottom: 90px;">お腹は、受け止めたものを<br>消化して巡らせる場所。</p>
+            <p style="margin-bottom: 90px;">そして足元は<br>体の冷えが最後に降りてくる場所です。</p>
+            <p style="margin-bottom: 90px;">無料鑑定で<br>「お腹の奥と足元に疲れが沈んでいる」と<br>お伝えしたことを覚えていらっしゃいますか。</p>
+            <p style="margin-bottom: 90px;">しまい込まれたものは<br>外へ出ないまま、下へ下へと沈み<br>冷えと重さに変わっていきました。</p>
+            <p style="margin-bottom: 90px;">10年ほど前から、体の中の揺れは<br>積み重なっていて<br>6年前に、はじめて<br>「体の不調」として形になりました。</p>
+            <p style="margin-bottom: 90px;">ずっと笑って動いてきたからこそ<br>本人にも気づきにくかったのです。</p>
+            <p style="margin-bottom: 90px;">あの癖が、ここにも顔を出していました。</p>
+            <p style="margin-bottom: 90px;">ここで、お伝えしておきたいことがあります。</p>
+            <p style="margin-bottom: 90px;">体のことは<br>今診ていただいている先生の見立てが<br>何より大切です。</p>
+            <p style="margin-bottom: 90px;">いつもと違う不調があるときも<br>まず先生に。</p>
+            <p style="margin-bottom: 90px;">霊視でお伝えするのは<br>そのうえで寄り添う、心の道筋です。</p>
+            <p style="margin-bottom: 90px;">そして、ここからがうれしいお知らせです。</p>
+            <p style="margin-bottom: 90px;">しまい込まれていたものは<br>今年の10月から来年にかけて<br>動き出していきます。</p>
+            <p style="margin-bottom: 90px;">動き出すときに<br>体が揺れる日があっても<br>不安にならなくて大丈夫です。</p>
+            <p style="margin-bottom: 90px;">そのために、一つだけ<br>やってみてほしいことがあります。</p>
+            <p style="margin-bottom: 90px;">夜、布団に入る前に<br>その日受け止めたことを<br>紙に一行だけ書いてみてください。</p>
+            <p style="margin-bottom: 90px;">「あの一言がちょっと悲しかった」<br>「頼まれごとで少し疲れた」</p>
+            <p style="margin-bottom: 90px;">それだけで構いません。</p>
+            <p style="margin-bottom: 90px;">書いたら、そのまま折って<br>置いておきます。</p>
+            <p style="margin-bottom: 90px;">しまい込んでいた気持ちが<br>お腹の奥から、紙の上へ<br>出ていく練習になります。</p>
+            <p style="margin-bottom: 90px;">続けるうちに<br>夜の堂々巡りが止まって<br>眠りがすっと深くなっていきます。</p>
+            <p style="margin-bottom: 90px;">ただ、体の中の疲れがほどけても<br>外には、まだ「頼られる」場面が<br>たくさんありますよね。</p>
+            <p style="margin-bottom: 0;">そこで、yuco様らしい整え方を<br>お伝えしていきます。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-3">⛩️3　yuco様らしい整え方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-weight: bold;">yuco様の感じ取る力は<br>弱点ではなく、才能です。</p>
+            <p style="margin-bottom: 90px;">人の気持ちを細やかに受け止める力は<br>誰にでもあるものではありません。</p>
+            <p style="margin-bottom: 90px;">そして、その力を持つyuco様が<br>この10年に整えていくことは<br>確実に実ります。</p>
+            <p style="margin-bottom: 90px;">そのうえで<br>yuco様に合う整え方は<br>「頑張って前へ進むこと」より<br>「先に温まってから進むこと」です。</p>
+            <p style="margin-bottom: 90px;">yuco様には、外へ出ると<br>自然と頼りにされる気配があります。</p>
+            <p style="margin-bottom: 90px;">あの人なら大丈夫。<br>yuco様に聞けば間違いない。</p>
+            <p style="margin-bottom: 90px;">そう思われるほど<br>断りにくくなって<br>無理が続いていきます。</p>
+            <p style="margin-bottom: 90px;">これも、同じところから来ています。</p>
+            <p style="margin-bottom: 90px;">ですから、頼られる役を<br>今月のうちに一つ<br>減らしてみてください。</p>
+            <p style="margin-bottom: 90px;">「今回は難しいの、ごめんね」</p>
+            <p style="margin-bottom: 90px;">その一言を言ったあと<br>胸がすっと軽くなる場面が<br>訪れます。</p>
+            <p style="margin-bottom: 90px;">では、追加でご質問いただいた<br>息子さんの将来のことを<br>お伝えしていきますね。</p>
+            <p style="margin-bottom: 90px;">息子さんのことを思うと<br>胸の奥がきゅっと緊張して<br>つい気を揉んでしまう。</p>
+            <p style="margin-bottom: 90px;">そんなyuco様の心の動きが<br>霊視でも、はっきり伝わってきました。</p>
+            <p style="margin-bottom: 90px;">それは、息子さんを大切に思う<br>深い愛情の表れです。</p>
+            <p style="margin-bottom: 90px;">息子さんとの会話やご縁は<br>yuco様の人生の恵みです。</p>
+            <p style="margin-bottom: 90px;">そして、息子さんは<br>今、仕事のことで迷いながら<br>自分で何かを決めようとしている時期の<br>ただ中にいます。</p>
+            <p style="margin-bottom: 90px;">人との縁や、周りの方の助けには<br>恵まれた方です。</p>
+            <p style="margin-bottom: 90px;">ただ、外では<br>神経を使う場面が多い方でもあり<br>だからこそ、帰る場所の安心が<br>大きな力になります。</p>
+            <p style="margin-bottom: 90px;">その安心の土台は<br>yuco様ご自身です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">yuco様が元気でいること<br>ほっと笑っていること。</p>
+            <p style="margin-bottom: 90px;">それが、息子さんの立場や信頼が<br>育っていくための追い風になります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">2029年頃には<br>息子さんの仕事の形が<br>定まっていく方向が視えています。</p>
+            <p style="margin-bottom: 90px;">具体的な職業やご縁の形は<br>息子さんご自身が決めていくことなので<br>私からは「方向性」としてお伝えしますね。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">yuco様がご自身を温めて整えていくことが<br>息子さんへの、いちばんの贈り物になります。</p>
+            <p style="margin-bottom: 90px;">ただ、整える方法が分かっても<br>毎日の暮らしの中で<br>何を温めればいいのかは<br>まだ見えにくいですよね。</p>
+            <p style="margin-bottom: 0;">では、四つ目の章へ進みます。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-4">⛩️4　温もりの取り入れ方</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-weight: bold;">毎日の暮らしで<br>守護を高めるために<br>いちばん大切なのは、温もりです。</p>
+            <p style="margin-bottom: 90px;">宇迦之御魂神は、食の神様。</p>
+            <p style="margin-bottom: 90px;">食を整えることは<br>守護と、いちばん近くでつながる道です。</p>
+            <p style="margin-bottom: 90px;">yuco様の体には<br>温もりがもう少し欲しい。</p>
+            <p style="margin-bottom: 90px;">そして、巡りがゆるやかに流れるといい。</p>
+            <p style="margin-bottom: 90px;">そのために、毎日の暮らしに<br>一つ、習慣を入れてみてください。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">朝、起きて最初の一杯は<br>温かい汁物にする。</p>
+            <p style="margin-bottom: 90px;">大きなことは<br>何も必要ありません。</p>
+            <p style="margin-bottom: 90px;">朝のお椀から立ちのぼる湯気を<br>吸い込むだけで<br>温もりは、体の奥へ届いていきます。</p>
+            <p style="margin-bottom: 90px;">そして、旦那様も<br>同じように頑張り屋で<br>弱音を吐かない方です。</p>
+            <p style="margin-bottom: 90px;">お二人の暮らしの中にも<br>温かいものを一緒に囲む時間が増えると<br>家そのものが、やわらかく整っていきます。</p>
+            <p style="margin-bottom: 90px;">そして、ご質問いただいたことに<br>宇迦之御魂神が<br>お答えを伝えてくださいました。</p>
+            <p style="margin-bottom: 90px;">宇迦之御魂神より</p>
+            <p style="margin-bottom: 90px;">「体調や気分の波がある中で<br>日々の生活で大切にしたほうがいいことは」</p>
+            <p style="margin-bottom: 90px;">わたしは長いあいだ<br>田と、台所を見守ってきました。</p>
+            <p style="margin-bottom: 90px;">そこで見てきた大切なことは<br>三つあります。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">一つは、温めること。<br>足元とお腹を、冷やさないこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">二つめは、出すこと。<br>言葉も、涙も、吐息も<br>しまい込まずに、外へ流してあげること。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">三つめは、受け取ること。<br>頼ることも、休むことも<br>わたしに供えられた実りと同じように<br>受け取っていいのです。</p>
+            <p style="margin-bottom: 90px;">気持ちの波は<br>今年がいちばん敏感なとき。</p>
+            <p style="margin-bottom: 90px;">けれど冬至を境に、少しずつ<br>静かになっていきます。</p>
+            <p style="margin-bottom: 90px;">「これからの私が<br>無理なく前に進むためのヒントはありますか」</p>
+            <p style="margin-bottom: 90px;">土に実りを戻すときは<br>急がずに、まず土を温めます。</p>
+            <p style="margin-bottom: 90px;">温まってから、種を蒔けばいい。</p>
+            <p style="margin-bottom: 90px;">そうして根づいたものは<br>あなたが頑張らなくても<br>季節がめぐれば、ちゃんと育ちます。</p>
+            <p style="margin-bottom: 90px;">無理に進まなくても<br>流れは、進んでいきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたの凍った土は<br>今、溶けはじめています。</p>
+            <p style="margin-bottom: 0;">どうか安心して<br>わたしに、あなたの土を預けなさい。</p>
+        </div>
+
+        <h2 id="sec-flow">【今後の四ヶ月】</h2>
+        <div class="section">
+            <p style="margin-bottom: 0;">ここまでお伝えしてきた<br>「しまい込む癖をほどく練習」は<br>この先の四つの月で<br>一段ずつ進んでいきます。</p>
+        </div>
+
+        <div id="flow1Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年10月：体の声を聞きはじめる月</p>
+            <p style="margin-bottom: 90px;">この月は、止まっていた温もりが<br>動きはじめる月です。</p>
+            <p style="margin-bottom: 90px;">その分、しまい込んでいた疲れが<br>体の表に出やすくなる時期でもあります。</p>
+            <p style="margin-bottom: 90px;">だるさや重さが<br>いつもより少し強く出る日が<br>あるかもしれません。</p>
+            <p style="margin-bottom: 90px;">そんな日も<br>不安にならなくて大丈夫です。</p>
+            <p style="margin-bottom: 0;">「まだ大丈夫」の後ろに<br>「ひと息いれます」を足して<br>休む日にしてください。</p>
+        </div>
+
+        <div id="flow2Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2026年12月：最初の陽が差す月</p>
+            <p style="margin-bottom: 90px;">その前の11月は<br>冷えを感じやすい月です。</p>
+            <p style="margin-bottom: 90px;">体を温めて<br>休むことを先にしてください。</p>
+            <p style="margin-bottom: 90px;">そして12月。</p>
+            <p style="margin-bottom: 90px;">ずっと閉じていた扉が<br>ここで開きます。</p>
+            <p style="margin-bottom: 90px;">22日はyuco様の誕生日であり<br>冬至。</p>
+            <p style="margin-bottom: 90px;">1年でいちばん夜が長い日が過ぎて<br>陽が、ふたたび長くなりはじめる日です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">yuco様は、最も冷えた土に<br>最初の陽が差す日に<br>お生まれになった方なのです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">この日から、1年半かけて<br>凍っていた土が溶けていく兆しがあります。</p>
+            <p style="margin-bottom: 90px;">この日は、ぜひ<br>朝の温かい一杯を味わって<br>自分のために<br>「ひと息いれます」と<br>心の中で言ってみてください。</p>
+            <p style="margin-bottom: 0;">その一言が、土の中の種に<br>最初の光を届けます。</p>
+        </div>
+
+        <div id="flow3Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2027年2月：温もりが根づく月</p>
+            <p style="margin-bottom: 90px;">宇迦之御魂神の力が<br>最も強く届く月です。</p>
+            <p style="margin-bottom: 90px;">この月は、yuco様の中に<br>芽を出す力と、日の温もりの両方が<br>同時に流れ込んできます。</p>
+            <p style="margin-bottom: 90px;">土の中で眠っていた種が<br>いよいよ根を張りはじめる時期です。</p>
+            <p style="margin-bottom: 90px;">ちょうど、初午の頃に<br>御神が稲荷山にお降りになった<br>あの季節と重なります。</p>
+            <p style="margin-bottom: 90px;">この月にもし、頼まれごとを<br>一つ丁寧に断れたら<br>それが、自分を先にできた<br>最初の確かな一歩です。</p>
+            <p style="margin-bottom: 0;">体の中にも、これまで届かなかった<br>温もりが根づいていきます。</p>
+        </div>
+
+        <div id="flow4Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年6月：温もりが戻る実感の月</p>
+            <p style="margin-bottom: 90px;">この月は、温もりが体の奥に<br>戻ってきた実感が出てくる月です。</p>
+            <p style="margin-bottom: 90px;">ただ、変わり目の月でもあるので<br>揺れながら、温もりが入っていく<br>という感じになります。</p>
+            <p style="margin-bottom: 0;">そんなときは、焦らず<br>「ひと息いれます」と言って<br>立ち止まってください。</p>
+        </div>
+
+        <div id="flowEndSentinel"></div>
+        <h2 id="sec-year">【今年と来年】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">今年は、yuco様ご自身に<br>光が当たる年です。</p>
+            <p style="margin-bottom: 90px;">ご自身の体のこと、気持ちのことを<br>いちばん強く感じやすい1年なので<br>気分の波も出やすくなります。</p>
+            <p style="margin-bottom: 90px;">息子さんのことで<br>気持ちが動く場面も増えています。</p>
+            <p style="margin-bottom: 90px;">でもそれは、冬至を境に<br>少しずつ落ち着いていきます。</p>
+            <p style="margin-bottom: 90px;">来年は、体を整える動きが<br>はっきりと形になりはじめる年です。</p>
+            <p style="margin-bottom: 90px;">急いで決めなくていい年でもあります。</p>
+            <p style="margin-bottom: 90px;">大きな決断は<br>体が軽くなってからで大丈夫です。</p>
+            <p style="margin-bottom: 90px;">ただ、息子さんとの会話では<br>言葉の出し方に少しだけ<br>気をつけたい場面が出てきます。</p>
+            <p style="margin-bottom: 90px;">心配が先に立って<br>つい強い言い方になりそうなとき<br>「元気にしてる？」の一言だけ<br>かけてみてください。</p>
+            <p style="margin-bottom: 0;">それだけで<br>言葉は、ちゃんと届きます。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-more">🔮　もう少し先に視えていること</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここまでお伝えしてきたこととは別に<br>霊視の最後に、もう二つ<br>視えたものがありました。</p>
+            <p style="margin-bottom: 90px;">一つ目は、うれしい兆しです。</p>
+            <p style="margin-bottom: 90px;">本当に困ったとき<br>どこからか手を差し伸べてくれる人が<br>現れる気配があります。</p>
+            <p style="margin-bottom: 90px;">yuco様が「頼っていい」と<br>思えるようになったとき<br>その方との縁が、すっと近づいてきます。</p>
+            <p style="margin-bottom: 90px;">二つ目は、気に留めてほしいことです。</p>
+            <p style="margin-bottom: 90px;">これからの数年<br>お友達や周りの方とのお付き合いで<br>気疲れが出やすい気配が視えています。</p>
+            <p style="margin-bottom: 90px;">お誘いや頼まれごとが重なって<br>断りきれずに<br>予定を入れすぎてしまう場面です。</p>
+            <p style="margin-bottom: 90px;">怖がるようなものではありません。</p>
+            <p style="margin-bottom: 90px;">自分を温める側へ歩き出した人に<br>訪れやすい<br>形が変わる前の揺らぎのようなものです。</p>
+            <p style="margin-bottom: 90px;">今の時点で<br>心がけてほしいことは一つ。</p>
+            <p style="margin-bottom: 90px;">返事をする前に<br>「ひと息いれます」と<br>心の中で言ってみてください。</p>
+            <p style="margin-bottom: 90px;">ただ、それがいつ頃、どんな形で表れるのか。</p>
+            <p style="margin-bottom: 90px;">そして、どうすれば<br>良い流れに変えていけるのか。</p>
+            <p style="margin-bottom: 90px;">ここは、もう少し深く<br>視させていただく必要があります。</p>
+            <p style="margin-bottom: 0;">また別の機会に<br>改めてお伝えさせてくださいね。</p>
+        </div>
+
+        <div id="guardianReturnSentinel"></div>
+        <h2 class="emoji-header" id="sec-guardian">⛩️守護を受け取る方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">でも、大丈夫です。</p>
+            <p style="margin-bottom: 90px;">今回の霊視で、<span style="color: #ffd966;">宇迦之御魂神</span>の守護の力を<br>yuco様の奥底に置いてきました。</p>
+            <p style="margin-bottom: 90px;">この文章を読みながら<br>胸が少し温かくなる<br>肩がふっと軽くなる<br>なぜか安心する<br>そんな感覚があれば<br>もう守護は届きはじめています。</p>
+            <p style="margin-bottom: 90px;">何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px;">守護の力は、日々の暮らしの糧と<br>体の芯を温めて<br>必要なものが自然と巡ってくるよう<br>支えていきます。</p>
+            <p style="margin-bottom: 90px;">4章でお伝えした<br>朝の一杯の湯気を吸い込む時間は<br>そのまま、守護を受け取る時間にもなります。</p>
+            <p style="margin-bottom: 90px;">ここまで読んでくださったなら<br>もう十分に受け取れています。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【神社へのご参拝】</p>
+            <p style="margin-bottom: 90px;">yuco様のお住まいの京都には<br>宇迦之御魂神ゆかりの神社が<br>いくつもあります。</p>
+            <p style="margin-bottom: 90px;"><span style="font-weight: bold; color: #f0f0ff;">伏見稲荷大社</span><br>（京都市伏見区深草薮之内町68）<br><span style="font-weight: bold; color: #f0f0ff;">伏見稲荷大社 御旅所</span><br>（京都市南区西九条池ノ内町98）<br><span style="font-weight: bold; color: #f0f0ff;">鎌達稲荷神社</span><br>（京都市南区唐橋西寺町57-1）<br><span style="font-weight: bold; color: #f0f0ff;">元祇園梛神社</span><br>（京都市中京区壬生梛ノ宮町18-2）<br><span style="font-weight: bold; color: #f0f0ff;">武信稲荷神社</span><br>（京都市中京区今新在家西町38）</p>
+            <p style="margin-bottom: 90px;">ご参拝の際は<br>お願い事の代わりに<br>宣言をしてみてください。</p>
+            <p style="color: #ffd966; margin-bottom: 90px;">「これまで見守ってくださって<br>ありがとうございます<br>これからは<br>『まだ大丈夫』の前に<br>ひと息いれていきます<br>どうか見守っていてください」</p>
+            <p style="margin-bottom: 90px;">これは、yuco様の歩みを<br>見守っていただくための宣言です。</p>
+            <p style="margin-bottom: 90px;">そのあと、祝詞を唱えます。</p>
+            <p style="color: #ffd966; margin-bottom: 90px;">祓え給い、清め給え<br>神ながら守り給い、幸え給え<br>（はらえたまい、きよめたまえ<br>かむながらまもりたまい、さきわえたまえ）</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【冬至の柚子湯】</p>
+            <p style="margin-bottom: 90px;">もし余裕がある時だけで構いません。</p>
+            <p style="margin-bottom: 90px;">冬至の日に、柚子を浮かべた<br>お風呂に浸かってみてください。</p>
+            <p style="margin-bottom: 0;">1年でいちばん夜が長い日に<br>温もりを体の芯へ迎え入れる<br>小さな儀式になります。</p>
+        </div>
+
+        <div id="stoneSentinel"></div>
+        <h2 class="emoji-header" id="sec-stone">⛩️あなたと響き合うパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">yuco様には、この鑑定の中で<br>「ひと息いれます」という合図の言葉を<br>お渡ししました。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">宇迦之御魂神</span>の守護は<br>すでにyuco様の中に届いています。</p>
+            <p style="margin-bottom: 90px;">ただ、長く続いてきた癖は<br>忙しい日ほど戻ってきます。</p>
+            <p style="margin-bottom: 90px;">夕方、足が重いのに<br>「まだ大丈夫」と<br>洗い物を片づけてしまう。</p>
+            <p style="margin-bottom: 90px;">そんなときに<br>手首の石にそっと触れて<br>「ひと息いれます」と言う。</p>
+            <p style="margin-bottom: 90px;">石は、その合図を<br>思い出すためのものです。</p>
+            <p style="margin-bottom: 90px;">その合図を手首に置けるよう<br>yuco様と響き合う石で<br>ブレスレットをお作りします。</p>
+            <ul style="margin-bottom: 90px;">
+                <li><span style="color: #ffd966; font-weight: bold;">1. カーネリアン</span><br>夕陽のような橙色を宿す石です。<br>「ひと息いれます」と<br>言葉にする、その瞬間を<br>温かく支えてくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">2. アンバー（琥珀）</span><br>無料鑑定でお伝えした<br>あのアンバーの色を宿す石です。<br>言ったあとに、お腹の奥まで<br>温もりが届いていくのを助けてくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">3. ムーンストーン</span><br>やわらかな月の光を宿す石です。<br>言えなかった日も<br>明日また言えるように<br>そばで見守ってくれます。</li>
+            </ul>
+            <p style="margin-bottom: 90px;">この中から<br>yuco様に一番合う組み合わせを選び<br>一粒ずつ、手で編んでお作りします。</p>
+            <p style="margin-bottom: 90px;">yuco様が、周りの方の気持ちを<br>一つずつ受け止めてこられたように<br>私も一粒ずつ<br>想いを込めて仕上げます。</p>
+            <p style="margin-bottom: 90px;">ご連絡から10日以内にお送りします。</p>
+            <p style="margin-bottom: 0;">気になった方は<br>「詳細希望」とだけ<br>メッセージをくださいね。</p>
+        </div>
+
+        <div id="closingSentinel"></div>
+        <h2 id="sec-closing">【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">yuco様</p>
+            <p style="margin-bottom: 90px;">ここまで読んでくださって<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">自分を温める番を<br>いつも最後に回してきたyuco様。</p>
+            <p style="margin-bottom: 90px;">6年のあいだ、笑って<br>「まだ大丈夫」と言い続けてきた日々は<br>すべて愛情の積み重ねでした。</p>
+            <p style="margin-bottom: 90px;">ご家族も、身近な方も、息子さんも<br>yuco様の優しさに<br>ちゃんと支えられてきました。</p>
+            <p style="margin-bottom: 90px;">そして<span style="color: #ffd966;">宇迦之御魂神</span>は<br>ずっと、見ていました。</p>
+            <p style="margin-bottom: 90px;">霜の降りた田の真ん中で<br>白い息を吐きながら、笑って立っていた<br>あの背中を。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">だからもう<br>温めていいんです。</p>
+            <p style="margin-bottom: 90px;">先に座って<br>ひと息いれていい。</p>
+            <p style="margin-bottom: 90px;">頼まれごとを<br>「今回は難しいの」と<br>断っていい。</p>
+            <p style="margin-bottom: 90px;">あの朝の台所で<br>湯気の立つお椀を両手で包んで<br>最後のひと口まで味わう日は<br>もうすぐそこまで来ています。</p>
+            <p style="margin-bottom: 90px;">その日の電話の向こうで<br>息子さんも、安心して笑っています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">yuco様は、幸せになっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">yuco様は、守られています。</p>
+            <p style="margin-bottom: 90px;">yuco様の凍った土に<br>温もりと実りが戻りますよう<br>遠隔でも、守護を祈らせていただきます。</p>
+            <p style="margin-bottom: 0;">yuco様の未来に<br>やわらかな温もりが満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            var elementBg = document.getElementById('elementBg');
+            var deityBg = document.getElementById('deityBg');
+            var doorBg = document.getElementById('doorBg');
+            var seasonSummerBg = document.getElementById('seasonSummerBg');
+            var seasonAutumnBg = document.getElementById('seasonAutumnBg');
+            var seasonWinterBg = document.getElementById('seasonWinterBg');
+            var stoneBg = document.getElementById('stoneBg');
+
+            var stages = [
+                { el: document.getElementById('elementSentinel'), bg: elementBg },
+                { el: document.getElementById('guardianSentinel'), bg: deityBg },
+                { el: document.getElementById('essenceSentinel'), bg: elementBg },
+                { el: document.getElementById('deitySentinel'), bg: doorBg },
+                { el: document.getElementById('flow1Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flow2Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flow3Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flow4Sentinel'), bg: seasonSummerBg },
+                { el: document.getElementById('flowEndSentinel'), bg: doorBg },
+                { el: document.getElementById('guardianReturnSentinel'), bg: deityBg },
+                { el: document.getElementById('stoneSentinel'), bg: stoneBg },
+                { el: document.getElementById('closingSentinel'), bg: doorBg }
+            ].filter(function (stage) { return !!stage.el; });
+            if (!stages.length) return;
+
+            var layers = [elementBg, deityBg, doorBg, seasonSummerBg, seasonAutumnBg, seasonWinterBg, stoneBg];
+            function show(active) {
+                layers.forEach(function (el) {
+                    if (el === active) el.classList.add('is-visible');
+                    else el.classList.remove('is-visible');
+                });
+            }
+
+            function onScroll() {
+                var trigger = window.innerHeight * 0.65;
+                var active = null;
+                for (var i = 0; i < stages.length; i++) {
+                    if (stages[i].el.getBoundingClientRect().top < trigger) {
+                        active = stages[i].bg;
+                    }
+                }
+                show(active);
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+
+        /* ===== 演出：花びら ===== */
+        (function () {
+            var cv = document.getElementById('petals');
+            var ctx = cv.getContext('2d');
+            var W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+            var isMobile = window.innerWidth < 700;
+
+            function resize() {
+                W = window.innerWidth; H = window.innerHeight;
+                cv.width = W * dpr; cv.height = H * dpr;
+                cv.style.width = W + 'px'; cv.style.height = H + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            var petals = [];
+            var petalN = isMobile ? 14 : 24;
+            for (var i = 0; i < petalN; i++) {
+                petals.push({
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    s: 5 + Math.random() * 7,
+                    vy: 0.35 + Math.random() * 0.7,
+                    sway: Math.random() * Math.PI * 2,
+                    swayV: 0.008 + Math.random() * 0.014,
+                    rot: Math.random() * Math.PI * 2,
+                    rotV: (Math.random() - 0.5) * 0.03,
+                    hue: Math.random() < 0.6 ? 'light' : 'deep'
+                });
+            }
+            function drawPetal(p) {
+                ctx.save();
+                ctx.translate(p.x + Math.sin(p.sway) * 26, p.y);
+                ctx.rotate(p.rot);
+                var g = ctx.createRadialGradient(0, 0, 0, 0, 0, p.s);
+                if (p.hue === 'light') {
+                    g.addColorStop(0, 'rgba(255, 220, 140, 0.95)');
+                    g.addColorStop(1, 'rgba(255, 220, 140, 0.25)');
+                } else {
+                    g.addColorStop(0, 'rgba(230, 170, 80, 0.95)');
+                    g.addColorStop(1, 'rgba(230, 170, 80, 0.25)');
+                }
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, p.s, p.s * 0.62, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function tick() {
+                ctx.clearRect(0, 0, W, H);
+                for (var pi = 0; pi < petals.length; pi++) {
+                    var p = petals[pi];
+                    p.y += p.vy;
+                    p.sway += p.swayV;
+                    p.rot += p.rotV;
+                    if (p.y > H + 20) { p.y = -20; p.x = Math.random() * W; }
+                    drawPetal(p);
+                }
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        })();
+    </script>
+
+<!-- GA4 カスタム計測：誰が/最後まで読んだか/購入ボタン [GA4-MIYUKI] -->
+<script>
+(function () {
+  function fire() {
+    var seg = location.pathname.split('/').filter(Boolean);
+    var last = decodeURIComponent(seg[seg.length - 1] || '');
+    var id = /\.html?$/i.test(last) ? decodeURIComponent(seg[seg.length - 2] || 'unknown') : (last || 'unknown');
+    var base = { kantei_id: id, persona: 'miyuki' };
+    gtag('set', 'user_properties', { kantei_id: id, persona: 'miyuki' });
+    gtag('event', 'page_open', base);
+
+    var end = document.querySelector('.signature, .sign');
+    if (end && 'IntersectionObserver' in window) {
+      var done = false;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && !done) { done = true; gtag('event', 'read_complete', base); io.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      io.observe(end);
+    }
+
+    document.querySelectorAll('.cta-button, .btn').forEach(function (b) {
+      b.addEventListener('click', function () { gtag('event', 'cta_click', base); });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire); else fire();
+})();
+</script>
+
+</body>
+</html>
