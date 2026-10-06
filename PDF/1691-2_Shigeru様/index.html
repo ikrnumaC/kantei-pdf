@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shigeru様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :target {
+            scroll-margin-top: 20px;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 演出:背景クロスフェード(かな→火→火→曼荼羅) ===== */
+        .kana-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -5;
+            background-image: url('../images/かな.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center 65%;
+            filter: blur(1px) brightness(1.05) saturate(1.05);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .kana-bg.is-visible { opacity: 0.5; }
+
+        .element-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url('../images/強い水.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(1.05) saturate(1.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .element-bg.is-visible { opacity: 0.55; }
+
+        .deity-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url('../images/強い火.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(1.05) saturate(1.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .deity-bg.is-visible { opacity: 0.55; }
+
+        .door-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url('../images/曼荼羅.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(1.05) saturate(1.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .door-bg.is-visible { opacity: 0.45; }
+
+        /* ===== 演出:運命の転機(季節背景) ===== */
+        .season-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .season-bg.is-visible { opacity: 0.4; }
+        #seasonSpringBg { background-image: url('../images/春.jpg'); }
+        #seasonSummerBg { background-image: url('../images/夏.jpg'); }
+        #seasonAutumnBg { background-image: url('../images/秋.jpg'); }
+        #seasonWinterBg { background-image: url('../images/冬.jpg'); }
+
+        /* ===== 演出:心を守るサポート(パワーストーン背景) ===== */
+        .stone-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .stone-bg.is-visible { opacity: 0.4; }
+        #stoneGreenBg { background-image: url('../images/グリーンアベンチュリン.png'); }
+        #stoneCarnelianBg { background-image: url('../images/カーネリアン.png'); }
+        #stoneRoseBg { background-image: url('../images/ローズクォーツ.png'); }
+
+        .bg-veil {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(250, 248, 245, 0.1) 0%, rgba(250, 248, 245, 0.25) 60%, rgba(250, 248, 245, 0.4) 100%),
+                linear-gradient(180deg, rgba(255, 245, 235, 0.12) 0%, rgba(249, 243, 255, 0.28) 100%);
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../images/曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション(プレーン背景色のみ) ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background-color: #f9f3ff;
+            border: 2px solid #e8d5b7;
+        }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+        }
+
+        .sign-box {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+        }
+
+
+        .toc {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 35px 30px;
+            margin: 40px 0 60px;
+        }
+
+        .toc-title {
+            text-align: center;
+            font-size: 22px;
+            color: #c9a05d;
+            margin-bottom: 25px;
+            letter-spacing: 4px;
+            font-weight: 700;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc li {
+            margin-bottom: 14px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .toc li:last-child {
+            margin-bottom: 0;
+        }
+
+        .toc a {
+            color: #8b6f9c;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: #c9a05d;
+        }
+
+        strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 40px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="kana-bg" id="kanaBg"></div>
+<div class="element-bg" id="elementBg"></div>
+<div class="deity-bg" id="deityBg"></div>
+<div class="door-bg" id="doorBg"></div>
+<div class="season-bg" id="seasonSpringBg"></div>
+<div class="season-bg" id="seasonSummerBg"></div>
+<div class="season-bg" id="seasonAutumnBg"></div>
+<div class="season-bg" id="seasonWinterBg"></div>
+<div class="stone-bg" id="stoneGreenBg"></div>
+<div class="stone-bg" id="stoneCarnelianBg"></div>
+<div class="stone-bg" id="stoneRoseBg"></div>
+<div class="bg-veil"></div>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">Shigeru様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>Shigeru様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <div class="toc">
+        <div class="toc-title">— 目次 —</div>
+        <ul>
+            <li><a href="#sec-you">🔮 あなたについて</a></li>
+            <li><a href="#sec-partner">🔮 お相手様について</a></li>
+            <li><a href="#sec-here">🔮 ここからお伝えしていくこと</a></li>
+            <li><a href="#sec-note">🔮 気になること</a></li>
+            <li><a href="#sec-turn">🔮 運命の転機</a></li>
+            <li><a href="#sec-action">🔮 今からできること</a></li>
+            <li><a href="#sec-support">🔑 心を守るサポート</a></li>
+            <li><a href="#sec-last">最後に</a></li>
+        </ul>
+    </div>
+
+    <div id="kanaSentinel"></div>
+
+    <p>Shigeru様</p>
+
+    <p>この度は、あらためて本鑑定にお進みいただき<br>
+    心より感謝申し上げます。</p>
+
+    <p>「歳の差がありすぎて<br>
+    恋愛対象として見られているのかな」</p>
+
+    <p>「本当に、自分で良いのだろうか」</p>
+
+    <p>「まだ、前の結婚のことを話せていない」</p>
+
+    <p>そして、その奥にある<br>
+    「それでも、この人と結婚したい」</p>
+
+    <p>その想い、痛いほど<strong>伝わってきます</strong>。</p>
+
+    <p>特定のお相手がいない状態で<br>
+    縁の行方を視たあの頃から<br>
+    Shigeru様の心には、はっきりと<br>
+    お顔のある、大切な存在ができたんですね。</p>
+
+    <p>だからこそ<br>
+    想いが深くなるほど、不安も深くなる。</p>
+
+    <p>歳の差のこと。<br>
+    話せていない過去のこと。</p>
+
+    <p>どちらも、お相手様を大切に想うからこそ<br>
+    抱えてしまっているものです。</p>
+
+    <p>今日はまず、Shigeru様が一番知りたいことに<br>
+    はっきりとお答えします。</p>
+
+    <p>結論から言います。</p>
+
+    <p>歳の差は、この縁を遠ざける理由には<br>
+    なっていません。</p>
+
+    <p>視えているのは、お相手様の魂の奥にあるもの。</p>
+
+    <p>お相手様は<br>
+    太陽のように明るく、真っ赤に燃える<br>
+    火のオーラを持つ方です。</p>
+
+    <p>ただ、その火のオーラの中に<br>
+    水のオーラが、生まれつき少なめです。</p>
+
+    <p>そして、Shigeru様は<br>
+    その水のオーラを、雨のように優しく<br>
+    染み込ませてあげられる方です。</p>
+
+    <p>だから、お相手様にとって<br>
+    Shigeru様の落ち着きは<br>
+    <strong>「歳が離れている理由」</strong>というより<br>
+    <strong>「安心できる理由」</strong>として映りやすいんです。</p>
+
+    <p>お相手様の心の中を<br>
+    私が言い切ることはしません。</p>
+
+    <p>ただ、恋愛として見られうる素地は<br>
+    お二人のオーラの中に視えています。</p>
+
+    <p>そして、まだ話せていないあの過去。</p>
+
+    <p>これは、隠したままにしておくより<br>
+    話したほうが、縁は深まります。</p>
+
+    <p>お相手様の魂は<br>
+    ごまかしや曖昧さよりも<br>
+    まっすぐな本音に、心を開く方だからです。</p>
+
+    <p>伝えるのに一番よいのは、今年の<strong>11月</strong>。</p>
+
+    <p>結婚という未来へも<br>
+    条件付きで、道が続いている兆しが視えています。</p>
+
+    <p>その条件が何なのか。</p>
+
+    <p>なぜそう視えるのか。</p>
+
+    <p>ここから順番に、お伝えしていきますね。</p>
+
+    <div id="elementSentinel"></div>
+
+    <h2 id="sec-you">🔮 あなたについて</h2>
+
+    <div class="aura-section aura-water">
+
+    <p>Shigeru様のオーラを<br>
+    あらためて深く視させていただきました。</p>
+
+    <p>雨のように優しく<br>
+    染み込んでいく、水のオーラ。</p>
+
+    <p>争いを好まず<br>
+    そこにいるだけで、人を安心させる。</p>
+
+    <p>そして一度心を寄せたら<br>
+    簡単には離れない、その一途さ。</p>
+
+    </div>
+
+    <p>その優しさの奥には<br>
+    とても繊細なものが宿っています。</p>
+
+    <p>「本当に自分でいいのだろうか」</p>
+
+    <p>そう考えてしまうのは<br>
+    Shigeru様が弱いからではありません。</p>
+
+    <p>相手を大切にしたい想いが<br>
+    そのまま、引け目という形で出ているだけなんです。</p>
+
+    <p>ただ、ひとつだけ<br>
+    視えてしまったことがあります。</p>
+
+    <p>Shigeru様のオーラには<br>
+    木のオーラが、少なめです。</p>
+
+    <p>木のオーラは<br>
+    新しい一歩を踏み出す力<br>
+    そして、考えに区切りをつける力です。</p>
+
+    <p>この木のオーラが少ないことが<br>
+    今回の<strong>「打ち明けられない」</strong>の<br>
+    一番の根っこにあります。</p>
+
+    <p>歳の差のこと、過去のこと。</p>
+
+    <p>同じ考えを、頭の中で<br>
+    何度も繰り返してしまう。</p>
+
+    <p>話そうと思っても<br>
+    その一歩が、どうしても重い。</p>
+
+    <p>そこに、水のオーラとアンバーのオーラが<br>
+    どちらも深く溜まっています。</p>
+
+    <p>受け止めて、内側にしまい込む力が強い。</p>
+
+    <p>だから、大切な人のための迷いほど<br>
+    一人で抱えて、出口を失ってしまう。</p>
+
+    <p>逆に言えば<br>
+    この木のオーラが補われた時<br>
+    ぐるぐる巡っていた考えに<br>
+    区切りがつきます。</p>
+
+    <p>話せなかった言葉も<br>
+    重たい鎧を脱いだように<br>
+    自然と口から出てくるようになる。</p>
+
+    <p>そして、もうひとつ。</p>
+
+    <p>魂の奥には、強く決断する力が<br>
+    しっかりと宿っています。</p>
+
+    <p>本気になった相手には<br>
+    まっすぐ向き合える人です。</p>
+
+    <p>今のShigeru様は、その力が<br>
+    迷いの下に隠れているだけなんです。</p>
+
+    <p>次に、時の流れを視ていきます。</p>
+
+    <p>今、Shigeru様は<br>
+    自分の暮らしと心の土台を整えていく<br>
+    10年の途中にいます。</p>
+
+    <p>自分の内側と向き合い<br>
+    本当に欲しい暮らしを、定めていく時期。</p>
+
+    <p>そして今年は、火のオーラが強く巡る年です。</p>
+
+    <p>愛される力と、縁を呼ぶ力。</p>
+
+    <p>それが今、動いています。</p>
+
+    <p>ただ、同じ時に<br>
+    <strong>「これで本当にいいのか」</strong>という迷いも<br>
+    一緒に巡っています。</p>
+
+    <p>恵まれているのに<br>
+    立ち止まってしまう。</p>
+
+    <p>幸せが近づいているのに<br>
+    素直に受け取れない。</p>
+
+    <p>今のShigeru様は、まさにそういう状態なんです。</p>
+
+    <p>魂をさらに深く視させていただくと<br>
+    星の流れも、同じことを告げています。</p>
+
+    <p>今年は、誠実な言葉が<br>
+    そのまま相手に届きやすい星の流れです。</p>
+
+    <p>飾らず、まっすぐな言葉で話すこと。</p>
+
+    <p>それがこの縁を深める、一番の近道です。</p>
+
+    <p>ただ同時に、年下の方へ向ける気持ちに<br>
+    少し引っかかりが出やすい流れもあります。</p>
+
+    <p>歳の差を気にしてしまうのは<br>
+    そういう流れの中に、今いるからなんです。</p>
+
+    <p>あなたの心が間違っているのではなく<br>
+    いまは、そういうタイミングなだけ。</p>
+
+    <p>このまま何もしなければ<br>
+    迷いは、ただの沈黙になってしまいます。</p>
+
+    <p>でも、木のオーラを少しずつ補い<br>
+    言葉にする一歩を踏み出せたなら<br>
+    今年の福は、そのまま来年の安心につながっていく。</p>
+
+    <p>そのお二人の未来が<br>
+    視えています。</p>
+
+    <div id="guardianSentinel"></div>
+
+    <h2 id="sec-partner">🔮 お相手様について</h2>
+
+    <div class="aura-section aura-fire">
+
+    <p>次に、お相手様の魂を<br>
+    視させていただきました。</p>
+
+    <p>太陽のように明るく<br>
+    まわりを照らす、火のオーラ。</p>
+
+    <p>そして生まれ育ちの奥に<br>
+    柔らかな木のオーラが、ひっそりと宿っています。</p>
+
+    </div>
+
+    <p>人前では、しっかりしていて<br>
+    自信と社交性のある方。</p>
+
+    <p>ただ、その内側はとても繊細で<br>
+    人の痛みを感じ取る力に満ちています。</p>
+
+    <p>外から見た姿と、内側の優しさに<br>
+    少し距離がある。</p>
+
+    <p>それがお相手様の魂です。</p>
+
+    <p>そして、お相手様に少ないオーラ。</p>
+
+    <p>それが、水です。</p>
+
+    <p>水のオーラは<br>
+    気持ちを言葉にして流す力。<br>
+    そして、落ち着いて受け止める力。</p>
+
+    <p>これが少ないから<br>
+    お相手様の気持ちは、とても熱いのに<br>
+    言葉にしようとすると不器用になる。</p>
+
+    <p>重たい話を受け取った時<br>
+    すぐに返事ができず<br>
+    整理するまで時間がかかる。</p>
+
+    <p>もしShigeru様が過去を話した後<br>
+    返事がすぐに来なくても<br>
+    それだけで拒絶と決めつけなくて<strong>大丈夫です</strong>。</p>
+
+    <p>お相手様は<br>
+    すぐに言葉にできない方だからです。</p>
+
+    <p>今のお相手様は、気持ちの面を<br>
+    固めていく大切な10年の途中にいます。</p>
+
+    <p>そして今年は<br>
+    その心が、満たされやすい年。</p>
+
+    <p>人の本音を、受け止める余裕が<br>
+    育ちやすい時です。</p>
+
+    <p>ただ、来年に入ると<br>
+    言葉の行き違いが起きやすい流れもあります。</p>
+
+    <p>大事なことは<br>
+    今年のうちに伝えたほうが<br>
+    まっすぐ届きやすいんです。</p>
+
+    <p>お相手様の魂の奥にある星の流れも視ました。</p>
+
+    <p>お相手様は、年長者のような守り<br>
+    包み込む温かさに、安心を覚える方です。</p>
+
+    <p>Shigeru様が今まで<br>
+    自分の<strong>「弱み」</strong>と思ってきた歳の差は<br>
+    お相手様にとっては、安らぎに変わりうるのです。</p>
+
+    <p>しかも、お二人のご縁の場所には<br>
+    同じ<strong>「守り守られる」</strong>星が宿っています。</p>
+
+    <p>そして、お二人には<br>
+    引き合いやすいところが、いくつもあります。</p>
+
+    <p>暮らしの場面で、息が合いやすいこと。</p>
+
+    <p>Shigeru様に少ない木のオーラを<br>
+    お相手様が運んできてくれること。</p>
+
+    <p>Shigeru様の魅力が<br>
+    お相手様の心に届きやすいこと。</p>
+
+    <p>ただ、一つ<br>
+    お伝えしておくことがあります。</p>
+
+    <p>育った時代や、生活のペース<br>
+    言葉遣いの感覚には<br>
+    どうしてもずれが出やすい。</p>
+
+    <p>歳の差が生む違和感は、実はそこにあります。</p>
+
+    <p>相手が悪いのでも、あなたが悪いのでもない。</p>
+
+    <p>そのずれを埋められるのが<br>
+    水のオーラを持つShigeru様の落ち着きなんです。</p>
+
+    <p>Shigeru様の水が、お相手様の木を育てる。</p>
+
+    <p>その木が、お相手様の太陽を<br>
+    もっと明るく輝かせる。</p>
+
+    <p>そういう流れが、お二人の間にあります。</p>
+
+    <p>Shigeru様が整うと<br>
+    お二人の間の空気が、変わっていきます。</p>
+
+    <div id="deitySentinel"></div>
+
+    <h2 id="sec-here">🔮 ここからお伝えしていくこと</h2>
+
+    <p>今回のご相談で<br>
+    Shigeru様が知りたいとおっしゃったこと。</p>
+
+    <p>ここから一つずつ、視ていきますね。</p>
+
+    <h3>【恋愛対象として見られているのか】</h3>
+
+    <p>お相手様の心の中を<br>
+    私が断言することはできません。</p>
+
+    <p>ただ、お二人のオーラの関係は<br>
+    大切なことを物語っています。</p>
+
+    <p>お相手様にとって、Shigeru様は<br>
+    信頼して、安心して身を任せられる存在に<br>
+    当たります。</p>
+
+    <p>そしてShigeru様にとって、お相手様は<br>
+    守りたい、大切にしたい存在に当たります。</p>
+
+    <p>だからこそ、Shigeru様が今できるのは<br>
+    <strong>「見られているかどうか」</strong>を<br>
+    頭で確かめ続けることではなく</p>
+
+    <p>誠実な言葉を、自分の口で届けることです。</p>
+
+    <p>そのために、木のオーラを整えることが<br>
+    何より大切な鍵になります。</p>
+
+    <h3>【話せていない過去をどう扱うか】</h3>
+
+    <p>あの過去は、Shigeru様にとって<br>
+    「話すと失うかもしれないもの」に<br>
+    なってしまっています。</p>
+
+    <p>でも私には、別のものが視えています。</p>
+
+    <p>あの過去は、縁を壊すものではなく<br>
+    縁を本物にしていく通過点です。</p>
+
+    <p>お相手様の魂は、ごまかしに敏感で<br>
+    まっすぐな本音に、心を開く方。</p>
+
+    <p>隠されたまま気配だけが伝わるより<br>
+    Shigeru様自身の言葉で聞くほうが<br>
+    ずっと安心しやすいんです。</p>
+
+    <p>話せていないのは<br>
+    失いたくない気持ちが強いから。</p>
+
+    <p>それは、罪でも恥でもありません。</p>
+
+    <p>ただ、伝えるのなら<br>
+    その人の口から聞けたかどうかが<br>
+    過去そのものよりも、信頼の深さを分けます。</p>
+
+    <p>他の誰かの口から先に耳に入る形だけは<br>
+    作らないでください。</p>
+
+    <p>そして、話し終えたあとは<br>
+    お相手様が整理する時間を待つこと。</p>
+
+    <p>数日、場合によっては一週間ほど。</p>
+
+    <p>その間は、こちらから確かめずに待ってください。</p>
+
+    <h3>【この縁は、結婚まで届くのか】</h3>
+
+    <p>結論から言うと<br>
+    条件付きで、道は続いています。</p>
+
+    <p>今年は、Shigeru様にとって<br>
+    縁の流れが一番強く動く年。</p>
+
+    <p>そして来年の<strong>2月から3月</strong>にかけて<br>
+    お相手様が、信頼と将来を<br>
+    現実のものとして考えやすい流れが巡ります。</p>
+
+    <p>でも、その前提は一つ。</p>
+
+    <p>今年中に、あの過去を打ち明け<br>
+    信頼を固めておくこと。</p>
+
+    <p>土台のない場所に<br>
+    未来の家は建ちません。</p>
+
+    <p>今年の言葉が、そのまま来年の土台になります。</p>
+
+    <p>だからこそ<br>
+    オーラを整えて、その日を迎えることが鍵なんです。</p>
+
+    <h3>【オーラが整った先に広がる景色】</h3>
+
+    <p>木のオーラが整った<br>
+    Shigeru様の姿です。</p>
+
+    <p>話そうと決めた日の朝<br>
+    緑の葉に触れて、一つ深く息を吐いている。</p>
+
+    <p>落ち着いた場所で<br>
+    お相手様の顔を、まっすぐに見ている。</p>
+
+    <p>言葉が詰まらず<br>
+    事実を短く、正直に伝え終えた時の<br>
+    肩の軽さ。</p>
+
+    <p>返事を待つ数日間も<br>
+    沈黙に飲まれず<br>
+    自分の軸で、穏やかにいられるShigeru様。</p>
+
+    <p>その景色が、はっきりと視えています。</p>
+
+    <h2 id="sec-note">🔮 気になること</h2>
+
+    <p>これまでお伝えしてきたこと以外にも<br>
+    実はもう一つ、視えているものがあります。</p>
+
+    <p>もう少し先の、小さな兆しです。</p>
+
+    <p>2028年に入る頃<br>
+    お相手様の気持ちが<br>
+    見えにくく感じられる時期が<br>
+    訪れる流れが視えます。</p>
+
+    <p>手応えが薄いと感じる時期です。</p>
+
+    <p>ただ、これはまだ先の話。</p>
+
+    <p>今すぐ心配することは<br>
+    何もありません。</p>
+
+    <p>今回はここまでお伝えするだけに<br>
+    とどめておきますね。</p>
+
+    <p>また別の機会に、詳しくお伝えできたらと思います。</p>
+
+    <h2 id="sec-turn">🔮 運命の転機</h2>
+
+    <p>今は<strong>10月</strong>。</p>
+
+    <p>火のオーラが強く巡る今年の中で<br>
+    お二人の縁が整っていく、準備の時期です。</p>
+
+    <p><strong>10月</strong>は、まだ重い話を<br>
+    切り出す月ではありません。</p>
+
+    <p>小さな接点を重ねて<br>
+    <strong>11月</strong>に話す言葉を、整えていく。</p>
+
+    <p>その先で、特に大切な四つの月を<br>
+    順にお伝えします。</p>
+
+    <div id="season1Sentinel"></div>
+
+    <h3>最重要月 2026年11月</h3>
+
+    <p>お二人の巡り合わせが、そろう月です。</p>
+
+    <p>Shigeru様には、少なかった木のオーラが<br>
+    一年で一番濃く巡ります。</p>
+
+    <p>そしてお相手様には、少なかった水のオーラが<br>
+    ちょうど巡ってくる。</p>
+
+    <p>言葉が出やすくなる月です。</p>
+
+    <p>前回お伝えした<strong>11月</strong>の流れは<br>
+    Shigeru様一人の流れから<br>
+    お二人の流れへと、大きく変わりました。</p>
+
+    <p>ずっと言えなかったことが<br>
+    自分でも驚くほど、自然に口から出てくる。</p>
+
+    <p>お相手様の側でも<br>
+    本音が表に出やすくなります。</p>
+
+    <p>家族のこと、昔のこと、これからのこと。</p>
+
+    <p>そういう話題が<br>
+    二人の間に出やすくなります。</p>
+
+    <p>心構えとして、お伝えしたいのは三つ。</p>
+
+    <p>月の初めの立冬を過ぎてから<br>
+    落ち着いた時間に、一対一で話すこと。</p>
+
+    <p>勢いや、お酒の力は借りないこと。</p>
+
+    <p>そして、話し終えたあとは<br>
+    返事を急がず、いつも通りに過ごすこと。</p>
+
+    <p>「あなたとのことを、真剣に考えている」</p>
+
+    <p>その気持ちを、最初に伝えてください。</p>
+
+    <p><strong>「過去の話」</strong>の前に、その一言があるだけで<br>
+    お相手様の受け取り方は、変わってきます。</p>
+
+    <p>ただ、お相手様の繊細な心は<br>
+    言葉の棘に敏感です。</p>
+
+    <p>だから、言葉は丁寧に選んでください。</p>
+
+    <p>そして、自分を卑下する言葉を使わないこと。</p>
+
+    <p>「こんなに年上でごめんね」は<br>
+    お相手様の判断を、疑う言葉になってしまいます。</p>
+
+    <p>あなたはもう<br>
+    <strong>「選ばれる側」</strong>ではなく<br>
+    <strong>「真剣に向き合う側」</strong>として<br>
+    そこに立っていてください。</p>
+
+    <div id="season2Sentinel"></div>
+
+    <h3>2つ目の重要月 2026年12月</h3>
+
+    <p><strong>11月</strong>に話した後の、整理の月です。</p>
+
+    <p>流れが少し慌ただしくなり<br>
+    お相手様の生活も、年末で慌ただしくなります。</p>
+
+    <p>Shigeru様自身も、気持ちが揺れやすく<br>
+    判断が遅れやすい。</p>
+
+    <p>この月の心構えは、ただ一つ。</p>
+
+    <p>話したあとの二人の関係を<br>
+    いつも通りに保つこと。</p>
+
+    <p>追いかけない。<br>
+    いつも通りでいる。</p>
+
+    <p>もしお相手様が<br>
+    距離を置きたいと示したときは<br>
+    その気持ちを尊重してください。</p>
+
+    <p>それも、誠実さの一つです。</p>
+
+    <div id="season3Sentinel"></div>
+
+    <h3>3つ目の重要月 2027年2月</h3>
+
+    <p>お二人の縁が、現実の段階に進みやすい月です。</p>
+
+    <p>Shigeru様の側では、新しい一歩を<br>
+    追い風にできる流れが巡ります。</p>
+
+    <p>そしてお相手様の側でも<br>
+    ご縁の場所が大きく動きます。</p>
+
+    <p>会う頻度や、将来の話<br>
+    家族の話といった、現実の話題が<br>
+    出てきやすい月です。</p>
+
+    <p>動きがある時は、変化の大きさに<br>
+    お相手様の気持ちが揺れることもあります。</p>
+
+    <p>心構えは、結論を急がないこと。</p>
+
+    <p>そして周りの人の年齢についての言葉に<br>
+    Shigeru様自身が揺らがないことです。</p>
+
+    <p>あなたが揺れずにいることが<br>
+    何よりの安心になります。</p>
+
+    <div id="season4Sentinel"></div>
+
+    <h3>4つ目の重要月 2027年3月</h3>
+
+    <p>お相手様が、信頼や責任を<br>
+    現実のこととして意識しやすい月です。</p>
+
+    <p>Shigeru様の心にも、自分の意思が<br>
+    しっかり戻ってくる。</p>
+
+    <p>そして、家族の話題が動きやすい月でもあります。</p>
+
+    <p>歳の差についてのご意見が<br>
+    家族から出ることも<br>
+    想定しておいてください。</p>
+
+    <p>そのとき、あなたがどんな顔で<br>
+    そこに立っているか。</p>
+
+    <p>それが、大切になります。</p>
+
+    <h3>その先の未来</h3>
+
+    <p>2027年は、お二人の関係の形を<br>
+    確かめていく年です。</p>
+
+    <p>言葉の行き違いが起きやすい年でもあるので<br>
+    大切なことは、丁寧に言葉にして確認してください。</p>
+
+    <p>2028年は、一つの節目の年です。</p>
+
+    <p><strong>最も大切なのは</strong><br>
+    今年の<strong>11月</strong>をどう迎えるかです。</p>
+
+    <div id="turnEndSentinel"></div>
+
+    <h2 id="sec-action">🔮 今からできること</h2>
+
+    <p>ここまで<br>
+    運命の流れと、これから訪れる<strong>転機</strong>を<br>
+    お伝えしました。</p>
+
+    <p>ただ、一つだけ知っておいてほしいことがあります。</p>
+
+    <p>運命は、ただ待っているだけでは動きません。</p>
+
+    <p>どれだけ星の流れが整っても<br>
+    Shigeru様ご自身のオーラが整っていなければ<br>
+    その流れを掴むことはできないんです。</p>
+
+    <p>だからここからは<br>
+    Shigeru様が今日から、自分の手で<br>
+    運命を動かすための、最初の一歩を<br>
+    お伝えします。</p>
+
+    <h3>【木のオーラを補う】</h3>
+
+    <p>まず、朝の最初に<br>
+    緑に触れてから、一日を始めてください。</p>
+
+    <p>観葉植物でも、近所の公園でも<br>
+    構いません。</p>
+
+    <p>一日の始まりに、自分の内側へ<br>
+    あの木のオーラを招き入れるためです。</p>
+
+    <p>そして、打ち明けると決めた日は<br>
+    緑色のものを、一つ身につけてください。</p>
+
+    <p>ハンカチでも、ネクタイでも<br>
+    小さなもので十分です。</p>
+
+    <p>それともう一つ。</p>
+
+    <p><strong>10月</strong>のうちに<br>
+    伝えたい内容を、短く言葉にまとめて<br>
+    声に出して練習しておいてください。</p>
+
+    <p>事実を、短く、正直に。</p>
+
+    <p>そして、今の気持ちと<br>
+    真剣に考えていること。</p>
+
+    <p>この三つだけで足りています。</p>
+
+    <p>長い言い訳は、いりません。</p>
+
+    <h3>【気をつけてほしいこと】</h3>
+
+    <p>お相手様の反応が薄いと感じた時に<br>
+    追って連絡したり、気持ちを確かめたりしないこと。</p>
+
+    <p>これには理由があります。</p>
+
+    <p>お相手様は、水のオーラが少ないぶん<br>
+    気持ちを整理するのに、時間が必要な方。</p>
+
+    <p>その時間を奪われると<br>
+    追い詰められたような気持ちになり<br>
+    かえって距離が開いてしまうからです。</p>
+
+    <p>意識したいのはこの2つです。</p>
+
+    <p>・頭に迷いが浮かんだら<br>
+    <strong>「今、気が外に出ている」</strong>と一言つぶやき<br>
+    息を吐いて、両手をおへその下に当てる</p>
+
+    <p>・一日の終わりに、心が動いたことを<br>
+    紙に書き出して、溜め込まない</p>
+
+    <p>溜め込まず、流していくこと。</p>
+
+    <p>それが、木のオーラを育てる<br>
+    一番の土台になります。</p>
+
+    <h3>【正直にお伝えしたいこと】</h3>
+
+    <p>ここまでお伝えした調整法で<br>
+    オーラは少しずつ整い始めます。</p>
+
+    <p>ただ、正直に言うと<br>
+    木のオーラがここまで少ない場合<br>
+    日常の調整だけでは、補いきれない部分があります。</p>
+
+    <p>緑色を身につける。<br>
+    公園を歩く。</p>
+
+    <p>これらは<strong>「維持する力」</strong>にはなりますが<br>
+    ゼロから補う力としては、どうしても限界がある。</p>
+
+    <p>もし本気で<br>
+    <strong>11月</strong>までにオーラを整えたいなら<br>
+    もう一つ、お伝えしたい方法があります。</p>
+
+    <h2 id="sec-support">🔑 心を守るサポート</h2>
+
+    <p>ここまでお伝えしてきた通り<br>
+    Shigeru様のオーラには<br>
+    木のオーラが、ほとんど無い状態です。</p>
+
+    <p>これが、今回の<strong>「打ち明けられない」</strong>の根っこにある原因であり<br>
+    <strong>11月</strong>のチャンスを掴むために<br>
+    最も整えるべき部分です。</p>
+
+    <p>木のオーラが整うと</p>
+
+    <p>・<strong>11月</strong>の打ち明けの場で<br>
+    言葉が詰まらず、落ち着いて話せる</p>
+
+    <p>・歳の差について繰り返していた考えに<br>
+    ふっと区切りがつく</p>
+
+    <p>・バツイチの過去を<br>
+    <strong>「隠すべき傷」</strong>ではなく、自分の一部として語れる</p>
+
+    <p>・返事を待つ数日間<br>
+    お相手様の沈黙に飲まれない</p>
+
+    <p>・二人で緑や水辺を歩く時間に<br>
+    自然体の優しさがにじむ</p>
+
+    <p>日常の調整法に加えて<br>
+    本格的にオーラを補うために<br>
+    パワーストーンをお守りとして<br>
+    取り入れる方法があります。</p>
+
+    <p>Shigeru様のオーラに合わせて<br>
+    三つのプランをご用意しました。</p>
+
+    <div id="stone1Sentinel"></div>
+
+    <div class="important-box">
+
+    <h3>【運命を動かすプラン】</h3>
+
+    <p><strong>11月の打ち明けを、本気で掴みたい方へ</strong></p>
+
+    <p>・<strong>グリーンアベンチュリン</strong><br>
+    少ない木のオーラを補い、話し出す一歩を後押しする</p>
+
+    <p>・<strong>カーネリアン</strong><br>
+    火のあかりを補い、想いを言葉に変える力を灯す</p>
+
+    <p>・<strong>アマゾナイト</strong><br>
+    言葉を穏やかに整え、本音を柔らかく届ける</p>
+
+    <p>・<strong>スモーキークォーツ</strong><br>
+    溜め込んだ想いを手放し、心の重さを軽くする</p>
+
+    <p>・<strong>ローズクォーツ</strong><br>
+    年齢への焦りを吸い取り、優しい安心に変える</p>
+
+    <p>期待できる変化：</p>
+
+    <p>打ち明ける場で<br>
+    お相手様の目を見て<br>
+    自分の言葉で話し切れる</p>
+
+    <p>返事を待つ数日間<br>
+    沈黙に不安にならず<br>
+    自分の毎日を穏やかに過ごせる</p>
+
+    <p><strong>11月</strong>の<strong>転機</strong>を<br>
+    最高の状態で迎えられる</p>
+
+    <div id="stone2Sentinel"></div>
+
+    <h3>【流れを整えるプラン】</h3>
+
+    <p><strong>まずは心を安定させたい方へ</strong></p>
+
+    <p>・<strong>グリーンアベンチュリン</strong><br>
+    少ない木のオーラを補い、考えの渦に区切りをつける</p>
+
+    <p>・<strong>カーネリアン</strong><br>
+    火のあかりを補い、内側の熱を表に出す</p>
+
+    <p>・<strong>ローズクォーツ</strong><br>
+    歳の差への焦りを吸い取り、穏やかな気持ちを育てる</p>
+
+    <p>期待できる変化：</p>
+
+    <p>歳の差を気にして<br>
+    同じことを何度も考える時間が<br>
+    少しずつ減っていく</p>
+
+    <p>お相手様との時間を<br>
+    引け目なく、自然に楽しめる</p>
+
+    <p>自分の気持ちの温度を<br>
+    自分で整えられるようになる</p>
+
+    <div id="stone3Sentinel"></div>
+
+    <h3>【日々のお守りプラン】</h3>
+
+    <p><strong>まずは不安を和らげたい方へ</strong></p>
+
+    <p>・<strong>グリーンアベンチュリン</strong><br>
+    少ない木のオーラを補い、心を軽くする</p>
+
+    <p>・<strong>ローズクォーツ</strong><br>
+    <strong>「本当に自分でいいのか」</strong>という苦しさを和らげる</p>
+
+    <p>期待できる変化：</p>
+
+    <p>ふと不安が浮かんだ時の<br>
+    胸の重さが、和らいでいく</p>
+
+    <p>お相手様を想う時間が<br>
+    苦しさより、温かさで満ちていく</p>
+
+    </div>
+
+    <p>実は、【運命を動かすプラン】を<br>
+    選ばれる方が最も多く<br>
+    全体の約70%を占めています。</p>
+
+    <p>「<strong>11月</strong>の<strong>転機</strong>を、本気で掴みたいから<br>
+    中途半端にしたくない」<br>
+    というお声が多いです。</p>
+
+    <p><strong>11月</strong>に向けて、今から整え始めることで<br>
+    石の力が、ちょうど馴染んだ状態で<br>
+    <strong>最重要月</strong>を迎えられます。</p>
+
+    <p>もし興味がありましたら<br>
+    <strong>「詳細希望」</strong>とだけ送っていただければ<br>
+    Shigeru様専用の石の組み合わせを<br>
+    お伝えしますね。</p>
+
+    <div id="closingSentinel"></div>
+
+    <h2 id="sec-last">最後に</h2>
+
+    <p>Shigeru様。</p>
+
+    <p>今、あなたは<br>
+    大切な岐路に立っています。</p>
+
+    <p>このまま、歳の差と過去を<br>
+    一人で抱え続けるか。</p>
+
+    <p>それとも、木のオーラを整えて<br>
+    自分の言葉で、お相手様に向き合うか。</p>
+
+    <p>選ぶのは、Shigeru様ご自身です。</p>
+
+    <p>歳の差を気にしてしまうのも<br>
+    話せていない過去があるのも<br>
+    全部、お相手様を大切に想うから。</p>
+
+    <p>その誠実さは、何より尊いものです。</p>
+
+    <p>そして、私には視えています。</p>
+
+    <p>深まりゆく<strong>11月</strong>の夜<br>
+    落ち着いた場所で、お相手様と向き合う<br>
+    Shigeru様の姿。</p>
+
+    <p>「大切な話があって、聞いてほしいんです。<br>
+    あなたとのことを、真剣に考えているから」</p>
+
+    <p>その一言を<br>
+    自分の声で言えているShigeru様。</p>
+
+    <p>話し終えたあと<br>
+    どんな返事であっても<br>
+    肩が軽くなっている。</p>
+
+    <p>「あの時、話してよかった」</p>
+
+    <p>そう、心から思える未来が視えています。</p>
+
+    <p>その未来への道<br>
+    私が照らし続けますね。</p>
+
+    <div class="sign-box">
+    <p>心からの愛と光を込めて。<br>
+    かな</p>
+    </div>
+
+</div>
+
+<script>
+(function () {
+    var kanaBg = document.getElementById('kanaBg');
+    var elementBg = document.getElementById('elementBg');
+    var deityBg = document.getElementById('deityBg');
+    var doorBg = document.getElementById('doorBg');
+    var seasonSpringBg = document.getElementById('seasonSpringBg');
+    var seasonSummerBg = document.getElementById('seasonSummerBg');
+    var seasonAutumnBg = document.getElementById('seasonAutumnBg');
+    var seasonWinterBg = document.getElementById('seasonWinterBg');
+    var stoneGreenBg = document.getElementById('stoneGreenBg');
+    var stoneCarnelianBg = document.getElementById('stoneCarnelianBg');
+    var stoneRoseBg = document.getElementById('stoneRoseBg');
+
+    var stages = [
+        { el: document.getElementById('kanaSentinel'), bg: kanaBg },
+        { el: document.getElementById('elementSentinel'), bg: elementBg },
+        { el: document.getElementById('guardianSentinel'), bg: deityBg },
+        { el: document.getElementById('deitySentinel'), bg: doorBg },
+        { el: document.getElementById('season1Sentinel'), bg: seasonAutumnBg },
+        { el: document.getElementById('season2Sentinel'), bg: seasonWinterBg },
+        { el: document.getElementById('season3Sentinel'), bg: seasonWinterBg },
+        { el: document.getElementById('season4Sentinel'), bg: seasonSpringBg },
+        { el: document.getElementById('turnEndSentinel'), bg: doorBg },
+        { el: document.getElementById('stone1Sentinel'), bg: stoneGreenBg },
+        { el: document.getElementById('stone2Sentinel'), bg: stoneCarnelianBg },
+        { el: document.getElementById('stone3Sentinel'), bg: stoneRoseBg },
+        { el: document.getElementById('closingSentinel'), bg: doorBg }
+    ].filter(function (stage) { return !!stage.el; });
+    if (!stages.length) return;
+
+    var layers = [kanaBg, elementBg, deityBg, doorBg, seasonSpringBg, seasonSummerBg, seasonAutumnBg, seasonWinterBg, stoneGreenBg, stoneCarnelianBg, stoneRoseBg];
+    function show(active) {
+        layers.forEach(function (el) {
+            if (el === active) el.classList.add('is-visible');
+            else el.classList.remove('is-visible');
+        });
+    }
+
+    function onScroll() {
+        var trigger = window.innerHeight * 0.65;
+        var active = null;
+        for (var i = 0; i < stages.length; i++) {
+            if (stages[i].el.getBoundingClientRect().top < trigger) {
+                active = stages[i].bg;
+            }
+        }
+        show(active);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
+</script>
+
+</body>
+</html>

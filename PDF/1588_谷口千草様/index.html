@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>谷口千草様専用鑑定書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :target {
+            scroll-margin-top: 20px;
+        }
+
+        body {
+            font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+            line-height: 2;
+            background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+            color: #2d2d2d;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ===== 演出:背景クロスフェード(かな→火→火→曼荼羅) ===== */
+        .kana-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -5;
+            background-image: url('../images/かな.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center 65%;
+            filter: blur(1px) brightness(1.05) saturate(1.05);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .kana-bg.is-visible { opacity: 0.5; }
+
+        .element-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url('../images/強い土.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(1.05) saturate(1.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .element-bg.is-visible { opacity: 0.55; }
+
+        .deity-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url('../images/強い土.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(1.05) saturate(1.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .deity-bg.is-visible { opacity: 0.55; }
+
+        .door-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url('../images/曼荼羅.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(1.05) saturate(1.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .door-bg.is-visible { opacity: 0.45; }
+
+        /* ===== 演出:運命の転機(季節背景) ===== */
+        .season-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .season-bg.is-visible { opacity: 0.4; }
+        #seasonSpringBg { background-image: url('../images/春.jpg'); }
+        #seasonSummerBg { background-image: url('../images/夏.jpg'); }
+        #seasonAutumnBg { background-image: url('../images/秋.jpg'); }
+        #seasonWinterBg { background-image: url('../images/冬.jpg'); }
+
+        /* ===== 演出:心を守るサポート(パワーストーン背景) ===== */
+        .stone-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .stone-bg.is-visible { opacity: 0.4; }
+        #stoneGreenBg { background-image: url('../images/グリーンアベンチュリン.png'); }
+        #stoneRutileBg { background-image: url('../images/ルチルクォーツ.png'); }
+
+        .bg-veil {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(250, 248, 245, 0.1) 0%, rgba(250, 248, 245, 0.25) 60%, rgba(250, 248, 245, 0.4) 100%),
+                linear-gradient(180deg, rgba(255, 245, 235, 0.12) 0%, rgba(249, 243, 255, 0.28) 100%);
+        }
+
+        /* ===== 表紙ページ ===== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('../images/曼荼羅.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-recipient {
+            font-size: 48px;
+            font-weight: 300;
+            color: #c9a05d;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+
+        .cover-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: #8b6f9c;
+            letter-spacing: 3px;
+            margin-bottom: 80px;
+        }
+
+        .cover-appraiser {
+            font-size: 20px;
+            color: #6d6d6d;
+            letter-spacing: 2px;
+        }
+
+        /* ===== コンテンツページ ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: #c9a05d;
+            margin: 20px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b6f9c;
+            font-size: 16px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c9a05d;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8d5b7;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8b6f9c;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8d5b7;
+            margin: 40px 0;
+        }
+
+        /* ===== オーラセクション(プレーン背景色のみ) ===== */
+        .aura-section {
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            background-color: #f9f3ff;
+            border: 2px solid #e8d5b7;
+        }
+
+        /* ===== ボックス装飾 ===== */
+        .header-info {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .important-box {
+            background: #fffef5;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .magic-word-box {
+            background: #f9f3ff;
+            border: 2px dashed #c9a0dc;
+            border-radius: 10px;
+            padding: 35px;
+            margin: 30px 0;
+            white-space: pre-line;
+        }
+
+        .sign-box {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e8d5b7;
+        }
+
+
+        .toc {
+            background: #fff9f0;
+            border: 2px solid #e8d5b7;
+            border-radius: 10px;
+            padding: 35px 30px;
+            margin: 40px 0 60px;
+        }
+
+        .toc-title {
+            text-align: center;
+            font-size: 22px;
+            color: #c9a05d;
+            margin-bottom: 25px;
+            letter-spacing: 4px;
+            font-weight: 700;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc li {
+            margin-bottom: 14px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .toc li:last-child {
+            margin-bottom: 0;
+        }
+
+        .toc a {
+            color: #8b6f9c;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: #c9a05d;
+        }
+
+        strong {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* ===== スマホレスポンシブ ===== */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+                line-height: 1.8;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .cover-page::before {
+                width: 200px;
+                height: 200px;
+            }
+
+            .cover-recipient {
+                font-size: 32px;
+                letter-spacing: 4px;
+                margin-bottom: 15px;
+            }
+
+            .cover-title {
+                font-size: 36px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+            }
+
+            .cover-subtitle {
+                font-size: 14px;
+                letter-spacing: 2px;
+                margin-bottom: 60px;
+            }
+
+            .cover-appraiser {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 10px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                margin-bottom: 40px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+
+            .aura-section,
+            .header-info,
+            .important-box,
+            .magic-word-box {
+                padding: 25px 20px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="kana-bg" id="kanaBg"></div>
+<div class="element-bg" id="elementBg"></div>
+<div class="deity-bg" id="deityBg"></div>
+<div class="door-bg" id="doorBg"></div>
+<div class="season-bg" id="seasonSpringBg"></div>
+<div class="season-bg" id="seasonSummerBg"></div>
+<div class="season-bg" id="seasonAutumnBg"></div>
+<div class="season-bg" id="seasonWinterBg"></div>
+<div class="stone-bg" id="stoneGreenBg"></div>
+<div class="stone-bg" id="stoneRutileBg"></div>
+<div class="bg-veil"></div>
+
+<!-- 表紙ページ -->
+<div class="cover-page">
+    <div class="cover-recipient">谷口千草様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>谷口千草様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <div class="toc">
+        <div class="toc-title">— 目次 —</div>
+        <ul>
+            <li><a href="#sec-you">🔮 あなたについて</a></li>
+            <li><a href="#sec-work">🔮 お仕事とお金について</a></li>
+            <li><a href="#sec-here">🔮 ここからお伝えしていくこと</a></li>
+            <li><a href="#sec-note">🔮 気になること</a></li>
+            <li><a href="#sec-turn">🔮 運命の転機</a></li>
+            <li><a href="#sec-action">🔮 今からできること</a></li>
+            <li><a href="#sec-support">🔑 心を守るサポート</a></li>
+            <li><a href="#sec-last">最後に</a></li>
+        </ul>
+    </div>
+
+    <div id="kanaSentinel"></div>
+
+    <p>千草様</p>
+
+    <p>この度は本鑑定にお進みいただき<br>
+    心より感謝申し上げます。</p>
+
+    <p>「運命の人と<br>
+    出会えるんだろうか」</p>
+
+    <p>「介護の仕事<br>
+    このまま続けていいんだろうか」</p>
+
+    <p>「わからない。わからない。」</p>
+
+    <p>その揺れる想い<br>
+    痛いほど<strong>伝わってきます</strong>。</p>
+
+    <p>毎日、誰かの暮らしを支えて<br>
+    体も心も使い続けて</p>
+
+    <p>自分の幸せのことは<br>
+    いつも一番後ろに置いてきた。</p>
+
+    <p><strong>「今さら」</strong>という言葉を<br>
+    そっと飲み込んだ夜も<br>
+    あったはずです。</p>
+
+    <p>無料鑑定では<br>
+    千草様のオーラに<br>
+    柔らかなアンバーが視えていること。</p>
+
+    <p>畑のように豊かな土で<br>
+    出会う人を大切に受け止める<br>
+    包容力があること。</p>
+
+    <p>そして、答えが出ないと<br>
+    考えがループしてしまうのは<br>
+    弱さやなくて、誠実さだということを<br>
+    お伝えしました。</p>
+
+    <p>運命の縁は<br>
+    もう動き始めている。</p>
+
+    <p>そこまでは<br>
+    無料鑑定でお伝えした通りです。</p>
+
+    <p>今回は、そこからさらに<br>
+    踏み込んで視ていきますね。</p>
+
+    <p>まず、千草様が一番<br>
+    知りたいこと。</p>
+
+    <p>はっきりお伝えします。</p>
+
+    <p>結論から言います。</p>
+
+    <p>運命の人と出会う兆しが<br>
+    はっきりと視えています。</p>
+
+    <p>その縁が<br>
+    結婚へ育っていく流れも<br>
+    視えています。</p>
+
+    <p>ただ、一つだけ<br>
+    大切な条件があります。</p>
+
+    <p>千草様の縁は<br>
+    待っていれば自然に近づいてくる<br>
+    縁やない。</p>
+
+    <p>ご自身が入口を開いた時に<br>
+    はじめて動き出す縁なんです。</p>
+
+    <p>なぜかというと<br>
+    今、千草様のアンバーのオーラは<br>
+    やや強めに出ていて</p>
+
+    <p>その上に<br>
+    うっすらと霧がかかっています。</p>
+
+    <p>そして、新しい縁の入口を<br>
+    広げてくれる木のオーラが<br>
+    少ない。</p>
+
+    <p>縁が無いのやない。<br>
+    入口が、少し狭くなっているだけ。</p>
+
+    <p>出会いが最も強く動くのは<br>
+    来年、2027年の春。</p>
+
+    <p><strong>2月から3月</strong>にかけてです。</p>
+
+    <p>結婚が具体的な形になっていくのは<br>
+    2027年の後半から<br>
+    2029年にかけて視えています。</p>
+
+    <p>お仕事のことも<br>
+    お金のことも</p>
+
+    <p>実は、同じ根っこから<br>
+    つながっています。</p>
+
+    <p>介護のお仕事は<br>
+    今すぐ辞めなくていい。</p>
+
+    <p>お金は<br>
+    大きく稼ぐより<br>
+    守って蓄えるほど増えていく。</p>
+
+    <p>詳しくは、順番にお伝えしますね。</p>
+
+    <p>なぜ今こうなっているのか。</p>
+
+    <p>その原因は<br>
+    千草様のオーラに<br>
+    はっきりと視えています。</p>
+
+    <p>次から、一つずつ<br>
+    視ていきましょう。</p>
+
+    <div id="elementSentinel"></div>
+
+    <h2 id="sec-you">🔮 あなたについて</h2>
+
+    <div class="aura-section aura-earth">
+
+    <p>千草様のオーラを<br>
+    あらためて深く<br>
+    視させていただきました。</p>
+
+    <p>やはり<br>
+    畑のように豊かな<br>
+    柔らかいアンバーです。</p>
+
+    <p>人を受け止める力が<br>
+    とても大きい。</p>
+
+    </div>
+
+    <p>ただ、その大きさの分だけ<br>
+    今、オーラの中に<br>
+    少ないものがあります。</p>
+
+    <p>木のオーラです。</p>
+
+    <p>木のオーラは<br>
+    新しい場所へ踏み出す力。<br>
+    新しい縁を迎え入れる力そのもの。</p>
+
+    <p>この木のオーラが少ないことが<br>
+    縁の入口が狭くなっている<br>
+    一番の根っこです。</p>
+
+    <p>誘われても<br>
+    <strong>「今回はやめておこう」</strong>と<br>
+    自然に足が止まる。</p>
+
+    <p>新しい人の輪に<br>
+    自分から入るのが<br>
+    どうしても重たい。</p>
+
+    <p>それは、千草様の気持ちが<br>
+    閉じているからやなくて</p>
+
+    <p>木のオーラの少なさが<br>
+    関わっているんです。</p>
+
+    <p>もう一つ<br>
+    金のオーラも少なめです。</p>
+
+    <p>金のオーラは<br>
+    けじめをつけ<br>
+    線を引く力。</p>
+
+    <p>ここまでは自分の仕事。<br>
+    ここから先は手放していい。</p>
+
+    <p>そう決める力が少ないから</p>
+
+    <p>人に与え続けて<br>
+    疲れてしまう。</p>
+
+    <p>答えが出ないと<br>
+    同じ考えを<br>
+    何度もなぞってしまう。</p>
+
+    <p>無料鑑定でお伝えした<br>
+    考えのループの正体は<br>
+    ここにあります。</p>
+
+    <p>さらに<br>
+    アンバーのオーラが<br>
+    やや強めに出ているので</p>
+
+    <p>自分のペースを守る強さが<br>
+    抱え込む重さに<br>
+    変わりやすい。</p>
+
+    <p>人に頼れない。<br>
+    弱音を吐けない。<br>
+    縁が入ってくる余白が<br>
+    なくなってしまう。</p>
+
+    <p>魂の奥を深く視ると<br>
+    千草様には</p>
+
+    <p>自立心が強く<br>
+    自分の軸を持つ魂と</p>
+
+    <p>人とのご縁で<br>
+    豊かさを広げる魂が<br>
+    一緒に宿っています。</p>
+
+    <p>外では堂々と<br>
+    自分らしく頑張るのに</p>
+
+    <p>本当の想いは<br>
+    内側の深いところに<br>
+    しまい込んでいる。</p>
+
+    <p>この二重の形が<br>
+    千草様を<br>
+    一人で背負う人にしてきました。</p>
+
+    <p>ただ、安心してください。</p>
+
+    <p>千草様の魂は<br>
+    目に見えない守りに<br>
+    とても強く包まれています。</p>
+
+    <p>困った時には<br>
+    助けてくれる人が<br>
+    現れるようにできている。</p>
+
+    <p>だから<br>
+    一人きりやないんです。</p>
+
+    <p>逆に言えば<br>
+    木と金のオーラが整えば</p>
+
+    <p>縁の入口は広がり<br>
+    重たかった線引きが<br>
+    自然にできるようになる。</p>
+
+    <p>夜に回り続ける考えが止まり<br>
+    誘いを<strong>「行ってみよう」</strong>と<br>
+    受け取れる千草様に<br>
+    変わっていきます。</p>
+
+    <p>今、千草様は<br>
+    人生の大きな区切りと<br>
+    リセットの時期に立っています。</p>
+
+    <p>これまでの形を<br>
+    一度手放して<br>
+    新しい形へ組み替えていく</p>
+
+    <p>そういう時期の<br>
+    終盤にいます。</p>
+
+    <p>しかも、この時期は<br>
+    生まれ持ったオーラに<br>
+    少なかった木のオーラが</p>
+
+    <p>運として巡ってくる<br>
+    時期でもあるんです。</p>
+
+    <p>そして2026年は<br>
+    火のオーラが強い年。</p>
+
+    <p>これまで足りなかった<br>
+    前へ進む力が<br>
+    外から補われています。</p>
+
+    <p>ただ、その火は<br>
+    今の大きな流れと<br>
+    ぶつかり合う形で巡ってくる。</p>
+
+    <p>だから今<br>
+    気持ちも環境も<br>
+    大きく揺れている。</p>
+
+    <p>お仕事のしんどさも<br>
+    これからの縁への想いも</p>
+
+    <p>同じタイミングで<br>
+    表に出てきたんです。</p>
+
+    <p>それは、悪いことやなくて<br>
+    組み替えの合図。</p>
+
+    <p>もう一つ<br>
+    伝えておきたいことがあります。</p>
+
+    <p>千草様はここ数年<br>
+    動いているのに<br>
+    手応えが薄い。</p>
+
+    <p>そう感じてきたかもしれません。</p>
+
+    <p>それは、結果が<br>
+    遅れて形になる巡りの<br>
+    中にいたからです。</p>
+
+    <p>今までの歩みは<br>
+    無駄になっていません。</p>
+
+    <p>これから、まとめて<br>
+    形になっていきます。</p>
+
+    <p>そして、魂をさらに深く<br>
+    視させていただきました。</p>
+
+    <p>星の流れを視ると<br>
+    千草様は今</p>
+
+    <p>仕事を中心に生きてきた10年から<br>
+    人との縁を中心に生きる10年へ</p>
+
+    <p>移ろうとしています。</p>
+
+    <p>その切り替わりは<br>
+    2027年の<strong>7月</strong>。</p>
+
+    <p>2026年は<br>
+    その予告編の年です。</p>
+
+    <p>人との縁が<br>
+    少しずつ動き始めています。</p>
+
+    <p>さらに2027年には<br>
+    縁に、豊かさが巡る兆しがあります。</p>
+
+    <p>ここで<br>
+    開いている人にだけ</p>
+
+    <p>縁が結婚へ育っていく<br>
+    流れが視えます。</p>
+
+    <p>でも<br>
+    このまま入口を<br>
+    閉じたままでいれば</p>
+
+    <p>せっかく近づいてきた縁の気配が<br>
+    気づかれないまま<br>
+    通り過ぎてしまう。</p>
+
+    <p>それが一番もったいない。</p>
+
+    <p>でも<br>
+    木と金のオーラを少しずつ補い<br>
+    入口を開いていけば</p>
+
+    <p>この先の春に<br>
+    扉は確かに<br>
+    開いていきます。</p>
+
+    <p>その先に</p>
+
+    <p>誰かと並んで<br>
+    肩の力を抜いて笑っている<br>
+    千草様の姿が</p>
+
+    <p>視えています。</p>
+
+    <h2 id="sec-work">🔮 お仕事とお金について</h2>
+
+    <p>次に<br>
+    千草様が追加で<br>
+    お聞きになったこと。</p>
+
+    <p>介護のお仕事と<br>
+    お金のことを<br>
+    視させていただきました。</p>
+
+    <h3>【お仕事のこと】</h3>
+
+    <p>結論から言います。</p>
+
+    <p>介護という仕事そのものは<br>
+    千草様に<br>
+    向いています。</p>
+
+    <p>千草様の魂の奥には<br>
+    人を温かく照らして<br>
+    守りたいという<br>
+    大きな光があるからです。</p>
+
+    <p>守るほど、心が満たされる。<br>
+    そういう魂です。</p>
+
+    <p>それなのに、今<br>
+    しんどくなっている。</p>
+
+    <p>その理由は<br>
+    向いていないからやなくて<br>
+    頑張りすぎているからです。</p>
+
+    <p>千草様のお仕事には<br>
+    今、与えすぎて<br>
+    自分が空っぽになりやすい流れが<br>
+    巡っています。</p>
+
+    <p>金のオーラが少ないので<br>
+    <strong>「ここまで」</strong>という線が引けない。</p>
+
+    <p>火のオーラも少ないので<br>
+    溜まった想いを<br>
+    外へ出す出口がない。</p>
+
+    <p>ずっと注ぎ続けて<br>
+    自分の分が残らない。</p>
+
+    <p>しんどさの正体は<br>
+    ここにあります。</p>
+
+    <p>そして2026年は<br>
+    お仕事で<br>
+    主導権を持てる年でもあります。</p>
+
+    <p>だから<br>
+    今すぐ辞めるのではなく</p>
+
+    <p>2026年のうちに<br>
+    働き方を見直してほしいんです。</p>
+
+    <p>役割、勤務時間、持ち場。</p>
+
+    <p>例えば<br>
+    夜勤や身体介助が中心の動きから</p>
+
+    <p>相談や記録、調整を<br>
+    中心にした動きへ<br>
+    移れないか。</p>
+
+    <p>職場に<br>
+    そっと相談してみてください。</p>
+
+    <p>ただ、今月、<strong>2026年10月</strong>は<br>
+    しんどさが一番大きくなりやすい時期。</p>
+
+    <p>勢いで辞めると決めるのは<br>
+    少しだけ待ってください。</p>
+
+    <p>そして2027年は<br>
+    学びを始める年です。</p>
+
+    <p>介護福祉士やケアマネジャー<br>
+    医療事務、簿記など</p>
+
+    <p>千草様の考える力と<br>
+    学ぶ力が<br>
+    一番光る年になります。</p>
+
+    <p>2028年は<br>
+    仕事の方向に<br>
+    迷いが出やすい年。</p>
+
+    <p>だから<br>
+    2027年のうちに<br>
+    進む方向を決めておくと<br>
+    安全です。</p>
+
+    <p>もし介護以外の道を選ぶなら<br>
+    向いているのは</p>
+
+    <p>人の困りごとを整理して<br>
+    つないでいく<br>
+    相談や調整のお仕事。</p>
+
+    <p>ケアマネジャーや生活相談員<br>
+    医療や介護の事務。</p>
+
+    <p>それから、数字や整理で<br>
+    けじめを育てる<br>
+    経理、総務、事務のお仕事。</p>
+
+    <p>人を温めて育てる<br>
+    研修や学習サポート<br>
+    接客のお仕事も向いています。</p>
+
+    <p>選ぶ基準は一つ。</p>
+
+    <p>与えるだけで終わる仕事より<br>
+    自分の判断や工夫を出せる出口が<br>
+    ある仕事。</p>
+
+    <h3>【お金のこと】</h3>
+
+    <p>千草様のお金は<br>
+    一気に増やすより</p>
+
+    <p>守りながら<br>
+    コツコツ蓄えていく<br>
+    形で安定します。</p>
+
+    <p>人の助けが<br>
+    自然と集まる流れも<br>
+    ある。</p>
+
+    <p>2026年は<br>
+    収入の形が揺れやすい年。</p>
+
+    <p>2027年は<br>
+    整えていく年。</p>
+
+    <p>2028年は<br>
+    蓄えが形になりやすい<br>
+    好機の年です。</p>
+
+    <p>ただ、一つ<br>
+    気をつけてほしいことがあります。</p>
+
+    <p>人情で流れていくお金。</p>
+
+    <p>友人や身内との貸し借りや<br>
+    断れないお付き合い。</p>
+
+    <p>ここだけは<br>
+    先に<strong>「断る線」</strong>を<br>
+    決めておいてください。</p>
+
+    <p>固定費を見直して<br>
+    家計を目に見える形にして</p>
+
+    <p>資格の学びには<br>
+    惜しまず使う。</p>
+
+    <p>それが<br>
+    千草様に合った<br>
+    お金の守り方です。</p>
+
+    <div id="deitySentinel"></div>
+
+    <h2 id="sec-here">🔮 ここからお伝えしていくこと</h2>
+
+    <p>無料鑑定の最後に<br>
+    お伝えするとお約束したことを</p>
+
+    <p>ここから一つずつ<br>
+    視ていきますね。</p>
+
+    <h3>【今、本当に近づいている縁】</h3>
+
+    <p>千草様の縁は<br>
+    すでに動き始めています。</p>
+
+    <p>出会いが最も強く動くのは<br>
+    2027年の<strong>2月から3月</strong>。</p>
+
+    <p>その縁は<br>
+    派手な出会いやない。</p>
+
+    <p>穏やかで落ち着いていて<br>
+    知的で、品のある人。</p>
+
+    <p>静かに寄り添ってくれる<br>
+    深さを持っている人です。</p>
+
+    <p>動きのある人でもあります。</p>
+
+    <p>出張や移動があったり<br>
+    活動的な趣味を持っていたり</p>
+
+    <p>動いた先で<br>
+    出会う縁です。</p>
+
+    <p>そして<br>
+    人を介した縁でもあります。</p>
+
+    <p>お仕事の仲間、習い事<br>
+    資格の講座、知人の紹介。</p>
+
+    <p>誰かが<br>
+    つないでくれる場所に</p>
+
+    <p>縁の入口が<br>
+    開きます。</p>
+
+    <p>ゆっくり育つ縁なので<br>
+    すぐ決めなくていい。</p>
+
+    <p>ただ、迷って一度見送ると<br>
+    タイミングを逃しやすい。</p>
+
+    <p>そこだけは<br>
+    覚えておいてください。</p>
+
+    <p>結婚へ向かう道筋は<br>
+    こう視えています。</p>
+
+    <p>2027年の春に出会いが動き<br>
+    その後に関係を育て</p>
+
+    <p>2028年、決めていく年に<br>
+    結婚の形が見えてくる流れです。</p>
+
+    <p>具体化は<br>
+    2027年の後半から<br>
+    2029年にかけてです。</p>
+
+    <p>だからこそ<br>
+    オーラを整えることが<br>
+    鍵なんです。</p>
+
+    <h3>【あなたのオーラの調整方法】</h3>
+
+    <p>千草様に必要なのは<br>
+    木のオーラを補うこと。</p>
+
+    <p>そして金のオーラを<br>
+    少しずつ補うこと。</p>
+
+    <p>魂のレベルで<br>
+    お伝えするなら</p>
+
+    <p><strong>「待つ」</strong>という在り方から<br>
+    <strong>「入口を開く」</strong>という在り方へ<br>
+    切り替えること。</p>
+
+    <p>縁が来るのを<br>
+    待つのやなくて</p>
+
+    <p>自分から<br>
+    入口の扉に<br>
+    手をかけておく。</p>
+
+    <p>それは<br>
+    無理に頑張ることやない。</p>
+
+    <p>「ここまでは受け取る。<br>
+    ここから先は、自分のために使う」</p>
+
+    <p>そう静かに<br>
+    線を引ける強さを<br>
+    持つことです。</p>
+
+    <p>その強さが育つ時<br>
+    木のオーラは<br>
+    自然と流れ込み始めます。</p>
+
+    <h3>【オーラが整った先に広がる景色】</h3>
+
+    <p>木と金のオーラが<br>
+    整った千草様は</p>
+
+    <p>2027年の春<br>
+    誰かに誘われた集まりへ<br>
+    <strong>「行ってみます」</strong>と笑って<br>
+    足を運んでいます。</p>
+
+    <p>扉の向こうには<br>
+    落ち着いた声の人。</p>
+
+    <p>初対面で決めつけず<br>
+    2回、3回と会うたびに</p>
+
+    <p>「この人は<br>
+    今までの人と違う」</p>
+
+    <p>そう静かに<br>
+    感じている千草様。</p>
+
+    <p><strong>「どうせ今さら」</strong>と<br>
+    閉じていた気持ちが<br>
+    ほどけていて</p>
+
+    <p>春の光の中で<br>
+    肩の力が抜けた笑い声が<br>
+    こぼれています。</p>
+
+    <p>その景色が<br>
+    視えています。</p>
+
+    <h3>【霊視で視えた、もう一つの重要な問題】</h3>
+
+    <p>答えが出ないと<br>
+    考えがループしてしまう。</p>
+
+    <p>そのクセは<br>
+    千草様自身も<br>
+    とっくに気づいているはずです。</p>
+
+    <p>誰かに誘われた時。<br>
+    新しい話が来た時。</p>
+
+    <p>考えが回り始めて<br>
+    夜になっても<br>
+    結論が出ない。</p>
+
+    <p>そして気づくと<br>
+    <strong>「やっぱりやめておこう」</strong>と<br>
+    自分で扉を閉じている。</p>
+
+    <p>ループの正体は<br>
+    答えが見つからないことやなくて</p>
+
+    <p>線を引けないこと。</p>
+
+    <p>答えを出そうとするほど<br>
+    考えは回り続ける。</p>
+
+    <p>迷いが出た時は<br>
+    答えを探さずに</p>
+
+    <p><strong>「今日は、ここまで」</strong>と<br>
+    一度、置く。</p>
+
+    <p>その時、金のオーラが<br>
+    千草様の中に<br>
+    静かに灯ります。</p>
+
+    <p>具体的な整え方は<br>
+    この後の<br>
+    <strong>「今からできること」</strong>で<br>
+    お伝えしますね。</p>
+
+    <h2 id="sec-note">🔮 気になること</h2>
+
+    <p>これまでお伝えしてきたこと以外にも<br>
+    実はもう一つ<br>
+    視えているものがあります。</p>
+
+    <p>無料鑑定では<br>
+    お伝えしていなかった<br>
+    もう少し先の兆しです。</p>
+
+    <p>千草様は<br>
+    人のために動き続ける分</p>
+
+    <p>心の疲れより先に<br>
+    体のほうに<br>
+    その疲れが出やすい流れを<br>
+    持っています。</p>
+
+    <p>ただ、これは<br>
+    今すぐの問題やなくて<br>
+    先の話です。</p>
+
+    <p>今すぐ心配することは<br>
+    何もありません。</p>
+
+    <p>今回は、ここまで<br>
+    お伝えするだけに<br>
+    とどめておきますね。</p>
+
+    <p>また別の機会に<br>
+    詳しくお伝え<br>
+    できたらと思います。</p>
+
+    <h2 id="sec-turn">🔮 運命の転機</h2>
+
+    <p>今、千草様は<br>
+    人生の区切りと<br>
+    組み替えの時期の<br>
+    終盤にいます。</p>
+
+    <p>ここから1年のうち<br>
+    特に重要な4つの月を<br>
+    早い順にお伝えします。</p>
+
+    <div id="season1Sentinel"></div>
+
+    <h3>2026年10月</h3>
+
+    <p>アンバーのオーラが<br>
+    重なって巡る月です。</p>
+
+    <p>人間関係の摩擦や<br>
+    疲れが出やすい。</p>
+
+    <p>ここで<br>
+    大きな決断を<br>
+    しないでください。</p>
+
+    <p>今月は、決める月じゃない。<br>
+    休む月です。</p>
+
+    <p><strong>「今は動かなくていい」</strong>と<br>
+    自分に許してあげる。</p>
+
+    <p>そんな心持ちで<br>
+    迎えてください。</p>
+
+    <div id="season2Sentinel"></div>
+
+    <h3>2026年11月</h3>
+
+    <p>木のオーラが<br>
+    千草様の心の奥の<br>
+    縁の場所に</p>
+
+    <p>はじめて<br>
+    入ってくる月です。</p>
+
+    <p>新しい人との接点や<br>
+    縁の芽が<br>
+    出やすい。</p>
+
+    <p>ここで<br>
+    人に会う習慣を<br>
+    作り始めてください。</p>
+
+    <p>月に一度でいい。</p>
+
+    <p>友人や旧知の人<br>
+    お仕事以外の集まりに<br>
+    顔を出す。</p>
+
+    <p>その小さな一歩が<br>
+    春の入口を<br>
+    温めておきます。</p>
+
+    <p>そして<strong>12月</strong>は<br>
+    金のオーラが巡る月。</p>
+
+    <p>仕事の見直しの具体案を<br>
+    紙に書き出すには<br>
+    最適な月です。</p>
+
+    <p>ただ、身近な人との気持ちが<br>
+    すれ違いやすいので<br>
+    感情的な話し合いは<br>
+    避けてくださいね。</p>
+
+    <div id="season3Sentinel"></div>
+
+    <h3>2027年2月</h3>
+
+    <p>立春で<br>
+    新しい年の流れに切り替わり</p>
+
+    <p>木のオーラが<br>
+    あらためて<br>
+    千草様の縁に巡る月です。</p>
+
+    <p>昔の知人からの連絡<br>
+    紹介の話、新しい場所への誘い。</p>
+
+    <p>そんな小さな入口が<br>
+    増えていきます。</p>
+
+    <p>誠実で落ち着いた人の気配が<br>
+    遠くに見え始める月でもある。</p>
+
+    <p>心構えとして<br>
+    お伝えしたいのは</p>
+
+    <p>誘いや紹介を<br>
+    最初から断らないという在り方。</p>
+
+    <p>そして<br>
+    <strong>「出会いがあるといいな」</strong>と</p>
+
+    <p>周りの人に<br>
+    ふっと口にしておける<br>
+    軽やかさです。</p>
+
+    <p>縁は、受け取る準備ができた人に<br>
+    運ばれてきます。</p>
+
+    <div id="season4Sentinel"></div>
+
+    <h3>最重要月 2027年3月</h3>
+
+    <p>なぜこの月が<br>
+    特別なのか。</p>
+
+    <p>これまで<br>
+    千草様のオーラに少なかった<br>
+    木のオーラが</p>
+
+    <p>月の巡りとして<br>
+    もう一度やってきます。</p>
+
+    <p>しかも、同じ月に<br>
+    人との流れを運ぶ<br>
+    水のオーラも巡ります。</p>
+
+    <p>巡り合わせが<br>
+    そろう月です。</p>
+
+    <p>人との接点が<br>
+    生まれやすくなります。</p>
+
+    <p><strong>2月</strong>に開いた小さな入口が<br>
+    ここで<br>
+    具体的な出会いとして<br>
+    形になりやすい。</p>
+
+    <p>職場や趣味の場<br>
+    知人の集まり、資格の教室。</p>
+
+    <p>人を介した場所で<br>
+    落ち着いた知的な雰囲気の人と</p>
+
+    <p>自然に<br>
+    接点が生まれる。</p>
+
+    <p>すぐに結婚の話に<br>
+    ならなくていい。</p>
+
+    <p>「この人は<br>
+    今までの人と違う」</p>
+
+    <p>そう感じる出会いの兆しが<br>
+    視えています。</p>
+
+    <p>心構えとして<br>
+    お伝えしたいのは</p>
+
+    <p>初対面で<br>
+    決めつけないこと。</p>
+
+    <p>2回、3回と会ってから<br>
+    ゆっくり感じ取る。</p>
+
+    <p>迷って見送るクセが<br>
+    顔を出しやすい月なので</p>
+
+    <p><strong>「どうせ今さら」</strong>という言葉が<br>
+    胸に浮かんだら</p>
+
+    <p>それは入口が<br>
+    閉まりかけた合図だと<br>
+    思ってください。</p>
+
+    <p>そして、もう一つ。</p>
+
+    <p>相手に尽くしすぎて<br>
+    自分を後回しにしない。</p>
+
+    <p>この月は<br>
+    受け取る側で<br>
+    いてください。</p>
+
+    <p>千草様が<br>
+    そのままの千草様で<br>
+    立っている時に</p>
+
+    <p>縁は<br>
+    一番近づいてきます。</p>
+
+    <h3>その先の未来</h3>
+
+    <p>2027年は<br>
+    出会いと学びの年です。</p>
+
+    <p><strong>7月</strong>からは<br>
+    人との縁が中心の<br>
+    10年に入ります。</p>
+
+    <p>2028年は<br>
+    決める年です。</p>
+
+    <p>金のオーラが<br>
+    初めて巡り</p>
+
+    <p>出会った縁との関係も<br>
+    お仕事の軸も</p>
+
+    <p>はっきりした形が<br>
+    見えてきます。</p>
+
+    <p>そして2029年からは<br>
+    蓄えながら<br>
+    深めていく時期へ<br>
+    入っていきます。</p>
+
+    <p><strong>最も大切なのは</strong><br>
+    <strong>2027年3月</strong>の巡りを<br>
+    どんな状態で迎えるか。</p>
+
+    <p>そこまでの数ヶ月<br>
+    木と金のオーラを<br>
+    整えながら</p>
+
+    <p>過ごしてほしいんです。</p>
+
+    <div id="turnEndSentinel"></div>
+
+    <h2 id="sec-action">🔮 今からできること</h2>
+
+    <p>ここまで<br>
+    運命の流れと<br>
+    これから訪れる<strong>転機</strong>を<br>
+    お伝えしました。</p>
+
+    <p>ただ、一つだけ<br>
+    知っておいてほしいことが<br>
+    あります。</p>
+
+    <p>運命は<br>
+    ただ待っているだけでは<br>
+    動きません。</p>
+
+    <p>星の巡りがどれだけ整っても</p>
+
+    <p>千草様ご自身のオーラが<br>
+    整っていなければ</p>
+
+    <p>その流れを<br>
+    掴むことはできないんです。</p>
+
+    <p>だからこそここからは<br>
+    千草様が今日から<br>
+    ご自身の手で</p>
+
+    <p>運命を動かしていくための<br>
+    具体的なアクションを<br>
+    お伝えしていきます。</p>
+
+    <h3>【木のオーラを補う】</h3>
+
+    <p>あの木のオーラを<br>
+    暮らしの中に招き入れます。</p>
+
+    <p>・緑色のものを<br>
+    毎日一つ身につける</p>
+
+    <p>スカーフや小物<br>
+    ネイルでも構いません。</p>
+
+    <p>緑は、アンバーのオーラが<br>
+    重たくなった時<br>
+    やさしく和らげてくれる色です。</p>
+
+    <p>・月に一度<br>
+    行ったことのない場所へ<br>
+    足を運ぶ</p>
+
+    <p>やり方はシンプルです。</p>
+
+    <p>公園、教室<br>
+    散歩のコース。</p>
+
+    <p>近い場所で<strong>大丈夫です</strong>。</p>
+
+    <p><strong>「新しい場所へ行く」</strong>という<br>
+    その小さな習慣が</p>
+
+    <p>春の出会いを迎える<br>
+    体の準備になります。</p>
+
+    <h3>【金のオーラを補う】</h3>
+
+    <p>あの金のオーラを<br>
+    一日の終わりに灯します。</p>
+
+    <p>・白や銀色の<br>
+    アクセサリーを<br>
+    一つ決めて、毎日つける</p>
+
+    <p>・寝る前に<br>
+    <strong>「今日はここまで」</strong>と<br>
+    紙に一行書いて、眠る</p>
+
+    <p>これには理由があります。</p>
+
+    <p>答えが出ない考えを<br>
+    頭の中に置いたままだと<br>
+    夜じゅう回り続けます。</p>
+
+    <p>紙に書いて区切ることで<br>
+    その日の終わりに<br>
+    線を引く練習になるんです。</p>
+
+    <h3>【気をつけてほしいこと】</h3>
+
+    <p>・<strong>「どうせ今さら」</strong>と<br>
+    最初から断ってしまうこと</p>
+
+    <p>この言葉が出た時が<br>
+    縁の入口が<br>
+    閉まりかけている時です。</p>
+
+    <p><strong>「今さら」</strong>と感じたら<br>
+    一度だけ<br>
+    <strong>「行ってみる」</strong>と<br>
+    答えてみてください。</p>
+
+    <p>意識したいのは<br>
+    この2つです。</p>
+
+    <p>・誘いは、まず一度行く<br>
+    ・初対面で決めず<br>
+    2、3回会ってから感じる</p>
+
+    <p>もう一つ<br>
+    与えすぎないこと。</p>
+
+    <p>お仕事の中で<br>
+    人のために動きすぎたと<br>
+    感じた時は</p>
+
+    <p>5分だけでいい。</p>
+
+    <p>自分のために休む時間を<br>
+    とってください。</p>
+
+    <h3>【正直にお伝えしたいこと】</h3>
+
+    <p>ここまでお伝えした<br>
+    調整法で</p>
+
+    <p>少しずつオーラは<br>
+    整い始めます。</p>
+
+    <p>ただ、正直に言うと</p>
+
+    <p>木と金のオーラが<br>
+    ここまで少ない状態は</p>
+
+    <p>日常の調整だけでは<br>
+    補いきれない部分が<br>
+    あります。</p>
+
+    <p>緑のものを身につける。<br>
+    白いものをつける。</p>
+
+    <p>これらは<br>
+    <strong>「維持する力」</strong>には<br>
+    なりますが</p>
+
+    <p>ゼロから補う力としては<br>
+    どうしても<br>
+    限界があるんです。</p>
+
+    <p>もし本気で<br>
+    2027年の春までに<br>
+    オーラを整えたいなら</p>
+
+    <p>もう一つ<br>
+    お伝えしたい方法があります。</p>
+
+    <h2 id="sec-support">🔑 心を守るサポート</h2>
+
+    <p>ここまでお伝えしてきた通り</p>
+
+    <p>千草様のオーラには<br>
+    木と金のオーラが<br>
+    少ない状態です。</p>
+
+    <p>これが今の状況の<br>
+    根っこにある原因であり</p>
+
+    <p><strong>2027年3月</strong>のチャンスを掴むために<br>
+    最も整えるべき部分です。</p>
+
+    <p>木と金のオーラが整うと</p>
+
+    <p>・夜勤明けの疲れた帰り道でも<br>
+    誘いを<strong>「行ってみよう」</strong>と<br>
+    受け取れるようになる</p>
+
+    <p>・職場に<br>
+    「ここまでは手伝ってほしい」と<br>
+    自然に伝えられるようになる</p>
+
+    <p>・考えが回り始めた夜も<br>
+    <strong>「今日はここまで」</strong>と<br>
+    区切って眠れるようになる</p>
+
+    <p>・資格の講座や集まりで<br>
+    初めて会う人にも<br>
+    肩の力を抜いて話せるようになる</p>
+
+    <p>・静かな自信を持って<br>
+    <strong>2027年3月</strong>の巡りを<br>
+    迎えられるようになる</p>
+
+    <p>日常の調整法に加えて</p>
+
+    <p>本格的にオーラを補うために<br>
+    パワーストーンを<br>
+    お守りとして取り入れる<br>
+    方法があります。</p>
+
+    <p>千草様のオーラに合わせて<br>
+    三つのプランを<br>
+    ご用意しました。</p>
+
+    <div id="stone1Sentinel"></div>
+
+    <div class="important-box">
+
+    <h3>【運命を動かすプラン】</h3>
+
+    <p><strong>2027年3月の転機を<br>
+    本気で掴みたい方へ</strong></p>
+
+    <p>・<strong>グリーンアベンチュリン</strong><br>
+    木のオーラを補い、<br>
+    出会いの入口を広げる</p>
+
+    <p>・<strong>ペリドット</strong><br>
+    木のオーラを補い、<br>
+    誘いに<strong>「行く」</strong>と言える</p>
+
+    <p>・<strong>ルチルクォーツ</strong><br>
+    金のオーラを補い、<br>
+    <strong>「ここまで」</strong>の線を引く</p>
+
+    <p>・<strong>ブラックトルマリン</strong><br>
+    介護の現場で受けた<br>
+    人の疲れや感情を吸い取る</p>
+
+    <p>・<strong>カーネリアン</strong><br>
+    少ない火のオーラを補い、<br>
+    前向きな温かさを戻す</p>
+
+    <p>期待できる変化：</p>
+
+    <p>・<strong>夜勤明けの帰り道でも</strong><br>
+    誘いを<strong>「行ってみよう」</strong>と<br>
+    受け取れる</p>
+
+    <p>・<strong>職場の相談の場で</strong><br>
+    自分の希望を<br>
+    落ち着いて伝えられる</p>
+
+    <p>・<strong>2027年3月の転機を</strong><br>
+    最高の状態で迎えられる</p>
+
+    <div id="stone2Sentinel"></div>
+
+    <h3>【流れを整えるプラン】</h3>
+
+    <p><strong>まずは心を<br>
+    安定させたい方へ</strong></p>
+
+    <p>・<strong>グリーンアベンチュリン</strong><br>
+    木のオーラを補い、<br>
+    新しい一歩を後押しする</p>
+
+    <p>・<strong>ルチルクォーツ</strong><br>
+    金のオーラを補い、<br>
+    考えのループを止める</p>
+
+    <p>・<strong>ブラックトルマリン</strong><br>
+    お仕事で受けた疲れを<br>
+    吸い取り、持ち帰らない</p>
+
+    <p>期待できる変化：</p>
+
+    <p>・<strong>仕事で人の感情を受けた日も</strong><br>
+    家に着くころには<br>
+    気持ちが軽くなっている</p>
+
+    <p>・<strong>夜、考えが回り始めても</strong><br>
+    <strong>「今日はここまで」</strong>と<br>
+    区切って眠れる</p>
+
+    <p>・<strong>退職のような大きな決断を</strong><br>
+    急がず、自分のペースで<br>
+    選べる</p>
+
+    <div id="stone3Sentinel"></div>
+
+    <h3>【日々のお守りプラン】</h3>
+
+    <p><strong>まずは今の疲れを<br>
+    和らげたい方へ</strong></p>
+
+    <p>・<strong>ブラックトルマリン</strong><br>
+    介護の現場で溜まった<br>
+    重たさを吸い取る</p>
+
+    <p>・<strong>ルチルクォーツ</strong><br>
+    金のオーラを補い、<br>
+    心に静かな線を引く</p>
+
+    <p>期待できる変化：</p>
+
+    <p>・<strong>仕事帰りの</strong><br>
+    ぐったりとした重さが<br>
+    和らいでいく</p>
+
+    <p>・<strong>「今さら」という言葉が</strong><br>
+    浮かぶ回数が減っていく</p>
+
+    </div>
+
+    <p>実は、【運命を動かすプラン】を<br>
+    選ばれる方が最も多く</p>
+
+    <p>全体の約70%を<br>
+    占めています。</p>
+
+    <p>「<strong>2027年3月</strong>の<strong>転機</strong>を<br>
+    本気で掴みたいから<br>
+    中途半端にしたくない」</p>
+
+    <p>というお声が<br>
+    多いです。</p>
+
+    <p><strong>2027年3月</strong>に向けて<br>
+    今から整え始めることで</p>
+
+    <p>石の力が<br>
+    ちょうど馴染んだ状態で<br>
+    <strong>最重要月</strong>を迎えられます。</p>
+
+    <p>もし興味がありましたら</p>
+
+    <p><strong>「詳細希望」</strong>と<br>
+    送っていただければ</p>
+
+    <p>千草様専用の<br>
+    石の組み合わせをお伝えしますね。</p>
+
+    <div id="closingSentinel"></div>
+
+    <h2 id="sec-last">最後に</h2>
+
+    <p>千草様。</p>
+
+    <p>今、あなたは<br>
+    大切な岐路に<br>
+    立っています。</p>
+
+    <p><strong>「どうせ今さら」</strong>と<br>
+    入口を閉じたまま<br>
+    過ごしていくか。</p>
+
+    <p>それとも<br>
+    木と金のオーラを整えて</p>
+
+    <p>自分から<br>
+    入口の扉に<br>
+    手をかけていくか。</p>
+
+    <p>選ぶのは<br>
+    千草様ご自身です。</p>
+
+    <p>答えが出ないと<br>
+    考えが回ってしまうその癖は</p>
+
+    <p>弱さやないんです。</p>
+
+    <p>誰かの暮らしを支えながら<br>
+    自分の幸せにも<br>
+    まっすぐ向き合おうとしてきた</p>
+
+    <p>何よりの証です。</p>
+
+    <p>ただ、私には<br>
+    視えています。</p>
+
+    <p>2027年の春<br>
+    やわらかな光の中で</p>
+
+    <p>穏やかで<br>
+    落ち着いた声の人と<br>
+    ゆっくり話をしている<br>
+    千草様の姿が。</p>
+
+    <p><strong>「行ってみます」</strong>と<br>
+    自分から扉に手をかけた<br>
+    その先の景色です。</p>
+
+    <p>「あの時、行ってみてよかった」</p>
+
+    <p>そう、心から<br>
+    思える未来が<br>
+    視えています。</p>
+
+    <p>その未来への道<br>
+    私が照らし続けますね。</p>
+
+    <div class="sign-box">
+    <p>心からの愛と光を込めて。<br>
+    かな</p>
+    </div>
+
+</div>
+
+<script>
+(function () {
+    var kanaBg = document.getElementById('kanaBg');
+    var elementBg = document.getElementById('elementBg');
+    var deityBg = document.getElementById('deityBg');
+    var doorBg = document.getElementById('doorBg');
+    var seasonSpringBg = document.getElementById('seasonSpringBg');
+    var seasonSummerBg = document.getElementById('seasonSummerBg');
+    var seasonAutumnBg = document.getElementById('seasonAutumnBg');
+    var seasonWinterBg = document.getElementById('seasonWinterBg');
+    var stoneGreenBg = document.getElementById('stoneGreenBg');
+    var stoneRutileBg = document.getElementById('stoneRutileBg');
+
+    var stages = [
+        { el: document.getElementById('kanaSentinel'), bg: kanaBg },
+        { el: document.getElementById('elementSentinel'), bg: elementBg },
+        { el: document.getElementById('deitySentinel'), bg: doorBg },
+        { el: document.getElementById('season1Sentinel'), bg: seasonAutumnBg },
+        { el: document.getElementById('season2Sentinel'), bg: seasonAutumnBg },
+        { el: document.getElementById('season3Sentinel'), bg: seasonWinterBg },
+        { el: document.getElementById('season4Sentinel'), bg: seasonSpringBg },
+        { el: document.getElementById('turnEndSentinel'), bg: doorBg },
+        { el: document.getElementById('stone1Sentinel'), bg: stoneGreenBg },
+        { el: document.getElementById('stone2Sentinel'), bg: stoneRutileBg },
+        { el: document.getElementById('stone3Sentinel'), bg: stoneRutileBg },
+        { el: document.getElementById('closingSentinel'), bg: doorBg }
+    ].filter(function (stage) { return !!stage.el; });
+    if (!stages.length) return;
+
+    var layers = [kanaBg, elementBg, deityBg, doorBg, seasonSpringBg, seasonSummerBg, seasonAutumnBg, seasonWinterBg, stoneGreenBg, stoneRutileBg];
+    function show(active) {
+        layers.forEach(function (el) {
+            if (el === active) el.classList.add('is-visible');
+            else el.classList.remove('is-visible');
+        });
+    }
+
+    function onScroll() {
+        var trigger = window.innerHeight * 0.65;
+        var active = null;
+        for (var i = 0; i < stages.length; i++) {
+            if (stages[i].el.getBoundingClientRect().top < trigger) {
+                active = stages[i].bg;
+            }
+        }
+        show(active);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
+</script>
+
+</body>
+</html>
