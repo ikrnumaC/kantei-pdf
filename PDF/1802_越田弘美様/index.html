@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>越田弘美様専用鑑定書</title>
+    <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+:target { scroll-margin-top: 20px; }
+
+body {
+    font-family: "Noto Serif JP", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+    line-height: 2;
+    background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+    color: #2d2d2d;
+    padding: 40px 20px;
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* ===== 演出：背景クロスフェード（かな→依頼者五行→お相手五行→曼荼羅） ===== */
+.kana-bg {
+    position: fixed; inset: 0; z-index: -5;
+    background-image: url('../images/かな.jpg');
+    background-repeat: no-repeat; background-size: contain; background-position: center 65%;
+    filter: blur(1px) brightness(1.05) saturate(1.05);
+    opacity: 0; pointer-events: none; transition: opacity 1.4s ease;
+}
+.kana-bg.is-visible { opacity: 0.5; }
+
+.element-bg {
+    position: fixed; inset: 0; z-index: -4;
+    background-image: url('../images/強い木.png');
+    background-repeat: no-repeat; background-size: cover; background-position: center;
+    filter: blur(1.5px) brightness(1.05) saturate(1.1);
+    opacity: 0; pointer-events: none; transition: opacity 1.4s ease;
+}
+.element-bg.is-visible { opacity: 0.55; }
+
+.deity-bg {
+    position: fixed; inset: 0; z-index: -3;
+    background-image: url('../images/強い土.png');
+    background-repeat: no-repeat; background-size: cover; background-position: center;
+    filter: blur(1.5px) brightness(1.05) saturate(1.1);
+    opacity: 0; pointer-events: none; transition: opacity 1.4s ease;
+}
+.deity-bg.is-visible { opacity: 0.55; }
+
+.door-bg {
+    position: fixed; inset: 0; z-index: -3;
+    background-image: url('../images/曼荼羅.png');
+    background-repeat: no-repeat; background-size: cover; background-position: center;
+    filter: blur(1.5px) brightness(1.05) saturate(1.1);
+    opacity: 0; pointer-events: none; transition: opacity 1.4s ease;
+}
+.door-bg.is-visible { opacity: 0.45; }
+
+/* ===== 演出：季節背景 ===== */
+.season-bg, .stone-bg {
+    position: fixed; inset: 0; z-index: -4;
+    background-repeat: no-repeat; background-size: cover; background-position: center;
+    filter: blur(1.5px) brightness(0.85);
+    opacity: 0; pointer-events: none; transition: opacity 1.4s ease;
+}
+.season-bg.is-visible, .stone-bg.is-visible { opacity: 0.4; }
+#seasonSpringBg { background-image: url('../images/春.jpg'); }
+#seasonWinterBg { background-image: url('../images/冬.jpg'); }
+#stoneAquaBg { background-image: url('../images/アクアマリン.png'); }
+#stoneRoseBg { background-image: url('../images/ローズクォーツ.png'); }
+
+.bg-veil {
+    position: fixed; inset: 0; z-index: -2; pointer-events: none;
+    background:
+        radial-gradient(ellipse at 50% 20%, rgba(250, 248, 245, 0.1) 0%, rgba(250, 248, 245, 0.25) 60%, rgba(250, 248, 245, 0.4) 100%),
+        linear-gradient(180deg, rgba(255, 245, 235, 0.12) 0%, rgba(249, 243, 255, 0.28) 100%);
+}
+
+/* ===== 表紙ページ ===== */
+.cover-page {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; position: relative;
+}
+.cover-page::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 400px; height: 400px;
+    background-image: url('../images/曼荼羅.png');
+    background-size: contain; background-position: center; background-repeat: no-repeat;
+    opacity: 0.3; z-index: 0;
+}
+.cover-page > * { position: relative; z-index: 1; }
+.cover-recipient { font-size: 48px; font-weight: 300; color: #c9a05d; margin-bottom: 20px; letter-spacing: 8px; }
+.cover-title { font-size: 56px; font-weight: 700; color: #c9a05d; margin-bottom: 60px; letter-spacing: 4px; }
+.cover-subtitle { font-size: 18px; color: #8b6f9c; letter-spacing: 3px; margin-bottom: 80px; }
+.cover-appraiser { font-size: 20px; color: #6d6d6d; letter-spacing: 2px; }
+
+/* ===== コンテンツページ ===== */
+.container {
+    max-width: 900px; margin: 0 auto;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 60px 50px; border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 215, 0, 0.15);
+}
+
+h1 { text-align: center; font-size: 36px; font-weight: 700; color: #c9a05d; margin-bottom: 15px; letter-spacing: 3px; }
+h1::after { content: ''; display: block; width: 150px; height: 2px; background: #c9a05d; margin: 20px auto 0; }
+.subtitle { text-align: center; color: #8b6f9c; font-size: 16px; margin-bottom: 50px; letter-spacing: 2px; }
+
+h2 {
+    font-size: 32px; font-weight: 700; color: #c9a05d;
+    margin-top: 80px; margin-bottom: 40px; padding-bottom: 15px;
+    border-bottom: 2px solid #e8d5b7; text-align: center;
+}
+h3 { font-size: 24px; font-weight: 600; color: #8b6f9c; margin-top: 40px; margin-bottom: 25px; text-align: center; }
+p { margin-bottom: 50px; text-align: center; }
+hr { border: none; border-top: 1px solid #e8d5b7; margin: 40px 0; }
+
+/* ===== オーラセクション（手動でclassを付けて使う） ===== */
+.aura-section { padding: 40px; margin: 30px 0; border-radius: 10px; background-color: #f9f3ff; border: 2px solid #e8d5b7; }
+
+/* ===== ボックス装飾 ===== */
+.header-info { background: #fff9f0; border: 2px solid #e8d5b7; border-radius: 10px; padding: 30px; margin: 30px 0; }
+.important-box { background: #fffef5; border: 2px solid #d4a574; border-radius: 10px; padding: 30px; margin: 30px 0; }
+.magic-word-box { background: #f9f3ff; border: 2px dashed #c9a0dc; border-radius: 10px; padding: 35px; margin: 30px 0; white-space: pre-line; }
+.sign-box { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid #e8d5b7; }
+
+.toc { background: #fff9f0; border: 2px solid #e8d5b7; border-radius: 10px; padding: 35px 30px; margin: 40px 0 60px; }
+.toc-title { text-align: center; font-size: 22px; color: #c9a05d; margin-bottom: 25px; letter-spacing: 4px; font-weight: 700; }
+.toc ul { list-style: none; padding: 0; margin: 0; }
+.toc li { margin-bottom: 14px; text-align: center; font-size: 17px; }
+.toc li:last-child { margin-bottom: 0; }
+.toc a { color: #8b6f9c; text-decoration: none; letter-spacing: 1px; transition: color 0.2s; }
+.toc a:hover { color: #c9a05d; }
+
+strong { color: #000000; font-weight: 700; }
+
+/* ===== スマホレスポンシブ ===== */
+@media screen and (max-width: 768px) {
+    body { padding: 8px 0; line-height: 1.8; }
+    .cover-page { min-height: 100vh; padding: 20px; }
+    .cover-page::before { width: 200px; height: 200px; }
+    .cover-recipient { font-size: 32px; letter-spacing: 4px; margin-bottom: 15px; }
+    .cover-title { font-size: 36px; letter-spacing: 2px; margin-bottom: 40px; }
+    .cover-subtitle { font-size: 14px; letter-spacing: 2px; margin-bottom: 60px; }
+    .cover-appraiser { font-size: 16px; }
+    .container { padding: 24px 14px; border-radius: 10px; max-width: 100%; }
+    h1 { font-size: 24px; letter-spacing: 2px; }
+    h2 { font-size: 22px; margin-top: 50px; margin-bottom: 30px; }
+    h3 { font-size: 18px; margin-top: 30px; margin-bottom: 20px; }
+    p { font-size: 16px; margin-bottom: 40px; }
+    .subtitle { font-size: 14px; margin-bottom: 30px; }
+    .aura-section { padding: 20px 14px; margin: 16px 0; }
+    .header-info, .important-box, .magic-word-box { padding: 20px 14px; margin: 16px 0; }
+}
+
+    </style>
+</head>
+<body>
+
+<div class="kana-bg" id="kanaBg"></div>
+<div class="element-bg" id="elementBg"></div>
+<div class="deity-bg" id="deityBg"></div>
+<div class="door-bg" id="doorBg"></div>
+<div class="season-bg" id="seasonWinterBg"></div>
+<div class="season-bg" id="seasonSpringBg"></div>
+<div class="stone-bg" id="stoneAquaBg"></div>
+<div class="stone-bg" id="stoneRoseBg"></div>
+<div class="bg-veil"></div>
+
+<div class="cover-page">
+    <div class="cover-recipient">越田弘美様</div>
+    <div class="cover-title">専用鑑定書</div>
+    <div class="cover-subtitle">Premium Spiritual Reading</div>
+    <div class="cover-appraiser">鑑定師：かな</div>
+</div>
+
+<div class="container">
+    <h1>越田弘美様の本鑑定書</h1>
+    <p class="subtitle">Premium Spiritual Reading</p>
+
+    <div class="toc">
+        <div class="toc-title">— 目次 —</div>
+        <ul>
+            <li><a href="#sec-1">🔮 あなたについて</a></li>
+            <li><a href="#sec-2">🔮 お相手について</a></li>
+            <li><a href="#sec-3">🔮 ここからお伝えしていくこと</a></li>
+            <li><a href="#sec-4">🔮 気になること</a></li>
+            <li><a href="#sec-5">🔮 運命の転機</a></li>
+            <li><a href="#sec-6">🔮 今からできること</a></li>
+            <li><a href="#sec-7">🔑 心を守るサポート</a></li>
+            <li><a href="#sec-8">最後に</a></li>
+        </ul>
+    </div>
+
+<div id="kanaSentinel"></div>
+<p>弘美様</p>
+<p>この度は本鑑定にお進みいただき<br>
+心より感謝申し上げます。</p>
+<h3>【今回の鑑定のまとめ】</h3>
+<div class="header-info"><p>・彼の中に、弘美様への気持ちの芽は<strong>確かにあります</strong>。彼の沈黙は、<strong>拒絶ではなく、ためらい</strong>です<br>
+・ためらいの正体は、歳の差への気後れと、気持ちを胸にしまい込む彼の性質。今年と来年は、彼が気持ちを形にしにくい時期でもあります<br>
+・<strong>最大のチャンス</strong>は12月。短くても言葉を交わせる接点が生まれ、そのあと2月・4月と、彼の気持ちが少しずつ育っていきます<br>
+・鍵は「<strong>急かされない</strong>」という安心を彼に渡すこと。気持ちを問い詰めず、歳の差を自分から卑下しないこと<br>
+・整えるべきは、弘美様に少ない銀色のオーラ。「どう思われるか」より「私はどうしたいか」で選べるようになります</p></div>
+<p>「彼は、私のことをどう思っているんだろう」</p>
+<p>「歳下の彼と、長い縁で繋がっていけるんだろうか」</p>
+<p>「このまま気にかけていて、いいんだろうか」</p>
+<p>その想い、痛いほど<strong>伝わってきます</strong>。</p>
+<p>「歳下の気になる彼」</p>
+<p>あの短い一言の奥に<br>
+言葉にしにくい距離と<br>
+それでも気になってしまう想いが<br>
+にじんでいました。</p>
+<p>確かめたい。<br>
+けれど、確かめて何かが壊れるのは怖い。</p>
+<p>そうやって<br>
+ご自分の気持ちを後回しにしながら<br>
+彼のことをずっと気にかけてこられたんですね。</p>
+<p>その優しさを<br>
+私はまっすぐに受け取っています。</p>
+<p>まず、弘美様が一番知りたいこと。</p>
+<p>結論から言います。</p>
+<p>彼の中に、弘美様への気持ちの芽は<br>
+<strong>確かにあります</strong>。</p>
+<p>そしてこの縁は<br>
+弘美様が彼のペースを尊重できるなら<br>
+長く繋がっていける流れの中にあります。</p>
+<p>彼のオーラは<br>
+畑のように、何でも受け止める<br>
+柔らかなアンバーのオーラです。</p>
+<p>けれど、受け止めるぶん<br>
+自分の気持ちは胸の奥にしまい込んで<br>
+口にする前に止めてしまう。</p>
+<p>その彼の胸に<br>
+今年、小さな灯りがともっています。</p>
+<p>ただ、歳の差への気後れと<br>
+気持ちが形になりにくい巡りとが<br>
+重なって</p>
+<p>彼は一歩を踏み出せずにいます。</p>
+<p>つまり、彼の沈黙は<br>
+<strong>拒絶ではなく、ためらい</strong>です。</p>
+<p>そのためらいをほどく道は<br>
+ちゃんと視えています。</p>
+<p>ただし、条件があります。</p>
+<p>何もしないまま過ごしてしまうと</p>
+<p>芽が育たないまま<br>
+季節だけが過ぎてしまう流れです。</p>
+<p>では、なぜ今<br>
+その道が見えにくくなっているのか。</p>
+<p>その原因は<br>
+弘美様のオーラに視えています。</p>
+<p>次のセクションで<br>
+詳しくお伝えしますね。</p>
+<div id="elementSentinel"></div>
+<h2 id="sec-1">🔮 あなたについて</h2>
+<p>弘美様のオーラを<br>
+あらためて深く視させていただきました。</p>
+<div class="aura-section aura-wood">
+<p>柔らかく揺れる、優しい緑のオーラ。</p>
+<p>草花のようにしなやかで<br>
+風が吹けば揺れ<br>
+けれど根はしっかりと土に届いている。</p>
+<p>人の心に寄り添うあたたかさと<br>
+相手を知ろうとする奥行きのある知性。</p>
+<p>その二つを同時に持つ魂は<br>
+そう多くはありません。</p>
+<p>弘美様がそばにいるだけで<br>
+相手の肩の力がふっと抜けていく。</p>
+<p>それは<br>
+魂の奥に宿っている<br>
+思慮深い落ち着きが<br>
+自然と人に届いているからなんです。</p>
+<p>ただ、その静けさには<br>
+もう一つの顔があります。</p>
+<p>人前では、芯が通っていて頼られる。<br>
+困っている人がいれば、先に手を差し伸べる。</p>
+<p>けれど、自分のことになると<br>
+急に足が止まってしまう。</p>
+<p>人のためには動けるのに<br>
+自分のためには動けない。</p>
+<p>その落差を<br>
+ご自身で一番よくご存じのはずです。</p>
+</div>
+<h3>【足りないオーラと、整った時の変化】</h3>
+<p>視えてきたのは<br>
+弘美様のオーラの中に<br>
+銀色のオーラが少ないということです。</p>
+<p>銀色のオーラは<br>
+決める力、自分を律する力、けじめをつける力。</p>
+<p>これが少ないと</p>
+<p>「どうしたいか」より<br>
+「どう思われるか」で足が止まる。</p>
+<p>本音を言葉にする前に<br>
+「<strong>大丈夫</strong>」と言ってしまう。</p>
+<p>相手の反応に<br>
+心を持っていかれる。</p>
+<p>彼のことを思うほど<br>
+動けなくなってしまう。</p>
+<p>そのすべての根っこに<br>
+銀色のオーラの少なさがあります。</p>
+<p>そして、この銀色が少ないところへ<br>
+緑のオーラが</p>
+<p>相手の気持ちを受け取りすぎて<br>
+少し乱れてしまっている。</p>
+<p>今、弘美様のオーラには<br>
+霧がかかっているんです。</p>
+<p>霧のせいで<br>
+本当の気持ちも<br>
+彼の気持ちを読む目も<br>
+輪郭がぼやけてしまっている。</p>
+<p>けれど、逆に言えば<br>
+この霧は晴らせます。</p>
+<p>銀色のオーラが整えば<br>
+迷う時間が短くなり</p>
+<p>「<strong>待つ</strong>」のか「<strong>動く</strong>」のかを<br>
+弘美様ご自身で選べるようになる。</p>
+<p>彼の反応に<br>
+一喜一憂して揺れることが減り</p>
+<p>自分の軸を保ったまま<br>
+穏やかに微笑んでいられる。</p>
+<p>その姿こそが<br>
+彼の目に一番魅力的に映る<br>
+本来の弘美様です。</p>
+<h3>【今の流れと、抱えている問題の関係】</h3>
+<p>次に、弘美様が今いる<br>
+人生の大きな流れを視ました。</p>
+<p>弘美様は昨年から<br>
+新しい十年の入口に立っています。</p>
+<p>種が宿り<br>
+これから何かが芽生え始める時期です。</p>
+<p>そして、この十年の間に<br>
+足りなかった銀色のオーラが<br>
+ゆるやかに巡り始めています。</p>
+<p>ただ、まだ入口です。</p>
+<p>芽は出ていても<br>
+まだ根は浅く</p>
+<p>その上、今年は<br>
+火のオーラが強く巡る年。</p>
+<p>気持ちが高ぶり<br>
+熱くなりやすい分<br>
+冷静さが揺らぎやすい。</p>
+<p>銀色が育ちかけているところに<br>
+火の熱が重なって</p>
+<p>決める力が<br>
+熱に揺らされてしまう。</p>
+<p>だから今<br>
+「彼のことをどうしたらいいか」が<br>
+いつもより強く心に浮かんでは<br>
+答えが出ないまま消えていく。</p>
+<p>今、この問題が表に出てきているのは<br>
+その巡りの中にいるからなんです。</p>
+<p>あなたの気持ちが足りないわけでも<br>
+彼への想いが間違っているわけでもありません。</p>
+<h3>【星に視る、なぜ"今"この縁が動いているのか】</h3>
+<p>魂をさらに深く視させていただきました。</p>
+<p>星の流れを視ると<br>
+弘美様の縁の場所には</p>
+<p>大切な人を見守り<br>
+深く守る力が宿っています。</p>
+<p>一度結んだ縁は<br>
+簡単には手放さない。</p>
+<p>動くときには、根の深いところから動く。</p>
+<p>弘美様の縁は<br>
+「<strong>守る</strong>」縁なんです。</p>
+<p>年齢の違う縁や<br>
+相手を包み込んで守る縁を<br>
+引き寄せやすい魂でもあります。</p>
+<p>そして今年は<br>
+その縁の場所に<br>
+星の流れそのものが巡ってきています。</p>
+<p>さらに、いまの十年は<br>
+人との縁が豊かに育っていく時期。</p>
+<p>人の縁と、恋の縁が<br>
+同時に動く<br>
+特別な年に入っているんです。</p>
+<p>ただ、ここに一つだけ<br>
+気をつけたいことがあります。</p>
+<p>守る力が強いと<br>
+彼の保護者のような立場になって<br>
+恋の入口から遠ざかってしまう。</p>
+<p>守りに入りすぎると<br>
+動かずに見守るだけで<br>
+季節が終わってしまう。</p>
+<p>動こうとする力と<br>
+動けなくする力が</p>
+<p>今、弘美様の中で<br>
+同時に流れているんです。</p>
+<h3>【これから、どうなっていくか】</h3>
+<p>このまま何もしなかった場合。</p>
+<p>縁の星が巡る今年を<br>
+見守るだけで終えてしまい</p>
+<p>来年の流れの中で<br>
+彼の気持ちも<br>
+遠のいていく恐れがあります。</p>
+<p>けれど、銀色のオーラを整えながら<br>
+彼のペースを尊重して動いた場合。</p>
+<p>今年の終わりに<br>
+ふっと接点が生まれ</p>
+<p>来年にかけて<br>
+彼の中の小さな灯りが<br>
+育っていく流れが視えています。</p>
+<p>弘美様の心の奥には<br>
+もともと</p>
+<p>「本当は、自分で選びたい」</p>
+<p>という、静かで強い意思があります。</p>
+<p>その意思を<br>
+少しずつ表に出していいんです。</p>
+<p>それが、この縁を育てる<br>
+一番の力になります。</p>
+<div id="guardianSentinel"></div>
+<h2 id="sec-2">🔮 お相手について</h2>
+<p>次に、彼のオーラを<br>
+深く視させていただきました。</p>
+<div class="aura-section aura-earth">
+<p>アンバーのオーラ。</p>
+<p>畑のように、豊かで<br>
+豊かな土です。</p>
+<p>若さの中に<br>
+落ち着いた温度を持っていて<br>
+人当たりが柔らかく<br>
+誰にでも優しく接することができる。</p>
+<p>人とのご縁で<br>
+豊かさを広げていく魂です。</p>
+<p>ただ、その優しさは<br>
+誰にでも等しく向けられるので<br>
+外から見ると</p>
+<p>特別な気持ちなのか<br>
+ただの親切なのか<br>
+読み取りにくいところがあります。</p>
+<p>弘美様が<br>
+彼の気持ちを測りかねてきたのは</p>
+<p>彼の優しさが<br>
+とても自然で、広いからなんです。</p>
+</div>
+<h3>【お相手のオーラと、足りないもの】</h3>
+<p>彼のオーラには<br>
+アンバーの土と<br>
+水が深く満ちています。</p>
+<p>そして<br>
+木と、火と、銀色のオーラが<br>
+少ない状態です。</p>
+<p>木のオーラが少ないと<br>
+新しい一歩を踏み出す柔らかさが出にくい。</p>
+<p>火のオーラが少ないと<br>
+心の中の熱を<br>
+表に出すことが苦手になる。</p>
+<p>銀色のオーラが少ないと<br>
+決めきる力が弱くなる。</p>
+<p>そこへ<br>
+受け止める土と<br>
+感じ取りすぎる水が重なって</p>
+<p>気持ちを奥にためこみ<br>
+考えすぎて動けなくなる。</p>
+<p>好意があっても<br>
+言葉にも行動にも変えられず</p>
+<p>流れを見守ったまま<br>
+時間だけが過ぎてしまう。</p>
+<p>彼が自分から<br>
+連絡や誘いを出すのが苦手なのは</p>
+<p>弘美様への気持ちが<br>
+薄いからではありません。</p>
+<p>彼のオーラが<br>
+そういう通り道を<br>
+まだ持っていないからなんです。</p>
+<h3>【今の彼の流れと、行動の関係】</h3>
+<p>彼は今、二十代の入口から<br>
+新しい十年に入ったところです。</p>
+<p>迷いながら模索する時期。</p>
+<p>感受性が高まり<br>
+心が動きやすいぶん<br>
+不安定に揺れやすい。</p>
+<p>惹かれる気持ちと<br>
+大きな不安とが<br>
+同時にあります。</p>
+<p>そして、彼の魂の中心は<br>
+内に世界を持ち<br>
+奥深いものを蓄えていく魂です。</p>
+<p>心が動いたものほど<br>
+深く胸にしまってしまう。</p>
+<p>そこへ、今年と来年は<br>
+気持ちが形になりにくい巡りが重なります。</p>
+<p>火のオーラが強く巡る今年<br>
+彼の胸に灯りがともるのは確かなのに</p>
+<p>その灯りを<br>
+外に出す通り道だけが<br>
+まだ細いままなんです。</p>
+<p>ただ、今の彼は<br>
+半分、開いています。</p>
+<p>心は動いている。</p>
+<p>自分から出すには不安定なだけで<br>
+急かされなければ<br>
+開いていける時期です。</p>
+<h3>【星に視る、彼の今の状態】</h3>
+<p>彼の星の流れも視ました。</p>
+<p>今、彼は<br>
+年上の方との関わりの中で<br>
+自分を試されている時期にいます。</p>
+<p>仲間や周りの人たちの中で<br>
+誠実さと品格を<br>
+磨いている十年でもあります。</p>
+<p>だから、年上の弘美様に対して</p>
+<p>敬意と<br>
+緊張と<br>
+惹かれる気持ちが<br>
+混ざり合っている。</p>
+<p>そう視えます。</p>
+<p>また、彼の縁の場所には<br>
+言葉と知性で縁を結んでいく<br>
+流れがあります。</p>
+<p>彼の心を動かすのは<br>
+派手な出来事ではなく</p>
+<p>穏やかな会話です。</p>
+<p>そして、ここに<br>
+二人の星の流れの重なりがあります。</p>
+<p>弘美様は<br>
+縁の星が巡る年。</p>
+<p>彼は<br>
+年上の方との関わりで慎重になる年。</p>
+<p>二人の流れが<br>
+今はまだ噛み合いきらないんです。</p>
+<p>だからこそ<br>
+この二人の縁は<br>
+急ぐほど遠のき<br>
+待つほど近づく縁なんです。</p>
+<h3>【彼の目に映る「あなた」、これからの変化】</h3>
+<p>今、彼の目に映る弘美様は<br>
+霧の向こうにいます。</p>
+<p>緑のオーラは<br>
+彼のアンバーの土から見ると<br>
+背筋が伸びるような存在感を<br>
+持っています。</p>
+<p>年上の女性としての落ち着きと<br>
+自分を気遣ってくれる気配が</p>
+<p>彼の中で<br>
+「<strong>近づきたい</strong>」と<br>
+「失礼があってはいけない」を<br>
+同時に呼び起こしている。</p>
+<p>だから、彼は<br>
+気持ちを出す前に<br>
+立ち止まってしまうんです。</p>
+<p>けれど、弘美様の銀色のオーラが<br>
+整っていくとき</p>
+<p>彼の目には<br>
+こう映るようになります。</p>
+<p>「急かさず、待ってくれる人」<br>
+「話すと落ち着く人」</p>
+<p>それは、彼が<br>
+一番安心できる存在です。</p>
+<p>弘美様が整うことで<br>
+二人の間の空気が<br>
+変わっていきます。</p>
+<div id="deitySentinel"></div>
+<h2 id="sec-3">🔮 ここからお伝えしていくこと</h2>
+<p>無料鑑定の最後に<br>
+お伝えするとお約束した四つのことを<br>
+ここから一つずつ視ていきます。</p>
+<h3>【彼が今、本当に感じていること】</h3>
+<p>彼の胸の奥にあるのは<br>
+弘美様への、まだ名前のない気持ちです。</p>
+<p>好きだ、と言い切るほど<br>
+形にはなっていない。</p>
+<p>けれど、気にならないわけでもない。</p>
+<p>弘美様と話した日の夜<br>
+ふと思い出して</p>
+<p>「あの人は、今どうしているだろう」</p>
+<p>と、少し温かい気持ちになる。</p>
+<p>そういう灯りが<br>
+彼の中に、確かに視えています。</p>
+<p>同時に彼の中には<br>
+もう一つの声があります。</p>
+<p>「自分なんかが、気持ちを向けていいんだろうか」</p>
+<p>年上の弘美様の落ち着きに<br>
+惹かれるほど</p>
+<p>自分の若さや頼りなさが<br>
+気後れとして立ち上がってくる。</p>
+<p>その気後れが<br>
+灯りに触れるたびに<br>
+火が小さくなってしまう。</p>
+<p>彼の本心は<br>
+冷めてなどいません。</p>
+<p>行き場を探して<br>
+奥にとどまっている。</p>
+<p>そう視えています。</p>
+<h3>【あなたのオーラの調整方法】</h3>
+<p>弘美様に必要なのは<br>
+少ない銀色のオーラを<br>
+補うことです。</p>
+<p>魂のレベルでお伝えするなら</p>
+<p>「彼にどう思われるか」ではなく<br>
+「私はどうしたいか」を<br>
+一度、自分に問う在り方を<br>
+育てることです。</p>
+<p>銀色のオーラが育つと<br>
+弘美様の中に</p>
+<p>待つことも、動くことも<br>
+自分で選べるという<br>
+静かな芯ができます。</p>
+<p>これは、我慢でも、冷たさでもありません。</p>
+<p>自分の足で立っているからこそ<br>
+彼の沈黙を<br>
+ゆったりと受け止められる強さです。</p>
+<p>その芯が育ち始めた時</p>
+<p>弘美様の緑のオーラが<br>
+本来のしなやかさで<br>
+揺れ始めます。</p>
+<p>そしてもう一つ。</p>
+<p>火が強く巡る今年は<br>
+気持ちが急ぎやすい年です。</p>
+<p>熱くなった時こそ<br>
+その熱を、彼にぶつける前に</p>
+<p>自分の中で<br>
+見つめてください。</p>
+<p>この熱は<br>
+「私はこんなに想っていたんだ」と<br>
+気づくための火です。</p>
+<h3>【オーラが整った先に広がる景色】</h3>
+<p>弘美様のオーラが整った時<br>
+こんな景色が広がります。</p>
+<p>彼の気持ちが育っていく時期は<br>
+視えています。</p>
+<p>まず12月。<br>
+二人の流れが引き合う月に<br>
+短くても言葉を交わせる接点が生まれます。</p>
+<p>そして2月。<br>
+彼に足りなかった木のオーラが巡り<br>
+気持ちが動き出す兆しが出てきます。</p>
+<p>さらに4月。<br>
+彼の魂の中心と引き合う木のオーラが巡り<br>
+結びつきたいという気持ちが<br>
+内側で育ちやすい月を迎えます。</p>
+<p>では、彼が弘美様を<br>
+一人の女性として意識し始めるきっかけは何か。</p>
+<p>それは、特別なことではありません。</p>
+<p>弘美様が<br>
+彼の言葉を遮らず<br>
+最後まで受け止め</p>
+<p>「教えてくれてありがとう」と<br>
+伝える瞬間です。</p>
+<p>受け止められた経験は<br>
+胸にしまっていた気持ちが<br>
+外に出るための<br>
+最初の通り道になります。</p>
+<p>そしてその時に見せるべき弘美様の姿は</p>
+<p>歳の差を、自分から卑下しない姿。<br>
+背筋を伸ばして<br>
+けれど力まず</p>
+<p>「ゆっくりでいいよ」と<br>
+微笑んで待てる姿。</p>
+<p>銀色のオーラを整えた弘美様は<br>
+彼の隣で<br>
+自分の気持ちを後回しにせずに<br>
+笑っています。</p>
+<p>その姿が、視えています。</p>
+<h3>【霊視で視えた、もう一つの重要な問題】</h3>
+<p>彼の側にある、あるためらい。</p>
+<p>その正体を、お伝えしますね。</p>
+<p>視えているのは、三つの重なりです。</p>
+<p>一つ目は<br>
+歳の差への気後れ。</p>
+<p>二つ目は<br>
+気持ちを胸にしまい込む<br>
+彼の魂の深さ。</p>
+<p>三つ目は<br>
+今年と来年の、気持ちが形にしにくい巡り。</p>
+<p>この三つが重なって<br>
+彼の足を止めています。</p>
+<p>ためらいをほどく鍵は<br>
+たった一つです。</p>
+<p>「<strong>急かされない</strong>」という安心を<br>
+彼に渡すこと。</p>
+<p>彼の水は<br>
+追い込まれるほど深く沈み</p>
+<p>待ってもらえるほど<br>
+浮かび上がってきます。</p>
+<p>弘美様が<br>
+彼に選ぶ余地を残して<br>
+待てる人であること。</p>
+<p>それが<br>
+彼のためらいに<br>
+差し込む光になります。</p>
+<p>具体的な接し方は<br>
+この後の「今からできること」で<br>
+お伝えしますね。</p>
+<p>そして、そのためには<br>
+弘美様自身の銀色のオーラが整っていること。</p>
+<p>それが、何より大切な土台です。</p>
+<h2 id="sec-4">🔮 気になること</h2>
+<p>これまでお伝えしてきたこと以外にも<br>
+実はもう一つ<br>
+視えているものがあります。</p>
+<p>無料鑑定ではお伝えしていなかった<br>
+もう少し先の兆しです。</p>
+<p>弘美様の豊かさの流れの奥に<br>
+言葉の行き違いで<br>
+小さな引っかかりが<br>
+出やすい兆しが視えます。</p>
+<p>悪気はないのに<br>
+伝わり方が少しずれてしまう。</p>
+<p>そんな瞬間に<br>
+心当たりがあるかもしれません。</p>
+<p>これは今すぐの問題というより<br>
+もっと根っこの深いところにある<br>
+魂の傾向として視えているものです。</p>
+<p>ただ、これは<br>
+非常に先の話です。</p>
+<p>今すぐ心配することは<br>
+何もありません。</p>
+<p>今回はここまでお伝えするだけに<br>
+とどめておきますね。</p>
+<p>また別の機会に<br>
+詳しくお伝えできたらと思います。</p>
+<h2 id="sec-5">🔮 運命の転機</h2>
+<p>ここまでお伝えした流れの中で<br>
+これから半年の動きが<br>
+視えてきたかと思います。</p>
+<p>今月の終わりから11月にかけては<br>
+弘美様のエネルギーが落ち着き<br>
+気力が出にくい月です。</p>
+<p>彼のほうも、水のオーラが強まって<br>
+不安が増しやすい。</p>
+<p>動くよりも<br>
+自分のオーラを整える準備の月です。</p>
+<p>軽い日常の一言で<br>
+そっと接点を保つくらいで十分です。</p>
+<p>その先に<br>
+特に重要な四つの月が待っています。</p>
+<p>順にお伝えしますね。</p>
+<div id="winterSentinel"></div>
+<h3>2026年12月 最重要月</h3>
+<p>なぜこの月が特別なのか。</p>
+<p><strong>12月7日から1月4日</strong>にかけて<br>
+銀色と水のオーラが巡ります。</p>
+<p>弘美様に少なかった銀色が<br>
+ここで巡ってくる。</p>
+<p>新しい十年に入った弘美様にとって<br>
+決める力が、初めて<br>
+追い風を受ける月です。</p>
+<p>そして、この銀色のオーラは<br>
+弘美様の緑のオーラと<br>
+引き合う力を持っています。</p>
+<p>さらに、この月の水のオーラは<br>
+二人の魂の奥にある根と<br>
+同時に引き合います。</p>
+<p>この先の半年で<br>
+二人の魂の根が同時に結ばれるのは<br>
+この12月です。</p>
+<p>彼のほうにも<br>
+足りない銀色が巡り<br>
+揺れる心に添う安らぎが巡ります。</p>
+<p>だからこの月は<br>
+短い会話や、小さな接点が<br>
+思いがけず深く<br>
+彼の心に残りやすい月になります。</p>
+<p>この月に起こるのは<br>
+言えなかった言葉が<br>
+口にしやすくなる流れです。</p>
+<p>場の空気がやわらぎ<br>
+話を切り出すきっかけが<br>
+自然に生まれやすくなります。</p>
+<p>弘美様の中にも<br>
+人を優先してきた気持ちの底から</p>
+<p>「本当は、私はこうしたい」</p>
+<p>という願いが<br>
+浮かんでくる。</p>
+<p>人に頼られる立場から<br>
+自分の願いを口にできる立場へ。</p>
+<p>その入口に立つ月です。</p>
+<p>心構えとしてお伝えしたいのは<br>
+この月を<br>
+11月に整えた状態で迎えること。</p>
+<p>焦りと執着を手放して</p>
+<p>さきほどの<br>
+「最後まで聞いて、ありがとう」を<br>
+この月に使ってください。</p>
+<p>そして<br>
+一度言葉を交わしたあとは<br>
+返事を急がず</p>
+<p><strong>一週間ほど</strong>は<br>
+そっと待ってあげてください。</p>
+<p>もし彼が<br>
+距離を置きたそうな気配を見せたら<br>
+それは今の彼の答えです。</p>
+<p>その時は<br>
+追いかけず、尊重すること。</p>
+<p>それもまた<br>
+長い縁を守るための<br>
+大切な優しさです。</p>
+<p>「いつまで待てばいい？」と<br>
+答えを迫らないこと。</p>
+<p>この月の心構えは<br>
+その一つに尽きます。</p>
+<h3>2027年1月</h3>
+<p>なぜこの月が重要か。</p>
+<p>12月の余韻の中に<br>
+弘美様にも、彼にも<br>
+少ない銀色のオーラが<br>
+もう一度巡ります。</p>
+<p>どんなことが起こるか。</p>
+<p>気持ちがすっと整理されて<br>
+見えていなかった本音に<br>
+気づく月です。</p>
+<p>「私は、この人を大切にしたいんだ」</p>
+<p>と、腑に落ちる。</p>
+<p>派手な動きはありません。<br>
+けれど、土台が固まる月です。</p>
+<p>心構えは<br>
+12月に起きた小さな変化を<br>
+焦って確かめにいかず</p>
+<p>余韻のまま育てること。</p>
+<h3>2027年2月</h3>
+<p>なぜこの月が重要か。</p>
+<p>この月に巡る水と木のオーラは<br>
+弘美様が生まれた月と同じ流れです。</p>
+<p>原点に戻る月。</p>
+<p>人を優先して<br>
+後回しにしてきた気持ちを</p>
+<p>もう一度、自分の手に<br>
+取り戻すことができます。</p>
+<p>そして、彼にとっては<br>
+少なかった木のオーラが巡る月。</p>
+<p>新しい一歩を踏み出す力が<br>
+彼の中に宿り始めます。</p>
+<p>どんなことが起こるか。</p>
+<p>今までと違う反応や<br>
+小さな提案の兆しが</p>
+<p>出てきやすい月です。</p>
+<p>心構え。</p>
+<p>小さな変化を見逃さず<br>
+そのまま受け取ること。</p>
+<p>無理に進展させようとせず<br>
+育つ時間を守ってあげてください。</p>
+<div id="springSentinel"></div>
+<h3>2027年4月</h3>
+<p>なぜこの月が重要か。</p>
+<p>木と土のオーラが巡るこの月は<br>
+彼の魂の中心と引き合う力があります。</p>
+<p>「結びつきたい」という気持ちが<br>
+内側で動きやすい月です。</p>
+<p>どんなことが起こるか。</p>
+<p>ただし、動きは穏やかです。<br>
+大きな進展というより</p>
+<p>関係を深める準備が整う月。</p>
+<p>心構え。</p>
+<p>その前の3月は<br>
+弘美様の木のオーラが強まり<br>
+こだわりが出やすくなります。</p>
+<p>待つ姿勢を保ったまま<br>
+4月を迎えてください。</p>
+<div id="doorSentinel2"></div>
+<h3>【その先の未来】</h3>
+<p>2027年は<br>
+火と土の年。</p>
+<p>彼が慎重な年ではありますが<br>
+弘美様のペースが追い風になり</p>
+<p>関係がゆっくり深まっていきます。</p>
+<p>2028年は<br>
+土と銀色のオーラが重なる<br>
+形にする年。</p>
+<p>彼にも銀色が重なり<br>
+気持ちを言葉にする力が育っていく。</p>
+<p>その先に<br>
+プライベートでも<br>
+自然に会える関係が視えています。</p>
+<h3>【大切なこと】</h3>
+<p>12月が、<strong>最大のチャンス</strong>です。</p>
+<p>この月をどう迎えるかが<br>
+これからの流れを決めます。</p>
+<p>そして、その迎え方の土台は<br>
+弘美様の銀色のオーラが<br>
+整っているかどうかにかかっています。</p>
+<h2 id="sec-6">🔮 今からできること</h2>
+<h3>【運命は、待っているだけでは変わらない】</h3>
+<p>ここまで<br>
+運命の流れと、これから訪れる転機を<br>
+お伝えしました。</p>
+<p>ただ、一つだけ<br>
+知っておいてほしいことがあります。</p>
+<p>運命は<br>
+ただ待っているだけでは動きません。</p>
+<p>星の流れがどれだけ整っても<br>
+弘美様のオーラが整っていなければ</p>
+<p>12月の流れを<br>
+掴むことはできません。</p>
+<p>だからこそ、ここからは<br>
+弘美様が今日から<br>
+自分の手で運命を動かしていくための<br>
+最初の一歩を、視ていきます。</p>
+<h3>【銀色のオーラを補う日常の整え方】</h3>
+<p>・朝、白か銀色の小物を一つ身につける</p>
+<p>なぜこれが大切かというと<br>
+銀色のオーラは</p>
+<p>「自分の軸に戻る」力を<br>
+目に見える形で<br>
+思い出させてくれるからです。</p>
+<p>身につけるたびに<br>
+弘美様の中の「<strong>選ぶ力</strong>」が<br>
+呼び覚まされます。</p>
+<p>やり方はシンプルです。</p>
+<p>・白いハンカチ、シルバーのアクセサリーなど<br>
+一つだけ選ぶ</p>
+<p>・身につける前に、深呼吸を三回して<br>
+「今日の私は、どうしたい？」と<br>
+心の中で一言、確認する</p>
+<p>・もう一つ、スマホ周りの整理整頓</p>
+<p>彼とのやりとりに関わるスマホは<br>
+弘美様の心が<br>
+一番揺れやすい場所です。</p>
+<p>だからこそ<br>
+通知を整えたり<br>
+いらない写真やデータを手放したりして</p>
+<p>その場所に<br>
+けじめの風を通してあげてください。</p>
+<p>具体的にはこうします。</p>
+<p>・夜、スマホを手に取るのは<br>
+決めた時間だけにする</p>
+<p>・見返したくなったら<br>
+先に深呼吸を三回してから</p>
+<h3>【気をつけてほしいこと】</h3>
+<p>・彼の気持ちを問い詰めること</p>
+<p>「私のこと、どう思ってるの？」<br>
+「いつまで待てばいい？」</p>
+<p>気持ちを内にためる彼にとって</p>
+<p>その問いは<br>
+扉を叩く音ではなく</p>
+<p>扉を閉める合図になってしまいます。</p>
+<p>追い込まれるほど<br>
+彼の水は沈み<br>
+気持ちは奥へ引っ込んでしまうからです。</p>
+<p>意識したいのは、この二つです。</p>
+<p>・彼が話し出すまで待ち、聞き役に回る</p>
+<p>・大きな問いより<br>
+答えやすい小さな問いや<br>
+選びやすい提案にする</p>
+<p>・歳の差を、自分から卑下すること</p>
+<p>「私なんておばさんだから」</p>
+<p>その一言は<br>
+彼がすでに抱えている気後れを<br>
+そのまま裏付けてしまいます。</p>
+<p>代わりに</p>
+<p>・彼の言葉や頑張りを<br>
+具体的に認めること</p>
+<p>・火が高ぶって気持ちが急いだら<br>
+返事や行動を一晩置くこと</p>
+<p>この二つで<br>
+弘美様の落ち着きが<br>
+彼の安心に変わっていきます。</p>
+<h3>【正直にお伝えしたいこと】</h3>
+<p>ここまでお伝えした調整法で<br>
+少しずつオーラは整い始めます。</p>
+<p>ただ、正直に言うと<br>
+銀色のオーラが少ない場合<br>
+日常の調整だけでは<br>
+補いきれない部分があります。</p>
+<p>白い小物を身につける。<br>
+スマホを整える。</p>
+<p>これらは<br>
+「<strong>維持する力</strong>」にはなりますが</p>
+<p>ゼロから補う力としては<br>
+どうしても限界があるんです。</p>
+<p>もし本気で<br>
+12月までにオーラを整えたいなら<br>
+もう一つ<br>
+お伝えしたい方法があります。</p>
+<h2 id="sec-7">🔑 心を守るサポート</h2>
+<p>ここまでお伝えしてきた通り<br>
+弘美様のオーラには<br>
+銀色のオーラが少ない状態です。</p>
+<p>これが今の状況の<br>
+根っこにある原因であり</p>
+<p>12月のチャンスを掴むために<br>
+最も整えるべき部分です。</p>
+<p>銀色のオーラが整うと</p>
+<p>・12月、彼と言葉を交わす場面で<br>
+「どう思われるか」より「私はどうしたいか」で<br>
+言葉を選べるようになる</p>
+<p>・彼の沈黙を<br>
+ためらいの時間として受け止め<br>
+焦らず待てるようになる</p>
+<p>・歳の差を飲み込んできた言葉を<br>
+自然に口にできるようになる</p>
+<p>・彼の反応に一喜一憂せず<br>
+自分の軸を保ったまま<br>
+笑顔でいられる</p>
+<p>・「この人とは長く続く」という<br>
+静かな確信を持てるようになる</p>
+<p>日常の調整法に加えて<br>
+本格的にオーラを補うために</p>
+<p>パワーストーンを<br>
+お守りとして取り入れる方法があります。</p>
+<p>弘美様のオーラに合わせて<br>
+三つのプランをご用意しました。</p>
+<div id="stoneSentinel1"></div>
+<div class="important-box">
+<h3>【運命を動かすプラン】</h3>
+<p>12月の転機を本気で掴みたい方へ</p>
+<p><strong>・ヘマタイト、シルバールチルクォーツ</strong><br>
+少ない銀色のオーラを補い、迷わず自分の気持ちを選べる</p>
+<p><strong>・アクアマリン、ムーンストーン</strong><br>
+少ない水の流れを補い、本音を言葉にできる</p>
+<p><strong>・ブルーレースアゲート</strong><br>
+火が強い今年の高ぶりを鎮め、彼の反応に急かされなくなる</p>
+<p><strong>・ローズクォーツ</strong><br>
+答えの出ない焦りと不安を吸い取り、優しい安心に変える</p>
+<p>期待できる変化：</p>
+<p>12月、彼と短い会話を交わす場面で<br>
+遮らずに最後まで聞き<br>
+「教えてくれてありがとう」と<br>
+自然に言える自分になります。</p>
+<p>彼の返事が遅い夜も<br>
+スマホを置いて<br>
+ぐっすり眠れるようになります。</p>
+<p>12月の転機を<br>
+最高の状態で迎えられるようになります。</p>
+</div>
+<div id="stoneSentinel2"></div>
+<div class="important-box">
+<h3>【流れを整えるプラン】</h3>
+<p>まずは心を安定させたい方へ</p>
+<p><strong>・ヘマタイト</strong><br>
+少ない銀色のオーラを補い、彼の前でも軸が揺れにくくなる</p>
+<p><strong>・アクアマリン</strong><br>
+少ない水の流れを補い、飲み込んできた本音を緩める</p>
+<p><strong>・ローズクォーツ</strong><br>
+焦りと不安を吸い取り、穏やかな気持ちを育てる</p>
+<p>期待できる変化：</p>
+<p>「彼は今どう思っているんだろう」と<br>
+考え込んでしまう時間が<br>
+少しずつ減っていきます。</p>
+<p>彼の言葉に一喜一憂する波が静まり<br>
+自分の感情の温度を<br>
+整えられるようになります。</p>
+<p>返事を待つ一週間を<br>
+落ち着いて過ごせるようになります。</p>
+</div>
+<div id="doorSentinel3"></div>
+<div class="important-box">
+<h3>【日々のお守りプラン】</h3>
+<p>まずは気持ちの揺れを和らげたい方へ</p>
+<p><strong>・ヘマタイト</strong><br>
+少ない銀色のオーラを補い、「どう思われるか」で止まる癖をほどく</p>
+<p><strong>・ブルーレースアゲート</strong><br>
+火の高ぶりを鎮め、勢いで気持ちを確かめにいきたくなる衝動を止める</p>
+<p>期待できる変化：</p>
+<p>彼のことを考えて<br>
+胸がざわつく夜に</p>
+<p>深呼吸一つで<br>
+気持ちを戻せるようになります。</p>
+<p>感情が高ぶった時に<br>
+衝動的に動かず<br>
+一晩置ける自分になります。</p>
+</div>
+<p>実は、【運命を動かすプラン】を<br>
+選ばれる方が最も多く<br>
+全体の約70%を占めています。</p>
+<p>「12月の転機を<br>
+本気で掴みたいから<br>
+中途半端にしたくない」<br>
+というお声が多いです。</p>
+<p>12月に向けて<br>
+今から整え始めることで</p>
+<p>石のエネルギーが<br>
+ちょうど馴染んだ状態で<br>
+<strong>最重要月</strong>を迎えられます。</p>
+<p>もし興味がありましたら<br>
+「<strong>詳細希望</strong>」とだけ<br>
+送っていただければ</p>
+<p>弘美様専用の<br>
+石の組み合わせをお伝えしますね。</p>
+<h2 id="sec-8">最後に</h2>
+<p>弘美様。</p>
+<p>今、あなたは<br>
+大切な岐路に立っています。</p>
+<p>このまま<br>
+銀色のオーラが少ないまま<br>
+霧の中で12月を迎えるか。</p>
+<p>それとも<br>
+オーラを整え</p>
+<p>彼のペースを尊重しながら<br>
+12月の扉が開いた時に<br>
+まっすぐ受け取れる自分で<br>
+そこに在るか。</p>
+<p>選ぶのは、弘美様ご自身です。</p>
+<p>歳下の彼を想う気持ちを<br>
+ずっと心の中で<br>
+大切に抱えてこられたこと。</p>
+<p>それは、ためらうことではなく<br>
+人を丸ごと受け止めようとする<br>
+優しさの証です。</p>
+<p>私には、視えています。</p>
+<p>12月のある日<br>
+白い小さな小物を身につけた弘美様が</p>
+<p>彼の言葉を<br>
+最後まで静かに聞いて</p>
+<p>「ゆっくりでいいよ、待ってるね」と</p>
+<p>微笑んで伝えている姿が。</p>
+<p>その時の弘美様は<br>
+彼にどう思われるかより<br>
+自分がどうしたいかで<br>
+言葉を選んでいる。</p>
+<p>背筋が伸びて<br>
+けれど力みのない<br>
+柔らかく揺れる緑のオーラが</p>
+<p>穏やかに光っています。</p>
+<p>その先に<br>
+この縁が<br>
+長い時間をかけて育っていく道が<br>
+続いています。</p>
+<p>そこまでの道<br>
+私が照らし続けますね。</p>
+
+<div class="sign-box">
+<p>心からの愛と光を込めて。<br>
+かな</p>
+</div>
+</div>
+
+<script>
+(function () {
+    var $ = function (id) { return document.getElementById(id); };
+    var kanaBg = $('kanaBg'), elementBg = $('elementBg'), deityBg = $('deityBg'), doorBg = $('doorBg');
+    var winterBg = $('seasonWinterBg'), springBg = $('seasonSpringBg');
+    var aquaBg = $('stoneAquaBg'), roseBg = $('stoneRoseBg');
+
+    var stages = [
+        { el: $('kanaSentinel'), bg: kanaBg },
+        { el: $('elementSentinel'), bg: elementBg },
+        { el: $('guardianSentinel'), bg: deityBg },
+        { el: $('deitySentinel'), bg: doorBg },
+        { el: $('winterSentinel'), bg: winterBg },
+        { el: $('springSentinel'), bg: springBg },
+        { el: $('doorSentinel2'), bg: doorBg },
+        { el: $('stoneSentinel1'), bg: aquaBg },
+        { el: $('stoneSentinel2'), bg: roseBg },
+        { el: $('doorSentinel3'), bg: doorBg }
+    ].filter(function (stage) { return !!stage.el; });
+    if (!stages.length) return;
+
+    var layers = [kanaBg, elementBg, deityBg, doorBg, winterBg, springBg, aquaBg, roseBg];
+    function show(active) {
+        layers.forEach(function (el) {
+            if (el === active) el.classList.add('is-visible');
+            else el.classList.remove('is-visible');
+        });
+    }
+
+    function onScroll() {
+        var trigger = window.innerHeight * 0.65;
+        var active = null;
+        for (var i = 0; i < stages.length; i++) {
+            if (stages[i].el.getBoundingClientRect().top < trigger) {
+                active = stages[i].bg;
+            }
+        }
+        show(active);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
+</script>
+</body>
+</html>
