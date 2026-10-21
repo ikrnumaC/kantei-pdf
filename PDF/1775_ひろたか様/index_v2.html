@@ -357,7 +357,7 @@
         /* ===== スマホレスポンシブ ===== */
         @media screen and (max-width: 768px) {
             body {
-                padding: 20px 10px;
+                padding: 8px 0;
                 line-height: 1.8;
             }
 
@@ -394,7 +394,7 @@
             }
 
             .container {
-                padding: 30px 20px;
+                padding: 24px 14px;
                 border-radius: 10px;
                 max-width: 100%;
             }
@@ -430,8 +430,8 @@
             .header-info,
             .important-box,
             .magic-word-box {
-                padding: 25px 20px;
-                margin: 20px 0;
+                padding: 20px 14px;
+                margin: 16px 0;
             }
         }
 
@@ -473,6 +473,138 @@
             p.point { margin-bottom: 18px; }
             .key-month { padding: 24px 14px 4px; }
             .caution-box { padding: 22px 14px 2px; }
+        }
+
+        /* ===== v2: 心を守るサポート ===== */
+        .benefit-list {
+            list-style: none;
+            padding: 8px 0;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+        .benefit-list li {
+            padding: 18px 0;
+            border-bottom: 1px solid #ecdcc0;
+        }
+        .benefit-list li:last-child { border-bottom: none; }
+        .benefit-list li::before {
+            content: '✦';
+            display: block;
+            color: #c9a05d;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+        .plan-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid #e8d5b7;
+            border-radius: 16px;
+            padding: 30px 20px 24px;
+            margin: 0 0 32px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(139, 111, 156, 0.08);
+        }
+        .plan-card.recommended {
+            border: 2px solid #c9a05d;
+            background: linear-gradient(180deg, #fffaf0 0%, rgba(255,255,255,0.95) 100%);
+            box-shadow: 0 10px 30px rgba(201, 160, 93, 0.22);
+            margin-top: 20px;
+        }
+        .plan-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #c9a05d;
+            color: #fff;
+            font-size: 13px;
+            letter-spacing: 2px;
+            padding: 3px 16px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+        .plan-card .plan-title {
+            margin: 6px 0 8px;
+            color: #8b6f9c;
+            letter-spacing: 2px;
+        }
+        .plan-card.recommended .plan-title { color: #b0843f; }
+        .plan-card p.plan-target {
+            font-size: 14px;
+            color: #8b6f9c;
+            margin-bottom: 20px;
+        }
+        .stone-list, .change-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .stone-list li {
+            padding: 12px 0;
+            border-top: 1px dashed #ecdcc0;
+        }
+        .stone-list li:first-child { border-top: none; }
+        .stone-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+            vertical-align: middle;
+            box-shadow: inset 0 -2px 3px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.06);
+        }
+        .stone-dot.aqua { background: radial-gradient(circle at 35% 35%, #e6f7fc, #7ccbe2); }
+        .stone-dot.moon { background: radial-gradient(circle at 35% 35%, #ffffff, #d9d2e6); }
+        .stone-dot.rutile { background: radial-gradient(circle at 35% 35%, #fff4cf, #d9ab3f); }
+        .stone-dot.hematite { background: radial-gradient(circle at 35% 35%, #b8b8c2, #4f4f5a); }
+        .stone-dot.smoky { background: radial-gradient(circle at 35% 35%, #d8c6b5, #7d6250); }
+        .stone-name {
+            font-weight: 700;
+            color: #5a3e1b;
+            letter-spacing: 1px;
+        }
+        .stone-desc {
+            display: block;
+            font-size: 14px;
+            color: #6d6d6d;
+            line-height: 1.8;
+            margin-top: 2px;
+        }
+        .plan-card p.plan-label {
+            font-size: 13px;
+            color: #c9a05d;
+            letter-spacing: 3px;
+            margin: 20px 0 8px;
+        }
+        .change-list li {
+            font-size: 14px;
+            line-height: 1.8;
+            padding: 6px 0;
+        }
+        .change-list li::before {
+            content: '✓';
+            color: #c9a05d;
+            font-weight: 700;
+            margin-right: 6px;
+        }
+        .cta-box {
+            background: #fff9f0;
+            border: 1px solid #e8d5b7;
+            border-radius: 16px;
+            padding: 28px 16px 4px;
+            margin: 20px 0 40px;
+        }
+        .cta-box p { margin-bottom: 18px; }
+        .cta-box p.cta-word {
+            display: inline-block;
+            background: #c9a05d;
+            color: #fff;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 3px;
+            padding: 8px 28px;
+            border-radius: 999px;
+            margin-bottom: 18px;
         }
     </style>
 </head>
@@ -1686,23 +1818,13 @@
 
     <p>水と金色のオーラが整うと</p>
 
-    <p class="point">・夜<br>
-    親友のLINEを開く手が止まり<br>
-    安心して眠れるようになる</p>
-
-    <p class="point">・知らせが届いた時<br>
-    長い言葉を並べず<br>
-    「無事でよかった」を静かに受け止められる</p>
-
-    <p class="point">・返事が無い日にも<br>
-    結論を急がず<br>
-    彼女のペースを見守る余裕が生まれる</p>
-
-    <p class="point">・祈りが胸に溜まらず<br>
-    流れるように軽くなる</p>
-
-    <p class="point">・2026年12月の「その時」を<br>
-    自分の心のまま迎えられる</p>
+    <ul class="benefit-list">
+        <li>夜<br>親友のLINEを開く手が止まり<br>安心して眠れるようになる</li>
+        <li>知らせが届いた時<br>長い言葉を並べず<br>「無事でよかった」を<br>静かに受け止められる</li>
+        <li>返事が無い日にも<br>結論を急がず<br>彼女のペースを<br>見守る余裕が生まれる</li>
+        <li>祈りが胸に溜まらず<br>流れるように軽くなる</li>
+        <li>2026年12月の「その時」を<br>自分の心のまま迎えられる</li>
+    </ul>
 
     <p>日常の調整法に加えて</p>
 
@@ -1715,79 +1837,54 @@
     三つのプランを<br>
     ご用意しました。</p>
 
-    <div class="important-box">
+    <div class="plan-card recommended">
+        <div class="plan-badge">いちばん選ばれています</div>
+        <h3 class="plan-title">運命を動かすプラン</h3>
+        <p class="plan-target">2026年12月の転機を<br>本気で掴みたい方へ</p>
+        <ul class="stone-list">
+            <li><span class="stone-dot aqua"></span><span class="stone-name">アクアマリン</span><span class="stone-desc">少ない水のオーラを補い<br>祈りを穏やかに流す</span></li>
+            <li><span class="stone-dot moon"></span><span class="stone-name">ムーンストーン</span><span class="stone-desc">水のオーラを補い<br>感情の波を静かに整える</span></li>
+            <li><span class="stone-dot rutile"></span><span class="stone-name">ルチルクォーツ</span><span class="stone-desc">少ない金色のオーラを補い<br>先走る木の勢いを鎮める</span></li>
+            <li><span class="stone-dot hematite"></span><span class="stone-name">ヘマタイト</span><span class="stone-desc">金色のオーラを補い<br>迷いに区切りをつける</span></li>
+            <li><span class="stone-dot smoky"></span><span class="stone-name">スモーキークォーツ</span><span class="stone-desc">焦りを吸い取り<br>夜の不安を静める</span></li>
+        </ul>
+        <p class="plan-label">期待できる変化</p>
+        <ul class="change-list">
+            <li>夜、親友のLINEを<br>何度も開かず眠れる</li>
+            <li>知らせが届いた時<br>返事を求めず、まず無事を喜べる</li>
+            <li>2026年12月の転機を<br>最高の状態で迎えられる</li>
+        </ul>
+    </div>
 
-    <h3>【運命を動かすプラン】</h3>
+    <div class="plan-card">
+        <h3 class="plan-title">流れを整えるプラン</h3>
+        <p class="plan-target">まずは心を<br>安定させたい方へ</p>
+        <ul class="stone-list">
+            <li><span class="stone-dot aqua"></span><span class="stone-name">アクアマリン</span><span class="stone-desc">少ない水のオーラを補い<br>祈りを流れさせる</span></li>
+            <li><span class="stone-dot rutile"></span><span class="stone-name">ルチルクォーツ</span><span class="stone-desc">少ない金色のオーラを補い<br>区切りをつける力を育てる</span></li>
+            <li><span class="stone-dot smoky"></span><span class="stone-name">スモーキークォーツ</span><span class="stone-desc">焦りを吸い取り<br>穏やかな安心に変える</span></li>
+        </ul>
+        <p class="plan-label">期待できる変化</p>
+        <ul class="change-list">
+            <li>返信を待つ時間の不安が<br>静まっていく</li>
+            <li>彼女のペースを<br>焦らず見守れる実感が持てる</li>
+            <li>自分の気持ちの温度を<br>自分で整えられるようになる</li>
+        </ul>
+    </div>
 
-    <p><strong>2026年12月の転機を<br>本気で掴みたい方へ</strong></p>
-
-    <p><strong>・アクアマリン</strong><br>
-    少ない水のオーラを補い、祈りを穏やかに流す</p>
-
-    <p><strong>・ムーンストーン</strong><br>
-    水のオーラを補い、感情の波を静かに整える</p>
-
-    <p><strong>・ルチルクォーツ</strong><br>
-    少ない金色のオーラを補い、先走る木の勢いを鎮める</p>
-
-    <p><strong>・ヘマタイト</strong><br>
-    金色のオーラを補い、迷いに区切りをつける</p>
-
-    <p><strong>・スモーキークォーツ</strong><br>
-    焦りを吸い取り、夜の不安を静める</p>
-
-    <p>期待できる変化：</p>
-
-    <p class="point">・夜<br>
-    親友のLINEを何度も開かず眠れる</p>
-
-    <p class="point">・知らせが届いた時<br>
-    返事を求めず、まず無事を喜べる</p>
-
-    <p class="point">・2026年12月の転機を<br>
-    最高の状態で迎えられる</p>
-
-    <h3>【流れを整えるプラン】</h3>
-
-    <p><strong>まずは心を<br>安定させたい方へ</strong></p>
-
-    <p><strong>・アクアマリン</strong><br>
-    少ない水のオーラを補い、祈りを流れさせる</p>
-
-    <p><strong>・ルチルクォーツ</strong><br>
-    少ない金色のオーラを補い、区切りをつける力を育てる</p>
-
-    <p><strong>・スモーキークォーツ</strong><br>
-    焦りを吸い取り、穏やかな安心に変える</p>
-
-    <p>期待できる変化：</p>
-
-    <p class="point">・返信を待つ時間の不安が<br>
-    静まっていく</p>
-
-    <p class="point">・彼女のペースを<br>
-    焦らず見守れる実感が持てる</p>
-
-    <p class="point">・自分の気持ちの温度を<br>
-    自分で整えられるようになる</p>
-
-    <h3>【日々のお守りプラン】</h3>
-
-    <p><strong>まずは待つ時間の<br>不安を和らげたい方へ</strong></p>
-
-    <p><strong>・アクアマリン</strong><br>
-    少ない水のオーラを補い、心を落ち着ける</p>
-
-    <p><strong>・スモーキークォーツ</strong><br>
-    答えの出ない不安を吸い取り、穏やかに変える</p>
-
-    <p>期待できる変化：</p>
-
-    <p class="point">・夜の「どうしているだろう」という<br>
-    不安が和らいでいく</p>
-
-    <p class="point">・衝動的に連絡を重ねたくなる気持ちが<br>
-    静まっていく</p>
+    <div class="plan-card">
+        <h3 class="plan-title">日々のお守りプラン</h3>
+        <p class="plan-target">まずは待つ時間の<br>不安を和らげたい方へ</p>
+        <ul class="stone-list">
+            <li><span class="stone-dot aqua"></span><span class="stone-name">アクアマリン</span><span class="stone-desc">少ない水のオーラを補い<br>心を落ち着ける</span></li>
+            <li><span class="stone-dot smoky"></span><span class="stone-name">スモーキークォーツ</span><span class="stone-desc">答えの出ない不安を吸い取り<br>穏やかに変える</span></li>
+        </ul>
+        <p class="plan-label">期待できる変化</p>
+        <ul class="change-list">
+            <li>夜の「どうしているだろう」<br>という不安が和らいでいく</li>
+            <li>衝動的に連絡を<br>重ねたくなる気持ちが<br>静まっていく</li>
+        </ul>
+    </div>
 
     <p>実は、【運命を動かすプラン】を<br>
     選ばれる方が最も多く</p>
@@ -1809,14 +1906,12 @@
     ちょうど馴染んだ状態で<br>
     最重要月を迎えられます。</p>
 
-    <p>もし興味がありましたら</p>
-
-    <p>「<strong>詳細希望</strong>」とだけ<br>
-    送っていただければ</p>
-
-    <p>ひろたか様専用の<br>
-    石の組み合わせをお伝えしますね。</p>
-
+    <div class="cta-box">
+        <p>もし興味がありましたら</p>
+        <p class="cta-word">「詳細希望」</p>
+        <p>とだけ送っていただければ<br>
+        ひろたか様専用の<br>
+        石の組み合わせをお伝えしますね。</p>
     </div>
 
     <div id="closingSentinel"></div>
