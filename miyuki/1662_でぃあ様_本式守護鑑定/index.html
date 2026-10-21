@@ -415,6 +415,99 @@
             z-index: -1;
             pointer-events: none;
         }
+
+        /* ===== 読みやすさ調整（2026-10-21） ===== */
+        :root { --gap: 56px; }
+        mark {
+            background: linear-gradient(transparent 58%, rgba(255, 217, 102, 0.38) 58%);
+            color: #fff6d8;
+            padding: 0 2px;
+        }
+        strong { color: #ffe9a8; font-weight: 700; }
+        .summary-box {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(255, 217, 102, 0.35);
+            border-radius: 14px;
+            padding: 24px 16px 8px;
+            margin: 0 0 var(--gap);
+        }
+        .summary-title {
+            text-align: center;
+            color: #ffd966;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+        }
+        ul.summary-list { margin: 0; }
+        ul.summary-list li {
+            margin: 0;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 217, 102, 0.18);
+        }
+        ul.summary-list li:last-child { border-bottom: none; }
+        ul.summary-list li::before {
+            content: '✦';
+            display: block;
+            color: #ffd966;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+        .month-title {
+            color: #ffd966;
+            font-size: 1.25em;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            margin-bottom: 28px;
+        }
+        .section.key-month {
+            border: 2px solid rgba(255, 217, 102, 0.7);
+            background: rgba(60, 50, 20, 0.28);
+            box-shadow: 0 0 24px rgba(255, 217, 102, 0.15);
+        }
+        ul.shrine-list { margin: 0 0 var(--gap); }
+        ul.shrine-list li { margin: 0; padding: 10px 0; border-bottom: 1px dashed rgba(168, 184, 255, 0.2); }
+        ul.shrine-list li:last-child { border-bottom: none; }
+        .shrine-name { display: block; color: #f0f0ff; font-weight: bold; }
+        .shrine-addr { display: block; font-size: 0.85em; color: #b8bce0; }
+        .stone-card {
+            background: rgba(30, 30, 70, 0.55);
+            border: 1px solid rgba(255, 217, 102, 0.45);
+            border-radius: 16px;
+            padding: 10px 18px;
+            margin: 0 0 var(--gap);
+            box-shadow: 0 6px 24px rgba(255, 217, 102, 0.1);
+        }
+        ul.stone-list { margin: 0; }
+        ul.stone-list li { margin: 0; padding: 20px 0; border-top: 1px dashed rgba(255, 217, 102, 0.22); }
+        ul.stone-list li:first-child { border-top: none; }
+        .stone-dot {
+            display: inline-block; width: 13px; height: 13px; border-radius: 50%;
+            margin-right: 8px; vertical-align: middle;
+            box-shadow: inset 0 -2px 3px rgba(0,0,0,0.25), 0 0 8px rgba(255,255,255,0.15);
+        }
+        .stone-dot.carnelian { background: radial-gradient(circle at 35% 35%, #ffc49a, #d4541f); }
+        .stone-dot.citrine { background: radial-gradient(circle at 35% 35%, #fff4c2, #e2b021); }
+        .stone-dot.jade { background: radial-gradient(circle at 35% 35%, #c9f0d8, #3f9a68); }
+        .stone-name { color: #ffd966; font-weight: bold; letter-spacing: 0.05em; }
+        .stone-desc { display: block; margin-top: 4px; }
+        .cta-box {
+            border-top: 1px solid rgba(255, 217, 102, 0.3);
+            margin-top: 10px;
+            padding-top: 26px;
+        }
+        .cta-box p { margin-bottom: 14px; }
+        .cta-word {
+            color: #ffd966;
+            font-size: 1.7em;
+            font-weight: bold;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 18px rgba(255, 217, 102, 0.45);
+        }
+        @media (max-width: 768px) {
+            :root { --gap: 34px; }
+            body { font-size: 16px; }
+            .cta-word { font-size: 1.5em; }
+        }
     </style>
 </head>
 <body>
@@ -461,294 +554,296 @@
 
         <div id="elementSentinel"></div>
         <div class="oracle-message">
-            <p style="margin-bottom: 90px;">でぃあ様</p>
-            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき<br>本当にありがとうございます。</p>
-            <p style="margin-bottom: 30px; font-weight: bold; color: #f0f0ff;">【今回の鑑定のまとめ】</p>
-            <ul style="margin-bottom: 90px;">
-                <li>豊かさが動く本命の年は2027年。立春から才能に火が灯り、5月にお仕事のご縁が形になります。通帳の数字が変わりはじめるのは2028年です</li>
-                <li>蓄えが残らなかったのは、頑張りが足りないからではなく「自分の分を最後に置く癖」から。お金が入った日に、ご自分の取り分を先に別の口座へ</li>
-                <li>向いているのは、食と暮らしを整えるお仕事／型と手仕事／ヨガなど言葉と体で導くお仕事。ダブルワークは「安定の柱」と「持ち味の柱」の二本立てで</li>
-                <li>真二さんとは、互いの欠けた部分を補い合うご縁。2027年に関係を見直す場面が巡り、2028年半ばにもう一度近づく流れに入ります</li>
-                <li>合図の言葉は「私の分も、いただきます」。豊受大神は、与える神様であり、受け取る神様でもあります</li>
+            <p style="margin-bottom: var(--gap);">でぃあ様</p>
+            <p style="margin-bottom: var(--gap);">本式守護鑑定をお受けいただき<br>本当にありがとうございます。</p>
+            <div class="summary-box">
+            <p class="summary-title">【今回の鑑定のまとめ】</p>
+            <ul class="summary-list">
+                <li>豊かさが動く本命の年は2027年。<br>立春から才能に火が灯り<br>5月にお仕事のご縁が形になります。<br>通帳の数字が変わりはじめるのは<br>2028年です</li>
+                <li>蓄えが残らなかったのは<br>頑張りが足りないからではなく<br>「自分の分を最後に置く癖」から。<br>お金が入った日に<br>ご自分の取り分を先に別の口座へ</li>
+                <li>向いているのは<br>食と暮らしを整えるお仕事<br>型と手仕事<br>ヨガなど言葉と体で導くお仕事。<br>ダブルワークは<br>「安定の柱」と「持ち味の柱」の<br>二本立てで</li>
+                <li>真二さんとは<br>互いの欠けた部分を補い合うご縁。<br>2027年に関係を見直す場面が巡り<br>2028年半ばに<br>もう一度近づく流れに入ります</li>
+                <li>合図の言葉は<br>「私の分も、いただきます」。<br>豊受大神は、与える神様であり<br>受け取る神様でもあります</li>
             </ul>
-            <p style="margin-bottom: 90px;">「ひとり親のため<br>蓄えは全く無く」</p>
-            <p style="margin-bottom: 90px;">「誰の前でも<br>ずっと良い子をやってきた」</p>
-            <p style="margin-bottom: 90px;">いただいたこの言葉を読んだとき<br>でぃあ様がどれほど長いあいだ<br>ご自分のことは後ろへ回して<br>ひとりで踏ん張ってこられたのか<br>その重みがまっすぐ胸に届きました。</p>
-            <p style="margin-bottom: 90px;">今回でぃあ様の守護神とつながり<br>霊視を進めていくと<br>守護神は何度も同じところへ<br>私の意識を引き戻してきました。</p>
-            <p style="margin-bottom: 90px;">「どうして私は<br>子どもたちのためなら何でも差し出せるのに<br>自分の分になると<br>いつも最後になってしまうのだろう」</p>
-            <p style="margin-bottom: 90px;">でぃあ様がずっと心の奥で抱えてきた<br>その問いの答えが<br>そこにありました。</p>
+            </div>
+            <p style="margin-bottom: var(--gap);">「ひとり親のため<br>蓄えは全く無く」</p>
+            <p style="margin-bottom: var(--gap);">「誰の前でも<br>ずっと良い子をやってきた」</p>
+            <p style="margin-bottom: var(--gap);">いただいたこの言葉を読んだとき<br>でぃあ様がどれほど長いあいだ<br>ご自分のことは後ろへ回して<br>ひとりで踏ん張ってこられたのか<br>その重みがまっすぐ胸に届きました。</p>
+            <p style="margin-bottom: var(--gap);">今回でぃあ様の守護神とつながり<br>霊視を進めていくと<br>守護神は何度も同じところへ<br>私の意識を引き戻してきました。</p>
+            <p style="margin-bottom: var(--gap);">「どうして私は<br>子どもたちのためなら何でも差し出せるのに<br>自分の分になると<br>いつも最後になってしまうのだろう」</p>
+            <p style="margin-bottom: var(--gap);">でぃあ様がずっと心の奥で抱えてきた<br>その問いの答えが<br>そこにありました。</p>
             <p style="margin-bottom: 0;">その答えにたどり着くために<br>まずはでぃあ様が歩いてきた道から<br>お伝えしていきますね。</p>
         </div>
 
         <h2 id="sec-path">【あなたが歩いてきた道】</h2>
         <div class="section">
-            <p style="margin-bottom: 90px;">守護神が最初に視せてくれたのは<br>小さな背中でした。</p>
-            <p style="margin-bottom: 90px;">お母様の表情をそっと見て<br>その日の空気を察し<br>頼まれる前に先に手を動かす。</p>
-            <p style="margin-bottom: 90px;">自分の気持ちは後ろに置いて<br>家の中が穏やかであるように<br>気を配っている背中です。</p>
-            <p style="margin-bottom: 90px;">その頃から<br>お母様の気持ちを受け止める役を<br>いつのまにか<br>引き受けていたのではないでしょうか。</p>
-            <p style="margin-bottom: 90px;">それは弱さではなく<br>人の気持ちを誰よりも早く感じ取る<br>優しさが育てた習慣でした。</p>
-            <p style="margin-bottom: 90px;">大人になってからは<br>型紙を引くお仕事に打ち込み<br>着る人が心地よくいられる形を<br>考え抜いてこられました。</p>
-            <p style="margin-bottom: 90px;">そしてお子さんたちを迎えてからは<br>ひとりで暮らしの土台を支え<br>お財布の中身が心細い日も<br>笑顔で食卓を整えてこられました。</p>
-            <p style="margin-bottom: 90px;">病気を経験されたことをきっかけに<br>「嫌われてもいい」と<br>良い人をやめる書き換えにも<br>踏み出されましたね。</p>
-            <p style="margin-bottom: 90px;">カフェに立ち<br>ヨガを学び<br>ご自分の道を探し続けてきた日々。</p>
-            <p style="margin-bottom: 90px;">今のお子さんたちとの暮らしも<br>今のでぃあ様の力も<br>その歩みの上にあります。</p>
-            <p style="margin-bottom: 90px;">その歩みを包んでいたのは<br>若葉のような翡翠色の光でした。</p>
-            <p style="margin-bottom: 90px;">その光があったから<br>お子さんたちは<br>でぃあ様の前で安心して笑えたのです。</p>
-            <p style="margin-bottom: 90px;">ただ<br>その背中を視ていて<br>一つ気づいたことがあります。</p>
+            <p style="margin-bottom: var(--gap);">守護神が最初に視せてくれたのは<br>小さな背中でした。</p>
+            <p style="margin-bottom: var(--gap);">お母様の表情をそっと見て<br>その日の空気を察し<br>頼まれる前に先に手を動かす。</p>
+            <p style="margin-bottom: var(--gap);">自分の気持ちは後ろに置いて<br>家の中が穏やかであるように<br>気を配っている背中です。</p>
+            <p style="margin-bottom: var(--gap);">その頃から<br>お母様の気持ちを受け止める役を<br>いつのまにか<br>引き受けていたのではないでしょうか。</p>
+            <p style="margin-bottom: var(--gap);">それは弱さではなく<br>人の気持ちを誰よりも早く感じ取る<br>優しさが育てた習慣でした。</p>
+            <p style="margin-bottom: var(--gap);">大人になってからは<br>型紙を引くお仕事に打ち込み<br>着る人が心地よくいられる形を<br>考え抜いてこられました。</p>
+            <p style="margin-bottom: var(--gap);">そしてお子さんたちを迎えてからは<br>ひとりで暮らしの土台を支え<br>お財布の中身が心細い日も<br>笑顔で食卓を整えてこられました。</p>
+            <p style="margin-bottom: var(--gap);">病気を経験されたことをきっかけに<br>「嫌われてもいい」と<br>良い人をやめる書き換えにも<br>踏み出されましたね。</p>
+            <p style="margin-bottom: var(--gap);">カフェに立ち<br>ヨガを学び<br>ご自分の道を探し続けてきた日々。</p>
+            <p style="margin-bottom: var(--gap);">今のお子さんたちとの暮らしも<br>今のでぃあ様の力も<br>その歩みの上にあります。</p>
+            <p style="margin-bottom: var(--gap);">その歩みを包んでいたのは<br>若葉のような翡翠色の光でした。</p>
+            <p style="margin-bottom: var(--gap);">その光があったから<br>お子さんたちは<br>でぃあ様の前で安心して笑えたのです。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>その背中を視ていて<br>一つ気づいたことがあります。</p>
             <p style="margin-bottom: 0;">でぃあ様はずっと<br>「差し出す側」だけを歩いてきた人なのです。</p>
         </div>
 
         <h2 id="sec-now">【今のでぃあ様】</h2>
         <div class="section">
-            <p style="margin-bottom: 90px;">その歩き方は<br>今のでぃあ様にも<br>そのまま続いています。</p>
-            <p style="margin-bottom: 90px;">月末に家計を整えるとき<br>まず子どもたちの分を数えて<br>ご自分の分は「残ったら」と<br>後ろに置いていませんか。</p>
-            <p style="margin-bottom: 90px;">学んだことを人に届ける段になると<br>「まだ私なんかが」と手を止めて<br>気づけば誰かの役に立つ別のことを<br>先にしていませんか。</p>
-            <p style="margin-bottom: 90px;">嫌われたくなくて<br>相手の機嫌を先に確かめてから<br>言葉を選んでいませんか。</p>
-            <p style="margin-bottom: 90px;">お金は子どもたちの分が先。</p>
-            <p style="margin-bottom: 90px;">持ち味は誰かの役に立つ形が先。</p>
-            <p style="margin-bottom: 90px;">本音は相手の機嫌が先。</p>
-            <p style="margin-bottom: 90px;">どれもでぃあ様の優しさです。</p>
-            <p style="margin-bottom: 90px;">でも、この三つには<br>共通していることがあります。</p>
-            <p style="margin-bottom: 90px;">どの場面でも<br>ご自分の分だけが<br>いつも一番最後に置かれているのです。</p>
-            <p style="margin-bottom: 90px;">それが長く続いた結果<br>一つの癖ができていました。</p>
-            <p style="margin-bottom: 90px;">でぃあ様は<br>自分の分を最後に置き続ける人なのです。</p>
-            <p style="margin-bottom: 90px;">人の気持ちに<br>誰よりも早く気づく子だったから<br>ご自分の分まで<br>手が回らなくなっていただけです。</p>
-            <p style="margin-bottom: 90px;">こんな場面に<br>思い当たるところはありませんか。</p>
-            <p style="margin-bottom: 90px;">欲しいものがあっても<br>買い物かごに入れたまま<br>そっと閉じてしまう。</p>
-            <p style="margin-bottom: 90px;">褒められると<br>「いえいえ」と先に<br>打ち消してしまう。</p>
-            <p style="margin-bottom: 90px;">書き換えようと決めたはずなのに<br>ふと気づくと<br>また「良い子の顔」に戻っている日がある。</p>
-            <p style="margin-bottom: 90px;">思い当たるところはありませんか。</p>
-            <p style="margin-bottom: 90px;">実はこの癖こそが<br>冒頭でお伝えした<br>守護神が何度も私の意識を<br>引き戻した場所でした。</p>
-            <p style="margin-bottom: 90px;">ここが、今回の鑑定のすべての鍵になります。</p>
+            <p style="margin-bottom: var(--gap);">その歩き方は<br>今のでぃあ様にも<br>そのまま続いています。</p>
+            <p style="margin-bottom: var(--gap);">月末に家計を整えるとき<br>まず子どもたちの分を数えて<br>ご自分の分は「残ったら」と<br>後ろに置いていませんか。</p>
+            <p style="margin-bottom: var(--gap);">学んだことを人に届ける段になると<br>「まだ私なんかが」と手を止めて<br>気づけば誰かの役に立つ別のことを<br>先にしていませんか。</p>
+            <p style="margin-bottom: var(--gap);">嫌われたくなくて<br>相手の機嫌を先に確かめてから<br>言葉を選んでいませんか。</p>
+            <p style="margin-bottom: var(--gap);">お金は子どもたちの分が先。</p>
+            <p style="margin-bottom: var(--gap);">持ち味は誰かの役に立つ形が先。</p>
+            <p style="margin-bottom: var(--gap);">本音は相手の機嫌が先。</p>
+            <p style="margin-bottom: var(--gap);">どれもでぃあ様の優しさです。</p>
+            <p style="margin-bottom: var(--gap);">でも、この三つには<br>共通していることがあります。</p>
+            <p style="margin-bottom: var(--gap);">どの場面でも<br>ご自分の分だけが<br>いつも一番最後に置かれているのです。</p>
+            <p style="margin-bottom: var(--gap);">それが長く続いた結果<br>一つの癖ができていました。</p>
+            <p style="margin-bottom: var(--gap);">でぃあ様は<br>自分の分を最後に置き続ける人なのです。</p>
+            <p style="margin-bottom: var(--gap);">人の気持ちに<br>誰よりも早く気づく子だったから<br>ご自分の分まで<br>手が回らなくなっていただけです。</p>
+            <p style="margin-bottom: var(--gap);">こんな場面に<br>思い当たるところはありませんか。</p>
+            <p style="margin-bottom: var(--gap);">欲しいものがあっても<br>買い物かごに入れたまま<br>そっと閉じてしまう。</p>
+            <p style="margin-bottom: var(--gap);">褒められると<br>「いえいえ」と先に<br>打ち消してしまう。</p>
+            <p style="margin-bottom: var(--gap);">書き換えようと決めたはずなのに<br>ふと気づくと<br>また「良い子の顔」に戻っている日がある。</p>
+            <p style="margin-bottom: var(--gap);">思い当たるところはありませんか。</p>
+            <p style="margin-bottom: var(--gap);">実はこの癖こそが<br>冒頭でお伝えした<br>守護神が何度も私の意識を<br>引き戻した場所でした。</p>
+            <p style="margin-bottom: var(--gap);">ここが、今回の鑑定のすべての鍵になります。</p>
             <p style="margin-bottom: 0;">では<br>そんなでぃあ様を守護しているのは<br>どんな神様なのでしょうか。</p>
         </div>
 
         <div id="guardianSentinel"></div>
         <div class="oracle-message" id="sec-god">
-            <p style="margin-bottom: 90px;">でぃあ様を守っているのは<br><span style="color: #ffd966;">豊受大神</span>（とようけのおおかみ）。</p>
-            <p style="margin-bottom: 90px;">食べ物と豊かな実りを司る神様です。</p>
-            <p style="margin-bottom: 90px;">三重県の伊勢神宮<br>外宮（げくう）に祀られ<br>人々の毎日の糧を守る神様として<br>古くから篤く信仰されてきました。</p>
-            <p style="margin-bottom: 90px;">今からおよそ千五百年前<br>雄略天皇（ゆうりゃくてんのう）の夢に<br>天照大御神（あまてらすおおみかみ）が<br>現れたと伝わっています。</p>
-            <p style="margin-bottom: 90px;">天照大御神は夢の中で<br>「私ひとりでは<br>食事も安らかにいただけない<br>丹波（たんば）の国にいる豊受大神を<br>私のそばへ呼びなさい」<br>と告げられました。</p>
-            <p style="margin-bottom: 90px;">こうして豊受大神は<br>丹波の国から伊勢へ迎えられ<br>外宮に祀られました。</p>
-            <p style="margin-bottom: 90px;">それからおよそ千五百年<br>毎日、朝と夕の二度<br>神様方のお食事を整えて<br>お供えする祭りが<br>今日まで一日も欠かさず続いています。</p>
-            <p style="margin-bottom: 90px;">誰かの毎日の食事を整え<br>黙って続けてきた神様。</p>
-            <p style="margin-bottom: 90px;">まるででぃあ様そのもののような神様です。</p>
-            <p style="margin-bottom: 90px;">でも、ここからが大切なところです。</p>
-            <p style="margin-bottom: 90px;">そのお供えのお食事は<br>天照大御神だけのものではありません。</p>
-            <p style="margin-bottom: 90px;">豊受大神ご自身にも<br>同じお食事が捧げられていると<br>伝わっています。</p>
-            <p style="margin-bottom: 90px;">天照大御神が豊受大神を呼んだ理由も<br>「ひとりでは安らかに食べられない」<br>からでした。</p>
-            <p style="margin-bottom: 90px;">お食事は<br>誰かと分け合って<br>はじめて安らかなものになる。</p>
-            <p style="margin-bottom: 90px;">整える神様は<br>同じ食卓に座る相手として<br>呼ばれた神様でもあったのです。</p>
-            <p style="margin-bottom: 90px;">与える神様は<br>受け取る神様でもあるのです。</p>
-            <p style="margin-bottom: 90px;">「差し出す側」だけを歩いてきた<br>でぃあ様のそばに<br>この神様がいる。</p>
-            <p style="margin-bottom: 90px;">それは<br>「あなたの分も、ここにある」と<br>伝えるためにほかなりません。</p>
+            <p style="margin-bottom: var(--gap);">でぃあ様を守っているのは<br><span style="color: #ffd966;">豊受大神</span>（とようけのおおかみ）。</p>
+            <p style="margin-bottom: var(--gap);">食べ物と豊かな実りを司る神様です。</p>
+            <p style="margin-bottom: var(--gap);">三重県の伊勢神宮<br>外宮（げくう）に祀られ<br>人々の毎日の糧を守る神様として<br>古くから篤く信仰されてきました。</p>
+            <p style="margin-bottom: var(--gap);">今からおよそ千五百年前<br>雄略天皇（ゆうりゃくてんのう）の夢に<br>天照大御神（あまてらすおおみかみ）が<br>現れたと伝わっています。</p>
+            <p style="margin-bottom: var(--gap);">天照大御神は夢の中で<br>「私ひとりでは<br>食事も安らかにいただけない<br>丹波（たんば）の国にいる豊受大神を<br>私のそばへ呼びなさい」<br>と告げられました。</p>
+            <p style="margin-bottom: var(--gap);">こうして豊受大神は<br>丹波の国から伊勢へ迎えられ<br>外宮に祀られました。</p>
+            <p style="margin-bottom: var(--gap);">それからおよそ千五百年<br>毎日、朝と夕の二度<br>神様方のお食事を整えて<br>お供えする祭りが<br>今日まで一日も欠かさず続いています。</p>
+            <p style="margin-bottom: var(--gap);">誰かの毎日の食事を整え<br>黙って続けてきた神様。</p>
+            <p style="margin-bottom: var(--gap);">まるででぃあ様そのもののような神様です。</p>
+            <p style="margin-bottom: var(--gap);">でも、ここからが大切なところです。</p>
+            <p style="margin-bottom: var(--gap);">そのお供えのお食事は<br>天照大御神だけのものではありません。</p>
+            <p style="margin-bottom: var(--gap);">豊受大神ご自身にも<br>同じお食事が捧げられていると<br>伝わっています。</p>
+            <p style="margin-bottom: var(--gap);">天照大御神が豊受大神を呼んだ理由も<br>「ひとりでは安らかに食べられない」<br>からでした。</p>
+            <p style="margin-bottom: var(--gap);">お食事は<br>誰かと分け合って<br>はじめて安らかなものになる。</p>
+            <p style="margin-bottom: var(--gap);">整える神様は<br>同じ食卓に座る相手として<br>呼ばれた神様でもあったのです。</p>
+            <p style="margin-bottom: var(--gap);"><mark>与える神様は</mark><br><mark>受け取る神様でもあるのです。</mark></p>
+            <p style="margin-bottom: var(--gap);">「差し出す側」だけを歩いてきた<br>でぃあ様のそばに<br>この神様がいる。</p>
+            <p style="margin-bottom: var(--gap);">それは<br>「あなたの分も、ここにある」と<br>伝えるためにほかなりません。</p>
             <img src="../鑑定画像/豊受大神.png" alt="豊受大神" class="guardian-image">
         </div>
 
         <div id="essenceSentinel"></div>
         <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
         <div class="section">
-            <p style="margin-bottom: 90px;">その豊受大神が<br>でぃあ様のこの先の景色を<br>見せてくれました。</p>
-            <p style="margin-bottom: 90px;">2028年の春<br>ある月末の夜に視えている景色です。</p>
-            <p style="margin-bottom: 90px;">夕食のあとの食卓です。</p>
-            <p style="margin-bottom: 90px;">台所には<br>炊きたてのご飯の甘い匂いが<br>まだ残っています。</p>
-            <p style="margin-bottom: 90px;">食卓の端で<br>でぃあ様が通帳を開いています。</p>
-            <p style="margin-bottom: 90px;">数字を目で追っても<br>胸はざわつきません。</p>
-            <p style="margin-bottom: 90px;">月末なのに<br>ちゃんと残っているものがある。</p>
-            <p style="margin-bottom: 90px;">その事実に<br>でぃあ様は小さく息をつきます。</p>
-            <p style="margin-bottom: 90px;">食卓を囲む息子さんと娘さんの<br>笑い声が重なって<br>どちらが先に笑ったのか<br>わからないほどです。</p>
-            <p style="margin-bottom: 90px;">いつものでぃあ様なら<br>二人の器を先によそい<br>ご自分は最後に<br>立ったまま箸をつけているところ。</p>
-            <p style="margin-bottom: 90px;">けれどその夜は<br>でぃあ様が先に<br>ご自分の器にご飯をよそっています。</p>
-            <p style="margin-bottom: 90px;">湯気の向こうで<br>二人と同じ時に<br>「いただきます」と手を合わせる。</p>
-            <p style="margin-bottom: 90px;">そして、ふと気づきます。</p>
-            <p style="margin-bottom: 90px;">あれほど自分の分を<br>後ろに置き続けていた自分が<br>いつのまにか同じ食卓の真ん中で<br>笑っていることに。</p>
-            <p style="margin-bottom: 90px;">その兆しが<br>はっきりと視えています。</p>
-            <p style="margin-bottom: 90px;">最初の変化が訪れるのは<br>11月に入る頃です。</p>
-            <p style="margin-bottom: 90px;">ここから先は<br>この食卓へ向かう道を<br>四つに分けてお伝えしていきますね。</p>
+            <p style="margin-bottom: var(--gap);">その豊受大神が<br>でぃあ様のこの先の景色を<br>見せてくれました。</p>
+            <p style="margin-bottom: var(--gap);">2028年の春<br>ある月末の夜に視えている景色です。</p>
+            <p style="margin-bottom: var(--gap);">夕食のあとの食卓です。</p>
+            <p style="margin-bottom: var(--gap);">台所には<br>炊きたてのご飯の甘い匂いが<br>まだ残っています。</p>
+            <p style="margin-bottom: var(--gap);">食卓の端で<br>でぃあ様が通帳を開いています。</p>
+            <p style="margin-bottom: var(--gap);">数字を目で追っても<br>胸はざわつきません。</p>
+            <p style="margin-bottom: var(--gap);">月末なのに<br>ちゃんと残っているものがある。</p>
+            <p style="margin-bottom: var(--gap);">その事実に<br>でぃあ様は小さく息をつきます。</p>
+            <p style="margin-bottom: var(--gap);">食卓を囲む息子さんと娘さんの<br>笑い声が重なって<br>どちらが先に笑ったのか<br>わからないほどです。</p>
+            <p style="margin-bottom: var(--gap);">いつものでぃあ様なら<br>二人の器を先によそい<br>ご自分は最後に<br>立ったまま箸をつけているところ。</p>
+            <p style="margin-bottom: var(--gap);">けれどその夜は<br>でぃあ様が先に<br>ご自分の器にご飯をよそっています。</p>
+            <p style="margin-bottom: var(--gap);">湯気の向こうで<br>二人と同じ時に<br>「いただきます」と手を合わせる。</p>
+            <p style="margin-bottom: var(--gap);">そして、ふと気づきます。</p>
+            <p style="margin-bottom: var(--gap);">あれほど自分の分を<br>後ろに置き続けていた自分が<br>いつのまにか同じ食卓の真ん中で<br>笑っていることに。</p>
+            <p style="margin-bottom: var(--gap);">その兆しが<br>はっきりと視えています。</p>
+            <p style="margin-bottom: var(--gap);">最初の変化が訪れるのは<br>11月に入る頃です。</p>
+            <p style="margin-bottom: var(--gap);">ここから先は<br>この食卓へ向かう道を<br>四つに分けてお伝えしていきますね。</p>
             <p style="margin-bottom: 0;">豊かさが動く時期のこと<br>お金が留まる流れのこと<br>お仕事とご自分の持ち味のこと<br>守りの高め方と<br>あの方とのご縁のことです。</p>
         </div>
 
         <div id="deitySentinel"></div>
         <h2 class="emoji-header" id="sec-1">⛩️ 1. 豊かさが動く時期</h2>
         <div class="section">
-            <p style="margin-bottom: 90px;">蓄えが残り始めるのは<br>いつなのか。</p>
-            <p style="margin-bottom: 90px;">それが、まずいちばんに<br>知りたいことでしたね。</p>
-            <p style="margin-bottom: 90px;">守護神にその時期を尋ねると<br>先に別の景色を見せてくれました。</p>
-            <p style="margin-bottom: 90px;">夜の台所です。</p>
-            <p style="margin-bottom: 90px;">食卓には<br>息子さんと娘さんの分が<br>きちんと整えられています。</p>
-            <p style="margin-bottom: 90px;">その台所で<br>豊受大神が<br>湯気の立つ小さなお椀を<br>でぃあ様の両手にそっと乗せています。</p>
-            <p style="margin-bottom: 90px;">でぃあ様は<br>お椀を持ったまま<br>受け取っていいのか迷うように<br>まだ立ち尽くしています。</p>
-            <p style="margin-bottom: 90px;">これを視たとき<br>私は思わず胸が詰まりました。</p>
-            <p style="margin-bottom: 90px;">この光景と一緒に<br>伝わってきたことがあります。</p>
-            <p style="margin-bottom: 90px;">蓄えが残らなかったのは<br>頑張りが足りなかったからではありません。</p>
-            <p style="margin-bottom: 90px;">ご自分の分を受け取る手が<br>いつも空いていなかったのです。</p>
-            <p style="margin-bottom: 90px;">ここ五年ほど<br>働いても働いても<br>手応えが薄いと感じる時期が<br>続いてきませんでしたか。</p>
-            <p style="margin-bottom: 90px;">それは<br>実りの手前の助走のような時間でした。</p>
-            <p style="margin-bottom: 90px;">春に芽吹く前の<br>土の中の時間と同じです。</p>
-            <p style="margin-bottom: 90px;">そして今年は<br>お金の芽と<br>お金の不安が<br>同じ場所に並んで立つ年です。</p>
-            <p style="margin-bottom: 90px;">お金の話が出るほど<br>不安も一緒に膨らんでしまう。</p>
-            <p style="margin-bottom: 90px;">それは<br>今年の巡りが、そうさせているのです。</p>
-            <p style="margin-bottom: 90px;">でも、ここからです。</p>
-            <p style="margin-bottom: 90px;">豊かさが動き出すのは<br>2027年です。</p>
-            <p style="margin-bottom: 90px;">2月の立春を過ぎた頃から<br>才能に火が灯りはじめ<br>3月から4月にかけて<br>止まっていた扉が動きだします。</p>
-            <p style="margin-bottom: 90px;">そして5月<br>お仕事のご縁が<br>形になりはじめる月が巡ってきます。</p>
-            <p style="margin-bottom: 90px;">7月は<br>整理と確定が重なる月です。</p>
-            <p style="margin-bottom: 90px;">急ぎの決断や大きな契約は<br>この月を避けてください。</p>
-            <p style="margin-bottom: 90px;">そして2028年<br>通帳の数字が<br>目に見えて変わりはじめます。</p>
-            <p style="margin-bottom: 90px;">2028年から2031年にかけて<br>その土台は<br>しっかりと固まっていきます。</p>
-            <p style="margin-bottom: 90px;">先ほどの月末の食卓は<br>この2028年に重なっています。</p>
-            <p style="margin-bottom: 90px;">そこで、行動を一つお渡しします。</p>
-            <p style="margin-bottom: 90px;">今夜から<br>夕食の席で<br>ご自分の器を一番先によそってください。</p>
-            <p style="margin-bottom: 90px;">そして心の中で<br>「私の分も、いただきます」と<br>言ってから<br>お子さんたちの分をよそう。</p>
-            <p style="margin-bottom: 90px;">これが<br>空いた手でお椀を受け取るための<br>豊受大神への合図になります。</p>
-            <p style="margin-bottom: 90px;">続けるうちに<br>温かいうちに食べられる日が増え<br>ご自分の分を<br>「残ったら」ではなく「先に」と<br>考えられるようになっていきます。</p>
-            <p style="margin-bottom: 90px;">ただ<br>受け取る手が空いても<br>入ってきたものが<br>手元に残るとは限りません。</p>
+            <p style="margin-bottom: var(--gap);">蓄えが残り始めるのは<br>いつなのか。</p>
+            <p style="margin-bottom: var(--gap);">それが、まずいちばんに<br>知りたいことでしたね。</p>
+            <p style="margin-bottom: var(--gap);">守護神にその時期を尋ねると<br>先に別の景色を見せてくれました。</p>
+            <p style="margin-bottom: var(--gap);">夜の台所です。</p>
+            <p style="margin-bottom: var(--gap);">食卓には<br>息子さんと娘さんの分が<br>きちんと整えられています。</p>
+            <p style="margin-bottom: var(--gap);">その台所で<br>豊受大神が<br>湯気の立つ小さなお椀を<br>でぃあ様の両手にそっと乗せています。</p>
+            <p style="margin-bottom: var(--gap);">でぃあ様は<br>お椀を持ったまま<br>受け取っていいのか迷うように<br>まだ立ち尽くしています。</p>
+            <p style="margin-bottom: var(--gap);">これを視たとき<br>私は思わず胸が詰まりました。</p>
+            <p style="margin-bottom: var(--gap);">この光景と一緒に<br>伝わってきたことがあります。</p>
+            <p style="margin-bottom: var(--gap);"><mark>蓄えが残らなかったのは</mark><br><mark>頑張りが足りなかったからではありません。</mark></p>
+            <p style="margin-bottom: var(--gap);">ご自分の分を受け取る手が<br>いつも空いていなかったのです。</p>
+            <p style="margin-bottom: var(--gap);">ここ五年ほど<br>働いても働いても<br>手応えが薄いと感じる時期が<br>続いてきませんでしたか。</p>
+            <p style="margin-bottom: var(--gap);">それは<br>実りの手前の助走のような時間でした。</p>
+            <p style="margin-bottom: var(--gap);">春に芽吹く前の<br>土の中の時間と同じです。</p>
+            <p style="margin-bottom: var(--gap);">そして今年は<br>お金の芽と<br>お金の不安が<br>同じ場所に並んで立つ年です。</p>
+            <p style="margin-bottom: var(--gap);">お金の話が出るほど<br>不安も一緒に膨らんでしまう。</p>
+            <p style="margin-bottom: var(--gap);">それは<br>今年の巡りが、そうさせているのです。</p>
+            <p style="margin-bottom: var(--gap);">でも、ここからです。</p>
+            <p style="margin-bottom: var(--gap);"><mark>豊かさが動き出すのは</mark><br><mark>2027年です。</mark></p>
+            <p style="margin-bottom: var(--gap);">2月の立春を過ぎた頃から<br>才能に火が灯りはじめ<br>3月から4月にかけて<br>止まっていた扉が動きだします。</p>
+            <p style="margin-bottom: var(--gap);">そして5月<br>お仕事のご縁が<br>形になりはじめる月が巡ってきます。</p>
+            <p style="margin-bottom: var(--gap);">7月は<br>整理と確定が重なる月です。</p>
+            <p style="margin-bottom: var(--gap);">急ぎの決断や大きな契約は<br>この月を避けてください。</p>
+            <p style="margin-bottom: var(--gap);"><mark>そして2028年</mark><br><mark>通帳の数字が</mark><br><mark>目に見えて変わりはじめます。</mark></p>
+            <p style="margin-bottom: var(--gap);">2028年から2031年にかけて<br>その土台は<br>しっかりと固まっていきます。</p>
+            <p style="margin-bottom: var(--gap);">先ほどの月末の食卓は<br>この2028年に重なっています。</p>
+            <p style="margin-bottom: var(--gap);">そこで、行動を一つお渡しします。</p>
+            <p style="margin-bottom: var(--gap);"><strong>今夜から</strong><br><strong>夕食の席で</strong><br><strong>ご自分の器を一番先によそってください。</strong></p>
+            <p style="margin-bottom: var(--gap);">そして心の中で<br>「私の分も、いただきます」と<br>言ってから<br>お子さんたちの分をよそう。</p>
+            <p style="margin-bottom: var(--gap);">これが<br>空いた手でお椀を受け取るための<br>豊受大神への合図になります。</p>
+            <p style="margin-bottom: var(--gap);">続けるうちに<br>温かいうちに食べられる日が増え<br>ご自分の分を<br>「残ったら」ではなく「先に」と<br>考えられるようになっていきます。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>受け取る手が空いても<br>入ってきたものが<br>手元に残るとは限りません。</p>
             <p style="margin-bottom: 0;">では<br>入ったお金は<br>どこへ消えていくのでしょうか。</p>
         </div>
 
         <h2 class="emoji-header" id="sec-2">⛩️ 2. お金が留まる流れ</h2>
         <div class="section">
-            <p style="margin-bottom: 90px;">入ったお金が<br>手元に残って安心になる。</p>
-            <p style="margin-bottom: 90px;">そのために<br>どこを整えればいいのか。</p>
-            <p style="margin-bottom: 90px;">まず、原因からお伝えします。</p>
-            <p style="margin-bottom: 90px;">留まらないのは<br>お金を受け止める器が<br>でぃあ様の暮らしの中に<br>まだ十分に育っていなかったのです。</p>
-            <p style="margin-bottom: 90px;">でぃあ様の魂は<br>人を守り、学び、気づかう力が<br>とても豊かです。</p>
-            <p style="margin-bottom: 90px;">その分<br>入ってきたものは<br>器に溜まる前に<br>暮らしと家族のほうへ<br>先に流れていきます。</p>
-            <p style="margin-bottom: 90px;">さらに<br>入る道はあるのに<br>お子さんのための出費と<br>ご自身の体を労わる出費が<br>両側から挟み込むように<br>削っていきます。</p>
-            <p style="margin-bottom: 90px;">そのうえ<br>お金のことになると<br>「私がなんとかしなければ」と<br>ひとりで決めて<br>ひとりで抱え込んでしまう。</p>
-            <p style="margin-bottom: 90px;">ここでも<br>自分の分を最後に置く癖が<br>出ていたのです。</p>
-            <p style="margin-bottom: 90px;">「残ったら」のお金は<br>ほとんど残りません。</p>
-            <p style="margin-bottom: 90px;">でも、ここからが大切なところです。</p>
-            <p style="margin-bottom: 90px;">五年ほど前から<br>でぃあ様の暮らしには<br>三つのものが<br>少しずつ運ばれてきています。</p>
-            <p style="margin-bottom: 90px;">持ち味を外へ出す力と<br>お金を受け止める器と<br>暮らしを支える仕組み。</p>
-            <p style="margin-bottom: 90px;">今はその仕上げに<br>入っていく時期です。</p>
-            <p style="margin-bottom: 90px;">整えるべきは<br>入ってくる金額より<br>器と穴のほうです。</p>
-            <p style="margin-bottom: 90px;">そこで、行動を一つお渡しします。</p>
-            <p style="margin-bottom: 90px;">お金が入る日に<br>ほかの引き落としより先に<br>ご自分の取り分を<br>別の口座へ移してください。</p>
-            <p style="margin-bottom: 90px;">額は小さくて構いません。</p>
-            <p style="margin-bottom: 90px;">移すときに<br>「私の分も、いただきます」と<br>一言添えます。</p>
-            <p style="margin-bottom: 90px;">その一言が<br>受け取る手を空けておく<br>いちばん確かな方法になります。</p>
-            <p style="margin-bottom: 90px;">続けるうちに<br>「残ったら」だった取り分が<br>「先に」に変わり<br>器の底に確かな重みが溜まっていきます。</p>
-            <p style="margin-bottom: 90px;">では<br>その器に何を入れていくのか。</p>
+            <p style="margin-bottom: var(--gap);">入ったお金が<br>手元に残って安心になる。</p>
+            <p style="margin-bottom: var(--gap);">そのために<br>どこを整えればいいのか。</p>
+            <p style="margin-bottom: var(--gap);">まず、原因からお伝えします。</p>
+            <p style="margin-bottom: var(--gap);">留まらないのは<br>お金を受け止める器が<br>でぃあ様の暮らしの中に<br>まだ十分に育っていなかったのです。</p>
+            <p style="margin-bottom: var(--gap);">でぃあ様の魂は<br>人を守り、学び、気づかう力が<br>とても豊かです。</p>
+            <p style="margin-bottom: var(--gap);">その分<br>入ってきたものは<br>器に溜まる前に<br>暮らしと家族のほうへ<br>先に流れていきます。</p>
+            <p style="margin-bottom: var(--gap);">さらに<br>入る道はあるのに<br>お子さんのための出費と<br>ご自身の体を労わる出費が<br>両側から挟み込むように<br>削っていきます。</p>
+            <p style="margin-bottom: var(--gap);">そのうえ<br>お金のことになると<br>「私がなんとかしなければ」と<br>ひとりで決めて<br>ひとりで抱え込んでしまう。</p>
+            <p style="margin-bottom: var(--gap);">ここでも<br>自分の分を最後に置く癖が<br>出ていたのです。</p>
+            <p style="margin-bottom: var(--gap);">「残ったら」のお金は<br>ほとんど残りません。</p>
+            <p style="margin-bottom: var(--gap);">でも、ここからが大切なところです。</p>
+            <p style="margin-bottom: var(--gap);">五年ほど前から<br>でぃあ様の暮らしには<br>三つのものが<br>少しずつ運ばれてきています。</p>
+            <p style="margin-bottom: var(--gap);">持ち味を外へ出す力と<br>お金を受け止める器と<br>暮らしを支える仕組み。</p>
+            <p style="margin-bottom: var(--gap);">今はその仕上げに<br>入っていく時期です。</p>
+            <p style="margin-bottom: var(--gap);">整えるべきは<br>入ってくる金額より<br>器と穴のほうです。</p>
+            <p style="margin-bottom: var(--gap);">そこで、行動を一つお渡しします。</p>
+            <p style="margin-bottom: var(--gap);"><strong>お金が入る日に</strong><br><strong>ほかの引き落としより先に</strong><br><strong>ご自分の取り分を</strong><br><strong>別の口座へ移してください。</strong></p>
+            <p style="margin-bottom: var(--gap);">額は小さくて構いません。</p>
+            <p style="margin-bottom: var(--gap);">移すときに<br>「私の分も、いただきます」と<br>一言添えます。</p>
+            <p style="margin-bottom: var(--gap);">その一言が<br>受け取る手を空けておく<br>いちばん確かな方法になります。</p>
+            <p style="margin-bottom: var(--gap);">続けるうちに<br>「残ったら」だった取り分が<br>「先に」に変わり<br>器の底に確かな重みが溜まっていきます。</p>
+            <p style="margin-bottom: var(--gap);">では<br>その器に何を入れていくのか。</p>
             <p style="margin-bottom: 0;">でぃあ様の持ち味は<br>どんな形で<br>お金に変わっていくのでしょうか。</p>
         </div>
 
         <h2 class="emoji-header" id="sec-3">⛩️ 3. 守護神の力の活かし方</h2>
         <div class="section">
-            <p style="margin-bottom: 90px;">この問いに<br>守護神が何より強く伝えてきたことが<br>あります。</p>
-            <p style="margin-bottom: 90px;">豊受大神は<br>人を養い育てる<br>実りの神様。</p>
-            <p style="margin-bottom: 90px;">土の恵みから伸びる若葉の色は<br>でぃあ様のオーラと同じ<br>翡翠色です。</p>
-            <p style="margin-bottom: 90px;">守る神様と<br>守られる人が<br>同じ根から伸びている。</p>
-            <p style="margin-bottom: 90px;">これは、とても強い巡りです。</p>
-            <p style="margin-bottom: 90px;">だからでぃあ様の持ち味は<br>人の暮らしを整えるところで<br>いちばん強く働きます。</p>
-            <p style="margin-bottom: 90px;">ご質問いただいた<br>向いているお仕事は<br>三つの方向に分かれて視えています。</p>
-            <p style="margin-bottom: 90px;">一つ目は<br>食と暮らしを整えるお仕事。</p>
-            <p style="margin-bottom: 90px;">飲食や、食の養生<br>食を通じて人が集まる場づくり。</p>
-            <p style="margin-bottom: 90px;">今のカフェでの経験は<br>ちゃんと活きてきます。</p>
-            <p style="margin-bottom: 90px;">でぃあ様の持ち味が<br>そのまま働く場所です。</p>
-            <p style="margin-bottom: 90px;">二つ目は<br>型と手仕事のお仕事。</p>
-            <p style="margin-bottom: 90px;">洋服のお直し<br>型紙づくり<br>子ども服や小物。</p>
-            <p style="margin-bottom: 90px;">パタンナーのお仕事で<br>身につけた力が<br>もう一度、形になって返ってきます。</p>
-            <p style="margin-bottom: 90px;">三つ目は<br>言葉と体で導くお仕事。</p>
-            <p style="margin-bottom: 90px;">ヨガの少人数のレッスンや<br>個別のご相談。</p>
-            <p style="margin-bottom: 90px;">一人ひとりの体と気持ちに合わせて<br>やさしく導くお仕事です。</p>
-            <p style="margin-bottom: 90px;">ここで、ヨガのことをお伝えします。</p>
-            <p style="margin-bottom: 90px;">資格を取っただけになってしまった。</p>
-            <p style="margin-bottom: 90px;">そう感じておられましたが<br>才能は、ちゃんとあります。</p>
-            <p style="margin-bottom: 90px;">学ぶ力が強い人ほど<br>外へ出す側が追いつくまでに<br>時間がかかります。</p>
-            <p style="margin-bottom: 90px;">学んだものを人に届ける出口が<br>まだ細かっただけです。</p>
-            <p style="margin-bottom: 90px;">学んだものは<br>何一つ無駄になっていません。</p>
-            <p style="margin-bottom: 90px;">型紙の設計力も<br>ヨガの学びも<br>カフェで培った人を迎える力も<br>同じ根から出ています。</p>
-            <p style="margin-bottom: 90px;">一人ひとりに合う形を考えて<br>整えて<br>言葉で導く力です。</p>
-            <p style="margin-bottom: 90px;">あの癖が、ここにも顔を出していました。</p>
-            <p style="margin-bottom: 90px;">「持ち味は<br>誰かの役に立つ形になってから」と<br>出口の手前で<br>いつも自分の分を後ろに置いていたのです。</p>
-            <p style="margin-bottom: 90px;">そして<br>ダブルワークのご相談です。</p>
-            <p style="margin-bottom: 90px;">答えは<br>「向いています。ただし、条件つきで」です。</p>
-            <p style="margin-bottom: 90px;">条件は二つあります。</p>
-            <p style="margin-bottom: 90px;">一つ目は<br>時間を切り売りするお仕事を<br>二つ掛け持ちしないこと。</p>
-            <p style="margin-bottom: 90px;">安定の柱としてのお仕事と<br>ご自分の持ち味を<br>小さく育てる柱。</p>
-            <p style="margin-bottom: 90px;">この二本立てで考えてください。</p>
-            <p style="margin-bottom: 90px;">二つ目は<br>持ち味の柱を<br>先ほどの三つの方向から<br>一つに絞ること。</p>
-            <p style="margin-bottom: 90px;">体力と<br>心が動く気持ちに合うものを<br>選んでください。</p>
-            <p style="margin-bottom: 90px;">でぃあ様には<br>大きな組織の中で評価される働き方より<br>少人数でご自分の名前で立つ働き方が<br>合っています。</p>
-            <p style="margin-bottom: 90px;">そして<br>体力に見合った配分を<br>先に決めてください。</p>
-            <p style="margin-bottom: 90px;">休みの日を<br>先に予定へ入れてから<br>シフトを考える。</p>
-            <p style="margin-bottom: 90px;">その順番が<br>持ち味の柱を長く守ります。</p>
-            <p style="margin-bottom: 90px;">最初の一歩は<br>2027年の2月に<br>小さく試す。</p>
-            <p style="margin-bottom: 90px;">4月から5月にかけて<br>形になっていきます。</p>
-            <p style="margin-bottom: 90px;">そこで、行動を一つお渡しします。</p>
-            <p style="margin-bottom: 90px;">ノートを開いて<br>「やってみたいこと」を<br>三つ書き出してください。</p>
-            <p style="margin-bottom: 90px;">誰の役に立つかより<br>やっていて自分が楽しいか。</p>
-            <p style="margin-bottom: 90px;">それだけで<br>一つに丸をつけます。</p>
-            <p style="margin-bottom: 90px;">その一つが<br>持ち味の柱の最初の一本です。</p>
-            <p style="margin-bottom: 90px;">「まだ私なんかが」と手を止めていた場所で<br>「私の分も、いただきます」を使う<br>最初の練習になります。</p>
-            <p style="margin-bottom: 90px;">続けるうちに<br>出口の前で立ち止まる日が減り<br>学んだものが<br>人の手に届きはじめます。</p>
+            <p style="margin-bottom: var(--gap);">この問いに<br>守護神が何より強く伝えてきたことが<br>あります。</p>
+            <p style="margin-bottom: var(--gap);">豊受大神は<br>人を養い育てる<br>実りの神様。</p>
+            <p style="margin-bottom: var(--gap);">土の恵みから伸びる若葉の色は<br>でぃあ様のオーラと同じ<br>翡翠色です。</p>
+            <p style="margin-bottom: var(--gap);">守る神様と<br>守られる人が<br>同じ根から伸びている。</p>
+            <p style="margin-bottom: var(--gap);">これは、とても強い巡りです。</p>
+            <p style="margin-bottom: var(--gap);">だからでぃあ様の持ち味は<br>人の暮らしを整えるところで<br>いちばん強く働きます。</p>
+            <p style="margin-bottom: var(--gap);">ご質問いただいた<br>向いているお仕事は<br>三つの方向に分かれて視えています。</p>
+            <p style="margin-bottom: var(--gap);">一つ目は<br>食と暮らしを整えるお仕事。</p>
+            <p style="margin-bottom: var(--gap);">飲食や、食の養生<br>食を通じて人が集まる場づくり。</p>
+            <p style="margin-bottom: var(--gap);">今のカフェでの経験は<br>ちゃんと活きてきます。</p>
+            <p style="margin-bottom: var(--gap);">でぃあ様の持ち味が<br>そのまま働く場所です。</p>
+            <p style="margin-bottom: var(--gap);">二つ目は<br>型と手仕事のお仕事。</p>
+            <p style="margin-bottom: var(--gap);">洋服のお直し<br>型紙づくり<br>子ども服や小物。</p>
+            <p style="margin-bottom: var(--gap);">パタンナーのお仕事で<br>身につけた力が<br>もう一度、形になって返ってきます。</p>
+            <p style="margin-bottom: var(--gap);">三つ目は<br>言葉と体で導くお仕事。</p>
+            <p style="margin-bottom: var(--gap);">ヨガの少人数のレッスンや<br>個別のご相談。</p>
+            <p style="margin-bottom: var(--gap);">一人ひとりの体と気持ちに合わせて<br>やさしく導くお仕事です。</p>
+            <p style="margin-bottom: var(--gap);">ここで、ヨガのことをお伝えします。</p>
+            <p style="margin-bottom: var(--gap);">資格を取っただけになってしまった。</p>
+            <p style="margin-bottom: var(--gap);">そう感じておられましたが<br>才能は、ちゃんとあります。</p>
+            <p style="margin-bottom: var(--gap);">学ぶ力が強い人ほど<br>外へ出す側が追いつくまでに<br>時間がかかります。</p>
+            <p style="margin-bottom: var(--gap);">学んだものを人に届ける出口が<br>まだ細かっただけです。</p>
+            <p style="margin-bottom: var(--gap);">学んだものは<br>何一つ無駄になっていません。</p>
+            <p style="margin-bottom: var(--gap);">型紙の設計力も<br>ヨガの学びも<br>カフェで培った人を迎える力も<br>同じ根から出ています。</p>
+            <p style="margin-bottom: var(--gap);">一人ひとりに合う形を考えて<br>整えて<br>言葉で導く力です。</p>
+            <p style="margin-bottom: var(--gap);">あの癖が、ここにも顔を出していました。</p>
+            <p style="margin-bottom: var(--gap);">「持ち味は<br>誰かの役に立つ形になってから」と<br>出口の手前で<br>いつも自分の分を後ろに置いていたのです。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>ダブルワークのご相談です。</p>
+            <p style="margin-bottom: var(--gap);">答えは<br>「向いています。ただし、条件つきで」です。</p>
+            <p style="margin-bottom: var(--gap);">条件は二つあります。</p>
+            <p style="margin-bottom: var(--gap);">一つ目は<br>時間を切り売りするお仕事を<br>二つ掛け持ちしないこと。</p>
+            <p style="margin-bottom: var(--gap);">安定の柱としてのお仕事と<br>ご自分の持ち味を<br>小さく育てる柱。</p>
+            <p style="margin-bottom: var(--gap);">この二本立てで考えてください。</p>
+            <p style="margin-bottom: var(--gap);">二つ目は<br>持ち味の柱を<br>先ほどの三つの方向から<br>一つに絞ること。</p>
+            <p style="margin-bottom: var(--gap);">体力と<br>心が動く気持ちに合うものを<br>選んでください。</p>
+            <p style="margin-bottom: var(--gap);">でぃあ様には<br>大きな組織の中で評価される働き方より<br>少人数でご自分の名前で立つ働き方が<br>合っています。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>体力に見合った配分を<br>先に決めてください。</p>
+            <p style="margin-bottom: var(--gap);">休みの日を<br>先に予定へ入れてから<br>シフトを考える。</p>
+            <p style="margin-bottom: var(--gap);">その順番が<br>持ち味の柱を長く守ります。</p>
+            <p style="margin-bottom: var(--gap);">最初の一歩は<br>2027年の2月に<br>小さく試す。</p>
+            <p style="margin-bottom: var(--gap);">4月から5月にかけて<br>形になっていきます。</p>
+            <p style="margin-bottom: var(--gap);">そこで、行動を一つお渡しします。</p>
+            <p style="margin-bottom: var(--gap);">ノートを開いて<br>「やってみたいこと」を<br>三つ書き出してください。</p>
+            <p style="margin-bottom: var(--gap);">誰の役に立つかより<br>やっていて自分が楽しいか。</p>
+            <p style="margin-bottom: var(--gap);">それだけで<br>一つに丸をつけます。</p>
+            <p style="margin-bottom: var(--gap);">その一つが<br>持ち味の柱の最初の一本です。</p>
+            <p style="margin-bottom: var(--gap);">「まだ私なんかが」と手を止めていた場所で<br>「私の分も、いただきます」を使う<br>最初の練習になります。</p>
+            <p style="margin-bottom: var(--gap);">続けるうちに<br>出口の前で立ち止まる日が減り<br>学んだものが<br>人の手に届きはじめます。</p>
             <p style="margin-bottom: 0;">ただ<br>その持ち味を育てるあいだにも<br>でぃあ様の守りを<br>削ってしまう場面があります。</p>
         </div>
 
         <h2 class="emoji-header" id="sec-4">⛩️ 4. 守護の力を高める方法</h2>
         <div class="section">
-            <p style="margin-bottom: 90px;">入ってきたお金も<br>お仕事の持ち味も<br>削られずに守るために。</p>
-            <p style="margin-bottom: 90px;">守護神が<br>いちばん大切にしていたのは<br>この守りでした。</p>
-            <p style="margin-bottom: 90px;">まず、良いお話からです。</p>
-            <p style="margin-bottom: 90px;">でぃあ様には<br>強い守りが二重に重なっています。</p>
-            <p style="margin-bottom: 90px;">ご自分が生まれ育った側にも<br>これから先を共に歩くお子さんの側にも<br>本当に困ったとき<br>どこからか助けてくれる人が現れる<br>運命が刻まれています。</p>
-            <p style="margin-bottom: 90px;">息子さんと娘さんも<br>でぃあ様と同じ<br>若葉のような翡翠色の光を纏っています。</p>
-            <p style="margin-bottom: 90px;">同じ色の光が<br>三つ重なって<br>お互いを包み合っている。</p>
-            <p style="margin-bottom: 90px;">お子さんたちは<br>でぃあ様の大きな守りです。</p>
-            <p style="margin-bottom: 90px;">そのうえで<br>ご質問いただいた<br>「良い子」のことです。</p>
-            <p style="margin-bottom: 90px;">その成り立ちは<br>冒頭でお伝えしたとおりです。</p>
-            <p style="margin-bottom: 90px;">そのうえで<br>でぃあ様は家の中でも外でも<br>同じ穏やかな顔でいられる人です。</p>
-            <p style="margin-bottom: 90px;">だから「誰の前でもずっと」に<br>なっていきました。</p>
-            <p style="margin-bottom: 90px;">責めるところは<br>どこにもありません。</p>
-            <p style="margin-bottom: 90px;">そして今<br>「嫌われてもいい」と<br>良い人をやめる書き換えを<br>実行されています。</p>
-            <p style="margin-bottom: 90px;">その方向は<br>正しいです。</p>
-            <p style="margin-bottom: 90px;">今年は<br>ご自分で決める力が強まる年です。</p>
-            <p style="margin-bottom: 90px;">お母様の気持ちに合わせてきた習慣が<br>揺らぎやすい巡りも重なっていて<br>書き換えを後押しする追い風が吹いています。</p>
-            <p style="margin-bottom: 90px;">ただ<br>守りを削られやすい場面が<br>三つあります。</p>
-            <p style="margin-bottom: 90px;">一つ目は<br>お金の貸し借りや、保証<br>契約書類のこと。</p>
-            <p style="margin-bottom: 90px;">その場で返事をせず<br>一度持ち帰ってください。</p>
-            <p style="margin-bottom: 90px;">二つ目は<br>言葉の受け取り違い。</p>
-            <p style="margin-bottom: 90px;">来年は<br>口約束や言葉の行き違いが<br>起きやすい年です。</p>
-            <p style="margin-bottom: 90px;">大事なことは<br>文字に残してください。</p>
-            <p style="margin-bottom: 90px;">三つ目は<br>お体と気力のこと。<br>第3章でお伝えした<br>「休みを先に決める」を<br>守ってください。</p>
-            <p style="margin-bottom: 90px;">そして<br>ご質問いただいた<br>真二さんとのご縁についてです。</p>
-            <p style="margin-bottom: 90px;">まず、どんなご縁なのか。</p>
-            <p style="margin-bottom: 90px;">でぃあ様と真二さんの間には<br>出会うべくして結ばれる線が<br>あります。</p>
-            <p style="margin-bottom: 90px;">真二さんは<br>責任の重さをひとりで背負い<br>ほっと息をつける場所を<br>ご自分の中に持てずにいる人です。</p>
-            <p style="margin-bottom: 90px;">でぃあ様は<br>その真二さんに<br>安らぎを運べる人です。</p>
-            <p style="margin-bottom: 90px;">そして真二さんは<br>でぃあ様がまだ外に出していない<br>本音と持ち味に<br>火を灯してくれる人です。</p>
-            <p style="margin-bottom: 90px;">互いの欠けた部分を<br>補い合う縁です。</p>
-            <p style="margin-bottom: 90px;">さらに真二さんは<br>お母様の気持ちに合わせてきた<br>「良い子」の枠の外にいる人。</p>
-            <p style="margin-bottom: 90px;">その枠を破る<br>きっかけになった縁でもあります。</p>
-            <p style="margin-bottom: 90px;">ただ<br>この縁には<br>表に出にくい形が重なっています。</p>
-            <p style="margin-bottom: 90px;">近づくほど<br>真二さんの現実の壁にぶつかりやすい。</p>
-            <p style="margin-bottom: 90px;">そういう縁です。</p>
-            <p style="margin-bottom: 90px;">今、距離があるのは<br>愛情が消えたからではないと<br>伝わってきます。</p>
-            <p style="margin-bottom: 90px;">真二さんは今年<br>ご自身の内側の整理がつかず<br>受け取る余裕を<br>失っている年なのです。</p>
-            <p style="margin-bottom: 90px;">この先は<br>こう動いていきます。</p>
-            <p style="margin-bottom: 90px;">2026年の今は<br>真二さんの内側が整うのを待つ<br>整理の時期です。</p>
-            <p style="margin-bottom: 90px;">2027年は<br>真二さんを取り巻く環境が動き<br>連絡や関係の形を見直す場面が<br>巡りやすくなります。</p>
-            <p style="margin-bottom: 90px;">2028年の半ば頃から<br>真二さんの環境は<br>さらに大きく動きはじめます。</p>
-            <p style="margin-bottom: 90px;">そのとき<br>お二人のご縁は<br>もう一度、近づく流れに入ります。</p>
-            <p style="margin-bottom: 90px;">真二さんの現実は<br>真二さんが動かすもの。</p>
-            <p style="margin-bottom: 90px;">でぃあ様が整っていれば<br>ご縁のほうから<br>動いてきます。</p>
-            <p style="margin-bottom: 90px;">そして<br>その近づき方は<br>これからのでぃあ様の一歩で<br>変わっていきます。</p>
-            <p style="margin-bottom: 90px;">ひとつだけ<br>はっきりお伝えできることがあります。</p>
-            <p style="margin-bottom: 90px;">縁を動かすのは<br>追うことでも<br>待ち続けることでもありません。</p>
-            <p style="margin-bottom: 90px;">でぃあ様ご自身の火が灯ること。</p>
-            <p style="margin-bottom: 90px;">でぃあ様が<br>ご自分の持ち味に火を灯し<br>自分の分を受け取りはじめたとき<br>この縁は<br>どの形になっても<br>でぃあ様が満たされる方向へ<br>動いていきます。</p>
-            <p style="margin-bottom: 90px;">ここまでお伝えした<br>削られる場面のすべてに<br>共通する鍵があります。</p>
-            <p style="margin-bottom: 90px;">豊受大神の<br>「与える神様は<br>受け取る神様でもある」を<br>暮らしで使うことです。</p>
-            <p style="margin-bottom: 90px;">そこで、行動を一つお渡しします。</p>
-            <p style="margin-bottom: 90px;">胸がざわついた夜は<br>お仕事のことでも<br>真二さんのことでも<br>頼みごとのことでも</p>
-            <p style="margin-bottom: 90px;">相手に伝える前に<br>その気持ちを<br>ノートに一ページ書いてください。</p>
-            <p style="margin-bottom: 90px;">きれいな言葉にしなくて構いません。</p>
-            <p style="margin-bottom: 90px;">「嫌われてもいい」と思ったまま<br>本音のままを書きます。</p>
-            <p style="margin-bottom: 90px;">誰にも見せない<br>でぃあ様だけの一ページです。</p>
-            <p style="margin-bottom: 90px;">本音という自分の分を<br>先にいただく練習になります。</p>
-            <p style="margin-bottom: 90px;">続けるうちに<br>相手に伝えるときの言葉が<br>自然と穏やかに<br>まっすぐになっていきます。</p>
+            <p style="margin-bottom: var(--gap);">入ってきたお金も<br>お仕事の持ち味も<br>削られずに守るために。</p>
+            <p style="margin-bottom: var(--gap);">守護神が<br>いちばん大切にしていたのは<br>この守りでした。</p>
+            <p style="margin-bottom: var(--gap);">まず、良いお話からです。</p>
+            <p style="margin-bottom: var(--gap);">でぃあ様には<br>強い守りが二重に重なっています。</p>
+            <p style="margin-bottom: var(--gap);">ご自分が生まれ育った側にも<br>これから先を共に歩くお子さんの側にも<br>本当に困ったとき<br>どこからか助けてくれる人が現れる<br>運命が刻まれています。</p>
+            <p style="margin-bottom: var(--gap);">息子さんと娘さんも<br>でぃあ様と同じ<br>若葉のような翡翠色の光を纏っています。</p>
+            <p style="margin-bottom: var(--gap);">同じ色の光が<br>三つ重なって<br>お互いを包み合っている。</p>
+            <p style="margin-bottom: var(--gap);">お子さんたちは<br>でぃあ様の大きな守りです。</p>
+            <p style="margin-bottom: var(--gap);">そのうえで<br>ご質問いただいた<br>「良い子」のことです。</p>
+            <p style="margin-bottom: var(--gap);">その成り立ちは<br>冒頭でお伝えしたとおりです。</p>
+            <p style="margin-bottom: var(--gap);">そのうえで<br>でぃあ様は家の中でも外でも<br>同じ穏やかな顔でいられる人です。</p>
+            <p style="margin-bottom: var(--gap);">だから「誰の前でもずっと」に<br>なっていきました。</p>
+            <p style="margin-bottom: var(--gap);">責めるところは<br>どこにもありません。</p>
+            <p style="margin-bottom: var(--gap);">そして今<br>「嫌われてもいい」と<br>良い人をやめる書き換えを<br>実行されています。</p>
+            <p style="margin-bottom: var(--gap);">その方向は<br>正しいです。</p>
+            <p style="margin-bottom: var(--gap);">今年は<br>ご自分で決める力が強まる年です。</p>
+            <p style="margin-bottom: var(--gap);">お母様の気持ちに合わせてきた習慣が<br>揺らぎやすい巡りも重なっていて<br>書き換えを後押しする追い風が吹いています。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>守りを削られやすい場面が<br>三つあります。</p>
+            <p style="margin-bottom: var(--gap);">一つ目は<br>お金の貸し借りや、保証<br>契約書類のこと。</p>
+            <p style="margin-bottom: var(--gap);">その場で返事をせず<br>一度持ち帰ってください。</p>
+            <p style="margin-bottom: var(--gap);">二つ目は<br>言葉の受け取り違い。</p>
+            <p style="margin-bottom: var(--gap);">来年は<br>口約束や言葉の行き違いが<br>起きやすい年です。</p>
+            <p style="margin-bottom: var(--gap);">大事なことは<br>文字に残してください。</p>
+            <p style="margin-bottom: var(--gap);">三つ目は<br>お体と気力のこと。<br>第3章でお伝えした<br>「休みを先に決める」を<br>守ってください。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>ご質問いただいた<br>真二さんとのご縁についてです。</p>
+            <p style="margin-bottom: var(--gap);">まず、どんなご縁なのか。</p>
+            <p style="margin-bottom: var(--gap);">でぃあ様と真二さんの間には<br>出会うべくして結ばれる線が<br>あります。</p>
+            <p style="margin-bottom: var(--gap);">真二さんは<br>責任の重さをひとりで背負い<br>ほっと息をつける場所を<br>ご自分の中に持てずにいる人です。</p>
+            <p style="margin-bottom: var(--gap);">でぃあ様は<br>その真二さんに<br>安らぎを運べる人です。</p>
+            <p style="margin-bottom: var(--gap);">そして真二さんは<br>でぃあ様がまだ外に出していない<br>本音と持ち味に<br>火を灯してくれる人です。</p>
+            <p style="margin-bottom: var(--gap);">互いの欠けた部分を<br>補い合う縁です。</p>
+            <p style="margin-bottom: var(--gap);">さらに真二さんは<br>お母様の気持ちに合わせてきた<br>「良い子」の枠の外にいる人。</p>
+            <p style="margin-bottom: var(--gap);">その枠を破る<br>きっかけになった縁でもあります。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>この縁には<br>表に出にくい形が重なっています。</p>
+            <p style="margin-bottom: var(--gap);">近づくほど<br>真二さんの現実の壁にぶつかりやすい。</p>
+            <p style="margin-bottom: var(--gap);">そういう縁です。</p>
+            <p style="margin-bottom: var(--gap);">今、距離があるのは<br>愛情が消えたからではないと<br>伝わってきます。</p>
+            <p style="margin-bottom: var(--gap);">真二さんは今年<br>ご自身の内側の整理がつかず<br>受け取る余裕を<br>失っている年なのです。</p>
+            <p style="margin-bottom: var(--gap);">この先は<br>こう動いていきます。</p>
+            <p style="margin-bottom: var(--gap);">2026年の今は<br>真二さんの内側が整うのを待つ<br>整理の時期です。</p>
+            <p style="margin-bottom: var(--gap);">2027年は<br>真二さんを取り巻く環境が動き<br>連絡や関係の形を見直す場面が<br>巡りやすくなります。</p>
+            <p style="margin-bottom: var(--gap);">2028年の半ば頃から<br>真二さんの環境は<br>さらに大きく動きはじめます。</p>
+            <p style="margin-bottom: var(--gap);">そのとき<br>お二人のご縁は<br>もう一度、近づく流れに入ります。</p>
+            <p style="margin-bottom: var(--gap);">真二さんの現実は<br>真二さんが動かすもの。</p>
+            <p style="margin-bottom: var(--gap);">でぃあ様が整っていれば<br>ご縁のほうから<br>動いてきます。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>その近づき方は<br>これからのでぃあ様の一歩で<br>変わっていきます。</p>
+            <p style="margin-bottom: var(--gap);">ひとつだけ<br>はっきりお伝えできることがあります。</p>
+            <p style="margin-bottom: var(--gap);">縁を動かすのは<br>追うことでも<br>待ち続けることでもありません。</p>
+            <p style="margin-bottom: var(--gap);">でぃあ様ご自身の火が灯ること。</p>
+            <p style="margin-bottom: var(--gap);">でぃあ様が<br>ご自分の持ち味に火を灯し<br>自分の分を受け取りはじめたとき<br>この縁は<br>どの形になっても<br>でぃあ様が満たされる方向へ<br>動いていきます。</p>
+            <p style="margin-bottom: var(--gap);">ここまでお伝えした<br>削られる場面のすべてに<br>共通する鍵があります。</p>
+            <p style="margin-bottom: var(--gap);">豊受大神の<br>「与える神様は<br>受け取る神様でもある」を<br>暮らしで使うことです。</p>
+            <p style="margin-bottom: var(--gap);">そこで、行動を一つお渡しします。</p>
+            <p style="margin-bottom: var(--gap);">胸がざわついた夜は<br>お仕事のことでも<br>真二さんのことでも<br>頼みごとのことでも</p>
+            <p style="margin-bottom: var(--gap);">相手に伝える前に<br>その気持ちを<br>ノートに一ページ書いてください。</p>
+            <p style="margin-bottom: var(--gap);">きれいな言葉にしなくて構いません。</p>
+            <p style="margin-bottom: var(--gap);">「嫌われてもいい」と思ったまま<br>本音のままを書きます。</p>
+            <p style="margin-bottom: var(--gap);">誰にも見せない<br>でぃあ様だけの一ページです。</p>
+            <p style="margin-bottom: var(--gap);">本音という自分の分を<br>先にいただく練習になります。</p>
+            <p style="margin-bottom: var(--gap);">続けるうちに<br>相手に伝えるときの言葉が<br>自然と穏やかに<br>まっすぐになっていきます。</p>
             <p style="margin-bottom: 0;">守りは<br>受け取る人のところに<br>いちばん深く根を張ります。</p>
         </div>
 
@@ -759,159 +854,167 @@
 
         <div id="flow1Sentinel"></div>
         <div class="section">
-            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2026年11月：守護神の月・整える月</p>
-            <p style="margin-bottom: 90px;">豊受大神の力が<br>一年でいちばん強く届く月です。</p>
-            <p style="margin-bottom: 90px;">土の恵みのような守りが満ちて<br>動けなかったものが<br>現実に流れ込みはじめます。</p>
-            <p style="margin-bottom: 90px;">見えないところで<br>ご縁が静かに結ばれていきます。</p>
-            <p style="margin-bottom: 90px;">お金の話や<br>お仕事のお誘いが<br>表に出てくる場面が巡ってきます。</p>
-            <p style="margin-bottom: 90px;">同時に<br>お母様や昔の習慣に<br>引き戻されそうになる日もあります。</p>
-            <p style="margin-bottom: 90px;">お金の話は<br>器ができる前だと<br>その場で流れてしまいやすいもの。</p>
-            <p style="margin-bottom: 90px;">だからこの月に<br>先取りのための別の口座を作り<br>毎月の固定費を紙に書き出してください。</p>
+            <p class="month-title">2026年11月：守護神の月・整える月</p>
+            <p style="margin-bottom: var(--gap);">豊受大神の力が<br>一年でいちばん強く届く月です。</p>
+            <p style="margin-bottom: var(--gap);">土の恵みのような守りが満ちて<br>動けなかったものが<br>現実に流れ込みはじめます。</p>
+            <p style="margin-bottom: var(--gap);">見えないところで<br>ご縁が静かに結ばれていきます。</p>
+            <p style="margin-bottom: var(--gap);">お金の話や<br>お仕事のお誘いが<br>表に出てくる場面が巡ってきます。</p>
+            <p style="margin-bottom: var(--gap);">同時に<br>お母様や昔の習慣に<br>引き戻されそうになる日もあります。</p>
+            <p style="margin-bottom: var(--gap);">お金の話は<br>器ができる前だと<br>その場で流れてしまいやすいもの。</p>
+            <p style="margin-bottom: var(--gap);">だからこの月に<br>先取りのための別の口座を作り<br>毎月の固定費を紙に書き出してください。</p>
             <p style="margin-bottom: 0;">後ほどお伝えする神社への参拝も<br>この月に、とくに力を持ちます。</p>
         </div>
 
         <div id="flow2Sentinel"></div>
         <div class="section">
-            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年12月：結ぶ月</p>
-            <p style="margin-bottom: 90px;">お仕事やご縁の話が<br>正式な形で届きやすい月です。</p>
-            <p style="margin-bottom: 90px;">ただ<br>勢いのまま言葉にすると<br>せっかくのご縁を<br>傷つけやすい月でもあります。</p>
-            <p style="margin-bottom: 90px;">年末の出費が重なり<br>真二さんの気配が動く場面も<br>巡ってくるかもしれません。</p>
-            <p style="margin-bottom: 90px;">そのとき<br>お話は受けても<br>その場で即答しないでください。</p>
+            <p style="margin-bottom: var(--gap); font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年12月：結ぶ月</p>
+            <p style="margin-bottom: var(--gap);">お仕事やご縁の話が<br>正式な形で届きやすい月です。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>勢いのまま言葉にすると<br>せっかくのご縁を<br>傷つけやすい月でもあります。</p>
+            <p style="margin-bottom: var(--gap);">年末の出費が重なり<br>真二さんの気配が動く場面も<br>巡ってくるかもしれません。</p>
+            <p style="margin-bottom: var(--gap);"><strong>そのとき</strong><br><strong>お話は受けても</strong><br><strong>その場で即答しないでください。</strong></p>
             <p style="margin-bottom: 0;">気持ちは相手にぶつけず<br>第4章のノートの一ページに<br>書いてください。</p>
         </div>
 
         <div id="flow3Sentinel"></div>
-        <div class="section">
-            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2027年1月：最重要の月・開く月</p>
-            <p style="margin-bottom: 90px;">いちばん大切な月です。</p>
-            <p style="margin-bottom: 90px;">眠っていたお仕事のご縁や<br>ご自分の役割が<br>表に顔を出します。</p>
-            <p style="margin-bottom: 90px;">「私はこれだ」という実感が<br>胸の奥に立ち上がる場面が巡ってきます。</p>
-            <p style="margin-bottom: 90px;">同時に<br>良い子でいようとしてきた<br>古い習慣や古い役割が<br>ぽろりと剥がれ落ちる感覚もあります。</p>
-            <p style="margin-bottom: 90px;">その分、揺さぶられる日もありますが<br>新しい自分に入れ替わる<br>ための揺れです。</p>
-            <p style="margin-bottom: 90px;">第3章で書き出した<br>「やってみたいこと」から<br>持ち味の一つを決めてください。</p>
+        <div class="section key-month">
+            <p class="month-title">2027年1月：最重要の月・開く月</p>
+            <p style="margin-bottom: var(--gap);">いちばん大切な月です。</p>
+            <p style="margin-bottom: var(--gap);">眠っていたお仕事のご縁や<br>ご自分の役割が<br>表に顔を出します。</p>
+            <p style="margin-bottom: var(--gap);">「私はこれだ」という実感が<br>胸の奥に立ち上がる場面が巡ってきます。</p>
+            <p style="margin-bottom: var(--gap);">同時に<br>良い子でいようとしてきた<br>古い習慣や古い役割が<br>ぽろりと剥がれ落ちる感覚もあります。</p>
+            <p style="margin-bottom: var(--gap);">その分、揺さぶられる日もありますが<br>新しい自分に入れ替わる<br>ための揺れです。</p>
+            <p style="margin-bottom: var(--gap);"><strong>第3章で書き出した</strong><br><strong>「やってみたいこと」から</strong><br><strong>持ち味の一つを決めてください。</strong></p>
             <p style="margin-bottom: 0;">そして<br>頼みごとの多い方との間に<br>断り方と、待ってもらう言い方のルールを<br>ご自分から穏やかに決めてください。</p>
         </div>
 
         <div id="flow4Sentinel"></div>
         <div class="section">
-            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年2月：灯す月</p>
-            <p style="margin-bottom: 90px;">2月4日頃の立春を境に<br>新しい一年がはじまります。</p>
-            <p style="margin-bottom: 90px;">才能の火が<br>いよいよ灯る月です。</p>
-            <p style="margin-bottom: 90px;">お仕事の応募<br>ご相談、体験など<br>最初の一歩を踏み出す場面が<br>巡ってきます。</p>
-            <p style="margin-bottom: 90px;">そのとき<br>小さく試してみてください。</p>
+            <p style="margin-bottom: var(--gap); font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年2月：灯す月</p>
+            <p style="margin-bottom: var(--gap);">2月4日頃の立春を境に<br>新しい一年がはじまります。</p>
+            <p style="margin-bottom: var(--gap);">才能の火が<br>いよいよ灯る月です。</p>
+            <p style="margin-bottom: var(--gap);">お仕事の応募<br>ご相談、体験など<br>最初の一歩を踏み出す場面が<br>巡ってきます。</p>
+            <p style="margin-bottom: var(--gap);">そのとき<br>小さく試してみてください。</p>
             <p style="margin-bottom: 0;">申し込みでも<br>問い合わせでも<br>体験でも構いません。</p>
         </div>
 
         <div id="flowEndSentinel"></div>
         <div class="section">
             <h2 style="margin-top: 0;">【今年と来年】</h2>
-            <p style="margin-bottom: 90px;">2026年は<br>蓄えと居場所を<br>見つめ直す一年です。</p>
-            <p style="margin-bottom: 90px;">お金の芽と不安が<br>同じ場所に並んで立ち<br>ご自分で決める力が<br>強まった年でもあります。</p>
-            <p style="margin-bottom: 90px;">人との関わりを整理する中で<br>真二さんとの距離も<br>生まれました。</p>
-            <p style="margin-bottom: 90px;">年の暮れにかけて<br>動き出すための準備が<br>静かに整っていきます。</p>
-            <p style="margin-bottom: 90px;">2027年は<br>お仕事の追い風が吹く<br>豊かさが動く本命の年です。</p>
-            <p style="margin-bottom: 90px;">お金の主導権を<br>ご自分で握っていく。</p>
-            <p style="margin-bottom: 90px;">蓄えを育てる巡りも<br>この年に重なります。</p>
-            <p style="margin-bottom: 90px;">言葉の行き違いに気をつけながら<br>7月だけは、整理に徹してください。</p>
-            <p style="margin-bottom: 90px;">そして<br>ご自分で決められることが<br>増えていく年です。</p>
-            <p style="margin-bottom: 90px;">先ほどの月末の食卓で<br>笑い声を重ねていた<br>息子さんと娘さん。</p>
-            <p style="margin-bottom: 90px;">お二人は<br>これから先ずっと<br>でぃあ様の大きな守りです。</p>
+            <p style="margin-bottom: var(--gap);">2026年は<br>蓄えと居場所を<br>見つめ直す一年です。</p>
+            <p style="margin-bottom: var(--gap);">お金の芽と不安が<br>同じ場所に並んで立ち<br>ご自分で決める力が<br>強まった年でもあります。</p>
+            <p style="margin-bottom: var(--gap);">人との関わりを整理する中で<br>真二さんとの距離も<br>生まれました。</p>
+            <p style="margin-bottom: var(--gap);">年の暮れにかけて<br>動き出すための準備が<br>静かに整っていきます。</p>
+            <p style="margin-bottom: var(--gap);">2027年は<br>お仕事の追い風が吹く<br>豊かさが動く本命の年です。</p>
+            <p style="margin-bottom: var(--gap);">お金の主導権を<br>ご自分で握っていく。</p>
+            <p style="margin-bottom: var(--gap);">蓄えを育てる巡りも<br>この年に重なります。</p>
+            <p style="margin-bottom: var(--gap);">言葉の行き違いに気をつけながら<br>7月だけは、整理に徹してください。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>ご自分で決められることが<br>増えていく年です。</p>
+            <p style="margin-bottom: var(--gap);">先ほどの月末の食卓で<br>笑い声を重ねていた<br>息子さんと娘さん。</p>
+            <p style="margin-bottom: var(--gap);">お二人は<br>これから先ずっと<br>でぃあ様の大きな守りです。</p>
             <p style="margin-bottom: 0;">頼っても大丈夫な人は<br>もう、そばにいるのです。</p>
         </div>
 
         <h2 class="emoji-header" id="sec-bonus">🔮 もう少し先に視えていること</h2>
         <div class="section">
-            <p style="margin-bottom: 90px;">ここまでお伝えしてきたこととは別に<br>霊視の最後に<br>二つ、視えたものがありました。</p>
-            <p style="margin-bottom: 90px;">一つは、うれしい兆しです。</p>
-            <p style="margin-bottom: 90px;">2027年の春<br>持ち味を小さく試しはじめた頃に<br>年上の方が<br>「それ、うちでもやってみない？」と<br>声をかけてくれる気配が視えています。</p>
-            <p style="margin-bottom: 90px;">助けてくれる人は<br>ちゃんと待っています。</p>
-            <p style="margin-bottom: 90px;">もう一つは<br>気に留めておいてほしいことです。</p>
-            <p style="margin-bottom: 90px;">ご自分の取り分を<br>先に受け取りはじめると<br>これまで何でも引き受けてくれていた<br>でぃあ様を頼りにしてきた方が<br>戸惑う場面が巡ってきそうです。</p>
-            <p style="margin-bottom: 90px;">「前は引き受けてくれたのに」という<br>相手の表情を見て<br>思わず謝りそうになる場面もありそうです。</p>
-            <p style="margin-bottom: 90px;">怖がる必要は<br>ありません。</p>
-            <p style="margin-bottom: 90px;">自分の分を最後に置く人から<br>自分の分も受け取る人へ<br>歩き出した人に訪れやすい<br>形が変わる前の揺らぎです。</p>
-            <p style="margin-bottom: 90px;">今の時点で<br>心がけてほしいことは<br>一つです。</p>
-            <p style="margin-bottom: 90px;">戸惑う顔を見ても<br>すぐに謝らず<br>静かに一度、息をつく。</p>
-            <p style="margin-bottom: 90px;">ただ、それがいつ頃<br>どんな形で表れるのか。</p>
-            <p style="margin-bottom: 90px;">そして、どうすれば良い流れに<br>変えていけるのか。</p>
-            <p style="margin-bottom: 90px;">ここは、もう少し深く視させて<br>いただく必要があります。</p>
+            <p style="margin-bottom: var(--gap);">ここまでお伝えしてきたこととは別に<br>霊視の最後に<br>二つ、視えたものがありました。</p>
+            <p style="margin-bottom: var(--gap);">一つは、うれしい兆しです。</p>
+            <p style="margin-bottom: var(--gap);">2027年の春<br>持ち味を小さく試しはじめた頃に<br>年上の方が<br>「それ、うちでもやってみない？」と<br>声をかけてくれる気配が視えています。</p>
+            <p style="margin-bottom: var(--gap);">助けてくれる人は<br>ちゃんと待っています。</p>
+            <p style="margin-bottom: var(--gap);">もう一つは<br>気に留めておいてほしいことです。</p>
+            <p style="margin-bottom: var(--gap);">ご自分の取り分を<br>先に受け取りはじめると<br>これまで何でも引き受けてくれていた<br>でぃあ様を頼りにしてきた方が<br>戸惑う場面が巡ってきそうです。</p>
+            <p style="margin-bottom: var(--gap);">「前は引き受けてくれたのに」という<br>相手の表情を見て<br>思わず謝りそうになる場面もありそうです。</p>
+            <p style="margin-bottom: var(--gap);">怖がる必要は<br>ありません。</p>
+            <p style="margin-bottom: var(--gap);">自分の分を最後に置く人から<br>自分の分も受け取る人へ<br>歩き出した人に訪れやすい<br>形が変わる前の揺らぎです。</p>
+            <p style="margin-bottom: var(--gap);">今の時点で<br>心がけてほしいことは<br>一つです。</p>
+            <p style="margin-bottom: var(--gap);">戸惑う顔を見ても<br>すぐに謝らず<br>静かに一度、息をつく。</p>
+            <p style="margin-bottom: var(--gap);">ただ、それがいつ頃<br>どんな形で表れるのか。</p>
+            <p style="margin-bottom: var(--gap);">そして、どうすれば良い流れに<br>変えていけるのか。</p>
+            <p style="margin-bottom: var(--gap);">ここは、もう少し深く視させて<br>いただく必要があります。</p>
             <p style="margin-bottom: 0;">また別の機会に<br>改めてお伝えさせてくださいね。</p>
         </div>
 
         <div id="guardianReturnSentinel"></div>
         <h2 class="emoji-header" id="sec-guardian">⛩️ 守護を受け取る方法</h2>
         <div class="section">
-            <p style="margin-bottom: 90px;">でも、大丈夫です。</p>
-            <p style="margin-bottom: 90px;">今回の霊視で<br><span style="color: #ffd966;">豊受大神</span>の守護の力を<br>でぃあ様の奥底に置いてきました。</p>
-            <p style="margin-bottom: 90px;">日々の暮らしの糧を静かに整え<br>必要なものが自然と巡ってくるよう<br>支えていきます。</p>
-            <p style="margin-bottom: 90px;">この文章を読みながら<br>胸が少し温かくなる<br>肩がふっと軽くなる<br>なぜか安心する<br>そんな感覚があれば<br>もう守護は届き始めています。</p>
-            <p style="margin-bottom: 90px;">何かを頑張る必要はありません。</p>
-            <p style="margin-bottom: 90px;">ここまで読んでくださったなら<br>もう十分に受け取れています。</p>
-            <p style="margin-bottom: 90px;">第1章でお伝えした<br>ご自分の器を先によそう時間は<br>そのまま、守護を受け取る時間にもなります。</p>
-            <p style="margin-bottom: 90px;">もし余裕がある時だけ<br>次のことを試してみてください。</p>
-            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">【豊受大神ゆかりの神社へ行く】</p>
-            <p style="margin-bottom: 90px;">露天神社（大阪市北区曽根崎2-5-4）<br>西堤神社（東大阪市西堤1-11-13）<br>都留彌神社（東大阪市荒川3-20-18）<br>徳庵神社（東大阪市徳庵本町8-11）<br>大江神社（大阪市天王寺区夕陽丘町5-40）</p>
-            <p style="margin-bottom: 90px;">などが、豊受大神にご縁のある場所です。</p>
-            <p style="margin-bottom: 90px;">どこか一つ<br>ご縁を感じる場所へ<br>お参りしてみてください。</p>
-            <p style="margin-bottom: 90px;">11月に参拝されると<br>とくに力を持ちます。</p>
-            <p style="margin-bottom: 90px;">神社では、参拝の際に<br>心の中でこの祝詞を唱えてください。</p>
-            <p style="margin-bottom: 90px;">祓え給い、清め給え、神ながら守り給い、幸え給え<br>（はらえたまい、きよめたまえ、かむながらまもりたまい、さきわえたまえ）</p>
-            <p style="margin-bottom: 90px;">願い事は唱えず<br>「これまで見守ってくださって<br>ありがとうございます<br>これからは私の分も<br>いただきながら歩いていきます<br>どうか見守っていてください」<br>という形で伝えてください。</p>
-            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">【朝の最初のひと口】</p>
-            <p style="margin-bottom: 90px;">もっと身近に感じたいときは<br>朝の最初のひと口を<br>目を閉じて、ゆっくり味わってみてください。</p>
+            <p style="margin-bottom: var(--gap);">でも、大丈夫です。</p>
+            <p style="margin-bottom: var(--gap);">今回の霊視で<br><span style="color: #ffd966;">豊受大神</span>の守護の力を<br>でぃあ様の奥底に置いてきました。</p>
+            <p style="margin-bottom: var(--gap);">日々の暮らしの糧を静かに整え<br>必要なものが自然と巡ってくるよう<br>支えていきます。</p>
+            <p style="margin-bottom: var(--gap);">この文章を読みながら<br>胸が少し温かくなる<br>肩がふっと軽くなる<br>なぜか安心する<br>そんな感覚があれば<br>もう守護は届き始めています。</p>
+            <p style="margin-bottom: var(--gap);">何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: var(--gap);">ここまで読んでくださったなら<br>もう十分に受け取れています。</p>
+            <p style="margin-bottom: var(--gap);">第1章でお伝えした<br>ご自分の器を先によそう時間は<br>そのまま、守護を受け取る時間にもなります。</p>
+            <p style="margin-bottom: var(--gap);">もし余裕がある時だけ<br>次のことを試してみてください。</p>
+            <p style="margin-bottom: var(--gap); font-weight: bold; color: #f0f0ff;">【豊受大神ゆかりの神社へ行く】</p>
+            <ul class="shrine-list">
+                <li><span class="shrine-name">露天神社</span><span class="shrine-addr">大阪市北区曽根崎2-5-4</span></li>
+                <li><span class="shrine-name">西堤神社</span><span class="shrine-addr">東大阪市西堤1-11-13</span></li>
+                <li><span class="shrine-name">都留彌神社</span><span class="shrine-addr">東大阪市荒川3-20-18</span></li>
+                <li><span class="shrine-name">徳庵神社</span><span class="shrine-addr">東大阪市徳庵本町8-11</span></li>
+                <li><span class="shrine-name">大江神社</span><span class="shrine-addr">大阪市天王寺区夕陽丘町5-40</span></li>
+            </ul>
+            <p style="margin-bottom: var(--gap);">などが、豊受大神にご縁のある場所です。</p>
+            <p style="margin-bottom: var(--gap);">どこか一つ<br>ご縁を感じる場所へ<br>お参りしてみてください。</p>
+            <p style="margin-bottom: var(--gap);">11月に参拝されると<br>とくに力を持ちます。</p>
+            <p style="margin-bottom: var(--gap);">神社では、参拝の際に<br>心の中でこの祝詞を唱えてください。</p>
+            <p style="margin-bottom: var(--gap);">祓え給い、清め給え、神ながら守り給い、幸え給え<br>（はらえたまい、きよめたまえ、かむながらまもりたまい、さきわえたまえ）</p>
+            <p style="margin-bottom: var(--gap);">願い事は唱えず<br>「これまで見守ってくださって<br>ありがとうございます<br>これからは私の分も<br>いただきながら歩いていきます<br>どうか見守っていてください」<br>という形で伝えてください。</p>
+            <p style="margin-bottom: var(--gap); font-weight: bold; color: #f0f0ff;">【朝の最初のひと口】</p>
+            <p style="margin-bottom: var(--gap);">もっと身近に感じたいときは<br>朝の最初のひと口を<br>目を閉じて、ゆっくり味わってみてください。</p>
             <p style="margin-bottom: 0;">一日のはじまりに<br>受け取る扉を開ける<br>小さな儀式です。</p>
         </div>
 
         <div id="stoneSentinel"></div>
         <h2 class="emoji-header" id="sec-stone">⛩️ あなたと響き合うパワーストーン</h2>
         <div class="section">
-            <p style="margin-bottom: 90px;">でぃあ様には<br>この鑑定の中で<br>「私の分も、いただきます」という<br>合図の言葉をお渡ししました。</p>
-            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">豊受大神</span>の守護は<br>すでにでぃあ様の中に届いています。</p>
-            <p style="margin-bottom: 90px;">ただ<br>長く続いてきた癖は<br>忙しい日ほど<br>ふっと戻ってきます。</p>
-            <p style="margin-bottom: 90px;">月末の夜<br>家計のノートを開いて<br>子どもたちの分を数え終えると<br>「私の分は、今月もいいか」と<br>ノートを閉じそうになる。<br>そんなとき<br>手首の石に触れて<br>「私の分も、いただきます」と言い<br>先にご自分の取り分へ手を伸ばす。</p>
-            <p style="margin-bottom: 90px;">石は、その合図を<br>思い出すためのものです。</p>
-            <p style="margin-bottom: 90px;">その合図を手首に置けるよう<br>でぃあ様と響き合う石で<br>ブレスレットをお作りします。</p>
-            <ul style="margin-bottom: 90px;">
-                <li><span style="color: #ffd966; font-weight: bold;">1. カーネリアン</span><br>朝焼けのような橙を宿す石です。<br>「私の分も、いただきます」と<br>言い出す声を支えてくれます。</li>
-                <li><span style="color: #ffd966; font-weight: bold;">2. シトリン</span><br>稲穂のような黄金色を宿す石です。<br>言ったあとに器を手に取り<br>温かいうちに食べる落ち着きをくれます。</li>
-                <li><span style="color: #ffd966; font-weight: bold;">3. ジェイド</span><br>若葉のような翡翠色を宿す石です。<br>言えなかった日も<br>明日また言えるように<br>そばで見守ってくれます。</li>
-            </ul>
-            <p style="margin-bottom: 90px;">この中から<br>でぃあ様に一番合う組み合わせを選び<br>一粒ずつ、手で編んでお作りします。</p>
-            <p style="margin-bottom: 90px;">でぃあ様が<br>型紙の線を一本ずつ引いてこられたように<br>私も一粒ずつ<br>想いを込めて仕上げます。</p>
-            <p style="margin-bottom: 90px;">豊受大神の力が最も強く届く<br>11月に間に合うよう<br>ご連絡から十日以内にお送りします。</p>
-            <p style="margin-bottom: 0;">気になった方は<br>「詳細希望」とだけ<br>メッセージをくださいね。</p>
+            <p style="margin-bottom: var(--gap);">でぃあ様には<br>この鑑定の中で<br>「私の分も、いただきます」という<br>合図の言葉をお渡ししました。</p>
+            <p style="margin-bottom: var(--gap);"><span style="color: #ffd966;">豊受大神</span>の守護は<br>すでにでぃあ様の中に届いています。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>長く続いてきた癖は<br>忙しい日ほど<br>ふっと戻ってきます。</p>
+            <p style="margin-bottom: var(--gap);">月末の夜<br>家計のノートを開いて<br>子どもたちの分を数え終えると<br>「私の分は、今月もいいか」と<br>ノートを閉じそうになる。<br>そんなとき<br>手首の石に触れて<br>「私の分も、いただきます」と言い<br>先にご自分の取り分へ手を伸ばす。</p>
+            <p style="margin-bottom: var(--gap);">石は、その合図を<br>思い出すためのものです。</p>
+            <p style="margin-bottom: var(--gap);">その合図を手首に置けるよう<br>でぃあ様と響き合う石で<br>ブレスレットをお作りします。</p>
+            <div class="stone-card">
+                <ul class="stone-list">
+                    <li><span class="stone-dot carnelian"></span><span class="stone-name">カーネリアン</span><span class="stone-desc">朝焼けのような橙を宿す石です。<br>「私の分も、いただきます」と<br>言い出す声を支えてくれます。</span></li>
+                    <li><span class="stone-dot citrine"></span><span class="stone-name">シトリン</span><span class="stone-desc">稲穂のような黄金色を宿す石です。<br>言ったあとに器を手に取り<br>温かいうちに食べる<br>落ち着きをくれます。</span></li>
+                    <li><span class="stone-dot jade"></span><span class="stone-name">ジェイド</span><span class="stone-desc">若葉のような翡翠色を宿す石です。<br>言えなかった日も<br>明日また言えるように<br>そばで見守ってくれます。</span></li>
+                </ul>
+            </div>
+            <p style="margin-bottom: var(--gap);">この中から<br>でぃあ様に一番合う組み合わせを選び<br>一粒ずつ、手で編んでお作りします。</p>
+            <p style="margin-bottom: var(--gap);">でぃあ様が<br>型紙の線を一本ずつ引いてこられたように<br>私も一粒ずつ<br>想いを込めて仕上げます。</p>
+            <p style="margin-bottom: var(--gap);">豊受大神の力が最も強く届く<br>11月に間に合うよう<br>ご連絡から十日以内にお送りします。</p>
+            <div class="cta-box">
+                <p>気になった方は</p>
+                <p class="cta-word">「詳細希望」</p>
+                <p>とだけ<br>メッセージをくださいね。</p>
+            </div>
         </div>
 
         <div id="closingSentinel"></div>
         <h2 id="sec-closing">【結びの言葉】</h2>
         <div class="closing">
-            <p style="margin-bottom: 90px;">でぃあ様</p>
-            <p style="margin-bottom: 90px;">ここまで読んでくださって<br>本当にありがとうございます。</p>
-            <p style="margin-bottom: 90px;">「差し出す側」だけを<br>ずっと歩いてきたでぃあ様。</p>
-            <p style="margin-bottom: 90px;">その頑張りは<br>ちゃんと届いていました。</p>
-            <p style="margin-bottom: 90px;">お母様の表情を見て先に動いた子どもの頃も<br>ひとりで暮らしの土台を支えてきた日々も<br>すべて、確かに積み重なっています。</p>
-            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">豊受大神</span>は<br>お椀を持ったまま<br>立ち尽くしていたでぃあ様の両手に<br>湯気の立つお椀を<br>ずっと乗せて待っていました。</p>
-            <p style="margin-bottom: 90px;">あのお椀は<br>でぃあ様のためのものでした。</p>
-            <p style="margin-bottom: 90px;">だからもう<br>受け取っていいんです。</p>
-            <p style="margin-bottom: 90px;">ご自分の器を<br>先によそっていい。</p>
-            <p style="margin-bottom: 90px;">「残ったら」ではなく<br>「先に」でいい。</p>
-            <p style="margin-bottom: 90px;">持ち味を<br>外へ出していい。</p>
-            <p style="margin-bottom: 90px;">嫌われても、いい。</p>
-            <p style="margin-bottom: 90px;">断っていい。</p>
-            <p style="margin-bottom: 90px;">頼っていい。</p>
-            <p style="margin-bottom: 90px;">休んでいい。</p>
-            <p style="margin-bottom: 90px;">あの月末の夜の食卓で<br>湯気の向こうで笑う日へ<br>道は続いています。</p>
-            <p style="margin-bottom: 90px;">通帳を閉じて<br>息子さんと娘さんの笑い声を<br>不安のない顔で聞く日は<br>もうすぐそこまで来ています。</p>
-            <p style="margin-bottom: 90px;">でぃあ様は<br>幸せになっていい。</p>
-            <p style="margin-bottom: 90px;">守られています。</p>
-            <p style="margin-bottom: 90px;">その事実を<br>どうか受け取ってください。</p>
-            <p style="margin-bottom: 90px;">本日より遠隔守護祈祷を行い<br>でぃあ様の幸せを願います。</p>
+            <p style="margin-bottom: var(--gap);">でぃあ様</p>
+            <p style="margin-bottom: var(--gap);">ここまで読んでくださって<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: var(--gap);">「差し出す側」だけを<br>ずっと歩いてきたでぃあ様。</p>
+            <p style="margin-bottom: var(--gap);">その頑張りは<br>ちゃんと届いていました。</p>
+            <p style="margin-bottom: var(--gap);">お母様の表情を見て先に動いた子どもの頃も<br>ひとりで暮らしの土台を支えてきた日々も<br>すべて、確かに積み重なっています。</p>
+            <p style="margin-bottom: var(--gap);"><span style="color: #ffd966;">豊受大神</span>は<br>お椀を持ったまま<br>立ち尽くしていたでぃあ様の両手に<br>湯気の立つお椀を<br>ずっと乗せて待っていました。</p>
+            <p style="margin-bottom: var(--gap);">あのお椀は<br>でぃあ様のためのものでした。</p>
+            <p style="margin-bottom: var(--gap);">だからもう<br>受け取っていいんです。</p>
+            <p style="margin-bottom: var(--gap);">ご自分の器を<br>先によそっていい。</p>
+            <p style="margin-bottom: var(--gap);">「残ったら」ではなく<br>「先に」でいい。</p>
+            <p style="margin-bottom: var(--gap);">持ち味を<br>外へ出していい。</p>
+            <p style="margin-bottom: var(--gap);">嫌われても、いい。</p>
+            <p style="margin-bottom: var(--gap);">断っていい。</p>
+            <p style="margin-bottom: var(--gap);">頼っていい。</p>
+            <p style="margin-bottom: var(--gap);">休んでいい。</p>
+            <p style="margin-bottom: var(--gap);">あの月末の夜の食卓で<br>湯気の向こうで笑う日へ<br>道は続いています。</p>
+            <p style="margin-bottom: var(--gap);">通帳を閉じて<br>息子さんと娘さんの笑い声を<br>不安のない顔で聞く日は<br>もうすぐそこまで来ています。</p>
+            <p style="margin-bottom: var(--gap);">でぃあ様は<br>幸せになっていい。</p>
+            <p style="margin-bottom: var(--gap);">守られています。</p>
+            <p style="margin-bottom: var(--gap);">その事実を<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: var(--gap);">本日より遠隔守護祈祷を行い<br>でぃあ様の幸せを願います。</p>
             <p style="margin-bottom: 0;">でぃあ様の未来に<br>翡翠色の光が満ちますように。</p>
             <div class="signature">深雪</div>
-        </div>
-
-        <div class="section">
-            <p style="margin-bottom: 0;">追伸<br>ブレスレットが気になった方は<br>「詳細希望」とだけ送ってくださいね。</p>
         </div>
 
     </div>
