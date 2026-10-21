@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#faf8f5">
+<title>さくら様　オーラカレンダー（モック）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --gold: #c9a05d; --gold-soft: #e8d5b7; --purple: #8b6f9c; --ink: #2d2d2d; --ink-soft: #6d6d6d;
+  --go1: #f6dc9c; --go2: #e6b865; --wait: #e6dcf2; --stop: #ece9f1;
+}
+body {
+  font-family: "Noto Serif JP","Yu Mincho","YuMincho","Hiragino Mincho ProN",serif;
+  line-height: 2; font-size: 15.5px; color: var(--ink); min-height: 100vh; overflow-x: hidden;
+  background: linear-gradient(135deg, #faf8f5 0%, #fff5eb 30%, #f9f3ff 70%, #faf8f5 100%);
+}
+.wrap { max-width: 640px; margin: 0 auto; padding: 24px 14px 80px; }
+.sheet { background: rgba(255,255,255,.95); border-radius: 20px; padding: 40px 22px 44px; box-shadow: 0 20px 60px rgba(0,0,0,.08), inset 0 0 0 1px rgba(255,215,0,.15); margin-bottom: 22px; }
+
+/* cover */
+.cover { text-align: center; padding: 34px 0 6px; position: relative; }
+.cover .ring { position: absolute; left: 50%; top: 150px; width: 330px; height: 330px; transform: translate(-50%,-50%); border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(255,255,255,0) 52%, rgba(201,160,93,.0) 53%), repeating-radial-gradient(circle, rgba(201,160,93,.0) 0 40px, rgba(201,160,93,.16) 41px 42px); opacity:.7; }
+.cover > * { position: relative; }
+.eyebrow { font-size: 11.5px; letter-spacing: .34em; color: var(--purple); }
+.cover h1 { font-size: 31px; font-weight: 700; letter-spacing: .14em; color: var(--gold); margin: 6px 0 4px; }
+.cover h1::after { content: ''; display: block; width: 120px; height: 2px; background: var(--gold); margin: 16px auto 0; }
+.for { font-size: 16px; color: var(--ink); letter-spacing: .08em; margin-top: 14px; }
+.period { font-size: 13px; color: var(--purple); letter-spacing: .1em; }
+.pair { display: flex; align-items: center; justify-content: center; margin: 22px 0 8px; height: 150px; }
+.orb { width: 92px; height: 92px; border-radius: 50%; position: relative; display:flex; align-items:center; justify-content:center; text-align:center; font-size: 13px; font-weight:700; color:#fff; line-height:1.4; }
+.orb::before { content:""; position:absolute; inset:-22px; border-radius:50%; background: radial-gradient(circle, var(--c), transparent 66%); opacity:.4; animation: pulse 4s ease-in-out infinite; }
+.orb .core { position:relative; width:100%; height:100%; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; background: radial-gradient(circle at 35% 30%, #fff 0%, var(--c) 62%, color-mix(in srgb, var(--c) 70%, #fff) 100%); box-shadow: 0 6px 24px color-mix(in srgb, var(--c) 55%, transparent); }
+.orb small { font-size: 10.5px; font-weight: 400; opacity: .95; }
+@keyframes pulse { 50% { transform: scale(1.12); opacity:.6; } }
+.bridge { width: 60px; height: 2px; margin: 0 -2px; background: linear-gradient(90deg, #5f9fe0, var(--gold), #6fbf8a); position: relative; }
+.bridge::after { content:""; position:absolute; top:-3.5px; width:9px; height:9px; border-radius:50%; background: var(--gold); box-shadow:0 0 10px var(--gold); animation: flow 2.8s ease-in-out infinite; }
+@keyframes flow { from { left:0 } to { left: calc(100% - 9px) } }
+.by { font-size: 14px; color: var(--ink-soft); letter-spacing: .1em; }
+
+h2.sec { font-size: 21px; font-weight: 700; color: var(--gold); letter-spacing: .08em; padding-bottom: 10px; border-bottom: 2px solid var(--gold-soft); margin: 4px 0 18px; }
+.sheet p { margin-bottom: 1.1em; }
+.sheet p.c { text-align: center; }
+.quote { background: #fffaf2; border: 1px solid var(--gold-soft); border-radius: 14px; padding: 14px 16px; margin: 16px 0; font-size: 14.5px; color: #5b4a30; }
+.quote small { display:block; font-size: 11.5px; color: var(--gold); letter-spacing: .12em; margin-bottom: 4px; }
+.em { color: var(--purple); font-weight: 600; }
+
+/* aura card */
+.aura-card { border: 1px solid color-mix(in srgb, var(--c) 40%, #fff); border-radius: 18px; padding: 18px 14px 8px; margin-bottom: 18px; background: color-mix(in srgb, var(--c) 6%, #fff); }
+.aura-head { display:flex; align-items:center; gap: 14px; margin-bottom: 10px; }
+.aura-orb { width: 54px; height: 54px; flex: none; border-radius: 50%; display:flex; align-items:center; justify-content:center; font-size: 24px; font-weight:700; color:#fff; background: radial-gradient(circle at 35% 30%, #fff 0%, var(--c) 62%, color-mix(in srgb, var(--c) 75%, #fff) 100%); box-shadow: 0 4px 16px color-mix(in srgb, var(--c) 50%, transparent); }
+.aura-who { font-size: 17px; font-weight: 700; }
+.aura-name { font-size: 13px; color: var(--ink-soft); }
+.aura-intro { font-size: 14.5px; }
+.aura-sub { font-size: 12.5px; letter-spacing: .12em; color: var(--purple); margin: 6px 0 8px; }
+.dtype { display:flex; gap: 12px; padding: 12px 0; border-top: 1px dashed var(--gold-soft); }
+.dt-el { display:inline-flex; width: 34px; height: 34px; border-radius: 50%; align-items:center; justify-content:center; color:#fff; font-weight:700; }
+.dt-title { font-size: 15px; font-weight: 600; line-height: 1.6; }
+.dt-badge { font-size: 11.5px; font-weight: 600; margin-left: 8px; padding: 1px 9px; border-radius: 999px; vertical-align: 1px; }
+.dt-badge.good { background: #fbe9bd; color: #8a5f12; } .dt-badge.mid { background: #e5f0e3; color: #3f7048; }
+.dt-badge.warn { background: #eadff3; color: #6f4f87; } .dt-badge.hard { background: #f6dde1; color: #a14456; }
+.dt-body p { font-size: 14px; color: #4a4a4a; margin: 2px 0 0; line-height: 1.9; }
+
+/* overlap */
+.ov { display:flex; gap:12px; padding: 12px 12px; border-radius: 14px; margin-bottom: 8px; border: 1px solid var(--gold-soft); background: #fff; }
+.ov.go { background: linear-gradient(160deg, #fff6dc, #fdeab8); border-color: var(--go2); }
+.ov.wait { background: #f6f1fb; border-color: #dccfec; } .ov.stop { background: #f3f1f6; border-color: #e1dde9; }
+.ov-el { flex:none; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; }
+.ov-t { font-size: 15px; } .ov-t b { color: var(--purple); font-weight:700; } .ov.go .ov-t b { color: #9a6b12; }
+.ov p { font-size: 13.8px; color:#555; margin:0; line-height: 1.85; }
+
+/* kotae */
+.tl { border-left: 2px solid var(--gold-soft); margin: 14px 0 6px 8px; padding-left: 18px; }
+.tl-i { position: relative; margin-bottom: 18px; }
+.tl-i::before { content:""; position:absolute; left:-26px; top:8px; width:14px; height:14px; border-radius:50%; background:#fff; border:3px solid var(--c); }
+.tl-d { font-size: 17px; font-weight: 700; } .tl-d small { font-size: 12.5px; font-weight: 400; color: var(--ink-soft); margin-left: 6px; }
+.tl-i p { font-size: 14.5px; margin: 2px 0 0; }
+
+/* map */
+.strip-row { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.strip-label { width: 34px; font-size: 12px; color: var(--ink-soft); flex:none; }
+.strip { display:flex; gap:2px; flex:1; }
+.sd { flex:1; height: 26px; border-radius: 4px; }
+.sd.go { background: linear-gradient(180deg,var(--go1),var(--go2)); }
+.sd.wait { background: var(--wait); } .sd.stop { background: var(--stop); }
+.sd.best { outline: 2px solid var(--gold); outline-offset: 1px; }
+.nums { display:flex; justify-content:center; gap: 10px; margin: 6px 0 14px; }
+.nums b { font-size: 34px; color: var(--gold); font-weight:700; }
+.nums span { font-size: 13px; color: var(--ink-soft); align-self:flex-end; margin-bottom: 7px; }
+.sub { font-size: 12px; color: var(--ink-soft); margin-top: 8px; }
+
+/* month */
+.m-en { font-size: 11px; letter-spacing: .4em; color: var(--purple); text-align:center; }
+.month h2 { text-align:center; font-size: 26px; font-weight: 700; color: var(--gold); letter-spacing: .1em; }
+.m-title { text-align:center; font-size: 17.5px; font-weight: 600; margin: 4px 0 8px; }
+.m-aura { width: fit-content; margin: 0 auto 16px; padding: 3px 16px; border-radius: 999px; font-size: 13px; background: color-mix(in srgb, var(--c) 14%, #fff); border: 1px solid color-mix(in srgb, var(--c) 45%, #fff); }
+.m-aura .dot { display:inline-block; width:9px; height:9px; border-radius:50%; background: var(--c); margin-right:8px; }
+.m-body { font-size: 14.8px; }
+.month h3 { font-size: 17px; font-weight: 700; color: var(--gold); margin: 30px 0 10px; padding-left: 10px; border-left: 3px solid var(--gold); }
+.lead-s { font-size: 13.5px; color: var(--purple); margin: -4px 0 10px !important; }
+
+.mini { display:grid; grid-template-columns: repeat(7,1fr); gap: 4px; margin-top: 8px; }
+.mini .dow { font-size: 10.5px; text-align:center; color: var(--ink-soft); }
+.cd { aspect-ratio: 1/.9; border-radius: 8px; display:flex; align-items:center; justify-content:center; font-size: 12.5px; position: relative; }
+.cd.go { background: linear-gradient(160deg,var(--go1),var(--go2)); color:#4a3000; font-weight:700; }
+.cd.wait { background: var(--wait); color:#6c5a85; } .cd.stop { background: var(--stop); color:#a39eb3; }
+.cd.best { outline: 2px solid var(--gold); outline-offset: 1px; }
+.cd .star { position:absolute; top:-7px; right:-2px; font-size: 12px; font-style: normal; color: var(--gold); }
+.keys { display:flex; justify-content:center; gap:14px; font-size:11.5px; color: var(--ink-soft); margin-top: 10px; flex-wrap: wrap; }
+.keys b { display:inline-block; width:12px; height:12px; border-radius:4px; vertical-align:-2px; margin-right:5px; }
+.k-go { background: var(--go2); } .k-wait { background: var(--wait); } .k-stop { background: var(--stop); border: 1px solid #d5d0df; }
+
+.wk { display:flex; gap:12px; padding: 12px; border-radius: 14px; margin-bottom: 8px; border: 1px solid var(--gold-soft); background: #fff; }
+.wk-mark { flex:none; width: 38px; height: 38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:17px; font-weight:700; }
+.wk.g { background: linear-gradient(160deg,#fff6dc,#fdeab8); border-color: var(--go2); }
+.wk.g .wk-mark { background: linear-gradient(135deg,var(--go1),var(--go2)); color:#4a3000; }
+.wk.o .wk-mark { background:#fff3d9; color: var(--gold); border:1px solid var(--gold); }
+.wk.t .wk-mark { background: var(--wait); color:#7a5f8f; }
+.wk.x { background:#f5f3f8; } .wk.x .wk-mark { background: var(--stop); color:#9e98ad; border:1px solid #d5d0df; }
+.wk-date { font-size: 12px; color: var(--ink-soft); }
+.wk-head { font-size: 15.5px; font-weight: 600; line-height: 1.6; }
+.wk p { font-size: 13.8px; color:#555; margin: 2px 0 0; line-height: 1.85; }
+
+.best-card { border-radius: 18px; padding: 20px 16px; border: 1px solid var(--go2); background: linear-gradient(160deg,#fffaf0,#fdeec8); box-shadow: 0 8px 28px rgba(201,160,93,.22); }
+.b-date { font-size: 32px; font-weight: 700; text-align:center; color: #b98a2e; letter-spacing: .06em; }
+.b-kan { text-align:center; font-size: 12.5px; color: var(--ink-soft); margin-bottom: 12px; }
+dt { font-size: 12px; letter-spacing: .12em; color: var(--purple); margin-top: 10px; }
+dd { font-size: 14.8px; }
+dt.act { color: #a8761a; }
+dd.act { background: rgba(255,255,255,.7); border-left: 3px solid var(--gold); padding: 6px 12px; border-radius: 0 8px 8px 0; margin-top: 2px; }
+
+.ca { border-radius: 16px; padding: 14px 14px 16px; margin-bottom: 12px; background: #f7f3fb; border: 1px solid #e1d6ee; border-left: 4px solid var(--purple); }
+.ca.max { background: #fcecef; border-color: #f0c9d1; border-left-color: #d98a99; }
+.ca-top { display:flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.ca-date { font-size: 19px; font-weight: 700; }
+.ca-kan { font-size: 12px; color: var(--ink-soft); }
+.ca-tag { font-size: 13.5px; color: var(--purple); font-weight: 600; margin-bottom: 2px; }
+.ca.max .ca-tag { color: #b5566b; }
+.ca-note { font-size: 13.5px; color:#5a5a5a; margin: 10px 0 0 !important; padding-top: 8px; border-top: 1px dashed #d9cfe6; }
+
+.chart { margin: 6px 0 4px; background: #fffdf9; border: 1px solid var(--gold-soft); border-radius: 14px; padding: 10px 8px 4px; }
+.chart svg { width: 100%; height: auto; display: block; }
+.chart-leg { display:flex; gap: 14px; flex-wrap: wrap; justify-content:center; font-size: 11.5px; color: var(--ink-soft); margin-bottom: 2px; }
+.chart-leg i { display:inline-block; width: 16px; height: 3px; border-radius: 2px; vertical-align: 3px; margin-right: 5px; }
+.chart-leg i.gb { height: 11px; width: 11px; background: #f1cf86; border-radius: 3px; vertical-align: -1px; }
+.sheet p.chart-note { font-size: 12.5px; color: var(--ink-soft); margin: 8px 0 14px; line-height: 1.8; }
+.charms { display:grid; gap: 10px; margin: 14px 0; }
+.charm { border: 1px solid var(--gold-soft); border-radius: 14px; padding: 12px 14px; background: #fffaf2; }
+.charm b { color: var(--gold); letter-spacing:.08em; display:block; }
+.charm p { margin: 0 !important; font-size: 14.3px; }
+.sig { text-align:right; color: var(--gold); letter-spacing:.12em; font-size: 18px; margin-top: 18px; }
+.mock { text-align:center; font-size: 11px; color: var(--ink-soft); opacity: .7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="sheet">
+    <div class="cover">
+      <div class="ring"></div>
+      <div class="eyebrow">PREMIUM SPIRITUAL CALENDAR</div>
+      <h1>オーラカレンダー</h1>
+      <div class="for">さくら様　×　ゆうた様</div>
+      <div class="period">2026年11月　〜　2027年1月</div>
+      <div class="pair">
+        <div class="orb" style="--c:#5f9fe0"><span class="core">さくら様<small>水・深海の蒼</small></span></div>
+        <div class="bridge"></div>
+        <div class="orb" style="--c:#6fbf8a"><span class="core">ゆうた様<small>木・森の翠</small></span></div>
+      </div>
+      <div class="by">鑑定師：かな</div>
+    </div>
+  </div>
+
+  <div class="sheet">
+    <h2 class="sec">さくら様へ</h2>
+    <p>この度は、オーラカレンダーをお選びいただき、<br>心より感謝申し上げます。</p>
+    <div class="quote"><small>いただいたご相談</small>10月の中ごろ、彼から2日間返信がなくて、不安で眠れませんでした。16日には返事が来たけれど、次にどう送ればいいのか分からなくなりました。</div>
+    <p>返信を待つ時間は、<br>痛いほど苦しいですよね。</p>
+    <p>まず最初にお伝えします。<br><span class="em">さくら様は、何も間違っていません。</span></p>
+    <p>連絡が来ない日があったのも、<br>不安で眠れない夜があったのも、<br>あなたの愛情が足りなかったからではありません。</p>
+    <p>そこには、オーラの「流れ」がありました。</p>
+    <p>さくら様のオーラと、ゆうた様のオーラ。<br>そこに「月」と「日」のオーラが重なって、<br>心が開く日と、閉じる日が生まれます。</p>
+    <p>この三か月分を、先に視ておきました。<br>不安になる日も、動いていい日も、<br>すべて前もってお伝えしますね。</p>
+  </div>
+
+  <div class="sheet">
+    <h2 class="sec">お二人のオーラと、日の相性</h2>
+    <p>オーラには「水」「木」「火」「土」「金」の五つの色があり、<br>毎日、その日の色が空に巡っています。</p>
+    <p>同じ日でも、あなたの色によって<br>「追い風の日」と「厳しい日」が変わります。<br>まず、お二人それぞれの特徴からお伝えします。</p>
+    
+  <div class="aura-card" style="--c:#5f9fe0">
+    <div class="aura-head">
+      <div class="aura-orb" style="--c:#5f9fe0"><span>水</span></div>
+      <div><div class="aura-who">さくら様</div><div class="aura-name">水のオーラ　深海の蒼</div></div>
+    </div>
+    <p class="aura-intro">水のオーラの人は、深い海のような感受性の持ち主です。相手の気持ちを察する力が強く、空気を読み、人の痛みを自分のことのように感じます。その分、与えすぎて疲れやすく、考えすぎて不安に沈みやすい一面もあります。</p>
+    <div class="aura-sub">さくら様の、日のオーラとの相性</div>
+    
+      <div class="dtype good">
+        <div class="dt-left"><span class="dt-el" style="background:#a3aec2">金</span></div>
+        <div class="dt-body"><div class="dt-title">金のオーラの日<span class="dt-badge good">恵みの日</span></div><p>金は水の源。心が満たされて、やさしい気持ちでいられます。想いが溢れやすいのもこの日。ただし、溢れた気持ちをそのまま送ると、相手の状況によっては重く届いてしまいます。</p></div>
+      </div>
+      <div class="dtype good">
+        <div class="dt-left"><span class="dt-el" style="background:#5f9fe0">水</span></div>
+        <div class="dt-body"><div class="dt-title">水のオーラの日<span class="dt-badge good">自分らしくいられる日</span></div><p>同じ色のオーラが重なる、いちばん落ち着く日。背伸びも不安もなく、素のままで言葉を選べます。</p></div>
+      </div>
+      <div class="dtype mid">
+        <div class="dt-left"><span class="dt-el" style="background:#e8806a">火</span></div>
+        <div class="dt-body"><div class="dt-title">火のオーラの日<span class="dt-badge mid">強気になれる日</span></div><p>水は火を鎮める力を持っています。前向きで、自分から動ける日。勢いが強すぎると言いすぎてしまうので、一呼吸おいて。</p></div>
+      </div>
+      <div class="dtype warn">
+        <div class="dt-left"><span class="dt-el" style="background:#6fbf8a">木</span></div>
+        <div class="dt-body"><div class="dt-title">木のオーラの日<span class="dt-badge warn">与えて疲れる日</span></div><p>水は木を育てるオーラ。誰かのために動きたくなり、気づけばぐったり。尽くしたい気持ちが空回りして、寂しさが増えやすい日です。</p></div>
+      </div>
+      <div class="dtype hard">
+        <div class="dt-left"><span class="dt-el" style="background:#d1a345">土</span></div>
+        <div class="dt-body"><div class="dt-title">土のオーラの日<span class="dt-badge hard">いちばん厳しい日</span></div><p>土は水をせき止めます。身動きが取れない感覚、理由のない不安、「嫌われたかも」と確かめたくなる気持ちが強まります。この日の不安は本物ではありません。</p></div>
+      </div>
+  </div>
+    
+  <div class="aura-card" style="--c:#6fbf8a">
+    <div class="aura-head">
+      <div class="aura-orb" style="--c:#6fbf8a"><span>木</span></div>
+      <div><div class="aura-who">ゆうた様</div><div class="aura-name">木のオーラ　森の翠</div></div>
+    </div>
+    <p class="aura-intro">木のオーラの人は、まっすぐ上へ伸びようとする誠実な人。自分のペースを大切にして、窮屈にされるのが苦手です。人のために頑張り続けて、気づけば疲れ切っていることも少なくありません。</p>
+    <div class="aura-sub">ゆうた様の、日のオーラとの相性</div>
+    
+      <div class="dtype good">
+        <div class="dt-left"><span class="dt-el" style="background:#5f9fe0">水</span></div>
+        <div class="dt-body"><div class="dt-title">水のオーラの日<span class="dt-badge good">恵みの日</span></div><p>水は木の栄養。心に潤いが届いて、人にやさしくなれる日。連絡も素直に受け取れます。</p></div>
+      </div>
+      <div class="dtype good">
+        <div class="dt-left"><span class="dt-el" style="background:#6fbf8a">木</span></div>
+        <div class="dt-body"><div class="dt-title">木のオーラの日<span class="dt-badge good">自分らしくいられる日</span></div><p>同じ色のオーラが重なる日。落ち着いていて、感情の波が小さい一日です。</p></div>
+      </div>
+      <div class="dtype mid">
+        <div class="dt-left"><span class="dt-el" style="background:#d1a345">土</span></div>
+        <div class="dt-body"><div class="dt-title">土のオーラの日<span class="dt-badge mid">自分のペースで動ける日</span></div><p>木は土に根を張る力を持っています。自分の思うように進められる日。ただし自分優先になるので、人の話は上の空になりやすいです。</p></div>
+      </div>
+      <div class="dtype warn">
+        <div class="dt-left"><span class="dt-el" style="background:#e8806a">火</span></div>
+        <div class="dt-body"><div class="dt-title">火のオーラの日<span class="dt-badge warn">頑張りすぎて消耗する日</span></div><p>木は火を燃やす薪。気を遣い、動き続けて、心のエネルギーが空っぽになります。返信が重く感じる日です。</p></div>
+      </div>
+      <div class="dtype hard">
+        <div class="dt-left"><span class="dt-el" style="background:#a3aec2">金</span></div>
+        <div class="dt-body"><div class="dt-title">金のオーラの日<span class="dt-badge hard">心を閉じる日</span></div><p>金は木を刈る斧。身を守るために殻にこもり、一人になりたくなります。あなたが嫌いなのではなく、誰からの連絡も受け取る余裕がない日です。</p></div>
+      </div>
+  </div>
+    <h2 class="sec" style="margin-top:34px">二人が重なると、こうなります</h2>
+    <p>日のオーラが巡るたびに、お二人の状態が変わります。<br>ここが、連絡のタイミングを決めるいちばんの鍵です。</p>
+    
+    <div class="ov go">
+      <div class="ov-el" style="background:#5f9fe0">水</div>
+      <div class="ov-body"><div class="ov-t">水のオーラの日　<b>連絡していい日</b></div><p>あなたは自然体、彼は心が潤う日。二人の波長が合う、いちばん届く日です。</p></div>
+    </div>
+    <div class="ov stop">
+      <div class="ov-el" style="background:#a3aec2">金</div>
+      <div class="ov-body"><div class="ov-t">金のオーラの日　<b>送らず溜める日</b></div><p>あなたは想いが溢れ、彼は心を閉じる日。温度差が最大になるので、送るのは翌日以降に。</p></div>
+    </div>
+    <div class="ov stop">
+      <div class="ov-el" style="background:#e8806a">火</div>
+      <div class="ov-body"><div class="ov-t">火のオーラの日　<b>彼をそっとしておく日</b></div><p>あなたは強気になれますが、彼は消耗しきっています。何かしてあげるより、静かに見守って。</p></div>
+    </div>
+    <div class="ov stop">
+      <div class="ov-el" style="background:#d1a345">土</div>
+      <div class="ov-body"><div class="ov-t">土のオーラの日　<b>自分を守る日</b></div><p>あなたは不安が強まり、彼は自分のペースで動く日。確かめたくなっても、トーク画面は開かない。</p></div>
+    </div>
+    <div class="ov wait">
+      <div class="ov-el" style="background:#6fbf8a">木</div>
+      <div class="ov-body"><div class="ov-t">木のオーラの日　<b>様子見の日</b></div><p>あなたは与えすぎて疲れやすく、彼は落ち着いている日。送るなら、短く日常の一言だけ。</p></div>
+    </div>
+    <p style="font-size:13.5px;color:#666;margin-top:12px">※実際の日は、月のオーラも重なって、追い風が強まったり弱まったりします。カレンダーには、それをすべて織り込んでいます。</p>
+  </div>
+
+  <div class="sheet">
+    <h2 class="sec">10月の答え合わせ</h2>
+    <p>先ほどのご相談を、オーラで見直してみますね。</p>
+    <div class="tl">
+      <div class="tl-i" style="--c:#d1a345"><div class="tl-d">10/12(月)<small>土のオーラの日</small></div><p>特に何もないのに、理由のない不安が強まった日。土の日は、水のあなたにとっていちばん厳しい日です。眠れなかったのも、気のせいではありません。</p></div>
+      <div class="tl-i" style="--c:#a3aec2"><div class="tl-d">10/13(火)・14(水)<small>金のオーラの日</small></div><p>返信が来なかった2日間は、金のオーラの日でした。彼の木にとって金は斧。心を守るために殻にこもる日で、誰からの連絡も受け取る余裕がなかったのです。あなたへの気持ちが冷めたのではありません。</p></div>
+      <div class="tl-i" style="--c:#5f9fe0"><div class="tl-d">10/16(金)<small>水のオーラの日</small></div><p>返事が来た日は、水のオーラの日。彼の心に潤いが届く、二人の波長が合う日でした。偶然ではなく、彼の気持ちは流れの中で、ちゃんとあなたに向いていました。</p></div>
+    </div>
+    <p>つまり、あの2日間の沈黙は「拒絶」ではなく、<br><span class="em">ただの「閉じる日」</span>だったということ。</p>
+    <p>それを先に知っていれば、<br>眠れない夜は、きっと過ごさずに済みました。<br>だからこれからの三か月は、先にお伝えします。</p>
+  </div>
+
+  <div class="sheet">
+    <h2 class="sec">三か月の地図</h2>
+    <div class="nums"><b>11</b><span>日だけ、連絡していい日があります</span></div>
+    <div class="chart"><div class="chart-leg"><span><i style="background:#4fa873"></i>ゆうた様の心の開き</span><span><i style="background:#5f9fe0"></i>さくら様の心の満ち具合</span><span><i class="gb"></i>連絡していい日</span></div><svg viewBox="0 0 600 210" role="img" aria-label="二人の心の状態の折れ線グラフ"><rect x="57" y="16" width="6" height="168" fill="#f1cf86" opacity=".55"/><rect x="63" y="16" width="6" height="168" fill="#f1cf86" opacity=".55"/><rect x="117" y="16" width="6" height="168" fill="#f1cf86" opacity=".55"/><rect x="123" y="16" width="6" height="168" fill="#f1cf86" opacity=".55"/><rect x="177" y="16" width="6" height="168" fill="#f1cf86" opacity=".55"/><rect x="183" y="16" width="6" height="168" fill="#f1cf86" opacity=".55"/><rect x="237" y="16" width="6" height="168" fill="#f1cf86" opacity=".55"/><rect x="243" y="16" width="6" height="168" fill="#f1cf86" opacity=".55"/><rect x="303" y="16" width="6" height="168" fill="#f1cf86" opacity=".55"/><rect x="537" y="16" width="6" height="168" fill="#f1cf86" opacity=".55"/><rect x="543" y="16" width="6" height="168" fill="#f1cf86" opacity=".55"/><line x1="42" x2="588" y1="100" y2="100" stroke="#cdbfa6" stroke-dasharray="3 4"/><text x="36" y="24" text-anchor="end" font-size="10" fill="#8b6f9c">開く</text><text x="36" y="184" text-anchor="end" font-size="10" fill="#8b6f9c">閉じる</text><path fill="none" stroke="#5f9fe0" stroke-width="2" stroke-linecap="round" d="M42.0,149.0 C43.0,142.8 46.0,121.4 48.0,111.7 C50.0,101.9 52.0,92.6 54.0,90.7 C56.0,88.7 58.0,96.1 60.0,100.0 C62.0,103.9 64.0,110.9 66.0,114.0 C68.0,117.1 70.0,117.1 72.0,118.7 C74.0,120.2 76.0,122.2 78.0,123.3 C80.0,124.5 82.0,125.3 84.0,125.7 C86.0,126.1 88.0,122.6 90.0,125.7 C92.0,128.8 94.0,140.8 96.0,144.3 C98.0,147.8 100.0,152.1 102.0,146.7 C104.0,141.2 106.0,119.8 108.0,111.7 C110.0,103.5 112.0,98.4 114.0,97.7 C116.0,96.9 118.0,104.3 120.0,107.0 C122.0,109.7 124.0,109.7 126.0,114.0 C128.0,118.3 130.0,128.8 132.0,132.7 C134.0,136.6 136.0,140.4 138.0,137.3 C140.0,134.2 142.0,117.1 144.0,114.0 C146.0,110.9 148.0,112.8 150.0,118.7 C152.0,124.5 154.0,146.3 156.0,149.0 C158.0,151.7 160.0,143.6 162.0,135.0 C164.0,126.4 166.0,104.3 168.0,97.7 C170.0,91.1 172.0,93.8 174.0,95.3 C176.0,96.9 178.0,102.7 180.0,107.0 C182.0,111.3 184.0,115.6 186.0,121.0 C188.0,126.4 190.0,136.9 192.0,139.7 C194.0,142.4 196.0,139.3 198.0,137.3 C200.0,135.4 202.0,128.8 204.0,128.0 C206.0,127.2 208.0,131.1 210.0,132.7 C212.0,134.2 214.0,138.1 216.0,137.3 C218.0,136.6 220.0,133.8 222.0,128.0 C224.0,122.2 226.0,109.7 228.0,102.3 C230.0,94.9 232.0,85.2 234.0,83.7 C236.0,82.1 238.0,87.2 240.0,93.0 C242.0,98.8 244.0,112.4 246.0,118.7 C248.0,124.9 250.0,130.7 252.0,130.3 C254.0,129.9 256.0,121.8 258.0,116.3 C260.0,110.9 262.0,101.2 264.0,97.7 C266.0,94.2 268.0,92.6 270.0,95.3 C272.0,98.1 274.0,112.4 276.0,114.0 C278.0,115.6 280.0,114.8 282.0,104.7 C284.0,94.6 286.0,64.2 288.0,53.3 C290.0,42.4 292.0,38.2 294.0,39.3 C296.0,40.5 298.0,55.3 300.0,60.3 C302.0,65.4 304.0,65.0 306.0,69.7 C308.0,74.3 310.0,82.5 312.0,88.3 C314.0,94.2 316.0,103.1 318.0,104.7 C320.0,106.2 322.0,98.1 324.0,97.7 C326.0,97.3 328.0,98.4 330.0,102.3 C332.0,106.2 334.0,120.6 336.0,121.0 C338.0,121.4 340.0,113.6 342.0,104.7 C344.0,95.7 346.0,75.9 348.0,67.3 C350.0,58.8 352.0,56.4 354.0,53.3 C356.0,50.2 358.0,47.1 360.0,48.7 C362.0,50.2 364.0,55.3 366.0,62.7 C368.0,70.1 370.0,87.9 372.0,93.0 C374.0,98.1 376.0,94.6 378.0,93.0 C380.0,91.4 382.0,82.5 384.0,83.7 C386.0,84.8 388.0,93.8 390.0,100.0 C392.0,106.2 394.0,119.1 396.0,121.0 C398.0,122.9 400.0,119.4 402.0,111.7 C404.0,103.9 406.0,84.1 408.0,74.3 C410.0,64.6 412.0,55.3 414.0,53.3 C416.0,51.4 418.0,58.8 420.0,62.7 C422.0,66.6 424.0,73.6 426.0,76.7 C428.0,79.8 430.0,79.8 432.0,81.3 C434.0,82.9 436.0,84.8 438.0,86.0 C440.0,87.2 442.0,87.9 444.0,88.3 C446.0,88.7 448.0,85.2 450.0,88.3 C452.0,91.4 454.0,103.5 456.0,107.0 C458.0,110.5 460.0,114.8 462.0,109.3 C464.0,103.9 466.0,82.5 468.0,74.3 C470.0,66.2 472.0,61.1 474.0,60.3 C476.0,59.6 478.0,66.9 480.0,69.7 C482.0,72.4 484.0,72.4 486.0,76.7 C488.0,80.9 490.0,91.4 492.0,95.3 C494.0,99.2 496.0,103.1 498.0,100.0 C500.0,96.9 502.0,79.8 504.0,76.7 C506.0,73.6 508.0,75.5 510.0,81.3 C512.0,87.2 514.0,108.9 516.0,111.7 C518.0,114.4 520.0,106.2 522.0,97.7 C524.0,89.1 526.0,66.9 528.0,60.3 C530.0,53.7 532.0,56.4 534.0,58.0 C536.0,59.6 538.0,65.4 540.0,69.7 C542.0,73.9 544.0,78.2 546.0,83.7 C548.0,89.1 550.0,99.6 552.0,102.3 C554.0,105.1 556.0,101.9 558.0,100.0 C560.0,98.1 562.0,91.4 564.0,90.7 C566.0,89.9 568.0,93.8 570.0,95.3 C572.0,96.9 574.0,100.8 576.0,100.0 C578.0,99.2 580.0,95.3 582.0,90.7 C584.0,86.0 587.0,75.1 588.0,72.0"/><path fill="none" stroke="#4fa873" stroke-width="2.6" stroke-linecap="round" d="M42.0,102.3 C43.0,106.6 46.0,124.1 48.0,128.0 C50.0,131.9 52.0,132.3 54.0,125.7 C56.0,119.1 58.0,96.9 60.0,88.3 C62.0,79.8 64.0,73.9 66.0,74.3 C68.0,74.7 70.0,85.6 72.0,90.7 C74.0,95.7 76.0,101.6 78.0,104.7 C80.0,107.8 82.0,110.1 84.0,109.3 C86.0,108.6 88.0,103.1 90.0,100.0 C92.0,96.9 94.0,90.3 96.0,90.7 C98.0,91.1 100.0,97.3 102.0,102.3 C104.0,107.4 106.0,119.4 108.0,121.0 C110.0,122.6 112.0,118.3 114.0,111.7 C116.0,105.1 118.0,87.6 120.0,81.3 C122.0,75.1 124.0,73.9 126.0,74.3 C128.0,74.7 130.0,79.8 132.0,83.7 C134.0,87.6 136.0,91.1 138.0,97.7 C140.0,104.3 142.0,118.3 144.0,123.3 C146.0,128.4 148.0,131.1 150.0,128.0 C152.0,124.9 154.0,110.1 156.0,104.7 C158.0,99.2 160.0,93.8 162.0,95.3 C164.0,96.9 166.0,111.3 168.0,114.0 C170.0,116.7 172.0,118.3 174.0,111.7 C176.0,105.1 178.0,82.9 180.0,74.3 C182.0,65.8 184.0,59.9 186.0,60.3 C188.0,60.7 190.0,70.4 192.0,76.7 C194.0,82.9 196.0,91.1 198.0,97.7 C200.0,104.3 202.0,112.4 204.0,116.3 C206.0,120.2 208.0,120.6 210.0,121.0 C212.0,121.4 214.0,118.3 216.0,118.7 C218.0,119.1 220.0,121.8 222.0,123.3 C224.0,124.9 226.0,131.1 228.0,128.0 C230.0,124.9 232.0,114.8 234.0,104.7 C236.0,94.6 238.0,74.7 240.0,67.3 C242.0,59.9 244.0,59.2 246.0,60.3 C248.0,61.5 250.0,68.1 252.0,74.3 C254.0,80.6 256.0,88.7 258.0,97.7 C260.0,106.6 262.0,121.0 264.0,128.0 C266.0,135.0 268.0,139.3 270.0,139.7 C272.0,140.1 274.0,131.1 276.0,130.3 C278.0,129.6 280.0,129.9 282.0,135.0 C284.0,140.1 286.0,157.9 288.0,160.7 C290.0,163.4 292.0,161.4 294.0,151.3 C296.0,141.2 298.0,113.2 300.0,100.0 C302.0,86.8 304.0,75.1 306.0,72.0 C308.0,68.9 310.0,76.3 312.0,81.3 C314.0,86.4 316.0,95.7 318.0,102.3 C320.0,108.9 322.0,117.1 324.0,121.0 C326.0,124.9 328.0,125.3 330.0,125.7 C332.0,126.1 334.0,121.8 336.0,123.3 C338.0,124.9 340.0,129.9 342.0,135.0 C344.0,140.1 346.0,152.1 348.0,153.7 C350.0,155.2 352.0,150.9 354.0,144.3 C356.0,137.7 358.0,121.4 360.0,114.0 C362.0,106.6 364.0,103.1 366.0,100.0 C368.0,96.9 370.0,96.1 372.0,95.3 C374.0,94.6 376.0,92.2 378.0,95.3 C380.0,98.4 382.0,108.9 384.0,114.0 C386.0,119.1 388.0,125.3 390.0,125.7 C392.0,126.1 394.0,117.1 396.0,116.3 C398.0,115.6 400.0,115.9 402.0,121.0 C404.0,126.1 406.0,142.8 408.0,146.7 C410.0,150.6 412.0,150.9 414.0,144.3 C416.0,137.7 418.0,115.6 420.0,107.0 C422.0,98.4 424.0,92.6 426.0,93.0 C428.0,93.4 430.0,104.3 432.0,109.3 C434.0,114.4 436.0,120.2 438.0,123.3 C440.0,126.4 442.0,128.8 444.0,128.0 C446.0,127.2 448.0,121.8 450.0,118.7 C452.0,115.6 454.0,108.9 456.0,109.3 C458.0,109.7 460.0,115.9 462.0,121.0 C464.0,126.1 466.0,138.1 468.0,139.7 C470.0,141.2 472.0,136.9 474.0,130.3 C476.0,123.7 478.0,106.2 480.0,100.0 C482.0,93.8 484.0,92.6 486.0,93.0 C488.0,93.4 490.0,98.4 492.0,102.3 C494.0,106.2 496.0,109.7 498.0,116.3 C500.0,122.9 502.0,136.9 504.0,142.0 C506.0,147.1 508.0,149.8 510.0,146.7 C512.0,143.6 514.0,128.8 516.0,123.3 C518.0,117.9 520.0,112.4 522.0,114.0 C524.0,115.6 526.0,129.9 528.0,132.7 C530.0,135.4 532.0,136.9 534.0,130.3 C536.0,123.7 538.0,101.6 540.0,93.0 C542.0,84.4 544.0,78.6 546.0,79.0 C548.0,79.4 550.0,89.1 552.0,95.3 C554.0,101.6 556.0,109.7 558.0,116.3 C560.0,122.9 562.0,131.1 564.0,135.0 C566.0,138.9 568.0,139.3 570.0,139.7 C572.0,140.1 574.0,136.9 576.0,137.3 C578.0,137.7 580.0,139.7 582.0,142.0 C584.0,144.3 587.0,149.8 588.0,151.3"/><circle cx="60" cy="88.33333333333334" r="2.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="66" cy="74.33333333333333" r="2.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="120" cy="81.33333333333333" r="2.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="126" cy="74.33333333333333" r="2.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="180" cy="74.33333333333333" r="2.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="186" cy="60.333333333333336" r="2.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="240" cy="67.33333333333334" r="2.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="246" cy="60.333333333333336" r="2.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="306" cy="72" r="2.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="540" cy="93" r="2.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="546" cy="79" r="2.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><text x="42" y="202" text-anchor="middle" font-size="10.5" fill="#6d6d6d">11/1</text><text x="126" y="202" text-anchor="middle" font-size="10.5" fill="#6d6d6d">11/15</text><text x="222" y="202" text-anchor="middle" font-size="10.5" fill="#6d6d6d">12/1</text><text x="306" y="202" text-anchor="middle" font-size="10.5" fill="#6d6d6d">12/15</text><text x="408" y="202" text-anchor="middle" font-size="10.5" fill="#6d6d6d">1/1</text><text x="492" y="202" text-anchor="middle" font-size="10.5" fill="#6d6d6d">1/15</text><text x="588" y="202" text-anchor="middle" font-size="10.5" fill="#6d6d6d">1/31</text><text x="288" y="12" text-anchor="middle" font-size="11" font-weight="700" fill="#b5566b">温度差が最大</text><text x="540" y="12" text-anchor="end" font-size="11" font-weight="700" fill="#a8761a">ゴール 1/23</text><circle cx="540" cy="93" r="5" fill="#c9a05d" stroke="#fff" stroke-width="1.5"/></svg></div>
+    <p class="chart-note">三か月の「二人の気持ちの波」です。緑の線（彼）が高く、金色の帯が立っているところが、連絡していい日。二本の線が大きく離れるところは、温度差が開く日です。</p>
+    <div class="strip-row"><div class="strip-label">11月</div><div class="strip"><span class="sd wait"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd go"></span><span class="sd go"></span><span class="sd wait"></span><span class="sd wait"></span><span class="sd stop"></span><span class="sd wait"></span><span class="sd wait"></span><span class="sd wait"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd go"></span><span class="sd go"></span><span class="sd wait"></span><span class="sd wait"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd wait"></span><span class="sd wait"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd go best"></span><span class="sd go"></span><span class="sd wait"></span><span class="sd wait"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd stop"></span></div></div><div class="strip-row"><div class="strip-label">12月</div><div class="strip"><span class="sd stop"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd go"></span><span class="sd go"></span><span class="sd wait"></span><span class="sd wait"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd wait"></span><span class="sd go best"></span><span class="sd wait"></span><span class="sd wait"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd wait"></span><span class="sd wait"></span><span class="sd wait"></span><span class="sd wait"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd wait"></span><span class="sd wait"></span></div></div><div class="strip-row"><div class="strip-label">1月</div><div class="strip"><span class="sd stop"></span><span class="sd stop"></span><span class="sd wait"></span><span class="sd wait"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd wait"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd wait"></span><span class="sd wait"></span><span class="sd wait"></span><span class="sd wait"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd wait"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd go best"></span><span class="sd go"></span><span class="sd wait"></span><span class="sd wait"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd stop"></span><span class="sd stop"></span></div></div>
+    <div class="sub">金色＝連絡していい日　薄紫＝様子見　グレー＝今はその時ではない　金の枠＝各月いちばんの日</div>
+    <p style="margin-top:18px">たった11日、と思うかもしれません。<br>でも、届く日に届く形で送れば、<br>十回の連絡より、一回の言葉のほうが深く届きます。</p>
+    <p>そして、<span class="em">三か月のゴールは、1月23日(土)</span>。<br>そこへ向かう道のりを、月ごとにお伝えしていきます。</p>
+  </div>
+
+  <div class="sheet">
+  <section class="month">
+    <div class="m-en">NOVEMBER</div>
+    <h2>2026年 11月</h2>
+    <p class="m-title">十日おきに、心が開く月</p>
+    <div class="m-aura" style="--c:#d1a345"><span class="dot"></span>土のオーラの月</div>
+    <p class="m-body">11月は大地のオーラの月です。水のオーラのさくら様には、足元がぐらつくような不安が出やすい時期。一方、木のオーラの彼は、土に根を張って自分のペースで動ける月です。彼は意外と元気、あなたは揺れやすい。この温度差が生まれやすい月だとお伝えしておきますね。</p>
+    <p class="m-body">焦らなくて大丈夫です。4日、14日、24日。十日ごとに、水のオーラの日が2日連続で巡ってきます。二人の波長が合うのは、この日です。</p>
+    <h3>11月の、二人の気持ちの波</h3>
+    <div class="chart"><div class="chart-leg"><span><i style="background:#4fa873"></i>ゆうた様の心の開き</span><span><i style="background:#5f9fe0"></i>さくら様の心の満ち具合</span><span><i class="gb"></i>連絡していい日</span></div><svg viewBox="0 0 600 190" role="img" aria-label="二人の心の状態の折れ線グラフ"><rect x="89.06896551724138" y="16" width="18.82758620689655" height="148" fill="#f1cf86" opacity=".55"/><rect x="107.89655172413794" y="16" width="18.82758620689655" height="148" fill="#f1cf86" opacity=".55"/><rect x="277.3448275862069" y="16" width="18.82758620689655" height="148" fill="#f1cf86" opacity=".55"/><rect x="296.1724137931035" y="16" width="18.82758620689655" height="148" fill="#f1cf86" opacity=".55"/><rect x="465.62068965517244" y="16" width="18.82758620689655" height="148" fill="#f1cf86" opacity=".55"/><rect x="484.44827586206895" y="16" width="18.82758620689655" height="148" fill="#f1cf86" opacity=".55"/><line x1="42" x2="588" y1="90" y2="90" stroke="#cdbfa6" stroke-dasharray="3 4"/><text x="36" y="24" text-anchor="end" font-size="10" fill="#8b6f9c">開く</text><text x="36" y="164" text-anchor="end" font-size="10" fill="#8b6f9c">閉じる</text><path fill="none" stroke="#5f9fe0" stroke-width="2" stroke-linecap="round" d="M42.0,147.6 C45.1,138.0 54.6,102.3 60.8,90.0 C67.1,77.7 73.4,73.6 79.7,73.6 C85.9,73.6 92.2,84.5 98.5,90.0 C104.8,95.5 111.0,103.7 117.3,106.4 C123.6,109.2 129.9,106.4 136.1,106.4 C142.4,106.4 148.7,103.7 155.0,106.4 C161.2,109.2 167.5,124.3 173.8,122.9 C180.1,121.5 186.3,96.9 192.6,98.2 C198.9,99.6 205.2,121.5 211.4,131.1 C217.7,140.7 224.0,164.0 230.3,155.8 C236.6,147.6 242.8,94.1 249.1,81.8 C255.4,69.4 261.7,77.7 267.9,81.8 C274.2,85.9 280.5,105.1 286.8,106.4 C293.0,107.8 299.3,87.3 305.6,90.0 C311.9,92.7 318.1,114.7 324.4,122.9 C330.7,131.1 337.0,144.8 343.2,139.3 C349.5,133.9 355.8,98.2 362.1,90.0 C368.3,81.8 374.6,79.0 380.9,90.0 C387.2,101.0 393.4,148.9 399.7,155.8 C406.0,162.6 412.3,146.2 418.6,131.1 C424.8,116.0 431.1,72.2 437.4,65.3 C443.7,58.5 449.9,84.5 456.2,90.0 C462.5,95.5 468.8,96.9 475.0,98.2 C481.3,99.6 487.6,91.4 493.9,98.2 C500.1,105.1 506.4,135.2 512.7,139.3 C519.0,143.4 525.2,128.4 531.5,122.9 C537.8,117.4 544.1,106.4 550.3,106.4 C556.6,106.4 562.9,120.1 569.2,122.9 C575.4,125.6 584.9,122.9 588.0,122.9"/><path fill="none" stroke="#4fa873" stroke-width="2.6" stroke-linecap="round" d="M42.0,81.8 C45.1,88.6 54.6,114.7 60.8,122.9 C67.1,131.1 73.4,140.7 79.7,131.1 C85.9,121.5 92.2,77.7 98.5,65.3 C104.8,53.0 111.0,53.0 117.3,57.1 C123.6,61.2 129.9,84.5 136.1,90.0 C142.4,95.5 148.7,87.3 155.0,90.0 C161.2,92.7 167.5,106.4 173.8,106.4 C180.1,106.4 186.3,95.5 192.6,90.0 C198.9,84.5 205.2,73.6 211.4,73.6 C217.7,73.6 224.0,83.1 230.3,90.0 C236.6,96.9 242.8,110.6 249.1,114.7 C255.4,118.8 261.7,124.3 267.9,114.7 C274.2,105.1 280.5,65.3 286.8,57.1 C293.0,48.9 299.3,61.2 305.6,65.3 C311.9,69.4 318.1,80.4 324.4,81.8 C330.7,83.1 337.0,66.7 343.2,73.6 C349.5,80.4 355.8,114.7 362.1,122.9 C368.3,131.1 374.6,128.4 380.9,122.9 C387.2,117.4 393.4,98.2 399.7,90.0 C406.0,81.8 412.3,70.8 418.6,73.6 C424.8,76.3 431.1,98.2 437.4,106.4 C443.7,114.7 449.9,132.5 456.2,122.9 C462.5,113.3 468.8,61.2 475.0,48.9 C481.3,36.6 487.6,44.8 493.9,48.9 C500.1,53.0 506.4,68.1 512.7,73.6 C519.0,79.0 525.2,74.9 531.5,81.8 C537.8,88.6 544.1,110.6 550.3,114.7 C556.6,118.8 562.9,107.8 569.2,106.4 C575.4,105.1 584.9,106.4 588.0,106.4"/><circle cx="98.48275862068965" cy="65.33333333333333" r="3.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="117.3103448275862" cy="57.111111111111114" r="3.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="286.7586206896552" cy="57.111111111111114" r="3.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="305.58620689655174" cy="65.33333333333333" r="3.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="475.0344827586207" cy="48.888888888888886" r="3.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="493.8620689655172" cy="48.888888888888886" r="3.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><text x="42" y="182" text-anchor="middle" font-size="10.5" fill="#6d6d6d">11/1</text><text x="173.79310344827587" y="182" text-anchor="middle" font-size="10.5" fill="#6d6d6d">8</text><text x="305.58620689655174" y="182" text-anchor="middle" font-size="10.5" fill="#6d6d6d">15</text><text x="437.37931034482756" y="182" text-anchor="middle" font-size="10.5" fill="#6d6d6d">22</text><text x="569.1724137931035" y="182" text-anchor="middle" font-size="10.5" fill="#6d6d6d">29</text><text x="475.0344827586207" y="12" text-anchor="middle" font-size="11" font-weight="700" fill="#a8761a">十日おきに合う</text></svg></div>
+    <p class="chart-note">緑の線が上がるほど、ゆうた様の心が開いています。青の線が上がるほど、さくら様の心が満ちています。金色の帯が、連絡していい日です。</p>
+    <div class="mini"><div class="dow">日</div><div class="dow">月</div><div class="dow">火</div><div class="dow">水</div><div class="dow">木</div><div class="dow">金</div><div class="dow">土</div><div class="cd wait">1</div><div class="cd stop">2</div><div class="cd stop">3</div><div class="cd go">4</div><div class="cd go">5</div><div class="cd wait">6</div><div class="cd wait">7</div><div class="cd stop">8</div><div class="cd wait">9</div><div class="cd wait">10</div><div class="cd wait">11</div><div class="cd stop">12</div><div class="cd stop">13</div><div class="cd go">14</div><div class="cd go">15</div><div class="cd wait">16</div><div class="cd wait">17</div><div class="cd stop">18</div><div class="cd stop">19</div><div class="cd wait">20</div><div class="cd wait">21</div><div class="cd stop">22</div><div class="cd stop">23</div><div class="cd go best">24<i class="star">★</i></div><div class="cd go">25</div><div class="cd wait">26</div><div class="cd wait">27</div><div class="cd stop">28</div><div class="cd stop">29</div><div class="cd stop">30</div></div>
+    <div class="keys"><span><b class="k-go"></b>連絡していい日</span><span><b class="k-wait"></b>様子見</span><span><b class="k-stop"></b>今はその時ではない</span></div>
+
+    <h3>週ごとの流れ</h3>
+    <div class="weeks"><div class="wk o"><div class="wk-mark">○</div><div class="wk-body"><div class="wk-date">11/1〜11/8</div><div class="wk-head">水・木にチャンス</div><p>11/4(水)・5(木)に彼の心が開きます。11/1(日)はあなたの気持ちが揺れやすく、11/2・3は彼が閉じ気味。動くのは水曜まで待って。</p></div></div><div class="wk o"><div class="wk-mark">○</div><div class="wk-body"><div class="wk-date">11/9〜11/15</div><div class="wk-head">週末に向けて待つ週</div><p>11/14(土)・15(日)に彼の心がやわらかくなります。その前の11/11(水)はあなたが不安定、11/12・13は彼が閉じる日。</p></div></div><div class="wk t"><div class="wk-mark">△</div><div class="wk-body"><div class="wk-date">11/16〜11/22</div><div class="wk-head">整えることに使う週</div><p>彼は消耗、あなたは不安。二人とも整わない週なので、連絡は控えめに。自分を満たすことに時間を使って。</p></div></div><div class="wk g"><div class="wk-mark">◎</div><div class="wk-body"><div class="wk-date">11/23〜11/29</div><div class="wk-head">今月の本番</div><p>11/24(火)・25(水)が今月いちばんの追い風。週の後半(11/28・29)は彼が疲れるので、勝負は前半で。</p></div></div></div>
+
+    <h3>11月いちばんの日</h3>
+    <div class="best-card">
+      <div class="b-date">11/24(火)</div>
+      <div class="b-kan">水のオーラの日　翌11/25(水)も同じ追い風</div>
+      <dl><dt>あなたの気持ち</dt><dd>落ち着いて、自然体で話せる日。気負わず、普段のあなたでいられます。</dd><dt>そのときの彼</dt><dd>心が潤って、ふとあなたの顔が浮かびます。素直に受け取れる状態。</dd><dt class="act">動き方</dt><dd class="act">19〜22時に、重くない一言を。返事を急かさないこと。2日続く追い風なので、1回で決めようとしなくて大丈夫です。</dd></dl>
+    </div>
+
+    <h3>気持ちが揺れる日と、その対策</h3>
+    <p class="lead-s">先に知っておくだけで、不安は半分になります。</p>
+    <div class="ca ">
+    <div class="ca-top"><span class="ca-date">11/11(水)</span><span class="ca-kan">土のオーラの日</span></div>
+    <div class="ca-tag">あなたの不安が強い日</div>
+    <dl><dt>あなたに湧く気持ち</dt><dd>理由のない不安が強まり、「嫌われたかも」と確かめたくなります。</dd><dt>そのときの彼</dt><dd>いつも通り。あなたが思うほど、気にしていません。</dd><dt class="act">こうしてあげて</dt><dd class="act">今日はトーク画面を開かない。掃除や入浴など、手を動かすことに集中を。この不安は彼のせいでも、あなたの弱さでもなく、日のオーラの影響です。</dd></dl>
+    </div><div class="ca ">
+    <div class="ca-top"><span class="ca-date">11/12(木)・13(金)</span><span class="ca-kan">金のオーラの日</span></div>
+    <div class="ca-tag">彼が閉じる日</div>
+    <dl><dt>あなたに湧く気持ち</dt><dd>特に何もないのに、返事が来ないことが急に気になりはじめます。</dd><dt>そのときの彼</dt><dd>心の扉を閉じて、一人の時間を求めている日。連絡が来ても受け取る余裕がありません。</dd><dt class="act">こうしてあげて</dt><dd class="act">返信の有無を確かめにいかない。スマホを別の部屋に置いて、2時間だけ離れてみて。</dd></dl>
+    </div><div class="ca ">
+    <div class="ca-top"><span class="ca-date">11/18(水)〜20(金)</span><span class="ca-kan">火・土のオーラの日</span></div>
+    <div class="ca-tag">二人の調子が落ちる三日間</div>
+    <dl><dt>あなたに湧く気持ち</dt><dd>「何かしてあげたい」という気持ちが湧きます。あなたの水のオーラは、彼の木を育てる関係だからです。</dd><dt>そのときの彼</dt><dd>人に気を遣い続けて、心のエネルギーが空っぽ。返信が重く感じています。</dd><dt class="act">こうしてあげて</dt><dd class="act">何かしてあげるより、そっとしておくのが最大のやさしさ。差し入れや長文は逆効果。あなたは温かい飲み物でひと息を。</dd></dl>
+    <p class="ca-note">20日(金)はあなたの不安もピークです。11/18・19は彼を、11/20は自分を守る日と決めて。</p></div>
+  </section></div><div class="sheet">
+  <section class="month">
+    <div class="m-en">DECEMBER</div>
+    <h2>2026年 12月</h2>
+    <p class="m-title">待つことが、愛情になる月</p>
+    <div class="m-aura" style="--c:#a3aec2"><span class="dot"></span>金のオーラの月</div>
+    <p class="m-body">12月は金のオーラの月。水のあなたにとって金は恵みで、心が満たされ、想いが溢れる月です。でも彼の木にとって、金は斧。心を守るために殻にこもりやすくなります。あなたが元気なほど、彼との温度差が開きやすい月です。</p>
+    <p class="m-body">前半は12/4・5、後半は12/15に風が吹きます。その間の12/7〜13は、三か月でいちばん彼の心が冷える時期。ここで動かなかったあなたが、勝ちます。</p>
+    <h3>12月の、二人の気持ちの波</h3>
+    <div class="chart"><div class="chart-leg"><span><i style="background:#4fa873"></i>ゆうた様の心の開き</span><span><i style="background:#5f9fe0"></i>さくら様の心の満ち具合</span><span><i class="gb"></i>連絡していい日</span></div><svg viewBox="0 0 600 190" role="img" aria-label="二人の心の状態の折れ線グラフ"><rect x="87.5" y="16" width="18.2" height="148" fill="#f1cf86" opacity=".55"/><rect x="105.7" y="16" width="18.2" height="148" fill="#f1cf86" opacity=".55"/><rect x="287.69999999999993" y="16" width="18.2" height="148" fill="#f1cf86" opacity=".55"/><line x1="42" x2="588" y1="90" y2="90" stroke="#cdbfa6" stroke-dasharray="3 4"/><text x="36" y="24" text-anchor="end" font-size="10" fill="#8b6f9c">開く</text><text x="36" y="164" text-anchor="end" font-size="10" fill="#8b6f9c">閉じる</text><path fill="none" stroke="#5f9fe0" stroke-width="2" stroke-linecap="round" d="M42.0,122.9 C45.0,117.4 54.1,99.6 60.2,90.0 C66.3,80.4 72.3,66.7 78.4,65.3 C84.5,64.0 90.5,74.9 96.6,81.8 C102.7,88.6 108.7,98.2 114.8,106.4 C120.9,114.7 126.9,132.5 133.0,131.1 C139.1,129.7 145.1,105.1 151.2,98.2 C157.3,91.4 163.3,94.1 169.4,90.0 C175.5,85.9 181.5,70.8 187.6,73.6 C193.7,76.3 199.7,98.2 205.8,106.4 C211.9,114.7 217.9,136.6 224.0,122.9 C230.1,109.2 236.1,40.7 242.2,24.2 C248.3,7.8 254.3,16.0 260.4,24.2 C266.5,32.4 272.5,69.4 278.6,73.6 C284.7,77.7 290.7,47.5 296.8,48.9 C302.9,50.3 308.9,72.2 315.0,81.8 C321.1,91.4 327.1,106.4 333.2,106.4 C339.3,106.4 345.3,85.9 351.4,81.8 C357.5,77.7 363.5,74.9 369.6,81.8 C375.7,88.6 381.7,118.8 387.8,122.9 C393.9,127.0 399.9,120.1 406.0,106.4 C412.1,92.7 418.1,48.9 424.2,40.7 C430.3,32.4 436.3,57.1 442.4,57.1 C448.5,57.1 454.5,43.4 460.6,40.7 C466.7,37.9 472.7,29.7 478.8,40.7 C484.9,51.6 490.9,99.6 497.0,106.4 C503.1,113.3 509.1,88.6 515.2,81.8 C521.3,74.9 527.3,64.0 533.4,65.3 C539.5,66.7 545.5,81.8 551.6,90.0 C557.7,98.2 563.7,110.6 569.8,114.7 C575.9,118.8 585.0,114.7 588.0,114.7"/><path fill="none" stroke="#4fa873" stroke-width="2.6" stroke-linecap="round" d="M42.0,106.4 C45.0,109.2 54.1,122.9 60.2,122.9 C66.3,122.9 72.3,120.1 78.4,106.4 C84.5,92.7 90.5,48.9 96.6,40.7 C102.7,32.4 108.7,53.0 114.8,57.1 C120.9,61.2 126.9,61.2 133.0,65.3 C139.1,69.4 145.1,72.2 151.2,81.8 C157.3,91.4 163.3,114.7 169.4,122.9 C175.5,131.1 181.5,132.5 187.6,131.1 C193.7,129.7 199.7,118.8 205.8,114.7 C211.9,110.6 217.9,99.6 224.0,106.4 C230.1,113.3 236.1,147.6 242.2,155.8 C248.3,164.0 254.3,169.5 260.4,155.8 C266.5,142.1 272.5,90.0 278.6,73.6 C284.7,57.1 290.7,57.1 296.8,57.1 C302.9,57.1 308.9,68.1 315.0,73.6 C321.1,79.0 327.1,83.1 333.2,90.0 C339.3,96.9 345.3,110.6 351.4,114.7 C357.5,118.8 363.5,116.0 369.6,114.7 C375.7,113.3 381.7,106.4 387.8,106.4 C393.9,106.4 399.9,107.8 406.0,114.7 C412.1,121.5 418.1,143.4 424.2,147.6 C430.3,151.7 436.3,148.9 442.4,139.3 C448.5,129.7 454.5,98.2 460.6,90.0 C466.7,81.8 472.7,90.0 478.8,90.0 C484.9,90.0 490.9,92.7 497.0,90.0 C503.1,87.3 509.1,70.8 515.2,73.6 C521.3,76.3 527.3,98.2 533.4,106.4 C539.5,114.7 545.5,124.3 551.6,122.9 C557.7,121.5 563.7,102.3 569.8,98.2 C575.9,94.1 585.0,98.2 588.0,98.2"/><circle cx="96.6" cy="40.666666666666664" r="3.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="114.8" cy="57.111111111111114" r="3.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="296.79999999999995" cy="57.111111111111114" r="3.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><text x="42" y="182" text-anchor="middle" font-size="10.5" fill="#6d6d6d">12/1</text><text x="169.39999999999998" y="182" text-anchor="middle" font-size="10.5" fill="#6d6d6d">8</text><text x="296.79999999999995" y="182" text-anchor="middle" font-size="10.5" fill="#6d6d6d">15</text><text x="424.2" y="182" text-anchor="middle" font-size="10.5" fill="#6d6d6d">22</text><text x="551.5999999999999" y="182" text-anchor="middle" font-size="10.5" fill="#6d6d6d">29</text><text x="242.2" y="12" text-anchor="end" font-size="11" font-weight="700" fill="#b5566b">温度差が最大</text><text x="296.79999999999995" y="12" text-anchor="start" font-size="11" font-weight="700" fill="#a8761a">ベスト</text><circle cx="296.79999999999995" cy="57.111111111111114" r="5" fill="#c9a05d" stroke="#fff" stroke-width="1.5"/></svg></div>
+    <p class="chart-note">緑の線が上がるほど、ゆうた様の心が開いています。青の線が上がるほど、さくら様の心が満ちています。金色の帯が、連絡していい日です。</p>
+    <div class="mini"><div class="dow">日</div><div class="dow">月</div><div class="dow">火</div><div class="dow">水</div><div class="dow">木</div><div class="dow">金</div><div class="dow">土</div><div></div><div></div><div class="cd stop">1</div><div class="cd stop">2</div><div class="cd stop">3</div><div class="cd go">4</div><div class="cd go">5</div><div class="cd wait">6</div><div class="cd wait">7</div><div class="cd stop">8</div><div class="cd stop">9</div><div class="cd stop">10</div><div class="cd stop">11</div><div class="cd stop">12</div><div class="cd stop">13</div><div class="cd wait">14</div><div class="cd go best">15<i class="star">★</i></div><div class="cd wait">16</div><div class="cd wait">17</div><div class="cd stop">18</div><div class="cd stop">19</div><div class="cd stop">20</div><div class="cd stop">21</div><div class="cd stop">22</div><div class="cd stop">23</div><div class="cd wait">24</div><div class="cd wait">25</div><div class="cd wait">26</div><div class="cd wait">27</div><div class="cd stop">28</div><div class="cd stop">29</div><div class="cd wait">30</div><div class="cd wait">31</div></div>
+    <div class="keys"><span><b class="k-go"></b>連絡していい日</span><span><b class="k-wait"></b>様子見</span><span><b class="k-stop"></b>今はその時ではない</span></div>
+
+    <h3>週ごとの流れ</h3>
+    <div class="weeks"><div class="wk o"><div class="wk-mark">○</div><div class="wk-body"><div class="wk-date">11/30〜12/6</div><div class="wk-head">週末前に追い風</div><p>12/4(金)・5(土)に彼の心が大きく開きます。それまでの11/30〜12/3は冷え気味なので、焦らず待機。</p></div></div><div class="wk x"><div class="wk-mark">✕</div><div class="wk-body"><div class="wk-date">12/7〜12/13</div><div class="wk-head">今月いちばん冷える週</div><p>彼の心が最も閉じる週。特に12/12・13は、想いが溢れるほど彼は遠ざかります。連絡より自分磨きを。</p></div></div><div class="wk g"><div class="wk-mark">◎</div><div class="wk-body"><div class="wk-date">12/14〜12/20</div><div class="wk-head">仕切り直しの週</div><p>12/14(月)から風向きが変わり、12/15(火)が今月のベストデー。12/18・19は彼がお疲れモードなので、そっとしておいて。</p></div></div><div class="wk t"><div class="wk-mark">△</div><div class="wk-body"><div class="wk-date">12/21〜12/27</div><div class="wk-head">聖夜だけやわらかい</div><p>12/22・23は彼が閉じる日。12/24(木)・25(金)は穏やかな空気に戻るので、重くない一言だけなら届きます。</p></div></div><div class="wk x"><div class="wk-mark">✕</div><div class="wk-body"><div class="wk-date">12/28〜1/3</div><div class="wk-head">年末年始は距離を置く</div><p>12/28・29、1/1・2は彼の心が閉じる日。お正月に想いが溢れても、送るのは1/3以降に。</p></div></div></div>
+
+    <h3>12月いちばんの日</h3>
+    <div class="best-card">
+      <div class="b-date">12/15(火)</div>
+      <div class="b-kan">水のオーラの日　前半は12/4(金)・5(土)もチャンス</div>
+      <dl><dt>あなたの気持ち</dt><dd>三か月でいちばん心が整う日。言葉が自然に選べて、不安がありません。</dd><dt>そのときの彼</dt><dd>満たされて、本音が出やすい。普段は言わないことも、ぽろっと口にしてくれます。</dd><dt class="act">動き方</dt><dd class="act">今月のベストデー。少し踏み込んだ話や、会う約束をするなら今日。夜、ゆっくり話せる時間帯を狙って。</dd></dl>
+    </div>
+
+    <h3>気持ちが揺れる日と、その対策</h3>
+    <p class="lead-s">先に知っておくだけで、不安は半分になります。</p>
+    <div class="ca ">
+    <div class="ca-top"><span class="ca-date">12/8(火)・9(水)</span><span class="ca-kan">火のオーラの日</span></div>
+    <div class="ca-tag">彼が疲れている日</div>
+    <dl><dt>あなたに湧く気持ち</dt><dd>「何かしてあげたい」という気持ちが湧きます。あなたの水のオーラは、彼の木を育てる関係だからです。</dd><dt>そのときの彼</dt><dd>人に気を遣い続けて、心のエネルギーが空っぽ。返信が重く感じています。</dd><dt class="act">こうしてあげて</dt><dd class="act">何かしてあげるより、そっとしておくのが最大のやさしさ。差し入れや長文は逆効果。あなたは温かい飲み物でひと息を。</dd></dl>
+    </div><div class="ca max">
+    <div class="ca-top"><span class="ca-date">12/12(土)・13(日)</span><span class="ca-kan">金のオーラの日</span></div>
+    <div class="ca-tag">最注意日</div>
+    <dl><dt>あなたに湧く気持ち</dt><dd>いてもたってもいられないほど、想いが溢れます。温度差が最大の日です。</dd><dt>そのときの彼</dt><dd>三か月の中でいちばん心が閉じる日。何を言われても重く感じてしまいます。</dd><dt class="act">こうしてあげて</dt><dd class="act">ここで送るのが一番の遠回り。ノートに書く、誰かに話す、体を動かす。出口を別に作って、送るのは14日以降に。</dd></dl>
+    </div><div class="ca ">
+    <div class="ca-top"><span class="ca-date">12/22(火)・23(水)</span><span class="ca-kan">金のオーラの日</span></div>
+    <div class="ca-tag">彼が閉じる日</div>
+    <dl><dt>あなたに湧く気持ち</dt><dd>なぜか気持ちが高まり、伝えたくてたまらなくなります。</dd><dt>そのときの彼</dt><dd>心の扉を閉じて、一人の時間を求めている日。あなたが嫌いなのではなく、誰からも受け取る余裕がありません。</dd><dt class="act">こうしてあげて</dt><dd class="act">想いはスマホのメモに書き出して、送るのは翌日以降。書くだけで、胸の熱がすっと落ち着きます。</dd></dl>
+    <p class="ca-note">クリスマス直前で気持ちが高まりやすい時期。送りたい気持ちは24日の夜まで取っておいて。</p></div><div class="ca ">
+    <div class="ca-top"><span class="ca-date">12/28(月)・29(火)</span><span class="ca-kan">火のオーラの日</span></div>
+    <div class="ca-tag">年末の彼は消耗中</div>
+    <dl><dt>あなたに湧く気持ち</dt><dd>「何かしてあげたい」という気持ちが湧きます。あなたの水のオーラは、彼の木を育てる関係だからです。</dd><dt>そのときの彼</dt><dd>人に気を遣い続けて、心のエネルギーが空っぽ。返信が重く感じています。</dd><dt class="act">こうしてあげて</dt><dd class="act">何かしてあげるより、そっとしておくのが最大のやさしさ。差し入れや長文は逆効果。あなたは温かい飲み物でひと息を。</dd></dl>
+    </div>
+  </section></div><div class="sheet">
+  <section class="month">
+    <div class="m-en">JANUARY</div>
+    <h2>2027年 1月</h2>
+    <p class="m-title">想いが届く月</p>
+    <div class="m-aura" style="--c:#a3aec2"><span class="dot"></span>金のオーラの月</div>
+    <p class="m-body">1月も金のオーラの月が続きます。彼の心は閉じやすく、あなたは想いが溢れやすい。お正月は特に、送りたい気持ちが高まる時期です。いったん胸にしまっておいてください。</p>
+    <p class="m-body">追い風は1/23(土)・24(日)の週末。三か月の山場です。その日まで溜めた想いは、ちゃんと形になって届きます。</p>
+    <h3>1月の、二人の気持ちの波</h3>
+    <div class="chart"><div class="chart-leg"><span><i style="background:#4fa873"></i>ゆうた様の心の開き</span><span><i style="background:#5f9fe0"></i>さくら様の心の満ち具合</span><span><i class="gb"></i>連絡していい日</span></div><svg viewBox="0 0 600 190" role="img" aria-label="二人の心の状態の折れ線グラフ"><rect x="433.29999999999995" y="16" width="18.2" height="148" fill="#f1cf86" opacity=".55"/><rect x="451.49999999999994" y="16" width="18.2" height="148" fill="#f1cf86" opacity=".55"/><line x1="42" x2="588" y1="90" y2="90" stroke="#cdbfa6" stroke-dasharray="3 4"/><text x="36" y="24" text-anchor="end" font-size="10" fill="#8b6f9c">開く</text><text x="36" y="164" text-anchor="end" font-size="10" fill="#8b6f9c">閉じる</text><path fill="none" stroke="#5f9fe0" stroke-width="2" stroke-linecap="round" d="M42.0,57.1 C45.0,54.4 54.1,40.7 60.2,40.7 C66.3,40.7 72.3,51.6 78.4,57.1 C84.5,62.6 90.5,70.8 96.6,73.6 C102.7,76.3 108.7,73.6 114.8,73.6 C120.9,73.6 126.9,70.8 133.0,73.6 C139.1,76.3 145.1,91.4 151.2,90.0 C157.3,88.6 163.3,64.0 169.4,65.3 C175.5,66.7 181.5,88.6 187.6,98.2 C193.7,107.8 199.7,131.1 205.8,122.9 C211.9,114.7 217.9,61.2 224.0,48.9 C230.1,36.6 236.1,44.8 242.2,48.9 C248.3,53.0 254.3,72.2 260.4,73.6 C266.5,74.9 272.5,54.4 278.6,57.1 C284.7,59.9 290.7,81.8 296.8,90.0 C302.9,98.2 308.9,111.9 315.0,106.4 C321.1,101.0 327.1,65.3 333.2,57.1 C339.3,48.9 345.3,46.1 351.4,57.1 C357.5,68.1 363.5,116.0 369.6,122.9 C375.7,129.7 381.7,113.3 387.8,98.2 C393.9,83.1 399.9,39.3 406.0,32.4 C412.1,25.6 418.1,51.6 424.2,57.1 C430.3,62.6 436.3,64.0 442.4,65.3 C448.5,66.7 454.5,58.5 460.6,65.3 C466.7,72.2 472.7,102.3 478.8,106.4 C484.9,110.6 490.9,95.5 497.0,90.0 C503.1,84.5 509.1,73.6 515.2,73.6 C521.3,73.6 527.3,87.3 533.4,90.0 C539.5,92.7 545.5,90.0 551.6,90.0 C557.7,90.0 563.7,95.5 569.8,90.0 C575.9,84.5 585.0,62.6 588.0,57.1"/><path fill="none" stroke="#4fa873" stroke-width="2.6" stroke-linecap="round" d="M42.0,139.3 C45.0,140.7 54.1,157.1 60.2,147.6 C66.3,138.0 72.3,94.1 78.4,81.8 C84.5,69.4 90.5,69.4 96.6,73.6 C102.7,77.7 108.7,101.0 114.8,106.4 C120.9,111.9 126.9,103.7 133.0,106.4 C139.1,109.2 145.1,122.9 151.2,122.9 C157.3,122.9 163.3,111.9 169.4,106.4 C175.5,101.0 181.5,90.0 187.6,90.0 C193.7,90.0 199.7,99.6 205.8,106.4 C211.9,113.3 217.9,127.0 224.0,131.1 C230.1,135.2 236.1,140.7 242.2,131.1 C248.3,121.5 254.3,81.8 260.4,73.6 C266.5,65.3 272.5,77.7 278.6,81.8 C284.7,85.9 290.7,96.9 296.8,98.2 C302.9,99.6 308.9,83.1 315.0,90.0 C321.1,96.9 327.1,131.1 333.2,139.3 C339.3,147.6 345.3,144.8 351.4,139.3 C357.5,133.9 363.5,114.7 369.6,106.4 C375.7,98.2 381.7,87.3 387.8,90.0 C393.9,92.7 399.9,114.7 406.0,122.9 C412.1,131.1 418.1,148.9 424.2,139.3 C430.3,129.7 436.3,77.7 442.4,65.3 C448.5,53.0 454.5,61.2 460.6,65.3 C466.7,69.4 472.7,84.5 478.8,90.0 C484.9,95.5 490.9,91.4 497.0,98.2 C503.1,105.1 509.1,127.0 515.2,131.1 C521.3,135.2 527.3,124.3 533.4,122.9 C539.5,121.5 545.5,122.9 551.6,122.9 C557.7,122.9 563.7,120.1 569.8,122.9 C575.9,125.6 585.0,136.6 588.0,139.3"/><circle cx="442.4" cy="65.33333333333333" r="3.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><circle cx="460.59999999999997" cy="65.33333333333333" r="3.6" fill="#fff" stroke="#c9a05d" stroke-width="2"/><text x="42" y="182" text-anchor="middle" font-size="10.5" fill="#6d6d6d">1/1</text><text x="169.39999999999998" y="182" text-anchor="middle" font-size="10.5" fill="#6d6d6d">8</text><text x="296.79999999999995" y="182" text-anchor="middle" font-size="10.5" fill="#6d6d6d">15</text><text x="424.2" y="182" text-anchor="middle" font-size="10.5" fill="#6d6d6d">22</text><text x="551.5999999999999" y="182" text-anchor="middle" font-size="10.5" fill="#6d6d6d">29</text><text x="60.2" y="12" text-anchor="start" font-size="11" font-weight="700" fill="#b5566b">お正月は温度差</text><text x="442.4" y="12" text-anchor="middle" font-size="11" font-weight="700" fill="#a8761a">ゴール</text><circle cx="442.4" cy="65.33333333333333" r="5" fill="#c9a05d" stroke="#fff" stroke-width="1.5"/></svg></div>
+    <p class="chart-note">緑の線が上がるほど、ゆうた様の心が開いています。青の線が上がるほど、さくら様の心が満ちています。金色の帯が、連絡していい日です。</p>
+    <div class="mini"><div class="dow">日</div><div class="dow">月</div><div class="dow">火</div><div class="dow">水</div><div class="dow">木</div><div class="dow">金</div><div class="dow">土</div><div></div><div></div><div></div><div></div><div></div><div class="cd stop">1</div><div class="cd stop">2</div><div class="cd wait">3</div><div class="cd wait">4</div><div class="cd stop">5</div><div class="cd stop">6</div><div class="cd stop">7</div><div class="cd stop">8</div><div class="cd wait">9</div><div class="cd stop">10</div><div class="cd stop">11</div><div class="cd stop">12</div><div class="cd wait">13</div><div class="cd wait">14</div><div class="cd wait">15</div><div class="cd wait">16</div><div class="cd stop">17</div><div class="cd stop">18</div><div class="cd stop">19</div><div class="cd wait">20</div><div class="cd stop">21</div><div class="cd stop">22</div><div class="cd go best">23<i class="star">★</i></div><div class="cd go">24</div><div class="cd wait">25</div><div class="cd wait">26</div><div class="cd stop">27</div><div class="cd stop">28</div><div class="cd stop">29</div><div class="cd stop">30</div><div class="cd stop">31</div></div>
+    <div class="keys"><span><b class="k-go"></b>連絡していい日</span><span><b class="k-wait"></b>様子見</span><span><b class="k-stop"></b>今はその時ではない</span></div>
+
+    <h3>週ごとの流れ</h3>
+    <div class="weeks"><div class="wk t"><div class="wk-mark">△</div><div class="wk-body"><div class="wk-date">1/4〜1/10</div><div class="wk-head">様子見の週</div><p>1/4(月)だけは穏やか。1/5〜8は彼が動きづらい日が続き、1/10(日)はあなたの気持ちが揺れます。無理に動かず観察を。</p></div></div><div class="wk t"><div class="wk-mark">△</div><div class="wk-body"><div class="wk-date">1/11〜1/17</div><div class="wk-head">水・木だけやわらぐ</div><p>1/13(水)・14(木)は彼の心が少しやわらぐものの、追い風というほどではありません。連絡するなら、ひと言だけ軽く。1/11・12と17は閉じる日。</p></div></div><div class="wk g"><div class="wk-mark">◎</div><div class="wk-body"><div class="wk-date">1/18〜1/24</div><div class="wk-head">三か月の山場</div><p>1/23(土)・24(日)が追い風の週末。その手前の1/18(月)、1/21・22は彼が閉じる日。特に21・22は、動きたくなる気持ちがいちばん高まる日なので我慢。</p></div></div><div class="wk x"><div class="wk-mark">✕</div><div class="wk-body"><div class="wk-date">1/25〜1/31</div><div class="wk-head">静かに充電する週</div><p>1/27以降は彼の心が閉じる日が5日続きます。連絡は急がず、2月に向けて自分のオーラを整える時間に。</p></div></div></div>
+
+    <h3>1月いちばんの日</h3>
+    <div class="best-card">
+      <div class="b-date">1/23(土)</div>
+      <div class="b-kan">水のオーラの日　翌1/24(日)も追い風</div>
+      <dl><dt>あなたの気持ち</dt><dd>週末で気持ちに余裕があり、穏やかに向き合えます。</dd><dt>そのときの彼</dt><dd>時間にも心にも余裕があり、あなたの言葉を丁寧に受け取ってくれます。</dd><dt class="act">動き方</dt><dd class="act">会う提案をするなら今日か明日。日中〜夕方の明るい時間帯に、軽く誘ってみて。三か月かけて溜めた想いを、ここで届けましょう。</dd></dl>
+    </div>
+
+    <h3>気持ちが揺れる日と、その対策</h3>
+    <p class="lead-s">先に知っておくだけで、不安は半分になります。</p>
+    <div class="ca ">
+    <div class="ca-top"><span class="ca-date">1/1(金)・2(土)</span><span class="ca-kan">金のオーラの日</span></div>
+    <div class="ca-tag">お正月は彼が閉じる</div>
+    <dl><dt>あなたに湧く気持ち</dt><dd>なぜか気持ちが高まり、伝えたくてたまらなくなります。</dd><dt>そのときの彼</dt><dd>心の扉を閉じて、一人の時間を求めている日。あなたが嫌いなのではなく、誰からも受け取る余裕がありません。</dd><dt class="act">こうしてあげて</dt><dd class="act">想いはスマホのメモに書き出して、送るのは翌日以降。書くだけで、胸の熱がすっと落ち着きます。</dd></dl>
+    <p class="ca-note">新年のあいさつ程度のつもりでも、彼には重く届きます。見送るのが正解。</p></div><div class="ca ">
+    <div class="ca-top"><span class="ca-date">1/11(月)・12(火)</span><span class="ca-kan">金のオーラの日</span></div>
+    <div class="ca-tag">彼が閉じる日</div>
+    <dl><dt>あなたに湧く気持ち</dt><dd>なぜか気持ちが高まり、伝えたくてたまらなくなります。</dd><dt>そのときの彼</dt><dd>心の扉を閉じて、一人の時間を求めている日。あなたが嫌いなのではなく、誰からも受け取る余裕がありません。</dd><dt class="act">こうしてあげて</dt><dd class="act">想いはスマホのメモに書き出して、送るのは翌日以降。書くだけで、胸の熱がすっと落ち着きます。</dd></dl>
+    </div><div class="ca ">
+    <div class="ca-top"><span class="ca-date">1/21(木)・22(金)</span><span class="ca-kan">金のオーラの日</span></div>
+    <div class="ca-tag">追い風の直前、いちばん動きたくなる</div>
+    <dl><dt>あなたに湧く気持ち</dt><dd>なぜか気持ちが高まり、伝えたくてたまらなくなります。</dd><dt>そのときの彼</dt><dd>心の扉を閉じて、一人の時間を求めている日。あなたが嫌いなのではなく、誰からも受け取る余裕がありません。</dd><dt class="act">こうしてあげて</dt><dd class="act">想いはスマホのメモに書き出して、送るのは翌日以降。書くだけで、胸の熱がすっと落ち着きます。</dd></dl>
+    <p class="ca-note">三か月の中でも想いが高まりやすい二日間。ここを我慢した分だけ、23日の言葉が深く届きます。</p></div><div class="ca ">
+    <div class="ca-top"><span class="ca-date">1/27(水)〜31(日)</span><span class="ca-kan">火・土・金のオーラの日</span></div>
+    <div class="ca-tag">閉じる日が続く</div>
+    <dl><dt>あなたに湧く気持ち</dt><dd>なぜか気持ちが高まり、伝えたくてたまらなくなります。</dd><dt>そのときの彼</dt><dd>心の扉を閉じて、一人の時間を求めている日。あなたが嫌いなのではなく、誰からも受け取る余裕がありません。</dd><dt class="act">こうしてあげて</dt><dd class="act">想いはスマホのメモに書き出して、送るのは翌日以降。書くだけで、胸の熱がすっと落ち着きます。</dd></dl>
+    <p class="ca-note">5日間、風向きが戻りません。送らない選択を「放置」ではなく「溜める時間」と捉えて。2月の追い風にそなえましょう。</p></div>
+  </section></div>
+
+  <div class="sheet">
+    <h2 class="sec">不安になったときの、三つのお守り</h2>
+    <div class="charms">
+      <div class="charm"><b>一、不安は日のオーラのせい</b><p>理由のない不安が来たら、このカレンダーを開いてください。多くの場合、その日は「揺れる日」と書いてあります。</p></div>
+      <div class="charm"><b>二、送らない日は、溜める日</b><p>我慢ではありません。溜めた分だけ、追い風の日の言葉が深く届きます。</p></div>
+      <div class="charm"><b>三、動く日に動けば、それで十分</b><p>毎日がんばらなくて大丈夫。届く日に、軽くひと言。それだけで、流れは変わっていきます。</p></div>
+    </div>
+    <p>あなたはもう、ひとりで待たなくていい。<br>私には、お二人の流れが視えています。</p>
+    <p>どうか安心して、この三か月を歩いてくださいね。</p>
+    <div class="sig">かな</div>
+  </div>
+  <p class="mock">※モック版です。日付と文面は、サンプルの二人（水×木）で作成しています。</p>
+</div>
+</body>
+</html>
