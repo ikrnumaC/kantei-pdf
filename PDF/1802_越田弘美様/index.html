@@ -137,7 +137,193 @@ hr { border: none; border-top: 1px solid #e8d5b7; margin: 40px 0; }
 .toc a { color: #8b6f9c; text-decoration: none; letter-spacing: 1px; transition: color 0.2s; }
 .toc a:hover { color: #c9a05d; }
 
-strong { color: #000000; font-weight: 700; }
+strong { color: #5a3e1b; font-weight: 700; }
+
+/* ===== 強調・カード・注意枠 ===== */
+mark {
+    background: linear-gradient(transparent 55%, #fff09a 55%);
+    color: inherit;
+    font-weight: 600;
+    padding: 0 2px;
+}
+p.point {
+    background: rgba(255, 249, 240, 0.9);
+    border: 1px solid #e8d5b7;
+    border-radius: 10px;
+    padding: 16px 12px;
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+.key-month {
+    background: rgba(255, 252, 240, 0.92);
+    border: 2px solid #c9a05d;
+    border-radius: 14px;
+    padding: 30px 24px 10px;
+    margin: 30px 0 50px;
+}
+.key-month h3 { color: #c9a05d; margin-top: 0; }
+.caution-box {
+    background: rgba(247, 244, 250, 0.95);
+    border: 1px solid #b9a7c9;
+    border-left: 5px solid #8b6f9c;
+    border-radius: 10px;
+    padding: 26px 18px 6px;
+    margin: 30px 0;
+}
+.caution-box p.point { background: transparent; border: none; padding: 0; }
+
+/* ===== 心を守るサポート（パワーストーン） ===== */
+.benefit-list {
+    list-style: none;
+    padding: 8px 0;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+.benefit-list li {
+    padding: 18px 0;
+    border-bottom: 1px solid #ecdcc0;
+}
+.benefit-list li:last-child { border-bottom: none; }
+.benefit-list li::before {
+    content: '✦';
+    display: block;
+    color: #c9a05d;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+.plan-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid #e8d5b7;
+    border-radius: 16px;
+    padding: 30px 20px 24px;
+    margin: 0 0 32px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(139, 111, 156, 0.08);
+}
+.plan-card.recommended {
+    border: 2px solid #c9a05d;
+    background: linear-gradient(180deg, #fffaf0 0%, rgba(255,255,255,0.95) 100%);
+    box-shadow: 0 10px 30px rgba(201, 160, 93, 0.22);
+    margin-top: 20px;
+}
+.plan-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #c9a05d;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 2px;
+    padding: 3px 16px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+.plan-card .plan-title {
+    margin: 6px 0 8px;
+    color: #8b6f9c;
+    letter-spacing: 2px;
+}
+.plan-card.recommended .plan-title { color: #b0843f; }
+.plan-card p.plan-target {
+    font-size: inherit;
+    color: #8b6f9c;
+    margin-bottom: 20px;
+}
+.stone-list, .change-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.stone-list li {
+    padding: 12px 0;
+    border-top: 1px dashed #ecdcc0;
+}
+.stone-list li:first-child { border-top: none; }
+.stone-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+    box-shadow: inset 0 -2px 3px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.06);
+}
+.stone-dot.aqua { background: radial-gradient(circle at 35% 35%, #e6f7fc, #7ccbe2); }
+.stone-dot.moon { background: radial-gradient(circle at 35% 35%, #ffffff, #d9d2e6); }
+.stone-dot.rutile { background: radial-gradient(circle at 35% 35%, #fff4cf, #d9ab3f); }
+.stone-dot.hematite { background: radial-gradient(circle at 35% 35%, #b8b8c2, #4f4f5a); }
+.stone-dot.smoky { background: radial-gradient(circle at 35% 35%, #d8c6b5, #7d6250); }
+.stone-name {
+    font-weight: 700;
+    color: #5a3e1b;
+    letter-spacing: 1px;
+}
+.stone-desc {
+    display: block;
+    font-size: inherit;
+            line-height: inherit;
+    margin-top: 2px;
+}
+.plan-card p.plan-label {
+    font-size: 13px;
+    color: #c9a05d;
+    letter-spacing: 3px;
+    margin: 20px 0 8px;
+}
+.change-list li {
+    font-size: inherit;
+            line-height: inherit;
+    padding: 6px 0;
+}
+.change-list li::before {
+    content: '✓';
+    color: #c9a05d;
+    font-weight: 700;
+    margin-right: 6px;
+}
+.cta-box {
+    background: #fff9f0;
+    border: 1px solid #e8d5b7;
+    border-radius: 16px;
+    padding: 28px 16px 4px;
+    margin: 20px 0 40px;
+}
+.cta-box p { margin-bottom: 18px; }
+.cta-word {
+            display: block;
+            text-align: center;
+            color: #b0843f;
+            font-weight: 700;
+            font-size: 28px;
+            letter-spacing: 4px;
+            margin: 6px 0 10px;
+        }
+.stone-dot.default { background: radial-gradient(circle at 35% 35%, #fff4cf, #c9a05d); }
+.stone-dot.tigereye { background: radial-gradient(circle at 35% 35%, #f3c873, #7a4a16); }
+.stone-dot.larimar { background: radial-gradient(circle at 35% 35%, #e3f7fb, #5fb8cf); }
+.stone-dot.bluelace { background: radial-gradient(circle at 35% 35%, #f1f7fd, #93bde3); }
+.stone-dot.amazonite { background: radial-gradient(circle at 35% 35%, #dff5ec, #5fb59a); }
+.stone-dot.silverrutile { background: radial-gradient(circle at 35% 35%, #ffffff, #9a9aa6); }
+.stone-dot.rose { background: radial-gradient(circle at 35% 35%, #fff0f3, #e7a1b3); }
+.stone-dot.citrine { background: radial-gradient(circle at 35% 35%, #fff4c2, #e2b021); }
+.stone-name + .stone-dot { margin-left: 10px; }
+.stone-pair { display: block; }
+.summary-box { text-align: center; padding: 10px 20px; }
+.summary-list { list-style: none; padding: 0; margin: 0; }
+.summary-list li {
+    padding: 22px 0;
+    border-bottom: 1px solid #ecdcc0;
+}
+.summary-list li:last-child { border-bottom: none; }
+.summary-list li::before {
+    content: '✦';
+    display: block;
+    color: #c9a05d;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
 
 /* ===== スマホレスポンシブ ===== */
 @media screen and (max-width: 768px) {
@@ -152,10 +338,14 @@ strong { color: #000000; font-weight: 700; }
     h1 { font-size: 24px; letter-spacing: 2px; }
     h2 { font-size: 22px; margin-top: 50px; margin-bottom: 30px; }
     h3 { font-size: 18px; margin-top: 30px; margin-bottom: 20px; }
-    p { font-size: 16px; margin-bottom: 40px; }
+    p { font-size: 16px; margin-bottom: 28px; }
     .subtitle { font-size: 14px; margin-bottom: 30px; }
     .aura-section { padding: 20px 14px; margin: 16px 0; }
     .header-info, .important-box, .magic-word-box { padding: 20px 14px; margin: 16px 0; }
+    p.point { margin-bottom: 18px; }
+    .key-month { padding: 24px 14px 4px; }
+    .caution-box { padding: 22px 14px 2px; }
+    .cta-word { font-size: 24px; }
 }
 
     </style>
@@ -202,15 +392,20 @@ strong { color: #000000; font-weight: 700; }
 <p>この度は本鑑定にお進みいただき<br>
 心より感謝申し上げます。</p>
 <h3>【今回の鑑定のまとめ】</h3>
-<div class="header-info"><p>・彼の中に、弘美様への気持ちの芽は<strong>確かにあります</strong>。彼の沈黙は、<strong>拒絶ではなく、ためらい</strong>です<br>
-・ためらいの正体は、歳の差への気後れと、気持ちを胸にしまい込む彼の性質。今年と来年は、彼が気持ちを形にしにくい時期でもあります<br>
-・<strong>最大のチャンス</strong>は12月。短くても言葉を交わせる接点が生まれ、そのあと2月・4月と、彼の気持ちが少しずつ育っていきます<br>
-・鍵は「<strong>急かされない</strong>」という安心を彼に渡すこと。気持ちを問い詰めず、歳の差を自分から卑下しないこと<br>
-・整えるべきは、弘美様に少ない銀色のオーラ。「どう思われるか」より「私はどうしたいか」で選べるようになります</p></div>
+
+    <div class="header-info summary-box">
+    <ul class="summary-list">
+        <li>彼の中に、弘美様への気持ちの芽は<br>確かにあります。<br>彼の沈黙は<br>拒絶ではなく、ためらいです</li>
+        <li>ためらいの正体は<br>歳の差への気後れと<br>気持ちを胸にしまい込む彼の性質。<br>今年と来年は<br>彼が気持ちを形にしにくい<br>時期でもあります</li>
+        <li>最大のチャンスは12月。<br>短くても言葉を交わせる<br>接点が生まれ<br>そのあと2月・4月と<br>彼の気持ちが<br>少しずつ育っていきます</li>
+        <li>鍵は「急かされない」という安心を<br>彼に渡すこと。<br>気持ちを問い詰めず<br>歳の差を自分から<br>卑下しないこと</li>
+        <li>整えるべきは<br>弘美様に少ない銀色のオーラ。<br>「どう思われるか」より<br>「私はどうしたいか」で<br>選べるようになります</li>
+    </ul>
+    </div>
 <p>「彼は、私のことをどう思っているんだろう」</p>
 <p>「歳下の彼と、長い縁で繋がっていけるんだろうか」</p>
 <p>「このまま気にかけていて、いいんだろうか」</p>
-<p>その想い、痛いほど<strong>伝わってきます</strong>。</p>
+<p>その想い、痛いほど伝わってきます。</p>
 <p>「歳下の気になる彼」</p>
 <p>あの短い一言の奥に<br>
 言葉にしにくい距離と<br>
@@ -225,8 +420,8 @@ strong { color: #000000; font-weight: 700; }
 私はまっすぐに受け取っています。</p>
 <p>まず、弘美様が一番知りたいこと。</p>
 <p>結論から言います。</p>
-<p>彼の中に、弘美様への気持ちの芽は<br>
-<strong>確かにあります</strong>。</p>
+<p><mark>彼の中に、弘美様への気持ちの芽は</mark><br>
+<mark>確かにあります。</mark></p>
 <p>そしてこの縁は<br>
 弘美様が彼のペースを尊重できるなら<br>
 長く繋がっていける流れの中にあります。</p>
@@ -242,8 +437,8 @@ strong { color: #000000; font-weight: 700; }
 気持ちが形になりにくい巡りとが<br>
 重なって</p>
 <p>彼は一歩を踏み出せずにいます。</p>
-<p>つまり、彼の沈黙は<br>
-<strong>拒絶ではなく、ためらい</strong>です。</p>
+<p><mark>つまり、彼の沈黙は</mark><br>
+<mark>拒絶ではなく、ためらいです。</mark></p>
 <p>そのためらいをほどく道は<br>
 ちゃんと視えています。</p>
 <p>ただし、条件があります。</p>
@@ -287,16 +482,16 @@ strong { color: #000000; font-weight: 700; }
 ご自身で一番よくご存じのはずです。</p>
 </div>
 <h3>【足りないオーラと、整った時の変化】</h3>
-<p>視えてきたのは<br>
-弘美様のオーラの中に<br>
-銀色のオーラが少ないということです。</p>
+<p><strong>視えてきたのは</strong><br>
+<strong>弘美様のオーラの中に</strong><br>
+<strong>銀色のオーラが少ないということです。</strong></p>
 <p>銀色のオーラは<br>
 決める力、自分を律する力、けじめをつける力。</p>
 <p>これが少ないと</p>
 <p>「どうしたいか」より<br>
 「どう思われるか」で足が止まる。</p>
 <p>本音を言葉にする前に<br>
-「<strong>大丈夫</strong>」と言ってしまう。</p>
+「大丈夫」と言ってしまう。</p>
 <p>相手の反応に<br>
 心を持っていかれる。</p>
 <p>彼のことを思うほど<br>
@@ -317,7 +512,7 @@ strong { color: #000000; font-weight: 700; }
 この霧は晴らせます。</p>
 <p>銀色のオーラが整えば<br>
 迷う時間が短くなり</p>
-<p>「<strong>待つ</strong>」のか「<strong>動く</strong>」のかを<br>
+<p>「待つ」のか「動く」のかを<br>
 弘美様ご自身で選べるようになる。</p>
 <p>彼の反応に<br>
 一喜一憂して揺れることが減り</p>
@@ -366,7 +561,7 @@ strong { color: #000000; font-weight: 700; }
 簡単には手放さない。</p>
 <p>動くときには、根の深いところから動く。</p>
 <p>弘美様の縁は<br>
-「<strong>守る</strong>」縁なんです。</p>
+「守る」縁なんです。</p>
 <p>年齢の違う縁や<br>
 相手を包み込んで守る縁を<br>
 引き寄せやすい魂でもあります。</p>
@@ -537,7 +732,7 @@ strong { color: #000000; font-weight: 700; }
 <p>年上の女性としての落ち着きと<br>
 自分を気遣ってくれる気配が</p>
 <p>彼の中で<br>
-「<strong>近づきたい</strong>」と<br>
+「近づきたい」と<br>
 「失礼があってはいけない」を<br>
 同時に呼び起こしている。</p>
 <p>だから、彼は<br>
@@ -671,7 +866,7 @@ strong { color: #000000; font-weight: 700; }
 彼の足を止めています。</p>
 <p>ためらいをほどく鍵は<br>
 たった一つです。</p>
-<p>「<strong>急かされない</strong>」という安心を<br>
+<p>「急かされない」という安心を<br>
 彼に渡すこと。</p>
 <p>彼の水は<br>
 追い込まれるほど深く沈み</p>
@@ -731,9 +926,10 @@ strong { color: #000000; font-weight: 700; }
 特に重要な四つの月が待っています。</p>
 <p>順にお伝えしますね。</p>
 <div id="winterSentinel"></div>
-<h3>2026年12月 最重要月</h3>
+<div class="key-month">
+    <h3>2026年12月 最重要月</h3>
 <p>なぜこの月が特別なのか。</p>
-<p><strong>12月7日から1月4日</strong>にかけて<br>
+<p>12月7日から1月4日にかけて<br>
 銀色と水のオーラが巡ります。</p>
 <p>弘美様に少なかった銀色が<br>
 ここで巡ってくる。</p>
@@ -746,9 +942,9 @@ strong { color: #000000; font-weight: 700; }
 <p>さらに、この月の水のオーラは<br>
 二人の魂の奥にある根と<br>
 同時に引き合います。</p>
-<p>この先の半年で<br>
-二人の魂の根が同時に結ばれるのは<br>
-この12月です。</p>
+<p><mark>この先の半年で</mark><br>
+<mark>二人の魂の根が同時に結ばれるのは</mark><br>
+<mark>この12月です。</mark></p>
 <p>彼のほうにも<br>
 足りない銀色が巡り<br>
 揺れる心に添う安らぎが巡ります。</p>
@@ -774,13 +970,13 @@ strong { color: #000000; font-weight: 700; }
 この月を<br>
 11月に整えた状態で迎えること。</p>
 <p>焦りと執着を手放して</p>
-<p>さきほどの<br>
-「最後まで聞いて、ありがとう」を<br>
-この月に使ってください。</p>
+<p><strong>さきほどの</strong><br>
+<strong>「最後まで聞いて、ありがとう」を</strong><br>
+<strong>この月に使ってください。</strong></p>
 <p>そして<br>
 一度言葉を交わしたあとは<br>
 返事を急がず</p>
-<p><strong>一週間ほど</strong>は<br>
+<p>一週間ほどは<br>
 そっと待ってあげてください。</p>
 <p>もし彼が<br>
 距離を置きたそうな気配を見せたら<br>
@@ -790,11 +986,13 @@ strong { color: #000000; font-weight: 700; }
 <p>それもまた<br>
 長い縁を守るための<br>
 大切な優しさです。</p>
-<p>「いつまで待てばいい？」と<br>
-答えを迫らないこと。</p>
+<p><strong>「いつまで待てばいい？」と</strong><br>
+<strong>答えを迫らないこと。</strong></p>
 <p>この月の心構えは<br>
 その一つに尽きます。</p>
-<h3>2027年1月</h3>
+    </div>
+
+    <h3>2027年1月</h3>
 <p>なぜこの月が重要か。</p>
 <p>12月の余韻の中に<br>
 弘美様にも、彼にも<br>
@@ -867,7 +1065,7 @@ strong { color: #000000; font-weight: 700; }
 プライベートでも<br>
 自然に会える関係が視えています。</p>
 <h3>【大切なこと】</h3>
-<p>12月が、<strong>最大のチャンス</strong>です。</p>
+<p><mark>12月が、最大のチャンスです。</mark></p>
 <p>この月をどう迎えるかが<br>
 これからの流れを決めます。</p>
 <p>そして、その迎え方の土台は<br>
@@ -891,22 +1089,22 @@ strong { color: #000000; font-weight: 700; }
 自分の手で運命を動かしていくための<br>
 最初の一歩を、視ていきます。</p>
 <h3>【銀色のオーラを補う日常の整え方】</h3>
-<p>・朝、白か銀色の小物を一つ身につける</p>
+<p class="point">・朝、白か銀色の小物を一つ身につける</p>
 <p>なぜこれが大切かというと<br>
 銀色のオーラは</p>
 <p>「自分の軸に戻る」力を<br>
 目に見える形で<br>
 思い出させてくれるからです。</p>
 <p>身につけるたびに<br>
-弘美様の中の「<strong>選ぶ力</strong>」が<br>
+弘美様の中の「選ぶ力」が<br>
 呼び覚まされます。</p>
 <p>やり方はシンプルです。</p>
-<p>・白いハンカチ、シルバーのアクセサリーなど<br>
+<p class="point">・白いハンカチ、シルバーのアクセサリーなど<br>
 一つだけ選ぶ</p>
-<p>・身につける前に、深呼吸を三回して<br>
+<p class="point">・身につける前に、深呼吸を三回して<br>
 「今日の私は、どうしたい？」と<br>
 心の中で一言、確認する</p>
-<p>・もう一つ、スマホ周りの整理整頓</p>
+<p class="point">・もう一つ、スマホ周りの整理整頓</p>
 <p>彼とのやりとりに関わるスマホは<br>
 弘美様の心が<br>
 一番揺れやすい場所です。</p>
@@ -916,12 +1114,12 @@ strong { color: #000000; font-weight: 700; }
 <p>その場所に<br>
 けじめの風を通してあげてください。</p>
 <p>具体的にはこうします。</p>
-<p>・夜、スマホを手に取るのは<br>
+<p class="point">・夜、スマホを手に取るのは<br>
 決めた時間だけにする</p>
-<p>・見返したくなったら<br>
+<p class="point">・見返したくなったら<br>
 先に深呼吸を三回してから</p>
 <h3>【気をつけてほしいこと】</h3>
-<p>・彼の気持ちを問い詰めること</p>
+<p class="point">・彼の気持ちを問い詰めること</p>
 <p>「私のこと、どう思ってるの？」<br>
 「いつまで待てばいい？」</p>
 <p>気持ちを内にためる彼にとって</p>
@@ -932,19 +1130,19 @@ strong { color: #000000; font-weight: 700; }
 彼の水は沈み<br>
 気持ちは奥へ引っ込んでしまうからです。</p>
 <p>意識したいのは、この二つです。</p>
-<p>・彼が話し出すまで待ち、聞き役に回る</p>
-<p>・大きな問いより<br>
+<p class="point">・彼が話し出すまで待ち、聞き役に回る</p>
+<p class="point">・大きな問いより<br>
 答えやすい小さな問いや<br>
 選びやすい提案にする</p>
-<p>・歳の差を、自分から卑下すること</p>
+<p class="point">・歳の差を、自分から卑下すること</p>
 <p>「私なんておばさんだから」</p>
 <p>その一言は<br>
 彼がすでに抱えている気後れを<br>
 そのまま裏付けてしまいます。</p>
 <p>代わりに</p>
-<p>・彼の言葉や頑張りを<br>
+<p class="point">・彼の言葉や頑張りを<br>
 具体的に認めること</p>
-<p>・火が高ぶって気持ちが急いだら<br>
+<p class="point">・火が高ぶって気持ちが急いだら<br>
 返事や行動を一晩置くこと</p>
 <p>この二つで<br>
 弘美様の落ち着きが<br>
@@ -959,7 +1157,7 @@ strong { color: #000000; font-weight: 700; }
 <p>白い小物を身につける。<br>
 スマホを整える。</p>
 <p>これらは<br>
-「<strong>維持する力</strong>」にはなりますが</p>
+「維持する力」にはなりますが</p>
 <p>ゼロから補う力としては<br>
 どうしても限界があるんです。</p>
 <p>もし本気で<br>
@@ -967,111 +1165,116 @@ strong { color: #000000; font-weight: 700; }
 もう一つ<br>
 お伝えしたい方法があります。</p>
 <h2 id="sec-7">🔑 心を守るサポート</h2>
-<p>ここまでお伝えしてきた通り<br>
+
+    <p>ここまでお伝えしてきた通り<br>
 弘美様のオーラには<br>
 銀色のオーラが少ない状態です。</p>
-<p>これが今の状況の<br>
+
+    <p>これが今の状況の<br>
 根っこにある原因であり</p>
-<p>12月のチャンスを掴むために<br>
+
+    <p>12月のチャンスを掴むために<br>
 最も整えるべき部分です。</p>
-<p>銀色のオーラが整うと</p>
-<p>・12月、彼と言葉を交わす場面で<br>
-「どう思われるか」より「私はどうしたいか」で<br>
-言葉を選べるようになる</p>
-<p>・彼の沈黙を<br>
-ためらいの時間として受け止め<br>
-焦らず待てるようになる</p>
-<p>・歳の差を飲み込んできた言葉を<br>
-自然に口にできるようになる</p>
-<p>・彼の反応に一喜一憂せず<br>
-自分の軸を保ったまま<br>
-笑顔でいられる</p>
-<p>・「この人とは長く続く」という<br>
-静かな確信を持てるようになる</p>
-<p>日常の調整法に加えて<br>
+
+    <p>銀色のオーラが整うと</p>
+
+    <ul class="benefit-list">
+    <li>12月、彼と言葉を交わす場面で<br>「どう思われるか」より「私はどうしたいか」で<br>言葉を選べるようになる</li>
+    <li>彼の沈黙を<br>ためらいの時間として受け止め<br>焦らず待てるようになる</li>
+    <li>歳の差を飲み込んできた言葉を<br>自然に口にできるようになる</li>
+    <li>彼の反応に一喜一憂せず<br>自分の軸を保ったまま<br>笑顔でいられる</li>
+    <li>「この人とは長く続く」という<br>静かな確信を持てるようになる</li>
+</ul>
+
+    <p>日常の調整法に加えて<br>
 本格的にオーラを補うために</p>
-<p>パワーストーンを<br>
+
+    <p>パワーストーンを<br>
 お守りとして取り入れる方法があります。</p>
-<p>弘美様のオーラに合わせて<br>
+
+    <p>弘美様のオーラに合わせて<br>
 三つのプランをご用意しました。</p>
-<div id="stoneSentinel1"></div>
-<div class="important-box">
-<h3>【運命を動かすプラン】</h3>
-<p>12月の転機を本気で掴みたい方へ</p>
-<p><strong>・ヘマタイト、シルバールチルクォーツ</strong><br>
-少ない銀色のオーラを補い、迷わず自分の気持ちを選べる</p>
-<p><strong>・アクアマリン、ムーンストーン</strong><br>
-少ない水の流れを補い、本音を言葉にできる</p>
-<p><strong>・ブルーレースアゲート</strong><br>
-火が強い今年の高ぶりを鎮め、彼の反応に急かされなくなる</p>
-<p><strong>・ローズクォーツ</strong><br>
-答えの出ない焦りと不安を吸い取り、優しい安心に変える</p>
-<p>期待できる変化：</p>
-<p>12月、彼と短い会話を交わす場面で<br>
-遮らずに最後まで聞き<br>
-「教えてくれてありがとう」と<br>
-自然に言える自分になります。</p>
-<p>彼の返事が遅い夜も<br>
-スマホを置いて<br>
-ぐっすり眠れるようになります。</p>
-<p>12月の転機を<br>
-最高の状態で迎えられるようになります。</p>
-</div>
-<div id="stoneSentinel2"></div>
-<div class="important-box">
-<h3>【流れを整えるプラン】</h3>
-<p>まずは心を安定させたい方へ</p>
-<p><strong>・ヘマタイト</strong><br>
-少ない銀色のオーラを補い、彼の前でも軸が揺れにくくなる</p>
-<p><strong>・アクアマリン</strong><br>
-少ない水の流れを補い、飲み込んできた本音を緩める</p>
-<p><strong>・ローズクォーツ</strong><br>
-焦りと不安を吸い取り、穏やかな気持ちを育てる</p>
-<p>期待できる変化：</p>
-<p>「彼は今どう思っているんだろう」と<br>
-考え込んでしまう時間が<br>
-少しずつ減っていきます。</p>
-<p>彼の言葉に一喜一憂する波が静まり<br>
-自分の感情の温度を<br>
-整えられるようになります。</p>
-<p>返事を待つ一週間を<br>
-落ち着いて過ごせるようになります。</p>
-</div>
-<div id="doorSentinel3"></div>
-<div class="important-box">
-<h3>【日々のお守りプラン】</h3>
-<p>まずは気持ちの揺れを和らげたい方へ</p>
-<p><strong>・ヘマタイト</strong><br>
-少ない銀色のオーラを補い、「どう思われるか」で止まる癖をほどく</p>
-<p><strong>・ブルーレースアゲート</strong><br>
-火の高ぶりを鎮め、勢いで気持ちを確かめにいきたくなる衝動を止める</p>
-<p>期待できる変化：</p>
-<p>彼のことを考えて<br>
-胸がざわつく夜に</p>
-<p>深呼吸一つで<br>
-気持ちを戻せるようになります。</p>
-<p>感情が高ぶった時に<br>
-衝動的に動かず<br>
-一晩置ける自分になります。</p>
-</div>
-<p>実は、【運命を動かすプラン】を<br>
+
+    <div id="stoneSentinel1"></div>
+
+    <div class="plan-card recommended">
+        <div class="plan-badge">いちばん選ばれています</div>
+        <h3 class="plan-title">運命を動かすプラン</h3>
+        <p class="plan-target">12月の転機を本気で掴みたい方へ</p>
+        <ul class="stone-list">
+        <li><span class="stone-pair"><span class="stone-dot hematite"></span><span class="stone-name">ヘマタイト</span></span><span class="stone-pair"><span class="stone-dot silverrutile"></span><span class="stone-name">シルバールチルクォーツ</span></span><span class="stone-desc">少ない銀色のオーラを補い<br>迷わず自分の気持ちを選べる</span></li>
+        <li><span class="stone-pair"><span class="stone-dot aqua"></span><span class="stone-name">アクアマリン</span></span><span class="stone-pair"><span class="stone-dot moon"></span><span class="stone-name">ムーンストーン</span></span><span class="stone-desc">少ない水の流れを補い<br>本音を言葉にできる</span></li>
+        <li><span class="stone-dot bluelace"></span><span class="stone-name">ブルーレースアゲート</span><span class="stone-desc">火が強い今年の高ぶりを鎮め<br>彼の反応に急かされなくなる</span></li>
+        <li><span class="stone-dot rose"></span><span class="stone-name">ローズクォーツ</span><span class="stone-desc">答えの出ない焦りと不安を吸い取り<br>優しい安心に変える</span></li>
+    </ul>
+        <p class="plan-label">期待できる変化</p>
+    <ul class="change-list">
+        <li>12月、彼と短い会話を交わす場面で<br>遮らずに最後まで聞き<br>「教えてくれてありがとう」と<br>自然に言える自分になります。</li>
+        <li>彼の返事が遅い夜も<br>スマホを置いて<br>ぐっすり眠れるようになります。</li>
+        <li>12月の転機を<br>最高の状態で迎えられるようになります。</li>
+    </ul>
+    </div>
+
+    <div id="stoneSentinel2"></div>
+
+    <div class="plan-card">
+        <h3 class="plan-title">流れを整えるプラン</h3>
+        <p class="plan-target">まずは心を安定させたい方へ</p>
+        <ul class="stone-list">
+        <li><span class="stone-dot hematite"></span><span class="stone-name">ヘマタイト</span><span class="stone-desc">少ない銀色のオーラを補い<br>彼の前でも軸が揺れにくくなる</span></li>
+        <li><span class="stone-dot aqua"></span><span class="stone-name">アクアマリン</span><span class="stone-desc">少ない水の流れを補い<br>飲み込んできた本音を緩める</span></li>
+        <li><span class="stone-dot rose"></span><span class="stone-name">ローズクォーツ</span><span class="stone-desc">焦りと不安を吸い取り<br>穏やかな気持ちを育てる</span></li>
+    </ul>
+        <p class="plan-label">期待できる変化</p>
+    <ul class="change-list">
+        <li>「彼は今どう思っているんだろう」と<br>考え込んでしまう時間が<br>少しずつ減っていきます。</li>
+        <li>彼の言葉に一喜一憂する波が静まり<br>自分の感情の温度を<br>整えられるようになります。</li>
+        <li>返事を待つ一週間を<br>落ち着いて過ごせるようになります。</li>
+    </ul>
+    </div>
+
+    <div id="doorSentinel3"></div>
+
+    <div class="plan-card">
+        <h3 class="plan-title">日々のお守りプラン</h3>
+        <p class="plan-target">まずは気持ちの揺れを和らげたい方へ</p>
+        <ul class="stone-list">
+        <li><span class="stone-dot hematite"></span><span class="stone-name">ヘマタイト</span><span class="stone-desc">少ない銀色のオーラを補い<br>「どう思われるか」で止まる癖をほどく</span></li>
+        <li><span class="stone-dot bluelace"></span><span class="stone-name">ブルーレースアゲート</span><span class="stone-desc">火の高ぶりを鎮め<br>勢いで気持ちを確かめにいきたくなる衝動を止める</span></li>
+    </ul>
+        <p class="plan-label">期待できる変化</p>
+    <ul class="change-list">
+        <li>彼のことを考えて<br>胸がざわつく夜に<br>深呼吸一つで<br>気持ちを戻せるようになります。</li>
+        <li>感情が高ぶった時に<br>衝動的に動かず<br>一晩置ける自分になります。</li>
+    </ul>
+    </div>
+
+    <p>実は、【運命を動かすプラン】を<br>
 選ばれる方が最も多く<br>
 全体の約70%を占めています。</p>
-<p>「12月の転機を<br>
+
+    <p>「12月の転機を<br>
 本気で掴みたいから<br>
 中途半端にしたくない」<br>
 というお声が多いです。</p>
-<p>12月に向けて<br>
+
+    <p>12月に向けて<br>
 今から整え始めることで</p>
-<p>石のエネルギーが<br>
+
+    <p>石のエネルギーが<br>
 ちょうど馴染んだ状態で<br>
-<strong>最重要月</strong>を迎えられます。</p>
-<p>もし興味がありましたら<br>
-「<strong>詳細希望</strong>」とだけ<br>
-送っていただければ</p>
-<p>弘美様専用の<br>
+最重要月を迎えられます。</p>
+
+    <div class="cta-box">
+    <p>もし興味がありましたら</p>
+    <p class="cta-word">「詳細希望」</p>
+    <p>とだけ<br>
+送っていただければ<br>
+弘美様専用の<br>
 石の組み合わせをお伝えしますね。</p>
-<h2 id="sec-8">最後に</h2>
+</div>
+
+    <h2 id="sec-8">最後に</h2>
 <p>弘美様。</p>
 <p>今、あなたは<br>
 大切な岐路に立っています。</p>
