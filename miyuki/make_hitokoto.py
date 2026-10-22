@@ -7,11 +7,11 @@
 #   python3 make_hitokoto.py 1641     … 初回だけ: 1641番以降を対象にする
 #
 # 動作:
-#   - miyukiurl.txt の無料鑑定URL(…様M/)のうち、miyuki_hitokoto.csv にまだ無いものを探す
+#   - miyukiurl.txt の無料鑑定URL(…様M/)のうち、miyuki_hitokoto.csv の最大連番より後のものを探す
 #   - 対象は「一言ファイルにある最大の連番より後」(初回は引数の番号以降)
 #   - 1件ずつ無料鑑定の文章を claude に読ませて、一言を2行作る
-#   - miyuki_hitokoto.csv (URL, 一言1, 一言2) に追記する
-#   → スプシの右側(例: H〜J列)に、このCSVを丸ごと貼り直す
+#   - miyuki_hitokoto.csv (URL, 一言1, 一言2) を今回の新規分だけに入れ替える(前回分は消える)
+#   → スプシの右側(例: H〜J列)に、このCSVを貼る
 # ============================================================
 import csv, glob, os, re, subprocess, sys, urllib.parse
 
@@ -77,7 +77,7 @@ def main():
         return
 
     print(f"対象 {len(targets)} 件: " + ", ".join(f"{n}_{nm}" for n, nm, _ in targets))
-    new = 0
+    new_rows = []
     for num, name, url in targets:
         files = glob.glob(f"{FREE}/{num}_*_深雪.txt")
         if not files:
@@ -97,17 +97,20 @@ def main():
         if len(lines) < 2:
             print(f"  ⚠ {num}_{name}: 一言の形がおかしいので飛ばします → {out!r}")
             continue
-        rows.append([url, lines[-2], lines[-1]])
-        new += 1
+        new_rows.append([url, lines[-2], lines[-1]])
         print(f"  ✅ {num}_{name}: {lines[-2]} / {lines[-1]}")
 
-    rows.sort(key=lambda r: parse(r[0])[0] if parse(r[0]) else 0)
+    if not new_rows:
+        print("\n作成できた一言がないので、CSVはそのままにします。")
+        return
+    # 前回分は消して、今回の新規分だけを残す(最大番号は上で読み取り済み)
+    new_rows.sort(key=lambda r: parse(r[0])[0] if parse(r[0]) else 0)
     with open(CSV, "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(["URL", "一言1", "一言2"])
-        w.writerows(rows)
-    print(f"\n{new} 件追加しました → {CSV}")
-    print("スプシの右側(H〜J列)に、このCSVを丸ごと貼り直してください。")
+        w.writerows(new_rows)
+    print(f"\n{len(new_rows)} 件(今回の新規分のみ) → {CSV}")
+    print("スプシの右側(H〜J列)に、このCSVを貼ってください。")
 
 if __name__ == "__main__":
     main()
