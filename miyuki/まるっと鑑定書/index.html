@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>まるっと鑑定書（見本）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif; background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%); color: #e8e8f0; line-height: 1.9; padding: 20px; min-height: 100vh; font-size: 17px; }
+        .container { max-width: 760px; margin: 0 auto; padding: 40px 20px; }
+        h1 { text-align: center; color: #a8b8ff; font-size: 2em; letter-spacing: 0.1em; text-shadow: 0 0 20px rgba(168,184,255,0.5); margin-bottom: 10px; }
+        h2 { text-align: center; color: #c8d0ff; font-size: 1.25em; letter-spacing: 0.1em; margin: 50px 0 16px; }
+        .sub { text-align: center; color: #c8d0ff; font-size: 0.95em; letter-spacing: 0.15em; margin-bottom: 30px; }
+        .sample-tag { display: block; width: fit-content; margin: 0 auto 30px; padding: 4px 18px; border: 1px solid rgba(255,217,102,0.6); color: #ffd966; border-radius: 20px; font-size: 0.8em; letter-spacing: 0.2em; }
+        .lead { text-align: center; margin: 20px 0 30px; }
+
+        /* 関係図 */
+        .map-wrap { background: rgba(30,30,70,0.4); border: 1px solid rgba(168,184,255,0.3); border-radius: 16px; padding: 14px 6px 10px; }
+        .map-wrap svg { display: block; width: 100%; height: auto; }
+        .legend { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; font-size: 0.8em; color: #c8d0ff; margin: 10px 0 4px; }
+        .legend i { display: inline-block; width: 26px; height: 0; border-top: 3px solid; vertical-align: middle; margin-right: 6px; }
+        .lg-good { border-color: #ffd966; } .lg-bad { border-color: #ff7a7a; border-top-style: dashed; } .lg-tip { border-color: #7ab8ff; }
+        .node-t { font-family: inherit; fill: #e8e8f0; }
+        .edge-t { font-family: inherit; font-size: 13px; }
+
+        /* 個別カード */
+        .member { background: rgba(30,30,70,0.45); border: 1px solid rgba(168,184,255,0.3); border-radius: 16px; padding: 28px 22px; margin: 28px 0; box-shadow: 0 4px 20px rgba(100,100,200,0.2); }
+        .member-head { display: flex; align-items: center; gap: 18px; margin-bottom: 18px; }
+        .deity-img { width: 96px; height: 96px; object-fit: cover; border-radius: 50%; box-shadow: 0 0 24px rgba(168,184,255,0.45); flex-shrink: 0; }
+        .member-name { font-size: 1.35em; color: #c8d0ff; letter-spacing: 0.08em; }
+        .guardian { font-size: 0.9em; color: #9aa4d8; }
+        .guardian b { color: #a8b8ff; font-weight: normal; }
+        .rel { border-radius: 10px; padding: 12px 16px; margin: 10px 0; border-left: 4px solid; background: rgba(0,0,0,0.18); }
+        .rel .tag { display: block; font-size: 0.75em; letter-spacing: 0.15em; margin-bottom: 2px; }
+        .rel.good { border-color: #ffd966; } .rel.good .tag { color: #ffd966; }
+        .rel.bad { border-color: #ff7a7a; } .rel.bad .tag { color: #ff9a9a; }
+        .rel.tip { border-color: #7ab8ff; } .rel.tip .tag { color: #9ccaff; }
+        .hl { color: #ffd966; font-weight: bold; }
+        .closing { text-align: center; margin: 50px 0 20px; line-height: 2.1; }
+        .signature { text-align: right; color: #c8d0ff; font-size: 1.2em; margin-top: 24px; }
+        @media (max-width: 768px) {
+            body { font-size: 15px; padding: 10px; }
+            .container { padding: 24px 4px; }
+            h1 { font-size: 1.5em; }
+            .member { padding: 22px 14px; }
+            .deity-img { width: 72px; height: 72px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="sample-tag">鑑定書の見本</span>
+        <h1>まるっと鑑定書</h1>
+        <p class="sub">ご家族みなさまの守護と本音</p>
+
+        <p class="lead">ご家族お一人ずつ、守っている神様と本音。<br>そして、家族の「関わり」を<br>ひとつの図にしてお届けします。</p>
+
+        <h2>🌙 ご家族の関わり図</h2>
+        <div class="map-wrap">
+            <svg viewBox="0 0 600 620" role="img" aria-label="ご家族の関係図">
+                <defs>
+                    <radialGradient id="gMe" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff3c4"/><stop offset="100%" stop-color="#d9a93a"/></radialGradient>
+                    <clipPath id="cSon"><circle cx="110" cy="120" r="48"/></clipPath>
+                    <clipPath id="cDau"><circle cx="490" cy="120" r="48"/></clipPath>
+                    <clipPath id="cHus"><circle cx="300" cy="540" r="48"/></clipPath>
+                </defs>
+
+                <!-- 家族同士(細め) -->
+                <line x1="158" y1="120" x2="442" y2="120" stroke="#ff7a7a" stroke-width="2.5" stroke-dasharray="7 6" opacity="0.85"/>
+                <line x1="130" y1="166" x2="272" y2="494" stroke="#ff7a7a" stroke-width="2.5" stroke-dasharray="7 6" opacity="0.85"/>
+                <line x1="470" y1="166" x2="328" y2="494" stroke="#ffd966" stroke-width="2.5" opacity="0.85"/>
+
+                <!-- あなたとの関わり(太め) -->
+                <line x1="262" y1="268" x2="148" y2="156" stroke="#ffd966" stroke-width="5"/>
+                <line x1="338" y1="268" x2="452" y2="156" stroke="#ffd966" stroke-width="5"/>
+                <line x1="300" y1="352" x2="300" y2="490" stroke="#ff7a7a" stroke-width="5" stroke-dasharray="9 7"/>
+
+                <!-- ラベル(すべて水平) -->
+                <rect x="240.0" y="107" width="120" height="26" rx="13" fill="#0f0f2e" stroke="#ff9a9a" stroke-width="1.5"/><text class="edge-t" x="300" y="125" text-anchor="middle" fill="#ff9a9a">ことばが少ない</text>
+                <rect x="167.0" y="366" width="110" height="26" rx="13" fill="#0f0f2e" stroke="#ff9a9a" stroke-width="1.5"/><text class="edge-t" x="222" y="384" text-anchor="middle" fill="#ff9a9a">ぶつかりやすい</text>
+                <rect x="328.0" y="366" width="100" height="26" rx="13" fill="#0f0f2e" stroke="#ffd966" stroke-width="1.5"/><text class="edge-t" x="378" y="384" text-anchor="middle" fill="#ffd966">似た者同士</text>
+                <rect x="157.0" y="199" width="96" height="26" rx="13" fill="#0f0f2e" stroke="#ffd966" stroke-width="1.5"/><text class="edge-t" x="205" y="217" text-anchor="middle" fill="#ffd966">帰れる場所</text>
+                <rect x="335.0" y="199" width="120" height="26" rx="13" fill="#0f0f2e" stroke="#ffd966" stroke-width="1.5"/><text class="edge-t" x="395" y="217" text-anchor="middle" fill="#ffd966">いちばんの味方</text>
+                <rect x="240.0" y="412" width="120" height="26" rx="13" fill="#0f0f2e" stroke="#ff9a9a" stroke-width="1.5"/><text class="edge-t" x="300" y="430" text-anchor="middle" fill="#ff9a9a">本音が届かない</text>
+
+                <!-- こうしたらいい -->
+                <g font-size="12" fill="#7ab8ff">
+                    <rect x="14" y="196" width="110" height="26" rx="13" fill="#0f0f2e" stroke="#7ab8ff"/><text class="edge-t" x="69" y="214" text-anchor="middle" fill="#9ccaff" font-size="12">見守る</text>
+                    <rect x="476" y="196" width="110" height="26" rx="13" fill="#0f0f2e" stroke="#7ab8ff"/><text class="edge-t" x="531" y="214" text-anchor="middle" fill="#9ccaff" font-size="12">共に過ごす</text>
+                    <rect x="336" y="540" width="110" height="26" rx="13" fill="#0f0f2e" stroke="#7ab8ff"/><text class="edge-t" x="391" y="558" text-anchor="middle" fill="#9ccaff" font-size="12">感謝から</text>
+                </g>
+
+                <!-- ノード -->
+                <circle cx="300" cy="310" r="58" fill="url(#gMe)" opacity="0.95"/>
+                <text class="node-t" x="300" y="316" text-anchor="middle" font-size="20" fill="#2a2208" style="fill:#2a2208">あなた</text>
+
+                <circle cx="110" cy="120" r="52" fill="#0f0f2e" stroke="#a8b8ff" stroke-width="2"/>
+                <image href="../鑑定画像/猿田彦命.png" x="62" y="72" width="96" height="96" clip-path="url(#cSon)" preserveAspectRatio="xMidYMid slice"/>
+                <text class="node-t" x="110" y="68" text-anchor="middle" font-size="17">息子さん</text>
+
+                <circle cx="490" cy="120" r="52" fill="#0f0f2e" stroke="#a8b8ff" stroke-width="2"/>
+                <image href="../鑑定画像/木花咲耶姫.png" x="442" y="72" width="96" height="96" clip-path="url(#cDau)" preserveAspectRatio="xMidYMid slice"/>
+                <text class="node-t" x="490" y="68" text-anchor="middle" font-size="17">娘さん</text>
+
+                <circle cx="300" cy="540" r="52" fill="#0f0f2e" stroke="#a8b8ff" stroke-width="2"/>
+                <image href="../鑑定画像/大己貴命.png" x="252" y="492" width="96" height="96" clip-path="url(#cHus)" preserveAspectRatio="xMidYMid slice"/>
+                <text class="node-t" x="300" y="610" text-anchor="middle" font-size="17">ご主人</text>
+            </svg>
+            <div class="legend">
+                <span><i class="lg-good"></i>いいところ</span>
+                <span><i class="lg-bad"></i>反発するところ</span>
+                <span><i class="lg-tip" style="border-radius:8px;height:14px;border:1px solid #7ab8ff;width:26px"></i>未来を開くヒント</span>
+            </div>
+        </div>
+
+        <h2>🌙 お一人ずつの鑑定</h2>
+
+        <div class="member">
+            <div class="member-head">
+                <img class="deity-img" src="../鑑定画像/猿田彦命.png" alt="猿田彦命">
+                <div>
+                    <div class="member-name">息子さん</div>
+                    <div class="guardian">守っている神様　<b>猿田彦命</b></div>
+                </div>
+            </div>
+            <p>道を開いて、<br>外へ連れ出す神様に守られている子です。</p>
+            <div class="rel good"><span class="tag">いいところ</span>あなたは、<br>あの子にとって<span class="hl">いつでも帰れる場所</span>です。</div>
+            <div class="rel bad"><span class="tag">反発するところ</span>心配して聞くほど、<br>口数が減ります。<br><br>連絡が少ないのは、<br>親を忘れているからではなく、<br>外で踏ん張っているとき。</div>
+            <div class="rel tip"><span class="tag">未来を開くヒント</span>近況を尋ねるよりも、<br>「いつでも帰っておいで」と一言だけ伝えてください。<br><br>返事を求めず、<br>静かに見守ることが、<br>息子さんの安心につながります。</div>
+        </div>
+
+        <div class="member">
+            <div class="member-head">
+                <img class="deity-img" src="../鑑定画像/木花咲耶姫.png" alt="木花咲耶姫">
+                <div>
+                    <div class="member-name">娘さん</div>
+                    <div class="guardian">守っている神様　<b>木花咲耶姫</b></div>
+                </div>
+            </div>
+            <p>華やかさの奥に、<br>細やかな気づかいを隠している子です。</p>
+            <div class="rel good"><span class="tag">いいところ</span>あなたのことを、<br>家族の中で<span class="hl">いちばん見ている</span>のはこの子です。</div>
+            <div class="rel bad"><span class="tag">反発するところ</span>気持ちを先回りして言い当てられると、<br>心を閉じてしまいます。</div>
+            <div class="rel tip"><span class="tag">未来を開くヒント</span>先回りして答えを伝えるのではなく、<br>一緒に出かける時間をつくってください。<br><br>並んで歩いているときに、<br>娘さんは本音を話しやすくなります。</div>
+        </div>
+
+        <div class="member">
+            <div class="member-head">
+                <img class="deity-img" src="../鑑定画像/大己貴命.png" alt="大己貴命">
+                <div>
+                    <div class="member-name">ご主人</div>
+                    <div class="guardian">守っている神様　<b>大己貴命</b></div>
+                </div>
+            </div>
+            <p>家族を背負うことで、<br>自分を保ってきた方です。</p>
+            <div class="rel good"><span class="tag">いいところ</span>何も言わなくても、<br><span class="hl">あなたの土台</span>であり続けています。</div>
+            <div class="rel bad"><span class="tag">反発するところ</span>弱音を見せられず、<br>頼られるほど無口になります。<br><br>あなたには「冷たい」と映りやすいところです。</div>
+            <div class="rel tip"><span class="tag">未来を開くヒント</span>お願いごとを伝える前に、<br>まず感謝の言葉を添えてください。<br><br>感謝から会話を始めることで、<br>ご主人の本音が少しずつ動き出します。</div>
+        </div>
+
+        <div class="closing">
+            <p>ご家族一人ずつ、<br>本当は何を考えているのか、<br>あなたがどんな存在なのかまで<br>書いてお届けします。</p>
+            <div class="signature">深雪</div>
+        </div>
+    </div>
+</body>
+</html>

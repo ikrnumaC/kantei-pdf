@@ -10,7 +10,7 @@
 #   - urls.txt の無料鑑定URL(…/special/連番_名前様/)のうち、kana_hitokoto.csv にまだ無いものを探す
 #   - 対象は「一言ファイルにある最大の連番より後」(初回は引数の番号以降)
 #   - 1件ずつ 無料鑑定/かな の文章を claude に読ませて、一言を2行作る
-#   - kana_hitokoto.csv (URL, 一言1, 一言2) に追記する
+#   - 前回までのCSVから最大の連番を取得したうえで、CSVを今回作った分だけに置き換える
 #   → スプシの右側に、このCSVを丸ごと貼り直す
 # ============================================================
 import csv, glob, os, re, subprocess, sys, urllib.parse
@@ -115,6 +115,7 @@ def main():
 
     print(f"対象 {len(targets)} 件: " + ", ".join(f"{n}_{nm}" for n, nm, _ in targets))
     new = 0
+    new_rows = []
     for num, name, url in targets:
         files = glob.glob(f"{FREE}/{num}_*_かな.txt")
         if not files:
@@ -140,16 +141,19 @@ def main():
         if not lines:
             print(f"  ⚠ {num}_{name}: 一言の形がおかしいので飛ばします → {out!r}")
             continue
-        rows.append([url, break_at_comma(lines[-2]), break_at_comma(lines[-1])])
+        new_rows.append([url, break_at_comma(lines[-2]), break_at_comma(lines[-1])])
         new += 1
         print(f"  ✅ {num}_{name}: {lines[-2]} / {lines[-1]}")
 
-    rows.sort(key=lambda r: parse(r[0])[0] if parse(r[0]) else 0)
+    if not new_rows:
+        print("\n追加できた一言がないので、CSVは変更しません。")
+        return
+    rows = sorted(new_rows, key=lambda r: parse(r[0])[0])
     with open(CSV, "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(["URL", "一言1", "一言2"])
         w.writerows(rows)
-    print(f"\n{new} 件追加しました → {CSV}")
+    print(f"\n{new} 件で置き換えました → {CSV}")
     print("スプシの右側に、このCSVを丸ごと貼り直してください。")
 
 if __name__ == "__main__":
