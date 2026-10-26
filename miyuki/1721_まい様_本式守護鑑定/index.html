@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) : GA4 計測 [GA4-MIYUKI] -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHLDFT6DR7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JHLDFT6DR7');
+    </script>
+    <title>まい様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+
+            .toc {
+                padding: 20px 15px;
+            }
+
+            .toc-title {
+                font-size: 1.1em;
+            }
+
+            .toc a {
+                font-size: 0.95em;
+                padding: 12px 6px 12px 36px;
+            }
+        }
+
+        /* ===== 演出：元素の背景（冒頭〜守護神登場まで） ===== */
+        .element-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../鑑定画像/刀.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .element-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：守護神の背景（守護神登場〜本式内容の手前まで） ===== */
+        .deity-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/経津主神.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center 18%;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .deity-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：扉の背景（本式内容〜結びまで） ===== */
+        .door-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/ドア2.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .door-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：今後の流れ 季節背景 ===== */
+        .season-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .season-bg.is-visible { opacity: 0.4; }
+        #seasonAutumnBg { background-image: url("../鑑定画像/秋.jpg"); }
+        #seasonWinterBg { background-image: url("../鑑定画像/冬.jpg"); }
+
+        /* ===== 演出：パワーストーン背景 ===== */
+        .stone-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../素材/ガーネット.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .stone-bg.is-visible { opacity: 0.4; }
+
+        .deity-veil {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(15, 15, 46, 0.04) 0%, rgba(15, 15, 46, 0.15) 60%, rgba(15, 15, 46, 0.25) 100%),
+                linear-gradient(180deg, rgba(15, 15, 46, 0.06) 0%, rgba(15, 15, 46, 0.18) 100%);
+        }
+
+        /* ===== 演出：花びら ===== */
+        #petals {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* ===== 読みやすさ調整（2026-10-21） ===== */
+        :root { --gap: 56px; }
+        mark {
+            background: linear-gradient(transparent 58%, rgba(255, 217, 102, 0.38) 58%);
+            color: #fff6d8;
+            padding: 0 2px;
+        }
+        strong { color: #ffe9a8; font-weight: 700; }
+        .summary-box {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(255, 217, 102, 0.35);
+            border-radius: 14px;
+            padding: 24px 16px 8px;
+            margin: 0 0 var(--gap);
+        }
+        .summary-title {
+            text-align: center;
+            color: #ffd966;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+        }
+        ul.summary-list { margin: 0; }
+        ul.summary-list li {
+            margin: 0;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 217, 102, 0.18);
+        }
+        ul.summary-list li:last-child { border-bottom: none; }
+        ul.summary-list li::before {
+            content: '✦';
+            display: block;
+            color: #ffd966;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+        .month-title {
+            color: #ffd966;
+            font-size: 1.25em;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            margin-bottom: 28px;
+        }
+        .section.key-month {
+            border: 2px solid rgba(255, 217, 102, 0.7);
+            background: rgba(60, 50, 20, 0.28);
+            box-shadow: 0 0 24px rgba(255, 217, 102, 0.15);
+        }
+        ul.shrine-list { margin: 0 0 var(--gap); }
+        ul.shrine-list li { margin: 0; padding: 10px 0; border-bottom: 1px dashed rgba(168, 184, 255, 0.2); }
+        ul.shrine-list li:last-child { border-bottom: none; }
+        .shrine-name { display: block; color: #f0f0ff; font-weight: bold; }
+        .shrine-addr { display: block; font-size: 0.85em; color: #b8bce0; }
+        .stone-card {
+            background: rgba(30, 30, 70, 0.55);
+            border: 1px solid rgba(255, 217, 102, 0.45);
+            border-radius: 16px;
+            padding: 10px 18px;
+            margin: 0 0 var(--gap);
+            box-shadow: 0 6px 24px rgba(255, 217, 102, 0.1);
+        }
+        ul.stone-list { margin: 0; }
+        ul.stone-list li { margin: 0; padding: 20px 0; border-top: 1px dashed rgba(255, 217, 102, 0.22); }
+        ul.stone-list li:first-child { border-top: none; }
+        .stone-dot {
+            display: inline-block; width: 13px; height: 13px; border-radius: 50%;
+            margin-right: 8px; vertical-align: middle;
+            box-shadow: inset 0 -2px 3px rgba(0,0,0,0.25), 0 0 8px rgba(255,255,255,0.15);
+        }
+        .stone-dot.carnelian { background: radial-gradient(circle at 35% 35%, #ffc49a, #d4541f); }
+        .stone-dot.citrine { background: radial-gradient(circle at 35% 35%, #fff4c2, #e2b021); }
+        .stone-dot.jade { background: radial-gradient(circle at 35% 35%, #c9f0d8, #3f9a68); }
+        .stone-dot.amber { background: radial-gradient(circle at 35% 35%, #ffe2a0, #c47a14); }
+        .stone-dot.rose { background: radial-gradient(circle at 35% 35%, #ffe6ee, #e59bb4); }
+        .stone-dot.moonstone { background: radial-gradient(circle at 35% 35%, #ffffff, #b8c4e6); }
+        .stone-dot.aquamarine { background: radial-gradient(circle at 35% 35%, #e0f6ff, #5fb4d8); }
+        .stone-dot.quartz { background: radial-gradient(circle at 35% 35%, #ffffff, #cfd8e0); }
+        .stone-dot.smoky { background: radial-gradient(circle at 35% 35%, #d9cfc4, #6b5a4e); }
+        .stone-dot.tigereye { background: radial-gradient(circle at 35% 35%, #f0d08a, #8a5a1a); }
+        .stone-name { color: #ffd966; font-weight: bold; letter-spacing: 0.05em; }
+        .stone-desc { display: block; margin-top: 4px; }
+        .cta-box {
+            border-top: 1px solid rgba(255, 217, 102, 0.3);
+            margin-top: 10px;
+            padding-top: 26px;
+        }
+        .cta-box p { margin-bottom: 14px; }
+        .cta-word {
+            color: #ffd966;
+            font-size: 1.7em;
+            font-weight: bold;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 18px rgba(255, 217, 102, 0.45);
+        }
+        @media (max-width: 768px) {
+            :root { --gap: 34px; }
+            body { font-size: 16px; }
+            .cta-word { font-size: 1.5em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="element-bg" id="elementBg"></div>
+    <div class="deity-bg" id="deityBg"></div>
+    <div class="door-bg" id="doorBg"></div>
+    <div class="season-bg" id="seasonAutumnBg"></div>
+    <div class="season-bg" id="seasonWinterBg"></div>
+    <div class="stone-bg" id="stoneBg"></div>
+    <div class="deity-veil"></div>
+    <canvas id="petals"></canvas>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">自分で決める道</h2>
+            <p class="cover-name">まい様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 目次 -->
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-path">あなたが歩いてきた道</a></li>
+                <li><a href="#sec-now">今のまい様</a></li>
+                <li><a href="#sec-god">あなたの守護神</a></li>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-1">1. あの方の本音</a></li>
+                <li><a href="#sec-2">2. 関係が動く時期</a></li>
+                <li><a href="#sec-3">3. 選ばれる力の活かし方</a></li>
+                <li><a href="#sec-4">4. ご縁の糸を守る方法</a></li>
+                <li><a href="#sec-5">5. 金運と転職の行方</a></li>
+                <li><a href="#sec-flow">今後の四ヶ月</a></li>
+                <li><a href="#sec-bonus">もう少し先に視えていること</a></li>
+                <li><a href="#sec-guardian">守護を受け取る方法</a></li>
+                <li><a href="#sec-stone">あなたと響き合うパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
+        <div id="elementSentinel"></div>
+        <div class="oracle-message">
+            <p style="margin-bottom: var(--gap);">まい様</p>
+            <p style="margin-bottom: var(--gap);">本式守護鑑定をお受けいただき<br>本当にありがとうございます。</p>
+            <div class="summary-box">
+            <p class="summary-title">【今回の鑑定のまとめ】</p>
+            <ul class="summary-list">
+                <li>彼は遊びではありません。奥様への責任と情が重く、自分からは動けずにいます。他に誰かがいる形は視えず、彼が自分の意思で動き出すのは2027年の後半から2029年にかけてです</li>
+                <li>関係が動く最初の節目は2027年2月です。同じ時期に、お金と働き方も転換点を迎え、借金や支払いの重さは今年がピーク、45歳のお誕生日のあたりから収入が上向いていきます</li>
+                <li>彼の本音が見えず苦しかったのは、「決める日を先に延ばす癖」があるから。彼に答えは迫らず、決める力を、まい様ご自身の側（旦那様のこと・働き方）に向けてください</li>
+                <li>転職は進む方向です。今年は学びと準備に使い、動くのはお誕生日を過ぎてから。向いているのは、成果が収入に直結する、裁量の大きいお仕事です</li>
+                <li>合図の言葉は「ここから先は、私が決めます」。経津主神は、曖昧な時間を断ち切り、まい様の決める力を支える神様です</li>
+            </ul>
+            </div>
+            <p style="margin-bottom: var(--gap);">「不倫遠距離 五年目の彼がいます。<br>彼は離婚をして私と一緒になりたいのか<br>ただの遊びかしりたい。<br>わたしは旦那と離婚したい。<br>金運は給料もひくく<br>あがらない。<br>支払いがおおく借金もある。<br>私に金運はあるのか<br>さきでらくになるのか<br>転職するべきかしりたい。」</p>
+            <p style="margin-bottom: var(--gap);">「彼が私以外にだれかいるのか<br>嫁にきもちがあるなかで<br>わたしといる理由がわかればうれしいです。」</p>
+            <p style="margin-bottom: var(--gap);">いただいたこの言葉を読んだとき<br>まい様がどれほど長いあいだ<br>答えの出ない想いと<br>お金の重さを一人で抱えながら<br>毎日を支えてこられたのか<br>その重みがまっすぐ胸に届きました。</p>
+            <p style="margin-bottom: var(--gap);">今回まい様の守護神とつながり<br>霊視を進めていくと<br>守護神は何度も同じところへ<br>私の意識を引き戻してきました。</p>
+            <p style="margin-bottom: var(--gap);">「迷わず決められるはずの自分が<br>どうしてこの想いとお金のことだけは<br>答えを出せずにいるのだろう」</p>
+            <p style="margin-bottom: var(--gap);">まい様がずっと心の奥で抱えてきた<br>その問いの答えが<br>そこにありました。</p>
+            <p style="margin-bottom: 0;">その答えにたどり着くために<br>まずはまい様が歩いてきた道から<br>お伝えしていきますね。</p>
+        </div>
+
+        <h2 id="sec-path">【あなたが歩いてきた道】</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">守護神が最初に視せてくれたのは<br>若い頃の背中でした。</p>
+            <p style="margin-bottom: var(--gap);">まだ誰も起きていない早い朝に<br>一人で家を出て<br>冷たい風の中でバスを待っている背中です。</p>
+            <p style="margin-bottom: var(--gap);">誰かに寄りかかる前に<br>まず自分の足で立つことを選んで<br>弱音は胸の内にしまい<br>前だけを見て歩いている。</p>
+            <p style="margin-bottom: var(--gap);">そんな背中です。</p>
+            <p style="margin-bottom: var(--gap);">二十代から三十代にかけて<br>まい様はパートナーとの暮らしを<br>自分の手で形にしようとしてきました。</p>
+            <p style="margin-bottom: var(--gap);">家を整え<br>毎日の支払いをやりくりして<br>働くことをやめずに<br>暮らしの土台を<br>一つずつ積み上げてきた日々です。</p>
+            <p style="margin-bottom: var(--gap);">そして四十代に入る頃<br>遠くにいるあの方との縁が<br>静かに始まりました。</p>
+            <p style="margin-bottom: var(--gap);">そのどれもが<br>まい様が自分で選び<br>自分の足で歩いてきた道です。</p>
+            <p style="margin-bottom: var(--gap);">今のまい様の強さは<br>その歩みの上にあります。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>その背中を視ていて<br>一つ気づいたことがあります。</p>
+            <p style="margin-bottom: 0;">まい様は決める力を持ちながら<br>いつも先に<br>「守ること」を選んできた人なのです。</p>
+        </div>
+
+        <h2 id="sec-now">【今のまい様】</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">その歩き方は<br>今のまい様にも<br>そのまま続いています。</p>
+            <p style="margin-bottom: var(--gap);">彼からの返事が来ない夜<br>スマホを何度も手に取っては伏せて<br>最後は「忙しいんだろう」と<br>自分に言い聞かせて布団に入る。</p>
+            <p style="margin-bottom: var(--gap);">翌朝には<br>何事もなかった顔で<br>いつもの仕事へ向かっています。</p>
+            <p style="margin-bottom: var(--gap);">旦那様との暮らしを終わらせたい<br>その気持ちははっきりあるのに<br>切り出す日は<br>「今はまだ時期じゃない」と<br>頭のどこかで先に置いている。</p>
+            <p style="margin-bottom: var(--gap);">給料日に明細を見て<br>支払いの日を指で数えながら<br>今月の残りを頭の中で計算する。</p>
+            <p style="margin-bottom: var(--gap);">求人を眺める夜があっても<br>「もう少し様子を見てから」と<br>そっと画面を閉じてしまう。</p>
+            <p style="margin-bottom: var(--gap);">彼の答えを待つ。</p>
+            <p style="margin-bottom: var(--gap);">旦那様に切り出す日は先に置く。</p>
+            <p style="margin-bottom: var(--gap);">転職はもう少し様子を見る。</p>
+            <p style="margin-bottom: var(--gap);">どれも<br>まい様の誠実さです。</p>
+            <p style="margin-bottom: var(--gap);">相手を傷つけたくない。</p>
+            <p style="margin-bottom: var(--gap);">暮らしを壊したくない。</p>
+            <p style="margin-bottom: var(--gap);">間違った選び方をしたくない。</p>
+            <p style="margin-bottom: var(--gap);">その思いが<br>まい様をここまで慎重にしてきました。</p>
+            <p style="margin-bottom: var(--gap);">でもこの三つには<br>共通していることがあります。</p>
+            <p style="margin-bottom: var(--gap);">どれも<br>「何かが整ってから決めよう」と<br>していることです。</p>
+            <p style="margin-bottom: var(--gap);">彼の答えが出てから。</p>
+            <p style="margin-bottom: var(--gap);">時期が来てから。</p>
+            <p style="margin-bottom: var(--gap);">お給料が上がってから。</p>
+            <p style="margin-bottom: var(--gap);">それが長く続いた結果<br>一つの癖ができていました。</p>
+            <p style="margin-bottom: var(--gap);">まい様は<br>臆病なのではありません。</p>
+            <p style="margin-bottom: var(--gap);">壊したくないものが<br>人より多く見えてしまう人なのです。</p>
+            <p style="margin-bottom: var(--gap);">その癖に名前をつけるなら<br>「決める日を先に延ばす癖」です。</p>
+            <p style="margin-bottom: var(--gap);">「もし彼の気持ちが分かったら」<br>「もしお給料が上がったら」と<br>「もし」から始まる言葉が<br>頭の中に並んでいる。</p>
+            <p style="margin-bottom: var(--gap);">決めたあとに壊れるものを<br>先に全部数えてしまう。</p>
+            <p style="margin-bottom: var(--gap);">「決める」と言いながら<br>日付だけは決めていない。</p>
+            <p style="margin-bottom: var(--gap);">答えを知りたい気持ちが強い日ほど<br>スマホを見る回数が増えていく。</p>
+            <p style="margin-bottom: var(--gap);">思い当たることが<br>きっとあるはずです。</p>
+            <p style="margin-bottom: var(--gap);">本来のまい様は<br>決めたら迷わず進む人です。</p>
+            <p style="margin-bottom: var(--gap);">曖昧な返事が何より苦手で<br>白黒をはっきりさせたい人です。</p>
+            <p style="margin-bottom: var(--gap);">だからこそこの癖は<br>いちばん苦しかったはずです。</p>
+            <p style="margin-bottom: var(--gap);">実はこの癖こそが<br>冒頭でお伝えした<br>守護神が何度も私の意識を<br>引き戻したところです。</p>
+            <p style="margin-bottom: var(--gap);">今回の鑑定のすべての鍵になります。</p>
+            <p style="margin-bottom: 0;">では<br>そんなまい様を守護しているのは<br>どんな神様なのでしょうか。</p>
+        </div>
+
+        <div id="guardianSentinel"></div>
+        <div class="oracle-message" id="sec-god">
+            <p style="margin-bottom: var(--gap);">まい様を守っているのは<br><span style="color: #ffd966;">経津主神</span>（ふつぬしのかみ）です。</p>
+            <p style="margin-bottom: var(--gap);">剣の神様です。</p>
+            <p style="margin-bottom: var(--gap);">天照大御神が<br>地上の国をおさめる話し合いのために<br>使いを送ることになったとき<br>武甕槌神（たけみかづちのかみ）とともに<br>選ばれた神様です。</p>
+            <p style="margin-bottom: var(--gap);">出雲の海辺に降り立った経津主神は<br>腰の大きな剣を抜くと<br>切っ先を上にして<br>地面に逆さに突き立てました。</p>
+            <p style="margin-bottom: var(--gap);">そしてその刃の先に<br>どっかりとあぐらをかいて座り<br>この国の主である<br>大己貴神（おおなむちのかみ）に<br>こう問いかけたのです。</p>
+            <p style="margin-bottom: var(--gap);">「この国を譲るのか<br>譲らないのか<br>あなたの考えを聞かせてほしい」</p>
+            <p style="margin-bottom: var(--gap);">一歩も引かず<br>曖昧な返事を許さず<br>答えを問う。</p>
+            <p style="margin-bottom: var(--gap);">「ふつ」という名は<br>ものがすっぱりと断ち切れる音に<br>由来するともいわれています。</p>
+            <p style="margin-bottom: var(--gap);">経津主神は<br>香取神宮の主祭神として<br>今も大切にお祀りされています。</p>
+            <p style="margin-bottom: var(--gap);">まるでまい様そのもののような神様です。</p>
+            <p style="margin-bottom: var(--gap);">でもここからが大切なところです。</p>
+            <p style="margin-bottom: var(--gap);">経津主神が<br>剣を地面に立てたのは<br>自分の立つ場所を<br>はっきりと決めるためでした。</p>
+            <p style="margin-bottom: var(--gap);">立つ場所を決めたうえで<br>問いを置き<br>相手が自分の意思で答えを出すまで<br>その場に座って待ったのです。</p>
+            <p style="margin-bottom: var(--gap);">待つ前に<br>まず自分の立つ場所を決めていたのです。</p>
+            <p style="margin-bottom: var(--gap);">そして剣が断ち切ったのは<br>いつまでも答えの出ない<br>曖昧な時間のほうでした。</p>
+            <p style="margin-bottom: var(--gap);">決める神様は<br>決めたうえで待てる神様でもあるのです。</p>
+            <p style="margin-bottom: var(--gap);">「決める日を先に延ばす癖」で<br>歩いてきたまい様のそばに<br>この神様がいる。</p>
+            <p style="margin-bottom: 0;">それは<br>「まず自分の立つ場所を決めていい」と<br>伝えるためにほかなりません。</p>
+            <img src="../鑑定画像/経津主神.png" alt="経津主神" class="guardian-image">
+        </div>
+
+        <div id="essenceSentinel"></div>
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">その経津主神が<br>まい様のこの先の景色を<br>見せてくれました。</p>
+            <p style="margin-bottom: var(--gap);">2028年の秋<br>金木犀の香りが夕方の風に混ざる頃に<br>視えている景色です。</p>
+            <p style="margin-bottom: var(--gap);">仕事を終えた帰り道<br>夕日が長く道にのびています。</p>
+            <p style="margin-bottom: var(--gap);">その道を<br>まい様は彼と肩を並べて歩いています。</p>
+            <p style="margin-bottom: var(--gap);">足元には<br>金木犀の小さな花が散っている。</p>
+            <p style="margin-bottom: var(--gap);">いつもなら<br>彼が口を開くまで黙って待っている人が<br>その日は自分のほうから<br>「私はこう生きていくよ」と<br>短くはっきり言葉にしている。</p>
+            <p style="margin-bottom: var(--gap);">彼は遮らず<br>歩く速さを少しだけ落として<br>最後まで聞いています。</p>
+            <p style="margin-bottom: var(--gap);">そしてゆっくり言葉を選びながら<br>まい様に返している。</p>
+            <p style="margin-bottom: var(--gap);">その横顔に<br>迷いはありません。</p>
+            <p style="margin-bottom: var(--gap);">いつも待つ側だった人が<br>自分の言葉で<br>自分の道を語っている景色です。</p>
+            <p style="margin-bottom: var(--gap);">その兆しは<br>はっきりと感じられます。</p>
+            <p style="margin-bottom: var(--gap);">最初の変化が起きるのは<br>今年の11月です。</p>
+            <p style="margin-bottom: var(--gap);">ここから先は<br>この景色へ向かう道を<br>五つに分けてお伝えしていきますね。</p>
+            <p style="margin-bottom: 0;">彼の本音のこと<br>関係が動く時期のこと<br>まい様の力の活かし方のこと<br>ご縁の糸を守る方法のこと<br>そして<br>お金とお仕事のことです。</p>
+        </div>
+
+        <div id="deitySentinel"></div>
+        <h2 class="emoji-header" id="sec-1">⛩️ 1. あの方の本音</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">まず<br>いちばん知りたいことからお伝えします。</p>
+            <p style="margin-bottom: var(--gap);">彼は離婚をして<br>まい様と一緒になる気持ちがあるのか。</p>
+            <p style="margin-bottom: var(--gap);">今<br>まい様をどう想っているのか。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>ご質問いただいた<br>「彼が私以外にだれかいるのか」と<br>「嫁にきもちがあるなかで<br>わたしといる理由」についても<br>ここでお答えします。</p>
+            <p style="margin-bottom: var(--gap);">守護神が見せてくれたのは<br>真夜中の景色でした。</p>
+            <p style="margin-bottom: var(--gap);">人気のない夜道に<br>まい様が一人で立っています。</p>
+            <p style="margin-bottom: var(--gap);">胸の前で<br>鞘に収めたままの剣を<br>両手でぎゅっと握りしめて。</p>
+            <p style="margin-bottom: var(--gap);">切る相手もいない。</p>
+            <p style="margin-bottom: var(--gap);">下ろす場所もない。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>夜が明けるのを待っている。</p>
+            <p style="margin-bottom: var(--gap);">その少し離れたところで<br>経津主神が<br>剣を地面に突き立てて<br>静かに座っていました。</p>
+            <p style="margin-bottom: var(--gap);">これを視たとき<br>私は思わず胸が詰まりました。</p>
+            <p style="margin-bottom: var(--gap);">この光景と一緒に<br>伝わってきたことがあります。</p>
+            <p style="margin-bottom: var(--gap);">彼の本音が分からず<br>苦しい夜が長く続いたのは<br>まい様が弱かったからではありません。</p>
+            <p style="margin-bottom: var(--gap);">彼の答えが出るまで<br>自分の剣は抜けないと<br>どこかで思っていたからです。</p>
+            <p style="margin-bottom: var(--gap);">答えを知りたい気持ちの奥には<br>「それが分かれば私も動ける」という<br>思いがありました。</p>
+            <p style="margin-bottom: var(--gap);">それを踏まえて<br>彼の本音をお伝えします。</p>
+            <p style="margin-bottom: var(--gap);">まず結論です。</p>
+            <p style="margin-bottom: var(--gap);">彼にとってまい様は<br>遊びではありません。</p>
+            <p style="margin-bottom: var(--gap);">彼は<br>大切なことほど言葉にするのに<br>時間がかかる人です。</p>
+            <p style="margin-bottom: var(--gap);">仕事でも家でも<br>筋を通して<br>責任を背負って<br>鎧をつけたまま生きています。</p>
+            <p style="margin-bottom: var(--gap);">そんな彼が<br>鎧を脱いで<br>素の自分に戻れる場所が<br>まい様の隣です。</p>
+            <p style="margin-bottom: var(--gap);">まい様と彼は<br>同じ白銀のオーラを持つ<br>刀のような二人です。</p>
+            <p style="margin-bottom: var(--gap);">同じだからこそ<br>説明がいらない。</p>
+            <p style="margin-bottom: var(--gap);">言葉にならない部分まで<br>そのまま伝わる。</p>
+            <p style="margin-bottom: var(--gap);">さらに<br>彼に足りないものを<br>まい様が持っています。</p>
+            <p style="margin-bottom: var(--gap);">言葉にできない気持ちを<br>やわらかく受け止める潤いと<br>心を休ませる安らぎです。</p>
+            <p style="margin-bottom: var(--gap);">二人が重なると<br>ひとつの炎が灯るように<br>お互いの足りないところが満たされる。</p>
+            <p style="margin-bottom: var(--gap);">遊びの相手には<br>決して起きないことです。</p>
+            <p style="margin-bottom: var(--gap);">遠く離れていることも<br>二人の縁の形です。</p>
+            <p style="margin-bottom: var(--gap);">会えない日が多くても<br>縁が細らないのは<br>そのためです。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>「彼が私以外にだれかいるのか」について。</p>
+            <p style="margin-bottom: var(--gap);">霊視では<br>他の女性の気配は視えませんでした。</p>
+            <p style="margin-bottom: var(--gap);">彼の想いが向いている場所として<br>視えたのは<br>まい様のところだけでした。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>ここからは正直にお伝えします。</p>
+            <p style="margin-bottom: var(--gap);">奥様への気持ちは<br>まい様に向ける想いとは<br>種類の違うものです。</p>
+            <p style="margin-bottom: var(--gap);">それは責任と<br>情と<br>長く築いてきた家という土台です。</p>
+            <p style="margin-bottom: var(--gap);">奥様は<br>家の舵をしっかりと握り<br>暮らしを守ってきた方です。</p>
+            <p style="margin-bottom: var(--gap);">彼にとってその土台を崩すことは<br>想像以上に重い決断です。</p>
+            <p style="margin-bottom: var(--gap);">しかも彼は<br>立場や世間体に縛られて<br>逃げ場がないと<br>感じやすい人でもあります。</p>
+            <p style="margin-bottom: var(--gap);">ここ数年<br>彼自身の心も<br>ご自宅の中では休まりにくくなっている気配が<br>伝わってきました。</p>
+            <p style="margin-bottom: var(--gap);">今年は特に<br>まい様への想いと<br>守ってきたものとの間で<br>迷いが深くなっている年です。</p>
+            <p style="margin-bottom: var(--gap);">離婚に気持ちが<br>向いていないのではありません。</p>
+            <p style="margin-bottom: var(--gap);">「責任を果たせる形が整わない限り<br>自分からは動けない」</p>
+            <p style="margin-bottom: var(--gap);">それが<br>彼の今の姿です。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>「わたしといる理由」の答えは<br>とてもシンプルです。</p>
+            <p style="margin-bottom: var(--gap);">奥様には責任と情があり<br>まい様には<br>素の自分に戻れる場所がある。</p>
+            <p style="margin-bottom: var(--gap);">どちらも<br>彼にとっては本物です。</p>
+            <p style="margin-bottom: var(--gap);">でもまい様の隣にいる彼は<br>自分でそこにいたくて<br>いるのです。</p>
+            <p style="margin-bottom: var(--gap);">そしてここで<br>気づいてほしいことがあります。</p>
+            <p style="margin-bottom: var(--gap);">まい様は彼の答えを待ち<br>彼は動ける形が整うのを待っている。</p>
+            <p style="margin-bottom: var(--gap);">二人とも<br>相手や状況が動くのを<br>待っていたのです。</p>
+            <p style="margin-bottom: var(--gap);">同じ場所で待ち合わせても<br>扉は開きません。</p>
+            <p style="margin-bottom: var(--gap);">だから<br>先に剣を立てるのは<br>まい様のほうです。</p>
+            <p style="margin-bottom: var(--gap);">そこで<br>行動を一つお渡しします。</p>
+            <p style="margin-bottom: var(--gap);">彼の返事を待つ夜は<br>スマホを伏せる前に<br>手帳の端に<br>「今日、私が決めたこと」を<br>一行だけ書いてください。</p>
+            <p style="margin-bottom: var(--gap);">夕食のメニューでも<br>明日着る服でも<br>かまいません。</p>
+            <p style="margin-bottom: var(--gap);">書いたら<br>「ここから先は、私が決めます」と<br>心の中で言って手帳を閉じます。</p>
+            <p style="margin-bottom: var(--gap);">これが<br>経津主神へ<br>「私は自分の立つ場所を決めます」と伝える<br>合図になります。</p>
+            <p style="margin-bottom: var(--gap);">続けるうちに<br>待つだけだった夜が<br>自分で決めた一行で<br>終わる夜に変わっていきます。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>彼の気持ちが分かったところで<br>彼はいつ動き出すのか。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>まい様自身が動く時はいつなのか。</p>
+            <p style="margin-bottom: 0;">次にお伝えします。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-2">⛩️ 2. 関係が動く時期</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">まい様ご自身の離婚に向けた動き。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>彼が一緒になる道へ動き出す時期。</p>
+            <p style="margin-bottom: var(--gap);">その時期と<br>その時にまい様が取るべき態度を<br>お伝えしますね。</p>
+            <p style="margin-bottom: var(--gap);">先に正直にお伝えすると<br>今年はまだ<br>結論の手前にいる年です。</p>
+            <p style="margin-bottom: var(--gap);">今年は<br>縁の火が強く点く年です。</p>
+            <p style="margin-bottom: var(--gap);">旦那様と彼<br>二つの方向に心が引っ張られて<br>まい様の気持ちが<br>いちばん揺れやすい年でもあります。</p>
+            <p style="margin-bottom: var(--gap);">彼の側も同じです。</p>
+            <p style="margin-bottom: var(--gap);">まい様への想いが<br>迷いとなって深まる年なので<br>言葉が少なくなったり<br>連絡の間が空いたりする日が出てきます。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>ここからが良い知らせです。</p>
+            <p style="margin-bottom: var(--gap);">2027年2月を境に<br>景色が大きく変わります。</p>
+            <p style="margin-bottom: var(--gap);">まずは<br>まい様ご自身の側から。</p>
+            <p style="margin-bottom: var(--gap);">この冬にかけて<br>離婚に向けた具体的な準備や<br>話し合い<br>必要な書類が<br>自然と進みやすい時期に入ります。</p>
+            <p style="margin-bottom: var(--gap);">縁も<br>ふわふわとした気持ちだけのものから<br>形のあるものとして<br>表に出てきます。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>彼が自分の意思で動き出す時期。</p>
+            <p style="margin-bottom: var(--gap);">2027年の後半から<br>2029年にかけてです。</p>
+            <p style="margin-bottom: var(--gap);">特に2028年と2029年は<br>お二人とも<br>自分の意思で決める力が強くなる年です。</p>
+            <p style="margin-bottom: var(--gap);">関係の形が<br>本当の意味で決まっていく時期です。</p>
+            <p style="margin-bottom: var(--gap);">その頃<br>彼の側でもご自宅での形が<br>少しずつ変わっていく気配があります。</p>
+            <p style="margin-bottom: var(--gap);">この道筋は濃く視えています。</p>
+            <p style="margin-bottom: var(--gap);">その間<br>まい様が取るべき態度は三つです。</p>
+            <p style="margin-bottom: var(--gap);">一つ目は<br>結論を彼に迫らないこと。</p>
+            <p style="margin-bottom: var(--gap);">彼は言葉にするのに時間がかかる人で<br>追い詰められると<br>かえって心を閉じてしまいます。</p>
+            <p style="margin-bottom: var(--gap);">二つ目は<br>先に自分の側を整えること。</p>
+            <p style="margin-bottom: var(--gap);">三つ目は<br>この冬が終わるまで<br>守りと整理に徹すること。</p>
+            <p style="margin-bottom: var(--gap);">動かない時間は<br>種が土の中で<br>根を張っている時間です。</p>
+            <p style="margin-bottom: var(--gap);">そこで<br>行動を一つお渡しします。</p>
+            <p style="margin-bottom: var(--gap);">11月のうちに<br>一枚の紙に三つだけ書き出してください。</p>
+            <p style="margin-bottom: var(--gap);">住まいをどうしたいか。</p>
+            <p style="margin-bottom: var(--gap);">暮らしの支えをどう整えたいか。</p>
+            <p style="margin-bottom: var(--gap);">話を切り出す時期はいつ頃がいいか。</p>
+            <p style="margin-bottom: var(--gap);">答えが出ていなくてもかまいません。</p>
+            <p style="margin-bottom: var(--gap);">空欄のままで大丈夫です。</p>
+            <p style="margin-bottom: var(--gap);">紙の上に<br>決める項目を置く。</p>
+            <p style="margin-bottom: var(--gap);">それだけで<br>その一枚が<br>剣を地面に立てる最初の一手になります。</p>
+            <p style="margin-bottom: var(--gap);">続けるうちに<br>「いつか」だったものが<br>「この日までに」に変わっていきます。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>その時を待つあいだ<br>彼との間で<br>まい様の力をどう使えばいいのか。</p>
+            <p style="margin-bottom: 0;">次にお伝えします。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-3">⛩️ 3. 選ばれる力の活かし方</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">経津主神から授かった<br>本質を見抜く力。</p>
+            <p style="margin-bottom: var(--gap);">まい様はこれまでも<br>人生の大事な場面で<br>本質を見抜いて<br>自分の道を選んできました。</p>
+            <p style="margin-bottom: var(--gap);">その力を<br>彼との間でどう使うか。</p>
+            <p style="margin-bottom: var(--gap);">答えは<br>彼の言葉にならない部分を<br>読み取り<br>受け止める力です。</p>
+            <p style="margin-bottom: var(--gap);">彼は<br>言葉に潤いの少ない人です。</p>
+            <p style="margin-bottom: var(--gap);">大切なことほど<br>胸の中で長く温めてから<br>やっと一言になる。</p>
+            <p style="margin-bottom: var(--gap);">そこを急かされたり<br>白黒を迫られたりすると<br>彼の中の「逃げ場のない感覚」が働いて<br>心を閉じてしまいます。</p>
+            <p style="margin-bottom: var(--gap);">同じ刀のようなお二人は<br>張り合うと<br>火花が散ります。</p>
+            <p style="margin-bottom: var(--gap);">でもまい様の見抜く力は<br>彼の言葉の奥にある本音を<br>そのまま受け止められます。</p>
+            <p style="margin-bottom: var(--gap);">「やっぱりこの人と生きたい」は<br>言葉の奥を分かってもらえたと感じた<br>その瞬間に生まれます。</p>
+            <p style="margin-bottom: var(--gap);">そしてここに<br>一つ大切なことがあります。</p>
+            <p style="margin-bottom: var(--gap);">剣の向きです。</p>
+            <p style="margin-bottom: var(--gap);">白黒をつける力を<br>彼に向けると<br>彼は閉じてしまいます。</p>
+            <p style="margin-bottom: var(--gap);">その力を向ける先は<br>まい様ご自身の側です。</p>
+            <p style="margin-bottom: var(--gap);">旦那様のこと。</p>
+            <p style="margin-bottom: var(--gap);">働き方のこと。</p>
+            <p style="margin-bottom: var(--gap);">自分の立つ場所のこと。</p>
+            <p style="margin-bottom: var(--gap);">曖昧に待ち続ける時間を<br>断ち切る力として使うのです。</p>
+            <p style="margin-bottom: var(--gap);">彼の言葉は待っていい。</p>
+            <p style="margin-bottom: var(--gap);">自分の決める日は待たない。</p>
+            <p style="margin-bottom: var(--gap);">その違いが<br>このご縁を動かしていきます。</p>
+            <p style="margin-bottom: var(--gap);">「彼を待つこと」と<br>「自分が決めるのを先に延ばすこと」を<br>取り違えていただけでした。</p>
+            <p style="margin-bottom: var(--gap);">そこで<br>行動を一つお渡しします。</p>
+            <p style="margin-bottom: var(--gap);">彼が言葉に詰まったとき<br>続きを急かさず<br>「うん」とだけ受け止めて<br>次の一言が出るまで待ってください。</p>
+            <p style="margin-bottom: var(--gap);">沈黙の長さを<br>そのまま受け取るのです。</p>
+            <p style="margin-bottom: var(--gap);">それだけで<br>「まい様の前では急がなくていい」という<br>安心が彼に届きます。</p>
+            <p style="margin-bottom: var(--gap);">続けるうちに<br>彼はまい様の前でだけ<br>少しずつ長く話すようになります。</p>
+            <p style="margin-bottom: 0;">ただ<br>遠く離れたまま<br>このご縁の糸を保つには<br>何が必要なのでしょうか。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-4">⛩️ 4. ご縁の糸を守る方法</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">お二人は<br>どちらも遠くへ動く縁を持つ二人です。</p>
+            <p style="margin-bottom: var(--gap);">会う回数を増やすことより<br>大切なのは<br>糸が途切れないことです。</p>
+            <p style="margin-bottom: var(--gap);">彼は言葉にするのが苦手なので<br>長い気持ちのやりとりは<br>かえって彼を黙らせてしまいます。</p>
+            <p style="margin-bottom: var(--gap);">だから<br>短く<br>軽く<br>日常のひとかけらを渡すのです。</p>
+            <p style="margin-bottom: var(--gap);">そこで<br>行動を一つお渡しします。</p>
+            <p style="margin-bottom: var(--gap);">毎日ひとこと<br>その日に目にした景色を<br>一つだけ彼に届けてください。</p>
+            <p style="margin-bottom: var(--gap);">夕焼けでも<br>道端の花でも<br>お昼のお弁当でもかまいません。</p>
+            <p style="margin-bottom: var(--gap);">返事は求めません。</p>
+            <p style="margin-bottom: var(--gap);">「今日も同じ空の下にいるよ」と<br>黙って伝えるつもりで。</p>
+            <p style="margin-bottom: var(--gap);">不安な日ほど<br>気持ちを説明せず<br>目にしたものを送ります。</p>
+            <p style="margin-bottom: var(--gap);">それが<br>彼に足りない言葉の潤いを<br>少しずつ注ぐことになります。</p>
+            <p style="margin-bottom: var(--gap);">続けるうちに<br>糸は細らず<br>彼の一日の中に<br>まい様の居場所が残り続けます。</p>
+            <p style="margin-bottom: var(--gap);">もう一つ<br>糸を守る力があります。</p>
+            <p style="margin-bottom: var(--gap);">経津主神の守りが<br>もっとも強く届く時です。</p>
+            <p style="margin-bottom: var(--gap);">今年の11月と<br>剣の気がいちばん冴える<br>12月12日と2月10日。</p>
+            <p style="margin-bottom: var(--gap);">この日に参拝すると<br>とくに力を持ちます。</p>
+            <p style="margin-bottom: var(--gap);">参拝のしかたは<br>このあと<br>【守護を受け取る方法】でお伝えします。</p>
+            <p style="margin-bottom: var(--gap);">そしてもう一つ<br>正直にお伝えしておきます。</p>
+            <p style="margin-bottom: var(--gap);">12月から1月にかけては<br>動きの少ない期間です。</p>
+            <p style="margin-bottom: var(--gap);">彼からの連絡が少なくなっても<br>焦らなくて大丈夫です。</p>
+            <p style="margin-bottom: var(--gap);">ここまで<br>ご縁のことをお伝えしてきました。</p>
+            <p style="margin-bottom: var(--gap);">でも<br>この糸を細らせないためにも<br>まい様ご自身の足元が<br>安心で整っていることが<br>欠かせません。</p>
+            <p style="margin-bottom: 0;">足元とは<br>お金と<br>お仕事のことです。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-5">⛩️ 5. 金運と転職の行方</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">「私に金運はあるのか」<br>「さきでらくになるのか」<br>「転職するべきか」</p>
+            <p style="margin-bottom: var(--gap);">このご質問に<br>ここでお答えします。</p>
+            <p style="margin-bottom: var(--gap);">まず<br>今のお金の苦しさについて。</p>
+            <p style="margin-bottom: var(--gap);">給料が低くて<br>上がらない。</p>
+            <p style="margin-bottom: var(--gap);">支払いが多くて<br>借金もある。</p>
+            <p style="margin-bottom: var(--gap);">その重さは本物です。</p>
+            <p style="margin-bottom: var(--gap);">たしかに今<br>いちばん重たい時期にいます。</p>
+            <p style="margin-bottom: var(--gap);">とくに今年は<br>支払いや出費の重さが<br>表に出やすい年です。</p>
+            <p style="margin-bottom: var(--gap);">でも<br>お伝えしたいことがあります。</p>
+            <p style="margin-bottom: var(--gap);">まい様に<br>金運がないのではありません。</p>
+            <p style="margin-bottom: var(--gap);">金運は、あります。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>今までの金運の受け皿の形が<br>まい様に合っていなかったのです。</p>
+            <p style="margin-bottom: var(--gap);">毎月決まった額を<br>こつこつ受け取る形では<br>まい様の力は数字になりにくい。</p>
+            <p style="margin-bottom: var(--gap);">頑張りが評価に直結しない場所では<br>どれだけ働いても<br>物足りなさだけが残ります。</p>
+            <p style="margin-bottom: var(--gap);">入ってきたお金が<br>手元に残りにくいのも<br>同じところから来ています。</p>
+            <p style="margin-bottom: var(--gap);">まい様は<br>成果が収入に直結し<br>自分で決められる範囲が大きく<br>学びや信用が味方になる場所で<br>大きく開く人です。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>「さきでらくになるのか」への答えです。</p>
+            <p style="margin-bottom: var(--gap);">楽になります。</p>
+            <p style="margin-bottom: var(--gap);">転換点は<br>まい様が45歳になる<br>お誕生日のあたりです。</p>
+            <p style="margin-bottom: var(--gap);">そこから始まる十年は<br>稼ぐ力と<br>自分で決められる範囲が<br>大きく開いていく十年です。</p>
+            <p style="margin-bottom: var(--gap);">次に<br>「転職するべきか」について。</p>
+            <p style="margin-bottom: var(--gap);">するべき方向です。</p>
+            <p style="margin-bottom: var(--gap);">ただし<br>時期があります。</p>
+            <p style="margin-bottom: var(--gap);">今年は<br>準備の年です。</p>
+            <p style="margin-bottom: var(--gap);">学びや資格<br>信用につながるものを<br>一つ身につけていく。</p>
+            <p style="margin-bottom: var(--gap);">動くのは<br>お誕生日を過ぎてからです。</p>
+            <p style="margin-bottom: var(--gap);">向かう先は<br>決まった時間を売る仕事よりも<br>成果が収入に直結して<br>裁量が大きく<br>専門の力を活かせる仕事です。</p>
+            <p style="margin-bottom: var(--gap);">稼ぐ力が開く十年は<br>気持ちも大きくなりやすい時期です。</p>
+            <p style="margin-bottom: var(--gap);">その勢いのまま<br>大きな買い物を決めるより<br>一晩おいて決めるほうが<br>手元に残ります。</p>
+            <p style="margin-bottom: var(--gap);">お金のことでも<br>「お給料が上がったら動こう」と<br>様子を見てきました。</p>
+            <p style="margin-bottom: var(--gap);">あの癖が<br>ここにも顔を出していたのです。</p>
+            <p style="margin-bottom: var(--gap);">でも<br>動く日を自分で決めたとき<br>金運は向こうから開いていきます。</p>
+            <p style="margin-bottom: var(--gap);">そこで<br>行動を一つお渡しします。</p>
+            <p style="margin-bottom: var(--gap);">45歳のお誕生日の日付に<br>手帳やカレンダーで<br>「動き出す日」と<br>印をつけてください。</p>
+            <p style="margin-bottom: var(--gap);">日付を決める。</p>
+            <p style="margin-bottom: var(--gap);">それは<br>経津主神が剣を地面に突き立てたことと<br>同じです。</p>
+            <p style="margin-bottom: var(--gap);">その日までは準備の期間。</p>
+            <p style="margin-bottom: var(--gap);">その日からは動く期間。</p>
+            <p style="margin-bottom: var(--gap);">「いつか」が<br>「この日」に変わったとき<br>迷いの霧は晴れ始めます。</p>
+            <p style="margin-bottom: var(--gap);">ここまで<br>五つの道すじをお伝えしてきました。</p>
+            <p style="margin-bottom: 0;">では<br>この道すじは<br>これから先の時間の中で<br>どう進んでいくのでしょうか。</p>
+        </div>
+
+        <h2 id="sec-flow">【今後の四ヶ月】</h2>
+        <div class="section">
+            <p style="margin-bottom: 0;">ここまでお伝えしてきた<br>「自分で決める練習」は<br>この先の四ヶ月で<br>一段ずつ進んでいきます。</p>
+        </div>
+
+        <div id="flow1Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: var(--gap); font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年11月 守りが固まる月</p>
+            <p style="margin-bottom: var(--gap);">この月は<br>経津主神の守護が<br>もっとも厚く届く月です。</p>
+            <p style="margin-bottom: var(--gap);">まい様の内側の守りが固まり<br>揺れても倒れない土台が<br>できていきます。</p>
+            <p style="margin-bottom: var(--gap);">彼の心の奥でも<br>まい様との結びつきが<br>静かに深まっていく月です。</p>
+            <p style="margin-bottom: var(--gap);">夜に一人で手帳を開いたとき<br>迷わず一行が書ける日が巡ってきます。</p>
+            <p style="margin-bottom: var(--gap);">その日が来たら<br>守りが届いている合図です。</p>
+            <p style="margin-bottom: 0;">その勢いのまま<br>紙に三つ書き出して<br>経津主神ゆかりの神社へ<br>足を運んでみてください。</p>
+        </div>
+
+        <div id="flow2Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: var(--gap); font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年12月 揺れる月</p>
+            <p style="margin-bottom: var(--gap);">この月は<br>彼の側が揺れやすい月です。</p>
+            <p style="margin-bottom: var(--gap);">ご自宅での立ち位置を<br>見つめ直すような波が<br>彼の中に立ちます。</p>
+            <p style="margin-bottom: var(--gap);">動きがあっても<br>結論までは届かないので<br>まい様は動かなくて大丈夫です。</p>
+            <p style="margin-bottom: var(--gap);">彼の言葉が少なくなる日や<br>連絡の間が空く日が<br>あるかもしれません。</p>
+            <p style="margin-bottom: var(--gap);">そんな場面が来たら<br>結論を迫らず<br>その日の景色を一つ送る日です。</p>
+            <p style="margin-bottom: var(--gap);">12月12日は<br>剣の気がいちばん冴える日です。</p>
+            <p style="margin-bottom: 0;">この日に参拝すると<br>胸の内の霧が晴れていきます。</p>
+        </div>
+
+        <div id="flow3Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: var(--gap); font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年1月 整理の月</p>
+            <p style="margin-bottom: var(--gap);">年が明けて<br>表立った動きは静まります。</p>
+            <p style="margin-bottom: var(--gap);">水面下で<br>整理が進む月です。</p>
+            <p style="margin-bottom: var(--gap);">まい様の側の準備<br>話し合いや書類のことを<br>静かに進めてください。</p>
+            <p style="margin-bottom: var(--gap);">年始の夜<br>書類や明細を一枚ずつ整えていて<br>「全体が見えた」と思える瞬間が来ます。</p>
+            <p style="margin-bottom: 0;">その瞬間が<br>決める準備が整ったという<br>知らせです。</p>
+        </div>
+
+        <div id="flow4Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: var(--gap); font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年2月 いちばん大切な月</p>
+            <p style="margin-bottom: var(--gap);">4日の立春で<br>新しい年が始まり<br>6日にまい様は45歳になります。</p>
+            <p style="margin-bottom: var(--gap);">生まれ直しのような月です。</p>
+            <p style="margin-bottom: var(--gap);">縁の悩みに<br>納得できる答えが入り始め<br>金運と働き方も<br>同じ時期に動き出します。</p>
+            <p style="margin-bottom: var(--gap);">手帳に印をつけておいた日が来て<br>自分の口から<br>「ここから先は、私が決めます」と<br>声に出せる日です。</p>
+            <p style="margin-bottom: var(--gap);">10日は<br>剣の気が冴える日。</p>
+            <p style="margin-bottom: 0;">この日にもう一度<br>参拝してみてください。</p>
+        </div>
+
+        <div id="flowEndSentinel"></div>
+        <div class="section">
+            <h2 style="margin-top: 0;">【今年と来年】</h2>
+            <p style="margin-bottom: var(--gap);">2026年<br>縁の火が強く点く年です。</p>
+            <p style="margin-bottom: var(--gap);">縁が表に出て<br>書類や約束事が動きやすい一方<br>お金の弱点も表に出やすい年。</p>
+            <p style="margin-bottom: var(--gap);">旦那様と彼<br>二つの方向に心が揺れるのも<br>今年だからこそです。</p>
+            <p style="margin-bottom: var(--gap);">でも<br>この揺れは<br>決める準備のために必要な揺れです。</p>
+            <p style="margin-bottom: var(--gap);">2027年<br>縁の形が変わっていく年です。</p>
+            <p style="margin-bottom: var(--gap);">今の形に固執するより<br>手放すことで整うものが<br>多い一年になります。</p>
+            <p style="margin-bottom: var(--gap);">仕事と収入には<br>追い風が入り始めます。</p>
+            <p style="margin-bottom: var(--gap);">冒頭でお伝えした<br>あの金木犀の道で<br>隣を歩いていたのは<br>彼でしたね。</p>
+            <p style="margin-bottom: var(--gap);">まい様が頼っても大丈夫な人が<br>実はすぐそばにいる。</p>
+            <p style="margin-bottom: 0;">その景色へ向かう最初の年が<br>2027年です。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-bonus">🔮 もう少し先に視えていること</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">ここまでお伝えしてきたこととは別に<br>霊視の最後に<br>もう二つ視えたものがありました。</p>
+            <p style="margin-bottom: var(--gap);">一つ目は<br>うれしい兆しです。</p>
+            <p style="margin-bottom: var(--gap);">2027年の春以降<br>新しい学びの場や職場で<br>まい様の話を最後まで聴いて<br>「もう少し聞かせてほしい」と<br>声をかけてくれる年上の方が現れます。</p>
+            <p style="margin-bottom: var(--gap);">決めて動き出した人に<br>手を貸したくなる人が<br>自然と集まってくる気配です。</p>
+            <p style="margin-bottom: var(--gap);">二つ目は<br>気に留めておいてほしいことです。</p>
+            <p style="margin-bottom: var(--gap);">決める力を使い始めると<br>職場や仲のよい友人との間で<br>言葉のすれ違いが出る場面があります。</p>
+            <p style="margin-bottom: var(--gap);">決めたことを話した日<br>まい様はいつもの調子で<br>短く言い切ったつもりなのに<br>相手には思いがけず強く響いて<br>少し間が空いてしまう。</p>
+            <p style="margin-bottom: var(--gap);">そんな場面です。</p>
+            <p style="margin-bottom: var(--gap);">怖がらなくて大丈夫です。</p>
+            <p style="margin-bottom: var(--gap);">決める側へ歩き出した人に訪れやすい<br>形が変わる前の揺らぎのようなものです。</p>
+            <p style="margin-bottom: var(--gap);">今の時点で<br>心に留めておいてほしいのは<br>決めたことを話すときに<br>言い切ったあと<br>一呼吸おいて<br>相手の顔を見ることです。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>それがいつ頃<br>どんな形で表れるのか。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>どうすれば良い方向に変えていけるのか。</p>
+            <p style="margin-bottom: var(--gap);">ここはもう少し深く<br>視させていただく必要があります。</p>
+            <p style="margin-bottom: 0;">また別の機会に<br>改めてお伝えさせてくださいね。</p>
+        </div>
+
+        <div id="guardianReturnSentinel"></div>
+        <h2 class="emoji-header" id="sec-guardian">⛩️ 守護を受け取る方法</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">でも<br>大丈夫です。</p>
+            <p style="margin-bottom: var(--gap);">今回の霊視で<br><span style="color: #ffd966;">経津主神</span>の守護の力を<br>まい様の奥底に置いてきました。</p>
+            <p style="margin-bottom: var(--gap);">曖昧な時間を断ち切り<br>決める日を自分の手で置けるよう<br>迷いの霧を晴らし<br>必要な支えが自然と巡ってくるよう<br>見守っていきます。</p>
+            <p style="margin-bottom: var(--gap);">この文章を読みながら<br>胸が少し温かくなる<br>肩がふっと軽くなる<br>なぜか安心する<br>そんな感覚があれば<br>もう守護は届き始めています。</p>
+            <p style="margin-bottom: var(--gap);">何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: var(--gap);">ここまで読んでくださったなら<br>もう十分に受け取れています。</p>
+            <p style="margin-bottom: var(--gap);">第1章でお伝えした<br>手帳に一行書く時間は<br>そのまま守護を受け取る時間にもなります。</p>
+            <p style="margin-bottom: var(--gap);">もし余裕がある時だけ<br>次のことを試してみてください。</p>
+            <p style="margin-bottom: var(--gap); font-weight: bold; color: #f0f0ff;">【経津主神ゆかりの神社へ行く】</p>
+            <ul class="shrine-list">
+                <li><span class="shrine-name">五所神社</span><span class="shrine-addr">愛媛県西条市広江367-1</span></li>
+                <li><span class="shrine-name">布都神社</span><span class="shrine-addr">愛媛県西条市石延119</span></li>
+                <li><span class="shrine-name">碇神社</span><span class="shrine-addr">愛媛県西条市玉津広坪597</span></li>
+                <li><span class="shrine-name">五柱神社</span><span class="shrine-addr">愛媛県東温市松瀬川3505</span></li>
+                <li><span class="shrine-name">枚岡神社</span><span class="shrine-addr">大阪府東大阪市出雲井町7-16</span></li>
+            </ul>
+            <p style="margin-bottom: var(--gap);">などが<br>経津主神にご縁のある場所です。</p>
+            <p style="margin-bottom: var(--gap);">なかでも<br>五所神社と布都神社は<br>お住まいのすぐ近くにあります。</p>
+            <p style="margin-bottom: var(--gap);">どこか一つ<br>ご縁を感じる場所へ<br>お参りしてみてください。</p>
+            <p style="margin-bottom: var(--gap);">11月に参拝されると<br>とくに力を持ちます。</p>
+            <p style="margin-bottom: var(--gap);">神社では<br>参拝の際に<br>心の中でこの祝詞を唱えてください。</p>
+            <p style="margin-bottom: var(--gap);">祓え給い、清め給え、神ながら守り給い、幸え給え<br>（はらえたまい、きよめたまえ、かむながらまもりたまい、さきわえたまえ）</p>
+            <p style="margin-bottom: var(--gap);">願い事は唱えず<br>「これまで見守ってくださって<br>ありがとうございます<br>私は決める日を<br>自分の手で置いていきます<br>どうか見守っていてください」<br>という形で伝えてください。</p>
+            <p style="margin-bottom: var(--gap); font-weight: bold; color: #f0f0ff;">【朝に窓を開けて深呼吸をする】</p>
+            <p style="margin-bottom: var(--gap);">朝、窓を開けて<br>外の空気を胸いっぱいに吸い込み<br>深呼吸を一度。</p>
+            <p style="margin-bottom: var(--gap);">一日のはじまりに<br>自分で決める扉を開ける<br>小さな儀式です。</p>
+            <p style="margin-bottom: var(--gap); font-weight: bold; color: #f0f0ff;">【水で清める】</p>
+            <p style="margin-bottom: var(--gap);">彼からの連絡が来ない夜など<br>気持ちが張りつめた日は<br>塩をひとつまみ入れたお風呂に<br>ゆっくり浸かってみてください。</p>
+            <p style="margin-bottom: 0;">気持ちが整っていきます。</p>
+        </div>
+
+        <div id="stoneSentinel"></div>
+        <h2 class="emoji-header" id="sec-stone">⛩️ あなたと響き合うパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">まい様には<br>この鑑定の中で<br>「ここから先は、私が決めます」という<br>合図の言葉をお渡ししました。</p>
+            <p style="margin-bottom: var(--gap);"><span style="color: #ffd966;">経津主神</span>の守護は<br>すでにまい様の中に届いています。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>長く続いてきた癖は<br>忙しい日ほど<br>ふっと戻ってきます。</p>
+            <p style="margin-bottom: var(--gap);">彼の返事が来ない夜<br>スマホを伏せては手に取り<br>「もう少し様子を見よう」と<br>布団に入ってしまう。</p>
+            <p style="margin-bottom: var(--gap);">そんなとき<br>手首の石にそっと触れて<br>「ここから先は、私が決めます」と言い<br>手帳に一行書いて眠る。</p>
+            <p style="margin-bottom: var(--gap);">石は<br>その合図を思い出すためのものです。</p>
+            <p style="margin-bottom: var(--gap);">離婚への準備や<br>転職への一歩を控えた<br>今のまい様だからこそ<br>その合図を手首に置けるよう<br>まい様と響き合う石で<br>ブレスレットをお作りします。</p>
+            <div class="stone-card">
+                <ul class="stone-list">
+                    <li><span class="stone-name">ガーネット</span><span class="stone-desc">深い赤を宿す石です。<br>「ここから先は、私が決めます」と<br>言い切る声を支えてくれます。</span></li>
+                    <li><span class="stone-dot quartz"></span><span class="stone-name">ルチルクォーツ</span><span class="stone-desc">透明な石の中に細い金色の筋を宿します。<br>言ったあとに手帳やカレンダーへ<br>日付を書き込む手を落ち着かせてくれます。</span></li>
+                    <li><span class="stone-dot moonstone"></span><span class="stone-name">ムーンストーン</span><span class="stone-desc">月の光を宿す石です。<br>言えなかった日も<br>明日また言えるように<br>そばで見守ってくれます。</span></li>
+                </ul>
+            </div>
+            <p style="margin-bottom: var(--gap);">この中から<br>まい様に一番合う組み合わせを選び<br>一粒ずつ、手で編んでお作りします。</p>
+            <p style="margin-bottom: var(--gap);">まい様が<br>遠くのご縁を一本の糸でつないでいるように<br>私も一粒ずつ<br>糸に想いを通すように仕上げます。</p>
+            <p style="margin-bottom: 0;">ご連絡から十日以内にお送りします。</p>
+            <div class="cta-box">
+                <p>気になった方は</p>
+                <p class="cta-word">「詳細希望」</p>
+                <p>とだけ<br>メッセージをくださいね。</p>
+            </div>
+        </div>
+
+        <div id="closingSentinel"></div>
+        <h2 id="sec-closing">【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: var(--gap);">まい様</p>
+            <p style="margin-bottom: var(--gap);">ここまで読んでくださって<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: var(--gap);">「決める日を先に延ばす」ことで<br>大切なものを守り続けてきたまい様。</p>
+            <p style="margin-bottom: var(--gap);">その頑張りは<br>ちゃんと届いていました。</p>
+            <p style="margin-bottom: var(--gap);">早い朝に一人でバスを待った若い頃も<br>暮らしの土台を一つずつ積んだ日々も<br>遠くのご縁を胸にしまって笑った夜も<br>すべて、確かに積み重なっています。</p>
+            <p style="margin-bottom: var(--gap);">夜道で鞘に収めた剣を握りしめるまい様の<br>少し離れたところで<br><span style="color: #ffd966;">経津主神</span>は剣を地面に突き立てて<br>ずっと座っていました。</p>
+            <p style="margin-bottom: var(--gap);">あの剣は<br>まい様のためのものでした。</p>
+            <p style="margin-bottom: var(--gap);">だからもう<br>決めていいんです。</p>
+            <p style="margin-bottom: var(--gap);">彼の答えを待たずに<br>自分の立つ場所を選んでいい。</p>
+            <p style="margin-bottom: var(--gap);">切り出す日を<br>自分で置いていい。</p>
+            <p style="margin-bottom: var(--gap);">金木犀の香る夕方の道で<br>彼と肩を並べて<br>自分の言葉で自分の道を語る日は<br>もうすぐそこまで来ています。</p>
+            <p style="margin-bottom: var(--gap);">まい様は<br>幸せになっていい。</p>
+            <p style="margin-bottom: var(--gap);">守られています。</p>
+            <p style="margin-bottom: var(--gap);">その事実を<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: var(--gap);">本日より遠隔守護祈祷を行い<br>まい様の幸せを願います。</p>
+            <p style="margin-bottom: 0;">まい様の未来に<br>白銀の光が満ちますように。</p>
+            <div class="signature">深雪</div>
+            <p style="margin-top: var(--gap);">追伸<br>ブレスレットが気になった方は<br>「詳細希望」とだけ送ってくださいね。</p>
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            var elementBg = document.getElementById('elementBg');
+            var deityBg = document.getElementById('deityBg');
+            var doorBg = document.getElementById('doorBg');
+            var seasonAutumnBg = document.getElementById('seasonAutumnBg');
+            var seasonWinterBg = document.getElementById('seasonWinterBg');
+            var stoneBg = document.getElementById('stoneBg');
+
+            var stages = [
+                { el: document.getElementById('elementSentinel'), bg: elementBg },
+                { el: document.getElementById('guardianSentinel'), bg: deityBg },
+                { el: document.getElementById('essenceSentinel'), bg: elementBg },
+                { el: document.getElementById('deitySentinel'), bg: doorBg },
+                { el: document.getElementById('flow1Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flow2Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flow3Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flow4Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flowEndSentinel'), bg: doorBg },
+                { el: document.getElementById('guardianReturnSentinel'), bg: deityBg },
+                { el: document.getElementById('stoneSentinel'), bg: stoneBg },
+                { el: document.getElementById('closingSentinel'), bg: doorBg }
+            ].filter(function (stage) { return !!stage.el; });
+            if (!stages.length) return;
+
+            var layers = [elementBg, deityBg, doorBg, seasonAutumnBg, seasonWinterBg, stoneBg];
+            function show(active) {
+                layers.forEach(function (el) {
+                    if (el === active) el.classList.add('is-visible');
+                    else el.classList.remove('is-visible');
+                });
+            }
+
+            function onScroll() {
+                var trigger = window.innerHeight * 0.65;
+                var active = null;
+                for (var i = 0; i < stages.length; i++) {
+                    if (stages[i].el.getBoundingClientRect().top < trigger) {
+                        active = stages[i].bg;
+                    }
+                }
+                show(active);
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+
+        /* ===== 演出：花びら ===== */
+        (function () {
+            var cv = document.getElementById('petals');
+            var ctx = cv.getContext('2d');
+            var W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+            var isMobile = window.innerWidth < 700;
+
+            function resize() {
+                W = window.innerWidth; H = window.innerHeight;
+                cv.width = W * dpr; cv.height = H * dpr;
+                cv.style.width = W + 'px'; cv.style.height = H + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            var petals = [];
+            var petalN = isMobile ? 14 : 24;
+            for (var i = 0; i < petalN; i++) {
+                petals.push({
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    s: 5 + Math.random() * 7,
+                    vy: 0.35 + Math.random() * 0.7,
+                    sway: Math.random() * Math.PI * 2,
+                    swayV: 0.008 + Math.random() * 0.014,
+                    rot: Math.random() * Math.PI * 2,
+                    rotV: (Math.random() - 0.5) * 0.03,
+                    hue: Math.random() < 0.6 ? 'light' : 'deep'
+                });
+            }
+            function drawPetal(p) {
+                ctx.save();
+                ctx.translate(p.x + Math.sin(p.sway) * 26, p.y);
+                ctx.rotate(p.rot);
+                var g = ctx.createRadialGradient(0, 0, 0, 0, 0, p.s);
+                if (p.hue === 'light') {
+                    g.addColorStop(0, 'rgba(220, 230, 240, 0.95)');
+                    g.addColorStop(1, 'rgba(220, 230, 240, 0.25)');
+                } else {
+                    g.addColorStop(0, 'rgba(170, 180, 200, 0.95)');
+                    g.addColorStop(1, 'rgba(170, 180, 200, 0.25)');
+                }
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, p.s, p.s * 0.62, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function tick() {
+                ctx.clearRect(0, 0, W, H);
+                for (var pi = 0; pi < petals.length; pi++) {
+                    var p = petals[pi];
+                    p.y += p.vy;
+                    p.sway += p.swayV;
+                    p.rot += p.rotV;
+                    if (p.y > H + 20) { p.y = -20; p.x = Math.random() * W; }
+                    drawPetal(p);
+                }
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        })();
+    </script>
+
+<!-- GA4 カスタム計測：誰が/最後まで読んだか/購入ボタン [GA4-MIYUKI] -->
+<script>
+(function () {
+  function fire() {
+    var seg = location.pathname.split('/').filter(Boolean);
+    var last = decodeURIComponent(seg[seg.length - 1] || '');
+    var id = /\.html?$/i.test(last) ? decodeURIComponent(seg[seg.length - 2] || 'unknown') : (last || 'unknown');
+    var base = { kantei_id: id, persona: 'miyuki' };
+    gtag('set', 'user_properties', { kantei_id: id, persona: 'miyuki' });
+    gtag('event', 'page_open', base);
+
+    var end = document.querySelector('.signature, .sign');
+    if (end && 'IntersectionObserver' in window) {
+      var done = false;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && !done) { done = true; gtag('event', 'read_complete', base); io.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      io.observe(end);
+    }
+
+    document.querySelectorAll('.cta-button, .btn').forEach(function (b) {
+      b.addEventListener('click', function () { gtag('event', 'cta_click', base); });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire); else fire();
+})();
+</script>
+
+</body>
+</html>
