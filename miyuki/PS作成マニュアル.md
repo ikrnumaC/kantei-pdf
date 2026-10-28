@@ -266,6 +266,10 @@ print('PS' + 'https://kantei-pdf.pages.dev/miyuki/' + u.quote('連番_名前様P
 ```
 （本鑑定の行は先頭が `有料`。PSは `PS`）
 
+### 一言CSV（`miyuki_hitokoto.csv`）の文字コード
+
+`make_hitokoto.py` が出力するCSVは **UTF-8 BOM付き（`utf-8-sig`）**。BOMなしだとMacのExcel／Numbersで文字化けする。スクリプトを直すときも読み書きとも `utf-8-sig` を保つこと（`special/make_hitokoto.py` も同様）。
+
 ---
 
 ## 6. まとめて実行するときの指示（Claudeに頼むとき）

@@ -86,7 +86,7 @@ def is_valid(lines, text):
 def main():
     rows = []
     if os.path.exists(CSV):
-        with open(CSV, encoding="utf-8", newline="") as f:
+        with open(CSV, encoding="utf-8-sig", newline="") as f:
             rows = [r for r in csv.reader(f) if r]
         if rows and rows[0][0] == "URL":
             rows = rows[1:]
@@ -149,7 +149,7 @@ def main():
         print("\n追加できた一言がないので、CSVは変更しません。")
         return
     rows = sorted(new_rows, key=lambda r: parse(r[0])[0])
-    with open(CSV, "w", encoding="utf-8", newline="") as f:
+    with open(CSV, "w", encoding="utf-8-sig", newline="") as f:
         w = csv.writer(f)
         w.writerow(["URL", "一言1", "一言2"])
         w.writerows(rows)
