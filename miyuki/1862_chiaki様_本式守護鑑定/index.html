@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) : GA4 計測 [GA4-MIYUKI] -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHLDFT6DR7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JHLDFT6DR7');
+    </script>
+    <title>千晶様　まるっと鑑定書</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+
+            .toc {
+                padding: 20px 15px;
+            }
+
+            .toc-title {
+                font-size: 1.1em;
+            }
+
+            .toc a {
+                font-size: 0.95em;
+                padding: 12px 6px 12px 36px;
+            }
+        }
+
+        /* ===== 演出：元素の背景（冒頭〜守護神登場まで） ===== */
+        .element-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../鑑定画像/ろうそく.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .element-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：守護神の背景（守護神登場〜本式内容の手前まで） ===== */
+        .deity-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/火産霊神.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center 18%;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .deity-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：扉の背景（本式内容〜結びまで） ===== */
+        .door-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/ドア2.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .door-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：今後の流れ 季節背景 ===== */
+        .season-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .season-bg.is-visible { opacity: 0.4; }
+        #seasonAutumnBg { background-image: url("../鑑定画像/秋.jpg"); }
+        #seasonWinterBg { background-image: url("../鑑定画像/冬.jpg"); }
+
+        /* ===== 演出：パワーストーン背景 ===== */
+        .stone-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../素材/カーネリアン.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .stone-bg.is-visible { opacity: 0.4; }
+
+        .deity-veil {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(15, 15, 46, 0.04) 0%, rgba(15, 15, 46, 0.15) 60%, rgba(15, 15, 46, 0.25) 100%),
+                linear-gradient(180deg, rgba(15, 15, 46, 0.06) 0%, rgba(15, 15, 46, 0.18) 100%);
+        }
+
+        /* ===== 演出：花びら ===== */
+        #petals {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* ===== 読みやすさ調整（2026-10-21） ===== */
+        :root { --gap: 56px; }
+        mark {
+            background: linear-gradient(transparent 58%, rgba(255, 217, 102, 0.38) 58%);
+            color: #fff6d8;
+            padding: 0 2px;
+        }
+        strong { color: #ffe9a8; font-weight: 700; }
+        .summary-box {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(255, 217, 102, 0.35);
+            border-radius: 14px;
+            padding: 24px 16px 8px;
+            margin: 0 0 var(--gap);
+        }
+        .summary-title {
+            text-align: center;
+            color: #ffd966;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+        }
+        ul.summary-list { margin: 0; }
+        ul.summary-list li {
+            margin: 0;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 217, 102, 0.18);
+        }
+        ul.summary-list li:last-child { border-bottom: none; }
+        ul.summary-list li::before {
+            content: '✦';
+            display: block;
+            color: #ffd966;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+        .month-title {
+            color: #ffd966;
+            font-size: 1.25em;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            margin-bottom: 28px;
+        }
+        .section.key-month {
+            border: 2px solid rgba(255, 217, 102, 0.7);
+            background: rgba(60, 50, 20, 0.28);
+            box-shadow: 0 0 24px rgba(255, 217, 102, 0.15);
+        }
+        ul.shrine-list { margin: 0 0 var(--gap); }
+        ul.shrine-list li { margin: 0; padding: 10px 0; border-bottom: 1px dashed rgba(168, 184, 255, 0.2); }
+        ul.shrine-list li:last-child { border-bottom: none; }
+        .shrine-name { display: block; color: #f0f0ff; font-weight: bold; }
+        .shrine-addr { display: block; font-size: 0.85em; color: #b8bce0; }
+        .stone-card {
+            background: rgba(30, 30, 70, 0.55);
+            border: 1px solid rgba(255, 217, 102, 0.45);
+            border-radius: 16px;
+            padding: 10px 18px;
+            margin: 0 0 var(--gap);
+            box-shadow: 0 6px 24px rgba(255, 217, 102, 0.1);
+        }
+        ul.stone-list { margin: 0; }
+        ul.stone-list li { margin: 0; padding: 20px 0; border-top: 1px dashed rgba(255, 217, 102, 0.22); }
+        ul.stone-list li:first-child { border-top: none; }
+        .stone-dot {
+            display: inline-block; width: 13px; height: 13px; border-radius: 50%;
+            margin-right: 8px; vertical-align: middle;
+            box-shadow: inset 0 -2px 3px rgba(0,0,0,0.25), 0 0 8px rgba(255,255,255,0.15);
+        }
+        .stone-dot.carnelian { background: radial-gradient(circle at 35% 35%, #ffc49a, #d4541f); }
+        .stone-dot.citrine { background: radial-gradient(circle at 35% 35%, #fff4c2, #e2b021); }
+        .stone-dot.jade { background: radial-gradient(circle at 35% 35%, #c9f0d8, #3f9a68); }
+        .stone-dot.amber { background: radial-gradient(circle at 35% 35%, #ffe2a0, #c47a14); }
+        .stone-dot.rose { background: radial-gradient(circle at 35% 35%, #ffe6ee, #e59bb4); }
+        .stone-dot.moonstone { background: radial-gradient(circle at 35% 35%, #ffffff, #b8c4e6); }
+        .stone-dot.aquamarine { background: radial-gradient(circle at 35% 35%, #e0f6ff, #5fb4d8); }
+        .stone-dot.quartz { background: radial-gradient(circle at 35% 35%, #ffffff, #cfd8e0); }
+        .stone-dot.smoky { background: radial-gradient(circle at 35% 35%, #d9cfc4, #6b5a4e); }
+        .stone-dot.tigereye { background: radial-gradient(circle at 35% 35%, #f0d08a, #8a5a1a); }
+        .stone-name { color: #ffd966; font-weight: bold; letter-spacing: 0.05em; }
+        .stone-desc { display: block; margin-top: 4px; }
+        .cta-box {
+            border-top: 1px solid rgba(255, 217, 102, 0.3);
+            margin-top: 10px;
+            padding-top: 26px;
+        }
+        .cta-box p { margin-bottom: 14px; }
+        .cta-word {
+            color: #ffd966;
+            font-size: 1.7em;
+            font-weight: bold;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 18px rgba(255, 217, 102, 0.45);
+        }
+        @media (max-width: 768px) {
+            :root { --gap: 34px; }
+            body { font-size: 16px; }
+            .cta-word { font-size: 1.5em; }
+        }
+
+        /* まるっと鑑定書：関係図・個別カード */
+        /* 関係図 */
+        .map-wrap { background: rgba(30,30,70,0.4); border: 1px solid rgba(168,184,255,0.3); border-radius: 16px; padding: 14px 6px 10px; }
+        .map-wrap svg { display: block; width: 100%; height: auto; }
+        .legend { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; font-size: 0.8em; color: #c8d0ff; margin: 10px 0 4px; }
+        .legend i { display: inline-block; width: 26px; height: 0; border-top: 3px solid; vertical-align: middle; margin-right: 6px; }
+        .lg-good { border-color: #ffd966; } .lg-bad { border-color: #ff7a7a; border-top-style: dashed; } .lg-tip { border-color: #7ab8ff; }
+        .node-t { font-family: inherit; fill: #e8e8f0; }
+        .edge-t { font-family: inherit; font-size: 13px; }
+
+        /* 個別カード */
+        .member { background: rgba(30,30,70,0.45); border: 1px solid rgba(168,184,255,0.3); border-radius: 16px; padding: 28px 22px; margin: 28px 0; box-shadow: 0 4px 20px rgba(100,100,200,0.2); }
+        .member-head { display: flex; align-items: center; gap: 18px; margin-bottom: 18px; }
+        .deity-img { width: 96px; height: 96px; object-fit: cover; border-radius: 50%; box-shadow: 0 0 24px rgba(168,184,255,0.45); flex-shrink: 0; }
+        .deity-pair { display: flex; flex-shrink: 0; } .deity-pair .deity-img { width: 72px; height: 72px; } .deity-pair .deity-img + .deity-img { margin-left: -14px; }
+        .member-name { font-size: 1.35em; color: #c8d0ff; letter-spacing: 0.08em; }
+        .guardian { font-size: 0.9em; color: #9aa4d8; }
+        .guardian b { color: #a8b8ff; font-weight: normal; }
+        .rel { border-radius: 10px; padding: 12px 16px; margin: 10px 0; border-left: 4px solid; background: rgba(0,0,0,0.18); }
+        .rel .tag { display: block; font-size: 0.75em; letter-spacing: 0.15em; margin-bottom: 2px; }
+        .rel.good { border-color: #ffd966; } .rel.good .tag { color: #ffd966; }
+        .rel.bad { border-color: #ff7a7a; } .rel.bad .tag { color: #ff9a9a; }
+        .rel.tip { border-color: #7ab8ff; } .rel.tip .tag { color: #9ccaff; }
+        .hl { color: #ffd966; font-weight: bold; }
+        .deity-pair { display: flex; flex-shrink: 0; } .deity-pair .deity-img { width: 72px; height: 72px; } .deity-pair .deity-img + .deity-img { margin-left: -14px; }
+        .member, .member p, .rel { text-align: center; }
+        .member-head { justify-content: center; text-align: left; }
+        .rel { border-left: none; border-top: 3px solid; }
+        .rel.good { border-color: #ffd966; } .rel.bad { border-color: #ff7a7a; } .rel.tip { border-color: #7ab8ff; }
+        .family-intro { text-align: center; margin: 0 0 30px; }
+        @media (max-width: 768px) { .member { padding: 22px 14px; } .deity-img { width: 72px; height: 72px; } }
+    </style>
+</head>
+<body>
+    <div class="element-bg" id="elementBg"></div>
+    <div class="deity-bg" id="deityBg"></div>
+    <div class="door-bg" id="doorBg"></div>
+    <div class="season-bg" id="seasonAutumnBg"></div>
+    <div class="season-bg" id="seasonWinterBg"></div>
+    <div class="stone-bg" id="stoneBg"></div>
+    <div class="deity-veil"></div>
+    <canvas id="petals"></canvas>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">まるっと鑑定書</h1>
+            <h2 class="cover-subtitle">千晶様とご家族の守護と本音</h2>
+            <p class="cover-name">千晶様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 目次 -->
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-map">ご家族の関わり図</a></li>
+                <li><a href="#sec-members">お一人ずつの鑑定</a></li>
+                <li><a href="#sec-honkantei">本式守護鑑定</a></li>
+                <li><a href="#sec-path">あなたが歩いてきた道</a></li>
+                <li><a href="#sec-now">今の千晶様</a></li>
+                <li><a href="#sec-god">あなたの守護神</a></li>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-1">1. 千晶様と竜矢様</a></li>
+                <li><a href="#sec-2">2. 千晶様と徹様</a></li>
+                <li><a href="#sec-3">3. お二人を結んでいる縁</a></li>
+                <li><a href="#sec-4">4. お二人のすれ違いの正体</a></li>
+                <li><a href="#sec-5">5. これからの兄弟の行方</a></li>
+                <li><a href="#sec-flow">今後の四ヶ月</a></li>
+                <li><a href="#sec-bonus">もう少し先に視えていること</a></li>
+                <li><a href="#sec-guardian">守護を受け取る方法</a></li>
+                <li><a href="#sec-stone">あなたと響き合うパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+        <div id="elementSentinel"></div>
+        <div class="oracle-message">
+            <p style="margin-bottom: 0;">千晶様と、竜矢様、徹様。<br>お一人ずつ守っている神様と本音、<br>そして三人の「関わり」を<br>ひとつの図にしてお届けします。</p>
+        </div>
+        <h2 class="emoji-header" id="sec-map">🌙 ご家族の関わり図</h2>
+        <div class="map-wrap">
+            <svg viewBox="0 0 600 520" role="img" aria-label="ご家族の関係図">
+                <defs>
+                    <radialGradient id="gMe" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff3c4"/><stop offset="100%" stop-color="#d9a93a"/></radialGradient>
+                    <clipPath id="cRyu"><circle cx="110" cy="120" r="48"/></clipPath>
+                    <clipPath id="cToru"><circle cx="490" cy="120" r="48"/></clipPath>
+                </defs>
+
+                <!-- 兄弟同士(細め) -->
+                <line x1="162" y1="106" x2="438" y2="106" stroke="#ffd966" stroke-width="2.5" opacity="0.85"/>
+                <line x1="162" y1="140" x2="438" y2="140" stroke="#ff7a7a" stroke-width="2.5" stroke-dasharray="7 6" opacity="0.85"/>
+
+                <!-- あなたとの関わり(太め) -->
+                <line x1="266" y1="333" x2="142" y2="164" stroke="#ff7a7a" stroke-width="5" stroke-dasharray="9 7"/>
+                <line x1="334" y1="333" x2="458" y2="164" stroke="#ffd966" stroke-width="5"/>
+
+                <!-- ラベル(すべて水平) -->
+                <rect x="235" y="93" width="130" height="26" rx="13" fill="#0f0f2e" stroke="#ffd966" stroke-width="1.5"/><text class="edge-t" x="300" y="111" text-anchor="middle" fill="#ffd966">切れない一対の縁</text>
+                <rect x="240" y="127" width="120" height="26" rx="13" fill="#0f0f2e" stroke="#ff9a9a" stroke-width="1.5"/><text class="edge-t" x="300" y="145" text-anchor="middle" fill="#ff9a9a">すれ違いやすい</text>
+                <rect x="144" y="235" width="120" height="26" rx="13" fill="#0f0f2e" stroke="#ff9a9a" stroke-width="1.5"/><text class="edge-t" x="204" y="253" text-anchor="middle" fill="#ff9a9a">心配が重く届く</text>
+                <rect x="341" y="235" width="110" height="26" rx="13" fill="#0f0f2e" stroke="#ffd966" stroke-width="1.5"/><text class="edge-t" x="396" y="253" text-anchor="middle" fill="#ffd966">沈黙は気遣い</text>
+
+                <!-- こうしたらいい -->
+                <g font-size="12" fill="#7ab8ff">
+                    <rect x="14" y="196" width="110" height="26" rx="13" fill="#0f0f2e" stroke="#7ab8ff"/><text class="edge-t" x="69" y="214" text-anchor="middle" fill="#9ccaff" font-size="12">灯を置く</text>
+                    <rect x="476" y="196" width="110" height="26" rx="13" fill="#0f0f2e" stroke="#7ab8ff"/><text class="edge-t" x="531" y="214" text-anchor="middle" fill="#9ccaff" font-size="12">聞かずに待つ</text>
+                    <rect x="240" y="460" width="120" height="26" rx="13" fill="#0f0f2e" stroke="#7ab8ff"/><text class="edge-t" x="300" y="478" text-anchor="middle" fill="#9ccaff" font-size="12">間から降りる</text>
+                </g>
+
+                <!-- ノード -->
+                <circle cx="300" cy="380" r="58" fill="url(#gMe)" opacity="0.95"/>
+                <text class="node-t" x="300" y="386" text-anchor="middle" font-size="20" fill="#2a2208" style="fill:#2a2208">あなた</text>
+
+                <circle cx="110" cy="120" r="52" fill="#0f0f2e" stroke="#a8b8ff" stroke-width="2"/>
+                <image href="../鑑定画像/宇迦之御魂神.png" x="62" y="72" width="96" height="96" clip-path="url(#cRyu)" preserveAspectRatio="xMidYMid slice"/>
+                <text class="node-t" x="110" y="58" text-anchor="middle" font-size="17">竜矢様</text>
+
+                <circle cx="490" cy="120" r="52" fill="#0f0f2e" stroke="#a8b8ff" stroke-width="2"/>
+                <image href="../鑑定画像/春日大明神.png" x="442" y="72" width="96" height="96" clip-path="url(#cToru)" preserveAspectRatio="xMidYMid slice"/>
+                <text class="node-t" x="490" y="58" text-anchor="middle" font-size="17">徹様</text>
+            </svg>
+            <div class="legend">
+                <span><i class="lg-good"></i>いいところ</span>
+                <span><i class="lg-bad"></i>反発するところ</span>
+                <span><i class="lg-tip" style="border-radius:8px;height:14px;border:1px solid #7ab8ff;width:26px"></i>未来を開くヒント</span>
+            </div>
+        </div>
+
+        <h2 class="emoji-header" id="sec-members">🌙 お一人ずつの鑑定</h2>
+
+        <div class="member">
+            <div class="member-head">
+                <img class="deity-img" src="../鑑定画像/火産霊神.png" alt="火産霊神">
+                <div>
+                    <div class="member-name">千晶様（あなた）</div>
+                    <div class="guardian">守っている神様　<b>火産霊神</b></div>
+                </div>
+            </div>
+            <p>火を絶やさず、<br>家族の営みを守ってきた神様に守られている方です。</p>
+            <div class="rel good"><span class="tag">いいところ</span>二人の息子様の灯を、両手で守ってきたのは<br><span class="hl">あなたの愛情</span>です。</div>
+            <div class="rel bad"><span class="tag">癖になっているところ</span>二人を胸にしまって、間に立ち続けてしまう癖があります。<br><br>聞きたいのは「大丈夫？」なのに、<br>口からは「ご飯は食べてる？」に包み直され、<br>自分の寂しさは「気にしすぎ」で片づけてしまいます。</div>
+            <div class="rel tip"><span class="tag">未来を開くヒント</span>夜、二人の顔が浮かんだら、<br>胸の中で「二人に、任せます」と言ってください。<br><br>火は握りしめているだけでは実りになりません。<br>託したときに、はじめて実ります。<br>守護神の月は、2027年2月です。</div>
+        </div>
+
+        <div class="member">
+            <div class="member-head">
+                <img class="deity-img" src="../鑑定画像/宇迦之御魂神.png" alt="宇迦之御魂神">
+                <div>
+                    <div class="member-name">竜矢様</div>
+                    <div class="guardian">守っている神様　<b>宇迦之御魂神</b></div>
+                </div>
+            </div>
+            <p>自分で決めて、自分の力で立ち上げてきた方です。<br>肥沃な土のような、温かい茶色のオーラを持っています。</p>
+            <div class="rel good"><span class="tag">いいところ</span>あなたの灯は、<br><span class="hl">いつも竜矢様の胸の中に入っています</span>。<br>口に出さない心配も、愛情として届いています。</div>
+            <div class="rel bad"><span class="tag">反発するところ</span>近いぶん、遠慮のない一言が深く刺さります。<br>あなたの心配を、少し重く受け取ってしまうことがあります。<br><br>あなたの愛が間違いなのではなく、<br>もう自分の足で畑を耕せる人になったということです。</div>
+            <div class="rel tip"><span class="tag">未来を開くヒント</span>連絡は問いかけで終わらせず、<br>今日あったことを一言だけ伝えてください。<br><br>返事を待たずに終えて、胸の中で「二人に、任せます」。<br>続けるうちに、竜矢様のほうから話しに来る日が増えます。</div>
+        </div>
+
+        <div class="member">
+            <div class="member-head">
+                <img class="deity-img" src="../鑑定画像/春日大明神.png" alt="春日大明神">
+                <div>
+                    <div class="member-name">徹様</div>
+                    <div class="guardian">守っている神様　<b>春日大明神</b></div>
+                </div>
+            </div>
+            <p>多くを語らず、<br>胸の内に熱い気持ちと高い理想を抱いている方です。<br>深い森のような緑のオーラを持っています。</p>
+            <div class="rel good"><span class="tag">いいところ</span>あなたの灯が翳らないよう、<br><span class="hl">いちばん気を配っている</span>のは徹様です。</div>
+            <div class="rel bad"><span class="tag">反発するところ</span>あなたの気苦労を肌で感じ取り、<br>「言ったら心配させる」と本音を呑み込みます。<br><br>沈黙は拒絶ではなく、気遣いです。<br>一度決めたら譲らない頑固さは、あなたとよく似ています。</div>
+            <div class="rel tip"><span class="tag">未来を開くヒント</span>黙ったときは理由を推し量らず、<br>「話したくなったら聞くね」と一度だけ伝えてください。<br><br>返事は求めず、胸の中で「二人に、任せます」。<br>それが、沈黙を気遣いとして受け取った返事になります。</div>
+        </div>
+
+        <div class="member">
+            <div class="member-head">
+                <div class="deity-pair"><img class="deity-img" src="../鑑定画像/宇迦之御魂神.png" alt="宇迦之御魂神"><img class="deity-img" src="../鑑定画像/春日大明神.png" alt="春日大明神"></div>
+                <div>
+                    <div class="member-name">竜矢様と徹様</div>
+                    <div class="guardian">守っている神様　<b>宇迦之御魂神 × 春日大明神</b></div>
+                </div>
+            </div>
+            <p>生まれながらに一対になった兄弟です。<br>稲が実る畑と、水を蓄える森のように、<br>お互いの実りに欠かせません。</p>
+            <div class="rel good"><span class="tag">いいところ</span>切れない縁で、<span class="hl">お互いが半身のように</span>欠かせません。<br>二人の縁が一つの形を結ぶのは、2027年1月です。</div>
+            <div class="rel bad"><span class="tag">すれ違いの正体</span>兄は「弟の本音が読めない」と感じています。<br>弟は「兄に守られて少し窮屈」と感じています。<br><br>どちらも大切に思うからこそ、言葉が少し違う意味で届きます。<br>あなたが通訳しても、解けるすれ違いではありません。</div>
+            <div class="rel tip"><span class="tag">未来を開くヒント</span>片方の様子を、もう片方に運ばないでください。<br>二人が揃う場で沈黙が落ちても、言葉を足さずに待ちます。<br><br>二人が連絡を取り合ったと知ったら、<br>中身は聞かずに「よかったね」とだけ。</div>
+        </div>
+
+        <h2 class="emoji-header" id="sec-honkantei">🌙 本式守護鑑定</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 0;">ここからは、<br>千晶様のご相談に沿って<br>竜矢様と徹様のこと、お二人の縁のことを<br>さらに詳しくお伝えしていきます。</p>
+        </div>
+
+        <div class="oracle-message">
+            <p style="margin-bottom: var(--gap);">千晶様</p>
+            <p style="margin-bottom: var(--gap);">本式守護鑑定をお受けいただき<br>本当にありがとうございます。</p>
+            <div class="summary-box">
+            <p class="summary-title">【今回の鑑定のまとめ】</p>
+            <ul class="summary-list">
+                <li>竜矢様との間には、深い愛情があります。口に出さない心配は気配になって届くので、問いかけで終わらせない連絡が、二人の距離をやわらげます</li>
+                <li>徹様の沈黙は、拒絶ではなく気遣いです。千晶様の気苦労を感じ取って、本音をしまっています</li>
+                <li>竜矢様と徹様は、生まれながらに一対になった兄弟です。切れない縁で、お互いが半身のように欠かせません。二人の縁が一つの形を結ぶのは、2027年1月です</li>
+                <li>兄は「弟の本音が読めない」、弟は「兄に守られて少し窮屈」と感じています。これが、二人のすれ違いの正体です</li>
+                <li>千晶様の癖は「二人を胸にしまって、間に立ち続けてしまう癖」。合図の言葉は「二人に、任せます」で、守護神の月は2027年2月です</li>
+            </ul>
+            </div>
+            <p style="margin-bottom: var(--gap);">「私とそれぞれの息子の関係も知りたいですが<br>長男と次男の関係の方が<br>さらに詳しく知りたいです。」</p>
+            <p style="margin-bottom: var(--gap);">いただいたこの言葉を読んだとき<br>千晶様がどれほど長いあいだ<br>二人の息子様のことを<br>胸の中に置き続けてこられたのか<br>その重みがまっすぐ心に届きました。</p>
+            <p style="margin-bottom: var(--gap);">今回千晶様の守護神とつながり<br>霊視を進めていくと<br>守護神は何度も同じところへ<br>私の意識を引き戻してきました。</p>
+            <p style="margin-bottom: var(--gap);">「どうして私は<br>二人のことを<br>こんなにも胸に抱えてきたのだろう」</p>
+            <p style="margin-bottom: var(--gap);">千晶様がずっと心の奥で抱えてきた<br>その問いの答えが<br>そこにありました。</p>
+            <p style="margin-bottom: 0;">その答えにたどり着くために<br>まずは千晶様が歩いてきた道から<br>お伝えしていきますね。</p>
+        </div>
+
+        <h2 id="sec-path">【あなたが歩いてきた道】</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">若い頃の千晶様は<br>周りの人の気持ちに<br>とても敏感な人でした。</p>
+            <p style="margin-bottom: var(--gap);">自分の言いたいことよりも先に<br>その場の空気が目に入って<br>胸の内にしまうほうが<br>いつも先に動いていました。</p>
+            <p style="margin-bottom: var(--gap);">そんな繊細さを抱えたまま<br>お母さんになり<br>二人の息子様の毎日を<br>一つずつ整えてこられました。</p>
+            <p style="margin-bottom: var(--gap);">朝ごはんの支度から<br>学校のことや進路のこと<br>お金のことまで<br>二人が前へ進めるように<br>手を貸し続けた長い年月でした。</p>
+            <p style="margin-bottom: var(--gap);">その歩みの途中で<br>千晶様ご自身が休む時間は<br>後まわしになる日が<br>多かったのではないでしょうか。</p>
+            <p style="margin-bottom: var(--gap);">息子様たちがそれぞれの道を選び<br>自分の足で立つようになった今も<br>千晶様の落ち着きと芯の強さは<br>その歩みの上にあります。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>その背中を視ていて<br>一つ気づいたことがあります。</p>
+            <p style="margin-bottom: 0;">千晶様は<br>ずっと息子様たちのことを<br>胸の中にしまって<br>一人で見守り続けてきた人なのです。</p>
+        </div>
+
+        <h2 id="sec-now">【今の千晶様】</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">その歩き方は<br>今の千晶様にも<br>そのまま続いています。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様にも徹様にも<br>言いたいことが浮かぶのに<br>「これを言ったらどう受け取られるだろう」と<br>先に考えているうちに<br>口から出るのは<br>「元気にしてる？」だけで終わっている。</p>
+            <p style="margin-bottom: var(--gap);">夜に布団へ入ってから<br>二人の顔が順番に浮かんできて<br>「あの子は今日どうしていたかな」と<br>考えているうちに<br>目が冴えている。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様の話を聞いているときも<br>頭の片隅には<br>徹様の様子が浮かんでいる。</p>
+            <p style="margin-bottom: var(--gap);">どちらの味方にも偏らないように<br>言葉を選び直している。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>自分の心配や寂しさは<br>「私が気にしすぎなだけ」と<br>自分で片づけている。</p>
+            <p style="margin-bottom: var(--gap);">言葉はしまう。</p>
+            <p style="margin-bottom: var(--gap);">心配は胸に置く。</p>
+            <p style="margin-bottom: var(--gap);">二人の間に立ち続ける。</p>
+            <p style="margin-bottom: var(--gap);">どれも<br>千晶様の愛情です。</p>
+            <p style="margin-bottom: var(--gap);">二人を傷つけたくない。</p>
+            <p style="margin-bottom: var(--gap);">どちらも大切だから<br>どちらも選びたくない。</p>
+            <p style="margin-bottom: var(--gap);">その思いが<br>千晶様の振る舞いを<br>ここまで品のあるものにしてきました。</p>
+            <p style="margin-bottom: var(--gap);">でもこの三つには<br>共通していることがあります。</p>
+            <p style="margin-bottom: var(--gap);">どれも<br>自分の気持ちを外に出して分け合う前に<br>全部を自分の胸で受け止める<br>ほうへ回っているのです。</p>
+            <p style="margin-bottom: var(--gap);">それが長く続いた結果<br>一つの癖ができていました。</p>
+            <p style="margin-bottom: var(--gap);">「二人を胸にしまって<br>間に立ち続けてしまう癖」です。</p>
+            <p style="margin-bottom: var(--gap);">二人のどちらかに元気がないと<br>「私がもっとこうしていれば」と<br>まず自分の中に理由を探す。</p>
+            <p style="margin-bottom: var(--gap);">聞きたいのは「大丈夫？」なのに<br>口からは「ご飯は食べてる？」と<br>別の言葉に包み直して出す。</p>
+            <p style="margin-bottom: var(--gap);">片方の話を聞いたあと<br>もう片方にどう伝えようかと<br>頭の中で言い方を組み立てる。</p>
+            <p style="margin-bottom: var(--gap);">気づけば<br>自分のためにお茶を淹れる時間が<br>二人のことを考える時間に<br>変わっている。</p>
+            <p style="margin-bottom: var(--gap);">思い当たるところはありませんか？</p>
+            <p style="margin-bottom: var(--gap);">実はこの癖こそが<br>冒頭でお伝えした<br>守護神が何度も私の意識を引き戻した<br>ところです。</p>
+            <p style="margin-bottom: var(--gap);">今回の鑑定の<br>すべての鍵になります。</p>
+            <p style="margin-bottom: 0;">では<br>そんな千晶様を守っているのは<br>どんな神様なのでしょうか。</p>
+        </div>
+
+        <div id="guardianSentinel"></div>
+        <div class="oracle-message" id="sec-god">
+            <p style="margin-bottom: var(--gap);">千晶様を守っているのは<br><span style="color: #ffd966;">火産霊神</span>（ほむすびのかみ）です。</p>
+            <p style="margin-bottom: var(--gap);">火の神様です。</p>
+            <p style="margin-bottom: var(--gap);">古い日本の物語の中で<br>火そのものを司る神様として<br>語り継がれてきました。</p>
+            <p style="margin-bottom: var(--gap);">お社によって<br>火之迦具土神や加具土命など<br>いくつかのお名前でお祀りされています。</p>
+            <p style="margin-bottom: var(--gap);">昔の人にとって<br>火はありがたく<br>そして恐ろしいものでした。</p>
+            <p style="margin-bottom: var(--gap);">かまどの火は<br>家族のご飯を炊き<br>寒い夜を温めてくれる。</p>
+            <p style="margin-bottom: var(--gap);">けれど<br>一つ間違えれば<br>家も村も焼いてしまう。</p>
+            <p style="margin-bottom: var(--gap);">だから人々は<br>火が荒れないよう<br>この神様に手を合わせてきました。</p>
+            <p style="margin-bottom: var(--gap);">秋葉神社や愛宕神社など<br>火伏せの神様として<br>今も全国のお社で<br>大切にお祀りされています。</p>
+            <p style="margin-bottom: var(--gap);">そしてこの神様は<br>暮らしの奥で火を絶やさず<br>家族の営みを守ってきた<br>火の神様です。</p>
+            <p style="margin-bottom: var(--gap);">まるで千晶様そのもののような神様です。</p>
+            <p style="margin-bottom: var(--gap);">でも<br>ここからが大切なところです。</p>
+            <p style="margin-bottom: var(--gap);">日本書紀に伝わる物語では<br>火の神は<br>土の女神である埴山姫と結ばれ<br>稚産霊（わくむすひ）という神様を<br>生んだとされています。</p>
+            <p style="margin-bottom: var(--gap);">その神様の頭には蚕と桑が生まれ<br>お臍には五穀が生まれました。</p>
+            <p style="margin-bottom: var(--gap);">つまり<br>火は<br>自分の手の中だけで守り続けるものではなく<br>土の女神と結ばれ<br>子の神様に託されたとき<br>人の衣と食を養う実りになったのです。</p>
+            <p style="margin-bottom: var(--gap);">「ほむすび」の<br>「ほ」は火<br>「むすひ」は<br>ものを生み結ぶ力。</p>
+            <p style="margin-bottom: var(--gap);">火を産み<br>そして結ぶ力を<br>そのお名前に宿した神様です。</p>
+            <p style="margin-bottom: var(--gap);">火は<br>握りしめているだけでは<br>実りになりません。</p>
+            <p style="margin-bottom: var(--gap);">次の命に託されたとき<br>はじめて<br>その子の中で実りになる。</p>
+            <p style="margin-bottom: var(--gap);">「二人を胸にしまって<br>間に立ち続けてしまう癖」で<br>歩いてきた千晶様のそばに<br>この神様がいる。</p>
+            <p style="margin-bottom: 0;">それは<br>「その火は握りしめなくていい<br>二人の中で<br>もう実り始めている」と<br>伝えるためにほかなりません。</p>
+            <img src="../鑑定画像/火産霊神.png" alt="火産霊神" class="guardian-image">
+        </div>
+
+        <div id="essenceSentinel"></div>
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">その火産霊神が<br>千晶様のこの先の景色を<br>見せてくれました。</p>
+            <p style="margin-bottom: var(--gap);">2027年3月<br>春のお彼岸を過ぎて<br>桜の蕾がふくらみはじめる頃に<br>視えている景色です。</p>
+            <p style="margin-bottom: var(--gap);">昼下がりの光が<br>窓から長く差し込んでいて<br>空気に春の匂いが混じっている。</p>
+            <p style="margin-bottom: var(--gap);">一つのテーブルを<br>千晶様と竜矢様と徹様が<br>囲んでいます。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様が昔の話を切り出して<br>徹様が<br>「それは違うよ」と笑いながら返す。</p>
+            <p style="margin-bottom: var(--gap);">二人の声が<br>テーブルの上を<br>行ったり来たりしている。</p>
+            <p style="margin-bottom: var(--gap);">いつもなら<br>その間に入って<br>「まあまあ」と言葉を挟む人が<br>その日は<br>自分のために淹れたお茶を<br>両手で包んで<br>二人の声を聞いている。</p>
+            <p style="margin-bottom: var(--gap);">湯呑みの温かさが<br>掌に広がって<br>千晶様の口元が<br>自然にゆるんでいる。</p>
+            <p style="margin-bottom: var(--gap);">どちらの味方もせず<br>どちらも止めず<br>ただそこにいる。</p>
+            <p style="margin-bottom: var(--gap);">二人の声は<br>千晶様を通らずに<br>お互いの間で<br>ちゃんと届いています。</p>
+            <p style="margin-bottom: var(--gap);">その兆しは<br>はっきりと感じられます。</p>
+            <p style="margin-bottom: var(--gap);">最初の変化が起きるのは<br>今年の11月です。</p>
+            <p style="margin-bottom: var(--gap);">ここから先は<br>この席へ向かう道を<br>五つに分けて<br>お伝えしていきますね。</p>
+            <p style="margin-bottom: 0;">竜矢様との関係のこと<br>徹様との関係のこと<br>お二人を結んでいる縁のこと<br>お二人のすれ違いの正体のこと<br>これからの兄弟の行方のことです。</p>
+        </div>
+
+        <div id="deitySentinel"></div>
+        <h2 class="emoji-header" id="sec-1">⛩️ 1. 千晶様と竜矢様</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">まず<br>守護神が見せてくれた<br>もう一つの景色からお伝えします。</p>
+            <p style="margin-bottom: var(--gap);">夜の道が<br>二つに分かれています。</p>
+            <p style="margin-bottom: var(--gap);">右の道を竜矢様が<br>左の道を徹様が<br>それぞれ歩いている。</p>
+            <p style="margin-bottom: var(--gap);">その分かれ道の真ん中に<br>千晶様が立っています。</p>
+            <p style="margin-bottom: var(--gap);">両手には<br>一つずつ<br>小さな灯がありました。</p>
+            <p style="margin-bottom: var(--gap);">風が吹くたびに<br>千晶様は背中を丸めて<br>二つの灯が消えないよう<br>覆い続けている。</p>
+            <p style="margin-bottom: var(--gap);">そしてその後ろに<br>火産霊神が立ち<br>千晶様の肩に手を重ねていました。</p>
+            <p style="margin-bottom: var(--gap);">これを視たとき<br>私は思わず胸が詰まりました。</p>
+            <p style="margin-bottom: var(--gap);">この光景と一緒に<br>伝わってきたことがあります。</p>
+            <p style="margin-bottom: var(--gap);">千晶様が両手で守ってきたのは<br>竜矢様と徹様の<br>それぞれの灯でした。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>二つの灯を守ろうとするほど<br>千晶様の両手は<br>ふさがっていたのです。</p>
+            <p style="margin-bottom: var(--gap);">ここでも<br>あの癖が出ていたのです。</p>
+            <p style="margin-bottom: var(--gap);">では<br>まず竜矢様との関係から<br>お伝えしていきますね。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様を守っているのは<br>宇迦之御魂神（うかのみたまのかみ）です。</p>
+            <img src="../鑑定画像/宇迦之御魂神.png" alt="宇迦之御魂神" class="guardian-image">
+            <p style="margin-bottom: var(--gap);">稲や五穀など<br>食べ物を司る神様です。</p>
+            <p style="margin-bottom: var(--gap);">古事記では<br>須佐之男命の御子神とされ<br>今は稲荷神社として<br>全国でお祀りされている<br>とても身近な神様です。</p>
+            <p style="margin-bottom: var(--gap);">「宇迦」は<br>食べ物を表す古い言葉。</p>
+            <p style="margin-bottom: var(--gap);">春に種が蒔かれ<br>夏の日差しと雨を受け<br>秋に実りとなって<br>人の暮らしを支える。</p>
+            <p style="margin-bottom: var(--gap);">この神様は<br>その巡りの全部を<br>見守ってきました。</p>
+            <p style="margin-bottom: var(--gap);">蒔いたあとの稲は<br>蒔いた人が引っぱって<br>育てるものではありません。</p>
+            <p style="margin-bottom: var(--gap);">土と天気と時間が<br>育ててくれるものです。</p>
+            <p style="margin-bottom: var(--gap);">その畑の土のような<br>肥沃な温かい茶色が<br>竜矢様のオーラの色です。</p>
+            <p style="margin-bottom: var(--gap);">地に足がついていて<br>現実を動かす力を持ち<br>自分で決めたことを<br>自分の力で形にしていく。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様は<br>誰かに引っぱってもらうより<br>自分で決めて<br>自分の力で立ち上げてきた人です。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>千晶様の愛情を<br>竜矢様はちゃんと胸に抱えています。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様の中には<br>千晶様の灯が<br>いつも入っているのです。</p>
+            <p style="margin-bottom: var(--gap);">千晶様から竜矢様へ向かう愛は<br>与えて育て<br>見守る愛です。</p>
+            <p style="margin-bottom: var(--gap);">千晶様の人生の真ん中には<br>初めから竜矢様がいます。</p>
+            <p style="margin-bottom: var(--gap);">愛の深さは<br>二人が生まれ持った形の中に<br>すでに刻まれています。</p>
+            <p style="margin-bottom: var(--gap);">一方<br>竜矢様から千晶様へ向かう気持ちは<br>距離のある温かさです。</p>
+            <p style="margin-bottom: var(--gap);">近くにいても<br>ぴたりと寄り添うのではなく<br>少し離れたところから<br>千晶様を見つめている。</p>
+            <p style="margin-bottom: var(--gap);">二人は<br>生まれ育ちの縁が<br>深いところで結ばれた母子です。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>結ばれている分<br>遠慮のない言い合いも<br>生まれやすい二人です。</p>
+            <p style="margin-bottom: var(--gap);">「家族だから」と<br>言葉を選ばずに出した一言が<br>お互いの胸に<br>思いのほか深く刺さる。</p>
+            <p style="margin-bottom: var(--gap);">そんな場面が<br>これまでにも<br>あったのではないでしょうか。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>千晶様が口に出さなくても<br>心配は伝わっています。</p>
+            <p style="margin-bottom: var(--gap);">表情に出る。</p>
+            <p style="margin-bottom: var(--gap);">間の取り方に出る。</p>
+            <p style="margin-bottom: var(--gap);">「ご飯は食べてる？」の<br>一言に姿を変えて出る。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様は<br>それを愛情だと分かっています。</p>
+            <p style="margin-bottom: var(--gap);">分かったうえで<br>自分の足で立っている人だからこそ<br>少し重く<br>受け取ってしまうことがあるのです。</p>
+            <p style="margin-bottom: var(--gap);">千晶様の愛が<br>間違っているのではありません。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様が<br>もう自分の足で畑を耕せる人に<br>なったということです。</p>
+            <p style="margin-bottom: var(--gap);">今年は<br>二人の温かさが<br>強く結び直される年です。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様にとって<br>母のことと弟のことが<br>同時に胸に浮かぶ一年。</p>
+            <p style="margin-bottom: var(--gap);">守護神から伝わってきたのは<br>千晶様の愛を<br>「口出し」とは違う<br>「灯」として置けたとき<br>竜矢様がその灯を<br>自分から受け取りに来る兆しが<br>濃くあるということです。</p>
+            <p style="margin-bottom: var(--gap);">そのために<br>一つお渡しします。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様に連絡をするときは<br>問いかけで終わらせず<br>今日あったことを一言だけ伝えて<br>返事を待たずに終えてみてください。</p>
+            <p style="margin-bottom: var(--gap);">送ったあとに<br>胸の中で<br>「二人に、任せます」と言う。</p>
+            <p style="margin-bottom: var(--gap);">それが<br>千晶様の灯を<br>竜矢様の手に握らせず<br>そばに置いておく合図になります。</p>
+            <p style="margin-bottom: var(--gap);">続けていくと<br>竜矢様のほうから<br>自分の話をしに来る日が<br>増えていきます。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>竜矢様への手の離し方が分かっても<br>もう一人の息子様のことが<br>気になりますよね。</p>
+            <p style="margin-bottom: 0;">では<br>徹様とはどうなのでしょうか。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-2">⛩️ 2. 千晶様と徹様</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">徹様を守っているのは<br>春日大明神（かすがだいみょうじん）です。</p>
+            <img src="../鑑定画像/春日大明神.png" alt="春日大明神" class="guardian-image">
+            <p style="margin-bottom: var(--gap);">奈良の春日大社にお祀りされ<br>千二百年以上前から<br>人々に手を合わせられてきた神様です。</p>
+            <p style="margin-bottom: var(--gap);">社の背後には<br>春日山と呼ばれる森が広がり<br>千年以上<br>人の手を入れずに守られてきました。</p>
+            <p style="margin-bottom: var(--gap);">お祀りされている神様の中に<br>天児屋根命（あめのこやねのみこと）という<br>神様がいます。</p>
+            <p style="margin-bottom: var(--gap);">天岩戸の前で<br>祝詞を奏上して<br>神々の言葉の道を開いた神様です。</p>
+            <p style="margin-bottom: var(--gap);">言葉を使って<br>閉ざされた場所に<br>光を呼び戻した神様。</p>
+            <p style="margin-bottom: var(--gap);">その森のような<br>深い緑が徹様のオーラの色です。</p>
+            <p style="margin-bottom: var(--gap);">学びを重ねて<br>自分を磨くことに喜びを感じる<br>穏やかで芯の強い人。</p>
+            <p style="margin-bottom: var(--gap);">徹様は<br>自分の考えを<br>多くを言葉にしない人です。</p>
+            <p style="margin-bottom: var(--gap);">落ち着いて見えて<br>胸の内には<br>熱い気持ちと高い理想を<br>しっかり抱えています。</p>
+            <p style="margin-bottom: var(--gap);">それを外に出すより先に<br>まず自分の中で<br>十分に考え抜いてから<br>動く人です。</p>
+            <p style="margin-bottom: var(--gap);">そして徹様は<br>千晶様の灯が翳らないように<br>気を配っている人でもあります。</p>
+            <p style="margin-bottom: var(--gap);">千晶様が心配ごとを胸にしまうとき<br>その気配は<br>言葉より先に<br>徹様のところへ届いています。</p>
+            <p style="margin-bottom: var(--gap);">千晶様の胸の中の気苦労を<br>徹様は肌で感じ取って<br>自分の中にしまう。</p>
+            <p style="margin-bottom: var(--gap);">「言ったら心配させる」と<br>本音を呑み込んでいる。</p>
+            <p style="margin-bottom: var(--gap);">徹様の沈黙は<br>拒絶とは違います。</p>
+            <p style="margin-bottom: var(--gap);">千晶様の灯を翳らせないための<br>気遣いです。</p>
+            <p style="margin-bottom: var(--gap);">そして二人は<br>お互いの足りないところを<br>補い合う母子です。</p>
+            <p style="margin-bottom: var(--gap);">千晶様の中で足りなかった<br>自分を支えてくれる力を<br>徹様が運んでくれています。</p>
+            <p style="margin-bottom: var(--gap);">千晶様にとって徹様は<br>自分を支えてくれる<br>薪のような存在。</p>
+            <p style="margin-bottom: var(--gap);">徹様にとって千晶様は<br>自分の中に足りなかった<br>言葉と行動の熱を灯してくれる<br>灯のような存在です。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>千晶様が気づかないうちに<br>徹様に心を寄せすぎる場面も<br>あります。</p>
+            <p style="margin-bottom: var(--gap);">つらいことがあった日<br>最初に頭に浮かぶのは<br>徹様の顔でしょう。</p>
+            <p style="margin-bottom: var(--gap);">頼もしさを感じる一方で<br>徹様はその分だけ<br>母の気苦労を<br>背負い込んでいます。</p>
+            <p style="margin-bottom: var(--gap);">似ているところもあります。</p>
+            <p style="margin-bottom: var(--gap);">一度こうと決めたら<br>どちらも譲らない。</p>
+            <p style="margin-bottom: var(--gap);">その頑固さは<br>母子だからこそ<br>よく似ています。</p>
+            <p style="margin-bottom: var(--gap);">これから先の進み方については<br>考え方が違うところも<br>あります。</p>
+            <p style="margin-bottom: var(--gap);">守護神から伝わってきたのは<br>徹様が言葉にしない時間は<br>千晶様を拒んでいる時間とは違い<br>千晶様を守っている時間だということです。</p>
+            <p style="margin-bottom: var(--gap);">徹様が黙ったときは<br>理由を推し量らず<br>「話したくなったら聞くね」と<br>一度だけ伝えてみてください。</p>
+            <p style="margin-bottom: var(--gap);">あとは返事を求めず<br>胸の中で<br>「二人に、任せます」と言う。</p>
+            <p style="margin-bottom: var(--gap);">それが<br>徹様の沈黙を<br>気遣いとして受け取ったという<br>千晶様からの返事になります。</p>
+            <p style="margin-bottom: var(--gap);">天児屋根命が<br>徹様の守護の中にいることは<br>言葉が出てくる日が来る<br>兆しでもあります。</p>
+            <p style="margin-bottom: 0;">母と二人の息子様の関係が<br>見えてきたところで<br>いよいよ<br>お二人の間のいちばん深いところに<br>入っていきます。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-3">⛩️ 3. お二人を結んでいる縁</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">ここからは<br>千晶様が「さらに詳しく知りたい」と<br>書かれた<br>竜矢様と徹様のお話です。</p>
+            <p style="margin-bottom: var(--gap);">守護神から伝わってきたのは<br>この二人は<br>生まれながらに一対の兄弟という事実です。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様と徹様は<br>生まれたときから<br>ひと組として結ばれている兄弟です。</p>
+            <p style="margin-bottom: var(--gap);">惹かれ合い<br>お互いが欠かせない。</p>
+            <p style="margin-bottom: var(--gap);">それは<br>兄弟の中でも<br>めったにない強さの縁です。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>夫婦でなく兄弟だからこそ<br>その縁は別の形で出ます。</p>
+            <p style="margin-bottom: var(--gap);">近すぎる。</p>
+            <p style="margin-bottom: var(--gap);">離れられない。</p>
+            <p style="margin-bottom: var(--gap);">つい踏み込んでしまう。</p>
+            <p style="margin-bottom: var(--gap);">相手の中に<br>自分の姿を重ねてしまう。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様の心の中には<br>いつも徹様の席があります。</p>
+            <p style="margin-bottom: var(--gap);">何をしていても<br>どこにいても<br>弟の様子が<br>どこかで気になっている。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>弟の前では背筋が伸びる。</p>
+            <p style="margin-bottom: var(--gap);">「立派な兄でありたい」という思いが<br>竜矢様を<br>自分で自分を律する人にしてきました。</p>
+            <p style="margin-bottom: var(--gap);">徹様の心の中にも<br>兄の席があります。</p>
+            <p style="margin-bottom: var(--gap);">しかも<br>とても大切な席です。</p>
+            <p style="margin-bottom: var(--gap);">徹様にとって兄は<br>現実の中で<br>いちばん大切に守りたい相手でもあります。</p>
+            <p style="margin-bottom: var(--gap);">そして二人は<br>お互いに足りないものを<br>運び合っています。</p>
+            <p style="margin-bottom: var(--gap);">徹様には<br>外から枠を与えてくれるものが<br>もともと少ないのです。</p>
+            <p style="margin-bottom: var(--gap);">何かを決めるとき<br>背中を押す力や<br>区切りをつける力。</p>
+            <p style="margin-bottom: var(--gap);">その足りない部分を<br>竜矢様が<br>自分でも気づかないうちに<br>運んでいます。</p>
+            <p style="margin-bottom: var(--gap);">兄の一言で<br>弟の輪郭がはっきりする。</p>
+            <p style="margin-bottom: var(--gap);">そんな場面が<br>これまでにも<br>何度もあったのではないでしょうか。</p>
+            <p style="margin-bottom: var(--gap);">もう一つ<br>竜矢様が無意識に担っている役目があります。</p>
+            <p style="margin-bottom: var(--gap);">千晶様の気苦労を感じ取って<br>内にこもりそうになる徹様を<br>外へ連れ出す役です。</p>
+            <p style="margin-bottom: var(--gap);">母のそばで<br>本音を呑み込んでしまう弟に<br>外の風を入れる。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様は<br>そうやって弟を<br>守ってきました。</p>
+            <p style="margin-bottom: var(--gap);">反対に<br>徹様が自分の道を動き出すとき<br>その動きが<br>竜矢様の足元を揺らすことがあります。</p>
+            <p style="margin-bottom: var(--gap);">弟が決めたこと<br>弟の周りの人たち<br>弟の進む方向。</p>
+            <p style="margin-bottom: var(--gap);">そのどれもが<br>竜矢様の胸に<br>圧のようなものとして届く。</p>
+            <p style="margin-bottom: var(--gap);">二人は<br>2009年頃から2018年頃にかけて<br>お互いが<br>人生のいちばん大きなテーマでした。</p>
+            <p style="margin-bottom: var(--gap);">思春期から青年期にかけて<br>相手を意識しない日は<br>なかったのではないでしょうか。</p>
+            <p style="margin-bottom: var(--gap);">そして今<br>二人とも<br>人生の軸が<br>家族のもとから離れて<br>自分にとっていちばん近い人との関係へ<br>移っていく時期にいます。</p>
+            <p style="margin-bottom: var(--gap);">しかも今年<br>お二人は同じ年に<br>同じ場所に立っています。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様は<br>弟のことと<br>母のこと。</p>
+            <p style="margin-bottom: var(--gap);">徹様は<br>兄のことと<br>母のこと。</p>
+            <p style="margin-bottom: var(--gap);">二人とも<br>同じ二つのテーマが<br>今年同時に浮かんでいる。</p>
+            <p style="margin-bottom: var(--gap);">千晶様が今年<br>この鑑定を受けられたのは<br>その流れを<br>肌で感じておられたからです。</p>
+            <p style="margin-bottom: var(--gap);">この二人の縁を守るために<br>千晶様にお渡ししたいことがあります。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様の様子を徹様に<br>徹様の様子を竜矢様に<br>運ばないでみてください。</p>
+            <p style="margin-bottom: var(--gap);">片方の話を<br>もう片方に持っていくのを控える。</p>
+            <p style="margin-bottom: var(--gap);">そのかわりに<br>二人の間の道を<br>二人が自分で歩けるようにしておく。</p>
+            <p style="margin-bottom: var(--gap);">それが<br>千晶様の手を通さずに<br>二人が直接つながる道を<br>開く合図になります。</p>
+            <p style="margin-bottom: var(--gap);">お二人の守護神を並べると<br>自然の中に<br>一つの理が重なります。</p>
+            <p style="margin-bottom: var(--gap);">稲が実る畑のそばには<br>水を蓄える森があります。</p>
+            <p style="margin-bottom: var(--gap);">森が蓄えた水が<br>畑に流れて<br>稲を実らせる。</p>
+            <p style="margin-bottom: var(--gap);">宇迦之御魂神と春日大明神が<br>竜矢様と徹様を守っているのは<br>お互いの実りに<br>この二人が欠かせないからです。</p>
+            <p style="margin-bottom: 0;">ただ<br>これほど深く結ばれた二人なのに<br>なぜすれ違うのでしょうか。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-4">⛩️ 4. お二人のすれ違いの正体</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">竜矢様の目に映る徹様は<br>気品があって<br>誇り高い人です。</p>
+            <p style="margin-bottom: var(--gap);">けれど<br>何を考えているのか<br>読めない。</p>
+            <p style="margin-bottom: var(--gap);">本音が奥にあって<br>どこから踏み込めばいいのか<br>分からない。</p>
+            <p style="margin-bottom: var(--gap);">それでも<br>情の深さだけは<br>はっきり感じている。</p>
+            <p style="margin-bottom: var(--gap);">守りたいのに<br>踏み込みきれない。</p>
+            <p style="margin-bottom: var(--gap);">それが<br>竜矢様の胸の中の<br>弟の姿です。</p>
+            <p style="margin-bottom: var(--gap);">徹様の目に映る竜矢様は<br>頼れる人です。</p>
+            <p style="margin-bottom: var(--gap);">いつも先に立って<br>自分を守ってくれる兄。</p>
+            <p style="margin-bottom: var(--gap);">けれど<br>何かを決めようとするとき<br>兄がもう道を示している。</p>
+            <p style="margin-bottom: var(--gap);">守られていると分かっているのに<br>自分の返事を<br>待ってもらえていない感覚。</p>
+            <p style="margin-bottom: var(--gap);">それが<br>徹様の胸の中の<br>兄の姿です。</p>
+            <p style="margin-bottom: var(--gap);">兄は「弟の本音が読めない」。</p>
+            <p style="margin-bottom: var(--gap);">弟は「兄に守られて少し窮屈」。</p>
+            <p style="margin-bottom: var(--gap);">どちらも<br>相手を大切に思っているからこそ<br>生まれている感覚です。</p>
+            <p style="margin-bottom: var(--gap);">そのために<br>二人の間では<br>言葉がほんの少し違う意味で<br>届きやすくなっています。</p>
+            <p style="margin-bottom: var(--gap);">兄が「心配だから」と言った一言が<br>弟には「まだ頼りないと思われている」と<br>聞こえる。</p>
+            <p style="margin-bottom: var(--gap);">弟が黙った沈黙が<br>兄には「何か隠している」と<br>聞こえる。</p>
+            <p style="margin-bottom: var(--gap);">そんなすれ違いが<br>これまで何度も<br>繰り返されてきました。</p>
+            <p style="margin-bottom: var(--gap);">そして竜矢様は<br>弟のことで<br>気を揉んで疲れやすい人です。</p>
+            <p style="margin-bottom: var(--gap);">弟に与えても<br>返ってこないような感覚。</p>
+            <p style="margin-bottom: var(--gap);">恩を返そうとしても<br>うまく届かないもどかしさ。</p>
+            <p style="margin-bottom: var(--gap);">弟のことを気にかけ続ける分<br>竜矢様自身の幸せや<br>自分の時間が<br>後まわしになりやすい。</p>
+            <p style="margin-bottom: var(--gap);">徹様は<br>兄の言葉の影響を<br>とても強く受ける人です。</p>
+            <p style="margin-bottom: var(--gap);">兄の一言が<br>胸に長く残って<br>気分にまで響く。</p>
+            <p style="margin-bottom: var(--gap);">けれど<br>窮屈さを言葉にしないまま<br>自分の中に溜めている。</p>
+            <p style="margin-bottom: var(--gap);">このすれ違いのあいだに<br>千晶様は<br>ずっと立ってきました。</p>
+            <p style="margin-bottom: var(--gap);">兄の気持ちを聞いて<br>弟の気持ちを推し量って<br>どちらにも傷が残らないように<br>言葉を選び続けてきた。</p>
+            <p style="margin-bottom: var(--gap);">でも<br>二人のすれ違いは<br>千晶様が通訳しても<br>解けるものにはなりませんでした。</p>
+            <p style="margin-bottom: var(--gap);">二人が<br>自分の言葉で<br>直接触れたときにしか<br>ほどけないものだからです。</p>
+            <p style="margin-bottom: var(--gap);">守護神から伝わってきたのは<br>二つのことでした。</p>
+            <p style="margin-bottom: var(--gap);">兄は<br>弟の本音を<br>読もうとしすぎなくていい。</p>
+            <p style="margin-bottom: var(--gap);">読めない部分があっても<br>そこに弟がいると<br>信じていればいい。</p>
+            <p style="margin-bottom: var(--gap);">弟は<br>兄に守られる窮屈さを<br>言葉にしていい。</p>
+            <p style="margin-bottom: var(--gap);">兄は<br>それを聞いたとき<br>先回りしていた手を<br>ちゃんと引っ込められる人です。</p>
+            <p style="margin-bottom: var(--gap);">そして千晶様は<br>間に立たなくていい。</p>
+            <p style="margin-bottom: var(--gap);">二人が揃う場で<br>沈黙が落ちたとき<br>千晶様が言葉を足して<br>その場を埋めないでみてください。</p>
+            <p style="margin-bottom: var(--gap);">沈黙の間に<br>二人が自分の言葉を探す<br>時間が生まれます。</p>
+            <p style="margin-bottom: var(--gap);">その時間が<br>二人の言葉が育つ土になります。</p>
+            <p style="margin-bottom: 0;">では<br>このお二人の関係は<br>これからどう動いていくのでしょうか。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-5">⛩️ 5. これからの兄弟の行方</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">結論から言うと<br>お二人の関係は<br>今年から来年にかけて<br>大きな転換期に入っています。</p>
+            <p style="margin-bottom: var(--gap);">今年は<br>徹様の中に<br>これまで足りなかった熱が入る年です。</p>
+            <p style="margin-bottom: var(--gap);">言葉や行動に熱が宿って<br>本音が外に出やすくなる。</p>
+            <p style="margin-bottom: var(--gap);">兄との間でも<br>これまで呑み込んできた一言が<br>形になって出ようとしています。</p>
+            <p style="margin-bottom: var(--gap);">そのとき<br>竜矢様は<br>受け止める側に立ちます。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様の暮らしの中でも<br>立場や責任が切り替わる<br>節目が近づいています。</p>
+            <p style="margin-bottom: var(--gap);">弟の言葉を<br>聞き入れる余裕が<br>増えていく流れです。</p>
+            <p style="margin-bottom: var(--gap);">そして来年。</p>
+            <p style="margin-bottom: var(--gap);">お二人とも<br>自分自身が主役になる年に入ります。</p>
+            <p style="margin-bottom: var(--gap);">それぞれが<br>自分の仕事や<br>自分の暮らしや<br>自分にとっていちばん近い人との時間に<br>意識を向けていく。</p>
+            <p style="margin-bottom: var(--gap);">お互いのことを<br>気にしすぎない距離が<br>自然にできていきます。</p>
+            <p style="margin-bottom: var(--gap);">その距離は<br>遠ざかりとは違います。</p>
+            <p style="margin-bottom: var(--gap);">互いの足元がしっかりしたからこそ<br>できる距離です。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様は<br>仕事の評判が上がる流れの中で<br>言葉の出し方や人付き合いでは<br>揺れる場面もあります。</p>
+            <p style="margin-bottom: var(--gap);">徹様は<br>心の重さがほどけて<br>住まいや暮らしのかたちを<br>自分で決めていきます。</p>
+            <p style="margin-bottom: var(--gap);">そして千晶様。</p>
+            <p style="margin-bottom: var(--gap);">息子様たちが自分の人生を築いていくことが<br>そのまま千晶様の実りになる十年に<br>入っています。</p>
+            <p style="margin-bottom: var(--gap);">二人が千晶様の手を離れて<br>育っていくことは<br>千晶様が与えてきた愛が<br>実を結ぶということです。</p>
+            <p style="margin-bottom: var(--gap);">最後に<br>お渡ししたいことがあります。</p>
+            <p style="margin-bottom: var(--gap);">二人が連絡を取り合ったと知ったとき<br>理由や中身を聞かずに<br>「よかったね」とだけ<br>受け取ってみてください。</p>
+            <p style="margin-bottom: var(--gap);">聞かないことで<br>二人の間の道が<br>二人のものとして育っていきます。</p>
+            <p style="margin-bottom: 0;">この道すじは<br>これから先の時間の中で<br>どう進んでいくのでしょうか。</p>
+        </div>
+
+        <h2 id="sec-flow">【今後の四ヶ月】</h2>
+        <div class="section">
+            <p style="margin-bottom: 0;">ここまでお伝えしてきた<br>「二人に、任せます」の練習は<br>この先の四ヶ月で<br>一段ずつ進んでいきます。</p>
+        </div>
+
+        <div id="flow1Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: var(--gap); font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年11月：見守る側に立つ月</p>
+            <p style="margin-bottom: var(--gap);">この月は<br>千晶様を支える力が<br>いつもより厚くなる月です。</p>
+            <p style="margin-bottom: var(--gap);">息子様たちのことに<br>意識が向かいやすく<br>考えごとが増える月でもあります。</p>
+            <p style="margin-bottom: var(--gap);">夜に<br>竜矢様か徹様のことが<br>頭から離れなくなる場面が<br>巡ってきます。</p>
+            <p style="margin-bottom: var(--gap);">そこで<br>考えを巡らせるかわりに<br>胸の中で<br>「二人に、任せます」と言ってみてください。</p>
+            <p style="margin-bottom: 0;">その一言が<br>見守る側に立つ<br>最初の一歩になります。</p>
+        </div>
+
+        <div id="flow2Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: var(--gap); font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年12月：揺れの中でも手を出さない月</p>
+            <p style="margin-bottom: var(--gap);">この月は<br>息子様たちの話が<br>表に浮かびやすい月です。</p>
+            <p style="margin-bottom: var(--gap);">月の半ばには<br>竜矢様の33歳の誕生日があります。</p>
+            <p style="margin-bottom: var(--gap);">新しい十年の入り口に立つ節目で<br>竜矢様の立場や責任が<br>切り替わっていく時期です。</p>
+            <p style="margin-bottom: var(--gap);">お祝いの言葉を送る場面が<br>巡ってきます。</p>
+            <p style="margin-bottom: var(--gap);">返事が短くても遅くても<br>そこで言葉を足さず<br>送ったところで手を離してください。</p>
+            <p style="margin-bottom: 0;">それだけで<br>灯を置いて手を離す練習が<br>進みます。</p>
+        </div>
+
+        <div id="flow3Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: var(--gap); font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年1月：二人の縁が形になる月</p>
+            <p style="margin-bottom: var(--gap);">この月は<br>今回の鑑定の中で<br>いちばん大切な月です。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様と徹様の縁が<br>二年がかりで<br>一つの形を結ぶ月だからです。</p>
+            <p style="margin-bottom: var(--gap);">年が明けて<br>どちらかが<br>相手の話をふと口にする場面が<br>巡ってきます。</p>
+            <p style="margin-bottom: var(--gap);">同時に<br>家族の空気がぴんと張る瞬間も<br>あります。</p>
+            <p style="margin-bottom: var(--gap);">結びつきと緊張が<br>同時に出る月ですが<br>どちらも<br>形が決まる前の揺らぎです。</p>
+            <p style="margin-bottom: var(--gap);">そんな場面では<br>間に入らず<br>「そうなんだね」と受けて<br>答えを足さずに聞いてください。</p>
+            <p style="margin-bottom: 0;">その場面が来たら<br>二人の縁が動き始めた<br>合図です。</p>
+        </div>
+
+        <div id="flow4Sentinel"></div>
+        <div class="section">
+            <p class="month-title">2027年2月：守護神の月</p>
+            <p style="margin-bottom: var(--gap);">2月4日の立春を境に<br>新しい一年の流れに入ります。</p>
+            <p style="margin-bottom: var(--gap);">この月は<br>火産霊神の力が<br>もっとも強く届く月です。</p>
+            <p style="margin-bottom: var(--gap);">千晶様の灯が<br>息子様たちのためだけでなく<br>千晶様ご自身のために<br>灯りはじめます。</p>
+            <p style="margin-bottom: var(--gap);">二人から離れた時間に<br>自分のために選んだものが<br>目に留まる場面が<br>巡ってきます。</p>
+            <p style="margin-bottom: var(--gap);">そこで遠慮せず<br>自分のために手に取ってください。</p>
+            <p style="margin-bottom: var(--gap);">この月は<br>竜矢様が気を張りすぎる日も<br>あります。</p>
+            <p style="margin-bottom: var(--gap);">そんなときも<br>問いかけを重ねず<br>灯を置いておく連絡だけにしてください。</p>
+            <p style="margin-bottom: 0;">この月に<br>火産霊神ゆかりの神社へ<br>足を運んでみてください。</p>
+        </div>
+
+        <div id="flowEndSentinel"></div>
+        <div class="section">
+            <h2 style="margin-top: 0;">【今年と来年】</h2>
+            <p style="margin-bottom: var(--gap);">2026年は<br>家の空気や<br>息子様たちのことが<br>表に浮かんでくる年です。</p>
+            <p style="margin-bottom: var(--gap);">それは<br>家族が揺らいでいるわけでなく<br>千晶様の中で<br>気づいて整理して言葉にする力が<br>高まっている年だからです。</p>
+            <p style="margin-bottom: var(--gap);">2027年は<br>息子様たちの人生が実り<br>千晶様ご自身も<br>満たされていく年です。</p>
+            <p style="margin-bottom: var(--gap);">胸の近いところにあった気苦労が<br>ほどけはじめます。</p>
+            <p style="margin-bottom: var(--gap);">冒頭でお伝えした<br>あの春のテーブルで<br>二人の声を聞いていたのは<br>千晶様でしたね。</p>
+            <p style="margin-bottom: var(--gap);">竜矢様も徹様も<br>千晶様が頼っていい<br>大切な人です。</p>
+            <p style="margin-bottom: var(--gap);">頼っても大丈夫な人は<br>すでにすぐそばにいます。</p>
+            <p style="margin-bottom: 0;">その景色へ向かう最初の年が<br>2027年です。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-bonus">🔮 もう少し先に視えていること</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">ここまでお伝えしてきたこととは別に<br>霊視の最後に<br>もう二つ視えたものがありました。</p>
+            <p style="margin-bottom: var(--gap);">一つ目は<br>うれしい兆しです。</p>
+            <p style="margin-bottom: var(--gap);">来年の春から夏にかけて<br>千晶様ご自身に向けて<br>「一緒に行きませんか」と<br>声がかかる場面があります。</p>
+            <p style="margin-bottom: var(--gap);">息子様のためでなく<br>千晶様ご自身の楽しみのために<br>時間を使える流れです。</p>
+            <p style="margin-bottom: var(--gap);">二つ目は<br>気に留めておいてほしいことです。</p>
+            <p style="margin-bottom: var(--gap);">千晶様が間から降りて<br>見守る側に立ち始めると<br>どちらかの息子様が<br>最初のうちだけ<br>戸惑う場面があります。</p>
+            <p style="margin-bottom: var(--gap);">いつものように連絡が重なったり<br>意見を求められたりして<br>千晶様の胸が<br>また動きかけるような場面です。</p>
+            <p style="margin-bottom: var(--gap);">さらに<br>二人が自分たちで話せるようになった頃<br>千晶様の胸に<br>役目が終わったような寂しさが<br>よぎる日もあります。</p>
+            <p style="margin-bottom: var(--gap);">怖がらなくて大丈夫です。</p>
+            <p style="margin-bottom: var(--gap);">間から一歩降りた人に訪れやすい<br>形が変わる前の揺らぎのようなものです。</p>
+            <p style="margin-bottom: var(--gap);">今の時点で心に留めてほしいのは<br>戸惑った連絡が来たとき<br>すぐに答えを出さず<br>一度受け止めてから<br>答えを相手に返すことです。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>それがいつ頃<br>どんな形で表れるのか。</p>
+            <p style="margin-bottom: var(--gap);">そして<br>どうすれば良い流れに変えていけるのか。</p>
+            <p style="margin-bottom: var(--gap);">ここはもう少し深く<br>視させていただく必要があります。</p>
+            <p style="margin-bottom: 0;">また別の機会に<br>改めてお伝えさせてくださいね。</p>
+        </div>
+
+        <div id="guardianReturnSentinel"></div>
+        <h2 class="emoji-header" id="sec-guardian">⛩️ 守護を受け取る方法</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">でも<br>大丈夫です。</p>
+            <p style="margin-bottom: var(--gap);">今回の霊視で<br><span style="color: #ffd966;">火産霊神</span>の守護の力を<br>千晶様の奥底に<br>宇迦之御魂神の守護の力を<br>竜矢様の奥底に<br>春日大明神の守護の力を<br>徹様の奥底に<br>置いてきました。</p>
+            <p style="margin-bottom: var(--gap);">千晶様の灯が消えることなく<br>二人の息子様の道を<br>明るくしていけるよう<br>支えていきます。</p>
+            <p style="margin-bottom: var(--gap);">この文章を読みながら<br>胸が少し温かくなる<br>肩が軽くなる<br>なぜか安心する<br>そんな感覚があれば<br>もう守護は届き始めています。</p>
+            <p style="margin-bottom: var(--gap);">何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: var(--gap);">ここまで読んでくださったなら<br>もう十分に受け取れています。</p>
+            <p style="margin-bottom: var(--gap);">もし余裕がある時だけ<br>次のことを試してみてください。</p>
+            <p style="margin-bottom: var(--gap); font-weight: bold; color: #f0f0ff;">【火産霊神ゆかりの神社へ行く】</p>
+            <ul class="shrine-list">
+                <li><span class="shrine-name">秋葉宮<br>（福岡県久留米市本町202）<br>秋葉神社<br>（福岡県久留米市櫛原町49-1）<br>愛宕神社<br>（福岡県久留米市御井町297）<br>黒島神社<br>（福岡県久留米市田主丸町豊城1651）<br>鷲尾愛宕神社</span><span class="shrine-addr">福岡県福岡市西区愛宕2-7-1</span></li>
+            </ul>
+            <p style="margin-bottom: var(--gap);">などが<br>火産霊神にご縁のある場所です。</p>
+            <p style="margin-bottom: var(--gap);">秋葉宮が<br>お住まいからいちばん近く<br>火之迦具土神をお祀りしています。</p>
+            <p style="margin-bottom: var(--gap);">鷲尾愛宕神社は<br>火産霊神をお祀りする社として<br>県内でもよく知られた神社です。</p>
+            <p style="margin-bottom: var(--gap);">どこか一つ<br>ご縁を感じる場所へ<br>お参りしてみてください。</p>
+            <p style="margin-bottom: var(--gap);">2月に参拝されると<br>とくに力を持ちます。</p>
+            <p style="margin-bottom: var(--gap);">もしお二人の守護神のお社にも<br>足を運ばれるなら<br>こちらもご縁のある場所です。</p>
+            <ul class="shrine-list">
+                <li><span class="shrine-name">竜矢様の宇迦之御魂神<br>金丸稲荷神社<br>（福岡県久留米市花畑1-18-6）<br>稲荷松丸神社<br>（福岡県久留米市諏訪野町）<br>大学稲荷神社<br>（福岡県久留米市御井町2608）<br>稲成神社<br>（福岡県久留米市田主丸町野田1243）<br>浮羽稲荷神社</span><span class="shrine-addr">福岡県うきは市浮羽町流川1514-1</span></li>
+                <li><span class="shrine-name">徹様の春日大明神<br>春日神社<br>（福岡県八女郡広川町太田1050-1）<br>御勢大霊石神社<br>（福岡県小郡市大保1032）<br>今古賀三島神社<br>（福岡県柳川市三橋町今古賀478）<br>春日大明神<br>（福岡県みやま市山川町河原内）<br>天照神社</span><span class="shrine-addr">福岡県宮若市磯光266</span></li>
+            </ul>
+            <p style="margin-bottom: var(--gap);">神社では<br>参拝の際に<br>心の中でこの祝詞を唱えてください。</p>
+            <p style="margin-bottom: var(--gap);">祓え給い、清め給え、<br>神ながら守り給い、幸え給え<br>（はらえたまい、きよめたまえ、<br>かむながらまもりたまい、さきわえたまえ）</p>
+            <p style="margin-bottom: var(--gap);">願い事は唱えず<br>「これまで見守ってくださって<br>ありがとうございます<br>私は二人の息子を信じて<br>見守る側に立ちます<br>どうか見守っていてください」<br>という形で伝えてください。</p>
+            <p style="margin-bottom: var(--gap); font-weight: bold; color: #f0f0ff;">【夜に灯りを一つ残す】</p>
+            <p style="margin-bottom: var(--gap);">寝る前に<br>部屋の灯りを一つだけ残して<br>深呼吸を一度。</p>
+            <p style="margin-bottom: var(--gap);">その日の心配を<br>「二人に、任せます」と言いながら<br>息に乗せて吐き出す<br>小さな儀式です。</p>
+            <p style="margin-bottom: var(--gap); font-weight: bold; color: #f0f0ff;">【自分のためのお茶を淹れる】</p>
+            <p style="margin-bottom: var(--gap);">もう一つ<br>自分のために<br>温かいお茶を一杯淹れる時間を<br>作ってみてください。</p>
+            <p style="margin-bottom: 0;">息子様たちのためでなく<br>千晶様ご自身のために灯す<br>小さな火です。</p>
+        </div>
+
+        <div id="stoneSentinel"></div>
+        <h2 class="emoji-header" id="sec-stone">⛩️ あなたと響き合うパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: var(--gap);">千晶様には<br>この鑑定の中で<br>「二人に、任せます」という<br>合図の言葉をお渡ししました。</p>
+            <p style="margin-bottom: var(--gap);"><span style="color: #ffd966;">火産霊神</span>の守護は<br>すでに千晶様の中に届いています。</p>
+            <p style="margin-bottom: var(--gap);">ただ<br>長く続いてきた癖は<br>忙しい日ほど戻ってきます。</p>
+            <p style="margin-bottom: var(--gap);">夜に布団へ入ってから<br>二人の顔が順番に浮かんできて<br>目が冴えてしまう。</p>
+            <p style="margin-bottom: var(--gap);">そんなとき<br>手首の石にそっと触れて<br>「二人に、任せます」と言う。</p>
+            <p style="margin-bottom: var(--gap);">石は<br>その合図を思い出すためのものです。</p>
+            <p style="margin-bottom: var(--gap);">その合図を手首に置けるよう<br>千晶様と響き合う石で<br>ブレスレットをお作りします。</p>
+            <div class="stone-card">
+                <ul class="stone-list">
+                    <li><span class="stone-dot carnelian"></span><span class="stone-name">カーネリアン</span><span class="stone-desc">ろうそくの灯のような<br>温かなオレンジを宿す石です。<br>「二人に、任せます」と<br>言い出す瞬間の声を支えてくれます。</span></li>
+                    <li><span class="stone-dot amber"></span><span class="stone-name">アンバー</span><span class="stone-desc">肥沃な土のような<br>温かな茶色を宿す石です。<br>言ったあとに<br>握っていた手がゆるんで<br>肩の力が抜ける落ち着きをくれます。</span></li>
+                    <li><span class="stone-name">グリーンアベンチュリン</span><span class="stone-desc">深い森の緑を宿す石です。<br>言えなかった日も<br>明日また言えるように<br>そばで待っていてくれます。</span></li>
+                </ul>
+            </div>
+            <p style="margin-bottom: var(--gap);">この中から<br>千晶様に一番合う組み合わせを選び<br>一粒ずつ、手で編んでお作りします。</p>
+            <p style="margin-bottom: var(--gap);">千晶様が<br>二人の毎日を一つずつ整えてこられたように<br>私も一粒ずつ<br>想いを込めて仕上げます。</p>
+            <p style="margin-bottom: 0;">火産霊神の力が最も強く届く<br>2月に間に合うよう<br>ご連絡から十日以内にお送りします。</p>
+            <div class="cta-box">
+                <p>気になった方は</p>
+                <p class="cta-word">「詳細希望」</p>
+                <p>とだけ<br>メッセージをくださいね。</p>
+            </div>
+        </div>
+
+        <div id="closingSentinel"></div>
+        <h2 id="sec-closing">【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: var(--gap);">千晶様</p>
+            <p style="margin-bottom: var(--gap);">ここまで読んでくださって<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: var(--gap);">「二人を胸にしまって<br>間に立ち続ける」ことで<br>二人の息子様を守り続けてきた千晶様。</p>
+            <p style="margin-bottom: var(--gap);">その気持ちは<br>ちゃんと届いていました。</p>
+            <p style="margin-bottom: var(--gap);">言葉にできなかった昼間も<br>夜の布団で二人の顔を思い浮かべた時間も<br>どちらも大切だから<br>どちらも選ばなかった優しさも<br>すべて、確かに積み重なっています。</p>
+            <p style="margin-bottom: var(--gap);">分かれ道の真ん中で<br>両手に二つの灯を包んでいた千晶様の<br>すぐ後ろで<br><span style="color: #ffd966;">火産霊神</span>は立ち<br>ずっと肩に手を重ねてくださっていました。</p>
+            <p style="margin-bottom: var(--gap);">その火は<br>千晶様のためのものでもありました。</p>
+            <p style="margin-bottom: var(--gap);">だからもう<br>間に立たなくていいんです。</p>
+            <p style="margin-bottom: var(--gap);">二人の歩みを<br>信じて見守っていい。</p>
+            <p style="margin-bottom: var(--gap);">心配を<br>胸の中だけにしまわなくていい。</p>
+            <p style="margin-bottom: var(--gap);">自分のためにも<br>灯をともしていい。</p>
+            <p style="margin-bottom: var(--gap);">春のテーブルで<br>自分のために淹れたお茶を<br>両手で包んで<br>二人の声を聞く日は<br>もうすぐそこまで来ています。</p>
+            <p style="margin-bottom: var(--gap);">千晶様は<br>幸せになっていい。</p>
+            <p style="margin-bottom: var(--gap);">守られています。</p>
+            <p style="margin-bottom: var(--gap);">その事実を<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: var(--gap);">本日より遠隔守護祈祷を行い<br>千晶様と竜矢様と徹様の幸せを願います。</p>
+            <p style="margin-bottom: 0;">千晶様の未来に<br>オレンジ色のあたたかな光が満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            var elementBg = document.getElementById('elementBg');
+            var deityBg = document.getElementById('deityBg');
+            var doorBg = document.getElementById('doorBg');
+            var seasonAutumnBg = document.getElementById('seasonAutumnBg');
+            var seasonWinterBg = document.getElementById('seasonWinterBg');
+            var stoneBg = document.getElementById('stoneBg');
+
+            var stages = [
+                { el: document.getElementById('elementSentinel'), bg: elementBg },
+                { el: document.getElementById('guardianSentinel'), bg: deityBg },
+                { el: document.getElementById('essenceSentinel'), bg: elementBg },
+                { el: document.getElementById('deitySentinel'), bg: doorBg },
+                { el: document.getElementById('flow1Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flow2Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flow3Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flow4Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flowEndSentinel'), bg: doorBg },
+                { el: document.getElementById('guardianReturnSentinel'), bg: deityBg },
+                { el: document.getElementById('stoneSentinel'), bg: stoneBg },
+                { el: document.getElementById('closingSentinel'), bg: doorBg }
+            ].filter(function (stage) { return !!stage.el; });
+            if (!stages.length) return;
+
+            var layers = [elementBg, deityBg, doorBg, seasonAutumnBg, seasonWinterBg, stoneBg];
+            function show(active) {
+                layers.forEach(function (el) {
+                    if (el === active) el.classList.add('is-visible');
+                    else el.classList.remove('is-visible');
+                });
+            }
+
+            function onScroll() {
+                var trigger = window.innerHeight * 0.65;
+                var active = null;
+                for (var i = 0; i < stages.length; i++) {
+                    if (stages[i].el.getBoundingClientRect().top < trigger) {
+                        active = stages[i].bg;
+                    }
+                }
+                show(active);
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+
+        /* ===== 演出：花びら ===== */
+        (function () {
+            var cv = document.getElementById('petals');
+            var ctx = cv.getContext('2d');
+            var W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+            var isMobile = window.innerWidth < 700;
+
+            function resize() {
+                W = window.innerWidth; H = window.innerHeight;
+                cv.width = W * dpr; cv.height = H * dpr;
+                cv.style.width = W + 'px'; cv.style.height = H + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            var petals = [];
+            var petalN = isMobile ? 14 : 24;
+            for (var i = 0; i < petalN; i++) {
+                petals.push({
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    s: 5 + Math.random() * 7,
+                    vy: 0.35 + Math.random() * 0.7,
+                    sway: Math.random() * Math.PI * 2,
+                    swayV: 0.008 + Math.random() * 0.014,
+                    rot: Math.random() * Math.PI * 2,
+                    rotV: (Math.random() - 0.5) * 0.03,
+                    hue: Math.random() < 0.6 ? 'light' : 'deep'
+                });
+            }
+            function drawPetal(p) {
+                ctx.save();
+                ctx.translate(p.x + Math.sin(p.sway) * 26, p.y);
+                ctx.rotate(p.rot);
+                var g = ctx.createRadialGradient(0, 0, 0, 0, 0, p.s);
+                if (p.hue === 'light') {
+                    g.addColorStop(0, 'rgba(255, 180, 100, 0.95)');
+                    g.addColorStop(1, 'rgba(255, 180, 100, 0.25)');
+                } else {
+                    g.addColorStop(0, 'rgba(255, 120, 60, 0.95)');
+                    g.addColorStop(1, 'rgba(255, 120, 60, 0.25)');
+                }
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, p.s, p.s * 0.62, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function tick() {
+                ctx.clearRect(0, 0, W, H);
+                for (var pi = 0; pi < petals.length; pi++) {
+                    var p = petals[pi];
+                    p.y += p.vy;
+                    p.sway += p.swayV;
+                    p.rot += p.rotV;
+                    if (p.y > H + 20) { p.y = -20; p.x = Math.random() * W; }
+                    drawPetal(p);
+                }
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        })();
+    </script>
+
+<!-- GA4 カスタム計測：誰が/最後まで読んだか/購入ボタン [GA4-MIYUKI] -->
+<script>
+(function () {
+  function fire() {
+    var seg = location.pathname.split('/').filter(Boolean);
+    var last = decodeURIComponent(seg[seg.length - 1] || '');
+    var id = /\.html?$/i.test(last) ? decodeURIComponent(seg[seg.length - 2] || 'unknown') : (last || 'unknown');
+    var base = { kantei_id: id, persona: 'miyuki' };
+    gtag('set', 'user_properties', { kantei_id: id, persona: 'miyuki' });
+    gtag('event', 'page_open', base);
+
+    var end = document.querySelector('.signature, .sign');
+    if (end && 'IntersectionObserver' in window) {
+      var done = false;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && !done) { done = true; gtag('event', 'read_complete', base); io.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      io.observe(end);
+    }
+
+    document.querySelectorAll('.cta-button, .btn').forEach(function (b) {
+      b.addEventListener('click', function () { gtag('event', 'cta_click', base); });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire); else fire();
+})();
+</script>
+
+</body>
+</html>
