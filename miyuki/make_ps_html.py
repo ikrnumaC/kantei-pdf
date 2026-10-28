@@ -31,6 +31,7 @@ STONE_IMG = {
     "ラピスラズリ": "ラピスラズリ", "ラリマー": "ラリマー", "ラブラドライト": "ラブラドライト",
     "アメジスト": "アメジスト", "ガーネット": "ガーネット", "クリアクォーツ": "クリアクォーツ",
     "ペリドット": "ペリドット",
+    "ブルーレースアゲート": None,  # 画像なし: <img>を入れず石名と説明文のみ
 }
 SECTION_EMOJI = "💎🪨✨⏰📦🎁"
 
@@ -139,10 +140,13 @@ def build_stones(sec, errors):
         if i:
             out.append('    <div class="stone-divider"></div>')
         out.append(f'    <div class="stone-title">{esc(re.sub(r"（.*?）", "", stone))}</div>')
-        img = f"{STONE_IMG[key]}.png"
-        if not (ROOT / "素材" / img).exists():
-            errors.append(f"画像がない: miyuki/素材/{img}")
-        out.append(f'    <img src="../素材/{img}" class="stone-img" alt="{esc(key)}">')
+        if STONE_IMG[key] is None:
+            print(f"⚠ 画像なし：{key}（miyuki/素材/{key}.png を用意したら <img> を足す）")
+        else:
+            img = f"{STONE_IMG[key]}.png"
+            if not (ROOT / "素材" / img).exists():
+                errors.append(f"画像がない: miyuki/素材/{img}")
+            out.append(f'    <img src="../素材/{img}" class="stone-img" alt="{esc(key)}">')
         out += paras(blocks[1:])
     return out
 
