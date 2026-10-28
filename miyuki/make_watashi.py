@@ -63,14 +63,14 @@ def load_urls():
     urls = {}
     for line in open(URLS, encoding="utf-8"):
         u = line.strip()
-        m = re.search(r"/miyuki/(\d+)_", u)
+        m = re.search(r"/miyuki/(\d+(?:-\d+)?)_", u)
         if m and u.endswith("/"):
-            urls[int(m.group(1))] = u[u.index("http"):]
+            urls[m.group(1)] = u[u.index("http"):]
     return urls
 
 
 def main():
-    nums = [int(a) for a in sys.argv[1:] if a.isdigit()]
+    nums = [a for a in sys.argv[1:] if re.fullmatch(r"\d+(-\d+)?", a)]
     if not nums:
         print("使い方: python3 make_watashi.py 1616 1524")
         sys.exit(1)
