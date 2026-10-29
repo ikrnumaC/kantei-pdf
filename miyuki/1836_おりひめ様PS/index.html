@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>パワーストーンブレスレット | 深雪</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d0d1a;
+      color: #ddd9cc;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 2;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* 区切り */
+    .divider {
+      border: none;
+      border-top: 1px solid #222238;
+      margin: 32px 0;
+    }
+
+    /* 本文エリア */
+    .body {
+      padding: 36px 28px 48px;
+      text-align: center;
+    }
+
+    /* 段落 */
+    p {
+      margin-bottom: 0;
+    }
+
+    /* セクションタイトル */
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1rem;
+      color: #c8a86b;
+      letter-spacing: 0.12em;
+      margin: 40px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #2a2a44;
+    }
+
+    /* 石見出し */
+    .stone-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem;
+      color: #e8e4d8;
+      letter-spacing: 0.1em;
+      margin: 36px 0 6px;
+    }
+
+    /* 石の画像 */
+    .stone-img {
+      width: 100%;
+      margin: 16px 0 20px;
+      display: block;
+    }
+
+    /* 石どうしの区切り */
+    .stone-divider {
+      border: none;
+      text-align: center;
+      color: #2a2a44;
+      font-size: 1rem;
+      margin: 32px 0;
+    }
+    .stone-divider::before { content: '— — —'; letter-spacing: 0.3em; }
+
+    /* 価格ボックス */
+    .price-box {
+      border: 1px solid #c8a86b;
+      padding: 28px 24px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .price-label {
+      font-size: 0.78rem;
+      color: #c8a86b;
+      letter-spacing: 0.2em;
+      margin-bottom: 10px;
+    }
+    .price-num {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 2rem;
+      color: #e8e4d8;
+      letter-spacing: 0.05em;
+    }
+    .price-tax {
+      font-size: 0.72rem;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    /* インフォリスト */
+    .info-list {
+      margin: 8px 0 0;
+      padding: 0;
+      text-align: left;
+    }
+    .info-list li {
+      list-style: none;
+      padding-left: 1em;
+      position: relative;
+      color: #b8b4a6;
+      font-size: 0.88rem;
+    }
+    .info-list li::before {
+      content: '・';
+      position: absolute;
+      left: 0;
+      color: #c8a86b;
+    }
+
+    /* 特典 */
+    .tokuten {
+      border-left: 2px solid #c8a86b;
+      padding: 14px 18px;
+      margin: 12px 0;
+      background: rgba(200,168,107,0.04);
+      font-size: 0.88rem;
+      color: #b8b4a6;
+      text-align: left;
+    }
+    .tokuten li {
+      list-style: none;
+      padding-left: 1.5em;
+      position: relative;
+    }
+    .tokuten li::before {
+      content: attr(data-num) '.';
+      position: absolute;
+      left: 0;
+      color: #c8a86b;
+    }
+
+    /* 締め */
+    .closing {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid #222238;
+    }
+    .closing-sign {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.1rem;
+      color: #c8a86b;
+      letter-spacing: 0.15em;
+      margin-top: 16px;
+    }
+
+    /* CTAボタン */
+    .cta-button {
+      display: block;
+      text-align: center;
+      background: linear-gradient(135deg, #c8a86b 0%, #d4b878 100%);
+      color: #0d0d1a;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      padding: 20px 24px;
+      margin: 28px 0 12px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: opacity 0.2s;
+    }
+    .cta-button:hover {
+      opacity: 0.88;
+    }
+    .cta-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: #888;
+      margin-bottom: 24px;
+    }
+
+    /* フッター */
+    .footer {
+      padding: 24px;
+      text-align: center;
+      font-size: 0.72rem;
+      color: #444;
+      border-top: 1px solid #1a1a30;
+    }
+  </style>
+</head>
+<body>
+  <div class="body">
+    <p>おりひめ様</p>
+    <br>
+    <p>詳細のご希望、ありがとうございます。</p>
+    <br>
+    <p>おりひめ様のために選んだ石について、<br>詳しくお伝えしますね。</p>
+    <hr class="divider">
+    <div class="section-title">💎 おりひめ様専用パワーストーンについて</div>
+    <p>おりひめ様の命の流れを視させていただき、<br>今のおりひめ様に最も必要な石を<br>3つ選びました。</p>
+    <br>
+    <p>おりひめ様は、<br>相手の気持ちもその場の空気も<br>全部大切にできる、<br>穏やかな優しさを生まれ持った方です。</p>
+    <br>
+    <p>周りから信頼される場所を<br>一つずつ築いてきた確かさと、<br>折れずにしなう芯の強さがあります。</p>
+    <br>
+    <p>でも、<br>あの方と会った帰り道、<br>言えなかった一言を<br>頭の中で何度も言い直しているような、<br>大切な想いほど胸の奥で守り抜いてしまう感覚が<br>繰り返されやすい流れがあります。</p>
+    <br>
+    <p>2026年12月、あの方のお誕生日の頃、<br>そして2027年の立春から3月の桜の頃。<br>この時期を経て、<br>胸にしまっていた想いを<br>小さな言葉にして出していける流れが<br>すでに動き始めています。</p>
+    <br>
+    <p>その流れを最大限に活かすために、<br>おりひめ様のエネルギーと<br>木花咲耶姫（このはなさくやひめ）が<br>深く共鳴する3つの石を選びました。</p>
+    <hr class="divider">
+    <div class="section-title">🪨 3つの石について</div>
+    <div class="stone-title">カーネリアン</div>
+    <img src="../素材/カーネリアン.png" class="stone-img" alt="カーネリアン">
+    <p>夕陽のような橙を宿した、<br>言葉を押し出す石です。</p>
+    <br>
+    <p>おりひめ様の、<br>想いを誰かに向けて燃やせる<br>温かいエネルギーと<br>最も深く共鳴します。</p>
+    <br>
+    <p>返事を打ちかけて画面を閉じそうになる夜、<br>「ひとこと、伝えます」と<br>言い出すその瞬間の勇気を<br>そっと支えてくれます。</p>
+    <div class="stone-divider"></div>
+    <div class="stone-title">ラリマー</div>
+    <img src="../素材/ラリマー.png" class="stone-img" alt="ラリマー">
+    <p>木花咲耶姫と最も共鳴が強い石です。</p>
+    <br>
+    <p>深い海のような青を宿した、<br>言ったあとの心を鎮めてくれる石です。</p>
+    <br>
+    <p>おりひめ様の命の流れには、<br>相手を想う深い熱と、<br>言ってしまったら壊れてしまいそうで<br>胸にしまう慎重さが<br>同居しています。</p>
+    <br>
+    <p>ラリマーは、木花咲耶姫の守護を日常の中で<br>ずっとそばに置いておける石です。</p>
+    <br>
+    <p>一言を伝えたあとに、<br>「あれでよかったのかな」と揺れる気持ちを<br>静かに落ち着けてくれます。</p>
+    <div class="stone-divider"></div>
+    <div class="stone-title">ヒスイ</div>
+    <img src="../素材/ヒスイ.png" class="stone-img" alt="ヒスイ">
+    <p>若葉のような翡翠色を宿した、<br>見守りの石です。</p>
+    <br>
+    <p>おりひめ様を包んでいるオーラと<br>同じ色です。</p>
+    <br>
+    <p>言えなかった日の帰り道、<br>そのたびに自分を責めてしまうとき、</p>
+    <br>
+    <p>その自責のループを<br>静かにほどいてくれます。</p>
+    <br>
+    <p>胸にしまう優しさを止めるのではなく、<br>言えなかった日も<br>明日また言えるように、<br>やわらかな方向へ整えてくれる石です。</p>
+    <hr class="divider">
+    <div class="section-title">✨ おりひめ様専用ブレスレット</div>
+    <div class="price-box">
+      <div class="price-label">おりひめ様専用ブレスレット</div>
+      <div class="price-num">¥29,800</div>
+      <div class="price-tax">（税込）</div>
+    </div>
+    <p>カーネリアン・ラリマー・ヒスイ。<br>この3つをおりひめ様専用に組み合わせて、<br>一つひとつ手作りで仕上げます。</p>
+    <br>
+    <p>木花咲耶姫への祈祷と<br>エネルギーチャージを込めて、<br>おりひめ様のもとへお届けします。</p>
+    <br>
+    <p>身につけていくうちに、<br>「ひとこと、伝えます」と<br>言える日が<br>少しずつ増えていきます。</p>
+    <br>
+    <p>あの方からの返事が少し遅い夜、<br>お誕生日の連絡を打ちかけて<br>そっと画面を閉じてしまう瞬間。</p>
+    <br>
+    <p>そういう揺らぎのとき、<br>石が、そのループをほどくのを<br>静かに支えてくれます。</p>
+    <br>
+    <p>日常の中で、守護がそばにある。</p>
+    <br>
+    <p>そして2027年の立春、<br>桜へ向かう道の入口に、</p>
+    <br>
+    <p>エネルギーを整えて<br>迎えやすくなります。</p>
+    <hr class="divider">
+    <div class="section-title">⏰ タイミングについて</div>
+    <p>おりひめ様の場合、<br>2026年12月、あの方のお誕生日の頃に<br>最初の節目があり、</p>
+    <br>
+    <p>2027年の立春から3月の桜の頃にかけて、<br>お二人のご縁が<br>形になっていく流れがあります。</p>
+    <br>
+    <p>パワーストーンのエネルギーが<br>しっかりと馴染むまでには、<br>通常2〜3週間ほどかかります。</p>
+    <br>
+    <p>今から始めることで、<br>2027年の立春を迎える頃には<br>エネルギーが馴染んだ状態で<br>迎えやすくなります。</p>
+    <hr class="divider">
+    <div class="section-title">📦 お届けについて</div>
+    <ul class="info-list">
+      <li>ご注文から十日以内にお送りします</li>
+      <li>追跡番号付きで安心</li>
+      <li>専用の浄化・エネルギーチャージ済みでお届けします</li>
+    </ul>
+    <hr class="divider">
+    <div class="section-title">🎁 ご購入特典</div>
+    <p>今回ご購入いただいた方には：</p>
+    <br>
+    <div class="tokuten">
+      <ul>
+        <li data-num="1">パワーストーンの取扱い・浄化方法のご案内</li>
+        <li data-num="2">ご購入から3ヶ月間、気になることがあればいつでもご相談いただけます</li>
+      </ul>
+    </div>
+    <hr class="divider">
+    <p>ご希望の方は、下のボタンよりお進みください。</p>
+    <br>
+    <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/6a28ffdd2a10e43b163effbc" class="cta-button" target="_blank" rel="noopener">ブレスレットを希望する</a>
+    <p class="cta-note">※ 別ウィンドウで購入ページが開きます</p>
+
+    <p>お値段のことは、<br>どうぞ無理のない範囲で<br>ご自分のペースで決めてくださいね。</p>
+    <br>
+    <p>ご不明な点があれば、<br>お気軽にお尋ねくださいね。</p>
+
+    <div class="closing">
+    <p>おりひめ様が、<br>「ひとこと、伝えます」と<br>ご自身に許したその瞬間から、<br><br>木花咲耶姫の守護が、<br>おりひめ様の優しさと一途さを<br>静かに支え始めます。<br><br>どうか、これからは<br>夕暮れの桜並木を<br>あの方と並んで歩く日々を<br>迎えてくださいね。</p>
+      <div class="closing-sign">深雪</div>
+    </div>
+  </div>
+  <div class="footer">© 深雪 MIYUKI</div>
+</body>
+</html>
