@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>パワーストーンブレスレット | 深雪</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d0d1a;
+      color: #ddd9cc;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 2;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* 区切り */
+    .divider {
+      border: none;
+      border-top: 1px solid #222238;
+      margin: 32px 0;
+    }
+
+    /* 本文エリア */
+    .body {
+      padding: 36px 28px 48px;
+      text-align: center;
+    }
+
+    /* 段落 */
+    p {
+      margin-bottom: 0;
+    }
+
+    /* セクションタイトル */
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1rem;
+      color: #c8a86b;
+      letter-spacing: 0.12em;
+      margin: 40px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #2a2a44;
+    }
+
+    /* 石見出し */
+    .stone-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem;
+      color: #e8e4d8;
+      letter-spacing: 0.1em;
+      margin: 36px 0 6px;
+    }
+
+    /* 石の画像 */
+    .stone-img {
+      width: 100%;
+      margin: 16px 0 20px;
+      display: block;
+    }
+
+    /* 石どうしの区切り */
+    .stone-divider {
+      border: none;
+      text-align: center;
+      color: #2a2a44;
+      font-size: 1rem;
+      margin: 32px 0;
+    }
+    .stone-divider::before { content: '— — —'; letter-spacing: 0.3em; }
+
+    /* 価格ボックス */
+    .price-box {
+      border: 1px solid #c8a86b;
+      padding: 28px 24px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .price-label {
+      font-size: 0.78rem;
+      color: #c8a86b;
+      letter-spacing: 0.2em;
+      margin-bottom: 10px;
+    }
+    .price-num {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 2rem;
+      color: #e8e4d8;
+      letter-spacing: 0.05em;
+    }
+    .price-tax {
+      font-size: 0.72rem;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    /* インフォリスト */
+    .info-list {
+      margin: 8px 0 0;
+      padding: 0;
+      text-align: left;
+    }
+    .info-list li {
+      list-style: none;
+      padding-left: 1em;
+      position: relative;
+      color: #b8b4a6;
+      font-size: 0.88rem;
+    }
+    .info-list li::before {
+      content: '・';
+      position: absolute;
+      left: 0;
+      color: #c8a86b;
+    }
+
+    /* 特典 */
+    .tokuten {
+      border-left: 2px solid #c8a86b;
+      padding: 14px 18px;
+      margin: 12px 0;
+      background: rgba(200,168,107,0.04);
+      font-size: 0.88rem;
+      color: #b8b4a6;
+      text-align: left;
+    }
+    .tokuten li {
+      list-style: none;
+      padding-left: 1.5em;
+      position: relative;
+    }
+    .tokuten li::before {
+      content: attr(data-num) '.';
+      position: absolute;
+      left: 0;
+      color: #c8a86b;
+    }
+
+    /* 締め */
+    .closing {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid #222238;
+    }
+    .closing-sign {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.1rem;
+      color: #c8a86b;
+      letter-spacing: 0.15em;
+      margin-top: 16px;
+    }
+
+    /* CTAボタン */
+    .cta-button {
+      display: block;
+      text-align: center;
+      background: linear-gradient(135deg, #c8a86b 0%, #d4b878 100%);
+      color: #0d0d1a;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      padding: 20px 24px;
+      margin: 28px 0 12px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: opacity 0.2s;
+    }
+    .cta-button:hover {
+      opacity: 0.88;
+    }
+    .cta-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: #888;
+      margin-bottom: 24px;
+    }
+
+    /* フッター */
+    .footer {
+      padding: 24px;
+      text-align: center;
+      font-size: 0.72rem;
+      color: #444;
+      border-top: 1px solid #1a1a30;
+    }
+  </style>
+</head>
+<body>
+  <div class="body">
+    <p>みさ様</p>
+    <br>
+    <p>詳細のご希望、ありがとうございます。</p>
+    <br>
+    <p>みさ様のために選んだ石について、<br>詳しくお伝えしますね。</p>
+    <hr class="divider">
+    <div class="section-title">💎 みさ様専用パワーストーンについて</div>
+    <p>みさ様の命の流れを視させていただき、<br>今のみさ様に最も必要な石を<br>3つ選びました。</p>
+    <br>
+    <p>みさ様は、<br>コロッケを一つずつ手で作り、<br>お店というかたちにしてきた<br>手の確かさを持つ方です。</p>
+    <br>
+    <p>お客様の「おいしい」を受け取りながら、<br>家族の暮らしもお店の数字も<br>ご自分の手で支えてきた<br>芯の強さがあります。</p>
+    <br>
+    <p>でも、<br>お店を閉めてレジを締めたあと、<br>明日の仕込みの数を数えているうちに<br>「やっぱり自分がやったほうが早い」と<br>手が伸びてしまう感覚が<br>繰り返されやすい流れがあります。</p>
+    <br>
+    <p>2026年11月、<br>そして2027年の立春から春にかけて。<br>この時期を経て、<br>手を預けながらお店と暮らしを<br>育てていける流れが<br>すでに動き始めています。</p>
+    <br>
+    <p>その流れを最大限に活かすために、<br>みさ様のエネルギーと<br>大山祇神（おおやまつみのかみ）が<br>深く共鳴する3つの石を選びました。</p>
+    <hr class="divider">
+    <div class="section-title">🪨 3つの石について</div>
+    <div class="stone-title">シトリン</div>
+    <img src="../素材/シトリン.png" class="stone-img" alt="シトリン">
+    <p>揚げたてのコロッケのような<br>あたたかな黄金色を宿した、<br>手を離す背中を支える石です。</p>
+    <br>
+    <p>みさ様の、<br>家族とお店を温める手のエネルギーと<br>最も深く共鳴します。</p>
+    <br>
+    <p>閉店後のレジの前で、<br>「ここは、預けます」と<br>手を離す一瞬を<br>そっと支えてくれます。</p>
+    <div class="stone-divider"></div>
+    <div class="stone-title">ヒスイ</div>
+    <img src="../素材/ヒスイ.png" class="stone-img" alt="ヒスイ">
+    <p>大山祇神と最も共鳴が強い石です。</p>
+    <br>
+    <p>深い山の緑を宿した、<br>預けたあとの落ち着きをくれる石です。</p>
+    <br>
+    <p>みさ様の命の流れには、<br>家族もお店も抱えて走る強さと、<br>任せることを後回しにする癖が<br>同居しています。</p>
+    <br>
+    <p>ヒスイは、大山祇神の守護を日常の中で<br>ずっとそばに置いておける石です。</p>
+    <br>
+    <p>預けたあとに、<br>任せた相手を信じて待つ落ち着きを<br>そっと助けてくれます。</p>
+    <div class="stone-divider"></div>
+    <div class="stone-title">ムーンストーン</div>
+    <img src="../素材/ムーンストーン.png" class="stone-img" alt="ムーンストーン">
+    <p>夜の月の光を宿した、<br>見守りの石です。</p>
+    <br>
+    <p>「手伝おうか」と声をかけられて、<br>反射で「大丈夫」と答えてしまった日、<br>そのたびにご自分を責めてしまうとき、</p>
+    <br>
+    <p>その自責のループを<br>静かにほどいてくれます。</p>
+    <br>
+    <p>全部を抱えて走る力を止めるのではなく、<br>言えなかった日も<br>明日また言えるように、<br>やわらかな方向へ整えてくれる石です。</p>
+    <hr class="divider">
+    <div class="section-title">✨ みさ様専用ブレスレット</div>
+    <div class="price-box">
+      <div class="price-label">みさ様専用ブレスレット</div>
+      <div class="price-num">¥29,800</div>
+      <div class="price-tax">（税込）</div>
+    </div>
+    <p>シトリン・ヒスイ・ムーンストーン。<br>この3つをみさ様専用に組み合わせて、<br>一つひとつ手作りで仕上げます。</p>
+    <br>
+    <p>大山祇神への祈祷と<br>エネルギーチャージを込めて、<br>みさ様のもとへお届けします。</p>
+    <br>
+    <p>身につけていくうちに、<br>「ここは、預けます」と<br>言える日が<br>少しずつ増えていきます。</p>
+    <br>
+    <p>年末の注文が重なって<br>「やっぱり自分が全部やるしかない」と思う夜、<br>「手伝おうか」の声に<br>反射で「大丈夫」と答えそうになる瞬間。</p>
+    <br>
+    <p>そういう揺らぎのとき、<br>石が、そのループをほどくのを<br>静かに支えてくれます。</p>
+    <br>
+    <p>日常の中で、守護がそばにある。</p>
+    <br>
+    <p>そして2027年の立春、<br>お店が動き出す入口に、</p>
+    <br>
+    <p>エネルギーを整えて<br>迎えやすくなります。</p>
+    <hr class="divider">
+    <div class="section-title">⏰ タイミングについて</div>
+    <p>みさ様の場合、<br>2026年11月から、<br>休むことと預けることが根づきはじめ、</p>
+    <br>
+    <p>2027年1月に大山祇神の力がいちばん強く届き、<br>立春から春にかけて、<br>お店とお金の流れが<br>形になっていく流れがあります。</p>
+    <br>
+    <p>パワーストーンのエネルギーが<br>しっかりと馴染むまでには、<br>通常2〜3週間ほどかかります。</p>
+    <br>
+    <p>今から始めることで、<br>2027年1月を迎える頃には<br>エネルギーが馴染んだ状態で<br>迎えやすくなります。</p>
+    <hr class="divider">
+    <div class="section-title">📦 お届けについて</div>
+    <ul class="info-list">
+      <li>ご注文から十日以内にお送りします</li>
+      <li>追跡番号付きで安心</li>
+      <li>専用の浄化・エネルギーチャージ済みでお届けします</li>
+    </ul>
+    <hr class="divider">
+    <div class="section-title">🎁 ご購入特典</div>
+    <p>今回ご購入いただいた方には：</p>
+    <br>
+    <div class="tokuten">
+      <ul>
+        <li data-num="1">パワーストーンの取扱い・浄化方法のご案内</li>
+        <li data-num="2">ご購入から3ヶ月間、気になることがあればいつでもご相談いただけます</li>
+      </ul>
+    </div>
+    <hr class="divider">
+    <p>ご希望の方は、下のボタンよりお進みください。</p>
+    <br>
+    <a href="https://lnuwhrs3tncycy5pf0r3.stores.jp/items/6a28ffdd2a10e43b163effbc" class="cta-button" target="_blank" rel="noopener">ブレスレットを希望する</a>
+    <p class="cta-note">※ 別ウィンドウで購入ページが開きます</p>
+
+    <p>お値段のことは、<br>どうぞ無理のない範囲で<br>ご自分のペースで決めてくださいね。</p>
+    <br>
+    <p>ご不明な点があれば、<br>お気軽にお尋ねくださいね。</p>
+
+    <div class="closing">
+    <p>みさ様が、<br>「ここは、預けます」と<br>ご自身に許したその瞬間から、<br><br>大山祇神の守護が、<br>みさ様の優しさと粘り強さを<br>静かに支え始めます。<br><br>どうか、これからは<br>奥の仕込み場に旦那様が立つ姿を<br>レジの前から安心して眺める日々を<br>迎えてくださいね。</p>
+      <div class="closing-sign">深雪</div>
+    </div>
+  </div>
+  <div class="footer">© 深雪 MIYUKI</div>
+</body>
+</html>
