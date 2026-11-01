@@ -352,8 +352,8 @@ def parse_txt(path):
     aura_line = None
     day_stem = None
     for i, ln in enumerate(lines):
-        if ln.startswith("【") and "様の命式" in ln and name is None:
-            m = re.match(r"【(.+?)様の命式】", ln)
+        if ln.startswith("【") and ("様の命式" in ln or "さんの命式" in ln) and name is None:
+            m = re.match(r"【(.+?)(?:様|さん)の命式】", ln)
             if m:
                 name = m.group(1)
         if ln.startswith("日柱:") and day_stem is None:
