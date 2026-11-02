@@ -51,7 +51,7 @@ CLOSING = "鑑定書に詳しく書きました。\nこちらからご覧くだ�
 FOOTER = """本鑑定を受けてくださった方
 限定の公式LINEになります。
 ぜひご登録ください☺️
-https://line.me/R/ti/p/%40881vnxcr
+https://s.lmes.jp/landing-qr/2009942364-XvgZ4yWt?uLand=bQvsdi
 
 お渡しから1週間、
 どんな細かいこと、わからないこと
