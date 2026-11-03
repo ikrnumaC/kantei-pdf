@@ -35,7 +35,7 @@ RULES = """下の深雪の本鑑定文を読んで、お客様に本鑑定書を
 - シンプルに。5〜8行程度。情報を詰め込まず、頭にすっと入る量にする
 - 日付・月・年・固有名詞は多くても2つまで。細かい数字を並べない
 - 短い文をぶつ切りで並べない。「〜なので」「〜ですから」「そのうえで」などでつなぎ、ひと続きの話し言葉にする
-- 【必須】改行ルール: 読点(、)のあとで必ず改行する。句点(。)のあとは空行を入れる。読点の間が長すぎる文(25文字超)は、意味の切れ目のいいところで折る
+- 【必須】改行ルール: 読点(、)のあとで必ず改行する。句点(。)のあとは空行を入れる。読点の間が長すぎる文(25文字超)は、自然な文脈の切れ目(文節・意味のまとまりの区切り)で折る。「ですので」「からで」「なので」などの語や活用の途中では絶対に折らず、折ったあとに「すので、」のような短い切れ端を残さない
 - 深雪の口調: 丁寧で静かな、寄り添う言葉づかい。「視えています」のような言い回しを使ってよい
 - 結論は鑑定文の内容に沿って書く。鑑定文にないこと・食い違うことは書かない
 - 絵文字は使わない。「──」も使わない。「{名前}様」への呼びかけで始めない(冒頭は固定文が入る)
@@ -60,23 +60,12 @@ https://s.lmes.jp/landing-qr/2009942364-XvgZ4yWt?uLand=bQvsdi
 
 
 def fmt(text):
-    """、で改行 / 。で空行 / 長い行は助詞の切れ目で折る(25文字超)"""
-    text = re.sub(r"\s*\n\s*", "", text.strip())
+    """、で改行 / 。で空行。長い文の折りは claude が入れた改行をそのまま残す(機械的には折らない)"""
+    text = re.sub(r"[ \t]*\n[ \t]*", "\n", text.strip())
     text = re.sub(r"「[^」]*」", lambda m: m.group(0).replace("、", "\0"), text)
-    text = re.sub(r"(、)(?!」)", r"\1\n", text)
-    text = re.sub(r"(。)(?!」)", r"\1\n\n", text)
-    lines = []
-    for ln in text.split("\n"):
-        while len(ln) > 25:
-            cut = None
-            for i in range(12, min(len(ln) - 3, 26)):
-                if ln[i] in "をにがはでとてもへ" and ln[i - 1] not in "「" and "「" not in ln[:i] .rsplit("」", 1)[-1]:
-                    cut = i + 1
-            if cut is None:
-                break
-            lines.append(ln[:cut]); ln = ln[cut:]
-        lines.append(ln)
-    return re.sub(r"\n{3,}", "\n\n", "\n".join(lines)).strip().replace("\0", "、")
+    text = re.sub(r"、\s*(?!」)", "、\n", text)
+    text = re.sub(r"。\s*(?!」)", "。\n\n", text)
+    return re.sub(r"\n{3,}", "\n\n", text).strip().replace("\0", "、")
 
 
 def load_urls():
