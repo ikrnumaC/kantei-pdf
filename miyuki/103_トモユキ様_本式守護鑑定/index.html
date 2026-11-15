@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) : GA4 計測 [GA4-MIYUKI] -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHLDFT6DR7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JHLDFT6DR7');
+    </script>
+    <title>トモユキ様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+
+            .toc {
+                padding: 20px 15px;
+            }
+
+            .toc-title {
+                font-size: 1.1em;
+            }
+
+            .toc a {
+                font-size: 0.95em;
+                padding: 12px 6px 12px 36px;
+            }
+        }
+
+        /* ===== 演出：元素の背景（冒頭〜守護神登場まで） ===== */
+        .element-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../鑑定画像/宝石.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .element-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：守護神の背景（守護神登場〜本式内容の手前まで） ===== */
+        .deity-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/市杵嶋姫命.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center 18%;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .deity-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：扉の背景（本式内容〜結びまで） ===== */
+        .door-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/ドア2.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .door-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：今後の流れ 季節背景 ===== */
+        .season-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .season-bg.is-visible { opacity: 0.4; }
+        #seasonSpringBg { background-image: url("../鑑定画像/春.jpg"); }
+        #seasonSummerBg { background-image: url("../鑑定画像/夏.jpg"); }
+        #seasonAutumnBg { background-image: url("../鑑定画像/秋.jpg"); }
+
+        /* ===== 演出：パワーストーン背景 ===== */
+        .stone-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../素材/シトリン.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .stone-bg.is-visible { opacity: 0.4; }
+
+        .deity-veil {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(15, 15, 46, 0.04) 0%, rgba(15, 15, 46, 0.15) 60%, rgba(15, 15, 46, 0.25) 100%),
+                linear-gradient(180deg, rgba(15, 15, 46, 0.06) 0%, rgba(15, 15, 46, 0.18) 100%);
+        }
+
+        /* ===== 演出：花びら ===== */
+        #petals {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        :root { --gap: 56px; }
+        mark {
+            background: linear-gradient(transparent 58%, rgba(255, 217, 102, 0.38) 58%);
+            color: #fff6d8;
+            padding: 0 2px;
+        }
+        strong { color: #ffe9a8; font-weight: 700; }
+        .summary-box {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(255, 217, 102, 0.35);
+            border-radius: 14px;
+            padding: 24px 16px 8px;
+            margin: 0 0 var(--gap);
+        }
+        .summary-title {
+            text-align: center;
+            color: #ffd966;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+        }
+        ul.summary-list { margin: 0; }
+        ul.summary-list li {
+            margin: 0;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 217, 102, 0.18);
+        }
+        ul.summary-list li:last-child { border-bottom: none; }
+        ul.summary-list li::before {
+            content: '✦';
+            display: block;
+            color: #ffd966;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="element-bg" id="elementBg"></div>
+    <div class="deity-bg" id="deityBg"></div>
+    <div class="door-bg" id="doorBg"></div>
+    <div class="season-bg" id="seasonSpringBg"></div>
+    <div class="season-bg" id="seasonSummerBg"></div>
+    <div class="season-bg" id="seasonAutumnBg"></div>
+    <div class="stone-bg" id="stoneBg"></div>
+    <div class="deity-veil"></div>
+    <canvas id="petals"></canvas>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">磨けば、必ず輝く</h2>
+            <p class="cover-name">トモユキ様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 目次 -->
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-1">あなたとアユミさんの縁</a></li>
+                <li><a href="#sec-2">なぜ一度別れたのか</a></li>
+                <li><a href="#sec-3">復縁の可能性</a></li>
+                <li><a href="#sec-4">仕事の転機が訪れる時期</a></li>
+                <li><a href="#sec-5">なぜ今、仕事が不安なのか</a></li>
+                <li><a href="#sec-6">転機を掴むために今すべきこと</a></li>
+                <li><a href="#sec-flow">今後6ヶ月の流れ</a></li>
+                <li><a href="#sec-aura">オーラの調整方法</a></li>
+                <li><a href="#sec-stone">あなたを支えるパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
+        <div id="elementSentinel"></div>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">トモユキ様、</p>
+            <p style="margin-bottom: 90px;">本式守護鑑定をお受けいただき、<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">あなたの魂が、<br>本気で答えを求めている。</p>
+            <p style="margin-bottom: 90px;">その強い思いが、<br>私のもとへ届きました。</p>
+            <p style="margin-bottom: 0;">ここから先、<br>あなたが本当に知るべきことを、<br>すべてお伝えしていきます。</p>
+        </div>
+
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">視えています。</p>
+            <p style="margin-bottom: 90px;">2028年の秋、<br>紅葉が美しい季節。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>仕事で成果を上げて、<br>自信に満ちた表情をしている。</p>
+            <p style="margin-bottom: 90px;">そして──</p>
+            <p style="margin-bottom: 90px;">隣に、アユミさんがいる。</p>
+            <p style="margin-bottom: 90px;">二人で、これからの未来を<br>語り合っている。</p>
+            <p style="margin-bottom: 90px;">「あの時、諦めなくてよかった」</p>
+            <p style="margin-bottom: 90px;">「うん、<br>待っててくれてありがとう」</p>
+            <p style="margin-bottom: 90px;">そんな言葉が、<br>自然に交わされている。</p>
+            <p style="margin-bottom: 90px;">もう、仕事の不安もない。</p>
+            <p style="margin-bottom: 90px;">もう、「もう1度」と<br>迷うこともない。</p>
+            <p style="margin-bottom: 90px;">ただ、<br>穏やかに繋がっている。</p>
+            <p style="margin-bottom: 90px;">その未来が、はっきりと視えています。</p>
+            <p style="margin-bottom: 90px;">ただし──</p>
+            <p style="margin-bottom: 90px;">そこへ至るまでの道のりは、<br>何もせずに待つだけでは<br>辿り着けません。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなた自身が、今この瞬間から<br>変わる必要がある。</p>
+            <p style="margin-bottom: 90px;">でも、大丈夫です。</p>
+            <p style="margin-bottom: 0;">あなたには、<br>それを乗り越える力がある。</p>
+        </div>
+
+        <div id="deitySentinel"></div>
+        <h2 class="emoji-header" id="sec-1">⛩️ あなたとアユミさんの縁</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">トモユキ様、</p>
+            <p style="margin-bottom: 90px;">アユミさんとの縁はとても深いです。</p>
+            <p style="margin-bottom: 90px;">二人の魂は、<br>深い部分で繋がっている。</p>
+            <p style="margin-bottom: 90px;">あなたは、宝石。<br>アユミさんは、大河。</p>
+            <p style="margin-bottom: 90px;">あなたが輝けば、アユミさんが潤う。</p>
+            <p style="margin-bottom: 90px;">そんな関係です。</p>
+            <p style="margin-bottom: 90px;">あなたは、アユミさんに力を与える人。</p>
+            <p style="margin-bottom: 90px;">アユミさんは、その力で成長する人。</p>
+            <p style="margin-bottom: 90px;">年齢差21歳。<br>世代を超えた縁です。</p>
+            <p style="margin-bottom: 90px;">これは、<br>単なる恋愛ではありません。</p>
+            <p style="margin-bottom: 90px;">魂のレベルでの、深い繋がりです。</p>
+            <p style="margin-bottom: 90px;">あなたが<br>「もう1度」と思うのは、<br>偶然ではありません。</p>
+            <p style="margin-bottom: 0;">魂が、そう求めているからです。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-2">⛩️ なぜ一度別れたのか</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">トモユキ様、</p>
+            <p style="margin-bottom: 90px;">一度別れたこと、<br>後悔していますよね。</p>
+            <p style="margin-bottom: 90px;">「なぜうまくいかなかったのか」<br>「もっとうまくやれたのでは」</p>
+            <p style="margin-bottom: 90px;">そんな思いが、<br>心のどこかに残っている。</p>
+            <p style="margin-bottom: 90px;">でも──</p>
+            <p style="margin-bottom: 90px;">あの別れは、<br>必然だったのです。</p>
+            <p style="margin-bottom: 90px;">あの時、<br>二人とも準備ができていなかった。</p>
+            <p style="margin-bottom: 90px;">あなたは、仕事の不安で<br>心が揺れていた。</p>
+            <p style="margin-bottom: 90px;">自分のことで精一杯で、<br>彼女を支える余裕がなかった。</p>
+            <p style="margin-bottom: 90px;">アユミさんは、まだ若くて、<br>人生の変化の真っ只中にいた。</p>
+            <p style="margin-bottom: 90px;">自分自身が定まっていなくて、<br>あなたとの関係に向き合えなかった。</p>
+            <p style="margin-bottom: 90px;">だから、うまくいかなかった。</p>
+            <p style="margin-bottom: 90px;">でも──</p>
+            <p style="margin-bottom: 90px;">それは失敗ではありません。</p>
+            <p style="margin-bottom: 90px;">準備期間だったのです。</p>
+            <p style="margin-bottom: 90px;">二人がそれぞれ成長するための。</p>
+            <p style="margin-bottom: 0;">そして、もう1度<br>本当の形で繋がるための。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-3">⛩️ 復縁の可能性</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">トモユキ様、</p>
+            <p style="margin-bottom: 90px;">復縁の可能性、<br>とても高いです。</p>
+            <p style="margin-bottom: 90px;">ただし──</p>
+            <p style="margin-bottom: 90px;">今ではありません。</p>
+            <p style="margin-bottom: 90px;">今、連絡を取ってもうまくいきません。</p>
+            <p style="margin-bottom: 90px;">なぜなら、<br>まだ準備ができていないから。</p>
+            <p style="margin-bottom: 90px;">あなたは、<br>仕事を安定させる必要がある。</p>
+            <p style="margin-bottom: 90px;">アユミさんは、<br>もう少し成長する必要がある。</p>
+            <p style="margin-bottom: 90px;">二人が、本当に繋がれるのは、</p>
+            <p style="margin-bottom: 90px;">2027年の春から夏です。</p>
+            <p style="margin-bottom: 90px;">桜が咲き緑が茂る頃。</p>
+            <p style="margin-bottom: 90px;">その時、流れが変わります。</p>
+            <p style="margin-bottom: 90px;">あなたの仕事が安定し、<br>自信を取り戻している。</p>
+            <p style="margin-bottom: 90px;">アユミさんも、<br>人生の新しい時期に入り、<br>落ち着いてくる。</p>
+            <p style="margin-bottom: 90px;">その時もう1度繋がれます。</p>
+            <p style="margin-bottom: 90px;">でも、そのためには──</p>
+            <p style="margin-bottom: 0;">今から、<br>準備を始める必要があります。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-4">⛩️ 仕事の転機が訪れる時期</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">トモユキ様、</p>
+            <p style="margin-bottom: 90px;">仕事の不安はよく分かります。</p>
+            <p style="margin-bottom: 90px;">「この先、本当にうまくいくのか」</p>
+            <p style="margin-bottom: 90px;">「このまま停滞し続けるのでは」</p>
+            <p style="margin-bottom: 90px;">そんな思いが、心を重くしている。</p>
+            <p style="margin-bottom: 90px;">でも──</p>
+            <p style="margin-bottom: 90px;">今からお伝えすることを、<br>しっかりと受け取ってください。</p>
+            <p style="margin-bottom: 90px;">あなたの仕事に転機が訪れます。</p>
+            <p style="margin-bottom: 90px;">それは、2026年の秋から冬です。</p>
+            <p style="margin-bottom: 90px;">9月から12月にかけて、<br>流れが大きく変わります。</p>
+            <p style="margin-bottom: 90px;">新しい仕事の話が来る。</p>
+            <p style="margin-bottom: 90px;">昇進のチャンスが訪れる。</p>
+            <p style="margin-bottom: 90px;">転職の機会が現れる。</p>
+            <p style="margin-bottom: 90px;">あなたの人生が動き始めます。</p>
+            <p style="margin-bottom: 90px;">そして──</p>
+            <p style="margin-bottom: 90px;">2027年に入ると、<br>仕事が安定し始めます。</p>
+            <p style="margin-bottom: 90px;">収入も増え、自信も戻ってきます。</p>
+            <p style="margin-bottom: 90px;">2028年には、仕事が軌道に乗り<br>順調に進んでいきます。</p>
+            <p style="margin-bottom: 90px;">その時、隣にアユミさんがいる。</p>
+            <p style="margin-bottom: 0;">そんな未来が、視えています。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-5">⛩️ なぜ今、仕事が不安なのか</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">今、あなたは人生で<br>最も試練の時期にいます。</p>
+            <p style="margin-bottom: 90px;">46歳から55歳までの10年間は、<br>あなたにとって<br>「仕事とお金の試練の時期」。</p>
+            <p style="margin-bottom: 90px;">才能はあるのに認められない。</p>
+            <p style="margin-bottom: 90px;">頑張っているのに結果が出ない。</p>
+            <p style="margin-bottom: 90px;">そんな状態が続いているはずです。</p>
+            <p style="margin-bottom: 90px;">これは、あなたのせいではありません。</p>
+            <p style="margin-bottom: 90px;">運命の流れが、そうなっているのです。</p>
+            <p style="margin-bottom: 90px;">でも──</p>
+            <p style="margin-bottom: 90px;">その流れが、<br>今年から変わり始めます。</p>
+            <p style="margin-bottom: 90px;">2026年は、<br>あなたにとって転機の年。</p>
+            <p style="margin-bottom: 90px;">基盤が安定し始める年です。</p>
+            <p style="margin-bottom: 90px;">今までの努力が、<br>ようやく形になり始める。</p>
+            <p style="margin-bottom: 90px;">そんな年です。</p>
+            <p style="margin-bottom: 90px;">だから、諦めないでください。<br>もう少しです。</p>
+            <p style="margin-bottom: 0;">秋から冬にかけて、<br>必ず変化が訪れます。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-6">⛩️ 転機を掴むために今すべきこと</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">転機を掴むために、<br>今すべきことがあります。</p>
+            <p style="margin-bottom: 90px;">それは<br>自分を整えること。</p>
+            <p style="margin-bottom: 90px;">あなたは本来、宝石のように輝く人。</p>
+            <p style="margin-bottom: 90px;">才能があり、感性が鋭く、<br>人を惹きつける魅力がある。</p>
+            <p style="margin-bottom: 90px;">でも今は、その輝きが曇っている。</p>
+            <p style="margin-bottom: 90px;">仕事の不安、過去の後悔</p>
+            <p style="margin-bottom: 90px;">それらが、あなたの輝きを<br>遮っています。</p>
+            <p style="margin-bottom: 90px;">だから、まずはそれを<br>手放してください。</p>
+            <p style="margin-bottom: 90px;">過去を手放す</p>
+            <p style="margin-bottom: 90px;">アユミさんとの別れ、<br>仕事の失敗。</p>
+            <p style="margin-bottom: 90px;">それらを、受け入れてください。</p>
+            <p style="margin-bottom: 90px;">「あの時はあれで良かったんだ」</p>
+            <p style="margin-bottom: 90px;">「あれは学びだったんだ」</p>
+            <p style="margin-bottom: 90px;">そう思えたとき、心が軽くなります。</p>
+            <p style="margin-bottom: 90px;">そして、<br>「この先どうなるんだろう」</p>
+            <p style="margin-bottom: 90px;">そんな不安も手放してください。</p>
+            <p style="margin-bottom: 90px;">未来を心配するより、今を生きる。</p>
+            <p style="margin-bottom: 90px;">今できることを、一つずつやることで、<br>流れは変わります。</p>
+            <p style="margin-bottom: 90px;">宝石を磨けば輝く様に、</p>
+            <p style="margin-bottom: 90px;">新しいことを学ぶ、趣味を楽しむ、<br>体を動かす。</p>
+            <p style="margin-bottom: 90px;">自分を磨く時間を、<br>意識的に作ってください。</p>
+            <p style="margin-bottom: 90px;">輝きが戻れば、<br>転機は自然と訪れます。</p>
+            <p style="margin-bottom: 0;">自分が充実したら大丈夫ではなく、<br>大丈夫になるために充実した<br>ふりをするのです。</p>
+        </div>
+
+        <h2 id="sec-flow">【今後6ヶ月の流れ】</h2>
+        <div class="section">
+            <p style="margin-bottom: 0;">ここから、今後6ヶ月間の運気の流れを、<br>月ごとにお伝えします。<br>あなたがどう動けば良いか、<br>具体的に視ていきましょう。</p>
+        </div>
+
+        <div id="flow1Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年5月：準備の月</p>
+            <p style="margin-bottom: 90px;">5月は、準備の時期です。<br>まだ目に見える変化はありませんが、<br>水面下では流れが動き始めています。</p>
+            <p style="margin-bottom: 90px;">この月は、<br>自分を整えることに集中してください。<br>オーラを整え、心を落ち着け、<br>転機に向けて準備をする。</p>
+            <p style="margin-bottom: 0;">焦らないでください。<br>準備が整えば、自然と流れが動きます。</p>
+        </div>
+
+        <div id="flow2Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年6月：忍耐の月</p>
+            <p style="margin-bottom: 90px;">6月は、忍耐の時期です。<br>仕事で停滞感を感じるかもしれません。</p>
+            <p style="margin-bottom: 90px;">でも、諦めないでください。<br>これは、嵐の前の静けさです。</p>
+            <p style="margin-bottom: 90px;">この月は、自分の人生を<br>楽しむことに集中してください。</p>
+            <p style="margin-bottom: 90px;">趣味に打ち込む、友人と会う。<br>仕事だけが人生ではありません。</p>
+            <p style="margin-bottom: 0;">心を豊かにすることが、<br>次の流れを呼び込みます。</p>
+        </div>
+
+        <div id="flow3Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年7月：浄化の月</p>
+            <p style="margin-bottom: 90px;">7月は、浄化の時期です。<br>古いやり方、<br>古い考え方を手放してください。</p>
+            <p style="margin-bottom: 90px;">過去の失敗を受け入れ、<br>そこから学ぶ。</p>
+            <p style="margin-bottom: 90px;">それが、次のステップへの準備です。</p>
+            <p style="margin-bottom: 90px;">この月は、神社を参拝したり、<br>自然の中で<br>過ごしたりすると良いでしょう。</p>
+            <p style="margin-bottom: 0;">心が洗われ、<br>新しいエネルギーが入ってきます。</p>
+        </div>
+
+        <div id="flow4Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年8月：変化の兆しの月</p>
+            <p style="margin-bottom: 90px;">8月は、変化の兆しが見える月です。<br>仕事で、少し光が見え始めます。</p>
+            <p style="margin-bottom: 90px;">新しい話が来たり、<br>人から声をかけられたり。</p>
+            <p style="margin-bottom: 90px;">小さな変化ですが、<br>それが転機の前兆です。</p>
+            <p style="margin-bottom: 90px;">この月は、<br>9月に向けて準備を整えてください。</p>
+            <p style="margin-bottom: 90px;">人脈を広げる、<br>新しいスキルを学ぶ。</p>
+            <p style="margin-bottom: 0;">準備をしておけば、<br>チャンスが来たときに掴めます。</p>
+        </div>
+
+        <div id="flow5Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年9月：転機の月</p>
+            <p style="margin-bottom: 90px;">9月は、転機の月です。</p>
+            <p style="margin-bottom: 90px;">あなたの人生が、<br>大きく動き始めます。</p>
+            <p style="margin-bottom: 90px;">新しい仕事の話、昇進のチャンス、<br>転職の機会。</p>
+            <p style="margin-bottom: 90px;">いずれかが訪れます。</p>
+            <p style="margin-bottom: 90px;">その時、迷わないでください。</p>
+            <p style="margin-bottom: 90px;">直感を信じて、前に進んでください。</p>
+            <p style="margin-bottom: 0;">これは、<br>あなたが待っていたチャンスです。</p>
+        </div>
+
+        <div id="flow6Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年10月：安定の月</p>
+            <p style="margin-bottom: 90px;">10月は、安定の月です。<br>9月の変化を、しっかりと形にする時期。</p>
+            <p style="margin-bottom: 90px;">仕事に集中し、<br>基盤を固めてください。</p>
+            <p style="margin-bottom: 90px;">この月から、あなたの人生は<br>新しいステージに入ります。</p>
+            <p style="margin-bottom: 90px;">自信を取り戻し、<br>前を向けるようになります。</p>
+            <p style="margin-bottom: 0;">そして、アユミさんとの復縁も、<br>視野に入ってきます。</p>
+        </div>
+
+        <div id="flowEndSentinel"></div>
+
+        <h2 class="emoji-header" id="sec-aura">⛩️ オーラの調整方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここから、あなたのオーラを整え、<br>本来の力を取り戻す方法をお伝えします。</p>
+            <p style="margin-bottom: 90px;">あなたの本来のオーラは、<br>宝石のようにきらきら輝く、<br>純粋な虹色のオーラ。</p>
+            <p style="margin-bottom: 90px;">繊細で、美しく、<br>人を惹きつける魅力を持つ。</p>
+            <p style="margin-bottom: 90px;">それが、あなたの本質です。</p>
+            <p style="margin-bottom: 90px;">でも今は、仕事の不安で<br>少しだけ曇っている。</p>
+            <p style="margin-bottom: 90px;">その曇りを取り除くために、<br>今すぐできることがあります。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【成長のエネルギーを取り入れる】</p>
+            <p style="margin-bottom: 90px;">あなたには今、<br>前に進む力が<br>少し足りていません。</p>
+            <p style="margin-bottom: 90px;">それを補うために、<br>緑色のエネルギーを<br>取り入れてください。</p>
+            <p style="margin-bottom: 90px;">緑色の服や小物を身につける。<br>観葉植物を部屋に置く。<br>公園や森を散歩する。</p>
+            <p style="margin-bottom: 90px;">緑は、<br>成長と前進のエネルギー。</p>
+            <p style="margin-bottom: 90px;">それを取り入れることで、<br>停滞していた流れが動き始めます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【情熱のエネルギーを取り入れる】</p>
+            <p style="margin-bottom: 90px;">あなたには今、<br>情熱が少し足りていません。</p>
+            <p style="margin-bottom: 90px;">それを補うために、<br>赤やオレンジのエネルギーを<br>取り入れてください。</p>
+            <p style="margin-bottom: 90px;">赤やオレンジの服や小物を身につける。<br>太陽の光を浴びる、キャンドルを灯す。</p>
+            <p style="margin-bottom: 90px;">赤とオレンジは、<br>情熱と表現力のエネルギー。</p>
+            <p style="margin-bottom: 90px;">それを取り入れることで、<br>あなたの才能が輝き始めます。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【ネガティブな言葉を使わない】</p>
+            <p style="margin-bottom: 90px;">今のあなたは、<br>ネガティブな言葉を使いがちです。</p>
+            <p style="margin-bottom: 90px;">「どうせ無理」<br>「うまくいかない」<br>「自信がない」</p>
+            <p style="margin-bottom: 90px;">そんな言葉が、<br>あなたのオーラを曇らせています。</p>
+            <p style="margin-bottom: 90px;">だから、<br>意識的にポジティブな言葉を<br>使ってください。</p>
+            <p style="margin-bottom: 90px;">「きっとうまくいく」<br>「私にはできる」<br>「流れは変わる」</p>
+            <p style="margin-bottom: 0;">言葉が変われば現実も変わります。</p>
+        </div>
+        <div id="guardianReturnSentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">【神社参拝】</p>
+            <p style="margin-bottom: 90px;">月に一度、<br>水の神様を祀る神社を参拝してください。</p>
+            <p style="margin-bottom: 90px;">お住まいの近くだと<br>二柱神社<br>鹽竈神社になります。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">市杵嶋姫命</span>を祀る神社が理想ですが、<br>近所の氏神様でも大丈夫です。</p>
+            <img src="../鑑定画像/市杵嶋姫命.png" alt="市杵嶋姫命" class="guardian-image">
+            <p style="margin-bottom: 90px;">神社で、<br>今の状況と思っていることを<br>報告してみてください。</p>
+            <p style="margin-bottom: 90px;">神様に、<br>「仕事の転機を掴む力をください」<br>「アユミさんとの縁を繋いでください」<br>とお願いしてみてください。</p>
+            <p style="margin-bottom: 0;">神様は、あなたの味方です。</p>
+        </div>
+
+        <div id="stoneSentinel"></div>
+        <h2 class="emoji-header" id="sec-stone">⛩️ あなたを支えるパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">最後に、あなたを支える<br>パワーストーンをお伝えします。</p>
+            <p style="margin-bottom: 90px;">パワーストーンは、<br>ただの石ではありません。</p>
+            <p style="margin-bottom: 90px;">長い年月をかけて<br>地球の中で育まれた石には、<br>強いエネルギーが宿っています。</p>
+            <p style="margin-bottom: 90px;">そのエネルギーが、<br>あなたのオーラを安定させ、<br>運気を高めてくれます。</p>
+            <p style="margin-bottom: 90px;">特に、今のあなたのように<br>仕事の不安を抱えている時、<br>パワーストーンは<br>あなたの強い味方になります。</p>
+            <p style="margin-bottom: 90px;">転機を掴む力、復縁する力、<br>宝石の輝きを取り戻す力。</p>
+            <p style="margin-bottom: 90px;">それらを、<br>石が静かに後押ししてくれます。</p>
+            <ul style="margin-bottom: 90px;">
+                <li><span style="color: #ffd966; font-weight: bold;">1. シトリン（黄水晶）</span><br>太陽のエネルギー<br>金運・仕事運を高める。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">2. グリーンアベンチュリン（緑色翡翠）</span><br>成長と前進のエネルギー、<br>チャンスを掴む力。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">3. 水晶（クリスタル）</span><br>浄化と調和、全てのエネルギーを整える。<br>宝石の輝きを取り戻し、才能を活かす力。<br>あなたの本質を引き出します。</li>
+            </ul>
+            <p style="margin-bottom: 90px;">ネガティブなエネルギーを払い、<br>明るさを取り戻す。<br>仕事の不安を手放す力を与えます。</p>
+            <p style="margin-bottom: 90px;">心を落ち着け、仕事運と金運を高める。<br>転機を引き寄せます。</p>
+            <p style="margin-bottom: 90px;">この3つの石を組み合わせた<br>ブレスレットを、<br>私が作成してお送りします。</p>
+            <p style="margin-bottom: 0;">ご希望の場合は<br>「詳細希望」と<br>メッセージをお送りください。</p>
+        </div>
+
+        <div id="closingSentinel"></div>
+        <h2 id="sec-closing">【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">トモユキ様、</p>
+            <p style="margin-bottom: 90px;">視えています。</p>
+            <p style="margin-bottom: 90px;">2028年の秋、<br>仕事で成果を上げて、<br>自信に満ちた表情をしている<br>あなたの姿が。</p>
+            <p style="margin-bottom: 90px;">そして、隣にアユミさんがいる<br>あなたの姿が。</p>
+            <p style="margin-bottom: 90px;">「もう1度チャンスをもらえて<br>本当によかった」</p>
+            <p style="margin-bottom: 90px;">そう心から思っている<br>あなたの姿が。</p>
+            <p style="margin-bottom: 90px;">その未来は、もう動き始めています。</p>
+            <p style="margin-bottom: 90px;">あなたがすべきことは、</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">焦ることではなく、準備すること。</p>
+            <p style="margin-bottom: 90px;">不安になることではなく、<br>信じること。</p>
+            <p style="margin-bottom: 90px;">迷うことではなく、前に進むこと。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">あなたは、宝石です。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">磨けば、必ず輝きます。</p>
+            <p style="margin-bottom: 90px;">そして、<br>その輝きが全てを引き寄せます。</p>
+            <p style="margin-bottom: 90px;">仕事の転機も、<br>アユミさんとの復縁も。</p>
+            <p style="margin-bottom: 90px;">全てはあなたの輝き次第です。</p>
+            <p style="margin-bottom: 90px;">私は、<br>あなたの背中を押します。</p>
+            <p style="margin-bottom: 90px;">遠隔で守護祈祷を行い、<br>あなたに<br>光のエネルギーをお送りします。</p>
+            <p style="margin-bottom: 90px;">大丈夫です。</p>
+            <p style="margin-bottom: 90px;">あなたの未来は、<br>明るく輝いています。</p>
+            <p style="margin-bottom: 90px;">その光を、一緒に掴みましょう。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            var elementBg = document.getElementById('elementBg');
+            var deityBg = document.getElementById('deityBg');
+            var doorBg = document.getElementById('doorBg');
+            var seasonSpringBg = document.getElementById('seasonSpringBg');
+            var seasonSummerBg = document.getElementById('seasonSummerBg');
+            var seasonAutumnBg = document.getElementById('seasonAutumnBg');
+            var stoneBg = document.getElementById('stoneBg');
+
+            var stages = [
+                { el: document.getElementById('elementSentinel'), bg: elementBg },
+                { el: document.getElementById('deitySentinel'), bg: doorBg },
+                { el: document.getElementById('flow1Sentinel'), bg: seasonSpringBg },
+                { el: document.getElementById('flow2Sentinel'), bg: seasonSummerBg },
+                { el: document.getElementById('flow3Sentinel'), bg: seasonSummerBg },
+                { el: document.getElementById('flow4Sentinel'), bg: seasonSummerBg },
+                { el: document.getElementById('flow5Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flow6Sentinel'), bg: seasonAutumnBg },
+                { el: document.getElementById('flowEndSentinel'), bg: doorBg },
+                { el: document.getElementById('guardianReturnSentinel'), bg: deityBg },
+                { el: document.getElementById('stoneSentinel'), bg: stoneBg },
+                { el: document.getElementById('closingSentinel'), bg: doorBg }
+            ].filter(function (stage) { return !!stage.el; });
+            if (!stages.length) return;
+
+            var layers = [elementBg, deityBg, doorBg, seasonSpringBg, seasonSummerBg, seasonAutumnBg, stoneBg];
+            function show(active) {
+                layers.forEach(function (el) {
+                    if (el === active) el.classList.add('is-visible');
+                    else el.classList.remove('is-visible');
+                });
+            }
+
+            function onScroll() {
+                var trigger = window.innerHeight * 0.65;
+                var active = null;
+                for (var i = 0; i < stages.length; i++) {
+                    if (stages[i].el.getBoundingClientRect().top < trigger) {
+                        active = stages[i].bg;
+                    }
+                }
+                show(active);
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+
+        /* ===== 演出：花びら ===== */
+        (function () {
+            var cv = document.getElementById('petals');
+            var ctx = cv.getContext('2d');
+            var W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+            var isMobile = window.innerWidth < 700;
+
+            function resize() {
+                W = window.innerWidth; H = window.innerHeight;
+                cv.width = W * dpr; cv.height = H * dpr;
+                cv.style.width = W + 'px'; cv.style.height = H + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            var petals = [];
+            var petalN = isMobile ? 14 : 24;
+            for (var i = 0; i < petalN; i++) {
+                petals.push({
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    s: 5 + Math.random() * 7,
+                    vy: 0.35 + Math.random() * 0.7,
+                    sway: Math.random() * Math.PI * 2,
+                    swayV: 0.008 + Math.random() * 0.014,
+                    rot: Math.random() * Math.PI * 2,
+                    rotV: (Math.random() - 0.5) * 0.03,
+                    hue: Math.random() < 0.6 ? 'light' : 'deep'
+                });
+            }
+            function drawPetal(p) {
+                ctx.save();
+                ctx.translate(p.x + Math.sin(p.sway) * 26, p.y);
+                ctx.rotate(p.rot);
+                var g = ctx.createRadialGradient(0, 0, 0, 0, 0, p.s);
+                if (p.hue === 'light') {
+                    g.addColorStop(0, 'rgba(120, 200, 255, 0.95)');
+                    g.addColorStop(1, 'rgba(120, 200, 255, 0.25)');
+                } else {
+                    g.addColorStop(0, 'rgba(60, 140, 220, 0.95)');
+                    g.addColorStop(1, 'rgba(60, 140, 220, 0.25)');
+                }
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, p.s, p.s * 0.62, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function tick() {
+                ctx.clearRect(0, 0, W, H);
+                for (var pi = 0; pi < petals.length; pi++) {
+                    var p = petals[pi];
+                    p.y += p.vy;
+                    p.sway += p.swayV;
+                    p.rot += p.rotV;
+                    if (p.y > H + 20) { p.y = -20; p.x = Math.random() * W; }
+                    drawPetal(p);
+                }
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        })();
+    </script>
+
+<!-- GA4 カスタム計測：誰が/最後まで読んだか/購入ボタン [GA4-MIYUKI] -->
+<script>
+(function () {
+  function fire() {
+    var seg = location.pathname.split('/').filter(Boolean);
+    var last = decodeURIComponent(seg[seg.length - 1] || '');
+    var id = /\.html?$/i.test(last) ? decodeURIComponent(seg[seg.length - 2] || 'unknown') : (last || 'unknown');
+    var base = { kantei_id: id, persona: 'miyuki' };
+    gtag('set', 'user_properties', { kantei_id: id, persona: 'miyuki' });
+    gtag('event', 'page_open', base);
+
+    var end = document.querySelector('.signature, .sign');
+    if (end && 'IntersectionObserver' in window) {
+      var done = false;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && !done) { done = true; gtag('event', 'read_complete', base); io.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      io.observe(end);
+    }
+
+    document.querySelectorAll('.cta-button, .btn').forEach(function (b) {
+      b.addEventListener('click', function () { gtag('event', 'cta_click', base); });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire); else fire();
+})();
+</script>
+
+</body>
+</html>
