@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) : GA4 計測 [GA4-MIYUKI] -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHLDFT6DR7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JHLDFT6DR7');
+    </script>
+    <title>守護が届く人と、届かない人のちがい</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(160deg, #2a3170 0%, #232a62 35%, #2c2766 65%, #1f2658 100%);
+            background-attachment: fixed;
+            color: #eeeef8;
+            line-height: 1.95;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 20px;
+        }
+        /* 上からさしこむ光 */
+        .glow {
+            position: fixed; inset: 0; z-index: -2; pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% -10%, rgba(255, 224, 150, 0.28) 0%, rgba(255, 224, 150, 0.08) 35%, rgba(0,0,0,0) 60%),
+                radial-gradient(ellipse at 85% 90%, rgba(168, 184, 255, 0.18) 0%, rgba(0,0,0,0) 50%);
+        }
+        /* きらめき */
+        .stars { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+        .stars span {
+            position: absolute; width: 3px; height: 3px; border-radius: 50%;
+            background: #fff6d8; box-shadow: 0 0 8px 2px rgba(255, 230, 160, 0.7);
+            animation: twinkle 4s ease-in-out infinite;
+        }
+        @keyframes twinkle { 0%, 100% { opacity: 0.15; } 50% { opacity: 1; } }
+
+        .container { max-width: 780px; margin: 0 auto; padding: 30px 30px 60px; }
+
+        /* ===== 表紙 ===== */
+        .cover { text-align: center; padding: 60px 10px 50px; }
+        .cover .label {
+            display: inline-block; font-size: 0.85em; letter-spacing: 0.25em; color: #ffe7a8;
+            border-top: 1px solid rgba(255, 217, 102, 0.6); border-bottom: 1px solid rgba(255, 217, 102, 0.6);
+            padding: 6px 18px; margin-bottom: 40px;
+        }
+        .cover h1 {
+            font-size: 2.2em; line-height: 1.6; letter-spacing: 0.12em; font-weight: bold;
+            background: linear-gradient(180deg, #fff3c4 0%, #ffd966 55%, #e8b84a 100%);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            filter: drop-shadow(0 0 18px rgba(255, 217, 102, 0.35));
+        }
+        .cover .ornament { margin: 36px auto; width: 180px; height: 1px; background: linear-gradient(90deg, rgba(255,217,102,0), #ffd966, rgba(255,217,102,0)); position: relative; }
+        .cover .ornament::after { content: '◆'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -54%); color: #ffd966; font-size: 12px; background: #29306c; padding: 0 10px; }
+        .cover .from { color: #c8d0ff; font-size: 1.2em; letter-spacing: 0.3em; }
+
+        /* ===== 見出し ===== */
+        .chapter { text-align: center; margin: 80px 0 36px; }
+        .chapter .num { display: block; color: #ffd966; font-size: 0.85em; letter-spacing: 0.35em; margin-bottom: 8px; }
+        .chapter h2 { color: #f4f0ff; font-size: 1.5em; letter-spacing: 0.08em; line-height: 1.6; }
+        .chapter h2::after { content: ''; display: block; width: 60px; height: 2px; margin: 18px auto 0; background: linear-gradient(90deg, #e8b84a, #fff0b8, #e8b84a); }
+
+        /* ===== 本文 ===== */
+        .msg { text-align: center; }
+        .msg p { margin-bottom: 34px; }
+        .em { color: #ffd966; font-weight: bold; text-shadow: 0 0 14px rgba(255, 217, 102, 0.35); }
+
+        .frame {
+            position: relative; margin: 40px 0; padding: 40px 28px; border-radius: 18px; text-align: center;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(168, 184, 255, 0.06));
+            border: 1px solid rgba(255, 217, 102, 0.45);
+            box-shadow: 0 8px 30px rgba(10, 10, 40, 0.35), inset 0 0 30px rgba(255, 230, 160, 0.06);
+        }
+        .frame p { margin-bottom: 26px; }
+        .frame p:last-child { margin-bottom: 0; }
+
+        /* 深雪に視えているもの */
+        .sight { margin: 26px 0; padding: 30px 24px; border-radius: 14px; text-align: center; background: rgba(255, 255, 255, 0.06); border-left: 3px solid #ffd966; }
+        .sight h3 { color: #ffe7a8; font-size: 1.25em; margin-bottom: 14px; letter-spacing: 0.05em; }
+        .sight p { margin-bottom: 16px; }
+        .sight p:last-child { margin-bottom: 0; }
+
+
+        /* 深雪に視えているもの：一枚の額に収める */
+        .seen {
+            margin: 36px 0; padding: 14px 34px; text-align: center; position: relative;
+            border: 1px solid rgba(255, 217, 102, 0.55);
+            outline: 1px solid rgba(255, 217, 102, 0.25); outline-offset: 6px;
+            background: radial-gradient(ellipse at 50% 0%, rgba(255, 228, 160, 0.12), rgba(255, 255, 255, 0.02) 70%);
+        }
+        .seen-item { padding: 34px 0; }
+        .seen-item + .seen-item { border-top: 1px solid rgba(255, 217, 102, 0.22); position: relative; }
+        .seen-item + .seen-item::before {
+            content: '◆'; position: absolute; top: 0; left: 50%; transform: translate(-50%, -55%);
+            font-size: 10px; color: #ffd966; background: #272e68; padding: 0 12px;
+        }
+        .seen-item h3 { color: #ffe7a8; font-size: 1.25em; letter-spacing: 0.08em; margin-bottom: 14px; font-weight: bold; text-shadow: 0 0 14px rgba(255, 217, 102, 0.3); }
+        .seen-item p { margin-bottom: 14px; }
+        .seen-item p:last-child { margin-bottom: 0; }
+
+        /* 守護神カード */
+        .note-small { text-align: center; color: #c8d0ff; font-size: 0.92em; margin: -10px 0 36px; }
+        .deity {
+            margin: 34px 0; padding: 36px 26px 30px; border-radius: 18px; text-align: center;
+            background: linear-gradient(160deg, rgba(255, 236, 180, 0.13) 0%, rgba(120, 130, 220, 0.10) 100%);
+            border: 1px solid rgba(255, 217, 102, 0.5);
+            box-shadow: 0 6px 26px rgba(10, 10, 40, 0.3);
+        }
+        .deity .no { color: #ffd966; font-size: 0.8em; letter-spacing: 0.3em; }
+        .deity h3 { font-size: 1.5em; color: #fff5d6; margin: 6px 0 2px; letter-spacing: 0.06em; text-shadow: 0 0 16px rgba(255, 217, 102, 0.35); }
+        .deity .yomi { color: #c8d0ff; font-size: 0.85em; margin-bottom: 14px; }
+        .deity .domain { display: inline-block; font-size: 0.88em; color: #2a2550; background: linear-gradient(90deg, #ffe7a8, #ffd966); border-radius: 20px; padding: 2px 16px; margin-bottom: 22px; }
+        .deity img { display: block; width: 100%; max-width: 300px; height: auto; margin: 0 auto 24px; border-radius: 12px; box-shadow: 0 0 30px rgba(255, 224, 150, 0.35), 0 4px 18px rgba(10, 10, 40, 0.4); }
+        .deity .myth { margin-bottom: 22px; }
+        .deity .way { margin-bottom: 22px; }
+        .state { display: flex; gap: 12px; text-align: left; }
+        .state div { flex: 1; padding: 16px 16px; border-radius: 12px; font-size: 0.95em; line-height: 1.8; }
+        .state .on { background: rgba(255, 217, 102, 0.12); border: 1px solid rgba(255, 217, 102, 0.35); }
+        .state .off { background: rgba(140, 150, 210, 0.12); border: 1px solid rgba(168, 184, 255, 0.3); }
+        .state b { display: block; margin-bottom: 6px; font-size: 0.95em; }
+        .state .on b { color: #ffd966; }
+        .state .off b { color: #c8d0ff; }
+
+        /* 届く人・届かない人 */
+        .diff { margin: 30px 0; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255, 217, 102, 0.4); }
+        .diff .head { padding: 16px 20px; text-align: center; font-weight: bold; color: #fff5d6; background: rgba(255, 217, 102, 0.16); letter-spacing: 0.05em; }
+        .diff .row { display: flex; }
+        .diff .row div { flex: 1; padding: 20px 18px; font-size: 0.97em; line-height: 1.85; text-align: center; }
+        .diff .yes { background: rgba(255, 255, 255, 0.07); }
+        .diff .no2 { background: rgba(20, 20, 60, 0.25); color: #c8c8e0; }
+        .diff .tag { display: block; font-size: 0.82em; letter-spacing: 0.15em; margin-bottom: 8px; }
+        .diff .yes .tag { color: #ffd966; }
+        .diff .no2 .tag { color: #9aa4d8; }
+        .diff .after { padding: 22px 22px; text-align: center; background: rgba(255, 255, 255, 0.04); border-top: 1px solid rgba(255, 217, 102, 0.2); }
+
+        /* ワーク */
+        .work { margin: 30px 0; padding: 34px 26px; border-radius: 18px; text-align: center; background: linear-gradient(160deg, rgba(255, 240, 200, 0.16), rgba(255, 255, 255, 0.05)); border: 1px dashed rgba(255, 217, 102, 0.6); }
+        .work h3 { color: #ffe7a8; font-size: 1.25em; margin-bottom: 18px; }
+        .work ol { list-style: none; counter-reset: step; text-align: left; max-width: 500px; margin: 0 auto; }
+        .work ol li { counter-increment: step; position: relative; padding-left: 46px; margin-bottom: 18px; }
+        .work ol li::before { content: counter(step); position: absolute; left: 0; top: 4px; width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(180deg, #ffe7a8, #e8b84a); color: #2a2550; font-weight: bold; text-align: center; line-height: 32px; font-size: 0.9em; }
+
+        /* 結び */
+        .closing { text-align: center; margin: 80px 0 20px; padding: 50px 20px; border-radius: 20px; background: radial-gradient(ellipse at 50% 0%, rgba(255, 224, 150, 0.2), rgba(255, 255, 255, 0.04) 70%); border: 1px solid rgba(255, 217, 102, 0.35); }
+        .closing p { margin-bottom: 30px; }
+        .signature { text-align: right; font-size: 1.4em; color: #ffe7a8; margin-top: 20px; letter-spacing: 0.2em; }
+
+        .reveal { opacity: 0; transform: translateY(26px); transition: opacity 1.1s ease-out, transform 1.1s ease-out; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            body { font-size: 17px; padding: 10px; }
+            .container { padding: 16px 8px 40px; }
+            .cover { padding: 40px 4px 30px; }
+            .cover h1 { font-size: 1.55em; }
+            .chapter { margin: 60px 0 28px; }
+            .chapter h2 { font-size: 1.3em; }
+            .frame { padding: 30px 16px; }
+            .sight { padding: 24px 14px; }
+            .seen { padding: 6px 16px; }
+            .seen-item { padding: 28px 0; }
+            .deity { padding: 30px 14px 22px; }
+            .deity h3 { font-size: 1.3em; }
+            .deity img { max-width: 240px; }
+            .state { flex-direction: column; gap: 10px; }
+            .diff .row div { padding: 16px 10px; font-size: 0.94em; }
+            .work { padding: 28px 14px; }
+            .closing { padding: 40px 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow"></div>
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+
+        <!-- ===== 表紙 ===== -->
+        <div class="cover">
+            <h1>守護が届く人と、<br>届かない人のちがい</h1>
+            <div class="ornament"></div>
+        </div>
+
+        <!-- ===== はじめに ===== -->
+        <div class="msg reveal">
+            <p>このたびは<br>ご感想をお寄せくださり<br>本当にありがとうございました。</p>
+            <p>いただいた言葉は<br>ひとつひとつ大切に読ませていただきます。</p>
+            <p>そのお礼として<br>ご感想をくださった方にだけ<br>このお手紙をお渡ししています。</p>
+            <p class="em">鑑定でお伝えした守護神のことを<br>もう少し深くお話しします。</p>
+            <p>この国には<br>八百万の神々がいらっしゃいます。</p>
+            <p>あなたが生まれて<br>はじめて産声をあげたとき<br>いちばん近くにいてくださった神様。<br>それが、あなたの守護神です。</p>
+            <p class="em">神様によって<br>守り方も、力の与え方もちがいます。<br>だからこそ、それを知る必要があるのです。</p>
+            <p>守護神は<br>名前を知って終わり、ではありません。</p>
+            <p>同じように守護神がついていても<br>その守りをしっかり受け取れている方と<br>受け取れずにいる方がいらっしゃいます。</p>
+            <p>そのちがいがどこにあるのか<br>私に視えていることを<br>このお手紙にまとめました。</p>
+        </div>
+
+        <!-- ===== 区切り ===== -->
+        <div class="chapter reveal">
+            <h2>深雪に視えているもの</h2>
+        </div>
+        <div class="msg reveal">
+            <p>霊視では、ご相談の内容だけでなく<br>あなたを守っている神様のことも視ています。</p>
+            <p>視えているのは<br>たとえば、こんなことです。</p>
+        </div>
+
+        <div class="seen reveal">
+            <div class="seen-item">
+            <h3>どの神様が守っているか</h3>
+            <p>あなたの守護神がどの神様で<br>どんな守り方をする神様なのか。</p>
+            </div>
+
+            <div class="seen-item">
+            <h3>守りが、今届いているか</h3>
+            <p>同じ神様に守られていても<br>守りがしっかり届いているときと<br>届きにくくなっているときがあります。</p>
+            <p>今のあなたがどちらなのかが分かります。</p>
+            </div>
+
+            <div class="seen-item">
+            <h3>守りが強くなる時期</h3>
+            <p>守護神の力には<br>強まる時期と、弱まる時期があります。</p>
+            <p>動いたほうがいい時期と<br>待ったほうがいい時期が分かります。</p>
+            </div>
+
+            <div class="seen-item">
+            <h3>相手の守護神との相性</h3>
+            <p>パートナーや職場の人など<br>相手の守護神とあなたの守護神が<br>支え合う関係なのか<br>ぶつかりやすい関係なのかが分かります。</p>
+            </div>
+
+            <div class="seen-item">
+            <h3>あなたが授かっている力</h3>
+            <p>守護神から授かった、あなたの得意なこと。</p>
+            <p>それを知って使えるかどうかで<br>同じ出来事でも、結果が変わります。</p>
+            </div>
+        </div>
+
+        <!-- ===== 区切り ===== -->
+        <div class="chapter reveal">
+            <h2>守護神ごとの守り方</h2>
+        </div>
+        <div class="msg reveal">
+            <p>ここでは、私がこれまで視てきた中から<br>十柱の守護神をご紹介します。</p>
+            <p>ご自分の守護神のところだけでなく<br>大切な方を思い浮かべながら<br>読んでみてください。</p>
+        </div>
+        <p class="note-small reveal">※ここでご紹介するのは一部です。<br>これ以外の守護神に守られている方も<br>たくさんいらっしゃいます。</p>
+
+        <div class="deity reveal">
+            <div class="no">火の守護神</div>
+            <h3>天照大御神</h3>
+            <div class="yomi">あまてらすおおみかみ</div>
+            <div class="domain">開運と繁栄</div>
+            <img src="../鑑定画像/天照大御神.png" alt="天照大御神">
+            <p class="myth">天の岩戸にお隠れになったとき<br>世界はすっかり闇に包まれました。<br>この神様がいるだけで<br>世界は明るくなるのです。</p>
+            <p class="way em">道を照らして守る神様です。</p>
+            <div class="state">
+                <div class="on"><b>守護が届いているとき</b>人が自然と集まり<br>あなたが決めたことに<br>周りがついてきてくれます。</div>
+                <div class="off"><b>届きにくいとき</b>全部を一人で照らそうとして疲れ<br>岩戸にこもるように<br>心を閉ざしてしまいます。</div>
+            </div>
+        </div>
+
+        <div class="deity reveal">
+            <div class="no">金の守護神</div>
+            <h3>市杵嶋姫命</h3>
+            <div class="yomi">いちきしまひめのみこと</div>
+            <div class="domain">芸能と財</div>
+            <img src="../鑑定画像/市杵嶋姫命.png" alt="市杵嶋姫命">
+            <p class="myth">海の上に浮かぶ厳島にまつられる<br>宗像三女神のおひとり。<br>弁財天と重ねて祀られ<br>才と財をもたらす女神です。</p>
+            <p class="way em">才を輝かせて守る神様です。</p>
+            <div class="state">
+                <div class="on"><b>守護が届いているとき</b>あなたの言葉や手がけたものが<br>人に届き、評価やお金に<br>つながっていきます。</div>
+                <div class="off"><b>届きにくいとき</b>自分の力を小さく見積もり<br>人に譲ってばかりで<br>前に出られなくなります。</div>
+            </div>
+        </div>
+
+        <div class="deity reveal">
+            <div class="no">土の守護神</div>
+            <h3>猿田彦命</h3>
+            <div class="yomi">さるたひこのみこと</div>
+            <div class="domain">新しい始まりと導き</div>
+            <img src="../鑑定画像/猿田彦命.png" alt="猿田彦命">
+            <p class="myth">天の神々が地上に降りるとき<br>分かれ道に立って光を放ち<br>その行く先を案内した神様です。</p>
+            <p class="way em">道をひらき、導いて守る神様です。</p>
+            <div class="state">
+                <div class="on"><b>守護が届いているとき</b>良い人や良い話に出会い<br>迷ったときに<br>進む道がすっと見えます。</div>
+                <div class="off"><b>届きにくいとき</b>分かれ道の前で<br>どちらも選べないまま<br>立ち止まり続けてしまいます。</div>
+            </div>
+        </div>
+
+        <div class="deity reveal">
+            <div class="no">水の守護神</div>
+            <h3>罔象女神</h3>
+            <div class="yomi">みつはのめのかみ</div>
+            <div class="domain">子宝と安産・知恵</div>
+            <img src="../鑑定画像/罔象女神.png" alt="罔象女神">
+            <p class="myth">地の底から湧く清らかな水を司る女神。<br>いのちを育む水の神様として<br>古くから子宝や安産を願う人に<br>祀られてきました。<br>深く静かな知恵で<br>表には出ない本質を見抜きます。</p>
+            <p class="way em">人の心の奥を汲み取る力を授けて<br>守る神様です。</p>
+            <div class="state">
+                <div class="on"><b>守護が届いているとき</b>人が口にしない本音や<br>空気の変化に気づき<br>先回りして動けます。</div>
+                <div class="off"><b>届きにくいとき</b>相手を察しすぎて<br>自分の気持ちを<br>ずっと後ろに置いてしまいます。</div>
+            </div>
+        </div>
+
+        <div class="deity reveal">
+            <div class="no">金の守護神</div>
+            <h3>建御雷神</h3>
+            <div class="yomi">たけみかづちのかみ</div>
+            <div class="domain">勝負と決断</div>
+            <img src="../鑑定画像/建御雷神.png" alt="建御雷神">
+            <p class="myth">剣を逆さに立て、その切っ先に座り<br>国を譲るよう交渉をまとめた<br>力強い神様です。</p>
+            <p class="way em">迷いを断ち切らせて守る神様です。</p>
+            <div class="state">
+                <div class="on"><b>守護が届いているとき</b>大事な場面で迷わず決められ<br>その決断が良い方へ転がります。</div>
+                <div class="off"><b>届きにくいとき</b>言葉が強くなりすぎて<br>人とぶつかったり<br>ひとりで抱え込んだりします。</div>
+            </div>
+        </div>
+
+        <div class="deity reveal">
+            <div class="no">水の守護神</div>
+            <h3>住吉大神</h3>
+            <div class="yomi">すみよしのおおかみ</div>
+            <div class="domain">厄除けと旅の安全</div>
+            <img src="../鑑定画像/住吉大神.png" alt="住吉大神">
+            <p class="myth">伊邪那岐命が海で禊をしたときに<br>生まれた三柱の神様。<br>古くから、海を渡る人を<br>守り続けてきました。</p>
+            <p class="way em">荒波を越える航路を守る神様です。</p>
+            <div class="state">
+                <div class="on"><b>守護が届いているとき</b>環境が変わったときも<br>新しいことを始めたときも<br>追い風が吹きます。</div>
+                <div class="off"><b>届きにくいとき</b>波が来るのが怖くて<br>港から出られず<br>同じ場所で足踏みします。</div>
+            </div>
+        </div>
+
+        <div class="deity reveal">
+            <div class="no">火の守護神</div>
+            <h3>火産霊神</h3>
+            <div class="yomi">ほむすびのかみ</div>
+            <div class="domain">創造と情熱</div>
+            <img src="../鑑定画像/火産霊神.png" alt="火産霊神">
+            <p class="myth">伊邪那美命から生まれた火の神様。<br>火は、ものを焼くだけでなく<br>暮らしを温め、新しいものを<br>生み出す力でもあります。</p>
+            <p class="way em">心に火を灯して守る神様です。</p>
+            <div class="state">
+                <div class="on"><b>守護が届いているとき</b>やる気が湧き<br>思いついたことを<br>次々と形にしていけます。</div>
+                <div class="off"><b>届きにくいとき</b>燃え上がりすぎて<br>周りとぶつかったり<br>自分が燃え尽きたりします。</div>
+            </div>
+        </div>
+
+        <div class="deity reveal">
+            <div class="no">土の守護神</div>
+            <h3>埴山姫神</h3>
+            <div class="yomi">はにやまひめのかみ</div>
+            <div class="domain">家内安全と実り</div>
+            <img src="../鑑定画像/埴山姫神.png" alt="埴山姫神">
+            <p class="myth">伊邪那美命から生まれた土の女神。<br>器をつくる土、作物を育てる土を司り<br>すべてを受け止めて育てます。</p>
+            <p class="way em">土台を固めて守る神様です。</p>
+            <div class="state">
+                <div class="on"><b>守護が届いているとき</b>暮らしや人との関係が落ち着き<br>時間をかけたことが<br>しっかり実ります。</div>
+                <div class="off"><b>届きにくいとき</b>何でも受け止めすぎて<br>心が重くなり<br>動けなくなってしまいます。</div>
+            </div>
+        </div>
+
+        <div class="deity reveal">
+            <div class="no">木の守護神</div>
+            <h3>豊受大神</h3>
+            <div class="yomi">とようけのおおかみ</div>
+            <div class="domain">衣食住と仕事</div>
+            <img src="../鑑定画像/豊受大神.png" alt="豊受大神">
+            <p class="myth">伊勢の外宮にまつられ<br>天照大御神のお食事を司る女神。<br>暮らしのすべてを満たす恵みの神様です。</p>
+            <p class="way em">暮らしを満たして守る神様です。</p>
+            <div class="state">
+                <div class="on"><b>守護が届いているとき</b>お金や暮らしが落ち着き<br>心にもゆとりが生まれます。</div>
+                <div class="off"><b>届きにくいとき</b>人を満たしてばかりで<br>気づけば自分の器が<br>空っぽになっています。</div>
+            </div>
+        </div>
+
+        <div class="deity reveal">
+            <div class="no">木の守護神</div>
+            <h3>久久能智神</h3>
+            <div class="yomi">くくのちのかみ</div>
+            <div class="domain">成長と長寿</div>
+            <img src="../鑑定画像/久久能智神.png" alt="久久能智神">
+            <p class="myth">すべての木々に宿る神様。<br>地に深く根を張り<br>長い年月をかけて天へ伸びていきます。</p>
+            <p class="way em">根を張らせて守る神様です。</p>
+            <div class="state">
+                <div class="on"><b>守護が届いているとき</b>積み重ねてきたことが続き<br>ゆっくりでも確かに伸びていきます。</div>
+                <div class="off"><b>届きにくいとき</b>結果を急ぐあまり<br>根を張る前に動いて<br>何度もやり直すことになります。</div>
+            </div>
+        </div>
+
+        <div class="frame reveal">
+            <p>読んでいて<br>「届きにくいとき」のほうに<br>心あたりがあった方も<br>いらっしゃるかもしれません。</p>
+            <p class="em">それは、守護神が<br>離れてしまったわけではありません。</p>
+            <p>守護神はずっとそばにいます。<br>ただ、その守りが<br>あなたまで届きにくくなっているだけです。</p>
+        </div>
+
+        <!-- ===== 区切り ===== -->
+        <div class="chapter reveal">
+            <h2>守護が届く人と、<br>届かない人のちがい</h2>
+        </div>
+        <div class="msg reveal">
+            <p>同じように守護神がついているのに<br>なぜ、届く人と届かない人がいるのか。</p>
+            <p>これまで多くの方を霊視してきて<br>そのちがいは、はっきりしています。</p>
+        </div>
+
+        <div class="diff reveal">
+            <div class="head">一、守られていることを知っているか</div>
+            <div class="row">
+                <div class="yes"><span class="tag">届く人</span>自分のうしろに<br>守護神がいると知っている。<br>だから、迷ったときに<br>一人で背負いこまない。</div>
+                <div class="no2"><span class="tag">届かない人</span>守られていることを知らず<br>全部を自分の力だけで<br>どうにかしようとする。</div>
+            </div>
+        </div>
+
+        <div class="diff reveal">
+            <div class="head">二、自分の守護神の守り方に沿っているか</div>
+            <div class="row">
+                <div class="yes"><span class="tag">届く人</span>自分の守護神が<br>どう守ってくれる神様なのかを知り<br>その守り方に沿って動く。</div>
+                <div class="no2"><span class="tag">届かない人</span>人がうまくいったやり方を<br>そのまま真似して<br>自分には合わずに苦しくなる。</div>
+            </div>
+        </div>
+
+        <div class="diff reveal">
+            <div class="head">三、動くときと、整えるときを知っているか</div>
+            <div class="row">
+                <div class="yes"><span class="tag">届く人</span>守護が満ちるときに動き<br>遠のくときは<br>無理をせず心を整える。</div>
+                <div class="no2"><span class="tag">届かない人</span>守護が遠のいているときに<br>大きな決断をして<br>あとから悔やんでしまう。</div>
+            </div>
+        </div>
+
+        <div class="diff reveal">
+            <div class="head">四、守護神に心を向けているか</div>
+            <div class="row">
+                <div class="yes"><span class="tag">届く人</span>ときどき守護神を思い出し<br>手を合わせたり<br>心の中でお礼を伝えたりする。</div>
+                <div class="no2"><span class="tag">届かない人</span>苦しいときだけ神頼みをして<br>あとは忘れてしまう。</div>
+            </div>
+        </div>
+
+        <div class="frame reveal">
+            <p>四つのちがいを並べてみると<br>届く人がしていることは<br>どれも特別なことではありません。</p>
+            <p class="em">ただ、守護神のことを<br>「知っている」かどうか。</p>
+            <p>どんな守り方の神様で<br>いつ守りが満ちて、いつ遠のくのか。<br>そこを知っているかどうかで<br>同じ人生でも、歩きやすさが変わります。</p>
+        </div>
+
+        <!-- ===== 区切り ===== -->
+        <div class="chapter reveal">
+            <h2>結びを太くする<br>日々のこと</h2>
+        </div>
+        <div class="msg reveal">
+            <p>最後に、今日からできることを<br>お伝えします。</p>
+        </div>
+
+        <div class="seen reveal">
+            <div class="seen-item">
+            <h3>近くの神社で、名前を伝える</h3>
+            <p>遠くの大きな神社に<br>行かなければいけないわけではありません。</p>
+            <p>近所の小さなお社でも<br>手を合わせるときに<br>ご自分の名前と住んでいる場所を<br>心の中で伝えてください。</p>
+            <p>守護神は、その声を<br>ちゃんと受け取っています。</p>
+            </div>
+
+            <div class="seen-item">
+            <h3>お願いより先に、お礼を</h3>
+            <p>「こうなりますように」の前に<br>「いつも守ってくださって<br>ありがとうございます」と伝える。</p>
+            <p>それだけで<br>結びの糸はあたたかく光り始めます。</p>
+            </div>
+
+            <div class="seen-item">
+            <h3>一人で抱え込まない</h3>
+            <p>迷いや不安を<br>ひとりの胸の中だけで抱えていると<br>結びの糸は細くなっていきます。</p>
+            <p>苦しいときこそ<br>「私は一人で守っているわけではない」と<br>思い出してください。</p>
+            </div>
+        </div>
+
+        <div class="work reveal">
+            <h3>朝の一分、守護神とつながる</h3>
+            <ol>
+                <li>朝起きたら、窓をあけるか<br>光の入る場所に立ちます。</li>
+                <li>目を閉じて、ゆっくり三回<br>鼻から吸って、口から吐きます。</li>
+                <li>吐く息といっしょに<br>胸のつかえが<br>体の外へ流れていくのを感じます。</li>
+                <li>自分の背中のうしろに<br>あたたかい気配があるのを<br>思い浮かべます。</li>
+                <li>心の中で<br>「今日もよろしくお願いします」と<br>伝えて、目を開けます。</li>
+            </ol>
+        </div>
+
+        <div class="msg reveal">
+            <p>このワークを続けていると<br>ふとしたときに<br>背中があたたかく感じたり<br>迷ったときに<br>すっと答えが浮かんだりします。</p>
+            <p class="em">それが、守護が届いている合図です。</p>
+        </div>
+
+        <!-- ===== 結び ===== -->
+        <div class="closing reveal">
+            <p>守護神との結びは<br>一度太くなれば<br>ずっとそのまま、ではありません。</p>
+            <p>季節が巡るたびに<br>人生の節目を迎えるたびに<br>太くなったり、細くなったりしています。</p>
+            <p class="em">だからこそ<br>ときどき立ち止まって<br>今の結びを確かめることが<br>大切なのです。</p>
+            <p>あなたの守護神は<br>今日も、あなたのすぐそばにいます。</p>
+            <p>その守りが<br>あなたにまっすぐ届きますように。</p>
+            <p>ご縁に、心から感謝を込めて。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+
+    <script>
+    /* きらめきを散らす */
+    (function () {
+        var box = document.getElementById('stars');
+        if (!box) return;
+        for (var i = 0; i < 28; i++) {
+            var s = document.createElement('span');
+            s.style.left = (Math.random() * 100) + '%';
+            s.style.top = (Math.random() * 100) + '%';
+            s.style.animationDelay = (Math.random() * 4) + 's';
+            s.style.animationDuration = (3 + Math.random() * 3) + 's';
+            var size = 2 + Math.random() * 2;
+            s.style.width = size + 'px';
+            s.style.height = size + 'px';
+            box.appendChild(s);
+        }
+    })();
+    </script>
+    <script>
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
+<!-- GA4 カスタム計測：開封/最後まで読んだか [GA4-MIYUKI] -->
+<script>
+(function () {
+  function fire() {
+    var base = { kantei_id: 'tokuten_note', persona: 'miyuki' };
+    gtag('event', 'page_open', base);
+    var end = document.querySelector('.signature');
+    if (end && 'IntersectionObserver' in window) {
+      var done = false;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && !done) { done = true; gtag('event', 'read_complete', base); io.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      io.observe(end);
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire); else fire();
+})();
+</script>
+</body>
+</html>
