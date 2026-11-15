@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) : GA4 計測 [GA4-MIYUKI] -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHLDFT6DR7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JHLDFT6DR7');
+    </script>
+    <title>とり様　本式守護鑑定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a1a3e 100%);
+            color: #e8e8f0;
+            line-height: 2;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 15, 46, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(100, 100, 200, 0.2),
+                        inset 0 0 60px rgba(100, 100, 200, 0.05);
+            border: 1px solid rgba(200, 200, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8b8ff;
+            font-size: 2em;
+            margin-bottom: 90px;
+            text-shadow: 0 0 20px rgba(168, 184, 255, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        h2 {
+            color: #c8d0ff;
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(168, 184, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .oracle-message {
+            background: linear-gradient(135deg, rgba(60, 60, 120, 0.3), rgba(40, 40, 100, 0.3));
+            border: 2px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(100, 100, 200, 0.2);
+            position: relative;
+        }
+
+        .oracle-message::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            background: #1a1a3e;
+            padding: 0 15px;
+        }
+
+        .guardian-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(168, 184, 255, 0.3);
+        }
+
+        .oracle-message p {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(30, 30, 70, 0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .emoji-header {
+            font-size: 1.8em;
+            margin: 40px 0 20px;
+            color: #c8d0ff;
+            text-align: left;
+        }
+
+        .guardian {
+            text-align: center;
+            font-size: 1.3em;
+            color: #a8b8ff;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(168, 184, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 0 15px rgba(168, 184, 255, 0.4);
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        ul li {
+            margin: 20px 0;
+            color: #e8e8f0;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 15px;
+            background: rgba(60, 60, 120, 0.2);
+            border-radius: 15px;
+            font-size: 1.1em;
+            line-height: 2;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.3em;
+            color: #c8d0ff;
+            margin-top: 30px;
+        }
+
+        .cover-page {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: -20px;
+            margin-bottom: 0;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('../鑑定画像/鳥居.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .cover-title {
+            font-size: 2.5em;
+            color: #a8b8ff;
+            margin-bottom: 90px;
+            text-shadow: 0 0 30px rgba(168, 184, 255, 0.8);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+        }
+
+        .cover-subtitle {
+            font-size: 2em;
+            color: #ffd966;
+            margin-bottom: 40px;
+            text-shadow: 0 0 25px rgba(255, 217, 102, 0.6);
+            letter-spacing: 0.15em;
+            font-weight: bold;
+        }
+
+        .cover-name {
+            font-size: 1.8em;
+            color: #c8d0ff;
+            text-shadow: 0 0 20px rgba(200, 208, 255, 0.7);
+            letter-spacing: 0.1em;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(168, 184, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            text-align: center;
+            color: #ffd966;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 15px rgba(255, 217, 102, 0.4);
+        }
+        .toc ol {
+            list-style: none;
+            counter-reset: toc;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            counter-increment: toc;
+            margin: 0;
+            border-bottom: 1px dashed rgba(168, 184, 255, 0.2);
+        }
+        .toc li:last-child { border-bottom: none; }
+        .toc a {
+            display: block;
+            padding: 14px 8px 14px 40px;
+            color: #e8e8f0;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.05em;
+            transition: color 0.2s, background 0.2s;
+        }
+        .toc a::before {
+            content: counter(toc, decimal-leading-zero);
+            position: absolute;
+            left: 8px;
+            top: 14px;
+            color: #ffd966;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+        .toc a:hover, .toc a:active {
+            color: #ffd966;
+            background: rgba(168, 184, 255, 0.08);
+        }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .oracle-message,
+            .section {
+                padding: 15px 10px;
+            }
+
+            .guardian-image {
+                max-width: 100%;
+            }
+
+            .cover-page {
+                margin: -10px;
+                margin-bottom: 0;
+            }
+
+            .cover-title {
+                font-size: 1.6em;
+            }
+
+            .cover-subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-name {
+                font-size: 1.2em;
+            }
+
+            .toc {
+                padding: 20px 15px;
+            }
+
+            .toc-title {
+                font-size: 1.1em;
+            }
+
+            .toc a {
+                font-size: 0.95em;
+                padding: 12px 6px 12px 36px;
+            }
+        }
+
+        /* ===== 演出：元素の背景（冒頭〜守護神登場まで） ===== */
+        .element-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../鑑定画像/水面.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .element-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：守護神の背景（守護神登場〜本式内容の手前まで） ===== */
+        .deity-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/罔象女神.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center 18%;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .deity-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：扉の背景（本式内容〜結びまで） ===== */
+        .door-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background-image: url("../鑑定画像/ドア2.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .door-bg.is-visible { opacity: 0.4; }
+
+        /* ===== 演出：今後の流れ 季節背景 ===== */
+        .season-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .season-bg.is-visible { opacity: 0.4; }
+        #seasonWinterBg { background-image: url("../鑑定画像/冬.jpg"); }
+        #seasonSpringBg { background-image: url("../鑑定画像/春.jpg"); }
+
+        /* ===== 演出：パワーストーン背景 ===== */
+        .stone-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -4;
+            background-image: url("../素材/アクアマリン.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(1.5px) brightness(0.85);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.4s ease;
+        }
+        .stone-bg.is-visible { opacity: 0.4; }
+
+        .deity-veil {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(15, 15, 46, 0.04) 0%, rgba(15, 15, 46, 0.15) 60%, rgba(15, 15, 46, 0.25) 100%),
+                linear-gradient(180deg, rgba(15, 15, 46, 0.06) 0%, rgba(15, 15, 46, 0.18) 100%);
+        }
+
+        /* ===== 演出：花びら ===== */
+        #petals {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        :root { --gap: 56px; }
+        mark {
+            background: linear-gradient(transparent 58%, rgba(255, 217, 102, 0.38) 58%);
+            color: #fff6d8;
+            padding: 0 2px;
+        }
+        strong { color: #ffe9a8; font-weight: 700; }
+        .summary-box {
+            background: rgba(30, 30, 70, 0.5);
+            border: 1px solid rgba(255, 217, 102, 0.35);
+            border-radius: 14px;
+            padding: 24px 16px 8px;
+            margin: 0 0 var(--gap);
+        }
+        .summary-title {
+            text-align: center;
+            color: #ffd966;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+        }
+        ul.summary-list { margin: 0; }
+        ul.summary-list li {
+            margin: 0;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 217, 102, 0.18);
+        }
+        ul.summary-list li:last-child { border-bottom: none; }
+        ul.summary-list li::before {
+            content: '✦';
+            display: block;
+            color: #ffd966;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="element-bg" id="elementBg"></div>
+    <div class="deity-bg" id="deityBg"></div>
+    <div class="door-bg" id="doorBg"></div>
+    <div class="season-bg" id="seasonWinterBg"></div>
+    <div class="season-bg" id="seasonSpringBg"></div>
+    <div class="stone-bg" id="stoneBg"></div>
+    <div class="deity-veil"></div>
+    <canvas id="petals"></canvas>
+
+    <!-- 表紙 -->
+    <div class="cover-page">
+        <div class="cover-content">
+            <h1 class="cover-title">本式守護霊視鑑定書</h1>
+            <h2 class="cover-subtitle">これは、流します</h2>
+            <p class="cover-name">とり様</p>
+        </div>
+    </div>
+
+    <!-- 本文 -->
+    <div class="container">
+
+        <!-- 目次 -->
+        <nav class="toc">
+            <div class="toc-title">― 目 次 ―</div>
+            <ol>
+                <li><a href="#sec-path">あなたが歩いてきた道</a></li>
+                <li><a href="#sec-now">今のとり様</a></li>
+                <li><a href="#sec-god">あなたの守護神</a></li>
+                <li><a href="#sec-future">あなたの未来に視えるもの</a></li>
+                <li><a href="#sec-1">1. 仕事が動く時期</a></li>
+                <li><a href="#sec-2">2. 今の場所とのご縁</a></li>
+                <li><a href="#sec-3">3. 圧に折れない力</a></li>
+                <li><a href="#sec-4">4. 余白を守る方法</a></li>
+                <li><a href="#sec-flow">今後の5ヶ月</a></li>
+                <li><a href="#sec-year">今年と来年</a></li>
+                <li><a href="#sec-more">もう少し先に視えていること</a></li>
+                <li><a href="#sec-guardian">守護を受け取る方法</a></li>
+                <li><a href="#sec-stone">あなたと響き合うパワーストーン</a></li>
+                <li><a href="#sec-closing">結びの言葉</a></li>
+            </ol>
+        </nav>
+
+        <div id="elementSentinel"></div>
+        <div class="oracle-message">
+            <p style="margin-bottom: var(--gap);">とり様</p>
+            <p style="margin-bottom: var(--gap);">本式守護鑑定をお受けいただき<br>本当にありがとうございます。</p>
+            <div class="summary-box">
+            <p class="summary-title">【今回の鑑定のまとめ】</p>
+            <ul class="summary-list">
+                <li>今のお仕事は、<br>辞めずに続けて大丈夫です。<br>ただし「今のまま」ではなく、<br>日数や時間、<br>上司様との距離を整えながら続ける形が合っています</li>
+                <li>働き方が動くのは2027年の春です。<br>1月に守りが満ち、<br>2月に希望を書き出し、<br>3月に相談を出すと、<br>かたちになっていきます</li>
+                <li>「私の不手際が悪い」と心が折れそうになるのは、<br>とり様の弱さのせいではありません。<br>言われたことを全部ご自分の中に持ち帰ってしまう癖があり、<br>そこに重さが溜まっていました</li>
+                <li>70歳まで続けることはできますが、<br>稼ぎは追いかけなくて大丈夫です。<br>必要な分は巡ってくるので、<br>「程々」で整えたほうが、<br>これからは手応えがあります</li>
+                <li>合図の言葉は「これは、流します」。<br>守護神の月は2027年1月です</li>
+            </ul>
+            </div>
+            <p style="margin-bottom: var(--gap);">「楽しい職場だが<br>時々しんどい気持ちになります。」</p>
+            <p style="margin-bottom: var(--gap);">「私の不手際が悪いのですが<br>指導の圧が強くて<br>心が折れそうになります。」</p>
+            <p style="margin-bottom: var(--gap);">「ここで続けていた方が良いですか？」</p>
+            <p style="margin-bottom: var(--gap);">「もう人生謳歌できるのも<br>10年やそこらの年代に来てるので<br>仕事は程々にしたい気もあるし<br>けどお金もまだ稼ぎたい<br>(勤務は70歳まで現状維持可能)」</p>
+            <p style="margin-bottom: var(--gap);">いただいたこの言葉を読んだとき<br>とり様がどれほど長いあいだ<br>職場の空気をやわらげ<br>人の気持ちを汲み取りながら<br>ご自分のしんどさは後ろへ置いて<br>働いてこられたのか<br>その重みがまっすぐ胸に届きました。</p>
+            <p style="margin-bottom: var(--gap);">今回、とり様の守護神とつながり<br>霊視を進めていくと<br>守護神は何度も同じところへ<br>私の意識を引き戻してきました。</p>
+            <p style="margin-bottom: var(--gap);">「どうして私は<br>言われた言葉を<br>こんなに奥まで抱えてしまうのだろう」</p>
+            <p style="margin-bottom: var(--gap);">とり様がずっと心の奥で抱えてきた<br>その問いの答えが<br>そこにありました。</p>
+            <p style="margin-bottom: 0;">その答えにたどり着くために<br>まずはとり様が歩いてきた道から<br>お伝えしていきますね。</p>
+        </div>
+
+        <h2 id="sec-path">【あなたが歩いてきた道】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">守護神が最初に視せてくれたのは<br>夕暮れの職場に立つ<br>とり様の背中でした。</p>
+            <p style="margin-bottom: 90px;">誰かの表情が曇ったことに<br>いちばんに気づいて<br>さりげなく声をかける背中です。</p>
+            <p style="margin-bottom: 90px;">張りつめた空気が漂えば<br>ひとことの冗談で<br>場をほどいていく背中です。</p>
+            <p style="margin-bottom: 90px;">そうして気づけば<br>みんなが笑える居場所が<br>とり様のまわりにできていました。</p>
+            <p style="margin-bottom: 90px;">ここ数年は<br>同僚や後輩の方々から頼られ<br>人の輪の真ん中で<br>仕事を支えてこられた日々だったはずです。</p>
+            <p style="margin-bottom: 90px;">今の暮らしの安心も<br>今の職場の明るさも<br>その歩みの上にあります。</p>
+            <p style="margin-bottom: 90px;">ただ、その背中を視ていて<br>一つ気づいたことがあります。</p>
+            <p style="margin-bottom: 0;">職場の人の気持ちを<br>奥まで汲み取ってきたとり様は<br>人の言葉も、奥まで汲み取って<br>ご自分の中へ持ち帰ってきた人なのです。</p>
+        </div>
+
+        <h2 id="sec-now">【今のとり様】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">その歩き方は<br>今のとり様にもそのまま続いています。</p>
+            <p style="margin-bottom: 90px;">指導を受けた日は<br>その場では「はい、すみません」と<br>笑顔で席に戻られるのではないでしょうか。</p>
+            <p style="margin-bottom: 90px;">けれど夜になって<br>帰り道や湯船の中で<br>言われた一言が、また頭の中で流れ出す。</p>
+            <p style="margin-bottom: 90px;">「あの言い方は何だったのだろう」<br>ではなく<br>「私の確認が足りなかった」と<br>ご自分の不手際を数え直していませんか。</p>
+            <p style="margin-bottom: 90px;">職場で誰かが指摘されている場面に<br>居合わせたときも同じです。</p>
+            <p style="margin-bottom: 90px;">ご自分が言われたわけでもないのに<br>胸がきゅっと縮んで<br>重くなった空気を、肩に受けてしまう。</p>
+            <p style="margin-bottom: 90px;">休憩室で<br>場をやわらげようと冗談を言いながら<br>その重さは、帰りの荷物の中に<br>そっとしまって帰っていませんか。</p>
+            <p style="margin-bottom: 90px;">そして<br>「仕事は程々にしたい」と思うたびに<br>「でもまだ稼ぎたい」と打ち消して<br>どちらも決めきれないまま<br>答えを探し続けている。</p>
+            <p style="margin-bottom: 90px;">その答えの出ない問いも<br>家に持ち帰って<br>夜、一人で考えているのではないでしょうか。</p>
+            <p style="margin-bottom: 90px;">言われたことは、持ち帰る。</p>
+            <p style="margin-bottom: 90px;">人の重い空気も、持ち帰る。</p>
+            <p style="margin-bottom: 90px;">決めきれない迷いも、持ち帰る。</p>
+            <p style="margin-bottom: 90px;">どれも、とり様の誠実さです。</p>
+            <p style="margin-bottom: 90px;">でも、この3つには<br>共通していることがあります。</p>
+            <p style="margin-bottom: 90px;">どれも、その場で手放さずに<br>夜のご自分の中へ<br>運び込んでいるということです。</p>
+            <p style="margin-bottom: 90px;">それが長く続いた結果<br>一つの癖ができていました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">言葉も、空気も、迷いも<br>全部ご自分の中に持ち帰ってしまう癖です。</p>
+            <p style="margin-bottom: 90px;">この癖があると<br>こんなことが起きます。</p>
+            <p style="margin-bottom: 90px;">湯船の中で<br>昼間の一言を思い返してしまう。</p>
+            <p style="margin-bottom: 90px;">メッセージを送る前に<br>何度も読み返してしまう。</p>
+            <p style="margin-bottom: 90px;">指摘を受けると<br>「私が悪いのでは」が先に浮かぶ。</p>
+            <p style="margin-bottom: 90px;">お休みの日にまで<br>職場の人の顔が浮かんでくる。</p>
+            <p style="margin-bottom: 90px;">思い当たるところはありませんか。</p>
+            <p style="margin-bottom: 90px;">実はこの癖こそが<br>冒頭でお伝えした<br>守護神が何度も私の意識を引き戻したところ。</p>
+            <p style="margin-bottom: 0;">今回の鑑定のすべての鍵になります。</p>
+        </div>
+
+        <div id="guardianSentinel"></div>
+        <h2 id="sec-god">【あなたの守護神】</h2>
+        <div class="oracle-message">
+            <p style="margin-bottom: 90px;">では、そんなとり様を守護しているのは<br>どんな神様なのか。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">罔象女神</span><br>（みつはのめのかみ）。</p>
+            <p style="margin-bottom: 90px;">弥都波能売神とも書かれる<br>清らかな水の女神です。</p>
+            <p style="margin-bottom: 90px;">日本の国土を生んだ母神<br>伊邪那美命（いざなみのみこと）が<br>火の神を産んだとき<br>身を焼くような熱に苦しみました。</p>
+            <p style="margin-bottom: 90px;">その苦しみのただ中に<br>寄り添うように生まれたのが<br>罔象女神です。</p>
+            <p style="margin-bottom: 90px;">荒れ狂う熱を鎮め<br>母神の痛みをやわらげる<br>清水の神として、この世に現れました。</p>
+            <p style="margin-bottom: 90px;">のちに罔象女神は<br>田畑をうるおし、井戸を満たし<br>人々の暮らしの水を守る神様として<br>各地で祀られるようになります。</p>
+            <p style="margin-bottom: 90px;">奈良の丹生川上神社では<br>昔、雨が降らない年には黒い馬<br>降り続いて困る年には白い馬を<br>朝廷が捧げて祈りました。</p>
+            <p style="margin-bottom: 90px;">水は、少なすぎても多すぎても<br>人の暮らしを困らせます。</p>
+            <p style="margin-bottom: 90px;">その加減を見守ってきたのが<br>この神様です。</p>
+            <p style="margin-bottom: 90px;">熱に苦しむ母神の痛みを<br>奥まで受け止めた神様。</p>
+            <p style="margin-bottom: 90px;">まるで、とり様そのもののような<br>神様です。</p>
+            <p style="margin-bottom: 90px;">でも、ここからが大切なところです。</p>
+            <p style="margin-bottom: 90px;">罔象女神は<br>受け止めた水を抱え込む神様とは違います。</p>
+            <p style="margin-bottom: 90px;">井戸の水が人をうるおし<br>田畑が実るのは<br>水が湧いて、流れて、巡るからです。</p>
+            <p style="margin-bottom: 90px;">流れずに溜まったままの水は<br>どれほど澄んでいても濁っていきます。</p>
+            <p style="margin-bottom: 90px;">罔象女神が司るのは<br>深いところから汲み上げて<br>澄んだものだけを手元に残し<br>あとは流していく働きです。</p>
+            <p style="margin-bottom: 90px;">熱を受け止めた水は<br>そこにとどまらず<br>田へ、川へと流れて<br>人の暮らしを潤していきました。</p>
+            <p style="margin-bottom: 90px;">受け取る神様は<br>流す神様でもあるのです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">言葉も空気も迷いも<br>全部持ち帰る道を歩いてきたとり様の<br>そばに、この神様がいる。</p>
+            <p style="margin-bottom: 0; font-weight: bold;">それは<br>「受け取った言葉のすべてを<br>抱えなくていい。<br>これは、流しますと言っていい」<br>と伝えるためにほかなりません。</p>
+            <img src="../鑑定画像/罔象女神.png" alt="罔象女神" class="guardian-image">
+        </div>
+
+        <div id="essenceSentinel"></div>
+        <h2 id="sec-future">【あなたの未来に視えるもの】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">その罔象女神が<br>とり様のこの先の景色を<br>見せてくれました。</p>
+            <p style="margin-bottom: 90px;">2027年の春<br>桜が散って、若葉が出はじめる頃の朝です。</p>
+            <p style="margin-bottom: 90px;">とり様は、無理のない時間に家を出て<br>窓の外の新緑を見ながら<br>職場へ向かっています。</p>
+            <p style="margin-bottom: 90px;">職場では<br>とり様の気づかいと落ち着きを<br>みんなが頼りにしています。</p>
+            <p style="margin-bottom: 90px;">席に着いてしばらくすると<br>上司様が<br>「ここ、あとで見ておいてね」と<br>声をかけてきます。</p>
+            <p style="margin-bottom: 90px;">いつものとり様なら<br>「私の確認が足りなかった」と<br>その一言を夜まで抱えて帰る場面です。</p>
+            <p style="margin-bottom: 90px;">けれどその日は<br>心の中で「これは、流します」と唱えて<br>直すところだけを手帳に一行書いて<br>そっとペンを置いています。</p>
+            <p style="margin-bottom: 90px;">昼休みには<br>休憩室で同僚の方々と<br>湯気の立つお茶を囲んで<br>声をあげて笑っています。</p>
+            <p style="margin-bottom: 90px;">仕事を終えた夕方の光の中<br>とり様は、ずっと行きたかった場所へ<br>軽い足取りで向かっています。</p>
+            <p style="margin-bottom: 90px;">その夜<br>湯船に浸かりながら<br>今日の言葉を一つも思い返していない<br>ご自分に気づきます。</p>
+            <p style="margin-bottom: 90px;">月末には<br>暮らしに不安のない実入りが手元にあり<br>「これでよかった」と<br>心の底から思えています。</p>
+            <p style="margin-bottom: 90px;">その兆しが<br>はっきりと視えています。</p>
+            <p style="margin-bottom: 90px;">最初の変化が訪れるのは<br>年が明けて、1月の初め頃です。</p>
+            <p style="margin-bottom: 90px;">ここから先は<br>この朝へ向かう道を<br>4つに分けてお伝えしていきますね。</p>
+            <p style="margin-bottom: 0;">仕事が動く時期のこと<br>今の場所とのご縁のこと<br>圧に折れない力のこと<br>余白を守る方法のことです。</p>
+        </div>
+
+        <div id="deitySentinel"></div>
+        <h2 class="emoji-header" id="sec-1">⛩️ 1. 仕事が動く時期</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">働き方が動くのは<br>いつなのか。</p>
+            <p style="margin-bottom: 90px;">それがまず<br>いちばんに知りたいことでしたね。</p>
+            <p style="margin-bottom: 90px;">守護神にそのことを尋ねると<br>先に、別の景色を見せてくれました。</p>
+            <p style="margin-bottom: 90px;">2026年の暮れ<br>夜の台所です。</p>
+            <p style="margin-bottom: 90px;">とり様が流しの前に立って<br>その日に言われた言葉を<br>両手ですくった水のように<br>ひとつ残らず抱えています。</p>
+            <p style="margin-bottom: 90px;">こぼしてはいけないと<br>指をぴたりと閉じたまま<br>動けずにいます。</p>
+            <p style="margin-bottom: 90px;">そのそばで<br>罔象女神が<br>とり様の手首にご自分の手を重ねています。</p>
+            <p style="margin-bottom: 90px;">指と指のあいだを<br>ほんの少しだけひらくと<br>抱えていた水が<br>澄んだ音を立てて流れ落ちていきます。</p>
+            <p style="margin-bottom: 90px;">とり様は驚いたように<br>空いた手のひらを見つめています。</p>
+            <p style="margin-bottom: 90px;">これを視たとき<br>私は思わず胸が詰まりました。</p>
+            <p style="margin-bottom: 90px;">この光景と一緒に<br>伝わってきたことがあります。</p>
+            <p style="margin-bottom: 90px;">とり様の心が折れそうになっていたのは<br>不手際が多かったからではありません。</p>
+            <p style="margin-bottom: 90px;">言われた言葉を<br>ひとつ残らず持ち帰り続けて<br>抱えた手が重くなっていたのです。</p>
+            <p style="margin-bottom: 90px;">ここでも「全部持ち帰る」癖が<br>出ていたのです。</p>
+            <p style="margin-bottom: 90px;">では、働き方が動くのはいつなのか。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">守護神から伝わってきたのは<br>動き出しは、年が明けた2027年の春<br>なかでも3月だということです。</p>
+            <p style="margin-bottom: 90px;">2026年の残りは<br>迷いを抱えたまま見極める期間です。</p>
+            <p style="margin-bottom: 90px;">頑張って前に出る時期より<br>整えながら進む年が<br>これから5年ほど続きます。</p>
+            <p style="margin-bottom: 90px;">だから今は<br>答えを急がなくて大丈夫です。</p>
+            <p style="margin-bottom: 90px;">その迷いは<br>立ち止まっているようで<br>次の働き方を水底から汲み上げている<br>大切な時間です。</p>
+            <p style="margin-bottom: 90px;">春になると<br>勤務の日数や時間<br>上司様との関わり方を<br>とり様から動かせる巡りが入ってきます。</p>
+            <p style="margin-bottom: 90px;">上司様の側も2027年は<br>決まりごとが型に落ち着き<br>書面にしたことが通りやすい年です。</p>
+            <p style="margin-bottom: 90px;">さらに先の2031年<br>66歳を迎える頃には<br>お仕事との付き合い方が<br>堅実で安定したかたちへ変わっていきます。</p>
+            <p style="margin-bottom: 90px;">ただ、気に留めておきたい年があります。</p>
+            <p style="margin-bottom: 90px;">2028年から2029年にかけては<br>上司様ご自身の勢いが<br>いちばん強まる2年です。</p>
+            <p style="margin-bottom: 90px;">その2年に入ってから整えようとすると<br>受け止める分が大きくなってしまいます。</p>
+            <p style="margin-bottom: 90px;">だから、その前の2027年の春に<br>関わり方を整えておく。</p>
+            <p style="margin-bottom: 90px;">それがいちばん無理のない順番です。</p>
+            <p style="margin-bottom: 90px;">2027年は<br>疲れが体に出やすい年でもあります。</p>
+            <p style="margin-bottom: 90px;">眠りの浅さや、目の疲れ、胃腸の重さが<br>サインとして届いたら<br>頑張るより先に休んでください。</p>
+            <p style="margin-bottom: 90px;">そして<br>2月に入ったら<br>とり様がお願いしたい働き方を<br>メモに3行だけ書き出してみてください。</p>
+            <p style="margin-bottom: 90px;">日数でも、時間でも<br>上司様との距離でも構いません。</p>
+            <p style="margin-bottom: 90px;">整っていなくていいのです。</p>
+            <p style="margin-bottom: 90px;">言葉を頭の中に置いたままにせず<br>紙に預ける。</p>
+            <p style="margin-bottom: 90px;">それが、持ち帰る癖のかわりに<br>言葉を預ける練習になります。</p>
+            <p style="margin-bottom: 90px;">続けるうちに<br>言いたいことが頭の中で<br>ぐるぐる回る夜が<br>少しずつ減っていきます。</p>
+            <p style="margin-bottom: 0;">ただ、動かすのが春だとして<br>そもそも今の職場は<br>続けていい場所なのでしょうか。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-2">⛩️ 2. 今の場所とのご縁</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ご質問いただいた<br>「ここで続けていた方が良いですか？」。</p>
+            <p style="margin-bottom: 90px;">その答えは、とてもシンプルです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">続けていい。</p>
+            <p style="margin-bottom: 90px;">ただし、「今のまま」とは違い<br>関わり方と時間と距離を整えて<br>続けていく。</p>
+            <p style="margin-bottom: 90px;">それが、とり様に合っています。</p>
+            <p style="margin-bottom: 90px;">守護神は、4つのことを伝えてきました。</p>
+            <p style="margin-bottom: 90px;">1つ目は、居場所の力です。</p>
+            <p style="margin-bottom: 90px;">とり様の周りには<br>本当に困ったときに<br>どこからか手を貸してくれる人が<br>ちゃんといます。</p>
+            <p style="margin-bottom: 90px;">2つ目は、場の力です。</p>
+            <p style="margin-bottom: 90px;">人が集まり、話が通じ<br>みんなが笑える。</p>
+            <p style="margin-bottom: 90px;">そういう居場所を、とり様はご自分で育て<br>今もその真ん中にいます。</p>
+            <p style="margin-bottom: 90px;">3つ目は、評判と信用です。</p>
+            <p style="margin-bottom: 90px;">とり様が思っているよりずっと<br>とり様の仕事ぶりは<br>周りの方から信頼されています。</p>
+            <p style="margin-bottom: 90px;">そして4つ目が<br>これからの10年です。</p>
+            <p style="margin-bottom: 90px;">66歳を過ぎてからは<br>勢いよく稼ぐ時期よりも<br>今の立場を守りながら<br>堅実に勤めていく時期に入ります。</p>
+            <p style="margin-bottom: 90px;">「勤務は70歳まで現状維持可能」と<br>おっしゃっていたことと<br>ぴたりと重なっています。</p>
+            <p style="margin-bottom: 90px;">職場の力は、すべて福です。</p>
+            <p style="margin-bottom: 90px;">しんどさの出どころは<br>上司様との間の<br>ただ一点だけでした。</p>
+            <p style="margin-bottom: 90px;">その上司様とは<br>縁が深く、離れにくい間柄です。</p>
+            <p style="margin-bottom: 90px;">離れるよりも<br>距離と関わり方を整えていくほうが<br>とり様の運命に沿っています。</p>
+            <p style="margin-bottom: 90px;">そして<br>「お金もまだ稼ぎたい」について。</p>
+            <p style="margin-bottom: 90px;">とり様には<br>稼ぎ、守る力が<br>もともと十分に備わっています。</p>
+            <p style="margin-bottom: 90px;">ただ、66歳を過ぎたあとは<br>稼ぎを追いかけるほど<br>手応えが薄くなる巡りがあります。</p>
+            <p style="margin-bottom: 90px;">追いかけなくても<br>必要な分は、ちゃんと巡ってきます。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">だから、「程々」で大丈夫です。</p>
+            <p style="margin-bottom: 90px;">その程々は<br>諦めでも妥協でもありません。</p>
+            <p style="margin-bottom: 90px;">罔象女神が<br>とり様のために選んだ<br>水の量なのです。</p>
+            <p style="margin-bottom: 90px;">ここにも、あの癖が顔を出していました。</p>
+            <p style="margin-bottom: 90px;">「まだ稼ぎたい」を<br>全部ご自分で抱えて<br>一人で決めようとしていたのです。</p>
+            <p style="margin-bottom: 90px;">続けるか迷う夜は<br>その日、職場でいちばん笑った場面を<br>ひとつ思い出してみてください。</p>
+            <p style="margin-bottom: 90px;">迷いを抱えて眠る代わりに<br>合っている場所だと<br>ご自分で確かめる時間になります。</p>
+            <p style="margin-bottom: 90px;">その積み重ねが<br>「ここにいていい」という実感を<br>とり様の中に育てていきます。</p>
+            <p style="margin-bottom: 90px;">ただ、続けるうえで<br>いちばんの課題は<br>やはり上司様の指導です。</p>
+            <p style="margin-bottom: 0;">なぜあれほど<br>心に刺さってしまうのでしょうか。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-3">⛩️ 3. 圧に折れない力</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">「私の不手際が悪いのですが」と<br>おっしゃっていましたね。</p>
+            <p style="margin-bottom: 90px;">不手際があったかどうかとは別に<br>とり様の中では<br>一つの指摘が、何倍にも重くなっています。</p>
+            <p style="margin-bottom: 90px;">守護神から伝わってきたのは<br>その重さの出どころです。</p>
+            <p style="margin-bottom: 90px;">とり様は<br>言葉を奥まで受け取る力が<br>人一倍深い方です。</p>
+            <p style="margin-bottom: 90px;">ひとことが胸の奥に届くと<br>そのあとも何度も響き続けて<br>夜になってから、また効いてくる。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">それは、とり様の弱さではありません。</p>
+            <p style="margin-bottom: 90px;">水底まで音が届く<br>深い井戸のような感受性です。</p>
+            <p style="margin-bottom: 90px;">そこへ、上司様の言葉が届きます。</p>
+            <p style="margin-bottom: 90px;">上司様は<br>気になる点を見つけると<br>黙っていられない方です。</p>
+            <p style="margin-bottom: 90px;">基準が高く<br>ご自分にも人にも<br>切れ味を求めるところがあります。</p>
+            <p style="margin-bottom: 90px;">同時に<br>教えたい、手元で育てたいという<br>面倒見の強さもお持ちです。</p>
+            <p style="margin-bottom: 90px;">そして2026年は<br>上司様ご自身も<br>上から圧や責任を受けて<br>余裕のない年にあたっています。</p>
+            <p style="margin-bottom: 90px;">自分の持ち場への不安が<br>細かさや強さとなって<br>指導に出やすいのです。</p>
+            <p style="margin-bottom: 90px;">そこに悪意はありません。</p>
+            <p style="margin-bottom: 90px;">上司様の鋭さと世話焼きと余裕のなさが<br>とり様のいちばん繊細なところに<br>まっすぐ届いてしまう。</p>
+            <p style="margin-bottom: 90px;">そういう組み合わせの二人なのです。</p>
+            <p style="margin-bottom: 90px;">ですから、この圧は<br>とり様の力不足のせいではありません。</p>
+            <p style="margin-bottom: 90px;">ここまでが、重く感じる理由です。</p>
+            <p style="margin-bottom: 90px;">次に、とり様が持っている力をお伝えします。</p>
+            <p style="margin-bottom: 90px;">1つ目は、圧を和らげる力です。</p>
+            <p style="margin-bottom: 90px;">とり様は、強い言葉を<br>正面から受けて立つ方とは違います。</p>
+            <p style="margin-bottom: 90px;">ユーモアと気づかいで<br>ふっと空気をほどいて<br>受け流してきた人です。</p>
+            <p style="margin-bottom: 90px;">圧に勝とうとしないで<br>圧を和らげる。</p>
+            <p style="margin-bottom: 90px;">それがとり様の強さです。</p>
+            <p style="margin-bottom: 90px;">この力は、水が火をおさめる姿と同じです。</p>
+            <p style="margin-bottom: 90px;">2つ目は、本質を見抜く洞察の力です。</p>
+            <p style="margin-bottom: 90px;">罔象女神が深いところから<br>澄んだものだけを汲み上げるように<br>とり様は、言葉の奥にある本音を<br>感じ取ることができます。</p>
+            <p style="margin-bottom: 90px;">上司様の強い言葉の奥には<br>「ちゃんと育てたい」という<br>熱が隠れています。</p>
+            <p style="margin-bottom: 90px;">その熱だけを汲み上げて<br>棘は流していい。</p>
+            <p style="margin-bottom: 90px;">それができる方です。</p>
+            <p style="margin-bottom: 90px;">3つ目は、守ってくれる人と神様の力です。</p>
+            <p style="margin-bottom: 90px;">困ったとき、手を貸してくれる人の縁と<br>災いをやわらげる守りが<br>とり様の運命には刻まれています。</p>
+            <p style="margin-bottom: 90px;">罔象女神の守護も<br>今、とても強く届いています。</p>
+            <p style="margin-bottom: 90px;">だからとり様は<br>圧に折れる人とは違います。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">受け取りすぎていただけで<br>折れてはいなかったのです。</p>
+            <p style="margin-bottom: 90px;">その受け取る量を<br>少しずつ整えていきましょう。</p>
+            <p style="margin-bottom: 90px;">指導を受けた日の帰り道に<br>言われたことを「直すこと」と<br>「流すこと」に分けてみてください。</p>
+            <p style="margin-bottom: 90px;">直すことだけを手帳に一行書いて<br>残りは、心の中で<br>「これは、流します」と唱える。</p>
+            <p style="margin-bottom: 90px;">これが、罔象女神への合図になります。</p>
+            <p style="margin-bottom: 90px;">続けるうちに<br>夜に思い返す時間が短くなり<br>上司様の言葉の中で<br>本当に必要な部分だけが<br>手元に残るようになります。</p>
+            <p style="margin-bottom: 90px;">圧の強さが同じでも<br>重さが違ってくるのです。</p>
+            <p style="margin-bottom: 90px;">ただ、言葉を流せるようになっても<br>楽しむ余白まで<br>流れてしまっては意味がありません。</p>
+            <p style="margin-bottom: 0;">では、どうすればその余白を<br>守っていけるのでしょうか。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-4">⛩️ 4. 余白を守る方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">とり様は、人生を楽しみたい気持ちが<br>とても強い方です。</p>
+            <p style="margin-bottom: 90px;">「謳歌できるのも10年やそこら」と<br>おっしゃった言葉の奥には<br>本当は、もっと楽しみたい<br>という願いがあります。</p>
+            <p style="margin-bottom: 90px;">罔象女神の守護は<br>その願いを守るためにあります。</p>
+            <p style="margin-bottom: 90px;">余白を守るうえで<br>いちばん大切なのは<br>頑張って守ることより<br>受け取る側を整えておくことです。</p>
+            <p style="margin-bottom: 90px;">2027年1月に、守護の力が満ちる月が来ます。</p>
+            <p style="margin-bottom: 90px;">その月に罔象女神の水を受け取り<br>春の動き出しに備える。</p>
+            <p style="margin-bottom: 90px;">この順番が、とり様に合っています。</p>
+            <p style="margin-bottom: 90px;">ただ、余白を削る場面も<br>先に知っておきましょう。</p>
+            <p style="margin-bottom: 90px;">2027年は、言葉の行き違いが<br>起きやすい年です。</p>
+            <p style="margin-bottom: 90px;">勤務の条件や、上司様への相談は<br>口頭だけで済ませると<br>「言った、言わない」になりやすく<br>夜に思い返す種になります。</p>
+            <p style="margin-bottom: 90px;">書面やメモに残しておくと<br>あとで思い返すことが減り<br>心の余白が削られません。</p>
+            <p style="margin-bottom: 90px;">上司様にとっても<br>書面があることで安心して話せる年です。</p>
+            <p style="margin-bottom: 90px;">それから、稼ぐことを追いすぎると<br>手元に残る感覚が<br>薄くなってしまう巡りがあります。</p>
+            <p style="margin-bottom: 90px;">必要な分が巡るという<br>水の考え方で<br>お金と付き合っていきましょう。</p>
+            <p style="margin-bottom: 90px;">そのうえで<br>楽しむ予定を<br>先に手帳に入れておいてください。</p>
+            <p style="margin-bottom: 90px;">お仕事の予定の隙間に<br>楽しみを入れるより<br>楽しみを先に置いて<br>その余白に、お仕事を合わせていく。</p>
+            <p style="margin-bottom: 90px;">行きたかった場所でも<br>会いたい方との食事でも<br>小さな楽しみで構いません。</p>
+            <p style="margin-bottom: 90px;">先に置いておくと<br>圧のある日でも<br>「あの日が待っている」という<br>戻れる場所になります。</p>
+            <p style="margin-bottom: 0;">これが、稼ぎながら<br>人生を楽しむ余白を守る<br>いちばんの近道です。</p>
+        </div>
+
+        <h2 id="sec-flow">【今後の5ヶ月】</h2>
+        <div class="section">
+            <p style="margin-bottom: 0;">ここまでお伝えしてきた<br>「これは、流します」の練習は<br>この先の5ヶ月で、一段ずつ進んでいきます。</p>
+        </div>
+
+        <div id="flow1Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年11月：分けはじめる月</p>
+            <p style="margin-bottom: 90px;">迷いを抱えたまま<br>見極める時期の中にいます。</p>
+            <p style="margin-bottom: 90px;">答えは、まだ出さなくて構いません。</p>
+            <p style="margin-bottom: 90px;">この月は<br>言われたことを<br>「直すこと」と「流すこと」に<br>分ける練習を始める月です。</p>
+            <p style="margin-bottom: 90px;">指導を受けた日の帰り道に<br>その場面が巡ってきます。</p>
+            <p style="margin-bottom: 90px;">その場面がきたら合図です。</p>
+            <p style="margin-bottom: 90px;">直すことを手帳に一行書いて<br>残りは「これは、流します」。</p>
+            <p style="margin-bottom: 90px;">うまく流せない日があっても<br>構いません。</p>
+            <p style="margin-bottom: 0;">分けようとしただけで<br>練習は始まっています。</p>
+        </div>
+
+        <div id="flow2Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2026年12月：流す月</p>
+            <p style="margin-bottom: 90px;">年末は、言葉の摩擦が<br>出やすい月です。</p>
+            <p style="margin-bottom: 90px;">上司様も年末の忙しさのなかで<br>当たりが強くなりやすい頃です。</p>
+            <p style="margin-bottom: 90px;">けれどこの月は<br>とり様の力が戻ってくる月でもあります。</p>
+            <p style="margin-bottom: 90px;">仕事納めが近づく頃に<br>強めの口調で指摘される場面が<br>巡ってきます。</p>
+            <p style="margin-bottom: 90px;">その場面がきたら合図です。</p>
+            <p style="margin-bottom: 90px;">その日の帰り道に<br>直すことだけ手帳に書いて<br>残りは「これは、流します」。</p>
+            <p style="margin-bottom: 90px;">大きな相談事は<br>年が明けるまで置いておきましょう。</p>
+            <p style="margin-bottom: 0;">年内は、流す練習だけで十分です。</p>
+        </div>
+
+        <div id="flow3Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #ffd966;">2027年1月：満ちる月（守護神の月）</p>
+            <p style="margin-bottom: 90px;">罔象女神の力が<br>いちばん強く届く月です。</p>
+            <p style="margin-bottom: 90px;">水の力と、日々を支える守りの力が<br>同時に満ちていきます。</p>
+            <p style="margin-bottom: 90px;">仕事始めの朝<br>上司様から、新年最初の指摘を<br>受ける場面が巡ってきます。</p>
+            <p style="margin-bottom: 90px;">いつもなら胸の奥に残る言葉が<br>今回は胸の手前で止まって<br>すっと流れていく。</p>
+            <p style="margin-bottom: 90px;">そんな感覚が<br>訪れやすい月です。</p>
+            <p style="margin-bottom: 90px;">その感覚があったら<br>罔象女神の水が<br>届いている合図です。</p>
+            <p style="margin-bottom: 90px;">この月は<br>罔象女神ゆかりの神社へ<br>参拝するのにも最適です。</p>
+            <p style="margin-bottom: 0;">また、上司様の周りでは<br>担当や配置の話が<br>動きやすい頃でもあります。</p>
+        </div>
+
+        <div id="flow4Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年2月：書き出す月</p>
+            <p style="margin-bottom: 90px;">立春を過ぎて<br>春の気配が動き出す月です。</p>
+            <p style="margin-bottom: 90px;">職場で、新しい年度の体制や<br>勤務の話題が出てくる場面が<br>巡ってきます。</p>
+            <p style="margin-bottom: 90px;">その場面がきたら合図です。</p>
+            <p style="margin-bottom: 90px;">メモに書き出した3行を<br>その場で話し出す必要はありません。</p>
+            <p style="margin-bottom: 90px;">ただ、話題が出たら<br>手帳の3行を見返して<br>ご自分の希望を確かめておく。</p>
+            <p style="margin-bottom: 0;">それだけで、ご自分の言葉が<br>動き始めます。</p>
+        </div>
+
+        <div id="flow5Sentinel"></div>
+        <div class="section">
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">2027年3月：動かす月（最重要の月）</p>
+            <p style="margin-bottom: 90px;">働き方の土台が動く<br>いちばん大切な月です。</p>
+            <p style="margin-bottom: 90px;">冬のあいだに満ちた水が<br>春になって、流れ出していくような節目です。</p>
+            <p style="margin-bottom: 90px;">上司様に<br>「今後のことで少しお話しできますか」と<br>切り出す機会が巡ってきます。</p>
+            <p style="margin-bottom: 90px;">勤務の日数、時間、距離。</p>
+            <p style="margin-bottom: 90px;">この月こそ<br>書き出した3行を<br>書面にして、お渡しする月です。</p>
+            <p style="margin-bottom: 90px;">上司様の気持ちも揺れやすい月なので<br>言葉は書面で残しましょう。</p>
+            <p style="margin-bottom: 90px;">そうすれば、とり様の希望は<br>ちゃんと形になって届きます。</p>
+            <p style="margin-bottom: 0;">4月に入る頃には<br>動かしたものが落ち着いて<br>新しい働き方が<br>暮らしの中に根づいていきます。</p>
+        </div>
+
+        <div id="flowEndSentinel"></div>
+        <h2 id="sec-year">【今年と来年】</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">2026年は<br>外の環境や人との関わりを<br>見直す年です。</p>
+            <p style="margin-bottom: 90px;">頑張って押し出すより<br>迷いを抱えながら見極める年で<br>その迷いは正しい時間です。</p>
+            <p style="margin-bottom: 90px;">「楽しみたい」と「稼ぎたい」の間で<br>お金のことがふと心配になる日が<br>増えていませんでしたか。</p>
+            <p style="margin-bottom: 90px;">それも、この年の動きです。</p>
+            <p style="margin-bottom: 90px;">残りの日々は<br>答えを急がず、流す練習をしながら<br>年を越えてください。</p>
+            <p style="margin-bottom: 90px;">2027年は<br>働き方を、とり様ご自身で<br>動かしていける年です。</p>
+            <p style="margin-bottom: 90px;">自分から相談して<br>決めていけることが<br>増えていきます。</p>
+            <p style="margin-bottom: 90px;">上司様も規律が型に落ち着き<br>書面で話が通りやすい年です。</p>
+            <p style="margin-bottom: 90px;">体調だけは優先して<br>言葉は書面に残していきましょう。</p>
+            <p style="margin-bottom: 90px;">そして、頼っても大丈夫な人は<br>実はすぐそばにいます。</p>
+            <p style="margin-bottom: 90px;">冒頭でお伝えした<br>あの春の日の休憩室で<br>お茶を囲んで笑っていた同僚の方々。</p>
+            <p style="margin-bottom: 90px;">とり様が、気づかいで支えてきた方々が<br>今度はとり様の力になってくれます。</p>
+            <p style="margin-bottom: 0;">一人で抱えなくていいのです。</p>
+        </div>
+
+        <h2 class="emoji-header" id="sec-more">🔮 もう少し先に視えていること</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">ここまでお伝えしてきたこととは別に<br>霊視の最後に<br>2つ視えたものがありました。</p>
+            <p style="margin-bottom: 90px;">一つはうれしい兆しです。</p>
+            <p style="margin-bottom: 90px;">2027年、お仕事の外に出た先で<br>趣味や学びの場、旅先などで<br>新しい方とのご縁が<br>生まれる気配が視えています。</p>
+            <p style="margin-bottom: 90px;">職場とは関係のない場所で<br>何も背負わずに笑い合える方との時間。</p>
+            <p style="margin-bottom: 90px;">「人生を謳歌したい」という願いが<br>かたちになっていく<br>うれしい巡り合わせです。</p>
+            <p style="margin-bottom: 90px;">もう一つは<br>気に留めておいてほしいことです。</p>
+            <p style="margin-bottom: 90px;">後輩や新しく入った方への<br>指導を任される場面が<br>出てくる気配があります。</p>
+            <p style="margin-bottom: 90px;">その方が戸惑った顔をするのを見て<br>「私の教え方が悪かったのでは」と<br>全部ご自分のせいにして<br>また持ち帰りそうになる。</p>
+            <p style="margin-bottom: 90px;">そんな場面が<br>視えています。</p>
+            <p style="margin-bottom: 90px;">怖がる必要はありません。</p>
+            <p style="margin-bottom: 90px;">全部持ち帰る人から<br>流せる人へ<br>歩き出した人に訪れやすい<br>形が変わる前の揺らぎです。</p>
+            <p style="margin-bottom: 90px;">今の時点で<br>心がけてほしいことは<br>一つです。</p>
+            <p style="margin-bottom: 90px;">その場で「はい、やります」と<br>答える前に<br>一度、手帳を開いてみること。</p>
+            <p style="margin-bottom: 90px;">それだけです。</p>
+            <p style="margin-bottom: 90px;">ただ、それがいつ頃<br>どんな形で表れるのか。</p>
+            <p style="margin-bottom: 90px;">そして、どうすれば良い流れに<br>変えていけるのか。</p>
+            <p style="margin-bottom: 90px;">ここはもう少し深く<br>視させていただく必要があります。</p>
+            <p style="margin-bottom: 0;">また別の機会に<br>改めてお伝えさせてくださいね。</p>
+        </div>
+
+        <div id="guardianReturnSentinel"></div>
+        <h2 class="emoji-header" id="sec-guardian">⛩️ 守護を受け取る方法</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">でも、大丈夫です。</p>
+            <p style="margin-bottom: 90px;">今回の霊視で<br><span style="color: #ffd966;">罔象女神</span>の守護の力を<br>とり様の奥底に置いてきました。</p>
+            <p style="margin-bottom: 90px;">罔象女神の力は<br>濁りを流して澄んだものだけを残し<br>日々の暮らしの糧を整え<br>必要なものが自然と巡ってくるよう<br>支えていきます。</p>
+            <p style="margin-bottom: 90px;">この文章を読みながら<br>胸が少し温かくなる<br>肩がふっと軽くなる<br>なぜか安心する<br>そんな感覚があれば<br>もう守護は届き始めています。</p>
+            <p style="margin-bottom: 90px;">何かを頑張る必要はありません。</p>
+            <p style="margin-bottom: 90px;">ここまで読んでくださったなら<br>もう十分に受け取れています。</p>
+            <p style="margin-bottom: 90px;">もっと身近に感じたい方のために<br>罔象女神ゆかりの神社をお伝えします。</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">近くの神社は、こちらです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">星宮神社<br>（栃木県下野市細谷732）</p>
+            <p style="margin-bottom: 90px;">(水象女命が祀られています)</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">小倉水神社<br>（栃木県栃木市西方町本城1061）</p>
+            <p style="margin-bottom: 90px;">(罔象女神が祀られています)</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">水神社<br>（栃木県栃木市都賀町家中4495）</p>
+            <p style="margin-bottom: 90px;">(水波能売命が祀られています)</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">川西神社<br>（栃木県下野市川中子2165-1）</p>
+            <p style="margin-bottom: 90px;">(水速女命が祀られています)</p>
+            <p style="margin-bottom: 90px; font-size: 1.3em; font-weight: bold; color: #c8d0ff;">有名な神社は、こちらです。</p>
+            <p style="margin-bottom: 90px; font-weight: bold; color: #f0f0ff;">嘉多山浅間神社<br>（栃木県佐野市嘉多山町1786）</p>
+            <p style="margin-bottom: 90px;">(水波之売命が祀られています)</p>
+            <p style="margin-bottom: 90px;">1月の初めを過ぎた頃に<br>いちばん近い星宮神社から<br>始めるのがおすすめです。</p>
+            <p style="margin-bottom: 90px;">行ける時にお参りしてみてください。</p>
+            <p style="margin-bottom: 90px;">お願い事は唱えず<br>心の中でこうお伝えください。</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">「これまで見守ってくださり<br>ありがとうございます。<br>私は、言葉を全部は抱えずに<br>流しながら歩いていきます。<br>どうか見守っていてください」。</p>
+            <p style="margin-bottom: 90px;">お参りのとき<br>神前で、こう唱えてみてください。</p>
+            <p style="margin-bottom: 90px; color: #ffd966;">祓え給い、清め給え<br>神ながら守り給い、幸え給え</p>
+            <p style="margin-bottom: 90px;">（はらえたまい、きよめたまえ<br>かむながらまもりたまい、さきわえたまえ）</p>
+            <p style="margin-bottom: 90px;">もし余裕がある時だけ<br>朝、コップ1杯の水を<br>ゆっくり味わって飲んでみてください。</p>
+            <p style="margin-bottom: 0;">一日のはじまりに<br>澄んだ水を迎え入れる<br>小さな儀式です。</p>
+        </div>
+
+        <div id="stoneSentinel"></div>
+        <h2 class="emoji-header" id="sec-stone">⛩️ あなたと響き合うパワーストーン</h2>
+        <div class="section">
+            <p style="margin-bottom: 90px;">とり様には<br>この鑑定の中で<br>「これは、流します」という<br>合図の言葉をお渡ししました。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">罔象女神</span>の守護は<br>すでにとり様の中に届いています。</p>
+            <p style="margin-bottom: 90px;">ただ、長く続いてきた癖は<br>忙しい日ほど、戻ってきます。</p>
+            <p style="margin-bottom: 90px;">指導を受けた日の帰り道<br>言われた一言が<br>また頭の中で流れ出す。</p>
+            <p style="margin-bottom: 90px;">そんなとき<br>手首の石に触れて<br>「これは、流します」と言う。</p>
+            <p style="margin-bottom: 90px;">石は、その合図を<br>思い出すためのものです。</p>
+            <p style="margin-bottom: 90px;">その合図を手首に置けるよう<br>とり様と響き合う石で<br>ブレスレットをお作りします。</p>
+            <ul style="margin-bottom: 90px;">
+                <li><span style="color: #ffd966; font-weight: bold;">1. アクアマリン</span><br>澄みきった青い水の色を宿す石です。<br>「これは、流します」と<br>言う瞬間の一声を支えてくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">2. ラリマー</span><br>水面に空が映ったような淡い青を宿す石です。<br>言ったあとに<br>頭の中が澄んでいく落ち着きをくれます。</li>
+                <li><span style="color: #ffd966; font-weight: bold;">3. ムーンストーン</span><br>月の光を宿す石です。<br>言えなかった日も<br>明日また言えるように<br>そばで見守ってくれます。</li>
+            </ul>
+            <p style="margin-bottom: 90px;">この中から<br>とり様に一番合う組み合わせを選び<br>一粒ずつ手で編んでお作りします。</p>
+            <p style="margin-bottom: 90px;">とり様が<br>一人ひとりの気持ちを<br>奥まで汲み取ってこられたように<br>私も一粒ずつ<br>想いを込めて仕上げます。</p>
+            <p style="margin-bottom: 90px;">罔象女神の力が最も強く届く<br>1月に間に合うよう<br>ご連絡から10日以内にお送りします。</p>
+            <p style="margin-bottom: 0;">気になった方は<br>「詳細希望」とだけ<br>メッセージをくださいね。</p>
+        </div>
+
+        <div id="closingSentinel"></div>
+        <h2 id="sec-closing">【結びの言葉】</h2>
+        <div class="closing">
+            <p style="margin-bottom: 90px;">とり様</p>
+            <p style="margin-bottom: 90px;">ここまで読んでくださって<br>本当にありがとうございます。</p>
+            <p style="margin-bottom: 90px;">言葉も、空気も、迷いも<br>全部ご自分の中に持ち帰る道を<br>ずっと歩いてこられたとり様。</p>
+            <p style="margin-bottom: 90px;">その誠実さは<br>ちゃんと届いていました。</p>
+            <p style="margin-bottom: 90px;">職場の空気をやわらげた日も<br>人の気持ちに誰より早く気づいた日も<br>すべて、確かに積み重なっています。</p>
+            <p style="margin-bottom: 90px;"><span style="color: #ffd966;">罔象女神</span>は<br>夜の台所で<br>言葉を両手に抱えて動けずにいた<br>とり様の手に、ご自分の手を重ねていました。</p>
+            <p style="margin-bottom: 90px;">そして、指と指のあいだから<br>水はもう<br>流れはじめていました。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">だからもう<br>持ち帰らなくていいんです。</p>
+            <p style="margin-bottom: 90px;">言われたことは<br>直すところだけ手帳に置いて<br>あとは流していい。</p>
+            <p style="margin-bottom: 90px;">楽しむ余白を<br>先に確保していい。</p>
+            <p style="margin-bottom: 90px;">頼っていい。</p>
+            <p style="margin-bottom: 90px;">桜が散って、若葉の出はじめる頃の朝<br>「これは、流します」と手帳を閉じて<br>行きたかった場所へ向かう日は<br>もうすぐそこまで来ています。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">とり様は<br>幸せになっていい。</p>
+            <p style="margin-bottom: 90px; font-weight: bold;">守られています。</p>
+            <p style="margin-bottom: 90px;">その事実を<br>どうか受け取ってください。</p>
+            <p style="margin-bottom: 90px;">本日より遠隔守護祈祷を行い<br>とり様の幸せを願います。</p>
+            <p style="margin-bottom: 0;">とり様の未来に<br>澄んだ青い水の光が満ちますように。</p>
+            <div class="signature">深雪</div>
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            var elementBg = document.getElementById('elementBg');
+            var deityBg = document.getElementById('deityBg');
+            var doorBg = document.getElementById('doorBg');
+            var seasonWinterBg = document.getElementById('seasonWinterBg');
+            var seasonSpringBg = document.getElementById('seasonSpringBg');
+            var stoneBg = document.getElementById('stoneBg');
+
+            var stages = [
+                { el: document.getElementById('elementSentinel'), bg: elementBg },
+                { el: document.getElementById('guardianSentinel'), bg: deityBg },
+                { el: document.getElementById('essenceSentinel'), bg: elementBg },
+                { el: document.getElementById('deitySentinel'), bg: doorBg },
+                { el: document.getElementById('flow1Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flow2Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flow3Sentinel'), bg: seasonWinterBg },
+                { el: document.getElementById('flow4Sentinel'), bg: seasonSpringBg },
+                { el: document.getElementById('flow5Sentinel'), bg: seasonSpringBg },
+                { el: document.getElementById('flowEndSentinel'), bg: doorBg },
+                { el: document.getElementById('guardianReturnSentinel'), bg: deityBg },
+                { el: document.getElementById('stoneSentinel'), bg: stoneBg },
+                { el: document.getElementById('closingSentinel'), bg: doorBg }
+            ].filter(function (stage) { return !!stage.el; });
+            if (!stages.length) return;
+
+            var layers = [elementBg, deityBg, doorBg, seasonWinterBg, seasonSpringBg, stoneBg];
+            function show(active) {
+                layers.forEach(function (el) {
+                    if (el === active) el.classList.add('is-visible');
+                    else el.classList.remove('is-visible');
+                });
+            }
+
+            function onScroll() {
+                var trigger = window.innerHeight * 0.65;
+                var active = null;
+                for (var i = 0; i < stages.length; i++) {
+                    if (stages[i].el.getBoundingClientRect().top < trigger) {
+                        active = stages[i].bg;
+                    }
+                }
+                show(active);
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+
+        /* ===== 演出：花びら ===== */
+        (function () {
+            var cv = document.getElementById('petals');
+            var ctx = cv.getContext('2d');
+            var W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+            var isMobile = window.innerWidth < 700;
+
+            function resize() {
+                W = window.innerWidth; H = window.innerHeight;
+                cv.width = W * dpr; cv.height = H * dpr;
+                cv.style.width = W + 'px'; cv.style.height = H + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            var petals = [];
+            var petalN = isMobile ? 14 : 24;
+            for (var i = 0; i < petalN; i++) {
+                petals.push({
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    s: 5 + Math.random() * 7,
+                    vy: 0.35 + Math.random() * 0.7,
+                    sway: Math.random() * Math.PI * 2,
+                    swayV: 0.008 + Math.random() * 0.014,
+                    rot: Math.random() * Math.PI * 2,
+                    rotV: (Math.random() - 0.5) * 0.03,
+                    hue: Math.random() < 0.6 ? 'light' : 'deep'
+                });
+            }
+            function drawPetal(p) {
+                ctx.save();
+                ctx.translate(p.x + Math.sin(p.sway) * 26, p.y);
+                ctx.rotate(p.rot);
+                var g = ctx.createRadialGradient(0, 0, 0, 0, 0, p.s);
+                if (p.hue === 'light') {
+                    g.addColorStop(0, 'rgba(180, 220, 255, 0.95)');
+                    g.addColorStop(1, 'rgba(180, 220, 255, 0.25)');
+                } else {
+                    g.addColorStop(0, 'rgba(100, 170, 230, 0.95)');
+                    g.addColorStop(1, 'rgba(100, 170, 230, 0.25)');
+                }
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, p.s, p.s * 0.62, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function tick() {
+                ctx.clearRect(0, 0, W, H);
+                for (var pi = 0; pi < petals.length; pi++) {
+                    var p = petals[pi];
+                    p.y += p.vy;
+                    p.sway += p.swayV;
+                    p.rot += p.rotV;
+                    if (p.y > H + 20) { p.y = -20; p.x = Math.random() * W; }
+                    drawPetal(p);
+                }
+                requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        })();
+    </script>
+
+<!-- GA4 カスタム計測：誰が/最後まで読んだか/購入ボタン [GA4-MIYUKI] -->
+<script>
+(function () {
+  function fire() {
+    var seg = location.pathname.split('/').filter(Boolean);
+    var last = decodeURIComponent(seg[seg.length - 1] || '');
+    var id = /\.html?$/i.test(last) ? decodeURIComponent(seg[seg.length - 2] || 'unknown') : (last || 'unknown');
+    var base = { kantei_id: id, persona: 'miyuki' };
+    gtag('set', 'user_properties', { kantei_id: id, persona: 'miyuki' });
+    gtag('event', 'page_open', base);
+
+    var end = document.querySelector('.signature, .sign');
+    if (end && 'IntersectionObserver' in window) {
+      var done = false;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && !done) { done = true; gtag('event', 'read_complete', base); io.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      io.observe(end);
+    }
+
+    document.querySelectorAll('.cta-button, .btn').forEach(function (b) {
+      b.addEventListener('click', function () { gtag('event', 'cta_click', base); });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire); else fire();
+})();
+</script>
+
+</body>
+</html>
