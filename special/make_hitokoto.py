@@ -16,6 +16,20 @@
 import csv, glob, os, re, subprocess, sys, urllib.parse
 
 REPO = "/Users/miura/Documents/GitHub/kantei"
+# --- クラウドのClaudeから回すとき用（ふだんの python3 make_hitokoto.py は今までどおり claude を呼ぶ）---
+#   HITOKOTO_EXPORT=フォルダ … claude を呼ばず、1件ずつの依頼文を フォルダ/連番.txt に書き出すだけ（CSVは変えない）
+#   HITOKOTO_IMPORT=フォルダ … claude を呼ばず、フォルダ/連番.out（2行）を答えとして読み、チェックしてCSVを作る
+EXPORT = os.environ.get("HITOKOTO_EXPORT", "")
+IMPORT = os.environ.get("HITOKOTO_IMPORT", "")
+if not os.path.isdir(REPO):
+    REPO = os.path.expanduser("~/mnt/kantei")
+
+def ask(prompt, num):
+    if IMPORT:
+        p = os.path.join(IMPORT, f"{num}.out")
+        return open(p, encoding="utf-8").read() if os.path.exists(p) else ""
+    return subprocess.run(["claude", "-p", prompt], capture_output=True, text=True,
+                          stdin=subprocess.DEVNULL, timeout=300).stdout
 URLS = f"{REPO}/special/urls.txt"
 CSV = f"{REPO}/special/kana_hitokoto.csv"
 FREE = f"{REPO}/無料鑑定/かな"
@@ -143,11 +157,15 @@ def main():
         adv = ADVERBS[num % len(ADVERBS)]
         avoid = ("【直近の一言(この言い回しと似せない)】\n" + "\n".join(recent[-4:]) + "\n\n---\n") if recent else ""
         prompt = RULES.replace("{副詞}", adv).replace("{名前}", name) + avoid + text
+        if EXPORT:
+            os.makedirs(EXPORT, exist_ok=True)
+            open(os.path.join(EXPORT, f"{num}.txt"), "w", encoding="utf-8").write(prompt)
+            print(f"  📝 {num}_{name}: 依頼文を書き出し")
+            continue
         lines, out = None, ""
         for _ in range(5):
             try:
-                out = subprocess.run(["claude", "-p", prompt], capture_output=True, text=True,
-                                     stdin=subprocess.DEVNULL, timeout=300).stdout
+                out = ask(prompt, num)
             except Exception as e:
                 print(f"  ⚠ {num}_{name}: 作成に失敗 ({e})")
                 continue
