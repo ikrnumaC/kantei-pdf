@@ -16,20 +16,81 @@
 import csv, glob, os, re, subprocess, sys, urllib.parse
 
 REPO = "/Users/miura/Documents/GitHub/kantei"
-# --- クラウドのClaudeから回すとき用（ふだんの python3 make_hitokoto.py は今までどおり claude を呼ぶ）---
+# --- クラウドのClaudeから回すとき用（ふだんの python3 make_hitokoto.py は API を呼ぶ）---
 #   HITOKOTO_EXPORT=フォルダ … claude を呼ばず、1件ずつの依頼文を フォルダ/連番.txt に書き出すだけ（CSVは変えない）
 #   HITOKOTO_IMPORT=フォルダ … claude を呼ばず、フォルダ/連番.out（2行）を答えとして読み、チェックしてCSVを作る
 EXPORT = os.environ.get("HITOKOTO_EXPORT", "")
 IMPORT = os.environ.get("HITOKOTO_IMPORT", "")
+#   HITOKOTO_REPO=フォルダ … kantei の写しを置いた場所で動かす（クラウド側の Bash から API を呼ぶとき用）
+if os.environ.get("HITOKOTO_REPO"):
+    REPO = os.environ["HITOKOTO_REPO"]
 if not os.path.isdir(REPO):
     REPO = os.path.expanduser("~/mnt/kantei")
+
+# --- 一言はAPIで作る（2026-11-27〜。サブスクの週間枠を使わないため）---
+#   APIキー: 環境変数 ANTHROPIC_API_KEY、なければ kantei/.env（本鑑定APIと同じ）
+#   HITOKOTO_MODEL=モデル名 … 使うモデルを変える（既定 claude-sonnet-5-5）
+#   HITOKOTO_USE_CLI=1 … 前のやり方（claude -p）に戻す
+MODEL = os.environ.get("HITOKOTO_MODEL", "claude-sonnet-5-5")
+USE_CLI = os.environ.get("HITOKOTO_USE_CLI", "") == "1"
+API_USAGE = {"in": 0, "out": 0, "calls": 0}
+
+def api_key():
+    if os.environ.get("ANTHROPIC_API_KEY"):
+        return os.environ["ANTHROPIC_API_KEY"].strip()
+    p = os.path.join(REPO, ".env")
+    if os.path.isfile(p):
+        for line in open(p, encoding="utf-8"):
+            if line.strip().startswith("ANTHROPIC_API_KEY="):
+                return line.split("=", 1)[1].strip().strip('"').strip("'")
+    sys.exit("APIキーが見つかりません（kantei/.env に ANTHROPIC_API_KEY=... を入れてください）")
+
+def ask_api(prompt):
+    import json, time, urllib.request, urllib.error
+    try:
+        import ssl
+        if os.environ.get("SSL_CERT_FILE"):   # クラウド側の Bash はプロキシの証明書を使う
+            ctx = ssl.create_default_context(cafile=os.environ["SSL_CERT_FILE"])
+        else:
+            import certifi
+            ctx = ssl.create_default_context(cafile=certifi.where())
+    except Exception:
+        ctx = None
+    # 考える分も出力枠に入るので max_tokens は大きめに（400 だと本文が空で返った）。
+    # 考えさせないと、かなの「1行32字以内」を守れず形チェックで落ちる（2026-11-27 に試した）
+    body = {"model": MODEL, "max_tokens": 6000,
+            "messages": [{"role": "user", "content": prompt}]}
+    last = ""
+    for attempt in range(3):
+        req = urllib.request.Request("https://api.anthropic.com/v1/messages",
+                                     data=json.dumps(body).encode("utf-8"),
+                                     headers={"x-api-key": api_key(), "anthropic-version": "2023-06-01",
+                                              "content-type": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=300, context=ctx) as r:
+                d = json.loads(r.read().decode("utf-8"))
+            u = d.get("usage", {})
+            API_USAGE["in"] += u.get("input_tokens", 0)
+            API_USAGE["out"] += u.get("output_tokens", 0)
+            API_USAGE["calls"] += 1
+            return "".join(b.get("text", "") for b in d.get("content", []) if b.get("type") == "text")
+        except urllib.error.HTTPError as e:
+            last = f"HTTP {e.code} {e.read().decode('utf-8', 'replace')[:300]}"
+            if e.code not in (429, 500, 502, 503, 529):
+                break
+        except Exception as e:
+            last = repr(e)
+        time.sleep(5 * (attempt + 1))
+    raise RuntimeError(f"APIの呼び出しに失敗: {last}")
 
 def ask(prompt, num):
     if IMPORT:
         p = os.path.join(IMPORT, f"{num}.out")
         return open(p, encoding="utf-8").read() if os.path.exists(p) else ""
-    return subprocess.run(["claude", "-p", prompt], capture_output=True, text=True,
-                          stdin=subprocess.DEVNULL, timeout=300).stdout
+    if USE_CLI:
+        return subprocess.run(["claude", "-p", prompt], capture_output=True, text=True,
+                              stdin=subprocess.DEVNULL, timeout=300).stdout
+    return ask_api(prompt)
 URLS = f"{REPO}/special/urls.txt"
 CSV = f"{REPO}/special/kana_hitokoto.csv"
 FREE = f"{REPO}/無料鑑定/かな"
@@ -197,3 +258,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+    if API_USAGE["calls"]:
+        print(f"API（{MODEL}）: {API_USAGE['calls']}回 入力{API_USAGE['in']} 出力{API_USAGE['out']} トークン")
